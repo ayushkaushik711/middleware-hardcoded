@@ -1,0 +1,100 @@
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:1:hardcoded object:const { flattenDeep, map, get, isEmpty } = require('lodash')
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:2:hardcoded object:const { NotFoundError } = require('../../../lib/errors')
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:3:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('service.js');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:4:hardcoded object:const { getExtensionSku } = require('../blc/dto');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:6:hardcoded variable:const formattedByjusMathStreamingLineItems = async (orderDetails, identifier) => {
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:7:hardcoded string:    logger.info({ method: 'formattedByjusMathStreamingLineItems' }, 'Checking if Order is eligible to be splitted');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:8:hardcoded object:    const { productDetails, orderPunchingCategory, orderPunchingType } = orderDetails;
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:9:hardcoded array:    const { students = [], paymentType } = productDetails;
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:10:hardcoded string:    const { initialClass, validity } = students.length ? students[0] : '';
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:11:hardcoded object:    let lineItems = {};
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:14:hardcoded string:        const items = flattenDeep(map(students, 'items'));
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:16:hardcoded string:        logger.info("BYJUS MATH STREAMING : orderPunchingCategory : " + orderPunchingCategory);
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:17:hardcoded object:        const splittedLineItems = await getLineItems({items, initialClass, paymentType, orderPunchingType, validity})
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:18:hardcoded string:        logger.info("BYJUS MATH STREAMING : splittedLineItems : " + splittedLineItems);
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:20:hardcoded object:        const { parentLineItems, childLineItems } = splittedLineItems || {};
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:21:hardcoded number:        if (parentLineItems?.length === 0) {
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:22:hardcoded string:            throw new NotFoundError("ParentLineItems are missing!");
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:25:hardcoded string:        const orderType = childLineItems.length ? 'split_order' : 'single_order';
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:26:hardcoded string:        logger.info("%j", { method: 'formatLineItems' }, { orderType, lineItems: JSON.stringify(splittedLineItems) });
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:33:hardcoded string:        logger.info("%j", { method: 'formatLineItems', message: "Error in splitting line Items" });
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:34:hardcoded string:        throw new Error(error || "Error in splitting line Items");
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:40:hardcoded variable:const getLineItems = async (details) => {
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:41:hardcoded object:    const { items, initialClass, paymentType } = details
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:44:hardcoded string:    childLineItems = items.filter(course => course.type === "service"); 
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:46:hardcoded string:        const childItemIds = map(childLineItems, 'skuId');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:47:hardcoded string:        if (!childItemIds.includes(get(item, 'skuId', ''))) {
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:53:hardcoded string:        if (paymentType === 'EMI') {
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:54:hardcoded variable:            const extensionSku = await getExtensionSku(initialClass)
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/orderSplit.js:59:hardcoded array:            childLineItems = []
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/assembler.js:1:hardcoded object:const { get } = require('lodash');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/assembler.js:3:hardcoded object:const { getSkuItemId } = require('../service/skuIdHelper');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/assembler.js:5:hardcoded variable:const getUpdatedCourseSku = async (details) => {
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/assembler.js:6:hardcoded string:    const { skuArray=[], tablet=''} = details;
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/assembler.js:7:hardcoded array:    let updatedCourseSku = []
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/assembler.js:9:hardcoded string:        courseSku["itemType"] = get(courseSku, 'itemType', '');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/assembler.js:10:hardcoded string:        courseSku['combinationType'] = get(courseSku, 'category', '');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/assembler.js:11:hardcoded string:        courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/assembler.js:12:hardcoded string:        courseSku['tabletId'] = courseSku.category === "tablet" ? `T-${tablet}` : null;
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:1:hardcoded object:const { get, isEmpty } = require('lodash');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:2:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Byjus Math Streaming DTO');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:3:hardcoded object:const { BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:5:hardcoded object:const { getCourseSku } = require('./dto');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:6:hardcoded object:const { getTotalSkuAndPrice } = require('../service/totalSkusPrice');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:7:hardcoded object:const { getUpdatedStudentDetails } = require('../byjusneo/assembler');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:8:hardcoded object:const { getDiscountDetails } = require('../vouchermanagement/voucherHelper');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:9:hardcoded object:const { getRegSku } = require('../dto');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:12:hardcoded variable:const getSingleProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:13:hardcoded string:    logger.info({ method: 'getSingleProduct' }, { message: "Fetching Math-Sreaming single product" });
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:15:hardcoded string:    let { paymentType = "EMI", productType, productCombination, student, identifier } = req.body;
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:18:hardcoded string:        const { initialClass = "" } = student || {};
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:19:hardcoded variable:        const courseSku = await getCourseSku(student)
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:20:hardcoded object:        const { formattedProducts, totalPrice } = getTotalSkuAndPrice({ courseSku })
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:21:hardcoded object:        formattedProducts.push(await getRegSku({ initialClass, productCombination }))
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:24:hardcoded variable:        let maxPrice = totalPrice;
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:25:hardcoded number:        let minPrice = Math.round(0.8 * maxPrice / 1000) * 1000;
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:26:hardcoded variable:        const skuProductDetails = {
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:28:hardcoded string:            tabletSku: courseSku.filter(ele => ele.category === "tablet"),
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:32:hardcoded object:        const discountDetails = await getDiscountDetails({ identifier, productDetails: skuProductDetails });
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:33:hardcoded string:        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:37:hardcoded string:            paymentType: get(student, "paymentType"),
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:42:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:44:hardcoded string:            bhlpCourseDetails: get(student, "bhlpCourseDetails"),
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:55:hardcoded variable:const getComboProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:56:hardcoded string:    logger.info({ method: 'getComboProduct' }, { message: "Fetching Math-Sreaming combo product" });
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:58:hardcoded string:    let { paymentType = "EMI", productType, productCombination, student, identifier } = req.body;
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:61:hardcoded variable:        const courseSku = await getCourseSku(student)
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:62:hardcoded object:        const { formattedProducts, totalPrice } = getTotalSkuAndPrice({ courseSku })
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:65:hardcoded variable:        let maxPrice = totalPrice;
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:66:hardcoded number:        let minPrice = Math.round(0.8 * maxPrice / 1000) * 1000;
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:67:hardcoded variable:        const skuProductDetails = {
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:69:hardcoded string:            tabletSku: courseSku.filter(ele => ele.category === "tablet"),
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:72:hardcoded object:        const discountDetails = await getDiscountDetails({ identifier, productDetails: skuProductDetails });
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:73:hardcoded string:        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:77:hardcoded string:            paymentType: get(student, "paymentType"),
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:82:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/controller.js:84:hardcoded string:            bhlpCourseDetails: get(student, "bhlpCourseDetails"),
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:1:hardcoded object:const { flattenDeep, get } = require('lodash');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:3:hardcoded object:const { getSalesSku, getPostgresTabletSku } = require('../dto');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:4:hardcoded object:const { getUpdatedCourseSku } = require('./assembler');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:6:hardcoded variable:const getCourseSku = async (student) => {
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:7:hardcoded string:    const { initialClass, finalClass, validity, bfsBatch, tablet='' } = student
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:8:hardcoded variable:    const finalGrade = finalClass ? parseInt(finalClass) : parseInt(initialClass);
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:10:hardcoded array:    let courseSku = [], skuArray=[], query={};
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:11:hardcoded variable:    let grade = parseInt(initialClass);
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:12:hardcoded variable:    let selectedValidity = parseInt(validity);
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:15:hardcoded string:        const scheme = grade.toString() === initialClass ? '80' : '80';
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:18:hardcoded string:            category: "byjus_math",
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:19:hardcoded number:            subCourse: bfsBatch, // 1:6
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:24:hardcoded string:        courseSku['price'] = grade.toString() === initialClass ? 
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:25:hardcoded string:            get(courseSku, 'basePrice', 0) : get(courseSku, 'continuousPrice', 0);
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:32:hardcoded object:        let tabletSku = await getPostgresTabletSku({tabletId: tablet});
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:33:hardcoded string:        tabletSku['price'] = get(tabletSku, 'basePrice', 0);
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/dto.js:38:hardcoded object:    courseSku = await getUpdatedCourseSku({skuArray, tablet});
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/routes.js:1:hardcoded file path:const Router = require('express-promise-router');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/routes.js:2:hardcoded file path:const controller = require('./controller');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/routes.js:3:hardcoded object:const { storeCalculatedPriceMw } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/routes.js:5:hardcoded object:const router = Router({ mergeParams: true });
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/routes.js:8:hardcoded string:    const baseRoute = '/byjusMathStreaming/product'
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/routes.js:10:hardcoded object:    router.route(`${baseRoute}/single`)
+microservices-middleware/server/src/productmanagement/byjusMathStreaming/routes.js:17:hardcoded object:    router.route(`${baseRoute}/combo`)

@@ -1,0 +1,728 @@
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:1:hardcoded object:import React, { Component, Fragment } from 'react'
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:2:hardcoded file path:import Select from 'react-select'
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:3:hardcoded object:import { Label } from 'reactstrap'
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:7:hardcoded string:} from 'lodash'
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:9:hardcoded file path:import  callApi from 'api/callApi';
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:10:hardcoded object:// import { getTokens } from 'lib/authToken';
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:12:hardcoded string:// import 'react-select/dist/react-select.css';
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:19:hardcoded array:            options: [],
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:20:hardcoded string:            inputValue: "",
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:26:hardcoded object:        const { options, apiConfig, enumId } = this.props;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:52:hardcoded object:        let { enumId, options } = this.props;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:54:hardcoded object:        const apiUrl = `/usermanagement/settings/enum/${enumId}`;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:55:hardcoded string:        const apiMethod = 'GET';
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:57:hardcoded object:            this.setState({ loading: true });
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:60:hardcoded array:                    this.processComboResponse(response.enums || []);
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:75:hardcoded object:        const { displayKey, valueKey, apiConfig } = this.props;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:76:hardcoded object:        const { url, method: apiMethod, body, isNucleusApi } = apiConfig;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:78:hardcoded object:        const apiUrl = isNucleusApi ? `${window.NAPI_URL}${url}` : url;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:79:hardcoded string:        const apiBody = apiMethod == "GET" ? null : body;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:81:hardcoded object:            this.setState({ loading: true });
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:82:hardcoded variable:            const options = {
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:86:hardcoded string:                credentials: "same-origin"
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:89:hardcoded object:            this.setState({ loading: true });
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:94:hardcoded object:                        //     return Promise.reject({ ...json, status: response.status });
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:107:hardcoded array:        let { displayKey, valueKey, select, model, filter = {}, isMulti, db, searchParams = [], sort = {}, unique } = this.props;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:108:hardcoded object:        const { inputValue, searchableValues } = this.state;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:110:hardcoded string:        searchParams = typeof searchParams === 'string' ? [searchParams] : searchParams;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:113:hardcoded variable:        const filterConditions = !isEmpty(inputValue)
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:115:hardcoded string:                ...searchParams.map(key => ({ [key]: { $regex: inputValue, $options: "i" } })),
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:116:hardcoded string:                { [displayKey]: { $regex: inputValue, $options: "i" } }
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:118:hardcoded array:            : [];
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:121:hardcoded variable:        let extraFilter = [
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:124:hardcoded array:                [valueKey]: (isArray(searchableValues)) ? { $in: searchableValues } : searchableValues
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:129:hardcoded variable:        const updatedFilter = !isEmpty(extraFilter) ? {
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:130:hardcoded string:            "$or": extraFilter
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:131:hardcoded object:        } : {};
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:136:hardcoded string:        if (db === 'pg') {
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:140:hardcoded variable:        const bodyPayload = {
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:143:hardcoded string:        let apiUrl = db === 'pg' ? `/combo/pg` : `/combo`;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:144:hardcoded string:        if (unique && db != 'pg') {
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:147:hardcoded string:        const apiMethod = 'POST';
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:148:hardcoded variable:        const apiBody = bodyPayload;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:150:hardcoded object:            this.setState({ loading: true });
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:164:hardcoded object:        const { options } = this.state;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:165:hardcoded string:        const { displayKey = "label", valueKey = "value", isMulti, emptyOption, formatOptions, db, unique } = this.props;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:168:hardcoded variable:            let updatedOptions = response.map((res) => {
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:169:hardcoded object:                const option = formatOptions ? formatOptions(res) : {}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:171:hardcoded string:                    label: isObject(res) ? get(res, displayKey || 'label') : res,
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:172:hardcoded string:                    value: isObject(res) ? get(res, valueKey || 'value') : res,
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:178:hardcoded string:            if (unique && db != 'pg') {
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:180:hardcoded object:                    const option = formatOptions ? formatOptions(res) : {}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:181:hardcoded string:                    const label = Array.isArray(get(res, 'label')) ? get(res, 'label.0') : get(res, 'label')
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:182:hardcoded string:                    const value = Array.isArray(get(res, 'value')) ? get(res, 'value.0') : get(res, 'value')
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:194:hardcoded string:                updatedOptions = uniqBy(concat(updatedOptions, options), 'value');
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:202:hardcoded object:            this.setState({ options: updatedOptions, loading: false });
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:209:hardcoded object:    //     const { idToken, accessToken, refreshToken } = getTokens();
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:212:hardcoded string:    //         "Content-Type": "application/json",
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:213:hardcoded string:    //         "x-id-token": idToken,
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:214:hardcoded string:    //         "x-access-token": accessToken,
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:215:hardcoded string:    //         "x-refresh-token": refreshToken
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:225:hardcoded array:        let searchBuilder = [];
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:227:hardcoded array:            const filterRecordValue = filter[filterRecordKey];
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:228:hardcoded string:            if (filterRecordKey === '$or') {
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:232:hardcoded array:                        const regexOptions = filterRecordKeyOrFilter[regexOptionsKey];
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:234:hardcoded string:                            "selectedColumn": regexOptionsKey,
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:235:hardcoded string:                            "selectedOperator": regexOptions['$regex'] ? "contains" : "in",
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:236:hardcoded string:                            "selectedValue": regexOptions['$regex'] ? regexOptions['$regex'] : regexOptions['$in']
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:242:hardcoded string:                const selectedOperator = Array.isArray(filterRecordValue) ? 'in' : 'equal';
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:244:hardcoded string:                    "selectedColumn": filterRecordKey, selectedOperator, "selectedValue": filterRecordValue
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:249:hardcoded string:            "conditionType": "$and",
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:250:hardcoded string:            "searchBuilder": searchBuilder
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:257:hardcoded object:            this.setState({ inputValue: newValue });
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:262:hardcoded object:        const { displayKey, valueKey } = this.props;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:266:hardcoded variable:                const formattedValues = value.map((val) => {
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:267:hardcoded array:                    return (!isObject(val)) ? val : val[valueKey]
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:273:hardcoded array:                return value[valueKey];
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:296:hardcoded object:            this.setState({ options: nextProps.options })
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:301:hardcoded object:        const { loadByDefault, isMulti, value, displayKey } = this.props;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:305:hardcoded array:            const searchableValues = isMulti ? value.map(val => isObject(val) ? get(val, displayKey) : val) : [value];
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:306:hardcoded object:            this.setState({ searchableValues }, () => {
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:319:hardcoded string:        const star = (required) ? <span style={{ color: 'red' }}>*</span> : ''
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:323:hardcoded object:                {label} {star}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:329:hardcoded object:        const { options, loading } = this.state
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:337:hardcoded array:        const filterOptionsArray = filterOptions ? filterOptions(options) || [] : options;
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:339:hardcoded string:        const labelStyle = inlineLabel ? { display: 'flex' } : {};
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:341:hardcoded object:            <div style={labelStyle}>
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:342:hardcoded object:                {label && this.renderLabel(required, label)}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:344:hardcoded object:                    style={customStyles}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:345:hardcoded object:                    className={className}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:346:hardcoded object:                    options={filterOptionsArray}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:347:hardcoded object:                    label={label}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:348:hardcoded object:                    name={name}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:349:hardcoded object:                    value={value}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:350:hardcoded object:                    optionRenderer={optionRenderer}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:351:hardcoded object:                    isLoading={loading || passedLoading}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:352:hardcoded string:                    placeholder={placeholder || 'Please start typing'}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:353:hardcoded object:                    defaultValue={defaultValue}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:354:hardcoded object:                    isMulti={isMulti ? true : false}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:355:hardcoded object:                    isSearchable={true}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:356:hardcoded object:                    onInputChange={onInputChange || this.onInputChange}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:357:hardcoded object:                    valueRenderer={valueRenderer ? valueRenderer : null}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:361:hardcoded object:                    isDisabled={disabled || false}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:362:hardcoded object:                    onBlur={onBlur}
+microservices-middleware/client/src/components/form/ByjusComboBox.jsx:363:hardcoded object:                    menuContainerStyle={menuContainerStyle}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:1:hardcoded object:import React, { Component, Fragment } from 'react';
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:2:hardcoded file path:import P from 'prop-types';
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:3:hardcoded file path:import DatePicker from "react-datepicker";
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:4:hardcoded file path:import moment from 'moment';
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:6:hardcoded object:import { chunk, isEmpty, isEqual, isObject, isArray, get, map, remove, pick } from 'lodash'
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:7:hardcoded object:import { Row, Col, Label, Button, FormGroup, FormFeedback } from 'reactstrap'
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:9:hardcoded file path:import FieldGroup from './FieldGroup'
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:10:hardcoded file path:import ByjusCombobox from './ByjusComboBox'
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:11:hardcoded object:import { Radio, Rate } from 'antd'
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:13:hardcoded object:const { Group: RadioGroup } = Radio;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:22:hardcoded array:    fields: [],
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:23:hardcoded number:    cols: 1
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:30:hardcoded object:      formValues: {},
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:31:hardcoded object:      validationErrors: {},
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:32:hardcoded array:      fields: []
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:37:hardcoded object:    let { name, value, type } = e.target
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:38:hardcoded string:    value = (type === "file") ? e.target.files[0] : value
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:45:hardcoded string:    this.handleFormChanges(rateName, e, "rate", passedOnChange);
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:49:hardcoded string:    this.handleFormChanges(name, e, "radio", passedOnChange);
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:53:hardcoded object:    const { formValues } = this.state
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:54:hardcoded array:    formValues[name] = date
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:55:hardcoded object:    this.setState({ formValues })
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:59:hardcoded object:    const { formValues } = this.state;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:60:hardcoded variable:    const originalValue = selectedValue;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:62:hardcoded string:    if (isArray(selectedValue) && type !== "file") {
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:63:hardcoded string:      selectedValue = map(selectedValue, 'value') || [];
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:66:hardcoded string:    else if (isObject(selectedValue) && type !== "file") {
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:67:hardcoded string:      selectedValue = get(selectedValue, 'value')
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:70:hardcoded array:    formValues[name] = selectedValue;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:72:hardcoded object:    this.setState({ formValues });
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:77:hardcoded string:    const { type = "text" } = field
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:79:hardcoded string:      case 'text':
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:80:hardcoded string:      case 'textarea':
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:81:hardcoded string:      case 'date':
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:82:hardcoded string:      case 'number': return this.buildInputField(field);
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:83:hardcoded string:      case 'readonly':
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:84:hardcoded string:      case 'readonlytext':
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:85:hardcoded string:      case 'checkbox':
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:86:hardcoded string:      case 'link':
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:87:hardcoded string:      case 'month':
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:88:hardcoded string:      case 'email': return this.buildInputField(field);
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:89:hardcoded string:      case 'file': return this.buildFileField(field);
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:90:hardcoded string:      case 'select': return this.buildCombobox(field);
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:91:hardcoded string:      case 'reactDate': return this.buildReactDate(field);
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:92:hardcoded string:      case 'reactMonth': return this.buildReactMonthSelector(field);
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:93:hardcoded string:      case 'button': return this.buildButton(field);
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:94:hardcoded string:      case 'radio': return this.buildAntdRadioButton(field);
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:95:hardcoded string:      case 'rate': return this.buildAntdRateField(field);
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:96:hardcoded string:      case 'inputgroup': return this.buildInputGroup(field);
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:97:hardcoded string:      case 'hidden':
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:103:hardcoded string:    let { type, name, label, placeholder, value, required, error, options, inline, disabled, onChange, style, customErrorMessage = '',
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:105:hardcoded object:    const { formValues } = this.state
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:106:hardcoded array:    value = !isEmpty(formValues) ? formValues[name] : value
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:109:hardcoded string:    if (type === "date") {
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:110:hardcoded string:      value = value && moment(value).format('YYYY-MM-DD');
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:111:hardcoded string:    } else if (type === "number") {
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:113:hardcoded object:        error = parseInt(value) >= parseInt(min) && parseInt(value) <= parseInt(max) ? null : `Enter values between ${min} - ${max}`
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:116:hardcoded variable:    const errorMessage = customErrorMessage ? customErrorMessage : error;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:119:hardcoded object:      {...field}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:120:hardcoded object:      style={style}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:121:hardcoded object:      name={name}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:122:hardcoded object:      type={type}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:123:hardcoded string:      disabled={type === "readonly" ? true : disabled}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:124:hardcoded object:      label={label}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:125:hardcoded object:      placeholder={required && placeholder ? `${placeholder} *` : placeholder}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:126:hardcoded string:      value={value || ""}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:127:hardcoded object:      options={options || null}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:128:hardcoded object:      inline={inline}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:129:hardcoded string:      valid={error ? "error" : null}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:130:hardcoded object:      errorMessage={errorMessage}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:131:hardcoded object:      required={required}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:132:hardcoded object:      onChange={(e) => this.handleFieldChanges(e, onChange)}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:137:hardcoded object:    const { items, label, required, error, requiredInnerFields } = field;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:140:hardcoded object:    const { validationErrors } = this.state
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:143:hardcoded object:        {label && this.renderLabel(required || requiredInnerFields, label)}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:144:hardcoded string:        <Row noGutters className={`${error ? 'is-invalid' : ''}`}>
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:147:hardcoded object:              const { name } = item;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:148:hardcoded string:              item["error"] = validationErrors ? validationErrors[name] : null; // Adding state level error to input fields so it will highlighted
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:151:hardcoded object:                <Fragment key={index}>
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:152:hardcoded string:                  <Col md={item.span} style={{ overflow: "inherit" }}>
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:153:hardcoded string:                    <div style={{ width: "95%" }}>
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:154:hardcoded object:                      {this.formField(item)}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:156:hardcoded string:                  </Col>{" "}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:162:hardcoded object:        {(error) && <FormFeedback>{error}</FormFeedback >}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:168:hardcoded object:    let { type, name, label, placeholder, value, required, accept, innerHtml, error, onChange } = field
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:169:hardcoded object:    const { formValues } = this.state
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:171:hardcoded array:    value = !isEmpty(formValues) ? formValues[name] : value
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:173:hardcoded object:      {...field}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:174:hardcoded object:      name={name}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:175:hardcoded object:      type={type}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:176:hardcoded object:      label={label}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:177:hardcoded string:      placeholder={required && placeholder ? `${placeholder} *` : ''}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:178:hardcoded object:      innerHtml={innerHtml}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:179:hardcoded string:      files={value || ""}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:180:hardcoded object:      accept={accept}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:181:hardcoded string:      valid={error ? "error" : null}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:182:hardcoded object:      errorMessage={error}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:183:hardcoded object:      required={required}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:184:hardcoded object:      onChange={(e) => this.handleFieldChanges(e, onChange)}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:191:hardcoded object:    const { formValues } = this.state
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:193:hardcoded array:    value = !isEmpty(formValues) ? formValues[name] : value
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:194:hardcoded variable:    const customStyles = {
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:197:hardcoded string:          border: !error ? '#ddd' : '1px solid #dc3d3d'
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:202:hardcoded variable:    let comp = <div />
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:208:hardcoded object:          {...field}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:209:hardcoded object:          label={label}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:210:hardcoded object:          name={name}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:211:hardcoded object:          styles={customStyles}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:212:hardcoded string:          value={value ? value : ""}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:213:hardcoded object:          isMulti={isMulti}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:214:hardcoded string:          valid={value || ""}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:215:hardcoded string:          placeholder={placeholder || ''}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:216:hardcoded object:          options={options ? options : null}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:217:hardcoded object:          onChange={(name, selectedValue) => this.handleFormChanges(name, selectedValue, null, onChange)}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:218:hardcoded object:          valueRenderer={valueRenderer}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:219:hardcoded object:          required={required}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:220:hardcoded object:          isDisabled={disabled || false}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:222:hardcoded string:        {help && <small style={helpStyle} className={`form-text ${isEmpty(helpStyle) ? 'text-muted' : ''}`}>{help}</small>}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:229:hardcoded object:          {...field}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:230:hardcoded object:          label={label}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:231:hardcoded object:          name={name}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:232:hardcoded object:          styles={customStyles}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:233:hardcoded string:          value={value ? value : ""}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:234:hardcoded object:          isMulti={isMulti}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:235:hardcoded string:          valid={value || ""}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:236:hardcoded string:          placeholder={placeholder ? `${placeholder}` : ''}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:237:hardcoded object:          model={model}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:238:hardcoded object:          filter={filter}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:239:hardcoded object:          displayKey={displayKey}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:240:hardcoded object:          valueKey={valueKey}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:241:hardcoded object:          loadByDefault={loadByDefault}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:242:hardcoded object:          onChange={(name, selectedValue) => this.handleFormChanges(name, selectedValue, null, onChange)}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:243:hardcoded object:          valueRenderer={valueRenderer}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:244:hardcoded object:          required={required}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:245:hardcoded object:          isDisabled={disabled || false}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:248:hardcoded string:        {help && <small style={helpStyle} className={`form-text ${isEmpty(helpStyle) ? 'text-muted' : ''}`}>{help}</small>}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:254:hardcoded object:        {comp}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:256:hardcoded string:          <div style={{ 'color': '#f86c6b', fontSize: '80%' }}>
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:257:hardcoded object:            {error}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:265:hardcoded object:    const { formValues } = this.state;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:269:hardcoded array:    value = !isEmpty(formValues) ? formValues[name] : value;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:273:hardcoded object:        {label && this.renderLabel(required, label)}<br />
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:275:hardcoded object:          count={count}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:276:hardcoded object:          value={value}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:277:hardcoded object:          tooltips={tooltips}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:278:hardcoded object:          onChange={(e) => { this.handleRateChanges(e, name, onChangeRate) }}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:279:hardcoded object:          onAfterChange={onAfterChange} />
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:285:hardcoded string:    const { label, name, required, options, size = 'default', onChange } = field;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:287:hardcoded variable:    let selectedOption = options.find(option => option.checked === true);
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:291:hardcoded object:        {label && this.renderLabel(required, label)}<br />
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:292:hardcoded object:        <RadioGroup size={size}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:293:hardcoded object:          options={options}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:294:hardcoded object:          value={selectedOption && selectedOption.value}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:295:hardcoded object:          onChange={(e) => { this.handleRadioChanges(e, name, onChange) }}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:296:hardcoded object:          {...field}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:303:hardcoded object:    let { name, label, filter, required } = field;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:304:hardcoded object:    const { formValues } = this.state
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:305:hardcoded array:    let value = formValues[name]
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:308:hardcoded object:        {label && this.renderLabel(required, label)}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:310:hardcoded object:          {...field}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:311:hardcoded string:          calendarIcon="Calendar"
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:312:hardcoded object:          name={name}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:313:hardcoded object:          selected={value ? value : null}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:314:hardcoded object:          onChange={(date) => this.onChangeReactDate(name, date)}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:315:hardcoded string:          className="form-control"
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:316:hardcoded string:          dateFormat="YYYY-MM-DD"
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:317:hardcoded object:          filterDate={filter}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:325:hardcoded object:    let { name, label, required } = field;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:326:hardcoded object:    const { formValues } = this.state
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:327:hardcoded array:    let value = formValues[name];
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:331:hardcoded object:        {label && this.renderLabel(required, label)}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:333:hardcoded object:          {...field}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:334:hardcoded object:          name={name}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:335:hardcoded object:          selected={value ? value : null}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:336:hardcoded object:          onChange={(date) => this.onChangeReactDate(name, date)}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:337:hardcoded string:          dateFormat="MMMM yyyy"
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:338:hardcoded string:          className="form-control"
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:346:hardcoded object:    let { name, text, bsStyle, disabled, onClick, style, icon } = field;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:350:hardcoded object:      {...field}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:351:hardcoded object:      name={name}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:352:hardcoded string:      color={bsStyle || "primary"}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:353:hardcoded object:      disabled={disabled || false}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:354:hardcoded object:      onClick={onClick ? onClick : null}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:355:hardcoded object:      style={style}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:357:hardcoded object:      {(icon && <i className={icon} />)} {text}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:362:hardcoded string:    const star = (required) ? <span style={{ color: 'red' }}>*</span> : ''
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:366:hardcoded object:        {label} {star}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:372:hardcoded variable:    let formValues = this.filterFormValues();
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:375:hardcoded array:      formValues[key] = (formValues[key] && formValues[key].trim) ? formValues[key].trim() : formValues[key]
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:380:hardcoded object:  setFormValues = (updatedVlues = {}) => {
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:381:hardcoded object:    this.setState({ formValues: updatedVlues })
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:385:hardcoded object:    this.setState({ formValues: {} })
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:388:hardcoded object:  setFormValues = (newFormValues = {}, reset = false) => {
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:393:hardcoded variable:    const allFormValues = {
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:394:hardcoded object:      ...(reset ? {} : this.state.formValues),
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:397:hardcoded object:    this.setState({ formValues: allFormValues });
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:402:hardcoded object:    const { fields, formValues } = this.state;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:403:hardcoded object:    let validationErrors = {}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:405:hardcoded string:      if (field.required && !formValues[field["name"]]) {
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:406:hardcoded string:        validationErrors[field["name"]] = `${field["label"]} is required`
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:415:hardcoded object:    const { exactFormValues } = this.props;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:416:hardcoded object:    let { fields, formValues } = this.state;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:417:hardcoded string:    const fieldKeys = map(fields, 'name');
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:428:hardcoded object:    const { validateValues } = this.props;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:429:hardcoded object:    let { fields, formValues } = this.state;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:432:hardcoded object:    let validationErrors = {}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:434:hardcoded string:      if (field.type === 'inputgroup') {
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:436:hardcoded string:          if (subField.required && !formValues[subField["name"]]) {
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:437:hardcoded string:            validationErrors[subField["name"]] = `${subField["label"] || subField["name"]} is required`
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:440:hardcoded string:      } if (field.required && !formValues[field["name"]]) {
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:441:hardcoded string:        validationErrors[field["name"]] = `${field["label"] || field["name"]} is required`
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:447:hardcoded object:      const additionalValidationErrors = validateValues ? validateValues(formValues) : {};
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:448:hardcoded object:      this.setState({ validationErrors: additionalValidationErrors });
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:451:hardcoded object:        // this.setState({ validationErrors: additionalValidationErrors });
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:458:hardcoded object:      this.setState({ validationErrors });
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:464:hardcoded object:    const { formValues } = this.state;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:468:hardcoded object:      this.setState({ validationErrors: nextProps.validationErrors })
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:475:hardcoded object:        this.setState({ formValues: nextProps.initialValues }) :
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:476:hardcoded object:        this.setState({ formValues: { ...formValues, ...nextProps.initialValues } });
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:481:hardcoded object:      this.setState({ fields: nextProps.fields });
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:486:hardcoded object:    const { initialValues, validationErrors, fields } = this.props
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:489:hardcoded object:      formValues: !isEmpty(initialValues) ? { ...initialValues } : {},
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:495:hardcoded array:    let { fields = [] } = this.state;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:496:hardcoded object:    const { cols, rows, heading } = this.props
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:497:hardcoded object:    const { validationErrors } = this.state
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:498:hardcoded variable:    const rowDivision = rows || cols;
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:500:hardcoded variable:    const fieldRows = chunk(fields, rowDivision)
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:501:hardcoded number:    let md = Math.ceil(12 / cols)
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:503:hardcoded variable:    const fieldDOM = fieldRows.map((fieldRow, index) => {
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:504:hardcoded object:      return <Fragment key={index}>
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:507:hardcoded object:            const { name } = field
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:508:hardcoded string:            field["error"] = validationErrors ? validationErrors[name] : null
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:509:hardcoded string:            return <Col key={index} md={field.md || md} className="form-builder-field">
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:510:hardcoded object:              {this.formField(field)}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:514:hardcoded string:        <div className="empty-row" />
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:522:hardcoded string:            <h5 className="form-heading">{heading}</h5>
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:523:hardcoded object:            {/* <Divider ></Divider> */}
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:526:hardcoded string:        <div className="form-builder">
+microservices-middleware/client/src/components/form/ReactstrapFormBuilder.jsx:527:hardcoded object:          {fieldDOM}
+microservices-middleware/client/src/components/form/Checkbox.jsx:1:hardcoded file path:import React from 'react'
+microservices-middleware/client/src/components/form/Checkbox.jsx:2:hardcoded file path:import P from 'prop-types'
+microservices-middleware/client/src/components/form/Checkbox.jsx:3:hardcoded object:import { compose, setPropTypes, withHandlers } from 'recompose'
+microservices-middleware/client/src/components/form/Checkbox.jsx:4:hardcoded object:import { FormGroup, Label, Input } from 'reactstrap'
+microservices-middleware/client/src/components/form/Checkbox.jsx:6:hardcoded variable:const withPropTypes = setPropTypes({
+microservices-middleware/client/src/components/form/Checkbox.jsx:14:hardcoded variable:const withClickHandler = withHandlers({
+microservices-middleware/client/src/components/form/Checkbox.jsx:15:hardcoded object:  handleCheckboxClick: ({ readOnly, onChange }) => ev =>
+microservices-middleware/client/src/components/form/Checkbox.jsx:19:hardcoded object:const Checkbox = ({ handleCheckboxClick, children, name, ...rest }) => {
+microservices-middleware/client/src/components/form/Checkbox.jsx:20:hardcoded object:  const { checked, style } = rest;
+microservices-middleware/client/src/components/form/Checkbox.jsx:26:hardcoded string:        display: "inline-block",
+microservices-middleware/client/src/components/form/Checkbox.jsx:27:hardcoded string:        marginRight: '3%',
+microservices-middleware/client/src/components/form/Checkbox.jsx:32:hardcoded string:          type="checkbox"
+microservices-middleware/client/src/components/form/Checkbox.jsx:33:hardcoded object:          checked={checked}
+microservices-middleware/client/src/components/form/Checkbox.jsx:34:hardcoded object:          onChange={handleCheckboxClick}
+microservices-middleware/client/src/components/form/Checkbox.jsx:35:hardcoded object:          name={name}
+microservices-middleware/client/src/components/form/Checkbox.jsx:36:hardcoded object:          {...rest}
+microservices-middleware/client/src/components/form/Checkbox.jsx:37:hardcoded string:        />{' '}
+microservices-middleware/client/src/components/form/Checkbox.jsx:38:hardcoded object:        {children}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:1:hardcoded object:import React, { Component, Fragment, lazy } from 'react';
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:2:hardcoded object:import { isEqual, capitalize, cloneDeep, remove, isEmpty, isObject, get } from 'lodash';
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:10:hardcoded string:} from 'antd';
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:11:hardcoded number:import { v4 as uuidv4 } from "uuid"
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:12:hardcoded file path:import moment from 'moment';
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:14:hardcoded string:import './style.scss';
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:16:hardcoded string:const MaskedInput = lazy(() => import("components/masking/MaskedInput"));
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:17:hardcoded object:const { Item } = Form;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:18:hardcoded object:const { TextArea, Group, Password } = Input;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:19:hardcoded object:const { Group: RadioGroup, Button: RadioButton } = Radio;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:20:hardcoded object:const { Group: CheckboxGroup } = Checkbox;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:21:hardcoded object:const { Option: SelectOption, OptGroup } = Select;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:27:hardcoded array:            fields: [],
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:28:hardcoded object:            formValues: {}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:30:hardcoded object:        this.ref = {}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:34:hardcoded object:        const { description, category, style, showIcon } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:37:hardcoded object:                description={description}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:38:hardcoded object:                type={category}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:39:hardcoded object:                style={style}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:40:hardcoded object:                showIcon={showIcon}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:45:hardcoded string:        const { name, placeholder = '',
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:47:hardcoded string:            size = 'default',
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:48:hardcoded string:            prefix = '', suffix = '', disabled = false } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:52:hardcoded object:                id={name}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:53:hardcoded object:                name={name}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:54:hardcoded object:                size={size}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:55:hardcoded object:                allowClear={allowClear}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:56:hardcoded object:                prefix={prefix}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:57:hardcoded object:                suffix={suffix}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:58:hardcoded object:                placeholder={placeholder}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:59:hardcoded object:                onChange={(e) => this.handleFieldChanges(e, onChange)}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:60:hardcoded object:                disabled={disabled} />
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:65:hardcoded string:        const { type, name, placeholder = '',
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:67:hardcoded string:            size = 'default',
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:68:hardcoded string:            prefix = '', suffix = '', disabled = false } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:72:hardcoded object:                {...field}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:73:hardcoded object:                id={name}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:74:hardcoded object:                name={name}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:75:hardcoded object:                type={type}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:76:hardcoded object:                size={size}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:77:hardcoded object:                allowClear={allowClear}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:78:hardcoded object:                prefix={prefix}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:79:hardcoded object:                suffix={suffix}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:80:hardcoded object:                placeholder={placeholder}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:81:hardcoded object:                onChange={(e) => this.handleFieldChanges(e, onChange)}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:82:hardcoded object:                disabled={disabled}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:89:hardcoded string:        const { placeholder = '', autosize = { minRows: 2 }, onChange } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:93:hardcoded object:                {...field}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:94:hardcoded object:                placeholder={placeholder}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:95:hardcoded object:                autoSize={autosize}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:96:hardcoded object:                onChange={(e) => this.handleFieldChanges(e, onChange)}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:103:hardcoded string:            step = 1, size = 'default',
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:105:hardcoded string:            formatter, parser, style = { width: '100%' } } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:111:hardcoded object:                {...field}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:112:hardcoded object:                style={style}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:113:hardcoded object:                min={min}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:114:hardcoded object:                max={max}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:115:hardcoded object:                formatter={formatter}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:116:hardcoded object:                parser={parser}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:117:hardcoded object:                size={size}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:118:hardcoded object:                step={step}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:119:hardcoded object:                onChange={(val) => this.handleNumberChanges(val, name, onChange)}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:125:hardcoded string:        let { size = 'default',
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:126:hardcoded string:            format = "DD-MM-YYYY",
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:128:hardcoded string:        const dateFormat = 'YYYY/MM/DD';
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:131:hardcoded string:                defaultValue={moment('2015/01/01', dateFormat)}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:132:hardcoded object:                size={size}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:133:hardcoded object:                format={dateFormat}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:134:hardcoded object:                disabled ={disabled }
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:135:hardcoded object:                onChange={(val) => this.handleNumberChanges(val, name, onChange)}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:142:hardcoded string:            rowType = 'flex',
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:143:hardcoded string:            size = 'default', gutter = 16 } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:145:hardcoded object:        const { getFieldDecorator } = this.props.form;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:148:hardcoded number:            <Row rowtype={rowType} gutter={gutter} span={24}>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:149:hardcoded object:                <Group size={size}>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:152:hardcoded array:                            let { tooltip, name, label, value, message, required, rules = [], span } = item;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:153:hardcoded object:                            const { initialValues = {} } = this.props;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:154:hardcoded string:                            const initialValue = get(initialValues, name, "")
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:155:hardcoded string:                            value = value || initialValue || "";
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:157:hardcoded variable:                            const requiredMsg = label || capitalize(name);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:158:hardcoded variable:                            const allRules = [
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:160:hardcoded object:                                { required: required, message: message || `Please enter ${requiredMsg}.` }
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:162:hardcoded number:                            span = span || Math.floor(24 / items.length);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:164:hardcoded object:                                <Col key={idx} span={span}>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:168:hardcoded string:                                            validateTrigger: 'onBlur',
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:169:hardcoded string:                                            initialValue: value || ""
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:172:hardcoded string:                                                <Tooltip placement="topLeft" title={tooltip}>{this.buildFormField(item)}</Tooltip> :
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:187:hardcoded string:        const { options, btnOptions, viewType = 'default',
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:188:hardcoded string:            size = 'default', onChange,
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:189:hardcoded string:            buttonStyle = 'outline', disabled } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:191:hardcoded string:        return (viewType === 'button' ?
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:193:hardcoded object:                buttonStyle={buttonStyle}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:194:hardcoded object:                size={size}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:195:hardcoded object:                disabled={disabled}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:196:hardcoded object:                onChange={(e) => { this.handleSelectChanges(e, onChange) }}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:202:hardcoded object:                                key={idx}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:203:hardcoded string:                                value={get(option, 'value')}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:205:hardcoded string:                                {get(option, 'label')}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:212:hardcoded object:                disabled={disabled}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:213:hardcoded object:                onChange={(e) => { this.handleSelectChanges(e, onChange) }}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:219:hardcoded object:                                {...field}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:220:hardcoded object:                                key={idx}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:221:hardcoded string:                                value={get(option, 'value')}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:222:hardcoded string:                                disabled={get(option, 'disabled', false)}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:224:hardcoded string:                                {get(option, 'label')}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:235:hardcoded string:            options, size = 'default',
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:241:hardcoded object:                    {...field}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:242:hardcoded object:                    options={options}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:243:hardcoded object:                    value={value}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:244:hardcoded object:                    onChange={(e) => { this.handleCheckBoxChanges(e, onChange) }}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:245:hardcoded object:                    size={size}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:248:hardcoded object:                    {...field}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:249:hardcoded object:                    disabled={disabled}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:250:hardcoded object:                    size={size}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:251:hardcoded object:                    onChange={(e) => { this.handleCheckBoxChanges(e, onChange) }}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:252:hardcoded object:                >{checkBoxLabel}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:258:hardcoded string:        const { name, size = 'default', options = [], grpOptions = {},
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:259:hardcoded string:            onChange, loading = false, mode, filterOption, placeholder = '',
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:260:hardcoded string:            styledLabel = "" } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:263:hardcoded array:         *                  grpKey: [options]
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:268:hardcoded object:                {...field}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:269:hardcoded object:                showSearch={true}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:270:hardcoded object:                size={size}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:271:hardcoded object:                name={name}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:272:hardcoded object:                mode={mode}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:273:hardcoded string:                optionLabelProp={styledLabel ? "label" : ""}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:274:hardcoded object:                loading={loading}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:275:hardcoded object:                placeholder={placeholder}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:277:hardcoded string:                    const optionProp = get(option, 'props');
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:278:hardcoded variable:                    const selectedOption = {
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:279:hardcoded string:                        label: get(optionProp, 'children'),
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:280:hardcoded string:                        value: get(optionProp, 'value')
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:285:hardcoded variable:                    const formatOption = option.props.children.toString();
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:286:hardcoded number:                    return formatOption.toLowerCase().indexOf(input.toLowerCase()) >= 0
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:288:hardcoded object:                allowClear={true}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:292:hardcoded number:                        return <OptGroup label={grpKey} key={uuidv4()}>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:293:hardcoded array:                            {grpOptions[grpKey].map((option, idx) => {
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:294:hardcoded object:                                const { label, value, disabled } = option;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:296:hardcoded number:                                    <SelectOption key={uuidv4()} value={value} disabled={disabled} >
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:297:hardcoded object:                                        {label}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:304:hardcoded object:                    const { label, value, disabled, styledLabel } = option;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:306:hardcoded number:                        <SelectOption key={uuidv4()} value={value} disabled={disabled} label={label}>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:307:hardcoded string:                            {styledLabel ? <div className="demo-option-label-item">
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:309:hardcoded string:                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:311:hardcoded object:                                {styledLabel}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:321:hardcoded object:        const { value, readOnlyText, style } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:323:hardcoded object:        return <p style={style}>{readOnlyText || value}</p>;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:327:hardcoded object:        const { description, category, style, showIcon } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:330:hardcoded object:                description={description}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:331:hardcoded object:                type={category}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:332:hardcoded object:                style={style}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:333:hardcoded object:                showIcon={showIcon}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:340:hardcoded string:         * labe:"",
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:341:hardcoded string:         * value:"",
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:342:hardcoded array:         * children:[{}]}]
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:349:hardcoded object:                options={options}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:350:hardcoded object:                onChange={onChange}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:351:hardcoded object:                expandTrigger={expandTrigger}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:352:hardcoded object:                displayRender={displayRender}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:353:hardcoded object:                changeOnSelect={changeOnSelect}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:354:hardcoded object:                {...field}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:355:hardcoded object:            >{children}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:363:hardcoded object:                {...field}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:366:hardcoded string:                    <Icon type="plus" />
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:367:hardcoded string:                    <div className="ant-upload-text">Upload</div>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:375:hardcoded string:            loading = false, size = 'default' } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:379:hardcoded object:                checkedChildren={checkedChildren}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:380:hardcoded object:                unCheckedChildren={unCheckedChildren}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:381:hardcoded object:                defaultChecked={defaultChecked}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:382:hardcoded object:                loading={loading}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:383:hardcoded object:                size={size}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:389:hardcoded number:        const { min, max, range = false, step = 10,
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:394:hardcoded object:                range={range}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:395:hardcoded object:                step={step}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:396:hardcoded object:                min={min}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:397:hardcoded object:                max={max}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:398:hardcoded object:                onChange={onChange}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:399:hardcoded object:                onAfterChange={onAfterChange} />
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:404:hardcoded object:        const { btntype, text, loading = false } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:408:hardcoded object:                {...field}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:409:hardcoded object:                type={btntype}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:410:hardcoded object:                loading={loading}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:412:hardcoded object:                {text}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:418:hardcoded string:        const { color = "purple", text } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:422:hardcoded object:                {...field}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:423:hardcoded object:                color={color}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:425:hardcoded object:                {text}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:430:hardcoded object:        const { type } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:433:hardcoded string:            case 'text':
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:434:hardcoded string:            case 'email':
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:435:hardcoded string:            case 'hidden': return this.buildInputField(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:436:hardcoded string:            case 'password': return this.buildPasswordField(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:437:hardcoded string:            case 'info': return this.buildInfoField(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:438:hardcoded string:            case 'readonly': return this.buildReadOnlyField(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:439:hardcoded string:            case 'alert': return this.buildAlertField(field)
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:440:hardcoded string:            case 'textarea': return this.buildTextareaField(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:441:hardcoded string:            case 'number': return this.buildNumberField(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:442:hardcoded string:            case 'datepicker': return this.buildDatePicker(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:443:hardcoded string:            case 'inputgroup': return this.buildInputGroup(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:444:hardcoded string:            case 'radio': return this.buildRadioField(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:445:hardcoded string:            case 'checkbox': return this.buildCheckboxField(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:446:hardcoded string:            case 'select': return this.buildSelectField(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:447:hardcoded string:            case 'cascader': return this.buildCascaderField(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:448:hardcoded string:            case 'upload': return this.buildUploadField(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:449:hardcoded string:            case 'switch': return this.buildToggleSwitch(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:450:hardcoded string:            case 'slider': return this.buildSlider(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:451:hardcoded string:            case 'button': return this.buildButtonField(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:452:hardcoded string:            case 'tag': return this.buildTagField(field);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:453:hardcoded string:            case "maskedMail":
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:454:hardcoded string:            case 'maskedMobile': return <MaskedInput ref={this.ref[field.name]} field={field} initialValue={this.props.initialValues[field?.name]}/>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:460:hardcoded object:        const { label } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:465:hardcoded string:                    <p className='form-field-label'>{`${label} `}</p>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:472:hardcoded object:        const { form } = this.props;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:473:hardcoded string:        const { name, value } = e && get(e, 'target', {});
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:477:hardcoded array:        //form.setFieldsValue({ [name]: value });
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:481:hardcoded object:        const { form } = this.props;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:485:hardcoded array:        //form.setFieldsValue({ [name]: value });
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:489:hardcoded object:        const { form } = this.props;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:493:hardcoded array:        //form.setFieldsValue({ [name]: selectedValue });
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:497:hardcoded object:        const { form } = this.props;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:498:hardcoded string:        const { name, checked } = e && get(e, 'target', {});
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:500:hardcoded array:        //form.setFieldsValue({ [name]: checked });
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:507:hardcoded object:        const { fields, initialValues = {} } = this.state;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:508:hardcoded object:        const { form } = this.props;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:509:hardcoded variable:        const formValues = form.getFieldsValue();
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:512:hardcoded object:            const { name, value } = field;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:513:hardcoded array:            formValues[name] = initialValues.hasOwnProperty(name) ? initialValues[name] : (formValues[name] || value);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:520:hardcoded object:        const { form } = this.props;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:522:hardcoded variable:        let result = null;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:524:hardcoded object:            form.validateFieldsAndScroll((err, values = {}) => {
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:526:hardcoded array:                    values[key] = (values[key] && values[key].trim) ? values[key].trim() : values[key]
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:530:hardcoded array:                    ...Object.entries(this.ref).reduce((acc, [key, val]) => ({...acc, [key]: val?.current.value}), {})
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:541:hardcoded object:        const { form } = this.props;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:543:hardcoded object:        let values = form ? form.getFieldsValue() : {};
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:547:hardcoded array:            if (!values[key]) {
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:548:hardcoded array:                delete values[key];
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:553:hardcoded array:            ...Object.entries(this.ref).reduce((acc, [key, val]) => ({...acc, [key]: val?.current.value}), {})
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:558:hardcoded object:        const { form } = this.props;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:564:hardcoded object:        const { form } = this.props;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:569:hardcoded array:    addRefToMask = (fields = []) => {
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:571:hardcoded string:            if(["maskedMobile"].includes(field?.type)){
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:574:hardcoded array:                    [field.name]: React.createRef(null)
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:576:hardcoded array:                field.ref= this.ref[field.name];
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:582:hardcoded object:        const { fields, initialValues } = this.state;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:584:hardcoded variable:            const newFields = nextProps.fields;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:605:hardcoded object:        const { fields } = this.props;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:611:hardcoded object:        this.setState({ fields }, () => {
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:617:hardcoded object:        const { singleField } = this.props
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:618:hardcoded variable:        const defaultFormItemLayout = {
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:620:hardcoded number:                xs: { span: 24 },
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:621:hardcoded number:                sm: { span: 24 },
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:622:hardcoded number:                lg: { span: 8 },
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:625:hardcoded number:                xs: { span: 24 },
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:626:hardcoded number:                sm: { span: 16 },
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:627:hardcoded number:                lg: { span: 10 },
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:631:hardcoded variable:        const defaultTailFormItemLayout = {
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:634:hardcoded number:                    span: 24,
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:635:hardcoded number:                    offset: 0
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:638:hardcoded number:                    span: 16,
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:639:hardcoded number:                    offset: 0
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:644:hardcoded array:        const { fields = [] } = this.state;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:645:hardcoded array:        const clonedFieldsArray = cloneDeep(fields) || [];
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:647:hardcoded string:            layout = singleField ? 'inline' : 'vertical',
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:652:hardcoded object:        const { getFieldDecorator } = this.props.form;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:654:hardcoded string:        //const formBorderClass = isBordered ? 'form-border' : '';
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:656:hardcoded object:            <Form layout={layout} {...formItemLayout} colon={!singleField}>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:659:hardcoded array:                        const { type, style, name, label, labelColon = true, value, required, message, rules = [],
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:661:hardcoded variable:                        const helpTextMessage = helpText;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:664:hardcoded string:                        field["helptext"] = helpText;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:670:hardcoded variable:                        const requiredMsg = label || capitalize(name);
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:671:hardcoded variable:                        const allRules = [
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:673:hardcoded object:                            { required: required, message: message || `Please enter ${requiredMsg}.` }
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:675:hardcoded string:                        const fieldStyle = (type === "hidden") ? { display: 'none' } : style;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:676:hardcoded string:                        const formattedLabel = label ? `${label} ${labelColon ? ':' : ''} ` : '';
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:679:hardcoded object:                                key={idx}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:681:hardcoded object:                                    {formattedLabel}&nbsp;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:682:hardcoded object:                                    {infoMessage && <Tooltip title={infoMessage}>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:683:hardcoded string:                                        <Icon type="info-circle" />
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:686:hardcoded object:                                {...tailFormItemLayout}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:687:hardcoded object:                                style={fieldStyle}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:688:hardcoded object:                                extra={helpTextMessage}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:689:hardcoded object:                                help={help}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:690:hardcoded string:                                validateStatus={help ? "error" : undefined}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:694:hardcoded string:                                    validateTrigger: 'onBlur',
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:695:hardcoded array:                                    initialValue: initialValues && initialValues[name]
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:698:hardcoded object:                                        ? <Tooltip title={tooltip}>{this.buildFormField(field)}</Tooltip>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:714:hardcoded string:            headerClasses = "bg-primary text-white",
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:721:hardcoded string:                <div className={`card ${isBordered ? '' : 'border-0'} ${className}`} style={style || { margin: 10 }}>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:722:hardcoded object:                    {heading && <div className={`card-header ${headerClasses}`}>
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:723:hardcoded object:                        {heading}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:725:hardcoded string:                    <div className="card-body">
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:726:hardcoded object:                        {this.renderFormComponent()}
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:733:hardcoded variable:const WrappedFormBuilder = Form.create({
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:736:hardcoded object:        const { onValuesChange } = props;
+microservices-middleware/client/src/components/form/AntDFormBuilder.js:741:hardcoded object:        const { onFieldsChange } = props;
+microservices-middleware/client/src/components/form/FieldGroup.jsx:1:hardcoded file path:import React from 'react'
+microservices-middleware/client/src/components/form/FieldGroup.jsx:8:hardcoded string:} from 'reactstrap';
+microservices-middleware/client/src/components/form/FieldGroup.jsx:10:hardcoded file path:import Checkbox from './Checkbox'
+microservices-middleware/client/src/components/form/FieldGroup.jsx:12:hardcoded variable:const FieldGroup = ({
+microservices-middleware/client/src/components/form/FieldGroup.jsx:30:hardcoded string:  if (type === 'readonlytext') return renderReadOnlyText(label, props)
+microservices-middleware/client/src/components/form/FieldGroup.jsx:34:hardcoded object:      //controlId={name}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:35:hardcoded object:      //validationState={valid}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:36:hardcoded object:      className={formGroupClass}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:37:hardcoded object:      style={style}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:39:hardcoded string:      {innerHtml && <div><a href={innerHtml} target="_blank" rel="noopener noreferrer">{`${label} download`}</a></div>}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:40:hardcoded object:      {label && renderLabel(required, label)}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:42:hardcoded object:      {renderField(type || fieldType, name, props)}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:46:hardcoded object:          <i className={icon}></i>
+microservices-middleware/client/src/components/form/FieldGroup.jsx:49:hardcoded object:      {(errorMessage) && <FormFeedback>{errorMessage}</FormFeedback >}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:50:hardcoded object:      {help && <FormText >{help}</FormText>}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:59:hardcoded object:  const { options, inline, children, error, style, ...rest } = props
+microservices-middleware/client/src/components/form/FieldGroup.jsx:60:hardcoded variable:  const isErrorExists = error ? true : false;
+microservices-middleware/client/src/components/form/FieldGroup.jsx:62:hardcoded string:  if (type === 'checkbox') return renderCheckbox(name, options, inline, rest)
+microservices-middleware/client/src/components/form/FieldGroup.jsx:63:hardcoded string:  if (type === 'radio') return renderRadio(name, options, inline, rest)
+microservices-middleware/client/src/components/form/FieldGroup.jsx:65:hardcoded string:  if (type === 'select') {
+microservices-middleware/client/src/components/form/FieldGroup.jsx:67:hardcoded object:      <Input name={name} {...rest} style={style} invalid={isErrorExists}>
+microservices-middleware/client/src/components/form/FieldGroup.jsx:68:hardcoded string:        <option value="">-Select-</option>
+microservices-middleware/client/src/components/form/FieldGroup.jsx:69:hardcoded object:        {renderSelectOptions(name, options, inline, props)}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:74:hardcoded string:  if (type === "textarea") {
+microservices-middleware/client/src/components/form/FieldGroup.jsx:76:hardcoded string:      <Input name={name} {...props} type="textarea" invalid={isErrorExists} />
+microservices-middleware/client/src/components/form/FieldGroup.jsx:80:hardcoded string:  if (type === "link") {
+microservices-middleware/client/src/components/form/FieldGroup.jsx:85:hardcoded object:    <Input name={name} type={type} {...rest} invalid={isErrorExists} />
+microservices-middleware/client/src/components/form/FieldGroup.jsx:90:hardcoded object:  const { inline, value } = props
+microservices-middleware/client/src/components/form/FieldGroup.jsx:91:hardcoded variable:  const divStyle = {
+microservices-middleware/client/src/components/form/FieldGroup.jsx:92:hardcoded string:    display: 'flex',
+microservices-middleware/client/src/components/form/FieldGroup.jsx:93:hardcoded string:    flexWrap: 'nowrap',
+microservices-middleware/client/src/components/form/FieldGroup.jsx:94:hardcoded string:    padding: '10px'
+microservices-middleware/client/src/components/form/FieldGroup.jsx:96:hardcoded variable:  const labelStyle = {
+microservices-middleware/client/src/components/form/FieldGroup.jsx:97:hardcoded string:    maxWidth: '50%',
+microservices-middleware/client/src/components/form/FieldGroup.jsx:98:hardcoded string:    flexGrow: '1'
+microservices-middleware/client/src/components/form/FieldGroup.jsx:101:hardcoded object:  return (<div style={divStyle}>
+microservices-middleware/client/src/components/form/FieldGroup.jsx:102:hardcoded object:    <strong style={labelStyle}>{label}</strong>
+microservices-middleware/client/src/components/form/FieldGroup.jsx:104:hardcoded string:      <span style={{ width: '70%' }}>{" "}{value ? value : '---'}</span> :
+microservices-middleware/client/src/components/form/FieldGroup.jsx:105:hardcoded string:      <div style={{ width: '70%' }}>{" "}{value ? value : '---'}</div>}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:110:hardcoded string:  const { value, displayValue, target = "_blank", tooltip } = props;
+microservices-middleware/client/src/components/form/FieldGroup.jsx:111:hardcoded variable:  const spanStyle = {
+microservices-middleware/client/src/components/form/FieldGroup.jsx:112:hardcoded string:    display: 'inline',
+microservices-middleware/client/src/components/form/FieldGroup.jsx:113:hardcoded string:    flexWrap: 'nowrap',
+microservices-middleware/client/src/components/form/FieldGroup.jsx:114:hardcoded string:    padding: '10px'
+microservices-middleware/client/src/components/form/FieldGroup.jsx:117:hardcoded object:  return (<span style={spanStyle}>
+microservices-middleware/client/src/components/form/FieldGroup.jsx:119:hardcoded object:      <a href={value} title={tooltip || value} target={target}>{displayValue || value}</a>
+microservices-middleware/client/src/components/form/FieldGroup.jsx:126:hardcoded variable:    const text = option.text ? option.text : option && option.toUpperCase()
+microservices-middleware/client/src/components/form/FieldGroup.jsx:127:hardcoded variable:    const value = option.value ? option.value : option
+microservices-middleware/client/src/components/form/FieldGroup.jsx:128:hardcoded object:    const rest = option.text && { ...option }
+microservices-middleware/client/src/components/form/FieldGroup.jsx:130:hardcoded object:      <option key={`${i}${value}`} value={value} {...rest}>
+microservices-middleware/client/src/components/form/FieldGroup.jsx:131:hardcoded object:        {text}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:142:hardcoded variable:        const value = option.value || option
+microservices-middleware/client/src/components/form/FieldGroup.jsx:147:hardcoded string:                type="radio"
+microservices-middleware/client/src/components/form/FieldGroup.jsx:148:hardcoded object:                key={i}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:149:hardcoded object:                name={name}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:150:hardcoded object:                {...props}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:151:hardcoded object:                value={value}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:152:hardcoded object:                checked={value === props.value}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:153:hardcoded object:              /> {option.label || option}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:167:hardcoded object:          key={i}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:168:hardcoded object:          name={name}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:169:hardcoded object:          {...props}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:170:hardcoded object:          value={option.value || option}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:171:hardcoded object:          onChange={(e) => props.onChange(e, option)}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:172:hardcoded object:          checked={isChecked(props.value, option.value)}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:173:hardcoded object:          inline={inline || false}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:175:hardcoded object:          {option.label || option}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:179:hardcoded object:    <Checkbox name={name} {...props}>
+microservices-middleware/client/src/components/form/FieldGroup.jsx:180:hardcoded string:      {options && options.split(',')}
+microservices-middleware/client/src/components/form/FieldGroup.jsx:186:hardcoded string:  return typeof (value.find(val => val === option)) !== 'undefined'
+microservices-middleware/client/src/components/form/FieldGroup.jsx:191:hardcoded string:  const star = (required) ? <span style={{ color: 'red' }}>*</span> : ''
+microservices-middleware/client/src/components/form/FieldGroup.jsx:195:hardcoded object:      {label} {star}

@@ -1,0 +1,28 @@
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:1:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:3:hardcoded string:export const SAVE_IDENTIFIER = '/sales/SAVE_IDENTIFIER';
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:4:hardcoded string:export const SAVE_REPUNCH_DETAILS = '/sales/SAVE_REPUNCH_DETAILS'
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:6:hardcoded string:export const LOAD_REPUNCH_REQUEST = '/sales/LOAD_REPUNCH_REQUEST';
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:7:hardcoded string:export const LOAD_REPUNCH_SUCCESS = '/sales/LOAD_REPUNCH_SUCCESS';
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:8:hardcoded string:export const LOAD_REPUNCH_FAILURE = '/sales/LOAD_REPUNCH_FAILURE';
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:10:hardcoded object:const saveDraftOrderIdentifier = (identifier) => ({ type: SAVE_IDENTIFIER, identifier });
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:11:hardcoded object:const saveRepunchDetails = (repunchDetails) => ({ type: SAVE_REPUNCH_DETAILS, repunchDetails });
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:13:hardcoded object:const loadRepunchRequest = () => ({ type: LOAD_REPUNCH_REQUEST });
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:14:hardcoded object:const loadRepunchSuccess = (response) => ({ type: LOAD_REPUNCH_SUCCESS, response });
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:15:hardcoded object:const loadRepunchFailure = (error) => ({ type: LOAD_REPUNCH_FAILURE, error });
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:17:hardcoded variable:export const loadRepunchConfigurations = (identifier) => dispatch => {
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:21:hardcoded string:        url: '/api/config/getRepunchConfig',
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:22:hardcoded string:        method: 'POST',
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:27:hardcoded object:        const { data } = response;
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:28:hardcoded object:        const { config = {} } = data;
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:35:hardcoded variable:export const saveIdentifier = (identifier) => dispatch => {
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:39:hardcoded variable:export const saveRepunch = (repunchDetails) => dispatch => {
+microservices-middleware/client/src/modules/repunch/RepunchDetailReducer.js:43:hardcoded object:export default (state = {}, action) => {
+microservices-middleware/client/src/modules/repunch/RepunchOrderHelper.js:1:hardcoded object:import { get } from "lodash";
+microservices-middleware/client/src/modules/repunch/RepunchOrderHelper.js:3:hardcoded variable:export const getAddressDetails = (orderDoc) => {
+microservices-middleware/client/src/modules/repunch/RepunchOrderHelper.js:4:hardcoded array:    const { customerDetails = [] } = orderDoc;
+microservices-middleware/client/src/modules/repunch/RepunchOrderHelper.js:5:hardcoded variable:    const addressData = {
+microservices-middleware/client/src/modules/repunch/RepunchOrderHelper.js:6:hardcoded string:        addressLine1: get(customerDetails[0], 'address'),
+microservices-middleware/client/src/modules/repunch/RepunchOrderHelper.js:7:hardcoded string:        city: get(customerDetails[0], 'city'),
+microservices-middleware/client/src/modules/repunch/RepunchOrderHelper.js:8:hardcoded string:        state: get(customerDetails[0], 'state'),
+microservices-middleware/client/src/modules/repunch/RepunchOrderHelper.js:9:hardcoded string:        country: get(customerDetails[0], 'country'),
+microservices-middleware/client/src/modules/repunch/RepunchOrderHelper.js:10:hardcoded string:        zipcode: get(customerDetails[0], 'zipCode')

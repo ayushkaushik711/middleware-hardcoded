@@ -1,0 +1,58 @@
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:1:hardcoded string:import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:2:hardcoded object:import { Badge, Nav, NavItem } from "reactstrap";
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:4:hardcoded variable:export const NavbarContainer = styled.div`
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:5:hardcoded number:    width: 100%;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:6:hardcoded number:    height: 92px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:7:hardcoded number:    left: 0px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:8:hardcoded number:    top: 70px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:9:hardcoded number:    background: #F5F3FF;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:10:hardcoded number:    border-radius: 4px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:18:hardcoded variable:export const DraftOrderLabel = styled.label`
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:19:hardcoded number:    margin: 27px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:20:hardcoded number:    padding-top: 0.1px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:21:hardcoded number:    line-height: 20px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:22:hardcoded number:    font-size: 18px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:25:hardcoded number:    background-color: #813588;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:26:hardcoded number:    border-color: #813588;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:27:hardcoded number:    padding: 4px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:30:hardcoded variable:export const DetailBadge = styled(Badge)`
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:31:hardcoded number:    background-color: #ff8e32;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:32:hardcoded number:    width: 350px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:33:hardcoded number:    height: 40px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:34:hardcoded number:    left: 26px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:35:hardcoded number:    top: 101px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:37:hardcoded number:    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:38:hardcoded number:    border-radius: 24.5px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:39:hardcoded number:    margin-inline: 4rem;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:40:hardcoded number:    margin-top: 1.5rem;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:45:hardcoded variable:export const DraftOrderCardHeader = styled.div`
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:46:hardcoded number:    height: 92px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:50:hardcoded variable:export const BadgeContainer = styled.div`
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:54:hardcoded variable:export const DraftOrderContainer = styled.div`
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:57:hardcoded variable:export const QANav = styled(Nav)`
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:59:hardcoded variable:export const QANavItem = styled(NavItem)`
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:61:hardcoded number:    padding: 0px 10px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:62:hardcoded string:    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:64:hardcoded number:    font-size: 20px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:65:hardcoded number:    font-weight: 800;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:66:hardcoded number:    line-height: 20px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:69:hardcoded variable:export const Title = styled.span`
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:70:hardcoded number:    width: 262px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:71:hardcoded number:    height: 24px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:72:hardcoded number:    left: 41px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:73:hardcoded number:    top: 107px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:76:hardcoded number:    font-weight: 400;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:77:hardcoded number:    font-size: 16px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:78:hardcoded number:    line-height: 24px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:79:hardcoded number:    color: #444444;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:82:hardcoded variable:export const Value = styled.span`
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:83:hardcoded number:    width: 262px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:84:hardcoded number:    height: 24px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:85:hardcoded number:    left: 41px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:86:hardcoded number:    top: 107px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:89:hardcoded number:    font-weight: 400;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:90:hardcoded number:    font-size: 16px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:91:hardcoded number:    line-height: 24px;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:92:hardcoded number:    color: #FF8A00;
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:95:hardcoded variable:export const NavbarSection = styled.div`
+microservices-middleware/client/src/modules/kartbeta/components/SecondaryNavbar/Styles.js:97:hardcoded number:    width: 100%;

@@ -1,0 +1,352 @@
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:1:hardcoded object:import { get } from 'lodash';
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:3:hardcoded variable:export const getUpdatedFormValues = (details) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:4:hardcoded object:    const { productForm, batchDetails } = details
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:5:hardcoded object:    let {initialClass, board, finalClass, extnFinalClass, validity, state, city, centre, stateName, cityName, centreName, tablet, stateBoard } = productForm;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:6:hardcoded object:    const { batchId, cohortId, blcCourse} = batchDetails;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:7:hardcoded string:    const courseAliasId = get(blcCourse, 'courseAliasId');
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:9:hardcoded variable:    let updatedFormValues = {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:10:hardcoded string:        initialClass: get(initialClass, 'label', ''),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:11:hardcoded string:        finalClass: get(finalClass, 'label', ''),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:12:hardcoded string:        extnFinalClass: get(extnFinalClass, 'label', ''),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:13:hardcoded string:        validity: get(validity, 'label', ''),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:14:hardcoded string:        state: get(state, 'label', ''),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:15:hardcoded string:        stateId: get(state, 'value', ''),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:16:hardcoded string:        city: get(city, 'label', ''),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:17:hardcoded string:        cityId: get(city, 'value', ''),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:18:hardcoded string:        board: get(board, 'label', ''),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:19:hardcoded string:        stateBoard: get(stateBoard, 'label', ''),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:20:hardcoded string:        centre: get(centre, 'label', ''),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:21:hardcoded string:        centreId: get(centre, 'value', ''),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:23:hardcoded string:        tablet: get(tablet, 'value', ''),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:31:hardcoded object:    return { updatedFormValues }
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:34:hardcoded variable:export const getTabletList = () => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:35:hardcoded variable:    const tabletList = [
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:36:hardcoded string:        // {label: "Lenovo 8 inch Tablet (Wifi) (Rs 8000)", value: "TL8WZZ"},
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:37:hardcoded string:        //{label: "Lenovo 8 inch Tablet (Mobile Data) (Rs 11000)", value: "TL8MZZ"},
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:38:hardcoded string:        //{label: "Lenovo 10 inch Tablet Mobile Data (2GB/ 16GB) - (Rs 13000)", value: "TLXMZZ"},
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:39:hardcoded string:        {label: "Lenovo 10 inch Tablet Mobile Data (4GB/ 64GB) - (Rs 16000)", value: "TLXMZ2"},
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/assembler.js:40:hardcoded string:        {label: "Samsung 10 Inch Tablet (Mobile Data) (Rs 18000)", value: "TSXMZ1"}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:1:hardcoded object:const { get, isEmpty } = require('lodash');
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:2:hardcoded string:const isDevEnv = ['local', 'development'].includes(process.env.NODE_ENV);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:4:hardcoded variable:const centreForm = (details) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:5:hardcoded object:  const { handleChange, formValues, siblingDetails } = details;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:11:hardcoded string:  const { centreDetails = {} } = get(siblingDetails, "batchCentreDetails", {}) || {};
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:12:hardcoded object:  const { state, stateId } = centreDetails || {};
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:13:hardcoded array:  let filteredStateList = statesList || [];
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:17:hardcoded variable:  const field = [
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:19:hardcoded string:      type: "select",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:20:hardcoded string:      name: "state",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:21:hardcoded string:      label: "Select State",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:25:hardcoded string:      placeholder: 'Select',
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:28:hardcoded string:      type: "select",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:29:hardcoded string:      name: "city",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:30:hardcoded string:      label: "Select City",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:34:hardcoded string:      placeholder: 'Select',
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:37:hardcoded string:      type: "select",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:38:hardcoded string:      name: "centre",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:39:hardcoded string:      label: "Select Centre",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:43:hardcoded string:      placeholder: 'Select',
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:49:hardcoded variable:const form = (details) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:50:hardcoded object:  const { handleChange, formValues, isUpgrade } = details;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:54:hardcoded array:    finalClassOptions = [],
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:55:hardcoded array:    extnFinalClassOptions = [],
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:61:hardcoded array:    tabletList=[],
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:63:hardcoded variable:  const field = [
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:65:hardcoded string:      type: "select",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:66:hardcoded string:      name: "board",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:67:hardcoded string:      label: "Select Board",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:72:hardcoded string:      placeholder: 'Select'
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:75:hardcoded string:      type: isStateBoard ? "select" : "hidden",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:76:hardcoded string:      name: "stateBoard",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:77:hardcoded string:      label: "Select State Board",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:82:hardcoded string:      placeholder: 'Select'
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:85:hardcoded string:      type: "select",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:86:hardcoded string:      name: "initialClass",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:87:hardcoded string:      label: "Select BTC Initial Class",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:92:hardcoded string:      placeholder: 'Select'
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:95:hardcoded string:      type: "select",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:96:hardcoded string:      name: "finalClass",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:97:hardcoded string:      label: "Select BTC Final Class",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:101:hardcoded string:      placeholder: 'Select'
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:104:hardcoded string:      type: isUpgrade ? "hidden" : "checkbox",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:105:hardcoded string:      name: "isExtension",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:106:hardcoded string:      options: "Extend the course by adding BYJU'S Tablet Learning Program",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:110:hardcoded string:      type: isExtension ? "select" : 'hidden',
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:111:hardcoded string:      name: "extnFinalClass",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:112:hardcoded string:      label: "Select TLP Final Class",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:116:hardcoded string:      placeholder: 'Select'
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:119:hardcoded string:      type: "select",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:120:hardcoded string:      name: "validity",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:121:hardcoded string:      label: "Select Validity",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:125:hardcoded string:      placeholder: 'Select'
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:128:hardcoded string:      type: "select",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:129:hardcoded string:      name: "tablet",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:130:hardcoded string:      label: "Select Tablet",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/formFields.js:134:hardcoded string:      placeholder: 'Select'
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:1:hardcoded object:import React, { useState, useContext, useRef, useEffect } from "react";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:2:hardcoded object:import { get, isEmpty } from "lodash";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:3:hardcoded object:import { useRecoilState } from "recoil";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:4:hardcoded object:import { Row, Col } from "reactstrap";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:6:hardcoded file path:import LoadingWrapper from "components/LoadingWrapper";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:7:hardcoded file path:import ErrorWrapper from "components/ErrorWrapper";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:8:hardcoded file path:import FormBuilder from "components/form/ReactstrapFormBuilder";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:10:hardcoded object:import { form, centreForm } from "./formFields";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:11:hardcoded file path:import ClassroomBatch from "./classroomBatch";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:12:hardcoded file path:import FetchPrice from "../../../FetchPrice";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:13:hardcoded file path:import Voucher from '../../../Voucher';
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:14:hardcoded object:import { Divider } from "../../../styles";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:15:hardcoded object:import { quotationStudentDetails, upgradeOrderDetails, authenticationDetails, salesProgramDetailState } from "store/atom";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:24:hardcoded string:} from "./dataSource";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:25:hardcoded object:import { getUpdatedFormValues, getTabletList } from "./assembler";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:26:hardcoded object:import { getTabletOptions} from '../../../../../ordertype/blc/helper/productHelper';
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:29:hardcoded variable:const Btc = (props) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:30:hardcoded array:  const [loading, setLoading] = useState(false);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:31:hardcoded array:  const [error, setError] = useState(null);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:32:hardcoded array:  const [resetPrice, setResetPrice] = useState(false);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:33:hardcoded variable:  const productFormRef = useRef();
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:34:hardcoded variable:  const batchDetailsRef = useRef();
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:35:hardcoded variable:  const FetchPriceRef = useRef();
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:36:hardcoded array:  const [formValues, setFormValues] = useState({});
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:37:hardcoded array:  const [onChangeEffect, setOnChangeEffect] = useState(true);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:38:hardcoded array:  const [isBatchesAvailable, setIsBatchesAvailable] = useState(false);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:39:hardcoded array:  const [showPrice, setShowPrice] = useState(false)
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:40:hardcoded array:  const [quotationStudent, setQuotationStudent] = useRecoilState(
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:43:hardcoded array:  const [upgradeData, setupgradeData] = useRecoilState(upgradeOrderDetails);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:44:hardcoded array:  const [authDetails, setAuthDetails] = useRecoilState(authenticationDetails);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:45:hardcoded array:  const [spDetailsFromRecoil, setSpDetailsInRecoilState] = useRecoilState(salesProgramDetailState)
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:46:hardcoded string:  const spName= get(spDetailsFromRecoil, 'spName', '')
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:49:hardcoded string:  const { productSelectionType = '', activeBoard = '', currentGrade, finalGrade, baseOrderId } = upgradeData
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:56:hardcoded string:    quotationStatus = "",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:57:hardcoded object:    product = {},
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:60:hardcoded object:    voucherDetails = {},
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:63:hardcoded string:  const autoFillEnabled = ["product_saved"].includes(quotationStatus)
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:66:hardcoded string:  const existingFormValues = get(product, "formValues", "");
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:75:hardcoded object:      const { stateListOptions: statesList, errormsg } = await getStates();
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:77:hardcoded object:      setFormValues((prevState) => ({ ...prevState, statesList }));
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:81:hardcoded array:  }, []);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:86:hardcoded object:      const { boardListOptions: boardsList, stateBoardListOptions: stateBoardList, errormsg } = await getBoards({
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:91:hardcoded number:        let board = boardsList && boardsList.filter(item => item.label == activeBoard)[0]
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:92:hardcoded array:        let stateBoard = [], isStateBoard = false
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:94:hardcoded number:          stateBoard = stateBoardList && stateBoardList.filter(item => item.label == activeBoard)[0]
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:95:hardcoded string:          board = boardsList.filter(item => item.label === 'STATE')[0]
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:98:hardcoded object:        const { gradeListOptions: gradesList, errormsg } = await getGrades({
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:100:hardcoded string:          boardId: board.label === 'STATE' ? stateBoard.value : board.value,
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:104:hardcoded number:        const initialClass = gradesList && gradesList.filter(item => item.label == currentGrade)[0]
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:105:hardcoded variable:        const isTablet = await getTablet(baseOrderId);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:107:hardcoded object:        setFormValues((prevState) => ({ ...prevState, board, initialClass, gradesList, isTablet, stateBoard, isStateBoard }));
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:109:hardcoded object:      setFormValues((prevState) => ({ ...prevState, boardsList, stateBoardList }));
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:113:hardcoded array:  }, []);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:115:hardcoded variable:  const handleChange = async (value, name, params) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:120:hardcoded object:    const { data } = params;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:123:hardcoded string:    if (name === "state") {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:124:hardcoded object:      const { statesList } = formValues;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:127:hardcoded array:        cityList: [],
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:128:hardcoded array:        centreList: [],
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:133:hardcoded object:      const { label } = statesList.find((obj) => obj.value === value);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:134:hardcoded object:      const { cityListOptions: cityList, errormsg } = await getCities(
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:145:hardcoded string:    } else if (name === "city") {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:146:hardcoded object:      const { cityList } = formValues;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:149:hardcoded array:        centreList: [],
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:154:hardcoded object:      const { label } = cityList.find((obj) => obj.value === value);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:155:hardcoded object:      const { centreListOptions: centreList, errormsg } = await getCentres(
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:166:hardcoded string:    } else if (name === "centre") {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:167:hardcoded object:      const { centreList, initialClass } = formValues;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:168:hardcoded object:      const { label } = centreList.find((obj) => obj.value === value);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:180:hardcoded string:    if (name === "board") {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:188:hardcoded string:        isStateBoard: params.label === "STATE" ? true : false
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:190:hardcoded string:      if (params.label !== "STATE") {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:191:hardcoded object:        const { gradeListOptions: gradesList, errormsg } = await getGrades({
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:198:hardcoded object:        setFormValues((prevState) => ({ ...prevState, gradesList }));
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:201:hardcoded string:    if (name === 'stateBoard') {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:209:hardcoded object:      const { isStateBoard } = formValues
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:211:hardcoded object:        const { gradeListOptions: gradesList, errormsg } = await getGrades({
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:218:hardcoded object:        setFormValues((prevState) => ({ ...prevState, gradesList }));
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:221:hardcoded string:    if (name === "initialClass") {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:231:hardcoded string:    if (name === "finalClass") {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:232:hardcoded object:      const { board, stateBoard, isStateBoard } = formValues
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:239:hardcoded object:      const { validityListOptions: validities, errormsg } = await getValidity({
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:241:hardcoded string:        boardId: isStateBoard ? get(stateBoard, "value") : get(board, "value"),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:245:hardcoded object:      setFormValues((prevState) => ({ ...prevState, validities }));
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:249:hardcoded string:    if (name === "isExtension") {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:257:hardcoded string:    if (name === "extnFinalClass") {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:258:hardcoded object:      setFormValues((prevState) => ({ ...prevState, validity: null }));
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:260:hardcoded string:    if (name === "validity") {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:261:hardcoded variable:      const tablets= getTabletList();
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:262:hardcoded object:      const { isExtension, extnFinalClass, finalClass } = formValues
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:263:hardcoded object:      const tabletList =getTabletOptions({ tablets, authDetails, selectedTlpFinalGrade : isExtension ? extnFinalClass.label : finalClass.label, productCombination:spName })
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:264:hardcoded object:      setFormValues((prevState) => ({ ...prevState, tablet: null, tabletList }));
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:270:hardcoded array:      [name]: params ? (data ? data : false) : true,
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:276:hardcoded variable:  const getFinalClassOptions = (data) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:277:hardcoded string:    let initialClass = parseInt(get(data, "label"));
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:278:hardcoded array:    let { gradesList = [] } = formValues;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:279:hardcoded variable:    const isDevEnv= window.isDevEnv
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:280:hardcoded number:    //btc price change jan 2023
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:281:hardcoded number:    const maxYear = isDevEnv ? props?.isPriviledgedUser ? 4 : 3 :3
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:282:hardcoded number:    initialClass = isDevEnv ? props?.isPriviledgedUser ? initialClass : initialClass +1 : initialClass
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:283:hardcoded variable:    let filteredFinalClasses = gradesList.filter(
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:300:hardcoded variable:  const getExtFinalClassOptions = (data) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:301:hardcoded string:    const finalClass = parseInt(get(data, "label"));
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:302:hardcoded array:    let { gradesList = [], initialClass } = formValues;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:303:hardcoded string:    const selectedInitialGrade = parseInt(get(initialClass, "label"));
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:304:hardcoded variable:    const filteredExtFinalClasses = gradesList.filter(
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:307:hardcoded number:        parseInt(obj.label) <= selectedInitialGrade + 4
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:315:hardcoded variable:  const getProductDetails = async () => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:319:hardcoded string:    if (!productForm) return { errormsg: "Please fill the required Details" };
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:324:hardcoded string:    if (!batchDetails) return { errormsg: "Please select a batch slot" };
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:327:hardcoded object:    const { updatedFormValues } = getUpdatedFormValues({
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:332:hardcoded string:      url: "/api/quotation-beta/getBtcProduct",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:348:hardcoded variable:  const getFormDetailsForBatch = () => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:349:hardcoded object:    let { centre, initialClass, board, stateBoard } = formValues;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:351:hardcoded string:      centreId: get(centre, "value", ""),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:352:hardcoded string:      batchType: "weekday",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:353:hardcoded string:      initialClass: get(initialClass, "label", ""),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:354:hardcoded string:      board: get(board, "label", ""),
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:355:hardcoded string:      stateBoard: get(stateBoard, "label", "")
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:359:hardcoded variable:  const checkBatchAvailability = async () => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:370:hardcoded variable:  const updateLoading = (value) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:373:hardcoded variable:  const updateError = (value) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:376:hardcoded variable:  const updateResetPrice = (value) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:381:hardcoded string:    <LoadingWrapper loading={loading} message={"loading"}>
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:382:hardcoded object:      <ErrorWrapper error={error} message={error} />
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:383:hardcoded string:      {isUpgrade && <center><strong style={{ color: "red" }}>Note: This is {productSelectionType.toUpperCase()} to BTC upgrade</strong></center>}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:386:hardcoded string:          className="border-right border-dark"
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:387:hardcoded number:          xs={6}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:388:hardcoded string:          style={{ paddingInline: "8rem" }}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:391:hardcoded object:            ref={productFormRef}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:392:hardcoded object:            initialValues={formValues}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:393:hardcoded object:            fields={centreForm({ handleChange, ...props, formValues })}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:394:hardcoded number:            cols={1}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:395:hardcoded string:            heading={"Centre Details"}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:398:hardcoded string:        <Col xs={6} style={{ paddingInline: "8rem" }}>
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:400:hardcoded object:            ref={productFormRef}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:401:hardcoded object:            initialValues={formValues}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:402:hardcoded object:            fields={form({ handleChange, ...props, formValues, isUpgrade })}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:403:hardcoded number:            cols={1}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:404:hardcoded string:            heading={"Student Details"}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:411:hardcoded object:          ref={batchDetailsRef}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:412:hardcoded object:          {...props}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:413:hardcoded object:          setLoading={updateLoading}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:414:hardcoded object:          setError={updateError}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:415:hardcoded object:          setResetPrice={updateResetPrice}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:416:hardcoded object:          formDetails={getFormDetailsForBatch()}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:421:hardcoded object:        setLoading={updateLoading}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:422:hardcoded object:        setError={updateError}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:423:hardcoded object:        getProductDetails={getProductDetails}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:424:hardcoded object:        enableVoucher={(isBatchesAvailable || (autoFillEnabled && onChangeEffect)) ? true : false}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:427:hardcoded object:        ref={FetchPriceRef}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:428:hardcoded object:        {...props}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:429:hardcoded object:        resetPrice={resetPrice}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:430:hardcoded object:        getProductDetails={getProductDetails}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:431:hardcoded object:        setLoading={updateLoading}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:432:hardcoded object:        setError={updateError}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:433:hardcoded object:        showPrice={showPrice}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/shopCart.js:434:hardcoded object:        setShowPrice={setShowPrice}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:1:hardcoded object:import { get, upperCase, isEmpty, startCase } from "lodash";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:2:hardcoded file path:import CallApi from "api/callApi";
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:4:hardcoded variable:export const getBatchDetails = async (details) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:5:hardcoded object:  let { payload } = details;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:6:hardcoded array:  let batchData = [], errormsg = null;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:8:hardcoded object:    let { stateBoard } = payload;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:9:hardcoded string:    stateBoard = !isEmpty(stateBoard) ? stateBoard.replace(" ", "") : ''
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:10:hardcoded object:    payload = { ...payload, stateBoard }
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:14:hardcoded string:        url: "/api/blc/batches",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:15:hardcoded string:        method: "POST",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:16:hardcoded object:        body: { ...payload }
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:18:hardcoded object:        const { data } = response;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:21:hardcoded object:  return { batchData, errormsg };
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:24:hardcoded variable:export const getStates = async () => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:25:hardcoded array:  let stateList = [];
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:26:hardcoded array:  let stateListOptions = [], errormsg = null;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:29:hardcoded string:    url: "/api/blc/states",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:30:hardcoded string:    method: "GET"
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:32:hardcoded object:    const { data } = response;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:37:hardcoded variable:    let options = {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:43:hardcoded object:  return { stateListOptions, errormsg };
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:46:hardcoded variable:export const getCities = async (stateId, stateName) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:47:hardcoded array:  let cityList = [];
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:48:hardcoded array:  let cityListOptions = [], errormsg = null;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:52:hardcoded string:    method: "POST",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:58:hardcoded object:    const { data } = response;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:63:hardcoded variable:    let options = {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:70:hardcoded object:  return { cityListOptions, errormsg };
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:73:hardcoded variable:export const getCentres = async (cityId, cityName) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:74:hardcoded array:  let centreList = [];
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:75:hardcoded array:  let centreListOptions = [], errormsg = null;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:79:hardcoded string:    method: "POST",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:85:hardcoded object:    const { data } = response;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:91:hardcoded variable:    let options = {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:98:hardcoded object:  return { centreListOptions, errormsg };
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:101:hardcoded object:export const getBoards = async ({ spId }) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:102:hardcoded array:  let boardList = [];
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:103:hardcoded array:  let boardListOptions = [], stateBoardListOptions = [], errormsg = null;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:106:hardcoded string:    url: "/api/quotation-beta/getBoards",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:107:hardcoded string:    method: "POST",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:108:hardcoded object:    body: { spId: spId },
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:110:hardcoded object:    const { data } = response;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:111:hardcoded string:    boardList = get(data, "boards", []);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:115:hardcoded variable:    let options = {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:116:hardcoded string:      label: '',
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:119:hardcoded string:    if (obj.type === 'state') {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:129:hardcoded string:    boardListOptions.push({ label: "STATE", value: "000" })
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:131:hardcoded object:  return { boardListOptions, stateBoardListOptions, errormsg };
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:134:hardcoded object:export const getGrades = async ({ spId, boardId, type, existingOrderId }) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:135:hardcoded array:  let gradeList = [];
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:136:hardcoded array:  let gradeListOptions = [], errormsg = null;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:138:hardcoded string:    url: "/api/quotation-beta/getGrades",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:139:hardcoded string:    method: "POST",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:140:hardcoded object:    body: { spId: spId, boardId: boardId, type, existingOrderId },
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:142:hardcoded object:    const { data } = response;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:143:hardcoded string:    gradeList = get(data, "grades", []);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:147:hardcoded object:    let options = { label: upperCase(obj.grade), value: obj.gradeId };
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:150:hardcoded object:  return { gradeListOptions, errormsg };
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:153:hardcoded variable:export const getTablet = async (baseOrderId) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:154:hardcoded string:  let isTablet = '', errormsg = null
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:156:hardcoded string:    url: "/api/quotation-beta/getTablet",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:157:hardcoded string:    method: "POST",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:158:hardcoded object:    body: { baseOrderId },
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:160:hardcoded object:    const { data } = response;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:161:hardcoded string:    isTablet = get(data, "isTablet", false);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:166:hardcoded object:export const getValidity = async ({ spId, boardId, gradeId }) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:167:hardcoded array:  let validityList = [];
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:168:hardcoded array:  let validityListOptions = [], errormsg = null;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:171:hardcoded string:    url: "/api/quotation-beta/getValidity",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:172:hardcoded string:    method: "POST",
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:173:hardcoded object:    body: { spId: spId, boardId: boardId, gradeId: gradeId },
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:175:hardcoded object:    const { data } = response;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:176:hardcoded string:    validityList = get(data, "validities", []);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:180:hardcoded variable:    let options = {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/dataSource.js:186:hardcoded object:  return { validityListOptions, errormsg };
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:1:hardcoded object:import React, { useEffect, useState, useImperativeHandle } from 'react';
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:2:hardcoded object:import { get, isEmpty, truncate, upperFirst } from 'lodash';
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:3:hardcoded object:import { CardText, Card, CardBody, CardTitle, Row, Col } from 'reactstrap';
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:5:hardcoded object:import { getBatchDetails } from './dataSource';
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:7:hardcoded variable:const ClassroomBatch = (props, ref) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:8:hardcoded object:    const { formDetails, setLoading, setError, setResetPrice } = props;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:9:hardcoded object:    const { centreId, batchType, initialClass, board, stateBoard } = formDetails 
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:10:hardcoded array:    const [ batches, updateBatches ] = useState([])
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:11:hardcoded array:    const [ selectedBatch, updateSelectedBatch ] = useState({})
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:16:hardcoded object:            const {centreId, batchType, initialClass, board, stateBoard} = details;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:17:hardcoded object:            const  { batchData, errormsg } = await getBatchDetails({
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:18:hardcoded object:                payload : {centreId, batchType, initialClass, board, stateBoard}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:24:hardcoded object:        callBatchDetailsApi({centreId, batchType, initialClass, board, stateBoard})
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:25:hardcoded object:        updateSelectedBatch({})
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:27:hardcoded array:    }, [centreId, batchType, initialClass]);
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:33:hardcoded string:                    setError('Please select a batch slot');
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:42:hardcoded variable:    const onSelectBatch = (selectedBatch) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:46:hardcoded variable:        const updatedBatch = batches.map(batch => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:47:hardcoded object:            const { batchId } = batch  
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:48:hardcoded string:            if (batchId === get(selectedBatch, "batchId")) {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:49:hardcoded object:                return { ...batch, isSelected: true }
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:51:hardcoded object:                return { ...batch, isSelected: false }
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:58:hardcoded variable:    const batchSlots = (slots) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:61:hardcoded string:                const day = truncate(upperFirst(slot.day.toLowerCase()),{'length':4, 'omission': ' '})
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:63:hardcoded string:                    <span key={index+`${get(slot,"day")}`}>
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:64:hardcoded string:                        {` ${day} : ${get(slot, 'startTime')} - ${get(slot, 'endTime')}, `} 
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:73:hardcoded number:            <h5>Batch Details</h5>
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:77:hardcoded object:                            const { slots, batchId, batchName, isSelected } = batch;
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:79:hardcoded string:                                <Col sm={3} style={{ marginTop: "1rem" }}>
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:81:hardcoded string:                                        style={{ cursor: "pointer" , backgroundColor: isSelected ? "#94b0b7" : "#d8f3fa"}}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:82:hardcoded object:                                        onClick={() => onSelectBatch(batch)}
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:85:hardcoded string:                                            <CardTitle tag="h6" >{batchName}</CardTitle>
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:88:hardcoded string:                                                <i className="fa fa-clock-o" aria-hidden="true"></i> 
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btc/classroomBatch.js:90:hardcoded object:                                                {batchSlots(slots)}

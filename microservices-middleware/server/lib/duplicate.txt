@@ -1,0 +1,87 @@
+microservices-middleware/server/lib/validityHelper.js:1:hardcoded variable:const getCourseAcademicEndMonth = (course) => {
+microservices-middleware/server/lib/validityHelper.js:2:hardcoded variable:    const courseMap = {
+microservices-middleware/server/lib/validityHelper.js:3:hardcoded string:        'k12': 3,
+microservices-middleware/server/lib/validityHelper.js:4:hardcoded string:        'k10': 3,
+microservices-middleware/server/lib/validityHelper.js:5:hardcoded string:        'competitive': 5
+microservices-middleware/server/lib/validityHelper.js:8:hardcoded string:    return course ? courseMap[course] : courseMap['k12']; //Return K12 end month by default
+microservices-middleware/server/lib/validityHelper.js:11:hardcoded variable:const getCurrentAcademicYear = (course) => {
+microservices-middleware/server/lib/validityHelper.js:12:hardcoded variable:    const academicEndMonth = getCourseAcademicEndMonth(course); // Jan-April of next year of calendar is to be considered as current academic year only.
+microservices-middleware/server/lib/validityHelper.js:13:hardcoded variable:    const currentYear = (new Date()).getFullYear();
+microservices-middleware/server/lib/validityHelper.js:14:hardcoded variable:    const currentMonth = (new Date()).getMonth();
+microservices-middleware/server/lib/validityHelper.js:17:hardcoded number:        return currentYear - 1;
+microservices-middleware/server/lib/redisHandler.js:1:hardcoded variable:const getKey = async (key) => {
+microservices-middleware/server/lib/redisHandler.js:2:hardcoded object:    const { redisClient } = global.byjus;
+microservices-middleware/server/lib/redisHandler.js:18:hardcoded variable:const setKey = async (key, value) => {
+microservices-middleware/server/lib/redisHandler.js:19:hardcoded object:    const { redisClient } = global.byjus;
+microservices-middleware/server/lib/redisHandler.js:35:hardcoded variable:const delKey = async (key) => {
+microservices-middleware/server/lib/redisHandler.js:36:hardcoded object:    const { redisClient } = global.byjus;
+microservices-middleware/server/lib/redisHandler.js:52:hardcoded variable:const clearAll = async () => {
+microservices-middleware/server/lib/redisHandler.js:53:hardcoded object:    const { redisClient } = global.byjus;
+microservices-middleware/server/lib/bunyan-logger.js:1:hardcoded file path:const bunyan = require('bunyan')
+microservices-middleware/server/lib/bunyan-logger.js:3:hardcoded variable:const InitLogger = (fileName) => {
+microservices-middleware/server/lib/bunyan-logger.js:4:hardcoded variable:    const logger = bunyan.createLogger({
+microservices-middleware/server/lib/bunyan-logger.js:6:hardcoded environment variable:        env         : process.env.NODE_ENV,
+microservices-middleware/server/lib/errors.js:11:hardcoded string:    this.message = message || 'Invalid request'
+microservices-middleware/server/lib/errors.js:12:hardcoded number:    this.status = 400
+microservices-middleware/server/lib/errors.js:21:hardcoded string:    this.message = message || 'Unauthorized'
+microservices-middleware/server/lib/errors.js:22:hardcoded number:    this.status = 401
+microservices-middleware/server/lib/errors.js:30:hardcoded string:    this.message = message || 'User is not authorized'
+microservices-middleware/server/lib/errors.js:31:hardcoded number:    this.status = 403
+microservices-middleware/server/lib/errors.js:39:hardcoded string:    this.message = message || 'Not found'
+microservices-middleware/server/lib/errors.js:40:hardcoded number:    this.status = 404
+microservices-middleware/server/lib/errors.js:46:hardcoded string:    super(message || 'Validation error')
+microservices-middleware/server/lib/errors.js:57:hardcoded string:    this.message = message || 'Simulated error'
+microservices-middleware/server/lib/errors.js:58:hardcoded number:    this.status = 500
+microservices-middleware/server/lib/errors.js:62:hardcoded variable:const defaultResponse = {
+microservices-middleware/server/lib/errors.js:63:hardcoded string:  message: 'Something went wrong on the server',
+microservices-middleware/server/lib/errors.js:64:hardcoded number:  status: 500
+microservices-middleware/server/lib/errors.js:68:hardcoded number:  if (err.code && err.code === 11000 || err.code === 11001) {
+microservices-middleware/server/lib/errors.js:70:hardcoded string:      message: 'Unique field already exists',
+microservices-middleware/server/lib/errors.js:71:hardcoded number:      status: 400
+microservices-middleware/server/lib/errors.js:86:hardcoded string:      message: (process.env.NODE_ENV === 'production') ? 'The data received by the server is not properly formatted. Try refreshing your browser.'
+microservices-middleware/server/lib/errors.js:87:hardcoded object:        : `Bad JSON in HTTP request. ${err.message}:  ${err.body}`,
+microservices-middleware/server/lib/errors.js:88:hardcoded number:      status: 400
+microservices-middleware/server/lib/errors.js:93:hardcoded string:  if (err.name == "MongoError") {
+microservices-middleware/server/lib/errors.js:95:hardcoded object:      message: `MongoError: ${err.message}`,
+microservices-middleware/server/lib/errors.js:96:hardcoded number:      status: 500
+microservices-middleware/server/lib/featureHelper.js:1:hardcoded string:const isDevEnv = ['local', 'development'].includes(process.env.NODE_ENV);
+microservices-middleware/server/lib/featureHelper.js:2:hardcoded string:const isLocalEnv = ['local'].includes(process.env.NODE_ENV)
+microservices-middleware/server/lib/featureHelper.js:3:hardcoded string:const isPgQuery = ["true", true].includes(process.env.ENABLE_PG_QUERY);
+microservices-middleware/server/lib/featureHelper.js:5:hardcoded string:const LsAccounts = ['.new', '+19088', '+17139', '+24692', '+24692', '+24693', '+DS', '+ds', '+46867',
+microservices-middleware/server/lib/featureHelper.js:6:hardcoded string:    '+7461', '+50476', '+56293staging', '+staging', '+52269', '+5989'];
+microservices-middleware/server/lib/featureHelper.js:8:hardcoded string:const getFormattedUserEmail = (userEmail = "") => {
+microservices-middleware/server/lib/featureHelper.js:9:hardcoded variable:    let email = userEmail.toLowerCase();
+microservices-middleware/server/lib/featureHelper.js:12:hardcoded string:        email = email.replace(account, '');
+microservices-middleware/server/lib/featureHelper.js:18:hardcoded variable:const currencyFormatter = (amount, currency) => {
+microservices-middleware/server/lib/featureHelper.js:20:hardcoded string:    if (isNaN(amount) || !currency) return '₹0.00';
+microservices-middleware/server/lib/featureHelper.js:21:hardcoded string:    const formatter = new Intl.NumberFormat('en-IN', {
+microservices-middleware/server/lib/featureHelper.js:22:hardcoded string:        style: 'currency',
+microservices-middleware/server/lib/featureHelper.js:24:hardcoded number:        minimumFractionDigits: 0
+microservices-middleware/server/lib/featureHelper.js:29:hardcoded string:const getSalesComments = (email="",directSalesBy="",salesAppointmentBy="") => {
+microservices-middleware/server/lib/featureHelper.js:30:hardcoded array:    const comments = [];
+microservices-middleware/server/lib/featureHelper.js:32:hardcoded string:        category: "salesDetails",
+microservices-middleware/server/lib/featureHelper.js:33:hardcoded string:        type: "reference_for_OH_orders",
+microservices-middleware/server/lib/featureHelper.js:34:hardcoded object:        comment: `Direct Sales Conducted By is ${directSalesBy}`,
+microservices-middleware/server/lib/featureHelper.js:35:hardcoded string:        commentedBy: email || "system",
+microservices-middleware/server/lib/featureHelper.js:37:hardcoded string:        source: "kart"});
+microservices-middleware/server/lib/featureHelper.js:39:hardcoded string:        category: "salesDetails",
+microservices-middleware/server/lib/featureHelper.js:40:hardcoded string:        type: "reference_for_OH_orders",
+microservices-middleware/server/lib/featureHelper.js:41:hardcoded object:        comment: `Direct Sales Appointment By is ${salesAppointmentBy}`,
+microservices-middleware/server/lib/featureHelper.js:42:hardcoded string:        commentedBy: email || "system",
+microservices-middleware/server/lib/featureHelper.js:44:hardcoded string:        source: "kart"});
+microservices-middleware/server/lib/rcnHelper.js:1:hardcoded object:const { get, lowerCase } = require("lodash");
+microservices-middleware/server/lib/rcnHelper.js:3:hardcoded object:const { callSosToGetRcnBadgeDetails } = require('../utility/apis/sosApiUtility');
+microservices-middleware/server/lib/rcnHelper.js:4:hardcoded object:const { isDevEnv } = require("./featureHelper");
+microservices-middleware/server/lib/rcnHelper.js:6:hardcoded variable:const getOrderApprovalStatus = async (salesDetails) => {
+microservices-middleware/server/lib/rcnHelper.js:7:hardcoded string:    const email = salesDetails?.directSalesBy || "";
+microservices-middleware/server/lib/rcnHelper.js:8:hardcoded object:    const { result } = isDevEnv && await callSosToGetRcnBadgeDetails({ email }) || {};
+microservices-middleware/server/lib/rcnHelper.js:9:hardcoded object:    const { badgeDetails } = result?.response || {};
+microservices-middleware/server/lib/rcnHelper.js:10:hardcoded string:    const orderApproval = badgeDetails?.approvalNeeded === "yes" ? "applicable" : "not_applicable";
+microservices-middleware/server/lib/rcnHelper.js:15:hardcoded variable:const getRcnDetails = async (salesDetails, emiDetails) => {
+microservices-middleware/server/lib/rcnHelper.js:16:hardcoded string:    const email = get(salesDetails, "directSalesBy", "");
+microservices-middleware/server/lib/rcnHelper.js:17:hardcoded string:    const loanProvider = emiDetails[0]?.provider || "default";
+microservices-middleware/server/lib/rcnHelper.js:19:hardcoded object:    const rcnConfig = isDevEnv && await callSosToGetRcnBadgeDetails({ email }) || {};
+microservices-middleware/server/lib/rcnHelper.js:20:hardcoded string:    let { badgeDetails, badgeDpDetails, rcn } = get(rcnConfig, 'result.response', {});
+microservices-middleware/server/lib/rcnHelper.js:21:hardcoded number:    const minDpAmount = badgeDpDetails?.find(ele => ele?.ppName === lowerCase(loanProvider))?.dpAmount || 0;
+microservices-middleware/server/lib/rcnHelper.js:22:hardcoded string:    const orderApproval = badgeDetails?.approvalNeeded === "yes" ? "applicable" : "not_applicable";
+microservices-middleware/server/lib/rcnHelper.js:23:hardcoded string:    rcn = !rcn || null === "-" ? null : rcn;

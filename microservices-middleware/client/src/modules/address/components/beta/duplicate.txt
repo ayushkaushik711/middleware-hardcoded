@@ -1,0 +1,437 @@
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:1:hardcoded object:import React, { forwardRef, useRef, useState, useImperativeHandle } from 'react'
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:2:hardcoded object:import { find, get, isEmpty, concat} from "lodash"
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:3:hardcoded object:import {useSelector} from "react-redux"
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:5:hardcoded file path:import UploadFile from 'modules/upload/UploadFile'
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:7:hardcoded variable:const DirectSales = forwardRef(( props, refs ) => {
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:8:hardcoded object:    const { identifier } = props;
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:9:hardcoded array:    const [applicationFormError, setApplicationFormError] = useState(null)
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:10:hardcoded variable:    const applicationFrontSide = useRef(null)
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:11:hardcoded variable:    const applicationBackSide = useRef(null)
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:12:hardcoded string:    const attachments = useSelector(state => get(state, 'address.attachments'));
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:16:hardcoded variable:            const frontSideFormValues = applicationFrontSide.current.getUploadedFiles();
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:17:hardcoded variable:            const backSideFormValues = applicationBackSide.current.getUploadedFiles();
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:19:hardcoded variable:                const attachments = concat(frontSideFormValues, backSideFormValues);
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:30:hardcoded number:        < div className={`card border-0`} style={{ margin: 10 }} >
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:31:hardcoded object:            <div className={`card-header bg-primary text-white`}>Upload Application Form</div>
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:32:hardcoded string:            {applicationFormError && <div style={{ color: 'red', margin: '2%' }}>{applicationFormError}</div>}
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:35:hardcoded string:                    name: "applicationFrontSide",
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:36:hardcoded string:                    label: "Front Side",
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:37:hardcoded number:                    count: 1,
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:38:hardcoded string:                    accept: ".jpeg,.jpg,.png,.pdf"
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:40:hardcoded object:                identifier={identifier}
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:41:hardcoded object:                ref= {applicationFrontSide}
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:42:hardcoded string:                initialValues={find(attachments, { name: 'applicationFrontSide' })}
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:46:hardcoded string:                    name: "applicationBackSide",
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:47:hardcoded string:                    label: "Back Side",
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:48:hardcoded number:                    count: 1,
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:49:hardcoded string:                    accept: ".jpeg,.jpg,.png,.pdf"
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:51:hardcoded object:                identifier={identifier}
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:52:hardcoded object:                ref= {applicationBackSide}
+microservices-middleware/client/src/modules/address/components/beta/DirectSales.jsx:53:hardcoded string:                initialValues={find(attachments, { name: 'applicationBackSide' })}
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:1:hardcoded object:import { get } from "lodash";
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:3:hardcoded variable:const getAddressDetails = (customerDetails, setFormState) => {
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:5:hardcoded string:        type: 'full_address',
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:7:hardcoded string:            addressLine1: get(customerDetails, 'address'),
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:8:hardcoded string:            city: get(customerDetails, 'city'),
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:9:hardcoded string:            state: get(customerDetails, 'state'),
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:10:hardcoded string:            country: get(customerDetails, 'country'),
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:11:hardcoded string:            zipcode: get(customerDetails, 'zipCode') || get(customerDetails, 'zipcode')
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:16:hardcoded variable:const getAddressToSave = (formData, setFormState) => {
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:17:hardcoded string:    const { addressLine1 = "", streetLocality = "", postalAddress = "" } = formData;
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:18:hardcoded string:    const areaLandmark = formData["Area/Landmark"] || "";
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:19:hardcoded string:    const address = (postalAddress === "Other") ? `${addressLine1}, ${streetLocality}, ${areaLandmark}` : `${addressLine1}, ${streetLocality}, ${areaLandmark}, ${postalAddress}`;
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:20:hardcoded string:    if (address.split(", ").join("").length < 50) {
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:22:hardcoded string:            type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:25:hardcoded string:                error: "Address should be more than 50 characters including (Address Line 1, Address Line 2, Address Line 3)"
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:30:hardcoded string:    formData["addressLine2"] = `${streetLocality}, ${areaLandmark}`;
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:31:hardcoded string:    formData["addressLine3"] = postalAddress;
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:32:hardcoded string:    formData["address"] = address;
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:33:hardcoded string:    delete formData["streetLocality"];
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:34:hardcoded string:    delete formData["Area/Landmark"];
+microservices-middleware/client/src/modules/address/components/beta/assembler.js:35:hardcoded string:    delete formData["postalAddress"];
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:1:hardcoded file path:import React from 'react'
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:2:hardcoded object:import { Modal } from 'antd';
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:3:hardcoded object:import { get, isEmpty, startCase, toLower } from 'lodash';
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:4:hardcoded object:import { useSelector } from 'react-redux';
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:5:hardcoded object:import { InfoMessage, WarningMessage } from './Styles';
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:7:hardcoded variable:const BackwardConfirmModal = (props) => {
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:8:hardcoded object:    const {onClickPrevBtn, setFormState, formState} = props;
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:9:hardcoded object:    const { showBackwardModel } = formState;
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:10:hardcoded string:    const students = useSelector(state => get(state, "product.details.students", []));
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:11:hardcoded string:    const addOnLineItems = useSelector(state => get(state, "product.addOnLinItems", []))
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:12:hardcoded number:    const productCombination = students[0].productSelectionType;
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:14:hardcoded string:        if (["byjus aakash"].includes(productCombination)) {
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:16:hardcoded string:        } else if (["byjus learning centre", "byjus learning_centre"].includes(productCombination)) {
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:18:hardcoded string:        } else if (['byjus learning_centre_upgrade'].includes(productCombination)) {
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:20:hardcoded string:        } else if (['mini_learning_program', 'mini learning_program'].includes(productCombination)) {
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:22:hardcoded string:        } else if (['byjus aakash_neo', 'byjus aakash neo'].includes(productCombination)) {
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:24:hardcoded string:        } else if (['bep mts'].includes(productCombination)) {
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:30:hardcoded variable:    const onClickCancel = () => {
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:32:hardcoded string:            type: 'showBackwardModel',
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:37:hardcoded variable:    const getItemList = (items) => {
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:42:hardcoded object:                        const { name, skuName, quantity } = item;
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:44:hardcoded number:                        return (<li key={index}>{skuName || name} : {quantity || 1}</li>);
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:54:hardcoded string:                title="Return to Product Selection?"
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:55:hardcoded object:                visible={showBackwardModel}
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:56:hardcoded object:                onOk={onClickPrevBtn}
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:57:hardcoded string:                okText="Note and Proceed"
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:58:hardcoded object:                onCancel={onClickCancel}
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:59:hardcoded number:                zIndex={0}
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:62:hardcoded object:                <p><strong>Product Combination: </strong>{productCombinationValue}</p>
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:65:hardcoded array:                    const { items = [] } = student;
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:66:hardcoded object:                    return <div key={index}>
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:67:hardcoded number:                        {(students.length > 1) && <p><strong>Student #</strong>{index + 1}</p>}
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:68:hardcoded object:                        {getItemList(items)}
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:77:hardcoded object:                                    const { name, skuName, quantity } = item;
+microservices-middleware/client/src/modules/address/components/beta/BackwardConfirmModal.jsx:78:hardcoded number:                                    return (<li key={index}>{skuName || name} : {quantity || 1}</li>);
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:1:hardcoded variable:const reducer = (state, action) => {
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:2:hardcoded string:    state = {...state, "disableReset": false}
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:4:hardcoded string:        case "loading_&_error":
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:5:hardcoded object:            return { ...state, loading: action.value.loading, error: action.value.error };
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:6:hardcoded string:        case "address":
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:7:hardcoded object:            return { ...state, address: action.value };
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:8:hardcoded string:        case 'full_address':
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:9:hardcoded object:            return { ...state, updatedFieldValue: {...state.updatedFieldValue, ...action.value}}
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:10:hardcoded string:        case 'addressLine1':
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:11:hardcoded array:            return { ...state, updatedFieldValue: { ...state.updatedFieldValue, [action.type]: action.value } }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:12:hardcoded string:        case 'streetLocality':
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:13:hardcoded array:            return { ...state, updatedFieldValue: { ...state.updatedFieldValue, [action.type]: action.value } }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:14:hardcoded string:        case 'Area/Landmark':
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:15:hardcoded array:            return { ...state, updatedFieldValue: { ...state.updatedFieldValue, [action.type]: action.value } }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:16:hardcoded string:        case 'postalAddress':
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:17:hardcoded array:            return { ...state, updatedFieldValue: { ...state.updatedFieldValue, [action.type]: action.value } }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:18:hardcoded string:        case "zipcode":
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:19:hardcoded array:            return { ...state, updatedFieldValue: { ...state.updatedFieldValue, [action.type]: action.value } }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:20:hardcoded string:        case "localOffices":
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:21:hardcoded array:            return { ...state,  [action.type]: action.value }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:22:hardcoded string:        case 'country':
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:23:hardcoded array:            return { ...state, updatedFieldValue: { ...state.updatedFieldValue, [action.type]: action.value } }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:24:hardcoded string:        case "state":
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:25:hardcoded array:            return { ...state, updatedFieldValue: { ...state.updatedFieldValue, [action.type]: action.value } }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:26:hardcoded string:        case "city":
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:27:hardcoded array:            return { ...state, updatedFieldValue: { ...state.updatedFieldValue, [action.type]: action.value } }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:28:hardcoded string:        case "isDirectSales":
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:29:hardcoded array:            return { ...state, updatedFieldValue: { ...state.updatedFieldValue, [action.type]: action.value } }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:30:hardcoded string:        case "cityList":
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:31:hardcoded array:            return { ...state, [action.type]: action.value }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:32:hardcoded string:        case "stateList":
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:33:hardcoded array:            return { ...state, [action.type]: action.value }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:34:hardcoded string:        case "isValidPincode":
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:35:hardcoded array:            return { ...state, [action.type]: action.value }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:36:hardcoded string:        case "stateRef":
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:37:hardcoded array:            return { ...state, [action.type]: action.value }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:38:hardcoded string:        case "disableReset":
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:39:hardcoded array:            return { ...state, [action.type]: action.value }
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:40:hardcoded string:        case "showBackwardModel":
+microservices-middleware/client/src/modules/address/components/beta/reducer.js:41:hardcoded array:            return { ...state, [action.type]: action.value }
+microservices-middleware/client/src/modules/address/components/beta/fields.js:1:hardcoded object:import { countryList } from "modules/address/utils/addressConfig";
+microservices-middleware/client/src/modules/address/components/beta/fields.js:2:hardcoded string:import { ELIGIBLE_UPGRADE_LIST }from 'modules/address/utils/addressConfig';
+microservices-middleware/client/src/modules/address/components/beta/fields.js:3:hardcoded object:import { getDistrictList, getPincode, handleZipCodeBlurEvent } from "./apis";
+microservices-middleware/client/src/modules/address/components/beta/fields.js:5:hardcoded variable:const getAddressValidation = (isLengthCheckRequired) => {
+microservices-middleware/client/src/modules/address/components/beta/fields.js:6:hardcoded variable:    let rule = [{
+microservices-middleware/client/src/modules/address/components/beta/fields.js:7:hardcoded number:        pattern: new RegExp(/^[a-zA-Z0-9! :&()\-`.+,/\\"]*$/), message: `Invalid Address.Only hyphen(-),colon(:),slash(\\),comma(,) are allowed as a special Character`
+microservices-middleware/client/src/modules/address/components/beta/fields.js:11:hardcoded string:            type: "string",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:12:hardcoded string:            "max": 30,
+microservices-middleware/client/src/modules/address/components/beta/fields.js:14:hardcoded string:                return value ? value.trim() : '';
+microservices-middleware/client/src/modules/address/components/beta/fields.js:21:hardcoded variable:const getPincodeValidation = (country) => {
+microservices-middleware/client/src/modules/address/components/beta/fields.js:22:hardcoded array:    let rule = []
+microservices-middleware/client/src/modules/address/components/beta/fields.js:23:hardcoded string:    if (country !== 'India') {
+microservices-middleware/client/src/modules/address/components/beta/fields.js:25:hardcoded number:            pattern: new RegExp(/^[a-zA-Z1-9][a-zA-Z0-9]*$/), message: `Not a valid Zipcode`
+microservices-middleware/client/src/modules/address/components/beta/fields.js:29:hardcoded number:            pattern: new RegExp(/^[1-9][0-9]{5}$/), message: `Not a valid Zipcode`
+microservices-middleware/client/src/modules/address/components/beta/fields.js:35:hardcoded variable:const getFormFields = (props) => {
+microservices-middleware/client/src/modules/address/components/beta/fields.js:36:hardcoded object:    const { formState, setFormState, stateRef, orderPunchingType } = props;
+microservices-middleware/client/src/modules/address/components/beta/fields.js:37:hardcoded array:    const { localOffices = [], cityList = [], updatedFieldValue = {}, stateList = [], isValidPincode = true } = formState;
+microservices-middleware/client/src/modules/address/components/beta/fields.js:38:hardcoded string:    const { country= "", state= "", postalAddress = "", zipcode = ""} = updatedFieldValue
+microservices-middleware/client/src/modules/address/components/beta/fields.js:40:hardcoded variable:    const handleOnChange = ( value, name) => {
+microservices-middleware/client/src/modules/address/components/beta/fields.js:41:hardcoded string:        if(name === "isDirectSales"){
+microservices-middleware/client/src/modules/address/components/beta/fields.js:48:hardcoded string:            if(name === "state"){
+microservices-middleware/client/src/modules/address/components/beta/fields.js:50:hardcoded string:                    type: "full_address",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:52:hardcoded string:                        city: "",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:53:hardcoded string:                        zipcode: "",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:57:hardcoded string:                    type: "localOffices",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:58:hardcoded array:                    value: []
+microservices-middleware/client/src/modules/address/components/beta/fields.js:62:hardcoded string:            if(name === "city" && value && state && !zipcode){
+microservices-middleware/client/src/modules/address/components/beta/fields.js:65:hardcoded string:            if(name === "zipcode"){
+microservices-middleware/client/src/modules/address/components/beta/fields.js:67:hardcoded string:                    type: "isValidPincode",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:71:hardcoded object:            setFormState({type: name, value})
+microservices-middleware/client/src/modules/address/components/beta/fields.js:73:hardcoded string:            setFormState({type: name, value: ""})
+microservices-middleware/client/src/modules/address/components/beta/fields.js:74:hardcoded string:            if(name === "zipcode"){
+microservices-middleware/client/src/modules/address/components/beta/fields.js:76:hardcoded string:                    type: "isValidPincode",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:80:hardcoded string:                    type: "localOffices",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:81:hardcoded array:                    value: []
+microservices-middleware/client/src/modules/address/components/beta/fields.js:84:hardcoded string:                    type: "full_address",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:86:hardcoded string:                        state: "",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:87:hardcoded string:                        city: "",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:88:hardcoded string:                        postalAddress: ""
+microservices-middleware/client/src/modules/address/components/beta/fields.js:95:hardcoded variable:    const onChangeCountry = (value) => {
+microservices-middleware/client/src/modules/address/components/beta/fields.js:96:hardcoded string:        setFormState({type: 'full_address', value: {country : value, state : '', city : '', zipcode : ''}})
+microservices-middleware/client/src/modules/address/components/beta/fields.js:99:hardcoded variable:    const fields = [
+microservices-middleware/client/src/modules/address/components/beta/fields.js:101:hardcoded string:            type: country === "India" ? 'number' : 'text',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:102:hardcoded string:            name: 'zipcode',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:103:hardcoded string:            label: 'Zip Code',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:104:hardcoded string:            placeholder: 'Enter Zip Code',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:105:hardcoded string:            required: country === "India" ? true : false,
+microservices-middleware/client/src/modules/address/components/beta/fields.js:106:hardcoded string:            validateStatus: !isValidPincode && "error",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:108:hardcoded string:            help: !isValidPincode && "Please enter valid pincode",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:114:hardcoded string:            type: 'text',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:115:hardcoded string:            name: 'addressLine1',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:116:hardcoded string:            label: 'Address 1(Apartment or House Number/Building Name)',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:117:hardcoded string:            placeholder: 'Address 1(Apartment or House Number/Building Name)',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:124:hardcoded string:            type: 'text',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:125:hardcoded string:            name: 'streetLocality',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:126:hardcoded string:            label: 'Address 2(Street Name/locality)',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:127:hardcoded string:            placeholder: 'Street Name/Locality',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:133:hardcoded string:            type: 'textarea',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:134:hardcoded string:            name: 'Area/Landmark',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:135:hardcoded string:            label: '',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:136:hardcoded string:            required: postalAddress === "Other" ? true : false,
+microservices-middleware/client/src/modules/address/components/beta/fields.js:137:hardcoded string:            placeholder: 'Area/Landmark',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:142:hardcoded string:            type: (localOffices.length > 0) ? 'select' : 'textarea',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:143:hardcoded string:            name: 'postalAddress',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:144:hardcoded string:            label: 'Address 3(Post Office)',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:145:hardcoded string:            placeholder: 'Address 3(Post Office)',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:146:hardcoded number:            required: (localOffices.length > 0) ? true : false,
+microservices-middleware/client/src/modules/address/components/beta/fields.js:148:hardcoded string:            helpText: postalAddress === "Other" && "Please specify Post Office name in Area/Landmark",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:153:hardcoded string:            type: 'select',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:154:hardcoded string:            name: 'country',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:155:hardcoded string:            label: 'Country',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:157:hardcoded string:            placeholder: 'Select Country',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:158:hardcoded string:            value: "India",
+microservices-middleware/client/src/modules/address/components/beta/fields.js:162:hardcoded string:            type: country === "India" ? 'select' : 'text',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:163:hardcoded string:            name: 'state',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:164:hardcoded string:            label: 'State',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:167:hardcoded string:            placeholder: country === "India" ? 'Select State' : 'Enter State',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:175:hardcoded string:            disabled: ["REPUNCH_ORDER_TYPE", "AAKASH_CRP_ORDER", ...ELIGIBLE_UPGRADE_LIST].includes(orderPunchingType) ? true : false
+microservices-middleware/client/src/modules/address/components/beta/fields.js:177:hardcoded string:            type: cityList.length > 0 ? 'select' : 'text',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:178:hardcoded string:            name: 'city',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:179:hardcoded string:            label: 'City',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:180:hardcoded string:            placeholder: 'Enter City',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:185:hardcoded string:            disabled: ["REPUNCH_ORDER_TYPE", "AAKASH_CRP_ORDER", ...ELIGIBLE_UPGRADE_LIST].includes(orderPunchingType) ? true : false
+microservices-middleware/client/src/modules/address/components/beta/fields.js:187:hardcoded string:            type: !window.isDevEnv ? 'checkbox' : 'hidden',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:188:hardcoded string:            name: 'isDirectSales',
+microservices-middleware/client/src/modules/address/components/beta/fields.js:189:hardcoded string:            checkBoxLabel: 'This is a Direct Sale',
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:1:hardcoded object:import React, { useReducer, useState, useEffect, useRef } from 'react';
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:2:hardcoded object:import { useSelector, useDispatch } from 'react-redux';
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:3:hardcoded object:import { get, isEqual, isEmpty } from 'lodash';
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:4:hardcoded number:import { RiDeleteBin5Line } from 'react-icons/ri';
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:6:hardcoded file path:import AppLayout from 'modules/applayout/AppLayout'
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:7:hardcoded file path:import AntDFormBuilder from "components/form/AntDFormBuilder"
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:8:hardcoded file path:import MiddleEastAddressPage from 'modules/ordertype/middleeast/AddressPage'
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:9:hardcoded object:import { REPUNCH_ORDER_TYPE, AAKASH_CRP_ORDER, ELIGIBLE_UPGRADE_LIST } from 'modules/address/utils/addressConfig'
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:10:hardcoded object:import {saveAddressDetails} from "../../addressReducer";
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:11:hardcoded object:import { saveReviewProductDetails, saveProductDetails, saveBookSku } from "../../../product/productReducer"
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:12:hardcoded file path:import getFormFields from './fields'
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:13:hardcoded file path:import reducer from './reducer'
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:14:hardcoded object:import { getAddressDetails, getAddressToSave } from './assembler'
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:15:hardcoded object:import { getStates, saveAddress, clearSelectedProducts } from './apis'
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:16:hardcoded file path:import AddressList from '../AddressList'
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:17:hardcoded object:import { Row, Col, Button, ButtonContainer } from './Styles';
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:18:hardcoded file path:import DirectSales from './DirectSales'
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:19:hardcoded file path:import BackwardConfirmModal from './BackwardConfirmModal';
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:21:hardcoded variable:const AddressPage = (props) => {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:22:hardcoded object:    const { history } = props;
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:23:hardcoded variable:    const dispatch = useDispatch();
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:24:hardcoded string:    const cardHeaderStyle = { marginLeft: 10, overflow: 'scroll', height: 425 };
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:26:hardcoded array:    const [formState, setFormState] = useReducer(reducer, {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:27:hardcoded object:        address: {},
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:28:hardcoded object:        updatedFieldValue: {},
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:32:hardcoded number:    const [savedAddressCount, setSavedAddressCount] = useState(0);
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:34:hardcoded variable:    const addressDetailForm = useRef(null);
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:35:hardcoded variable:    const directSales = useRef(null);
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:36:hardcoded variable:    const stateRef = useRef(null);
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:37:hardcoded string:    const identifier = useSelector(state => get(state, 'details.identifier', null));
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:38:hardcoded string:    const addressDetails = useSelector(state => get(state, 'address.details', {}));
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:39:hardcoded string:    const orderPunchingType = useSelector(state => get(state, "auth.orderPunchingType"))
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:40:hardcoded string:    const authDetails = useSelector(state => get(state, "auth.details"))
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:41:hardcoded string:    const leadDetails = useSelector(state => get(state, 'auth.leadDetails', {}))
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:42:hardcoded string:    const repunchPreviosOrderDetails = useSelector(state => get(state, "repunch.repunchDetails.previousOrderDetails.customerDetails.0", {}))
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:43:hardcoded string:    const aakashPreviousOrderDetails = useSelector(state => get(state, "auth.selectedQuotation.addressDetails", {}))
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:44:hardcoded string:    const tlpOrderData= useSelector(state => get(state, "auth.tlpOrderData.customerDetails.0"))
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:45:hardcoded object:    const { omsConfig } = authDetails;
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:48:hardcoded string:        if (orderPunchingType === 'REPUNCH_ORDER_TYPE') {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:50:hardcoded string:        } else if (orderPunchingType === 'AAKASH_CRP_ORDER'){
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:55:hardcoded string:            let billingAddress = get(addressDetails, 'billing', addressDetails);
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:58:hardcoded string:                type: 'full_address',
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:60:hardcoded string:                    address: (get(leadDetails, 'homeAddress', "")),
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:65:hardcoded string:                type: 'address',
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:71:hardcoded string:        if (orderPunchingType !== "REPUNCH_ORDER_TYPE") {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:72:hardcoded string:            if (!formState["country"]) {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:74:hardcoded string:                    type: 'country',
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:75:hardcoded string:                    value: "India"
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:77:hardcoded string:                getStates("India", setFormState);
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:80:hardcoded string:                    type: 'country',
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:81:hardcoded string:                    value: formState["country"]
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:85:hardcoded array:    }, [])
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:87:hardcoded variable:    const dispatchAddressSave = (address) => {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:91:hardcoded variable:    const resetProductPage = () => {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:92:hardcoded object:        dispatch(saveReviewProductDetails({}))
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:93:hardcoded object:        dispatch(saveProductDetails({}))
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:94:hardcoded array:        dispatch(saveBookSku([]))
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:97:hardcoded variable:    const navigateToScreen = (path) => {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:98:hardcoded string:        const url = `${path}${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:102:hardcoded variable:    const onClickPrevBtn = async () => {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:104:hardcoded string:        if (orderPunchingType === "REPUNCH_ORDER_TYPE") {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:105:hardcoded string:            navigateToScreen('/repunch');
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:107:hardcoded string:            navigateToScreen('/product');
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:111:hardcoded variable:    const onClickNextBtn = () => {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:114:hardcoded variable:                const attachments = formState?.updatedFieldValue?.isDirectSales && directSales.current.getAttachments();
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:118:hardcoded variable:                const addressToSave = getAddressToSave(values, setFormState)
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:119:hardcoded variable:                const isAddressModified = isEqual(addressToSave, formState.address)
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:121:hardcoded object:                    saveAddress({identifier, address: addressToSave, attachments, isAddressModified, setFormState, dispatchAddressSave, navigateToScreen})
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:127:hardcoded variable:    const selectSavedAddress = (address) => {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:129:hardcoded string:            type: 'full_address',
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:133:hardcoded string:            type: 'country',
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:137:hardcoded string:            type: 'address',
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:142:hardcoded variable:    const resetForm = () => {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:143:hardcoded string:        if (!["REPUNCH_ORDER_TYPE", "AAKASH_CRP_ORDER", ...ELIGIBLE_UPGRADE_LIST].includes(orderPunchingType)) {
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:145:hardcoded string:                type: 'full_address',
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:147:hardcoded string:                    zipcode: "",
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:148:hardcoded string:                    addressLine1: "",
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:149:hardcoded string:                    city: "",
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:150:hardcoded string:                    state: "",
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:151:hardcoded string:                    country: "India",
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:152:hardcoded string:                    "Area/Landmark": "",
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:153:hardcoded string:                    postalAddress: "",
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:154:hardcoded string:                    streetLocality: ""
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:159:hardcoded string:                type: 'full_address',
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:161:hardcoded string:                    zipcode: "",
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:162:hardcoded string:                    addressLine1: "",
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:163:hardcoded string:                    country: "India",
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:164:hardcoded string:                    "Area/Landmark": "",
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:165:hardcoded string:                    postalAddress: "",
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:166:hardcoded string:                    streetLocality: ""
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:174:hardcoded string:            {["MIDDLEEAST_ORDER","AAKASH_NEO_ME_UPGRADE"].includes(orderPunchingType) &&
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:175:hardcoded object:                <MiddleEastAddressPage history={history} />
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:178:hardcoded string:            {!["MIDDLEEAST_ORDER","AAKASH_NEO_ME_UPGRADE"].includes(orderPunchingType) &&
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:180:hardcoded string:                    step="address"
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:181:hardcoded string:                    onClickPrevBtn={() => setFormState({ type: 'showBackwardModel', value: true })}
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:182:hardcoded object:                    onClickNextBtn={onClickNextBtn}
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:183:hardcoded object:                    loading={formState.loading || false}
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:184:hardcoded object:                    error={formState.error || null}
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:185:hardcoded object:                    orderPunchingType={orderPunchingType}
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:188:hardcoded number:                        <Button disabled = {formState.disableReset} onClick={resetForm}>Reset <RiDeleteBin5Line/></Button>
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:191:hardcoded number:                        <Col md={!isEmpty(omsConfig) ? 20 : 24}>
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:192:hardcoded string:                        <div className={`card-header text-white ${REPUNCH_ORDER_TYPE.includes(orderPunchingType) ? "bg-repunch" : AAKASH_CRP_ORDER.includes(orderPunchingType) ? "bg-aakash" : "bg-primary"}`}>Address Details</div>
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:194:hardcoded object:                                ref={addressDetailForm}
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:195:hardcoded object:                                fields={getFormFields({ formState, setFormState, stateRef, orderPunchingType })}
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:196:hardcoded object:                                initialValues={{ ...addressDetails, ...formState.updatedFieldValue }}
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:200:hardcoded number:                            <Col md={4}>
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:201:hardcoded number:                                <div className={`card border-0`} style={cardHeaderStyle}>
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:202:hardcoded string:                                <div className={`card-header ${REPUNCH_ORDER_TYPE.includes(orderPunchingType) ? "bg-repunch" : AAKASH_CRP_ORDER.includes(orderPunchingType) ? "bg-aakash" : "bg-primary"} text-white`}>Saved Address(s)</div>
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:204:hardcoded object:                                        selectSavedAddress={selectSavedAddress}
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:205:hardcoded object:                                        updateSavedAddressCount={setSavedAddressCount}
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:208:hardcoded string:                                {(savedAddressCount && savedAddressCount != 0) ? <p style={{ position: 'relative', left: '5%' }}>{`${savedAddressCount || 0} saved address`}</p> : <></>}
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:213:hardcoded object:                            ref = {directSales}
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:214:hardcoded object:                            identifier = {identifier}
+microservices-middleware/client/src/modules/address/components/beta/AddressPage.jsx:219:hardcoded object:            {formState.showBackwardModel ? <BackwardConfirmModal formState ={formState} setFormState = {setFormState} onClickPrevBtn = { onClickPrevBtn } /> : <></>}
+microservices-middleware/client/src/modules/address/components/beta/apis.js:1:hardcoded object:import { get } from "lodash";
+microservices-middleware/client/src/modules/address/components/beta/apis.js:3:hardcoded file path:import CallApi from "api/callApi";
+microservices-middleware/client/src/modules/address/components/beta/apis.js:5:hardcoded variable:const handleZipCodeBlurEvent = async (event, setFormState, stateRef) => {
+microservices-middleware/client/src/modules/address/components/beta/apis.js:6:hardcoded number:    if(event.target.value.length === 0) {
+microservices-middleware/client/src/modules/address/components/beta/apis.js:9:hardcoded variable:    const pincode = event.target.value;
+microservices-middleware/client/src/modules/address/components/beta/apis.js:10:hardcoded variable:    const payload = {
+microservices-middleware/client/src/modules/address/components/beta/apis.js:14:hardcoded string:        type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:21:hardcoded string:        type: 'isValidPincode',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:25:hardcoded string:        type: 'zipcode',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:29:hardcoded string:        url: '/api/address/getPincodeInfo',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:30:hardcoded string:        method: 'POST',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:33:hardcoded string:        const data = get(response, 'data');
+microservices-middleware/client/src/modules/address/components/beta/apis.js:34:hardcoded string:        const { city = "", state = "", localOffices, country = "" } = data;
+microservices-middleware/client/src/modules/address/components/beta/apis.js:37:hardcoded string:                type: 'cityList',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:38:hardcoded object:                value: city.map(res => ({ label: res, value: res }))
+microservices-middleware/client/src/modules/address/components/beta/apis.js:42:hardcoded string:                type: 'cityList',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:49:hardcoded variable:        const localOfficesList = localOffices.map(ele => ({
+microservices-middleware/client/src/modules/address/components/beta/apis.js:54:hardcoded string:            label: "Other",
+microservices-middleware/client/src/modules/address/components/beta/apis.js:55:hardcoded string:            value: "Other"
+microservices-middleware/client/src/modules/address/components/beta/apis.js:58:hardcoded string:            type: 'full_address',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:60:hardcoded number:                city: Array.isArray(city) ? city[0] : city,
+microservices-middleware/client/src/modules/address/components/beta/apis.js:61:hardcoded string:                state: state || "",
+microservices-middleware/client/src/modules/address/components/beta/apis.js:66:hardcoded string:            type: 'postalAddress',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:67:hardcoded string:            value: ""
+microservices-middleware/client/src/modules/address/components/beta/apis.js:70:hardcoded string:            type: 'localOffices',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:74:hardcoded string:            type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:83:hardcoded string:            type: 'full_address',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:85:hardcoded string:                city: "",
+microservices-middleware/client/src/modules/address/components/beta/apis.js:86:hardcoded string:                state: "",
+microservices-middleware/client/src/modules/address/components/beta/apis.js:87:hardcoded string:                postalAddress: ""
+microservices-middleware/client/src/modules/address/components/beta/apis.js:91:hardcoded string:            type: 'isValidPincode',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:95:hardcoded string:            type: 'localOffices',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:96:hardcoded array:            value: []
+microservices-middleware/client/src/modules/address/components/beta/apis.js:99:hardcoded string:            type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:102:hardcoded string:                error: error.hasOwnProperty("city") ? null : error
+microservices-middleware/client/src/modules/address/components/beta/apis.js:108:hardcoded variable:const getStates = async (country, setFormState) => {
+microservices-middleware/client/src/modules/address/components/beta/apis.js:110:hardcoded string:        type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:117:hardcoded object:        url: `/api/address/getStateList?country=${country}`,
+microservices-middleware/client/src/modules/address/components/beta/apis.js:118:hardcoded string:        method: "GET"
+microservices-middleware/client/src/modules/address/components/beta/apis.js:120:hardcoded object:        const { data } = res;
+microservices-middleware/client/src/modules/address/components/beta/apis.js:122:hardcoded string:            type: 'stateList',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:126:hardcoded string:            type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:134:hardcoded string:            type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:143:hardcoded variable:const getDistrictList = async (state, setFormState) => {
+microservices-middleware/client/src/modules/address/components/beta/apis.js:145:hardcoded string:        type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:152:hardcoded object:        url: `/api/address/getDistrictList?state=${state}`,
+microservices-middleware/client/src/modules/address/components/beta/apis.js:153:hardcoded string:        method: 'GET'
+microservices-middleware/client/src/modules/address/components/beta/apis.js:155:hardcoded string:        const data = get(response, 'data');
+microservices-middleware/client/src/modules/address/components/beta/apis.js:157:hardcoded string:            type: 'cityList',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:161:hardcoded string:            type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:169:hardcoded string:            type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:178:hardcoded variable:const getPincode = async (city, state, setFormState) => {
+microservices-middleware/client/src/modules/address/components/beta/apis.js:180:hardcoded string:        type: "loading_&_error",
+microservices-middleware/client/src/modules/address/components/beta/apis.js:187:hardcoded object:        url: `/api/address/getPincode?state=${state}&district=${city}`,
+microservices-middleware/client/src/modules/address/components/beta/apis.js:188:hardcoded string:        method: 'GET'
+microservices-middleware/client/src/modules/address/components/beta/apis.js:190:hardcoded string:        const {pincode = "", localOffices = []} = get(response, 'data');
+microservices-middleware/client/src/modules/address/components/beta/apis.js:191:hardcoded variable:        const localOfficesList = localOffices.map(ele => ({
+microservices-middleware/client/src/modules/address/components/beta/apis.js:196:hardcoded string:            label: "Other",
+microservices-middleware/client/src/modules/address/components/beta/apis.js:197:hardcoded string:            value: "Other"
+microservices-middleware/client/src/modules/address/components/beta/apis.js:200:hardcoded string:            type: 'zipcode',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:204:hardcoded string:            type: "localOffices",
+microservices-middleware/client/src/modules/address/components/beta/apis.js:208:hardcoded string:            type: "postalAddress",
+microservices-middleware/client/src/modules/address/components/beta/apis.js:209:hardcoded string:            value: ""
+microservices-middleware/client/src/modules/address/components/beta/apis.js:212:hardcoded string:            type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:219:hardcoded string:            type: 'isValidPincode',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:224:hardcoded string:            type: "loading_&_error",
+microservices-middleware/client/src/modules/address/components/beta/apis.js:233:hardcoded variable:const saveAddress = (props) => {
+microservices-middleware/client/src/modules/address/components/beta/apis.js:234:hardcoded object:    const {identifier, address, attachments, isAddressModified, setFormState, dispatchAddressSave, navigateToScreen} = props;
+microservices-middleware/client/src/modules/address/components/beta/apis.js:236:hardcoded string:        type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:243:hardcoded string:        url: '/api/address/saveAddressDetails',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:244:hardcoded string:        method: 'POST',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:253:hardcoded string:        navigateToScreen('/payment')
+microservices-middleware/client/src/modules/address/components/beta/apis.js:255:hardcoded string:            type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:263:hardcoded string:            type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:272:hardcoded variable:const clearSelectedProducts = async (identifier, resetProductPage, setFormState) => {
+microservices-middleware/client/src/modules/address/components/beta/apis.js:274:hardcoded string:        type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:281:hardcoded string:        url: '/api/product/clearSelectedProducts',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:282:hardcoded string:        method: 'PATCH',
+microservices-middleware/client/src/modules/address/components/beta/apis.js:283:hardcoded object:        body: {identifier}
+microservices-middleware/client/src/modules/address/components/beta/apis.js:288:hardcoded string:            type: 'loading_&_error',
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:1:hardcoded string:import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:2:hardcoded object:import { Card, Col, Row } from "antd";
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:4:hardcoded variable:const StyledCard = styled(Card)`
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:5:hardcoded number:    margin: 10px;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:6:hardcoded number:    border: 0;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:7:hardcoded number:    height: 425px;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:9:hardcoded number:    padding: 0px;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:12:hardcoded variable:const StyledHeader = styled.div`
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:13:hardcoded number:    background-color: #813588;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:15:hardcoded number:    font-size: 18px;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:19:hardcoded number:    border-radius: 5px 5px 0px 0px;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:22:hardcoded variable:const Button = styled.button`
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:25:hardcoded number:    gap: .5rem;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:26:hardcoded string:    background-color: ${props => props.disabled ? "gray" : "blue"};
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:28:hardcoded number:    border: 0;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:29:hardcoded number:    border-radius: 5px;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:30:hardcoded number:    padding: 5px 15px;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:31:hardcoded number:    left: .5rem;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:33:hardcoded number:    margin: 5px;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:34:hardcoded number:    font-size: 18px;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:35:hardcoded string:    cursor: ${props => props.disabled ? "not-allowed" : "pointer"};
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:36:hardcoded number:    transition: all 0.3s ease-in-out;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:38:hardcoded string:        background-color: ${props => props.disabled ? "gray" : "#00BFFF"};
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:40:hardcoded number:        transition: all 0.3s ease-in-out;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:44:hardcoded variable:const ButtonContainer = styled.div`
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:48:hardcoded number:    margin-top: 10px;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:51:hardcoded number:const WarningMessage = styled.h5`
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:53:hardcoded number:    margin-bottom: 20px;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:56:hardcoded number:const InfoMessage = styled.h5`
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:57:hardcoded number:    color: #9900ff;
+microservices-middleware/client/src/modules/address/components/beta/Styles.js:58:hardcoded number:    margin: 20px 0px;

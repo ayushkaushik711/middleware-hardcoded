@@ -1,0 +1,74 @@
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:1:hardcoded file path:const request = require("request-promise");
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:2:hardcoded object:const { find, get } = require('lodash');
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:3:hardcoded string:const { OrderPunchingConfig } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:4:hardcoded object:const { BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:6:hardcoded variable:const getCohortId = async (grade, board) => {
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:8:hardcoded string:        const { configs } = await OrderPunchingConfig.findOne({ formattedModuleName: "COHORT_ID_CONFIG" })
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:9:hardcoded object:        const { cohortIds } = configs || {}
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:10:hardcoded object:        const { cohort_id } = find(cohortIds, { grade: grade, board: board }) || {};
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:13:hardcoded string:        throw new Error("Something went wrong. Please try again later")
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:17:hardcoded variable:const callNucleusApi = async (cohortId, courseTag) => {
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:18:hardcoded number:    const uri = `${process.env.TLLMS2_URL}/batches?cohort_id=${cohortId}&course_tag=${courseTag}`
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:19:hardcoded variable:    const options = {
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:20:hardcoded string:        method: 'GET',
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:24:hardcoded string:            "Content-Type": "application/json",
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:25:hardcoded string:            "CLIENT_ID": process.env.TLLMS_CLIENT_ID,
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:26:hardcoded string:            "CLIENT_SECRET": process.env.TLLMS_CLIENT_SECRET
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:31:hardcoded variable:        //const response = await axios(options)
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:39:hardcoded variable:const getActiveBatches = async (req, res) => {
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:41:hardcoded string:    let { initialClass, board, state = "other", courseTag } = req.body
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:42:hardcoded string:    if (!initialClass || !board) throw new BadRequestError("Missing Parameter");
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:44:hardcoded string:    board = ["4", "5"].includes(initialClass) ? null : state
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:47:hardcoded variable:        const cohortId = await getCohortId(initialClass, board)
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:48:hardcoded variable:        const batchesList = await callNucleusApi(cohortId, courseTag)
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:49:hardcoded array:        const { batches = [], meta = {} } = batchesList || {}
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:50:hardcoded string:        const adtnlClsDetails = get(batchesList, 'meta.additional_classes_info', {});
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:51:hardcoded array:        const { cohort_tutor_languages = [] } = meta || {}
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:52:hardcoded number:        const { tutor_languages } = cohort_tutor_languages[0] || {}
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:55:hardcoded number:            return res.status(200).json({batches, languages: tutor_languages, adtnlClsDetails, cohortId})
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:58:hardcoded string:            throw new Error("No active batches are available.Please mail support-optech@byjus.com")
+microservices-middleware/server/src/productmanagement/neoLite/controller.js:62:hardcoded number:        return res.status(500).json({ message: error.message })
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:1:hardcoded object:const { getSalesSku, getPostgresTabletSku } = require('../../productmanagement/dto')
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:2:hardcoded object:const { getUpdatedCourseSku } = require('../byjusneo/assembler')
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:4:hardcoded variable:const getCourseSku = async (student) => {
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:5:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:6:hardcoded array:    let tabletArray = [];
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:7:hardcoded string:    let { initialClass, finalClass = '', state, validity, tablet } = student
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:8:hardcoded variable:    let grade = parseInt(initialClass)
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:12:hardcoded variable:        let query = {
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:15:hardcoded string:            board: parseInt(initialClass) > 5 ? state : ''
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:18:hardcoded string:        const neoLiteSku = await getSalesSku({...query, subType: "live", category: "neo_lite"})
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:19:hardcoded string:        const bdlcSku = await getSalesSku({...query, subType: "streaming", category: "byjus_digital_learning"})
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:25:hardcoded object:        const tabletSku = await getPostgresTabletSku({tabletId: tablet})
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:29:hardcoded variable:    const courseSku = await getUpdatedCourseSku(skuArray, initialClass)
+microservices-middleware/server/src/productmanagement/neoLite/dto.js:31:hardcoded object:    return { courseSku, tabletArray } 
+microservices-middleware/server/src/productmanagement/neoLite/routes.js:1:hardcoded file path:const Router = require('express-promise-router');
+microservices-middleware/server/src/productmanagement/neoLite/routes.js:2:hardcoded object:const router = Router({ mergeParams: true });
+microservices-middleware/server/src/productmanagement/neoLite/routes.js:4:hardcoded file path:const controller = require('./controller');
+microservices-middleware/server/src/productmanagement/neoLite/routes.js:5:hardcoded file path:const explorer = require('./explorer')
+microservices-middleware/server/src/productmanagement/neoLite/routes.js:6:hardcoded object:const { storeCalculatedPriceMw } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:1:hardcoded object:const { get, isEmpty, isArray } = require('lodash');
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:3:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Home Tuition Product Explorer');
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:4:hardcoded object:const { BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:5:hardcoded object:const { getCourseSku } = require('./dto')
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:6:hardcoded object:const { getTotalSkuAndPrice } = require('../../productmanagement/service/totalSkusPrice')
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:7:hardcoded object:const { getUpdatedStudentDetails } = require('../byjusneo/assembler')
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:8:hardcoded object:const { getUpdatedPrice } = require('../byjusneo/services/skuAndPricing')
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:11:hardcoded variable:const getSingleProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:12:hardcoded string:    logger.info({ method: 'getSingleProduct' }, { message: "Fetching Neo Lite Single Product" });
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:13:hardcoded string:    let { paymentType = 'EMI', productType, productCombination, student, identifier } = req.body;
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:17:hardcoded number:        student = isArray(student) ? student[0] : student
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:19:hardcoded object:        const { courseSku, tabletArray } = await getCourseSku(student) 
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:20:hardcoded object:        const { formattedProducts, totalPrice } = getTotalSkuAndPrice({ courseSku }) 
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:25:hardcoded object:        const details = { req, totalPrice}
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:26:hardcoded object:        const { maxPrice, minPrice, discountedPrice, voucher, areBonusPointsUsed, bonusPointsDiscount } = await getUpdatedPrice(details)
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:35:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:47:hardcoded variable:const getComboProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:48:hardcoded string:    logger.info({ method: 'getSingleProduct' }, { message: "Fetching Neo Lite Single Product" });
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:50:hardcoded string:    let { paymentType = 'EMI', productType, productCombination, student, identifier } = req.body;
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:54:hardcoded number:        student = isArray(student) ? student[0] : student
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:56:hardcoded object:        const { courseSku, tabletArray } = await getCourseSku(student)
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:57:hardcoded object:        const { formattedProducts, totalPrice } = getTotalSkuAndPrice({ courseSku }) 
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:62:hardcoded object:        const details = { req, totalPrice}
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:63:hardcoded object:        const { maxPrice, minPrice, discountedPrice, voucher, areBonusPointsUsed, bonusPointsDiscount } = await getUpdatedPrice(details)
+microservices-middleware/server/src/productmanagement/neoLite/explorer.js:72:hardcoded array:            students: [student],

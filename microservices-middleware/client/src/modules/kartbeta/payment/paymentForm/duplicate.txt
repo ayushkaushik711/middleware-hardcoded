@@ -1,0 +1,72 @@
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:1:hardcoded object:import React, { useState, useEffect } from 'react';
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:2:hardcoded object:import { get } from 'lodash';
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:3:hardcoded object:import { Button, Input, Alert, Row, Col, ModalBody } from 'reactstrap';
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:4:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:5:hardcoded number:import uuidv4 from 'uuid/v4'
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:6:hardcoded object:import { Modal, Select } from 'antd';
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:8:hardcoded object:import { PaymentLabel } from './Styles';
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:10:hardcoded object:const GatewayPaymentForm = ({ provider }) => {
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:11:hardcoded array:    const [error, setError] = useState(undefined);
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:12:hardcoded array:    const [formValues, setFormValues] = useState({});
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:14:hardcoded variable:    const onChange = (e) => {
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:15:hardcoded object:        const { name, value } = e.target;
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:18:hardcoded array:            [name]: value
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:22:hardcoded variable:    const getSelectValue = (value, name) => {
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:25:hardcoded array:            [name]: value
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:31:hardcoded string:            {error && <Alert color="danger">{error}</Alert>}
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:33:hardcoded string:                <Col md="6" sm="12">
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:35:hardcoded string:                    <Input type="text" name="customerName" onChange={e => onChange(e)} />
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:37:hardcoded string:                <Col md="6" sm="12">
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:39:hardcoded string:                    <Input type="text" name="email" onChange={e => onChange(e)} />
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:44:hardcoded string:                <Col md="6" sm="12">
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:46:hardcoded string:                    <Input type='number' name="mobile" onChange={e => onChange(e)} />
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:48:hardcoded string:                <Col md="6" sm="12">
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:50:hardcoded string:                    <Input type="text" name="amount" onChange={e => onChange(e)} />
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:54:hardcoded string:            {["RAZORPAY", "PAYU", "GPAY", "SHOPSE", "PAYTM"].includes(provider) &&
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:56:hardcoded string:                    <Col md="6" sm="12">
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:57:hardcoded string:                        <PaymentLabel htmlFor="salesEmail">Sales Email</PaymentLabel>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:58:hardcoded string:                        <Select showSearch name="salesEmail" id="salesEmail" onChange={(value) => getSelectValue(value, "salesEmail")} >
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:59:hardcoded string:                            <Select.Option value="" key={uuidv4()}>Select Sales Email</Select.Option>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:61:hardcoded string:                        <span className="text-info" style={{ fontSize: "0.75rem", fontWeight: 400 }}>*Selected sales person will only be able to punch order with this reference</span>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:67:hardcoded string:            <Row style={{ float: "right" }}>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/GatewayPaymentForm.js:68:hardcoded string:                <Button className="m-2" color="success">Create</Button>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:1:hardcoded object:import React, { useState } from 'react';
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:2:hardcoded object:import { flattenDeep, get, startCase, toUpper } from 'lodash';
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:3:hardcoded object:import { Form, FormGroup, Label, Input, CardBody, Alert, Row, Col, Card, Button, CardHeader, CardTitle, CardText } from 'reactstrap';
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:4:hardcoded object:import { useSelector } from 'react-redux';
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:6:hardcoded file path:import GatewayPaymentForm from './GatewayPaymentForm';
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:7:hardcoded object:import { AlertCardHeader, SpanCardText, AlertCard } from './Styles';
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:9:hardcoded object:const CreatePaymentForm = ({ }) => {
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:10:hardcoded array:    const [formValues, setFormValues] = useState({});
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:11:hardcoded array:    const [error, setError] = useState(null);
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:13:hardcoded variable:    const onChange = (e) => {
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:14:hardcoded object:        const { name, value } = e.target;
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:17:hardcoded array:            [name]: value
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:22:hardcoded variable:    const campaignBasedPaymentOptions = () => {
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:24:hardcoded string:            <Input name="provider" type="select" onChange={e => onChange(e)}>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:26:hardcoded string:                <option value="RAZORPAY">Payment Gateway(NetBanking/Card/EMI)</option>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:27:hardcoded string:                <option value="PAYTM">PayTm(Wallet/UPI)</option>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:28:hardcoded string:                <option value="SHOPSE">Shopse</option>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:29:hardcoded string:                <option value="GPAY">GPay</option>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:30:hardcoded string:                <option value="CASHFREE">Bank Transfer(Online Banking)</option>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:31:hardcoded string:                <option value="CCR">CCR</option>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:32:hardcoded string:                <option value="ICR">ICR</option>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:33:hardcoded string:                <option value="SCR">SCR</option>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:40:hardcoded string:            {error && <Alert color="danger">{error}</Alert>}
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:54:hardcoded string:                            <Col md="4" sm="12"><Label >Select Payment Method:</Label></Col>
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:55:hardcoded string:                            <Col md="8" sm="12">
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:56:hardcoded object:                                {campaignBasedPaymentOptions()}
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:60:hardcoded string:                        {["PAYU", "RAZORPAY", "GPAY", "SHOPSE", "PAYTM"].includes(get(formValues, "provider")) && <GatewayPaymentForm
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/CreatePaymentForm.js:61:hardcoded string:                            provider={get(formValues, "provider", "")}
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/Styles.js:1:hardcoded string:import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/Styles.js:2:hardcoded object:import { Card, CardBody, Button, Col, Table, Row, Input, Alert, Collapse, CardHeader, Badge } from 'reactstrap';
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/Styles.js:4:hardcoded variable:export const AlertCardHeader = styled(CardHeader)`
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/Styles.js:5:hardcoded number:    background: #F5F3FF;
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/Styles.js:6:hardcoded number:    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/Styles.js:7:hardcoded number:    border-radius: 4px 4px 0px 0px;
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/Styles.js:10:hardcoded variable:export const SpanCardText = styled.span`
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/Styles.js:14:hardcoded variable:export const AlertCard = styled(Card)`
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/Styles.js:15:hardcoded number:  margin-bottom:30px;
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/Styles.js:18:hardcoded variable:export const PaymentLabel = styled.label`
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/Styles.js:20:hardcoded string:        content: "*";
+microservices-middleware/client/src/modules/kartbeta/payment/paymentForm/Styles.js:22:hardcoded number:        margin-left: 5px;

@@ -1,0 +1,82 @@
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:1:hardcoded object:import { cloneDeep, get, isEmpty, find, snakeCase } from 'lodash';
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:3:hardcoded variable:export const getGradeOptions = (details) => {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:4:hardcoded object:    let { isDevEnv, selectedBoardConfig, existingProfiles, selectedUserProfile, selectedBoard, selectedStateBoard } = details
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:5:hardcoded array:    const { classes = [] } = selectedBoardConfig;
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:7:hardcoded object:    let selectedUserProfileObject = find(existingProfiles , {value:  selectedUserProfile}) 
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:8:hardcoded array:    let { tlpDetails= [] } = selectedUserProfileObject || {}
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:10:hardcoded string:    let classOptions = cloneDeep(classes.map((opt) => get(opt, 'value')));
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:11:hardcoded number:    tlpDetails = tlpDetails.filter(ele => parseInt(ele.BTLPActiveGrade) >= 4 && parseInt(ele.BTLPActiveGrade) <= 10)
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:13:hardcoded string:    if (selectedUserProfile !== "newProfile" && tlpDetails.length > 0) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:14:hardcoded array:        let gradeListFromExistingProfile = []
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:15:hardcoded string:        if (selectedBoard === "STATE") {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:19:hardcoded number:        for(let i=0; i < tlpDetails.length; i++) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:20:hardcoded string:            if (snakeCase(get(tlpDetails[i], "ActiveBoard")) == snakeCase(selectedBoard) ){
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:21:hardcoded string:                gradeListFromExistingProfile.push(get(tlpDetails[i], "BTLPActiveGrade"))
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:25:hardcoded array:        let updatedClassOptions = []
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:26:hardcoded number:        for(let i=0; i < classOptions.length; i++) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:27:hardcoded array:            if (gradeListFromExistingProfile.includes(classOptions[i].value)){
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:28:hardcoded array:                updatedClassOptions.push(classOptions[i])
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:33:hardcoded number:        classOptions = classOptions.filter(ele => parseInt(ele.value) >= 4 && parseInt(ele.value) <= 10)
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:40:hardcoded variable:export const getBoards = (details) => {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:41:hardcoded object:    const { isDevEnv, selectedCourseConfig, existingProfiles, selectedUserProfile } = details
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:42:hardcoded string:    let boards = get(selectedCourseConfig, 'boards')
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:43:hardcoded variable:    let updatedBoardList = boards
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:45:hardcoded object:    let selectedUserProfileObject = find(existingProfiles , {value:  selectedUserProfile}) 
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:46:hardcoded array:    let { tlpDetails= [] } = selectedUserProfileObject || {}
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:48:hardcoded number:    tlpDetails = tlpDetails.filter(ele => parseInt(ele.BTLPActiveGrade) >= 4 && parseInt(ele.BTLPActiveGrade) <= 10)
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:49:hardcoded string:    if (selectedUserProfile !== "newProfile" && tlpDetails.length > 0 ) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:50:hardcoded array:        let boardListFromExistingProfile = []
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:51:hardcoded number:        for(let i=0; i < tlpDetails.length; i++) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:52:hardcoded string:            if (!["cbse", "icse"].includes(snakeCase(get(tlpDetails[i], "ActiveBoard")))) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:53:hardcoded string:                boardListFromExistingProfile.push("state")
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:55:hardcoded string:                boardListFromExistingProfile.push(snakeCase(get(tlpDetails[i], "ActiveBoard")))
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:63:hardcoded variable:export const filterStateBoards = (details) => {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:64:hardcoded object:    const { isDevEnv, selectedBoardConfig, existingProfiles, selectedUserProfile } = details
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:65:hardcoded array:    let { states = [] } = selectedBoardConfig || {};
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:66:hardcoded string:    let stateOptions = states.filter(ele => ele.value == 'Karnataka')
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:68:hardcoded object:    let selectedUserProfileObject = find(existingProfiles , {value:  selectedUserProfile}) 
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:69:hardcoded array:    let { tlpDetails= [] } = selectedUserProfileObject || {}
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:71:hardcoded number:    tlpDetails = tlpDetails.filter(ele => parseInt(ele.BTLPActiveGrade) >= 4 && parseInt(ele.BTLPActiveGrade) <= 10)
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:73:hardcoded string:    if (selectedUserProfile !== "newProfile" && tlpDetails.length > 0 ) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:74:hardcoded array:        let boardListFromExistingProfile = []
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:75:hardcoded number:        for(let i=0; i < tlpDetails.length; i++) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:76:hardcoded string:            if (!["cbse", "icse"].includes(snakeCase(get(tlpDetails[i], "ActiveBoard")))) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:77:hardcoded string:                boardListFromExistingProfile.push(snakeCase(get(tlpDetails[i], "ActiveBoard")))
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:85:hardcoded variable:export const getSessionOption = (details) => {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:86:hardcoded object:    let { selectedClass } = details
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:87:hardcoded variable:    let sessionValues = [
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:88:hardcoded string:        { label: "3", value: "3" },
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:89:hardcoded string:        { label: "4", value: "4" },
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:90:hardcoded string:        { label: "5", value: "5" },
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:93:hardcoded string:    if(['4','5','6','7'].includes(selectedClass)){
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:94:hardcoded string:        let isSessionList = cloneDeep(sessionValues.map((opt) => get(opt, 'value')));
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:95:hardcoded string:        isSessionList = sessionValues.filter(ele => ['3','4'].includes(ele.value))
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:97:hardcoded string:    } else if(['8', '9', '10'].includes(selectedClass)){
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:98:hardcoded string:        let isSessionList = cloneDeep(sessionValues.map((opt) => get(opt, 'value')));
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:99:hardcoded string:        isSessionList = sessionValues.filter(ele => ['4','5'].includes(ele.value))
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:105:hardcoded array:export const homeTutionValidity = (existingProfiles=[], selectedUserProfile) => {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:106:hardcoded array:    let formattedValidity = []
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:109:hardcoded string:        { label: "Trial Pack", value: "trial_pack" },
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:110:hardcoded string:        { label: 'Quarterly Pack', value: 'quarterly_pack' },
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:111:hardcoded string:        { label: '1 Month Pack', value: '1_month_pack' }
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:117:hardcoded variable:export const validateHomeTuitionBatchAndSessionDetails = (homeTutionBatchCard, productDetails) => {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:118:hardcoded array:    let homeTuitionSessionDetails = [], homeTuitionBatchDetails = [], validatedResponse = { status: true };
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:119:hardcoded object:    const { mentoring, courseInfo } = homeTutionBatchCard
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:121:hardcoded number:    if (productDetails && mentoring.length > 0 && !isEmpty(courseInfo)) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:126:hardcoded number:    } else if (homeTuitionSessionDetails.length === 0 || isEmpty(courseInfo)) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:136:hardcoded variable:export const getProfileOptions = (existingProfiles) => {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:138:hardcoded number:    // if more than 3 profiles are coming , no need to show new Profile
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:139:hardcoded number:    if (existingProfiles && existingProfiles.length < 3) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:140:hardcoded variable:        let newExistingProfile = existingProfiles;
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:141:hardcoded string:        newExistingProfile = newExistingProfile.find(profile => profile.value === "newProfile");
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:143:hardcoded string:            existingProfiles.push({ "label": "New Profile", value: "newProfile" })
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:149:hardcoded variable:export const isUpgradedOrder = (details) => {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:150:hardcoded object:    let { selectedUserProfile, existingProfiles, selectedBoard, selectedStateBoard, selectedClass } = details
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:152:hardcoded object:    let selectedUserProfileObject = find(existingProfiles , {value:  selectedUserProfile}) 
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:153:hardcoded array:    let { tlpDetails= [] } = selectedUserProfileObject || {}
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:155:hardcoded object:    let response = { isUpgradeOrder: false, upgradeOrderId: null }
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:156:hardcoded string:    if (selectedUserProfile !== "newProfile" && tlpDetails.length > 0 ) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:157:hardcoded number:        for(let i=0; i < tlpDetails.length; i++) {
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:158:hardcoded array:            const { BTLPActiveGrade, ActiveBoard, orderId } = tlpDetails[i];
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:160:hardcoded array:                [snakeCase(selectedBoard), snakeCase(selectedStateBoard)].includes(snakeCase(ActiveBoard))){
+microservices-middleware/client/src/modules/ordertype/hometuition/helper/productHelper.js:161:hardcoded object:                    response = { isUpgradeOrder: true, upgradeOrderId: orderId }

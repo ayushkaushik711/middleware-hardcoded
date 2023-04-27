@@ -1,0 +1,34 @@
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:1:hardcoded object:import { isEmpty, get } from 'lodash';
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:2:hardcoded object:import { getCurrentAcademicYear } from "lib/validityHelper";
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:3:hardcoded object:import { getBatchesEligibility } from '../../../product/utils/ByjusClassesHelper'
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:5:hardcoded number:const { K10_GRADES } = require('../../../product/utils/productConstant')
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:7:hardcoded variable:export const isProficiencyAndFotAvailable = (details) => {
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:8:hardcoded object:    const { state } = details;
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:9:hardcoded variable:    let selectedInitialClass = get(state, `initialClass`);
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:10:hardcoded string:    if(["4", "5", "6", "7", "8", "9", "10"].includes(selectedInitialClass)) {
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:17:hardcoded variable:export const checkBatchesEligibility = (details) => {
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:18:hardcoded string:    const isEligible = getBatchesEligibility(details, "");
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:22:hardcoded variable:export const getUpdatedProductDetails = (details) => {
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:23:hardcoded object:    let { productDetails, neoLiteFormValue, schoolAndProficiencyDetails } = details;
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:28:hardcoded string:      electiveDetails: get(neoLiteFormValue, "formValue.electivesDetails", null),
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:29:hardcoded string:      doubtClassDetails: get(neoLiteFormValue, "formValue.selectedDoubtClass", null),
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:30:hardcoded string:      languageOfInstruction: get(neoLiteFormValue, "formValue.languageOfInstruction", null),
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:31:hardcoded string:      languageOfInstructionId: get(neoLiteFormValue, "formValue.languageOfInstructionId", null),
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:43:hardcoded variable:export const filterInitialClass = (productDetails) => {
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:44:hardcoded object:    const { classes } = productDetails
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:45:hardcoded number:    return classes.filter(name => K10_GRADES.includes(name.value));
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:48:hardcoded variable:export const filterFinalClass = (productDetails) => {
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:49:hardcoded object:    const { classes, selectedClass } = productDetails
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:50:hardcoded number:    return classes.filter(name => parseInt(name.value) <= 10 && parseInt(name.value) > parseInt(selectedClass)  && parseInt(name.value) <= parseInt(selectedClass) + 2);
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:53:hardcoded variable:export const getValidityOptions = () => {
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:54:hardcoded number:    let validityOption = [{ label: getCurrentAcademicYear() + 1, value: getCurrentAcademicYear() + 1 }]
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:58:hardcoded variable:export const getTabletOptions = (details) => {
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:59:hardcoded variable:    let tabletOptions = [
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:60:hardcoded string:        {label: 'BYJU`S LearnStation 10inch Mobile Data Grey Tablet (Rs 10000)', value : 'SBXMGZ'},
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:61:hardcoded string:        {label: 'Refurbished AH Lenovo 8 inch Tablet Wifi (Rs 4000)', value : 'TL8WZZAHRF'},
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:62:hardcoded string:        {label: 'Refurbished AH Lenovo 10 inch Tablet Wifi (Rs 9000)', value : 'TLXWZZAHRF'}]
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:66:hardcoded variable:export const getProfileOptions = (existingProfiles, isPrivilegedUser) => {
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:67:hardcoded number:    if (existingProfiles && existingProfiles.length > 0) {
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:68:hardcoded variable:        let newExistingProfile = existingProfiles;
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:69:hardcoded string:        newExistingProfile = newExistingProfile.find(profile => profile.value === "newProfile");
+microservices-middleware/client/src/modules/ordertype/neolite/helper/productHelper.js:71:hardcoded string:            existingProfiles.push({ "label": "New Profile", value: "newProfile" })

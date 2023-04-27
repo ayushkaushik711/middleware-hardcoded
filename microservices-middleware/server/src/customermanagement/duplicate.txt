@@ -1,0 +1,53 @@
+microservices-middleware/server/src/customermanagement/customerController.js:1:hardcoded object:const { isEmpty } = require('lodash');
+microservices-middleware/server/src/customermanagement/customerController.js:2:hardcoded object:const { isDevEnv } = require('../../lib/featureHelper');
+microservices-middleware/server/src/customermanagement/customerController.js:4:hardcoded file path:const logger = require('../../lib/bunyan-logger')('Customer Controller');
+microservices-middleware/server/src/customermanagement/customerController.js:5:hardcoded file path:const ByjusConfig = require('../../models/ByjusConfig')
+microservices-middleware/server/src/customermanagement/customerController.js:7:hardcoded object:const { callNucleusApi, callCxmsApi } = require('../../utility/externalApiUtility');
+microservices-middleware/server/src/customermanagement/customerController.js:9:hardcoded variable:const validatePan = async (req, res) => {
+microservices-middleware/server/src/customermanagement/customerController.js:10:hardcoded object:    const { pan, parentName } = req.body;
+microservices-middleware/server/src/customermanagement/customerController.js:12:hardcoded variable:        const payload = {
+microservices-middleware/server/src/customermanagement/customerController.js:16:hardcoded string:        const response = await callNucleusApi('customer/validatePan', 'POST', payload, true);
+microservices-middleware/server/src/customermanagement/customerController.js:17:hardcoded number:        return res.status(200).json(response);
+microservices-middleware/server/src/customermanagement/customerController.js:19:hardcoded string:        logger.error({ method: 'validatePan', err })
+microservices-middleware/server/src/customermanagement/customerController.js:20:hardcoded string:        return res.status(500).json({ message: err.message || 'Something went wrong. Please try again later' })
+microservices-middleware/server/src/customermanagement/customerController.js:24:hardcoded variable:const getDraftCustomerId = async (customerDetails, leadDetails, forceCreate) => {
+microservices-middleware/server/src/customermanagement/customerController.js:25:hardcoded object:    let { parentName, email, parentMobileNo } = customerDetails
+microservices-middleware/server/src/customermanagement/customerController.js:27:hardcoded string:        const { studentEmail = "", studentName = "", studentMobile = "", accountNumber = "", prospectId = "" } = leadDetails;
+microservices-middleware/server/src/customermanagement/customerController.js:28:hardcoded variable:        const payload = {
+microservices-middleware/server/src/customermanagement/customerController.js:41:hardcoded string:            "source": "kart",
+microservices-middleware/server/src/customermanagement/customerController.js:44:hardcoded string:        logger.info({ method: 'getDraftCustomerId', payload })
+microservices-middleware/server/src/customermanagement/customerController.js:45:hardcoded string:        uri = 'customer/add'
+microservices-middleware/server/src/customermanagement/customerController.js:46:hardcoded string:        user = await callCxmsApi(uri, "POST", payload);
+microservices-middleware/server/src/customermanagement/customerController.js:47:hardcoded string:        logger.info({ method: 'getDraftCustomerIdResponse', user })
+microservices-middleware/server/src/customermanagement/customerController.js:48:hardcoded object:        const { customerId, canCreateCustomer, customerType } = user
+microservices-middleware/server/src/customermanagement/customerController.js:50:hardcoded object:            return { customerId, canCreateCustomer, customerType };
+microservices-middleware/server/src/customermanagement/customerController.js:52:hardcoded string:            throw new Error("Error while fetching customerId");
+microservices-middleware/server/src/customermanagement/customerController.js:56:hardcoded object:        throw new Error(`Error in customer creation :  ${error} \n Please try again or contact cxms support.`);
+microservices-middleware/server/src/customermanagement/customerController.js:60:hardcoded array:const getCustomerId = async (draftOrderId, paymentType, nonEmiDetails = [], paymentDetails) => {
+microservices-middleware/server/src/customermanagement/customerController.js:61:hardcoded string:    const subscriptionDetails = nonEmiDetails.filter(ele => ele.provider == 'SUBSCRIPTION')
+microservices-middleware/server/src/customermanagement/customerController.js:62:hardcoded string:    const { referenceId = "" } = subscriptionDetails[0] || {};
+microservices-middleware/server/src/customermanagement/customerController.js:63:hardcoded variable:    const paymentTypeValue = paymentType.toLowerCase();
+microservices-middleware/server/src/customermanagement/customerController.js:65:hardcoded variable:        const payload = {
+microservices-middleware/server/src/customermanagement/customerController.js:67:hardcoded string:            "source": "kart",
+microservices-middleware/server/src/customermanagement/customerController.js:68:hardcoded string:            "referenceId": referenceId,
+microservices-middleware/server/src/customermanagement/customerController.js:69:hardcoded string:            "paymentType": paymentTypeValue,
+microservices-middleware/server/src/customermanagement/customerController.js:70:hardcoded string:            "paymentDetails": paymentDetails
+microservices-middleware/server/src/customermanagement/customerController.js:74:hardcoded string:        logger.info({ method: 'getCustomerId', payload })
+microservices-middleware/server/src/customermanagement/customerController.js:75:hardcoded string:        uri = 'customer/createByDraftOrder'
+microservices-middleware/server/src/customermanagement/customerController.js:76:hardcoded string:        user = await callCxmsApi(uri, "POST", payload);
+microservices-middleware/server/src/customermanagement/customerController.js:77:hardcoded string:        logger.info({ method: 'getCustomerIdResponse', user })
+microservices-middleware/server/src/customermanagement/customerController.js:78:hardcoded object:        const { customerId, isExisting } = user
+microservices-middleware/server/src/customermanagement/customerController.js:86:hardcoded object:        throw new Error(`Error in customer creation :  ${error} \n Please try again or contact cxms support.`);
+microservices-middleware/server/src/customermanagement/customerController.js:90:hardcoded variable:const getCustomerBooksConfig = async (req, res) => {
+microservices-middleware/server/src/customermanagement/customerController.js:91:hardcoded object:    const { formattedModuleName } = req.body
+microservices-middleware/server/src/customermanagement/customerController.js:93:hardcoded object:        const configData = await ByjusConfig.findOne({ formattedModuleName: formattedModuleName });
+microservices-middleware/server/src/customermanagement/customerController.js:94:hardcoded array:        const { configs } = configData || []
+microservices-middleware/server/src/customermanagement/customerController.js:95:hardcoded string:        if (isEmpty(configs)) throw new Error("No records found");
+microservices-middleware/server/src/customermanagement/customerController.js:96:hardcoded number:        return res.status(200).json({ configs });
+microservices-middleware/server/src/customermanagement/customerController.js:98:hardcoded object:        throw new Error(`Error in fetching data :  ${error} \n Please try again with proper filters`);
+microservices-middleware/server/src/customermanagement/customerRoutes.js:1:hardcoded file path:const Router = require('express-promise-router');
+microservices-middleware/server/src/customermanagement/customerRoutes.js:2:hardcoded file path:const controller = require('./customerController');
+microservices-middleware/server/src/customermanagement/customerRoutes.js:4:hardcoded object:const router = Router({ mergeParams: true });
+microservices-middleware/server/src/customermanagement/customerRoutes.js:7:hardcoded string:    const baseRoute = '/customer';
+microservices-middleware/server/src/customermanagement/customerRoutes.js:9:hardcoded object:    router.route(`${baseRoute}/validatePan`)
+microservices-middleware/server/src/customermanagement/customerRoutes.js:15:hardcoded object:    router.route(`${baseRoute}/getCustomerOptedForBooks`)

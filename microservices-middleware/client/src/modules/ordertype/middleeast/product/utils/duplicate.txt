@@ -1,0 +1,10 @@
+microservices-middleware/client/src/modules/ordertype/middleeast/product/utils/config.js:1:hardcoded variable:export const allowedTablets = [
+microservices-middleware/client/src/modules/ordertype/middleeast/product/utils/config.js:2:hardcoded string:    "Lenovo 8 inch Tablet (Mobile Data)",
+microservices-middleware/client/src/modules/ordertype/middleeast/product/utils/config.js:3:hardcoded string:    "Samsung 10 inch Tablet (Mobile Data)",
+microservices-middleware/client/src/modules/ordertype/middleeast/product/utils/config.js:4:hardcoded string:    "Lenovo 10.1 inch Tablet Data - ME",
+microservices-middleware/client/src/modules/ordertype/middleeast/product/utils/config.js:5:hardcoded string:    "Ackees 10 inch Mobile Tablet"
+microservices-middleware/client/src/modules/ordertype/middleeast/product/utils/config.js:8:hardcoded variable:export const allowedPrograms = [
+microservices-middleware/client/src/modules/ordertype/middleeast/product/utils/config.js:9:hardcoded string:    "byjus_tlp",
+microservices-middleware/client/src/modules/ordertype/middleeast/product/utils/config.js:10:hardcoded string:    "byjus_classes",
+microservices-middleware/client/src/modules/ordertype/middleeast/product/utils/config.js:11:hardcoded string:    "tablet",
+microservices-middleware/client/src/modules/ordertype/middleeast/product/utils/config.js:12:hardcoded string:    "byjus_aakash_neo"

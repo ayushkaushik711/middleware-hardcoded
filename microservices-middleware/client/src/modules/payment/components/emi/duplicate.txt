@@ -1,0 +1,215 @@
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:1:hardcoded file path:import React from 'react';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:3:hardcoded object:import { isEqual, isEmpty, get } from 'lodash';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:4:hardcoded number:import uuidv4 from 'uuid/v4';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:6:hardcoded file path:import EmiPaymentCard from './EmiPaymentCard';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:13:hardcoded array:      emiPayments: [],
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:14:hardcoded array:      initialPayments: [],
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:15:hardcoded object:      selectedEmiPayment: {},
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:16:hardcoded array:      emiForms: [],
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:17:hardcoded object:      paymentAssociatedWithLead: {}// Payments created against the lead in home page 
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:22:hardcoded object:    const { emiPayments, initialPayments } = this.state;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:23:hardcoded number:    if (emiPayments.length > 0) {
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:25:hardcoded array:        emiForms: []
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:31:hardcoded object:    const { emiForms, selectedEmiPayment, paymentAssociatedWithLead = {} } = this.state;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:32:hardcoded string:    const maxAllowedCount = get(selectedEmiPayment, "maxAllowedCount");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:33:hardcoded string:    const emiPaymentDetails = get(paymentAssociatedWithLead, "loans", []); // loan created through Kart
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:36:hardcoded number:      const forms = initialPayments.map(ele => ({ initialValue: ele, identifier: uuidv4() }));
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:38:hardcoded array:        emiForms: [...emiForms, ...forms]
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:40:hardcoded number:    } else if (emiForms.length === 0 || (!isEmpty(selectedEmiPayment) && emiForms.length < maxAllowedCount)) {
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:41:hardcoded string:      const provider = get(selectedEmiPayment, "formattedName");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:42:hardcoded object:      const initialValue = provider ? { provider } : {};
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:44:hardcoded number:        emiForms: [...emiForms, { initialValue, identifier: uuidv4() }]
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:50:hardcoded string:        ele["identifier"] = uuidv4()
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:51:hardcoded string:        ele["initialValue"] = {}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:58:hardcoded object:    const { emiForms, paymentAssociatedWithLead } = this.state;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:59:hardcoded string:    let emiPaymentDetails = get(paymentAssociatedWithLead, "loans", []);
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:61:hardcoded number:    if (emiForms.length > 1 && isEmpty(emiPaymentDetails)) {
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:71:hardcoded object:        paymentAssociatedWithLead: { loans: emiPaymentDetails }
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:77:hardcoded variable:    const result = {
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:78:hardcoded array:      emiDetails: [],
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:81:hardcoded object:    const refs = this.refs || {};
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:83:hardcoded array:      const emiDetails = await refs[ref].validateFormAndGetValues();
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:95:hardcoded object:    const { onEmiProviderSelection } = this.props;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:96:hardcoded array:    const initialPayments = [{ provider: selectedEmiPayment.formattedName }]
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:99:hardcoded array:      emiForms: [],
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:105:hardcoded object:    const { emiForms, emiPayments, paymentAssociatedWithLead } = this.state;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:106:hardcoded object:    const { getAllFilledPayment } = this.props;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:107:hardcoded variable:    let initialValue = formItem.initialValue;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:108:hardcoded number:    let seqNo = index + 1
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:109:hardcoded variable:    let totalCount = emiForms.length
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:110:hardcoded variable:    const paymentMap = {
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:111:hardcoded string:      byjusdirect: "BYJUS_DIRECT",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:112:hardcoded string:      avanse: "AVANSE",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:113:hardcoded string:      iifl: "IIFL",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:114:hardcoded string:      rbl: "RBL",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:115:hardcoded string:      byjusassure: "BYJUS_ASSURE",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:116:hardcoded string:      icici: "ICICI",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:117:hardcoded string:      kotak: "KOTAK",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:118:hardcoded string:      abfl: "ABFL",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:119:hardcoded string:      byjussubscribe: "BYJUS_SUBSCRIBE",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:120:hardcoded string:      fullertonv3: "FULLERTON",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:121:hardcoded string:      payu: "PAYU",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:122:hardcoded string:      razorpay: "RAZORPAY",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:123:hardcoded string:      bajaj: "BAJAJ",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:124:hardcoded string:      fintechloans : "PROPELLD",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:125:hardcoded string:      creditsaison : "CREDIT_SAISON",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:126:hardcoded string:      financepeer  : "FINANCE_PEER",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:127:hardcoded string:      BAJAJ_VIA_PAYU: "BAJAJ_VIA_PAYU"
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:129:hardcoded variable:    const isloanCreatedThroughKart = paymentAssociatedWithLead.loans;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:132:hardcoded string:      const provider = get(formItem, "type", "") || get(formItem, "loanVendor", "") || get(formItem, "paymentPartner", "");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:133:hardcoded string:      const amt = get(formItem, "amount", 0) ? get(formItem, "amount", 0) : get(formItem, "approvedLoanAmount", 0)
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:134:hardcoded variable:      const referenceId = formItem.appId || formItem.referenceId;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:135:hardcoded array:      initialValue = { amount: amt, referenceId: referenceId, provider: paymentMap[provider] };
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:139:hardcoded variable:    const identifier = formItem.identifier;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:143:hardcoded object:        ref={`emiPayment-${identifier}`}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:144:hardcoded object:        key={index}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:145:hardcoded object:        seqNo={seqNo}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:146:hardcoded object:        totalCount={totalCount}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:147:hardcoded object:        initialValue={initialValue}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:148:hardcoded object:        identifier={formItem.identifier}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:149:hardcoded object:        emiPayments={emiPayments}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:150:hardcoded object:        addPayment={this.addPayment}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:151:hardcoded object:        removePayment={(identifier) => this.removePayment(identifier)}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:152:hardcoded object:        onProviderSelection={this.onProviderSelection}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:153:hardcoded object:        isPaymentAssociatedWithLeads={!isEmpty(isloanCreatedThroughKart)}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:154:hardcoded object:        index={index} 
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:155:hardcoded object:        getAllFilledPayment={getAllFilledPayment}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:161:hardcoded object:    const { emiPayments, initialPayments, paymentAssociatedWithLead } = this.props;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:182:hardcoded object:    const { emiForms, paymentAssociatedWithLead } = this.state;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:183:hardcoded string:    const emiPaymentDetails = get(paymentAssociatedWithLead, "loans", []); // Loan created through Kart
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:186:hardcoded object:        {isEmpty(emiPaymentDetails) && emiForms.map((ele, index) => this.getEmiForm(ele, index))}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentContainer.js:187:hardcoded object:        {!isEmpty(emiPaymentDetails) && emiPaymentDetails.map((ele, index) => this.getEmiForm(ele, index))}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:1:hardcoded object:import React, { useState } from 'react';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:2:hardcoded object:import { connect } from 'react-redux';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:4:hardcoded object:import { get, isEqual, isEmpty, merge } from 'lodash';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:5:hardcoded object:import { Button } from 'reactstrap';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:7:hardcoded file path:import AntDFormBuilder from '../../../../components/form/AntDFormBuilder';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:8:hardcoded file path:import UploadFile from '../../../upload/UploadFile';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:9:hardcoded object:import { saveError } from '../../paymentReducer';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:10:hardcoded object:import { getReferenceId } from '../paymentHelper';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:11:hardcoded number:import uuidv4 from 'uuid/v4';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:12:hardcoded file path:import InfoWrapper from '../../../../components/InfoWrapper';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:13:hardcoded object:import { message } from 'antd';
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:15:hardcoded variable:const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:20:hardcoded variable:const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:21:hardcoded string:  authDetails: get(state, 'auth.details'),
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:22:hardcoded string:  orderPunchingType: get(state, 'auth.orderPunchingType')
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:30:hardcoded array:      emiPayments: [],
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:31:hardcoded object:      initialValue: {},
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:32:hardcoded array:      formFields: [],
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:33:hardcoded array:      requiredDocuments: [],
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:34:hardcoded array:      additionalDetails: [],
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:35:hardcoded string:      helpText: "",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:37:hardcoded string:      note:""
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:42:hardcoded object:    const { initialValue, emiPayments, isPaymentAssociatedWithLeads = {} } = this.state;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:43:hardcoded variable:    const formFields = this.getProviderFormField();
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:44:hardcoded object:    let formInitialValue = {};
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:45:hardcoded object:    const { authDetails,orderPunchingType} = this.props;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:46:hardcoded object:    const { env } = authDetails || {};
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:47:hardcoded string:    const source = get(authDetails, "leadLoans[0].source", "");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:48:hardcoded string:    const advanceEmiDetails = get(authDetails, "leadLoans[0].advanceEmiDetails", "");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:49:hardcoded string:    const approvedLoanAmount= get(authDetails, "leadLoans[0].approvedLoanAmount", "");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:50:hardcoded string:    const isAakashCRP = orderPunchingType === "AAKASH_CRP_ORDER";
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:51:hardcoded string:    if(['local', 'development'].includes(env) && isAakashCRP && source==='mobileapp' && !isEmpty(advanceEmiDetails)){
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:52:hardcoded object:      this.setState({note: `Advance EMI component = ${advanceEmiDetails.advEmiAmount},
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:53:hardcoded object:      Down Payment component = ${advanceEmiDetails.downPaymentAmount},
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:54:hardcoded object:      Total Payment collected in TL Pay = ${advanceEmiDetails.totalPaidAmount},
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:55:hardcoded object:      Loan Disbursed =  ${approvedLoanAmount}`}) 
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:59:hardcoded variable:      const currentPayment = emiPayments.find(ep => ep.formattedName === initialValue.provider);
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:60:hardcoded string:      const requiredDocuments = get(currentPayment, "requiredDocuments", []);
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:61:hardcoded string:      const helpText = get(currentPayment, "otherConfigurations.helpText", "");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:62:hardcoded object:      this.setState({ requiredDocuments, helpText });
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:64:hardcoded object:      const { initialValue: formValues, fields: remainingFields } = this.getRemainingFormFields({ emiPayment: currentPayment, initialValue, isPaymentAssociatedWithLeads });
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:75:hardcoded object:    const { identifier, getAllFilledPayment } = this.props;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:80:hardcoded object:    const { authDetails,orderPunchingType} = this.props;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:81:hardcoded object:    const { env } = authDetails || {};
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:82:hardcoded string:    const source = get(authDetails, "leadLoans[0].source", "");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:83:hardcoded string:    const advanceEmiDetails = get(authDetails, "leadLoans[0].advanceEmiDetails", "");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:84:hardcoded string:    const isAakashCRP = orderPunchingType === "AAKASH_CRP_ORDER";
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:85:hardcoded string:    const appId = get(authDetails, "leadLoans[0].appId", "");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:86:hardcoded string:    const approvedLoanAmount= get(authDetails, "leadLoans[0].approvedLoanAmount", "");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:87:hardcoded string:    if(['local', 'development'].includes(env) && isAakashCRP && source==='mobileapp' && !isEmpty(advanceEmiDetails) && value === appId){
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:88:hardcoded object:      this.setState({note: `Advance EMI component = ${advanceEmiDetails.advEmiAmount},
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:89:hardcoded object:      Down Payment component = ${advanceEmiDetails.downPaymentAmount},
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:90:hardcoded object:      Total Payment collected in TL Pay = ${advanceEmiDetails.totalPaidAmount},
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:91:hardcoded object:      Loan Disbursed =  ${approvedLoanAmount}`}) 
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:94:hardcoded string:      this.setState({note:""})
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:97:hardcoded object:  getRemainingFormFields = ({ emiPayment, initialValue, isPaymentAssociatedWithLeads }) => {
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:98:hardcoded string:    const isRandomReferenceId = get(emiPayment, "otherConfigurations.isRandomReferenceId", false);
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:99:hardcoded string:    const additionalDetails = get(emiPayment, "additionalDetails", []);
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:100:hardcoded string:    const isAppendRandomDigitToReferenceId = get(emiPayment, "otherConfigurations.isAppendRandomDigitToReferenceId", false);
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:107:hardcoded variable:    const fields = [{
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:108:hardcoded string:      name: "referenceId",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:109:hardcoded string:      type: isRandomReferenceId ? "hidden" : "text",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:110:hardcoded string:      label: get(emiPayment, "otherConfigurations.referenceIdLabel", "Reference ID"),
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:113:hardcoded number:        pattern: new RegExp(/^[a-zA-Z0-9-]+$/), message: `Not a valid Ref Id`
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:117:hardcoded string:      name: "amount",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:118:hardcoded string:      type: 'number',
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:119:hardcoded string:      label: 'Amount',
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:121:hardcoded number:      min: 1,
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:129:hardcoded string:        referenceId: get(initialValue, "referenceId", ""),
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:130:hardcoded string:        amount: get(initialValue, "amount", "")
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:136:hardcoded object:    const { emiPayments, isPaymentAssociatedWithLeads } = this.state;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:137:hardcoded object:    const { seqNo } = this.props;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:138:hardcoded array:    const fileds = [];
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:139:hardcoded number:    if (emiPayments.length > 0) {
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:140:hardcoded string:      const providerOptions = emiPayments.map(nep => ({ label: get(nep, "name", nep.formattedName), value: nep.formattedName }))
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:141:hardcoded number:        .sort((a, b) => a.label < b.label ? -1 : 1);
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:144:hardcoded string:        name: "provider",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:145:hardcoded string:        type: 'select',
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:146:hardcoded string:        label: 'Payment Provider',
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:150:hardcoded number:        disabled: seqNo !== 1,
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:151:hardcoded string:        message: "Please Select Payment Provider",
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:159:hardcoded object:      const { emiPayments } = this.state;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:160:hardcoded object:      const { onProviderSelection } = this.props;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:162:hardcoded object:      const initialValue = { provider };
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:167:hardcoded variable:      const currentPayment = emiPayments.find(nep => nep.formattedName === provider);
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:173:hardcoded object:    const { addPayment } = this.props;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:174:hardcoded object:    const { emiForm } = this;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:177:hardcoded variable:    const formInitialValues = emiForm && emiForm.getFieldsValue();
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:185:hardcoded object:    const { removePayment, identifier } = this.props;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:190:hardcoded array:    const { additionalDetails = [] } = this.state;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:191:hardcoded object:    const result = {};
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:192:hardcoded number:    if (additionalDetails.length > 0) {
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:194:hardcoded variable:        const name = ele.name;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:195:hardcoded array:        result[name] = formValues[name];
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:196:hardcoded array:        delete formValues[name];
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:204:hardcoded array:    const { requiredDocuments = [], isRandomReferenceId, isAppendRandomDigitToReferenceId } = this.state;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:205:hardcoded variable:    const result = {
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:206:hardcoded object:      formValues: {},
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:209:hardcoded variable:    const formValues = await this.emiForm.getFormValues();
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:211:hardcoded string:      const { provider = '', referenceId = '' } = formValues;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:218:hardcoded number:    if (requiredDocuments.length > 0) {
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:219:hardcoded array:      result.formValues.attachments = [];
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:220:hardcoded object:      const refs = this.refs || {};
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:222:hardcoded array:        const files = refs[ref].getUploadedFiles();
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:223:hardcoded number:        if (files.length > 0) {
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:226:hardcoded string:          this.setError("Please Upload All Required Documents");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:242:hardcoded number:        ref={`uploadFrom${uuidv4()}`}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:243:hardcoded object:        key={index}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:244:hardcoded object:        documentDetails={docDetails}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:271:hardcoded object:    const { emiPayments, initialValue, isPaymentAssociatedWithLeads, identifier, getAllFilledPayment } = this.props;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:272:hardcoded string:    const amount = get(initialValue, "amount", "");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:282:hardcoded object:    const { formFields, initialValue, requiredDocuments, helpText, isPaymentAssociatedWithLeads } = this.state;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:283:hardcoded object:    const { seqNo, totalCount, paymentType, index, authDetails } = this.props;
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:284:hardcoded variable:    const formItemLayout = {
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:286:hardcoded number:        xs: { span: 4 },
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:287:hardcoded number:        sm: { span: 4 },
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:290:hardcoded number:        xs: { span: 12 },
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:291:hardcoded number:        sm: { span: 12 },
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:294:hardcoded string:    const advanceEmiDetails = get(authDetails, "leadLoans[0].advanceEmiDetails", "");
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:298:hardcoded object:      {!isEmpty(advanceEmiDetails) && !isEmpty(this.state.note) && <InfoWrapper message={this.state.note}></InfoWrapper>}      
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:300:hardcoded object:          fields={formFields}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:301:hardcoded number:          cols={3}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:302:hardcoded object:          formItemLayout={formItemLayout}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:303:hardcoded object:          heading={`EMI Payment #${seqNo}`}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:304:hardcoded string:          className="border-0"
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:305:hardcoded string:          headerClasses="bg-default"
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:306:hardcoded object:          wrappedComponentRef={(inst) => this.emiForm = inst}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:307:hardcoded object:          initialValues={initialValue} />
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:309:hardcoded object:        {helpText && <InfoWrapper description={helpText} />}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:311:hardcoded object:        {requiredDocuments.map((docDetails, index) => this.renderUploadDoc(docDetails, index))}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:313:hardcoded number:        {formFields.length > 0 && seqNo === totalCount && <>
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:314:hardcoded string:          {!isPaymentAssociatedWithLeads && <Button color="success" onClick={this.addEmiPayment}>+</Button>}{" "}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:315:hardcoded string:          {!isPaymentAssociatedWithLeads && <Button color="danger" onClick={this.removeEmiPayment}>-</Button>}
+microservices-middleware/client/src/modules/payment/components/emi/EmiPaymentCard.js:322:hardcoded object:export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(EmiPaymenCard);

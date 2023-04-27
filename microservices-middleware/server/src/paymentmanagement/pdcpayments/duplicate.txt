@@ -1,0 +1,538 @@
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:1:hardcoded object:const { flattenDeep, get } = require('lodash');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:2:hardcoded file path:const moment = require('moment');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:4:hardcoded object:const { getAakashItemTitle } = require('./pdcUtils');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:6:hardcoded variable:const getAakashFormattedPayload = (aakashPayload) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:7:hardcoded object:    const { businessUnit, courseId, term, academicCarrier } = aakashPayload;
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:9:hardcoded string:        "AcadCarrier": academicCarrier,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:10:hardcoded string:        "BUUnitId": businessUnit,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:11:hardcoded string:        "CrseID": courseId,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:12:hardcoded string:        "Term": term
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:16:hardcoded variable:const getFormattedAakashResponse = (dataGroupByDate) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:17:hardcoded array:    let schedules = [];
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:18:hardcoded variable:    let priceDisrtibution = {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:19:hardcoded number:        totalAmount: 0,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:20:hardcoded number:        totalAmountWoScholarship: 0,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:22:hardcoded number:            registrationFee: 0,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:23:hardcoded number:            admissionFee: 0,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:24:hardcoded number:            techAndExamFee: 0,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:25:hardcoded number:            tuitionFee: 0,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:26:hardcoded number:            classroomFee: 0
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:29:hardcoded number:            registrationFee: 0,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:30:hardcoded number:            admissionFee: 0,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:31:hardcoded number:            techAndExamFee: 0,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:32:hardcoded number:            tuitionFee: 0,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:33:hardcoded number:            classroomFee: 0
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:36:hardcoded variable:    const dateArray = Object.keys(dataGroupByDate);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:37:hardcoded variable:    const sortedDateArray = dateArray.sort((a, b) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:38:hardcoded string:        return moment(a).format('YYYYMMDD') - moment(b).format('YYYYMMDD')
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:42:hardcoded number:    let instNo = 0;
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:44:hardcoded number:        instNo = instNo + 1;
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:45:hardcoded array:        const data = dataGroupByDate[date];
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:46:hardcoded string:        const totalAmountWoSclshp = data.reduce((total, current) => total + Number(current["Total"]), 0);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:47:hardcoded variable:        const splitData = data.map(d => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:48:hardcoded string:            const itemTitle = getAakashItemTitle(d["Item_type_title"]);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:50:hardcoded string:            priceDisrtibution.totalAmount += parseInt(d["TOTAL_AFTER_CON"] ? d["TOTAL_AFTER_CON"] : d["Total"])
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:51:hardcoded string:            priceDisrtibution.total[getAakashItemTitle(d["Item_type_title"])] += parseInt(d["TOTAL_AFTER_CON"] ? d["TOTAL_AFTER_CON"] : d["Total"])
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:52:hardcoded string:            priceDisrtibution.totalAmountWoScholarship += parseInt(d["Total"])
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:53:hardcoded string:            priceDisrtibution.totalWoScholarship[getAakashItemTitle(d["Item_type_title"])] += parseInt(d["Total"])
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:56:hardcoded string:                "type": itemTitle,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:57:hardcoded string:                "totalWoSclshp": d["Total"],
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:58:hardcoded string:                "total": d["TOTAL_AFTER_CON"] ? d["TOTAL_AFTER_CON"] : d["Total"],
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:59:hardcoded string:                "sclshpPercentage": d["CONCESSION_PERC"] || 0,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:60:hardcoded string:                "remarks": d["Remarks"] || ""
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:63:hardcoded number:        const totalAmount = splitData.reduce((total, current) => total + Number(current[`total`]), 0);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:65:hardcoded variable:        const installmentDate = moment(date).isAfter(moment()) ? date : moment();
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:66:hardcoded string:        const instNumber = moment(date).isAfter(moment()) ? instNo : "Down Payment";
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:77:hardcoded object:    return { schedules, priceDisrtibution };
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:80:hardcoded variable:const assemblePdcPaymentPayload = (payment, user) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:81:hardcoded variable:    const payload = {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:83:hardcoded string:        location: get(user, "location", "") || "",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:84:hardcoded string:        campaign: get(user, "campaign", "") || "",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:85:hardcoded string:        department: get(user, "department", "") || "",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:86:hardcoded string:        subDepartment: get(user, "subDepartment", "") || "",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:91:hardcoded variable:const getFormattedConcession = (scholarshipDetails) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:92:hardcoded string:    const scholarships = get(scholarshipDetails, "scholarships", []);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:93:hardcoded variable:    const concession = scholarships.map((scholarship) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:95:hardcoded string:            "Category": scholarship.aakashCategory,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:96:hardcoded string:            "subSubCategory": scholarship.subCategory,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:97:hardcoded string:            "SubsubSubCategory": scholarship.subSubCategory,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/assembler.js:98:hardcoded string:            "Concession": scholarship.value
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:1:hardcoded object:const { groupBy, get,round ,isEmpty} = require('lodash');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:3:hardcoded object:const { callAakashAPIToFetchCourseFees, callPtmsToCreatePayment } = require('../../../utility/externalApiUtility');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:5:hardcoded object:const { getCompConcessionSplit } = require('./pdcUtils');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:6:hardcoded object:const { getAakashFormattedPayload, getFormattedAakashResponse, assemblePdcPaymentPayload, getFormattedConcession } = require('./assembler');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:7:hardcoded object:const { insertQuotationSchedules, updatePdcSchedulePaymentStatus } = require('./dto');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:9:hardcoded variable:const getCourseFeesSchedules = async (aakashPayload, scholarshipDetails) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:11:hardcoded variable:        const formattedPayload = getAakashFormattedPayload(aakashPayload);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:12:hardcoded string:        formattedPayload['Concession'] = getFormattedConcession(scholarshipDetails)
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:14:hardcoded variable:        const feesDetails = await callAakashAPIToFetchCourseFees(formattedPayload);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:16:hardcoded string:        const priceBreakup = get(feesDetails, 'priceBreakup', []);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:17:hardcoded string:        const dataGroupByDate = groupBy(priceBreakup.sort(), 'orig_due_date');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:19:hardcoded object:        const { schedules, priceDisrtibution } = getFormattedAakashResponse(dataGroupByDate);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:20:hardcoded object:        return { schedules, priceDisrtibution };
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:26:hardcoded object:const insertSchedules = async ({ quotationId, pdcSchedules, businessUnit }) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:35:hardcoded variable:const createPdcPaymentService = async (payment, user) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:37:hardcoded variable:        const payload = assemblePdcPaymentPayload(payment, user);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:38:hardcoded variable:        const response = await callPtmsToCreatePayment(payload);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:39:hardcoded string:        if (response?.success && response?.paymentStatus === 'initiated') {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:41:hardcoded object:                updatePdcSchedulePaymentStatus({ scheduleId: payment?.psId, status: response?.paymentStatus, referenceId: payment?.referenceId });
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:50:hardcoded variable:const getUpdatedscholarshipDetails = ({ finalPrice, netPrice, scholarshipDetails, actualPriceBreakup,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:52:hardcoded object:    const { tuitionFee, classroomFee } = actualPriceBreakup
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:53:hardcoded variable:    const maxScholarship = parseInt(tuitionFee) + parseInt(classroomFee)
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:54:hardcoded variable:    let amount = netPrice - finalPrice
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:55:hardcoded number:    let value = round(amount*100 / maxScholarship) 
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:56:hardcoded number:    amount =round( value * maxScholarship/100)
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:57:hardcoded variable:    let scholarshipE = {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:59:hardcoded string:        "basedOn": "Discretionary discount",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:60:hardcoded string:        "category": "E",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:61:hardcoded string:        "subCategory": 14,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:62:hardcoded string:        "subSubCategory": 74,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:63:hardcoded string:        "aakashCategory": "CRC",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/service.js:69:hardcoded array:            scholarships: [scholarshipE],
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:1:hardcoded object:const { snakeCase } = require('lodash');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:3:hardcoded variable:const getAakashItemTitle = (itemTitle) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:4:hardcoded string:    let formattedTitle = "";
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:5:hardcoded variable:    const titleMap = {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:6:hardcoded string:        "registration_fee": "registrationFee",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:7:hardcoded string:        "admission_kit": "admissionFee",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:8:hardcoded string:        "tuition_fee": "tuitionFee",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:9:hardcoded string:        "tech_exam_fee": "techAndExamFee",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:10:hardcoded string:        "classroom_fee": "classroomFee"
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:14:hardcoded array:            formattedTitle = titleMap[title];
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:21:hardcoded variable:const getCompConcessionSplit = (totalConcessionDetails) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:22:hardcoded object:    const data = {};
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:23:hardcoded object:    Object.keys(totalConcessionDetails || {}).map((key) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/pdcUtils.js:24:hardcoded array:        data[key] = totalConcessionDetails[key].value;
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:3:hardcoded variable:const bn = {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:4:hardcoded string:    SU079: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:5:hardcoded string:    AG034: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:6:hardcoded string:    AJ427: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:7:hardcoded string:    AK409: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:8:hardcoded string:    UP486: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:9:hardcoded string:    UP484: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:10:hardcoded string:    AG032: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:11:hardcoded string:    AD074: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:12:hardcoded string:    AB443: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:13:hardcoded string:    AM038: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:14:hardcoded string:    AM081: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:15:hardcoded string:    AM061: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:16:hardcoded string:    AR027: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:17:hardcoded string:    MB016: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:18:hardcoded string:    JR049: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:19:hardcoded string:    AN062: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:20:hardcoded string:    UP479: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:21:hardcoded string:    DH011: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:22:hardcoded string:    BG446: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:23:hardcoded string:    BH410: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:24:hardcoded string:    BG442: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:25:hardcoded string:    BP146: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:26:hardcoded string:    BH024: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:27:hardcoded string:    BH430: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:28:hardcoded string:    BH067: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:29:hardcoded string:    OR473: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:30:hardcoded string:    RJ467: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:31:hardcoded string:    BO063: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:32:hardcoded string:    CL051: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:33:hardcoded string:    CH012: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:34:hardcoded string:    AM047: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:35:hardcoded string:    OR474: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:36:hardcoded string:    CN023: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:37:hardcoded string:    CN030: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:38:hardcoded string:    CN097: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:39:hardcoded string:    CO052: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:40:hardcoded string:    CO425: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:41:hardcoded string:    OR475: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:42:hardcoded string:    DD126: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:43:hardcoded string:    DG123: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:44:hardcoded string:    DU309: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:45:hardcoded string:    DW087: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:46:hardcoded string:    FB019: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:47:hardcoded string:    PB452: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:48:hardcoded string:    GJ422: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:49:hardcoded string:    RJ462: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:50:hardcoded string:    GY174: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:51:hardcoded string:    ID050: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:52:hardcoded string:    MB419: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:53:hardcoded string:    UP489: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:54:hardcoded string:    GP073: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:55:hardcoded string:    GN009: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:56:hardcoded string:    GG117: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:57:hardcoded string:    AS677: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:58:hardcoded string:    AS678: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:59:hardcoded string:    AS679: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:60:hardcoded string:    GW076: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:61:hardcoded string:    HD411: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:62:hardcoded string:    UP481: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:63:hardcoded string:    HB065: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:64:hardcoded string:    HY044: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:65:hardcoded string:    HR026: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:66:hardcoded string:    BH083: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:67:hardcoded string:    HU401: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:68:hardcoded string:    BI040: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:69:hardcoded string:    JP072: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:70:hardcoded string:    JD029: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:71:hardcoded string:    JK122: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:72:hardcoded string:    JK131: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:73:hardcoded string:    JP001: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:74:hardcoded string:    JP002: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:75:hardcoded string:    BJ042: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:76:hardcoded string:    JH445: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:77:hardcoded string:    JD075: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:78:hardcoded string:    JH139: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:79:hardcoded string:    KA429: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:80:hardcoded string:    KR036: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:81:hardcoded string:    MB068: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:82:hardcoded string:    KN094: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:83:hardcoded string:    KA436: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:84:hardcoded string:    KM440: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:85:hardcoded string:    KO069: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:86:hardcoded string:    HY095: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:87:hardcoded string:    KT404: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:88:hardcoded string:    KP053: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:89:hardcoded string:    KL089: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:90:hardcoded string:    KR033: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:91:hardcoded string:    MH478: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:92:hardcoded string:    LD022: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:93:hardcoded string:    MD400: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:94:hardcoded string:    MD465: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:95:hardcoded string:    SU056: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:96:hardcoded string:    MG444: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:97:hardcoded string:    AM054: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:98:hardcoded string:    VD080: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:99:hardcoded string:    KL460: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:100:hardcoded string:    GO421: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:101:hardcoded string:    UP463: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:102:hardcoded string:    CN098: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:103:hardcoded string:    MR031: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:104:hardcoded string:    DL487: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:105:hardcoded string:    MR180: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:106:hardcoded string:    MB017: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:107:hardcoded string:    MP145: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:108:hardcoded string:    MY454: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:109:hardcoded string:    MY402: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:110:hardcoded string:    MH476: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:111:hardcoded string:    NN035: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:112:hardcoded string:    NE431: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:113:hardcoded string:    MB018: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:114:hardcoded string:    VD039: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:115:hardcoded string:    ND008: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:116:hardcoded string:    ND086: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:117:hardcoded string:    KL043: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:118:hardcoded string:    PL037: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:119:hardcoded string:    GO066: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:120:hardcoded string:    PA059: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:121:hardcoded string:    PP025: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:122:hardcoded string:    PA060: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:123:hardcoded string:    PN085: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:124:hardcoded string:    KR084: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:125:hardcoded string:    DL483: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:126:hardcoded string:    AN319: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:127:hardcoded string:    DL477: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:128:hardcoded string:    PD459: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:129:hardcoded string:    PN014: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:130:hardcoded string:    DL482: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:131:hardcoded string:    AP433: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:132:hardcoded string:    BR041: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:133:hardcoded string:    DH010: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:134:hardcoded string:    RC113: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:135:hardcoded string:    ID078: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:136:hardcoded string:    KL046: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:137:hardcoded string:    HR197: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:138:hardcoded string:    DL485: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:139:hardcoded string:    DL488: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:140:hardcoded string:    RK020: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:141:hardcoded string:    BG447: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:142:hardcoded string:    HY045: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:143:hardcoded string:    SP028: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:144:hardcoded string:    SL307: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:145:hardcoded string:    HY096: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:146:hardcoded string:    AS680: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:147:hardcoded string:    SA438: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:148:hardcoded string:    MH480: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:149:hardcoded string:    GG132: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:150:hardcoded string:    SE003: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:151:hardcoded string:    SE004: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:152:hardcoded string:    JR021: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:153:hardcoded string:    TR403: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:154:hardcoded string:    AS317: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:155:hardcoded string:    TR099: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:156:hardcoded string:    TR090: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:157:hardcoded string:    HY082: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:158:hardcoded string:    TN434: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:159:hardcoded string:    KL048: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:160:hardcoded string:    RJ466: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:161:hardcoded string:    UD184: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:162:hardcoded string:    UJ426: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:163:hardcoded string:    JP070: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:164:hardcoded string:    GJ458: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:165:hardcoded string:    SU457: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:166:hardcoded string:    VL439: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:167:hardcoded string:    VJ091: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:168:hardcoded string:    MB415: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:169:hardcoded string:    VZ057: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:170:hardcoded string:    VZ088: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:171:hardcoded string:    WR093: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:172:hardcoded string:    WF064: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:173:hardcoded string:    HR432: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:174:hardcoded string:    MH645: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:175:hardcoded string:    GJ609: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:176:hardcoded string:    MB417: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:177:hardcoded string:    MH494: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:178:hardcoded string:    RJ490: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:179:hardcoded string:    GJ468: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:180:hardcoded string:    TN627: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:181:hardcoded string:    HR624: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:182:hardcoded string:    MP601: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:183:hardcoded string:    OR662: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:184:hardcoded string:    KA638: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:185:hardcoded string:    RJ610: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:186:hardcoded string:    RH681: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:187:hardcoded string:    OR663: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:188:hardcoded string:    RJ681: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:189:hardcoded string:    MH634: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:190:hardcoded string:    MP613: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:191:hardcoded string:    KA626: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:192:hardcoded string:    KA640: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:193:hardcoded string:    MP602: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:194:hardcoded string:    MP498: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:195:hardcoded string:    KA637: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:196:hardcoded string:    TN641: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:197:hardcoded string:    UP497: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:198:hardcoded string:    HR612: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:199:hardcoded string:    UP666: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:200:hardcoded string:    AP492: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:201:hardcoded string:    KA667: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:202:hardcoded string:    HR686: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:203:hardcoded string:    HP491: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:204:hardcoded string:    KA619: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:205:hardcoded string:    PB472: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:206:hardcoded string:    HR685: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:207:hardcoded string:    MH493: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:208:hardcoded string:    PB471: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:209:hardcoded string:    HR469: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:210:hardcoded string:    TN656: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:211:hardcoded string:    AP669: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:212:hardcoded string:    KL676: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:213:hardcoded string:    UP605: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:214:hardcoded string:    KA625: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:215:hardcoded string:    KL615: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:216:hardcoded string:    TG635: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:217:hardcoded string:    MH643: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:218:hardcoded string:    MH616: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:219:hardcoded string:    GJ600: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:220:hardcoded string:    MP603: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:221:hardcoded string:    MH647: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:222:hardcoded string:    MB015: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:223:hardcoded string:    UP630: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:224:hardcoded string:    UP632: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:225:hardcoded string:    TN668: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:226:hardcoded string:    TN622: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:227:hardcoded string:    GJ623: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:228:hardcoded string:    TG496: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:229:hardcoded string:    PB611: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:230:hardcoded string:    HR470: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:231:hardcoded string:    RJ620: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:232:hardcoded string:    GJ653: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:233:hardcoded string:    MP639: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:234:hardcoded string:    UT621: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:235:hardcoded string:    MP618: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:236:hardcoded string:    MH633: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:237:hardcoded string:    GJ664: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:238:hardcoded string:    HP604: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:239:hardcoded string:    KA636: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:240:hardcoded string:    RJ608: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:241:hardcoded string:    HR495: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:242:hardcoded string:    GJ648: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:243:hardcoded string:    UP646: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:244:hardcoded string:    TN629: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:245:hardcoded string:    RJ614: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:246:hardcoded string:    KA655: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:247:hardcoded string:    KA628: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:248:hardcoded string:    UP617: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:249:hardcoded string:    MH642: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:250:hardcoded string:    AP652: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:251:hardcoded string:    KA654: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:252:hardcoded string:    MP670: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:253:hardcoded string:    GJ649: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:254:hardcoded string:    MH657: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:255:hardcoded string:    KA650: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:256:hardcoded string:    UP644: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:257:hardcoded string:    DL661: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:258:hardcoded string:    MH651: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:259:hardcoded string:    GJ665: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:260:hardcoded string:    GJ682: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:261:hardcoded string:    TN659: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:262:hardcoded string:    AT311: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:263:hardcoded string:    KK109: "Balajee Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:264:hardcoded string:    AD157: "Aspire educare",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:265:hardcoded string:    PT315: "Balajee Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:266:hardcoded string:    KK194: "Balajee Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:267:hardcoded string:    KK166: "Balajee Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:268:hardcoded string:    DP135: "Balajee Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:269:hardcoded string:    PT115: "Balajee Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:270:hardcoded string:    KN178: "Balajee Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:271:hardcoded string:    WB314: "Balajee Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:272:hardcoded string:    KK108: "Balajee Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:273:hardcoded string:    KK195: "Balajee Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:274:hardcoded string:    KK110: "Balajee Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:275:hardcoded string:    PA144: "Balajee Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:276:hardcoded string:    KK111: "Balajee Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:277:hardcoded string:    BO127: "Brahmananda Educational Services Pvt. Ltd.",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:278:hardcoded string:    JM118: "Brahmananda Educations Pvt. Ltd.",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:279:hardcoded string:    MH175: "Devansh Education Pvt Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:280:hardcoded string:    BL199: "Edscience Knowledge Solution Pvt. Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:281:hardcoded string:    HW125: "Edscience Knowledge Solution Pvt. Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:282:hardcoded string:    UK318: "Edscience Knowledge Solution Pvt. Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:283:hardcoded string:    DL198: "Gyaneshwar educational Services LLP",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:284:hardcoded string:    CG192: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:285:hardcoded string:    VN156: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:286:hardcoded string:    VN152: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:287:hardcoded string:    MH607: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:288:hardcoded string:    MB161: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:289:hardcoded string:    RP186: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:290:hardcoded string:    MP313: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:291:hardcoded string:    SN141: "Northend Educational Excellence",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:292:hardcoded string:    SN190: "Northend Educational Excellence",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:293:hardcoded string:    SN310: "Northend Educational Excellence",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:294:hardcoded string:    BI133: "P K Educare",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:295:hardcoded string:    MT167: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:296:hardcoded string:    GH138: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:297:hardcoded string:    CD142: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:298:hardcoded string:    CG692: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:299:hardcoded string:    DN690: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:300:hardcoded string:    AP691: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:301:hardcoded string:    BR671: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:302:hardcoded string:    MH683: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:303:hardcoded string:    JH674: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:304:hardcoded string:    BR672: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:305:hardcoded string:    JK687: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:306:hardcoded string:    JK688: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:307:hardcoded string:    BR673: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:308:hardcoded string:    MH631: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:309:hardcoded string:    JH675: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:310:hardcoded string:    JK689: "Aakash Education Services Ltd",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/PdcBeneficiaries.js:311:hardcoded string:    BI133: "Aakash Education Services Ltd"
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:1:hardcoded object:const { callPtmsToUploadCheque } = require('../../../utility/externalApiUtility');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:2:hardcoded object:const { getQuotationPdcSchedules, updateQuotationPdcSchedule, checkPresentPdcPayment } = require('./dto');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:3:hardcoded object:const { getCourseFeesSchedules, createPdcPaymentService, getUpdatedscholarshipDetails } = require('./service');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:4:hardcoded string:const { AakashBranch } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:5:hardcoded file path:const PdcBeneficiaries = require('./PdcBeneficiaries');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:7:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('pdcController');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:8:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:9:hardcoded object:const { getAppliedScholarships } = require('../../quotationmanagement/productmanagement/scholarshipHelper');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:11:hardcoded variable:const getAakashFeesSchedules = async (req, res) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:12:hardcoded string:    logger.info({ method: 'getAakashFeesSchedules' }, { message: "Fetching payment Schedules " });
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:13:hardcoded object:    const { aakashPayload, scholarshipDetails = {} } = req.body;
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:15:hardcoded string:    const { businessUnit = "" } = aakashPayload;
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:18:hardcoded variable:        const schedules = await getCourseFeesSchedules(aakashPayload, scholarshipDetails);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:19:hardcoded variable:        /*const schedulesRaw = await PdcSchedulesMaster.findAll({
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:20:hardcoded number:            where: {aakashPricesId: 13291},
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:23:hardcoded variable:        let PdcBeneficiary = await AakashBranch.findOne({
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:26:hardcoded string:                status: "active"
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:29:hardcoded string:                "beneficiary"
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:33:hardcoded object:        const { beneficiary } = PdcBeneficiary
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:34:hardcoded array:        let bn = PdcBeneficiaries.bn[businessUnit];
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:35:hardcoded string:        const totalAmount = schedules.reduce((total, current) => total + Number(current["total"]), 0);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:38:hardcoded string:            paymentType: "pdc",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:48:hardcoded variable:const getPdcSchedules = async (req, res) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:50:hardcoded object:        const { quotationId } = req.body;
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:51:hardcoded variable:        const schedules = await getQuotationPdcSchedules(quotationId);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:52:hardcoded number:        let totalAmount = 0
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:53:hardcoded string:        let downPayments = schedules.filter((schedule) => schedule.paymentType == 'down_payment')
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:54:hardcoded string:        let pdcs = schedules.filter((schedule) => schedule.paymentType == 'pdc')
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:55:hardcoded variable:        let dpDetails = {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:56:hardcoded number:            amount: 0,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:57:hardcoded string:            status: 'pending',
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:64:hardcoded variable:        let pdcSchedules = pdcs.map((pdc, i) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:69:hardcoded number:                installmentNo: i + 1,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:73:hardcoded string:                bankName: pdc.bankName == "null" ? "" : pdc.bankName,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:74:hardcoded string:                chequeNo: pdc.chequeNo == "null" ? "" : pdc.chequeNo,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:82:hardcoded string:            paymentType: "pdc",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:93:hardcoded variable:const uploadPdcCheque = async (req, res) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:95:hardcoded variable:        const response = await callPtmsToUploadCheque(req?.body?.quotationId, req.files);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:103:hardcoded number:        return res.status(200).json({
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:104:hardcoded number:            status: 200,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:105:hardcoded string:            message: "Successfully uploaded cheque",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:109:hardcoded number:        return res.status(500).json({
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:110:hardcoded number:            status: 500,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:118:hardcoded variable:const createPdcPayment = async (req, res) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:120:hardcoded object:        const { body, user } = req;
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:121:hardcoded variable:        const isAlreadyCreated = await checkPresentPdcPayment(body)
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:124:hardcoded variable:            const response = await createPdcPaymentService(body, user);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:125:hardcoded number:            return res.status(200).json({
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:126:hardcoded number:                status: 200,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:127:hardcoded string:                message: "Successfully created payment",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:131:hardcoded number:            return res.status(405).json({
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:132:hardcoded number:                status: 405,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:133:hardcoded string:                message: "PDC Payment was already Created for this Quotation",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:137:hardcoded number:        return res.status(500).json({
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:138:hardcoded number:            status: 500,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:146:hardcoded variable:const getUpdatedPdcSchedules = async (req, res) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:147:hardcoded string:    logger.info({ method: 'getUpdatedPdcSchedules' }, { message: "Fetching updated payment Schedules " });
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:148:hardcoded object:    const { productDetails } = req.body;
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:149:hardcoded object:    let { scholarshipDetails, finalPrice, netPrice, actualPriceBreakup, aakashPriceBreakup, aakashPayload, acstGiven, schedules } = productDetails
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:150:hardcoded string:    const { businessUnit = "" } = aakashPayload;
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:154:hardcoded object:            scholarshipDetails = getUpdatedscholarshipDetails({ finalPrice, netPrice, scholarshipDetails, actualPriceBreakup, acstGiven })
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:155:hardcoded variable:            const response = await getCourseFeesSchedules(aakashPayload, scholarshipDetails);
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:157:hardcoded variable:            const priceDisrtibution = response.priceDisrtibution
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:158:hardcoded variable:            const maxPrice = priceDisrtibution.totalAmountWoScholarship
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:160:hardcoded string:            const minPrice = aakashPriceBreakup['minPrice'] < netPrice ? aakashPriceBreakup['minPrice'] : netPrice
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:161:hardcoded object:            aakashPriceBreakup = { ...priceDisrtibution.total, netPrice, maxPrice, minPrice }
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:162:hardcoded number:            scholarshipDetails = getAppliedScholarships(({ priceDisrtibution, schedule: schedules[0], aakashPriceBreakup, acstGiven, actualPriceBreakup, scholarshipDetails }))
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:165:hardcoded object:        const { beneficiary } = await AakashBranch.findOne({
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:168:hardcoded string:                status: "active"
+microservices-middleware/server/src/paymentmanagement/pdcpayments/controller.js:171:hardcoded string:                "beneficiary"
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:1:hardcoded file path:const moment = require('moment');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:2:hardcoded object:const { isObject, isEmpty } = require('lodash')
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:3:hardcoded object:const { Op } = require("sequelize");
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:5:hardcoded string:const { CondensedPdcSchedule, AakashBranch, PdcSchedules } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:6:hardcoded file path:const PdcBeneficiaries = require('./PdcBeneficiaries');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:7:hardcoded object:const { isDevEnv } = require('./../../../lib/featureHelper')
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:9:hardcoded variable:const getQuotationPdcSchedules = async (quotationId) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:11:hardcoded variable:        const schedules = await CondensedPdcSchedule.findAll({
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:12:hardcoded object:            where: { quotationId },
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:13:hardcoded string:            order: [['installmentDate', 'ASC']],
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:23:hardcoded variable:const insertQuotationSchedules = async (schedules, quotationId, businessUnit) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:26:hardcoded number:        //let i = 0;
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:27:hardcoded variable:        let PdcBeneficiary = await AakashBranch.findOne({
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:30:hardcoded string:                status: "active"
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:33:hardcoded string:                "beneficiary"
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:37:hardcoded object:        const { beneficiary } = PdcBeneficiary
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:38:hardcoded array:        let bn = PdcBeneficiaries.bn[businessUnit];
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:39:hardcoded string:        const paymentType = moment(schedule.installmentDate).isAfter(moment()) ? "pdc" : "down_payment";
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:40:hardcoded variable:        const installmentDate = moment(schedule.installmentDate).isAfter(moment()) ? schedule.installmentDate : moment();
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:47:hardcoded string:            status: "pending",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:48:hardcoded string:            createdBy: "system",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:51:hardcoded number:            psInstId: 217 //ToDo : be changed as per the id of pdc_schedule_master
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:56:hardcoded object:const updateQuotationPdcSchedule = async ({ quotationId, scheduleId, fileUrl, chequeNo, bankName, ifscCode }) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:59:hardcoded string:            "fileUrl": fileUrl,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:66:hardcoded string:                "id": scheduleId,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:67:hardcoded string:                "quotationId": quotationId
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:73:hardcoded object:const updatePdcSchedulePaymentStatus = async ({ scheduleId, status, referenceId }) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:81:hardcoded string:                "id": scheduleId
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:87:hardcoded object:const storeSchedules = async ({ schedules, quotationId }) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:88:hardcoded variable:    const data = schedules.map((sch) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:89:hardcoded string:        const installmentNo = sch.installmentNo === "Down Payment" ? 1 : sch.installmentNo
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:94:hardcoded string:            registrationFee: getIndividualFee(sch, "registrationFee"),
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:95:hardcoded string:            tuitionFee: getIndividualFee(sch, "tuitionFee"),
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:96:hardcoded string:            classroomFee: getIndividualFee(sch, "classroomFee"),
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:97:hardcoded string:            techAndExamFee: getIndividualFee(sch, "techAndExamFee"),
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:98:hardcoded string:            admissionFee: getIndividualFee(sch, "admissionFee"),
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:101:hardcoded string:            createdBy: 'system',
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:109:hardcoded variable:const getIndividualFee = (schedule, feeType) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:110:hardcoded number:    let feeAmount = 0
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:121:hardcoded object:const checkPresentPdcPayment = async ({ payments }) => {
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:122:hardcoded variable:    const ids = payments.map((payment) => payment.psId)
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:123:hardcoded variable:    const presentPayments = await CondensedPdcSchedule.findAll({
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:126:hardcoded string:            paymentType: "pdc",
+microservices-middleware/server/src/paymentmanagement/pdcpayments/dto.js:128:hardcoded array:                [Op.not]: null,
+microservices-middleware/server/src/paymentmanagement/pdcpayments/routes.js:1:hardcoded file path:const express = require('express');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/routes.js:2:hardcoded file path:const multer = require('multer')();
+microservices-middleware/server/src/paymentmanagement/pdcpayments/routes.js:4:hardcoded file path:const controller = require('./controller');
+microservices-middleware/server/src/paymentmanagement/pdcpayments/routes.js:6:hardcoded object:const router = express.Router({ mergeParams: true });
+microservices-middleware/server/src/paymentmanagement/pdcpayments/routes.js:9:hardcoded string:    const baseRoute = "/payment/pdc";
+microservices-middleware/server/src/paymentmanagement/pdcpayments/routes.js:11:hardcoded object:    router.route(`${baseRoute}/uploadPdcCheque`)
+microservices-middleware/server/src/paymentmanagement/pdcpayments/routes.js:18:hardcoded object:    router.route(`${baseRoute}/getAakashFeesSchedules`)
+microservices-middleware/server/src/paymentmanagement/pdcpayments/routes.js:22:hardcoded object:    router.route(`${baseRoute}/getPdcSchedules`)
+microservices-middleware/server/src/paymentmanagement/pdcpayments/routes.js:27:hardcoded object:    router.route(`${baseRoute}/createPdcPayment`)
+microservices-middleware/server/src/paymentmanagement/pdcpayments/routes.js:32:hardcoded object:    router.route(`${baseRoute}/getUpdatedPdcSchedules`)

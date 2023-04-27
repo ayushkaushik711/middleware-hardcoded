@@ -1,0 +1,167 @@
+microservices-middleware/client/cypress/utils/detailsPage.js:1:hardcoded string:/// <reference types='cypress'/>
+microservices-middleware/client/cypress/utils/detailsPage.js:3:hardcoded file path:const config = require('./config');
+microservices-middleware/client/cypress/utils/detailsPage.js:4:hardcoded variable:const fillSalesAndCustomerDetails = async (mobileNumber, email) => {
+microservices-middleware/client/cypress/utils/detailsPage.js:7:hardcoded string:    cy.route('POST', '/api/details/getSalesPersonDetails').as('salesInfoLoad')
+microservices-middleware/client/cypress/utils/detailsPage.js:8:hardcoded string:    cy.route('POST', '/api/details/saveSalesAndCustomerDetails').as('saveSalesAndCustomerDetails')
+microservices-middleware/client/cypress/utils/detailsPage.js:9:hardcoded object:    cy.visit(`/details${config.urlOfNonPreviligedUser}`, {
+microservices-middleware/client/cypress/utils/detailsPage.js:14:hardcoded string:    cy.wait('@salesInfoLoad').then((xhr) => {
+microservices-middleware/client/cypress/utils/detailsPage.js:15:hardcoded string:        cy.wrap(xhr.response.body.docs).should('have.length', 50);
+microservices-middleware/client/cypress/utils/detailsPage.js:17:hardcoded string:    cy.get('.ant-select-search.ant-select-search--inline')
+microservices-middleware/client/cypress/utils/detailsPage.js:18:hardcoded string:        .invoke('show')
+microservices-middleware/client/cypress/utils/detailsPage.js:19:hardcoded string:        .get('input#directSalesBy')
+microservices-middleware/client/cypress/utils/detailsPage.js:21:hardcoded string:        .get('.ant-select-dropdown-menu-item-active')
+microservices-middleware/client/cypress/utils/detailsPage.js:23:hardcoded string:    cy.get('.ant-select-search.ant-select-search--inline')
+microservices-middleware/client/cypress/utils/detailsPage.js:24:hardcoded string:        .invoke('show')
+microservices-middleware/client/cypress/utils/detailsPage.js:25:hardcoded string:        .get('input#salesAppointmentBy')
+microservices-middleware/client/cypress/utils/detailsPage.js:27:hardcoded string:        .get('.ant-select-dropdown-menu-item-active')
+microservices-middleware/client/cypress/utils/detailsPage.js:29:hardcoded string:    cy.get('input[name="studentName"]')
+microservices-middleware/client/cypress/utils/detailsPage.js:31:hardcoded string:        .type('Test Student Name')
+microservices-middleware/client/cypress/utils/detailsPage.js:32:hardcoded string:    cy.get('.ant-select-search.ant-select-search--inline')
+microservices-middleware/client/cypress/utils/detailsPage.js:33:hardcoded string:        .invoke('show')
+microservices-middleware/client/cypress/utils/detailsPage.js:34:hardcoded string:        .get('input#studentCountryCode')
+microservices-middleware/client/cypress/utils/detailsPage.js:35:hardcoded string:        .last().type('+355')
+microservices-middleware/client/cypress/utils/detailsPage.js:36:hardcoded string:    cy.contains('+355')
+microservices-middleware/client/cypress/utils/detailsPage.js:37:hardcoded object:        .click({ force: true })
+microservices-middleware/client/cypress/utils/detailsPage.js:38:hardcoded string:    cy.get('input[name="studentMobileNo"]')
+microservices-middleware/client/cypress/utils/detailsPage.js:40:hardcoded string:    cy.get('input[name="parentName"]')
+microservices-middleware/client/cypress/utils/detailsPage.js:41:hardcoded string:        .clear().type('Test Parent Name')
+microservices-middleware/client/cypress/utils/detailsPage.js:42:hardcoded string:    cy.get('.ant-select-search.ant-select-search--inline')
+microservices-middleware/client/cypress/utils/detailsPage.js:43:hardcoded string:        .invoke('show')
+microservices-middleware/client/cypress/utils/detailsPage.js:44:hardcoded string:        .get('input#parentCountryCode')
+microservices-middleware/client/cypress/utils/detailsPage.js:45:hardcoded string:        .last().type('+355')
+microservices-middleware/client/cypress/utils/detailsPage.js:46:hardcoded string:        .get('.ant-select-dropdown-menu-item-active')
+microservices-middleware/client/cypress/utils/detailsPage.js:48:hardcoded string:    cy.get('input[name="parentMobileNo"]')
+microservices-middleware/client/cypress/utils/detailsPage.js:51:hardcoded string:    cy.get('input[name="email"]')
+microservices-middleware/client/cypress/utils/detailsPage.js:54:hardcoded string:    cy.get('.next-btn')
+microservices-middleware/client/cypress/utils/detailsPage.js:56:hardcoded string:    cy.wait('@saveSalesAndCustomerDetails')
+microservices-middleware/client/cypress/utils/detailsPage.js:58:hardcoded variable:const reviewCashback = async () => {
+microservices-middleware/client/cypress/utils/detailsPage.js:60:hardcoded string:    cy.get('.ant-btn-primary')
+microservices-middleware/client/cypress/utils/paymentPage.js:1:hardcoded string:/// <reference types='cypress'/>
+microservices-middleware/client/cypress/utils/paymentPage.js:3:hardcoded file path:const config = require('../utils/config')
+microservices-middleware/client/cypress/utils/paymentPage.js:4:hardcoded file path:const faker = require('faker');
+microservices-middleware/client/cypress/utils/paymentPage.js:6:hardcoded variable:const selectPaymentDetails = (paymentMethod, amount) => {
+microservices-middleware/client/cypress/utils/paymentPage.js:8:hardcoded string:    cy.route('POST', '/api/product/*').as('getProductPriceAndDetails')
+microservices-middleware/client/cypress/utils/paymentPage.js:10:hardcoded string:    cy.get('.ant-drawer-content .ant-btn-primary').click()
+microservices-middleware/client/cypress/utils/paymentPage.js:11:hardcoded string:    cy.get('.ant-select-search.ant-select-search--inline')
+microservices-middleware/client/cypress/utils/paymentPage.js:12:hardcoded string:        .invoke('show')
+microservices-middleware/client/cypress/utils/paymentPage.js:13:hardcoded string:        .get('input#provider')
+microservices-middleware/client/cypress/utils/paymentPage.js:15:hardcoded string:        .get('.ant-select-dropdown-menu-item-active')
+microservices-middleware/client/cypress/utils/paymentPage.js:17:hardcoded string:    cy.get('input[name="referenceId"]').type(faker.random.alphaNumeric(18))
+microservices-middleware/client/cypress/utils/paymentPage.js:18:hardcoded string:    cy.get('input[name="amount"]').type(amount)
+microservices-middleware/client/cypress/utils/paymentPage.js:19:hardcoded string:    cy.get('textarea[name="comments"]').type('Test Order')
+microservices-middleware/client/cypress/utils/paymentPage.js:20:hardcoded string:    cy.get('.next-btn').click()
+microservices-middleware/client/cypress/utils/paymentPage.js:22:hardcoded variable:const validatePaymentDetails = () => {
+microservices-middleware/client/cypress/utils/paymentPage.js:24:hardcoded string:    cy.route('GET', '/api/payment/getPaymentConfig').as('getPaymentConfig')
+microservices-middleware/client/cypress/utils/paymentPage.js:25:hardcoded string:    cy.fixture('validateAndSavePaymentDetails').as('validateAndSavePaymentDetails')
+microservices-middleware/client/cypress/utils/paymentPage.js:26:hardcoded string:    cy.route('POST', '/api/payment/validateAndSavePaymentDetails', '@validateAndSavePaymentDetails').as('validateAndSavePaymentDetails')
+microservices-middleware/client/cypress/utils/paymentPage.js:28:hardcoded string:    cy.wait('@validateAndSavePaymentDetails')
+microservices-middleware/client/cypress/utils/paymentPage.js:30:hardcoded variable:const moveToNextPage = () => {
+microservices-middleware/client/cypress/utils/paymentPage.js:31:hardcoded string:    cy.get('.ant-modal-body > .ant-checkbox-wrapper > .ant-checkbox > .ant-checkbox-input').click()
+microservices-middleware/client/cypress/utils/paymentPage.js:32:hardcoded string:    cy.get('.ant-btn-primary').click()
+microservices-middleware/client/cypress/utils/config.js:1:hardcoded file path:const faker = require('faker');
+microservices-middleware/client/cypress/utils/config.js:4:hardcoded variable:const randomID = faker.random.number();
+microservices-middleware/client/cypress/utils/config.js:5:hardcoded number:const leadDetails = `?directSalesBy=%20&appointmentBookedBy=Meghana%20Negi&studentName=Shubham%20singh&studentEmail=sonuthegreatest25@gmail.com&studentMobile=%2091-7973090364,%208728981217&`;
+microservices-middleware/client/cypress/utils/config.js:6:hardcoded variable:const accessKey = `accessKey=`; //ananth.leado
+microservices-middleware/client/cypress/utils/config.js:7:hardcoded variable:const secretKey = `&secretKey=`; //ananth.leado
+microservices-middleware/client/cypress/utils/config.js:8:hardcoded number:const accountNo = `&accountNumber=17139`;
+microservices-middleware/client/cypress/utils/config.js:9:hardcoded variable:const prospectId = `&prospectId=ourOwnTestProspectId`;
+microservices-middleware/client/cypress/utils/config.js:10:hardcoded object:const firstHalfUrl = `${leadDetails}${accessKey}${secretKey}${accountNo}${prospectId}`; //first half url except prospect id
+microservices-middleware/client/cypress/utils/config.js:11:hardcoded number:const secondHalfUrl = `Optech&typeOfSales=DS%20Sales&SourceCampaign=%20&SourceOfLead=%20&LeadSource=%20&SourceMedium=%20&SourceCampaignId=%20&UTMSource=%20&CampaignName=%20&homeAddress=dev`;
+microservices-middleware/client/cypress/utils/config.js:12:hardcoded object:let newUrl = `${firstHalfUrl}${randomID}${randomID}${secondHalfUrl}`;
+microservices-middleware/client/cypress/utils/config.js:13:hardcoded object:let extendedUrl = `${newUrl}`;
+microservices-middleware/client/cypress/utils/config.js:14:hardcoded object:const nonPreviligedUser = `accessKey=${accessKey}&secretKey=${secretKey}`;
+microservices-middleware/client/cypress/utils/config.js:15:hardcoded object:let urlOfNonPreviligedUser = `${leadDetails}${nonPreviligedUser}${accountNo}${prospectId}${randomID}${randomID}${secondHalfUrl}`;
+microservices-middleware/client/cypress/utils/config.js:21:hardcoded object:    localUrl: `http://localhost${extendedUrl}`,
+microservices-middleware/client/cypress/utils/config.js:22:hardcoded object:    devUrl: `https://devbeta-middleware.byjusorders.com${extendedUrl}`,
+microservices-middleware/client/cypress/utils/config.js:23:hardcoded object:    stagingUrl: `https://staging-middleware.byjusorders.com${extendedUrl}`,
+microservices-middleware/client/cypress/utils/config.js:24:hardcoded object:    ohUrl: `https://beta-middleware.byjusorders.com${extendedUrl}`,
+microservices-middleware/client/cypress/utils/config.js:25:hardcoded object:    prodUrl: `https://beta-middleware.byjusorders.com${extendedUrl}`,
+microservices-middleware/client/cypress/utils/config.js:26:hardcoded string:    db: 'mongodb://devuser:dev%402018@development-shard-00-00-7emgs.mongodb.net:27017,development-shard-00-01-7emgs.mongodb.net:27017,development-shard-00-02-7emgs.mongodb.net:27017/byjus-nucleus?ssl=true&replicaSet=Development-shard-0&authSource=admin',
+microservices-middleware/client/cypress/utils/config.js:27:hardcoded string:    //'mongodb://devuser:dev%402018@development-shard-00-00-7emgs.mongodb.net:27017,development-shard-00-01-7emgs.mongodb.net:27017,development-shard-00-02-7emgs.mongodb.net:27017/byjusleado?ssl=true&replicaSet=Development-shard-0&authSource=admin',
+microservices-middleware/client/cypress/utils/config.js:28:hardcoded string:    salesUserName: 'sanjay.karkera'
+microservices-middleware/client/cypress/utils/addressPage.js:1:hardcoded string:/// <reference types='cypress'/>
+microservices-middleware/client/cypress/utils/addressPage.js:3:hardcoded file path:const config = require('../utils/config')
+microservices-middleware/client/cypress/utils/addressPage.js:5:hardcoded variable:const fillAddressDetails = async () => {
+microservices-middleware/client/cypress/utils/addressPage.js:7:hardcoded string:    cy.route('POST', '/api/address/saveAddressDetails').as('saveAddressDetails')
+microservices-middleware/client/cypress/utils/addressPage.js:9:hardcoded string:    cy.get('textarea[name="address"]')
+microservices-middleware/client/cypress/utils/addressPage.js:11:hardcoded string:        .type('IBC Knowldege Park, Banglore.')
+microservices-middleware/client/cypress/utils/addressPage.js:13:hardcoded string:    cy.get('.ant-select-search.ant-select-search--inline')
+microservices-middleware/client/cypress/utils/addressPage.js:14:hardcoded string:        .invoke('show')
+microservices-middleware/client/cypress/utils/addressPage.js:15:hardcoded string:        .get('input#country')
+microservices-middleware/client/cypress/utils/addressPage.js:16:hardcoded string:        .last().type('India')
+microservices-middleware/client/cypress/utils/addressPage.js:17:hardcoded string:        .get('.ant-select-dropdown-menu-item-active')
+microservices-middleware/client/cypress/utils/addressPage.js:21:hardcoded string:    cy.get('.ant-select-search.ant-select-search--inline')
+microservices-middleware/client/cypress/utils/addressPage.js:22:hardcoded string:        .invoke('show')
+microservices-middleware/client/cypress/utils/addressPage.js:23:hardcoded string:        .get('input#state')
+microservices-middleware/client/cypress/utils/addressPage.js:24:hardcoded string:        .last().type('Karnataka')
+microservices-middleware/client/cypress/utils/addressPage.js:25:hardcoded string:        .get('.ant-select-dropdown-menu .ant-select-dropdown-menu-item:nth-child(1)')
+microservices-middleware/client/cypress/utils/addressPage.js:26:hardcoded string:        // .get('.ant-select-dropdown-menu-item-active')
+microservices-middleware/client/cypress/utils/addressPage.js:27:hardcoded object:        .click({ force: true })
+microservices-middleware/client/cypress/utils/addressPage.js:28:hardcoded string:    cy.get('input[name="city"]')
+microservices-middleware/client/cypress/utils/addressPage.js:30:hardcoded string:        .type('banglore')
+microservices-middleware/client/cypress/utils/addressPage.js:32:hardcoded string:    cy.get('input[name="zipcode"]')
+microservices-middleware/client/cypress/utils/addressPage.js:34:hardcoded string:        .type('500063')
+microservices-middleware/client/cypress/utils/addressPage.js:36:hardcoded string:    cy.get('.next-btn')
+microservices-middleware/client/cypress/utils/addressPage.js:38:hardcoded string:    cy.wait('@saveAddressDetails')
+microservices-middleware/client/cypress/utils/otpPage.js:1:hardcoded string:/// <reference types='cypress'/>
+microservices-middleware/client/cypress/utils/otpPage.js:3:hardcoded file path:const config = require('../utils/config')
+microservices-middleware/client/cypress/utils/otpPage.js:4:hardcoded file path:const faker = require('faker');
+microservices-middleware/client/cypress/utils/otpPage.js:6:hardcoded variable:const verifyOtp = async () => {
+microservices-middleware/client/cypress/utils/otpPage.js:7:hardcoded string:    cy.get('input#otp')
+microservices-middleware/client/cypress/utils/otpPage.js:8:hardcoded string:        .type('OhVerify#2019')
+microservices-middleware/client/cypress/utils/otpPage.js:9:hardcoded string:    cy.get('.ant-btn-primary').click()
+microservices-middleware/client/cypress/utils/productPage.js:1:hardcoded string:/// <reference types='cypress'/>
+microservices-middleware/client/cypress/utils/productPage.js:3:hardcoded file path:const config = require('./config');
+microservices-middleware/client/cypress/utils/productPage.js:5:hardcoded variable:const selectProductType = async (productType) => {
+microservices-middleware/client/cypress/utils/productPage.js:6:hardcoded string:    cy.get('.ant-radio-button-wrapper')
+microservices-middleware/client/cypress/utils/productPage.js:8:hardcoded string:    //  class="ant-radio-button-wrapper"
+microservices-middleware/client/cypress/utils/productPage.js:10:hardcoded variable:const selectSearchableDropDown = async (selector, valueToSearch) => {
+microservices-middleware/client/cypress/utils/productPage.js:11:hardcoded string:    const newSelector = 'input#' + selector
+microservices-middleware/client/cypress/utils/productPage.js:12:hardcoded string:    cy.get('.ant-select-search.ant-select-search--inline')
+microservices-middleware/client/cypress/utils/productPage.js:13:hardcoded string:        .invoke('show').get(newSelector)
+microservices-middleware/client/cypress/utils/productPage.js:16:hardcoded string:        .get('.ant-select-dropdown-menu-item-active')
+microservices-middleware/client/cypress/utils/productPage.js:20:hardcoded variable:const selectBoard = async (board) => {
+microservices-middleware/client/cypress/utils/productPage.js:21:hardcoded string:    cy.get('.ant-select-search.ant-select-search--inline')
+microservices-middleware/client/cypress/utils/productPage.js:22:hardcoded string:        .invoke('show')
+microservices-middleware/client/cypress/utils/productPage.js:23:hardcoded string:        .get('input#board')
+microservices-middleware/client/cypress/utils/productPage.js:25:hardcoded string:        .get('.ant-select-dropdown-menu-item-active')
+microservices-middleware/client/cypress/utils/productPage.js:28:hardcoded variable:const selectInitialClass = async (initialClass) => {
+microservices-middleware/client/cypress/utils/productPage.js:29:hardcoded string:    cy.get('.ant-select-search.ant-select-search--inline')
+microservices-middleware/client/cypress/utils/productPage.js:30:hardcoded string:        .invoke('show')
+microservices-middleware/client/cypress/utils/productPage.js:31:hardcoded string:        .get('input#initialClass')
+microservices-middleware/client/cypress/utils/productPage.js:33:hardcoded string:        .get('.ant-select-dropdown-menu-item-active')
+microservices-middleware/client/cypress/utils/productPage.js:36:hardcoded variable:const selectFinalClass = async (finalClass) => {
+microservices-middleware/client/cypress/utils/productPage.js:37:hardcoded string:    cy.get('.ant-select-search.ant-select-search--inline')
+microservices-middleware/client/cypress/utils/productPage.js:38:hardcoded string:        .invoke('show')
+microservices-middleware/client/cypress/utils/productPage.js:39:hardcoded string:        .get('input#finalClass')
+microservices-middleware/client/cypress/utils/productPage.js:41:hardcoded string:        .get('.ant-select-dropdown-menu-item-active')
+microservices-middleware/client/cypress/utils/productPage.js:44:hardcoded variable:const selectValidity = async (validity) => {
+microservices-middleware/client/cypress/utils/productPage.js:45:hardcoded string:    cy.get('.ant-select-search.ant-select-search--inline')
+microservices-middleware/client/cypress/utils/productPage.js:46:hardcoded string:        .invoke('show')
+microservices-middleware/client/cypress/utils/productPage.js:47:hardcoded string:        .get('input#validity')
+microservices-middleware/client/cypress/utils/productPage.js:49:hardcoded string:        .get('.ant-select-dropdown-menu-item-active')
+microservices-middleware/client/cypress/utils/productPage.js:52:hardcoded variable:const selectTablet = async (tabletName) => {
+microservices-middleware/client/cypress/utils/productPage.js:53:hardcoded string:    cy.get('.ant-select-search.ant-select-search--inline')
+microservices-middleware/client/cypress/utils/productPage.js:54:hardcoded string:        .invoke('show')
+microservices-middleware/client/cypress/utils/productPage.js:55:hardcoded string:        .get('input#tablet')
+microservices-middleware/client/cypress/utils/productPage.js:57:hardcoded string:        .get('.ant-select-dropdown-menu-item-active')
+microservices-middleware/client/cypress/utils/productPage.js:60:hardcoded variable:const validatePrices = async (paymentMethod) => {
+microservices-middleware/client/cypress/utils/productPage.js:62:hardcoded string:    cy.route('POST', '/api/product/*').as('getProductPriceAndDetails')
+microservices-middleware/client/cypress/utils/productPage.js:63:hardcoded string:    cy.get(`.ant-radio-group input[value="` + paymentMethod + `"]`)
+microservices-middleware/client/cypress/utils/productPage.js:65:hardcoded string:    cy.get('.fetch-btn')
+microservices-middleware/client/cypress/utils/productPage.js:67:hardcoded string:    cy.wait('@getProductPriceAndDetails').then((xhr) => {
+microservices-middleware/client/cypress/utils/productPage.js:68:hardcoded variable:        const response = xhr.response.body;
+microservices-middleware/client/cypress/utils/productPage.js:69:hardcoded string:        cy.wrap(response.minPrice).should('equal', response.minPrice)
+microservices-middleware/client/cypress/utils/productPage.js:70:hardcoded string:        cy.wrap(response.maxPrice).should('equal', response.maxPrice)
+microservices-middleware/client/cypress/utils/productPage.js:71:hardcoded string:        cy.get('input[name="finalPrice"]')
+microservices-middleware/client/cypress/utils/productPage.js:75:hardcoded variable:const moveToNextPage = async () => {
+microservices-middleware/client/cypress/utils/productPage.js:76:hardcoded string:    cy.get('.next-btn')
+microservices-middleware/client/cypress/utils/productPage.js:78:hardcoded string:    cy.get('.ant-modal-wrap .ant-checkbox-input')
+microservices-middleware/client/cypress/utils/productPage.js:80:hardcoded string:    cy.get('.ant-modal-wrap .ant-btn-primary')
+microservices-middleware/client/cypress/utils/productPage.js:83:hardcoded variable:const addSiblingDetails = async (name, number) => {
+microservices-middleware/client/cypress/utils/productPage.js:84:hardcoded string:    cy.get('input[name="siblingName"]')
+microservices-middleware/client/cypress/utils/productPage.js:87:hardcoded string:    cy.get('input[name="siblingMobileNo"]')
+microservices-middleware/client/cypress/utils/productPage.js:91:hardcoded variable:const clickPlusBtnToAddNewSibling = async () => {
+microservices-middleware/client/cypress/utils/productPage.js:92:hardcoded string:    cy.get('.btn-success')
+microservices-middleware/client/cypress/utils/productPage.js:95:hardcoded variable:const addMentoring = async (mentoringCount) => {
+microservices-middleware/client/cypress/utils/productPage.js:96:hardcoded string:    cy.get('#mentoringCount')

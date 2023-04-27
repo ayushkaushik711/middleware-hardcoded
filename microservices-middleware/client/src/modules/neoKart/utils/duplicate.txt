@@ -1,0 +1,1 @@
+microservices-middleware/client/src/modules/neoKart/utils/spIds.js:1:hardcoded string:export const BELP_MATH_SALES_PROGRAM_ID = "SP-000001843";

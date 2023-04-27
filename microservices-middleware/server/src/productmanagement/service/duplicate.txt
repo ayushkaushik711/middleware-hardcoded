@@ -1,0 +1,331 @@
+microservices-middleware/server/src/productmanagement/service/skuIdHelper.js:1:hardcoded object:const { nanoid } = require('nanoid');
+microservices-middleware/server/src/productmanagement/service/skuIdHelper.js:3:hardcoded variable:const getSkuItemId = (product) => {
+microservices-middleware/server/src/productmanagement/service/skuIdHelper.js:4:hardcoded number:    //length of itemId should be 24 characters
+microservices-middleware/server/src/productmanagement/service/skuIdHelper.js:5:hardcoded number:    const itemId = nanoid(24)
+microservices-middleware/server/src/productmanagement/service/epicHelper.js:1:hardcoded variable:const checkIfEpicAvailable = async (students) => {
+microservices-middleware/server/src/productmanagement/service/epicHelper.js:2:hardcoded array:    let epicSkus = [];
+microservices-middleware/server/src/productmanagement/service/epicHelper.js:4:hardcoded array:        const { items = [] } = student
+microservices-middleware/server/src/productmanagement/service/epicHelper.js:5:hardcoded variable:        const epicItems = items.filter((sku) => {
+microservices-middleware/server/src/productmanagement/service/epicHelper.js:6:hardcoded string:            return ['epic'].includes(sku.category)
+microservices-middleware/server/src/productmanagement/service/totalSkusPrice.js:1:hardcoded object:const { flattenDeep } = require('lodash')
+microservices-middleware/server/src/productmanagement/service/totalSkusPrice.js:3:hardcoded array:const getTotalSkuAndPrice = ({ courseSku = [], tabletSku = [], regSku = [] }) => {
+microservices-middleware/server/src/productmanagement/service/totalSkusPrice.js:4:hardcoded number:    let totalPrice = 0, products = [];
+microservices-middleware/server/src/productmanagement/service/totalSkusPrice.js:7:hardcoded number:        const { price = 0 } = course
+microservices-middleware/server/src/productmanagement/service/totalSkusPrice.js:13:hardcoded object:        const { price } = tablet
+microservices-middleware/server/src/productmanagement/service/totalSkusPrice.js:18:hardcoded variable:    const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:1:hardcoded object:const { get, find, flattenDeep, random, padStart, size, intersection, isEmpty } = require('lodash');
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:3:hardcoded string:const { PremiumAccount, LeadoOrder } = require("@byjus-orders/nexemplum/oms")
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:5:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Product Helper');
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:7:hardcoded variable:const getStudentProfileDetails = async (productDetails) => {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:8:hardcoded array:    const { students = [], productCombination } = productDetails;
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:9:hardcoded string:    let familyIdVal = '', premiumAccountId = '';
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:11:hardcoded number:        for (let i = 0; i < students.length; i++) {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:12:hardcoded string:            if (students[i].userProfile && students[i].userProfile !== "newProfile") {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:13:hardcoded string:                const premiumAccountDoc = await PremiumAccount.findOne({ premium_account_id: students[i].userProfile }).select('familyReferenceNumber').lean()
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:14:hardcoded string:                const { familyReferenceNumber = '' } = premiumAccountDoc;
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:16:hardcoded array:                premiumAccountId = students[i].userProfile;
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:18:hardcoded variable:            let studentProfileDetails = {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:19:hardcoded string:                isExistingProfile: ["newProfile", undefined].includes(students[i].userProfile) ? false : true,
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:20:hardcoded string:                existingPremiumId: ["newProfile", undefined].includes(students[i].userProfile) ? "" : premiumAccountId,
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:21:hardcoded string:                existingFamilyId: ["newProfile", undefined].includes(students[i].userProfile) ? "" : familyIdVal,
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:23:hardcoded array:            students[i].studentProfileDetails = studentProfileDetails;
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:24:hardcoded string:            students[i]["productSelectionType"] = productCombination;
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:25:hardcoded array:            delete students[i].userProfile
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:31:hardcoded variable:const checkisExistingProfile = async (productDetails) => {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:32:hardcoded array:    const { students = [], productCombination } = productDetails;
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:33:hardcoded string:    let familyIdVal = '', premiumAccountId = '';
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:35:hardcoded number:        for (let i = 0; i < students.length; i++) {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:36:hardcoded string:            if (students[i].userProfile && students[i].userProfile !== "newProfile") {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:37:hardcoded string:                const premiumAccountDoc = await PremiumAccount.findOne({ premium_account_id: students[i].userProfile }).select('familyReferenceNumber').lean()
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:38:hardcoded string:                const { familyReferenceNumber = '' } = premiumAccountDoc;
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:40:hardcoded array:                premiumAccountId = students[i].userProfile;
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:42:hardcoded variable:            let studentProfileDetails = {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:43:hardcoded string:                isExistingProfile: ["newProfile", undefined].includes(students[i].userProfile) ? false : true,
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:44:hardcoded string:                existingPremiumId: ["newProfile", undefined].includes(students[i].userProfile) ? "" : premiumAccountId,
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:45:hardcoded string:                existingFamilyId: ["newProfile", undefined].includes(students[i].userProfile) ? "" : familyIdVal,
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:47:hardcoded array:            students[i].studentProfileDetails = studentProfileDetails;
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:48:hardcoded string:            students[i]["productSelectionType"] = productCombination;
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:54:hardcoded variable:const validatingFOCPremiumAccount = async (productDetails, identifier, customerDetails) => {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:55:hardcoded string:    logger.info({ method: 'validatingFOCPremiumAccount', msg: `validating FOC PremiumAccount for _id:${identifier}` });
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:57:hardcoded number:        const { students = [], finalPrice = 0 } = productDetails;
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:58:hardcoded string:        const { parentMobileNo = "" } = customerDetails;
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:59:hardcoded string:        const orders = await LeadoOrder.find({ "customerDetails.parentMobile": parentMobileNo });
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:60:hardcoded number:        if (students && students.length && finalPrice <= 1 && orders.length > 0) {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:61:hardcoded number:            for (let a = 0; a < orders.length; a++) {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:62:hardcoded array:                let { customerDetails: previousOrderCustomerDetails } = orders[a]
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:63:hardcoded number:                for (let b = 0; b < previousOrderCustomerDetails.length; b++) {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:64:hardcoded array:                    let { studentProfileDetails: previousStudentProfileDetails } = previousOrderCustomerDetails[b]
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:65:hardcoded number:                    if (previousStudentProfileDetails && size(previousStudentProfileDetails) === 0) {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:70:hardcoded number:            for (let i = 0; i < students.length; i++) {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:71:hardcoded array:                const { studentProfileDetails = {} } = students[i] || {};
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:72:hardcoded string:                const { isExistingProfile = false, existingPremiumId = "" } = studentProfileDetails
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:73:hardcoded string:                if (!isExistingProfile || !existingPremiumId || existingPremiumId === "") {
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:74:hardcoded string:                    throw new Error("New premium account can not be created for FOC order. Use existing Premium account")
+microservices-middleware/server/src/productmanagement/service/studentProfileHelper.js:81:hardcoded object:        throw new Error(error || `Error while validating FOC premium account for _id: ${identifier}`)
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:1:hardcoded object:const { get, find, flattenDeep, random, padStart, size, intersection, isEmpty } = require('lodash');
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:3:hardcoded file path:const ByjusConfig = require('../../../models/ByjusConfig');
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:4:hardcoded file path:const Aakash = require('../../../config/products/AakashLive');
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:5:hardcoded string:const { DraftOrder } = require("@byjus-orders/nexemplum/oms")
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:7:hardcoded variable:const isAchieverCourse = (grade, subCourse) => {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:8:hardcoded string:    if (["12", "13+"].includes(grade) && subCourse.includes("ACHIEVER")) {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:15:hardcoded variable:const isScholarCourse = (grade, subCourse) => {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:16:hardcoded string:    if (["12", "13+"].includes(grade) && subCourse.includes("SCHOLAR")) {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:23:hardcoded variable:const isCrashCourse = (grade, subCourse) => {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:24:hardcoded string:    if (["12", "13+"].includes(grade) && subCourse.includes("CRASHCOURSE")) {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:31:hardcoded variable:const getQueryForAakash = (productLearningType, query) => {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:33:hardcoded string:        query["type"] = Aakash.sdCard.type
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:35:hardcoded string:        query["type"] = Aakash.live.type
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:42:hardcoded variable:const getQueryForAakashAchiever = (productLearningType, query, grade, subCourse) => {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:44:hardcoded string:        query["type"] = Aakash.sdCard.type
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:45:hardcoded string:        if (["12", "13+"].includes(grade) && subCourse.includes("ACHIEVER")) {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:46:hardcoded string:            query["course"] = subCourse.split('-')[0]; //JEE-ACHIEVER will be of subcourse JEE in the SKU
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:49:hardcoded string:        if (["12", "13+"].includes(grade) && subCourse.includes("ACHIEVER")) {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:50:hardcoded string:            query["category"] = Aakash.acheiver.category //instead of type, category field from sku will be used to identify
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:51:hardcoded string:            query["course"] = subCourse.split('-')[0]; //JEE-ACHIEVER will be of subcourse JEE in the SKU
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:54:hardcoded string:            query["type"] = Aakash.live.type
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:60:hardcoded variable:const getQueryForAakashScholar = (productLearningType, query, grade, subCourse) => {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:62:hardcoded string:        query["type"] = Aakash.sdCard.type
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:63:hardcoded string:        if (["12", "13+"].includes(grade) && subCourse.includes("SCHOLAR")) {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:64:hardcoded string:            query["course"] = subCourse.split('-')[0]; //NEET-SCHOLAR will be of subcourse NEET in the SKU
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:67:hardcoded string:        if (["12", "13+"].includes(grade) && subCourse.includes("SCHOLAR")) {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:68:hardcoded string:            query["category"] = Aakash.scholar.category //instead of type, category field from sku will be used to identify
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:69:hardcoded string:            query["course"] = subCourse.split('-')[0]; //NEET-Scholar will be of subcourse NEET in the SKU
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:72:hardcoded string:            query["type"] = Aakash.live.type
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:78:hardcoded variable:const getQueryForAakashCrash = (productLearningType, query, grade, subCourse) => {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:80:hardcoded string:        query["type"] = Aakash.sdCard.type
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:81:hardcoded string:        if (["12", "13+"].includes(grade) && subCourse.includes("CRASHCOURSE")) {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:82:hardcoded string:            query["course"] = subCourse.split('-')[0]; //NEET-Crash Course will be of subcourse NEET in the SKU
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:85:hardcoded string:        if (["12", "13+"].includes(grade) && subCourse.includes("NEET-CRASHCOURSE")) {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:86:hardcoded string:            query["category"] = Aakash.crash.neetCategory //instead of type, category field from sku will be used to identify
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:87:hardcoded string:            query["course"] = subCourse.split('-')[0]; //NEET-Crash Course will be of subcourse NEET in the SKU
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:89:hardcoded string:        else if (["12", "13+"].includes(grade) && subCourse.includes("JEE-CRASHCOURSE")) {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:90:hardcoded string:            query["category"] = Aakash.crash.jeeCategory //instead of type, category field from sku will be used to identify
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:91:hardcoded string:            query["course"] = subCourse.split('-')[0]; //JEE-Crash Course will be of subcourse NEET in the SKU
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:94:hardcoded string:            query["type"] = Aakash.live.type
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:101:hardcoded variable:const calculateAeslTotalPrice = async (details) => {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:102:hardcoded object:    const { grade, city, subCourse, integratedBatch, typeOfClass } = details || {}
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:103:hardcoded number:    let totalPrice = 0;
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:105:hardcoded string:    const aakashConfig = await ByjusConfig.findOne({ formattedModuleName: "AESL_PRICING_CONFIG" });
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:106:hardcoded string:    const { cityFee = {} } = get(aakashConfig, "configs", {})[0];
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:107:hardcoded array:    const { regular = {}, hybrid = {}, jct = {} } = cityFee[grade][subCourse] || {};
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:110:hardcoded array:        totalPrice += Number(jct[city])
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:112:hardcoded string:    else if (typeOfClass === "AAKASH_CRP_REGULAR_CLASSES") {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:113:hardcoded array:        totalPrice += Number(regular[city])
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:115:hardcoded string:    else if (typeOfClass === "AAKASH_CRP_HYBRID_CLASSES") {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:116:hardcoded array:        totalPrice += Number(hybrid[city])
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:122:hardcoded object:const getAakashPriceBreakup = async ({ identifier, maxPrice, typeOfClass }) => {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:123:hardcoded object:    const { registerationFee, admissionFeePercentage, techAndExamFeePercentage, classroomPercentage, tutionfeePercentage } = aakashCrpFee
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:125:hardcoded object:    const draftOrderData = await DraftOrder.findOne({ _id: identifier }).lean();
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:126:hardcoded object:    const { voucherDetails = {} } = draftOrderData || {};
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:127:hardcoded number:    const { value = 0, discountType, voucherCode } = voucherDetails || {};
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:128:hardcoded string:    let scholarshipValue = discountType == 'percent' ? value.slice(0, -1) : value
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:129:hardcoded variable:    const bnatPercentage = scholarshipValue
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:132:hardcoded string:    if (discountType != 'percent') {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:133:hardcoded number:        scholarshipValue = Number(scholarshipValue) / 2
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:136:hardcoded variable:    const admissionFee = (admissionFeePercentage * maxPrice) - registerationFee
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:137:hardcoded variable:    const techAndExamFee = techAndExamFeePercentage * maxPrice
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:138:hardcoded string:    let classRoomFee = discountType == 'percent' ? classroomPercentage * maxPrice * (100 - Number(scholarshipValue)) / 100 : (classroomPercentage * maxPrice) - scholarshipValue
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:139:hardcoded string:    let tuitionFee = discountType == 'percent' ? tutionfeePercentage * maxPrice * (100 - Number(scholarshipValue)) / 100 : (tutionfeePercentage * maxPrice) - scholarshipValue
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:141:hardcoded string:    if (typeOfClass === "AAKASH_CRP_HYBRID_CLASSES") {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:143:hardcoded number:        classRoomFee = 0
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:144:hardcoded string:        if (discountType != 'percent') {
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:148:hardcoded variable:    const minPrice = registerationFee + admissionFee + techAndExamFee + classRoomFee + tuitionFee
+microservices-middleware/server/src/productmanagement/service/aakashHelper.js:150:hardcoded variable:    const priceBreakup = {
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:1:hardcoded object:const { get } = require('lodash')
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:2:hardcoded object:const { productConstant } = require('./../utils/productConstants')
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:4:hardcoded variable:const getPrice = (courseSku, initialClass, siblingCount) => {
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:6:hardcoded object:    const { grade } = courseSku
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:9:hardcoded number:            if(siblingCount > 0) {
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:10:hardcoded string:                price = get(courseSku, 'continuousPrice')
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:13:hardcoded string:                    price = get(courseSku, 'basePrice')
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:15:hardcoded string:                    price = get(courseSku, 'continuousPrice')
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:19:hardcoded string:            price = get(courseSku, 'basePrice')
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:22:hardcoded string:        price = get(courseSku, 'basePrice')
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:27:hardcoded variable:const getDiscountPrice =(courseSku, student) =>{
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:30:hardcoded object:    const { grade } = courseSku
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:31:hardcoded object:    const { initialClass} = student;
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:36:hardcoded number:            }else if(Number(grade)=== Number(initialClass)+1){
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:37:hardcoded string:                    price = get(courseSku, 'basePrice')
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:39:hardcoded string:                    price = get(courseSku, 'continuousPrice')
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:42:hardcoded string:            price = get(courseSku, 'basePrice')
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:47:hardcoded variable:const getCurrentYearPrice= (student)=>{
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:48:hardcoded number:    let skuPrice=0;
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:49:hardcoded object:    const {productCombination, initialClass, state } = student;
+microservices-middleware/server/src/productmanagement/service/priceHelper.js:51:hardcoded string:     if(['byjus_digital_learning'].includes(productCombination) && state==='WestBengal' && initialClass>=6){
+microservices-middleware/server/src/productmanagement/service/m8Helper.js:1:hardcoded variable:const isByjusMathApplicable = (tabletId, grade) => {
+microservices-middleware/server/src/productmanagement/service/m8Helper.js:2:hardcoded number:    // TL8MZ1: M8 Tablet Id
+microservices-middleware/server/src/productmanagement/service/m8Helper.js:3:hardcoded string:    return tabletId === "TL8MZ1" && [0, 1, 2, 3, 4, 5, 6, 7].includes(parseInt(grade));
+microservices-middleware/server/src/productmanagement/service/errorMessage.js:1:hardcoded variable:const getErrorMsg = function (queryDetails) {
+microservices-middleware/server/src/productmanagement/service/errorMessage.js:2:hardcoded object:    const { grade, board, state, validity, course, type, miscellaneous } = queryDetails || {};
+microservices-middleware/server/src/productmanagement/service/errorMessage.js:5:hardcoded string:    ${course ? `Course: ${course}` : ''}
+microservices-middleware/server/src/productmanagement/service/errorMessage.js:6:hardcoded string:    ${grade ? `Grade: ${grade}` : ''}
+microservices-middleware/server/src/productmanagement/service/errorMessage.js:7:hardcoded string:    ${board ? `Board: ${board}` : ''}
+microservices-middleware/server/src/productmanagement/service/errorMessage.js:8:hardcoded string:    ${state ? `State: ${state}` : ''}
+microservices-middleware/server/src/productmanagement/service/errorMessage.js:9:hardcoded string:    ${type ? `Type: ${type}` : ''}
+microservices-middleware/server/src/productmanagement/service/errorMessage.js:10:hardcoded string:    ${validity ? `Validity: ${validity}` : ''}
+microservices-middleware/server/src/productmanagement/service/errorMessage.js:11:hardcoded string:    ${miscellaneous && miscellaneous.length ? `Miscellaneous Courses: ${miscellaneous}` : ''}
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:1:hardcoded object:const { get, find, flattenDeep, random, padStart, size, intersection, isEmpty } = require('lodash');
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:3:hardcoded object:const { productConstant } = require('../utils/productConstants');
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:5:hardcoded variable:const getCourseType = (initialClass, finalClass, course) => {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:6:hardcoded array:    let courseType = [];
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:8:hardcoded number:    if (productConstant.PRE_K3_GRADES.includes(initialClass)) {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:9:hardcoded string:        courseType.push('PRE_K3')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:11:hardcoded number:    if (productConstant.K3_GRADES.includes(initialClass)) {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:12:hardcoded string:        courseType.push('K3')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:14:hardcoded number:    if (productConstant.K10_GRADES.includes(initialClass) || productConstant.K10_GRADES.includes(finalClass)) {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:15:hardcoded string:        courseType.push('K10')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:17:hardcoded number:    if (productConstant.K12_GRADES.includes(finalClass) || productConstant.K12_GRADES.includes(initialClass)) {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:18:hardcoded string:        courseType.push('K12')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:20:hardcoded string:    if (course === "CAT") {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:21:hardcoded string:        courseType.push('CAT')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:23:hardcoded string:    if (course === "IAS") {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:24:hardcoded string:        courseType.push('IAS')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:26:hardcoded string:    if (course === "GATE") {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:27:hardcoded string:        courseType.push('GATE')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:29:hardcoded string:    if (course === "ESE_AND_GATE") {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:30:hardcoded string:        courseType.push('ESE_AND_GATE')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:32:hardcoded string:    if (course === "UGCNET") {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:33:hardcoded string:        courseType.push('UGCNET')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:35:hardcoded string:    if (course === "NDA") {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:36:hardcoded string:        courseType.push('NDA')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:38:hardcoded string:    if (course === "CDS") {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:39:hardcoded string:        courseType.push('CDS')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:41:hardcoded string:    if (course === "STATE_PSC") {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:42:hardcoded string:        courseType.push('STATE_PSC')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:44:hardcoded string:    if (course === "CSIR_NET") {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:45:hardcoded string:        courseType.push('CSIR_NET')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:47:hardcoded string:    if (course === "CLAT") {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:48:hardcoded string:        courseType.push('CLAT')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:50:hardcoded string:    if (course === "AE_JE") {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:51:hardcoded string:        courseType.push('AE_JE')
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:56:hardcoded object:const attachSiblingDetails = (productDetails = {}, productType, draftOrder, studentDetails, isPrivilegedUser) => {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:57:hardcoded array:    const { products = [], students = [], productCombination, finalPrice, accountType } = productDetails;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:58:hardcoded array:    let formattedProducts = [];
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:60:hardcoded variable:    const environment = process.env.NODE_ENV;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:61:hardcoded string:    const isDevEnv = ['development', 'local'].includes(environment);
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:62:hardcoded object:    const { customerDetails } = draftOrder;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:63:hardcoded variable:    const formattedStudents = students.map((student, index) => {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:64:hardcoded object:        let { studentName } = customerDetails;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:65:hardcoded number:        let { siblingName, items, initialClass, finalClass, course, tablet, d4tablet } = student;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:66:hardcoded string:        studentName = `${productType === "sibling" ? siblingName : studentName}`;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:67:hardcoded number:        const studentId = `${studentName}-${index + 1}`;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:68:hardcoded string:        student["studentName"] = studentName;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:69:hardcoded string:        student["studentId"] = studentId;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:70:hardcoded string:        if (productType === "aakashCRP") {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:71:hardcoded object:            const { dob, gender, attachments } = studentDetails
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:72:hardcoded string:            student["dob"] = dob;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:73:hardcoded string:            student["gender"] = gender;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:74:hardcoded string:            student["attachments"] = attachments;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:76:hardcoded variable:        const courseType = getCourseType(initialClass, finalClass, course);
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:77:hardcoded string:        student["courseType"] = courseType;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:79:hardcoded variable:        let academicDetails = getNeoClassAcademicDetails(student, accountType);
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:80:hardcoded string:        student["academicDetails"] = academicDetails;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:82:hardcoded number:        tabletId = getTabletId({ studentName, tablet, d4tablet })
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:87:hardcoded string:            item["studentId"] = studentId;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:88:hardcoded string:            item["tabletId"] = tabletId;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:91:hardcoded string:        student["items"] = items;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:93:hardcoded string:        if (isDevEnv && productType === "aakashCRP") {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:95:hardcoded string:                item["basePrice"] = item.price;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:104:hardcoded string:    /* if (['local', 'development'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:115:hardcoded number:const getTabletId = ({ studentName, tablet, d4tablet }) => {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:118:hardcoded object:        tabletId = `T-${tablet}-${studentName}`
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:119:hardcoded number:    } else if (d4tablet) {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:120:hardcoded number:        tabletId = `T-${d4tablet}`;
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:122:hardcoded string:        tabletId = "";
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:127:hardcoded variable:const getNeoClassAcademicDetails = (student, accountType) => {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:128:hardcoded string:    const schoolDetails = get(student, "schoolDetails", {})
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:129:hardcoded string:    let schoolName = get(schoolDetails, "schoolName") ? get(schoolDetails, "schoolName", "") : get(student, "schoolName", "");
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:131:hardcoded string:    if (!isEmpty(get(schoolDetails, "newSchool"))) {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:132:hardcoded string:        schoolName = get(schoolDetails, "newSchool")
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:133:hardcoded string:    } else if (!isEmpty(get(schoolDetails, "otherSchoolName"))) {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:134:hardcoded string:        schoolName = get(schoolDetails, "otherSchoolName")
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:137:hardcoded variable:    let academicDetail = {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:138:hardcoded string:        mathPercent: get(student, "mathPercent", null),
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:139:hardcoded string:        sciencePercent: get(student, "sciencePercent", null),
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:140:hardcoded string:        fotTrackId: get(schoolDetails, "trackId", null),
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:141:hardcoded string:        proficiency: get(student, "proficiency", null),
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:143:hardcoded string:            id: get(schoolDetails, "schoolId", null) ? get(schoolDetails, "schoolId", null) : get(student, "schoolId", null),
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:145:hardcoded string:            city: get(schoolDetails, "city"),
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:146:hardcoded string:            state: get(schoolDetails, "schoolState"),
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:147:hardcoded string:            address: get(schoolDetails, "schoolAddress") ? get(schoolDetails, "schoolAddress", "") : get(student, "schoolAddress", ""),
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:148:hardcoded string:            pincode: get(student, 'schoolPincode', null)
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:150:hardcoded string:        languageOfInstruction: get(student, "languageOfInstruction", null),
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:151:hardcoded string:        languageOfInstructionId: get(student, "languageOfInstructionId", null)
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:153:hardcoded string:    if (accountType == 'middle-east') {
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:154:hardcoded string:        academicDetail.fotTrackId = get(student, 'trackId', null)
+microservices-middleware/server/src/productmanagement/service/studentHelper.js:155:hardcoded string:        academicDetail.proficiency = academicDetail.fotTrackId ? "A2" : null    //default
+microservices-middleware/server/src/productmanagement/service/sourceDetails.js:1:hardcoded object:const { get } = require('lodash');
+microservices-middleware/server/src/productmanagement/service/sourceDetails.js:2:hardcoded object:const {isDevEnv} =require('../../../lib/featureHelper')
+microservices-middleware/server/src/productmanagement/service/sourceDetails.js:4:hardcoded variable:const getSourceDetails = (details) => {
+microservices-middleware/server/src/productmanagement/service/sourceDetails.js:5:hardcoded string:    const {  validity = '', user ={} } = details;
+microservices-middleware/server/src/productmanagement/service/sourceDetails.js:6:hardcoded object:    let sourceDetails = {};
+microservices-middleware/server/src/productmanagement/service/sourceDetails.js:7:hardcoded string:    const associateRole = get(user, 'associateRole', '');
+microservices-middleware/server/src/productmanagement/service/sourceDetails.js:8:hardcoded string:    if(['TRIAL_PACK', 'mini_learning_program'].includes(validity)) {
+microservices-middleware/server/src/productmanagement/service/sourceDetails.js:10:hardcoded string:            channel: "tele_sales",
+microservices-middleware/server/src/productmanagement/service/sourceDetails.js:11:hardcoded object:            vendor: `${associateRole}`,
+microservices-middleware/server/src/productmanagement/service/sourceDetails.js:12:hardcoded string:            createdBy: "kart"
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:1:hardcoded object:const { get, find, flattenDeep, random, padStart, size, intersection, isEmpty } = require('lodash');
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:2:hardcoded object:const { Op } = require("sequelize");
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:4:hardcoded file path:const ByjusConfig = require('../../../models/ByjusConfig');
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:6:hardcoded object:const { productConstant, isAdvanceAdmission } = require('../utils/productConstants');
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:7:hardcoded file path:const Aakash = require('../../../config/products/AakashLive');
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:8:hardcoded object:const { getLoggedInUserRole } = require('../../../utility/draftOrderUtility');
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:9:hardcoded object:const { checkIfEpicAvailable } = require('./epicHelper')
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:10:hardcoded object:const { getBoard } = require('../../productmanagement/service/boardAndState')
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:13:hardcoded variable:const checkIsOmsOrder = async (productType, isOmsOrder, validity, students) => {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:16:hardcoded variable:        const isEpicAvailable = await checkIfEpicAvailable(students)
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:23:hardcoded variable:        const omsConfig = await ByjusConfig.findOne({
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:24:hardcoded string:            "formattedAppName": "OMS",
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:25:hardcoded string:            "formattedModuleName": "ORDER_MANAGEMENT_SYSTEM"
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:26:hardcoded object:        }) || {};
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:27:hardcoded array:        const { configs = [] } = omsConfig || {};
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:29:hardcoded object:        let productTypeConfig = {};
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:30:hardcoded string:        if (!['local', "development"].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:31:hardcoded string:            productTypeConfig = find(configs, (config) => config["type"] === "product_type_restricted") || {};
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:33:hardcoded string:        const productTypesArray = get(productTypeConfig, 'productTypes', []);
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:35:hardcoded variable:        let isOmsOrderEligible = !productTypesArray.includes(productType);
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:46:hardcoded variable:const getUpdatedTotalPrice = async (details) => {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:47:hardcoded number:    let { identifier, totalPrice, role = null, studentCount = 0, validity } = details;
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:48:hardcoded variable:    const loggedInUserRole = role ? role : await getLoggedInUserRole(identifier);
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:50:hardcoded string:    if (productConstant.TRIAL_TEAM_ROLE.includes(loggedInUserRole) && validity != "TRIAL_SUBSCRIPTION") {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:57:hardcoded number:    //     totalPrice = (Math.floor(productConstant.RENEWAL_SPECIALIST_PRICE * totalPrice / 1000)) * 1000
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:63:hardcoded variable:const getProductCombination = (studentDetails, grade) => {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:64:hardcoded string:    const { initialClass, finalClass, productLearningType = "" } = studentDetails;
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:65:hardcoded string:    let productCombination = "";
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:67:hardcoded string:        productCombination = "byjus_classes"
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:68:hardcoded string:    } else if (["byjus_classes"].includes(productLearningType)) {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:69:hardcoded string:        productCombination = "byjus_classes"
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:70:hardcoded string:    } else if (["byjus_classes_plus_byjus_tlp"].includes(productLearningType) && Number(grade) <= Number(finalClass)) {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:71:hardcoded string:        productCombination = "byjus_classes"
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:74:hardcoded string:    } else if (productLearningType.indexOf("byjus_math") >= 0) {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:77:hardcoded string:        productCombination = "tlp"
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:82:hardcoded variable:const getAdvanceCourseTlpPrice = (courseSku, initialClass, finalClass, productLearningType) => {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:83:hardcoded object:    let { price, grade } = courseSku
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:84:hardcoded string:    grade = grade.includes("Streaming") ? grade.split(" ")[1] : grade
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:85:hardcoded number:    let coursePrice = 0;
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:86:hardcoded number:    if (productConstant.K12_GRADES.includes(finalClass.toString())) {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:97:hardcoded variable:const getReportingEmailByRole = (user, role) => {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:98:hardcoded object:    const { reportingTo = {} } = user || {};
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:99:hardcoded array:    const reportingConfigArray = get(reportingTo, role) || [];
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:101:hardcoded string:    const reportingConfig = find(reportingConfigArray, (c) => c["userType"] === "PRIMARY") || reportingConfigArray[0];
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:102:hardcoded string:    const emailId = get(reportingConfig, 'userEmail');
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:107:hardcoded variable:const getPostgresBoard = async (details) => {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:108:hardcoded object:    const { grade, board, state, query, productCombination } = details;
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:109:hardcoded string:    if (["6", "7", "8", "9", "10"].includes(grade)) {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:110:hardcoded string:       return query["board"] = board === "STATE" ? getBoard({ grade, board, state }) : board;
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:112:hardcoded string:    } else if(["4", "5"].includes(grade)) {
+microservices-middleware/server/src/productmanagement/service/commonHelper.js:113:hardcoded string:        return query["board"] = {[Op.or]: [null, ""]}
+microservices-middleware/server/src/productmanagement/service/boardAndState.js:1:hardcoded variable:const getBoard = (details) => {
+microservices-middleware/server/src/productmanagement/service/boardAndState.js:2:hardcoded object:    const { grade, board, state } = details
+microservices-middleware/server/src/productmanagement/service/boardAndState.js:3:hardcoded number:    if (parseInt(grade) <= 5 || parseInt(grade) > 10) {
+microservices-middleware/server/src/productmanagement/service/boardAndState.js:6:hardcoded string:        if (board === "STATE") {
+microservices-middleware/server/src/productmanagement/service/boardAndState.js:14:hardcoded variable:const getBoardForState = (state) => {
+microservices-middleware/server/src/productmanagement/service/boardAndState.js:15:hardcoded string:    if (state === "Other") {
+microservices-middleware/server/src/productmanagement/service/boardAndState.js:16:hardcoded string:        return "CBSE";
+microservices-middleware/server/src/productmanagement/service/brandHelper.js:1:hardcoded number:const { productConstant , M8_TABLET} = require('../utils/productConstants')
+microservices-middleware/server/src/productmanagement/service/brandHelper.js:3:hardcoded number:const getBrand = (selectD4SDCard, tablet, query) => {
+microservices-middleware/server/src/productmanagement/service/brandHelper.js:4:hardcoded string:    if(parseInt(query['grade']) > 10) {
+microservices-middleware/server/src/productmanagement/service/brandHelper.js:6:hardcoded number:    } else if(selectD4SDCard || productConstant.D4_SKU_ID.includes(tablet)) {
+microservices-middleware/server/src/productmanagement/service/brandHelper.js:7:hardcoded string:        return 'D4'
+microservices-middleware/server/src/productmanagement/service/brandHelper.js:8:hardcoded number:    } else if(M8_TABLET.includes(tablet)) {
+microservices-middleware/server/src/productmanagement/service/brandHelper.js:9:hardcoded string:        return 'M8'

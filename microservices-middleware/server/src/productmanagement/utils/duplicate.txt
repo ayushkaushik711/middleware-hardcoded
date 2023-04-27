@@ -1,0 +1,314 @@
+microservices-middleware/server/src/productmanagement/utils/products.js:1:hardcoded variable:const tablets = [
+microservices-middleware/server/src/productmanagement/utils/products.js:3:hardcoded string:        'name': 'K-12 Lenovo Tablet (Add-on - BYJUS) (7 inch)',
+microservices-middleware/server/src/productmanagement/utils/products.js:4:hardcoded string:        'productId': '934599',
+microservices-middleware/server/src/productmanagement/utils/products.js:5:hardcoded string:        'sku': 'K-12 Lenovo Tablet (Add-on - BYJUS) (7 inch)',
+microservices-middleware/server/src/productmanagement/utils/products.js:6:hardcoded string:        'price': 5000,
+microservices-middleware/server/src/productmanagement/utils/products.js:7:hardcoded string:        'size': 7,
+microservices-middleware/server/src/productmanagement/utils/products.js:8:hardcoded string:        'shorthandName': 'Lenevo Wifi Tab 7 Inch(Wifi)',
+microservices-middleware/server/src/productmanagement/utils/products.js:9:hardcoded string:        'courseType': ['k10']
+microservices-middleware/server/src/productmanagement/utils/products.js:11:hardcoded string:        'name': 'LENOVO CALLING ADD-ON (BYJU\'S)',
+microservices-middleware/server/src/productmanagement/utils/products.js:12:hardcoded string:        'productId': '866186',
+microservices-middleware/server/src/productmanagement/utils/products.js:13:hardcoded string:        'sku': 'LENOVO CALLING ADD-ON (BYJU\'S)',
+microservices-middleware/server/src/productmanagement/utils/products.js:14:hardcoded string:        'price': 7000,
+microservices-middleware/server/src/productmanagement/utils/products.js:15:hardcoded string:        'size': 7,
+microservices-middleware/server/src/productmanagement/utils/products.js:16:hardcoded string:        'shorthandName': 'Lenevo 3G Calling Tab 7 Inch(Wifi + Calling + 3G Data)',
+microservices-middleware/server/src/productmanagement/utils/products.js:17:hardcoded string:        'courseType': ['k10']
+microservices-middleware/server/src/productmanagement/utils/products.js:19:hardcoded string:        'name': 'K-12 Lenovo Tablet (Add-on - BYJUS) (10 inch)',
+microservices-middleware/server/src/productmanagement/utils/products.js:20:hardcoded string:        'productId': '940166',
+microservices-middleware/server/src/productmanagement/utils/products.js:21:hardcoded string:        'sku': 'K-12 Lenovo Tablet (Add-on - BYJUS) (10 inch)',
+microservices-middleware/server/src/productmanagement/utils/products.js:22:hardcoded string:        'price': 12500,
+microservices-middleware/server/src/productmanagement/utils/products.js:23:hardcoded string:        'size': 10,
+microservices-middleware/server/src/productmanagement/utils/products.js:24:hardcoded string:        'shorthandName': 'Lenevo 4G Only Data (Not Calling) Tab 10 Inch(Wifi + 4G Data)',
+microservices-middleware/server/src/productmanagement/utils/products.js:25:hardcoded string:        'courseType': ['k10']
+microservices-middleware/server/src/productmanagement/utils/products.js:27:hardcoded string:        'name': 'CAT (Lenovo Tablet-Byjus)',
+microservices-middleware/server/src/productmanagement/utils/products.js:28:hardcoded string:        'productId': '1023572',
+microservices-middleware/server/src/productmanagement/utils/products.js:29:hardcoded string:        'sku': 'CAT (Lenovo Tablet-Byjus)',
+microservices-middleware/server/src/productmanagement/utils/products.js:30:hardcoded string:        'price': 5000,
+microservices-middleware/server/src/productmanagement/utils/products.js:31:hardcoded string:        'size': 10,
+microservices-middleware/server/src/productmanagement/utils/products.js:32:hardcoded string:        'shorthandName': 'CAT (Lenovo Tablet-Byjus)',
+microservices-middleware/server/src/productmanagement/utils/products.js:33:hardcoded string:        'courseType': ['competitive']
+microservices-middleware/server/src/productmanagement/utils/products.js:35:hardcoded string:        'name': 'IAS (Lenovo Tablet-Byjus)',
+microservices-middleware/server/src/productmanagement/utils/products.js:36:hardcoded string:        'productId': '1023583',
+microservices-middleware/server/src/productmanagement/utils/products.js:37:hardcoded string:        'sku': 'IAS (Lenovo Tablet-Byjus)',
+microservices-middleware/server/src/productmanagement/utils/products.js:38:hardcoded string:        'price': 5000,
+microservices-middleware/server/src/productmanagement/utils/products.js:39:hardcoded string:        'size': 10,
+microservices-middleware/server/src/productmanagement/utils/products.js:40:hardcoded string:        'shorthandName': 'IAS (Lenovo Tablet-Byjus)',
+microservices-middleware/server/src/productmanagement/utils/products.js:41:hardcoded string:        'courseType': ['competitive']
+microservices-middleware/server/src/productmanagement/utils/products.js:43:hardcoded string:        'name': 'Lenovo Tablet Add-on-BYJUS (10 inch)',
+microservices-middleware/server/src/productmanagement/utils/products.js:44:hardcoded string:        'productId': '1030538',
+microservices-middleware/server/src/productmanagement/utils/products.js:45:hardcoded string:        'sku': 'Lenovo Tablet Add-on-BYJUS (10 inch)',
+microservices-middleware/server/src/productmanagement/utils/products.js:46:hardcoded string:        'price': 12500,
+microservices-middleware/server/src/productmanagement/utils/products.js:47:hardcoded string:        'size': 10,
+microservices-middleware/server/src/productmanagement/utils/products.js:48:hardcoded string:        'shorthandName': 'Lenovo Tablet Add-on-BYJUS (10 inch)',
+microservices-middleware/server/src/productmanagement/utils/products.js:49:hardcoded string:        'courseType': ['competitive']
+microservices-middleware/server/src/productmanagement/utils/products.js:51:hardcoded string:        'name': 'SAMSUNG Tablet (Add-on-BYJUS) (10 inch-4G)',
+microservices-middleware/server/src/productmanagement/utils/products.js:52:hardcoded string:        'productId': '1115409',
+microservices-middleware/server/src/productmanagement/utils/products.js:53:hardcoded string:        'sku': 'SAMSUNG Tablet (Add-on-BYJUS) (10 inch)',
+microservices-middleware/server/src/productmanagement/utils/products.js:54:hardcoded string:        'price': 18000,
+microservices-middleware/server/src/productmanagement/utils/products.js:55:hardcoded string:        'size': 10,
+microservices-middleware/server/src/productmanagement/utils/products.js:56:hardcoded string:        'shorthandName': 'Lenovo Tablet Add-on-BYJUS (10 inch)',
+microservices-middleware/server/src/productmanagement/utils/products.js:57:hardcoded string:        'courseType': ['competitive']
+microservices-middleware/server/src/productmanagement/utils/products.js:59:hardcoded string:        'name': 'K-12 Lenovo Tablet (Add-on-BYJUS) (8 inch)',
+microservices-middleware/server/src/productmanagement/utils/products.js:60:hardcoded string:        'productId': '1735413',
+microservices-middleware/server/src/productmanagement/utils/products.js:61:hardcoded string:        'sku': 'K-12 Lenovo Tablet (Add-on-BYJUS) (8 inch)',
+microservices-middleware/server/src/productmanagement/utils/products.js:62:hardcoded string:        'price': 10000,
+microservices-middleware/server/src/productmanagement/utils/products.js:63:hardcoded string:        'size': 8,
+microservices-middleware/server/src/productmanagement/utils/products.js:64:hardcoded string:        'shorthandName': 'K-12 Lenovo Tablet (Add-on-BYJUS) (8 inch)',
+microservices-middleware/server/src/productmanagement/utils/products.js:65:hardcoded string:        'courseType': ['competitive', 'K3', 'K12', 'K10']
+microservices-middleware/server/src/productmanagement/utils/products.js:69:hardcoded variable:const mentoring = {
+microservices-middleware/server/src/productmanagement/utils/products.js:70:hardcoded string:    oneOnOne1Month: 'Byjus One-on-One - 1-month validity',
+microservices-middleware/server/src/productmanagement/utils/products.js:71:hardcoded string:    oneOnOne3Month: 'Byjus One-on-One - 3-month validity',
+microservices-middleware/server/src/productmanagement/utils/products.js:72:hardcoded string:    oneOnOne: 'Byjus One-on-One',
+microservices-middleware/server/src/productmanagement/utils/products.js:73:hardcoded string:    oneToMany: 'Byjus One-to-Many',
+microservices-middleware/server/src/productmanagement/utils/products.js:74:hardcoded string:    oneToMega: 'Byjus Premium School',
+microservices-middleware/server/src/productmanagement/utils/products.js:75:hardcoded string:    byjusClasses: 'Byjus Classes',
+microservices-middleware/server/src/productmanagement/utils/products.js:76:hardcoded string:    neo: 'Byjus Neo Classes'
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:1:hardcoded file path:const moment = require('moment');
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:3:hardcoded string:const START_DATE = moment("2021-10-01",'YYYY-MM-DD');
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:4:hardcoded string:const CURRENT_DATE = moment().format('YYYY-MM-DD');
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:5:hardcoded string:const END_DATE = moment("2022-10-18", 'YYYY-MM-DD');
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:7:hardcoded number:const AOP_LIVE_PCB_PCM_PRICE = 25000;
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:8:hardcoded number:const AOP_LIVE_PCMB_PRICE = 40000;
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:9:hardcoded number:const DOP_10_SD_CARD_PRICE = 2500;
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:10:hardcoded number:const AOP_10_BYJUS_CLASSES_PRICE = 5000;
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:11:hardcoded number:const DOP_11_12_SD_CARD_PRICE=55000;
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:12:hardcoded number:const DOP_13_SD_CARD_PRICE = 0;
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:13:hardcoded number:const DOP_11_12_SD_CARD_PRICE_PCMB=60000;
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:14:hardcoded number:const ZERO = 0;
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:16:hardcoded number:const INITIAL_VALIDITY_2_YEAR_COURSE = 2023;
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:17:hardcoded number:const INITIAL_VALIDITY_1_YEAR_COURSE = 2022;
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:26:hardcoded number:    INITIAL_VALIDITY_2_YEAR_COURSE,
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:27:hardcoded number:    INITIAL_VALIDITY_1_YEAR_COURSE,
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:28:hardcoded number:    DOP_10_SD_CARD_PRICE,
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:29:hardcoded number:    DOP_11_12_SD_CARD_PRICE ,
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:30:hardcoded number:    DOP_13_SD_CARD_PRICE,
+microservices-middleware/server/src/productmanagement/utils/AdvancedOrderPunchingConstants.js:31:hardcoded number:    AOP_10_BYJUS_CLASSES_PRICE
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:1:hardcoded object:const { snakeCase } = require('lodash');
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:2:hardcoded file path:const moment = require('moment');
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:4:hardcoded variable:const isBtlpPriceChangeEnabled = true
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:6:hardcoded variable:const productConstant = {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:7:hardcoded number:    EMI_MIN_PRICE: 0.2,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:8:hardcoded number:    NON_EMI_MIN_PRICE: 0.2,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:9:hardcoded number:    BYJUS_CLASSES_EMI_MIN_PRICE: 0.2,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:10:hardcoded number:    BYJUS_CLASSES_NON_EMI_MIN_PRICE: 0.2,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:11:hardcoded number:    COUPON_MIN_PRICE: 0.2,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:12:hardcoded number:    INCREASE_MAX_PRICE: 0.1,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:13:hardcoded number:    ME_MIN_PRICE: 0.2,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:14:hardcoded number:    BEP_MIN_PRICE: 0.2,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:15:hardcoded number:    BYJUS_MATH_UPGRADE_MIN_PRICE: 0.8,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:16:hardcoded number:    BLC_UPGRADE_MIN_PRICE: 0.8,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:17:hardcoded number:    AAKASH_LIVE_UPGRADE_MIN_PRICE: 0.8,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:18:hardcoded number:    RENEWAL_SPECIALIST_PRICE: 0.85,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:20:hardcoded number:    //2022 Discounted price - Workshop_channel is corporate
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:21:hardcoded number:    WORKSHOP_CHANNEL_IS_CORPORATE: 0.25,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:23:hardcoded number:    DISCOUNT_ALLOWED_YEAR: 2023,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:24:hardcoded number:    // 2023 discounted price
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:25:hardcoded number:    CURRENT_YEAR_VALIDITY_SKU_PRICE_TLP: 9500,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:26:hardcoded number:    CURRENT_YEAR_VALIDITY_SKU_PRICE_NEO: 500,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:27:hardcoded number:    CURRENT_YEAR_VALIDITY_SKU_PRICE_ONETOMEGA: 10000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:28:hardcoded number:    CURRENT_YEAR_BHT_QUARTERLY_BTLP_DISCOUNTED_PRICE: 9500,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:30:hardcoded number:    //100% discount on the year ending  sku
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:31:hardcoded number:    CURRENT_YEAR_VALIDITY_SKU_PRICE_ZERO:0,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:33:hardcoded number:    // 2022 discounted price - ME 
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:34:hardcoded number:    ME_CURRENT_YEAR_VALIDITY_SKU_PRICE_TLP: 400,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:35:hardcoded number:    ME_CURRENT_YEAR_VALIDITY_SKU_PRICE_NEO: 300,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:36:hardcoded number:    ME_CURRENT_YEAR_VALIDITY_SKU_PRICE_ONETOMEGA: 700,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:39:hardcoded number:    REPEATING_GRADE_PRICE_TLP: 8000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:40:hardcoded number:    REPEATING_GRADE_PRICE_FOR_NEO_K10: 7000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:41:hardcoded number:    REPEATING_GRADE_PRICE_FOR_ONETOMEGA: 15000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:44:hardcoded number:    ME_REPEATING_GRADE_PRICE_TLP: 450,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:45:hardcoded number:    ME_REPEATING_GRADE_PRICE_FOR_NEO_K10: 395,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:46:hardcoded number:    ME_REPEATING_GRADE_PRICE_FOR_ONETOMEGA: 845,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:49:hardcoded number:        tlp: 9500,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:50:hardcoded number:        neo: 5500,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:51:hardcoded number:        mega: 15000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:54:hardcoded string:    INCREASE_MAX_PRICE_CAMPAIGNS: ["INBOUND", "LIVECHAT", "LIVECHAT CALLING"],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:57:hardcoded number:    POST_SALES_TEAM_MIN_PRICE: 0.36,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:58:hardcoded string:    POST_SALES_TEAM_ROLE: ["student_success_specialist", "senior_student_success_specialist"],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:61:hardcoded number:    UPGRADE_VERTICAL_TRIAL_CAMPAIGN_BDA_MIN_PRICE: 0.25,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:62:hardcoded number:    UPGRADE_VERTICAL_TRIAL_CAMPAIGN_BYJUS_MATH_BDA_MIN_PRICE: 0.75,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:64:hardcoded string:        ["byjus_aakash", "byjus_aakash_neo", "byjus_tlp", "tlp", "byjus_math", "byjus_classes", "byjus_classes_upgrade", "belp_math", "belp"],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:65:hardcoded string:    UPGRADE_VERTICAL_TRIAL_CAMPAIGN_BDA_VERTICAL: ({vertical, campaign}) => (snakeCase(vertical)?.includes("upgrade") && snakeCase(campaign).includes('trials')) || vertical === "Upgrades Trials",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:66:hardcoded string:    UPGRADE_VERTICAL_TRIAL_CAMPAIGN_BDA_CAMPAIGN: (campaign) => snakeCase(campaign)?.includes("trial"),
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:67:hardcoded string:    IS_UPGRADE_CHURN_VERTICAL: (vertical) => snakeCase(vertical) === "upgrades_churn",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:68:hardcoded number:    UPGRADE_CHURN_DISCOUNT: 0.30,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:69:hardcoded string:    UPGRADE_VERTICAL_TRIAL_CAMPAIGN_BDA_ROLE: ["bda"],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:71:hardcoded string:    TRIAL_TEAM_ROLE: ["product_trial_specialist", "trial_pack_renewal_specialist"],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:72:hardcoded string:    RENEWAL_TEAM_ROLE: ["renewal_specialist"],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:74:hardcoded number:    DISCOUNT_SALES_MIN_PRICE: 0.36,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:75:hardcoded string:    DISCOUNT_SALES_SENIOR_MANAGER: ["prithviraj.panesar@byjus.com"],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:78:hardcoded number:    BYJUS_CLASSES_TRIAL_PACK_DISCOUNT: 0.4,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:81:hardcoded string:    DECREASE_BASE_PRICE_ACCOUNT_TYPE: ["RETENTION"],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:82:hardcoded number:    DECREASE_BASE_PRICE: 0.1,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:85:hardcoded string:    OFFER_DECREASE_MIN_PRICE_CAMPAIGNS: ["AURANGABAD", "PUNE", "SOLAPUR", "HYDERABAD", "VIJAYAWADA", "NELLORE", "VIZAG", "RAJAHMUNDRY", "WARANGAL",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:86:hardcoded string:        "MUMBAI", "THANE", "NAVI MUMBAI", "NAGPUR", "TIRUPATI"],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:87:hardcoded number:    OFFER_DECREASE_MIN_PRICE: 0.35,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:88:hardcoded string:    OFFER_START_DATE: moment("2021-09-20 00:00:00", 'YYYY-MM-DD HH:mm:ss'),
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:89:hardcoded string:    OFFER_END_DATE: moment("2021-09-23 05:30:00", 'YYYY-MM-DD HH:mm:ss'), //Till 11:00 clock, in server it will be 05:30
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:90:hardcoded array:    OFFER_DECREASE_MIN_PRICE_TM: [],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:92:hardcoded number:    APPLICABLE_FREQUENCY_FOR_K10_BYJUS_CLASSES: {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:93:hardcoded number:        mandatorySession: 3,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:94:hardcoded number:        optionalSession: 1
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:97:hardcoded number:    APPLICABLE_FREQUENCY_FOR_K10_NEO_CLASSES: {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:98:hardcoded string:        "4": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:99:hardcoded number:            mandatorySession: 3,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:100:hardcoded number:            optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:102:hardcoded string:        "5": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:103:hardcoded number:            mandatorySession: 3,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:104:hardcoded number:            optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:106:hardcoded string:        "6": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:107:hardcoded number:            mandatorySession: 3,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:108:hardcoded number:            optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:110:hardcoded string:        "7": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:111:hardcoded number:            mandatorySession: 3,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:112:hardcoded number:            optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:114:hardcoded string:        "8": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:115:hardcoded number:            mandatorySession: 4,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:116:hardcoded number:            optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:118:hardcoded string:        "9": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:119:hardcoded number:            mandatorySession: 4,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:120:hardcoded number:            optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:122:hardcoded string:        "10": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:123:hardcoded number:            mandatorySession: 4,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:124:hardcoded number:            optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:126:hardcoded string:        "TRIAL_PACK": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:127:hardcoded string:            "4": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:128:hardcoded number:                mandatorySession: 3,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:129:hardcoded number:                optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:131:hardcoded string:            "5": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:132:hardcoded number:                mandatorySession: 3,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:133:hardcoded number:                optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:135:hardcoded string:            "6": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:136:hardcoded number:                mandatorySession: 3,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:137:hardcoded number:                optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:139:hardcoded string:            "7": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:140:hardcoded number:                mandatorySession: 3,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:141:hardcoded number:                optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:143:hardcoded string:            "8": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:144:hardcoded number:                mandatorySession: 4,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:145:hardcoded number:                optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:147:hardcoded string:            "9": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:148:hardcoded number:                mandatorySession: 4,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:149:hardcoded number:                optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:151:hardcoded string:            "10": {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:152:hardcoded number:                mandatorySession: 4,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:153:hardcoded number:                optionalSession: 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:159:hardcoded number:        mandatorySession: 4,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:160:hardcoded number:        optionalSession: 2
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:163:hardcoded number:    BASE_PRICE_FOR_TWO_SLOT_FREQUENCY: 0,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:164:hardcoded number:    BASE_PRICE_FOR_THREE_SLOT_FREQUENCY: 0,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:165:hardcoded string:    PRE_K3_GRADES: ['-1', '0', -1, 0],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:166:hardcoded string:    K3_GRADES: ['1', '2', '3', '-1', '0', -1, 0],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:167:hardcoded number:    /*D4 1.1 tablet TLP grades Lkg - 10*/
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:168:hardcoded string:    D4_GRADE_FILTER: ['-1', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 0],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:169:hardcoded string:    K10_GRADES: ['4', '5', '6', '7', '8', '9', '10', "Streaming 4", "Streaming 5", "Streaming 6", "Streaming 7", "Streaming 8", "Streaming 9", "Streaming 10"],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:170:hardcoded number:    /**13- 12 Crash Course 14- 12 Repeat Crash course */
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:171:hardcoded string:    K12_GRADES: ['11', '12', '11+12', '13', '14', '12+', "13+", "Streaming 11+12", "Streaming 11", "Streaming 12"],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:172:hardcoded string:    APPLICABLE_GRADES_FOR_BYJUS_CLASSES: ["4", "5", "6", "7", "8", "9", "10", "11", "12", "11+12", "13", "12+", "14", "13+"],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:173:hardcoded string:    D4_SKU_ID: ["SBXWWZ", "SBXMGZ", "SCXMGJ"],
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:176:hardcoded number:    TLP_TO_BYJUS_CLASSES_DISC_PRICE: 3000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:177:hardcoded number:    TLP_TO_BYJUS_CLASSES_BASE_PRICE: 13000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:178:hardcoded number:    TLP_TO_BYJUS_CLASSES_CONTINUOUS_PRICE: 13000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:180:hardcoded number:    // TO DO - is k12 upgrade available
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:181:hardcoded number:    TLP_TO_BYJUS_CLASSES_K12_BASE_PRICE: {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:182:hardcoded string:        "JEE": 60000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:183:hardcoded string:        "NEET": 60000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:184:hardcoded string:        "JEE/NEET": 80000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:186:hardcoded number:    TLP_TO_BYJUS_CLASSES_12th_BASE_PRICE: {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:187:hardcoded string:        "JEE": 30000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:188:hardcoded string:        "NEET": 30000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:189:hardcoded string:        "JEE/NEET": 40000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:192:hardcoded number:    TRIAL_PACK_UPGRADE_PRICE: 2000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:195:hardcoded string:        byjus_classes: "ONLINE_LEARNING+BYJUS_CLASSES",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:196:hardcoded string:        byjus_classes_plus_byjus_tlp: "ONLINE_LEARNING+BYJUS_CLASSES",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:197:hardcoded string:        byjus_tlp_plus_byjus_classes: "ONLINE_LEARNING+BYJUS_CLASSES",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:201:hardcoded string:        'Commerce': 0,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:202:hardcoded string:        'JEE': 1,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:203:hardcoded string:        'NEET': 1,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:204:hardcoded string:        'JEE/NEET': 2
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:208:hardcoded string:        "byjus_tlp": 1,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:209:hardcoded string:        "byjus_classes": 2,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:210:hardcoded string:        "byjus_classes_plus_byjus_tlp": 3,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:211:hardcoded string:        "byjus_tlp_plus_byjus_classes": 4,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:212:hardcoded string:        "jumpstart_admission": 5
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:217:hardcoded string:            "4": "966",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:218:hardcoded string:            "5": "967",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:219:hardcoded string:            "6": "968",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:220:hardcoded string:            "7": "969",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:221:hardcoded string:            "8": "970",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:222:hardcoded string:            "9": "971",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:223:hardcoded string:            "10": "972"
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:226:hardcoded string:            "4": "1992",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:227:hardcoded string:            "5": "1993",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:228:hardcoded string:            "6": "1994",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:229:hardcoded string:            "7": "1995",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:230:hardcoded string:            "8": "1996",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:231:hardcoded string:            "9": "1997",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:232:hardcoded string:            "10": "1998"
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:237:hardcoded variable:const productTypeConstants = {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:238:hardcoded string:    VALIDITY_APPLICABLE_PRODUCT_TYPES: ['COMBO', 'SIBLING', 'STREAMING', 'AAKASHCRP']
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:241:hardcoded variable:const STATE_BOARD_MAP = {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:242:hardcoded string:    "Kerala" : "KL Board",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:243:hardcoded string:    "Maharashtra" :"MH Board", 
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:244:hardcoded string:    "Karnataka" : "KA Board", 
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:245:hardcoded string:    "Tamil Nadu" : "TN Board", 
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:246:hardcoded string:    "Andhra Pradesh" : "AP Board", 
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:247:hardcoded string:    "Telangana" : "TS Board", 
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:248:hardcoded string:    "West Bengal" : "WB Board", 
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:249:hardcoded string:    "Punjab" : "PB Board",
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:250:hardcoded string:    "Gujarat" : "GJ Board"
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:253:hardcoded string:const ELIGIBLE_COMBINATIONS_FOR_BATCH = ["byjus_classes_plus_byjus_tlp", "byjus_classes", "byjus_classes_upgrade"];
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:254:hardcoded string:const isAdvanceAdmission = ["byjus_tlp_plus_byjus_classes", "jumpstart_admission", "advance_admission_plus_byjus_classes"];
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:255:hardcoded string:const M8_TABLET = ["TL8MZ1", "TL8MZ2"];
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:256:hardcoded string:const BELP_K3_GRADES = ["1", "2", "3", 1, 2, 3];
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:257:hardcoded string:const WB_GRADES = ['6', '7', '8', '9']
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:258:hardcoded variable:const BYJUS_MATH_BTLA_BASE_PRICE = {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:259:hardcoded string:    "bfsSubscription": 1500,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:260:hardcoded string:    "bfsStandard": 7000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:261:hardcoded string:    "bfsPremium": 7000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:262:hardcoded string:    "24": 7000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:263:hardcoded string:    "16": 7000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:265:hardcoded variable:const BYJUS_MATH_BTLA_CONT_PRICE = {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:266:hardcoded string:    "bfsSubscription": 1500,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:267:hardcoded string:    "bfsStandard": 7000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:268:hardcoded string:    "bfsPremium": 10000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:269:hardcoded string:    "24": 10000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:270:hardcoded string:    "16": 10000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:271:hardcoded string:    "64": 19000
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:274:hardcoded number:const BYJUS_MATH_MIN_PRICE = 0.8;
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:275:hardcoded variable:const BYJUS_MATH_TABLET_PRICE = {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:276:hardcoded string:    "bfsSubscription": 10000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:277:hardcoded string:    "bfsStandard": 13000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:278:hardcoded string:    "bfsPremium": 13000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:280:hardcoded number:const NEO_SUBSCRIPTION = 1000;
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:282:hardcoded variable:const aakashCrpFee = {
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:283:hardcoded number:    registerationFee: 5000,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:284:hardcoded number:    admissionFeePercentage: 0.1,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:285:hardcoded number:    techAndExamFeePercentage: 0.2,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:286:hardcoded number:    classroomPercentage: 0.2,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:287:hardcoded number:    tutionfeePercentage: 0.5,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:290:hardcoded string:const BEP_TABLETS_PROGRAMID = "TLP1UCHW0001"
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:292:hardcoded string:const ELIGIBLE_EPIC_GRADE = ['-1', '0', '1', '2', '3', '4', '5', '6', '7', -1, 0, 1, 2, 3, 4, 5, 6, 7]
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:294:hardcoded number:const K3_MAX_GRADE = 7
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:296:hardcoded number:const EPIC_PRICE = 0;
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:298:hardcoded string:const ELIGIBLE_TYNKER_GRADES = ['-1', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:299:hardcoded string:const ELIGIBLE_TYNKER_UL_GRADES = ['2', '3', '4', '5', '6', '7', '8', '9', 2, 3, 4, 5, 6, 7]
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:300:hardcoded string:const D4_1_1_TABLET = ["SCXMGJ"]
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:301:hardcoded number:const TYNKER_PRICE = 0
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:303:hardcoded number:const BTC_DP_AMOUNT = 10000
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:304:hardcoded number:const BTC_ADDITIONAL_DP_AMOUNT = 5000;
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:305:hardcoded number:const BYJUS_ASSURE_MIN_DP = 10000;
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:306:hardcoded number:const BYJUS_DIRECT_SUBSCRIBE_MIN_DP = 8000;
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:307:hardcoded number:const BYJUS_ASSURE_40_K_LOAN_AMOUNT = 40000
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:308:hardcoded number:const EMI_CARD_MIN_DP = 10000;
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:309:hardcoded number:const BYJUS_DIRECT_MIN_DP = 12000;
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:310:hardcoded number:const BYJUS_ADVANTAGE_MIN_DP = 10000;
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:311:hardcoded number:const ABFL_MIN_DP_FOR_AAKASH_CRP = 12000;
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:312:hardcoded number:const BEP_CLAT_CRASH_SALE_AMOUNT = 30000;
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:313:hardcoded number:const EX_LOAN_MIN_DP_FOR_BTC = 10000;
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:314:hardcoded number:const IAS_COURSE_LOAN_MIN_DP = 7000;
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:331:hardcoded number:    K3_MAX_GRADE,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:332:hardcoded number:    M8_TABLET,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:335:hardcoded number:    D4_1_1_TABLET,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:340:hardcoded number:    BYJUS_ASSURE_40_K_LOAN_AMOUNT,
+microservices-middleware/server/src/productmanagement/utils/productConstants.js:346:hardcoded number:    BELP_K3_GRADES,

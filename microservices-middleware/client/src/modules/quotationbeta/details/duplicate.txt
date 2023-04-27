@@ -1,0 +1,70 @@
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:1:hardcoded object:import React, {useState, useEffect, useRef} from "react";
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:2:hardcoded object:import { Button, Row, Col, Alert } from "reactstrap";
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:3:hardcoded object:import { get, isEmpty, debounce} from "lodash";
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:4:hardcoded object:import { useRecoilState } from 'recoil';
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:6:hardcoded file path:import FormBuilder from 'components/form/ReactstrapFormBuilder';
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:7:hardcoded file path:import LoadingWrapper from 'components/LoadingWrapper';
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:8:hardcoded file path:import ErrorWrapper from 'components/ErrorWrapper';
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:9:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:10:hardcoded object:import { quotationStudentDetails } from 'store/atom';
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:12:hardcoded object:import { STATUS, getStage } from "modules/quotationbeta/utils/statusConstants";
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:13:hardcoded object:import {ProfileContainer} from './Styles';
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:15:hardcoded variable:const SalesDetailsForm = (props) => {
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:16:hardcoded variable:    const profileForm = useRef();
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:17:hardcoded object:    const {leadNumber, quotationId} = props;
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:18:hardcoded array:    const [error, setError] = useState();
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:19:hardcoded array:    const [loading, setLoading] = useState(false);
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:20:hardcoded array:    const [salesEmailList, setSalesEmailList] = useState([]);
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:21:hardcoded array:    const [quotationStudent, setQuotationStudent] = useRecoilState(quotationStudentDetails);
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:22:hardcoded array:    const [salesFormValues, setSalesFormValues] = useState({
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:32:hardcoded array:    }, []);
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:34:hardcoded string:    const fetchSalesEmail = async(searchText = "") => {
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:37:hardcoded variable:            const response = await CallApi({
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:38:hardcoded string:                url: '/api/details/getSalesPersonDetails',
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:39:hardcoded string:                method: 'POST',
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:40:hardcoded string:                body: { accountNumber:"17139", filter: {username: { "$regex": searchText, "$options": 'i' }}}
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:42:hardcoded string:            const details = get(response, 'data', {});
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:43:hardcoded string:            const agentDetails = get(details, 'docs', []);
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:44:hardcoded variable:            const emailOptions = agentDetails.map(item=>{
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:45:hardcoded object:                return { label: item.userId, value: item.username, details: item}
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:55:hardcoded variable:    const updateSalesEmail = async() => {
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:58:hardcoded object:            const {salesEmail} = salesFormValues || {};
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:59:hardcoded object:            const {details} = salesEmail || {};
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:60:hardcoded object:            const {userId, employee_code} = details || {};
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:61:hardcoded variable:            const currentStage = getStage(quotationStudent.quotationStatus);
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:62:hardcoded variable:            const newStage = getStage(STATUS.AGENT);
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:63:hardcoded variable:            let status = STATUS.AGENT;
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:67:hardcoded variable:            const response = await CallApi({
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:68:hardcoded string:                url: '/api/quotation-beta/updateSalesPersonDetails',
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:69:hardcoded string:                method: 'POST',
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:89:hardcoded variable:    const handleChanges = (value, name, params) => {
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:90:hardcoded object:        const {data} = params;
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:91:hardcoded array:        setSalesFormValues(prevState => ({ ...prevState, [name]: params ? (data ? data : false) : true }))
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:94:hardcoded variable:    const salesFormDetails = () => {
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:95:hardcoded variable:        const initialValues = salesFormValues;
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:96:hardcoded variable:        const formFields = [
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:98:hardcoded string:                type: 'select',
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:99:hardcoded string:                name: 'salesEmail',
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:100:hardcoded string:                label: 'Sales Done By',
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:102:hardcoded number:                onInputChange: debounce((searchText) => fetchSalesEmail(searchText), 1000),
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:105:hardcoded string:                message: 'Please select sales email',
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:112:hardcoded number:                <Col xs={4}>
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:114:hardcoded object:                        ref={profileForm}
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:115:hardcoded object:                        fields={formFields}
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:116:hardcoded object:                        initialValues={initialValues}
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:117:hardcoded number:                        cols={1}
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:120:hardcoded string:                <Col xs={8} style={{"paddingTop": "2rem"}}>
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:121:hardcoded string:                    <Button color="success" onClick={onClick} disabled={isEmpty(get(salesFormValues,"salesEmail.value"))}>Select Sales Email</Button>
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:127:hardcoded variable:    const onClick = async() => {
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:128:hardcoded variable:        const salesFormValues = profileForm.current.validateFormAndGetValues();
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:136:hardcoded string:        <LoadingWrapper loading={loading} message={"loading"}>
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:137:hardcoded object:            <ErrorWrapper message={error} />
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:139:hardcoded object:                {salesFormDetails()}
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:140:hardcoded string:                <Alert style={{marginTop:"2rem", width: "100%"}} color="info">
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:142:hardcoded object:                Lead Mobile Number: {leadNumber}<br/>
+microservices-middleware/client/src/modules/quotationbeta/details/SalesForm.js:144:hardcoded object:                Lead Created By: {}<br/>
+microservices-middleware/client/src/modules/quotationbeta/details/Styles.js:1:hardcoded string:import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/quotationbeta/details/Styles.js:3:hardcoded variable:export const ProfileContainer = styled.div`
+microservices-middleware/client/src/modules/quotationbeta/details/Styles.js:4:hardcoded number:    box-shadow: 0rem 0.2rem 0.5rem #c6c6c6;
+microservices-middleware/client/src/modules/quotationbeta/details/Styles.js:6:hardcoded number:    padding: 0.8rem;
+microservices-middleware/client/src/modules/quotationbeta/details/Styles.js:7:hardcoded number:    height: 300px;

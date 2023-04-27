@@ -1,0 +1,35 @@
+microservices-middleware/client/src/modules/student/DoubtClasses.js:1:hardcoded object:import { isEmpty } from 'lodash';
+microservices-middleware/client/src/modules/student/DoubtClasses.js:2:hardcoded object:import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+microservices-middleware/client/src/modules/student/DoubtClasses.js:3:hardcoded number:import uuidv4 from 'uuid/v4'
+microservices-middleware/client/src/modules/student/DoubtClasses.js:5:hardcoded object:import { Card, Error, FlexBox, P, Divider, Label, Form, RadioWrapper } from './styledComp';
+microservices-middleware/client/src/modules/student/DoubtClasses.js:7:hardcoded variable:const DoubtClasses = forwardRef((props, ref) => {
+microservices-middleware/client/src/modules/student/DoubtClasses.js:8:hardcoded object:    const { doubtClasses } = props;
+microservices-middleware/client/src/modules/student/DoubtClasses.js:9:hardcoded array:    const [selectedBatch, setSelectedBatch] = useState({});
+microservices-middleware/client/src/modules/student/DoubtClasses.js:10:hardcoded string:    const [error, setError] = useState('');
+microservices-middleware/client/src/modules/student/DoubtClasses.js:11:hardcoded variable:    const errorRef = useRef(null);
+microservices-middleware/client/src/modules/student/DoubtClasses.js:17:hardcoded string:                    setError('Please select a slot for weekly workshop');
+microservices-middleware/client/src/modules/student/DoubtClasses.js:18:hardcoded string:                    errorRef && errorRef.current && errorRef.current.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+microservices-middleware/client/src/modules/student/DoubtClasses.js:19:hardcoded array:                    return []
+microservices-middleware/client/src/modules/student/DoubtClasses.js:21:hardcoded array:                    return [selectedBatch]
+microservices-middleware/client/src/modules/student/DoubtClasses.js:27:hardcoded variable:    const handleOnClick = (batch) => {
+microservices-middleware/client/src/modules/student/DoubtClasses.js:29:hardcoded string:        setError('');
+microservices-middleware/client/src/modules/student/DoubtClasses.js:32:hardcoded variable:    const getColumnSize = () => {
+microservices-middleware/client/src/modules/student/DoubtClasses.js:33:hardcoded string:        let cols = '1fr';
+microservices-middleware/client/src/modules/student/DoubtClasses.js:34:hardcoded number:        const size = Math.min(5, doubtClasses.length)
+microservices-middleware/client/src/modules/student/DoubtClasses.js:35:hardcoded number:        for (var i = 1; i < size; i++) {
+microservices-middleware/client/src/modules/student/DoubtClasses.js:36:hardcoded string:            cols += ' 1fr';
+microservices-middleware/client/src/modules/student/DoubtClasses.js:41:hardcoded variable:    const batchCardComp = () => {
+microservices-middleware/client/src/modules/student/DoubtClasses.js:44:hardcoded string:                <P fontWeight="600" marginTop="0" center>Doubt Classes</P> <Divider />
+microservices-middleware/client/src/modules/student/DoubtClasses.js:45:hardcoded object:                <Form columns={getColumnSize()}>
+microservices-middleware/client/src/modules/student/DoubtClasses.js:49:hardcoded number:                                key={uuidv4()}
+microservices-middleware/client/src/modules/student/DoubtClasses.js:50:hardcoded object:                                onClick={() => handleOnClick(batch)}
+microservices-middleware/client/src/modules/student/DoubtClasses.js:53:hardcoded string:                                    type='radio'
+microservices-middleware/client/src/modules/student/DoubtClasses.js:54:hardcoded object:                                    id={batch.id}
+microservices-middleware/client/src/modules/student/DoubtClasses.js:55:hardcoded object:                                    name={batch.name}
+microservices-middleware/client/src/modules/student/DoubtClasses.js:56:hardcoded object:                                    value={batch.id}
+microservices-middleware/client/src/modules/student/DoubtClasses.js:57:hardcoded object:                                    checked={selectedBatch?.id === batch.id}
+microservices-middleware/client/src/modules/student/DoubtClasses.js:60:hardcoded number:                                    const label = `${slot.day.substring(0, 3)}: ${slot.start_time}`
+microservices-middleware/client/src/modules/student/DoubtClasses.js:62:hardcoded object:                                        <Label for={batch.id}>{label}</Label>
+microservices-middleware/client/src/modules/student/DoubtClasses.js:75:hardcoded number:        doubtClasses.length > 0 ?
+microservices-middleware/client/src/modules/student/DoubtClasses.js:80:hardcoded object:                    {batchCardComp()}
+microservices-middleware/client/src/modules/student/DoubtClasses.js:81:hardcoded object:                    <Error ref={errorRef}>{error}</Error>

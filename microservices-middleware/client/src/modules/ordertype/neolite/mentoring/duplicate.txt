@@ -1,0 +1,196 @@
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:1:hardcoded object:import React, { Component, createRef } from 'react';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:2:hardcoded object:import { connect } from 'react-redux';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:3:hardcoded object:import { Divider, Card } from 'antd';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:4:hardcoded file path:import moment from 'moment';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:5:hardcoded object:import { get, isEqual, size, isEmpty, camelCase } from 'lodash';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:7:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:9:hardcoded file path:import ErrorWrapper from 'components/ErrorWrapper';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:10:hardcoded file path:import AntDFormBuilder from 'components/form/AntDFormBuilder';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:11:hardcoded object:import { addLoader, removeLoader, resetPrice, saveSlotDetails } from '../../../../modules/product/productReducer';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:12:hardcoded object:import { ErrMsg, SectionHeading, ResetHandle, BatchFetchMsg } from '../../../product/components/byjusclasses/Styles';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:13:hardcoded file path:import ByjusLanguage from '../../../product/components/mentoring/ByjusLanguage';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:14:hardcoded file path:import AdditionalClassBatch from '../../../product/components/byjusclasses/AdditionalClassBatch';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:16:hardcoded variable:const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:17:hardcoded string:    appConfig: get(state, 'auth.details.config'),
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:18:hardcoded string:    userDetails: get(state, 'auth.details.draftOrder'),
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:19:hardcoded string:    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:20:hardcoded string:    productDetails: get(state, 'product.details'),
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:21:hardcoded string:    productConfig: get(state, 'product.config'),
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:22:hardcoded string:    error: get(state, 'product.error'),
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:23:hardcoded string:    authDetails: get(state, 'auth.details', {}),
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:24:hardcoded string:    orderPunchingType: get(state, 'auth.orderPunchingType'),
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:25:hardcoded string:    user: get(state, "auth.details.user", {}),
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:28:hardcoded variable:const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:48:hardcoded object:            initialValues: {},
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:49:hardcoded array:            batches: [],
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:52:hardcoded array:            langOptions: [],
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:53:hardcoded array:            languageOfInstructionList: [],
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:54:hardcoded array:            otherLanguageOfInstructionList: [],
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:55:hardcoded object:            selectedAdtnlDetails: {},
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:56:hardcoded array:            selectedBatchIds: [],
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:62:hardcoded string:        let { initialClass, board, state = "other", courseTag = 'value_product_annual' } = this.props;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:64:hardcoded object:        const payload = { initialClass, board, state, courseTag };
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:66:hardcoded string:            url: '/api/product/getNeoLiteMentoringCourseDetails',
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:67:hardcoded string:            method: 'POST',
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:70:hardcoded string:            const resp = get(response, 'data', {});
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:71:hardcoded string:            const language = get(resp, 'languages', []);
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:72:hardcoded variable:            const firstCourse = this.getAvailableCourses(resp.batches)
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:73:hardcoded string:            const adtnlClsDetails = get(resp, 'adtnlClsDetails', {});
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:74:hardcoded string:            const cohortId = get(resp, "cohortId", null)
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:76:hardcoded string:            const course = firstCourse && size(firstCourse) == 1 ? get(firstCourse[0], "value", "") : ""
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:95:hardcoded array:                batches: [],
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:97:hardcoded object:                adtnlClsDetails: {},
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:100:hardcoded array:                langOptions: [],
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:101:hardcoded array:                languageOfInstructionList: [],
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:102:hardcoded array:                otherLanguageOfInstructionList: []
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:108:hardcoded object:        const details = this.state.overallBatchDetails || {};
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:109:hardcoded string:        let electivesDetails = get(details, 'elective') || []
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:110:hardcoded string:        let selectedDoubtClass = get(details, 'doubtResolution') || []
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:111:hardcoded object:        const adtnClsBatchDetails = { electivesDetails, selectedDoubtClass }
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:113:hardcoded string:            const errorKey = clsKey === 'electivesDetails' ? 'Weekly Workshop' : 'Doubt Resolution';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:114:hardcoded array:            if (isEmpty(adtnClsBatchDetails[clsKey]) && !this.state.batchError) {
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:115:hardcoded object:                this.setState({ batchError: true, error: `Please select all ${errorKey} batches.` });
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:122:hardcoded array:        const {  batch, batches = [], selectedBatchIds, languageDetails, trackId } = this.state;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:123:hardcoded object:        const { neoLiteDetailsForm } = this;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:124:hardcoded object:        const { classType } = this.props
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:125:hardcoded array:        let formValue = {}, courseInfo={}, mentoring = [];
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:126:hardcoded object:        let mentoringDetails = { type: classType }
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:128:hardcoded string:            this.setState({ batchError: true, error: "Please select a Regular Batch" });
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:131:hardcoded object:        const adtnClsBatchDetails = this.getAdtnClsDetails() || {}; // to get electived and doubt class details
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:132:hardcoded variable:        const values = neoLiteDetailsForm && await neoLiteDetailsForm.getFormValues();
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:135:hardcoded object:        this.setState({ batchError: false, error: null });
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:140:hardcoded string:                electivesDetails: adtnClsBatchDetails["electivesDetails"],
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:141:hardcoded string:                selectedDoubtClass: adtnClsBatchDetails["selectedDoubtClass"],
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:142:hardcoded string:                languageOfInstruction: get(languageDetails, "name"),
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:143:hardcoded string:                languageOfInstructionId: get(languageDetails, "language_id"),
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:149:hardcoded object:            this.setState({ batchError: true });
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:152:hardcoded array:                let sessions = [];
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:154:hardcoded string:                const slots = get(courseInfo, 'slots', []);
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:157:hardcoded string:                        day: get(slot, "day", ""),
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:158:hardcoded string:                        time: `${get(slot, "start_time", "")}-${get(slot, "end_time", "")}`
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:174:hardcoded string:            let languageOfInstructionList = language.filter(lang => lang.display_name == "English");
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:175:hardcoded string:            let otherLanguageOfInstructionList = language.filter(lang => lang.display_name != "English");
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:177:hardcoded array:                let languagesList = [];
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:188:hardcoded string:                    label: "English+",
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:189:hardcoded string:                    value: "english+"
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:191:hardcoded array:                let otherLanguagesList = [];
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:194:hardcoded object:                        label: `English + ${ele.display_name}`,
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:195:hardcoded object:                        value: `english+${ele.display_name.toLowerCase()}`
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:208:hardcoded variable:        let availableCourses = batches
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:212:hardcoded string:                availableCourses = this.groupBy(availableCourses, "batch_start_date")
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:213:hardcoded variable:                let course_timing = Object.keys(availableCourses)
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:214:hardcoded number:                course_timing = course_timing.sort((d1, d2) => new Date(d2).getTime() - new Date(d1).getTime());
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:215:hardcoded number:                availableCourses = availableCourses[course_timing[0]]
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:217:hardcoded array:                availableCourses = []
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:220:hardcoded array:            availableCourses = []
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:228:hardcoded array:            [item[key]]: [
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:229:hardcoded array:                ...(result[item[key]] || []),
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:233:hardcoded object:        {},
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:237:hardcoded array:        let { batches = [], languageDetails = {} } = this.state;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:240:hardcoded variable:        let availableCourses = this.getUpdatedBatches(batches, languageDetails);
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:242:hardcoded array:        const result = [];
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:243:hardcoded variable:        const map = new Map();
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:257:hardcoded string:        let mandatorySchedule = '', optionalSchedule = '';
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:258:hardcoded string:        const slots = get(availableCourses, "slots", [])
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:260:hardcoded string:            mandatorySchedule += `${get(slot, "day", "")}: ${get(slot, "start_time", "")}-${get(slot, "end_time", "")}${" , "}`
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:262:hardcoded object:        return ({ optionalSchedule, mandatorySchedule })
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:266:hardcoded object:        const { course } = this.state
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:267:hardcoded variable:        const courses = this.getAvailableCourses()
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:268:hardcoded variable:        const fields = [{
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:269:hardcoded string:            type: course || courses ? "select" : "hidden",
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:270:hardcoded string:            name: "course",
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:271:hardcoded string:            label: "Select Course",
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:280:hardcoded object:        const { batch, languageOfInstruction } = this.state
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:281:hardcoded string:        if (!["languageOfInstruction", "otherLanguageOfInstruction"].includes(name)) {
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:283:hardcoded array:                [`card-${batch}`]: false,
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:284:hardcoded string:                batch: ""
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:288:hardcoded string:            this.setState({otherLanguageOfInstruction: ''})
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:290:hardcoded array:        this.setState({ [name]: value, error: null, batchError: null });
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:305:hardcoded object:            const { batch } = this.state
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:307:hardcoded object:                const { id } = nextProps.initialValues
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:310:hardcoded array:                    [`card-${batch}`]: false,
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:311:hardcoded array:                    [`card-${id}`]: true,
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:315:hardcoded object:            this.setState({ initialValues: nextProps.initialValues });
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:320:hardcoded object:        const { batch } = this.state;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:323:hardcoded variable:        let isSelectedNewBatch = false
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:331:hardcoded array:            [`card-${batch}`]: false,
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:332:hardcoded array:            [`card-${batchId}`]: true, 
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:333:hardcoded array:            selectedBatchIds: [batchId]
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:340:hardcoded object:        const { batch } = this.state;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:342:hardcoded string:            batch: null, [`card-${batch}`]: "",
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:343:hardcoded array:            selectedBatchIds:[],
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:344:hardcoded object:            selectedAdtnlDetails: {},
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:351:hardcoded object:        let { batches, languageDetails = {} } = this.state;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:352:hardcoded variable:        let availableBatches = this.getUpdatedBatches(batches, languageDetails);
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:355:hardcoded variable:            let getSlots = this.getAvailableSlot(course)
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:356:hardcoded string:            const batchStartDate = moment(course.batch_start_date).format("MMMM Do, YYYY")
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:357:hardcoded variable:            const batchId = course.id
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:358:hardcoded variable:            const name = course.name
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:359:hardcoded string:            const time_zone = get(course, 'time_zone', null)
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:360:hardcoded object:            return { batchId, batchStartDate, ...getSlots, name, time_zone }
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:366:hardcoded object:        const { classType, productCombination } = this.props;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:367:hardcoded object:        const { adtnlClsDetails } = this.state;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:368:hardcoded variable:        let isApplicable = false
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:370:hardcoded string:        if (['neo_lite_value_product'].includes(productCombination) && !isEmpty(adtnlClsDetails) && classType == "neo") {
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:378:hardcoded object:        const { selectedBatchIds } = this.state;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:379:hardcoded string:        this.setState({ "selectedBatchIds": !isEmpty(batchId) ? batchId : selectedBatchIds });
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:384:hardcoded object:        const { adtnlClsDetails, selectedAdtnlDetails } = this.state;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:385:hardcoded variable:        const adtnlClsKeys = Object.keys(adtnlClsDetails);
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:386:hardcoded variable:        const indexToPush = Object.keys(selectedAdtnlDetails).length;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:392:hardcoded number:                    [camelCase(adtnlClsKeys[0])]: adtnlClsDetails[adtnlClsKeys[0]]
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:399:hardcoded array:                    [camelCase(adtnlClsKeys[indexToPush])]: adtnlClsDetails[adtnlClsKeys[indexToPush]]
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:409:hardcoded array:                [courseTag]: selectedBatches
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:415:hardcoded object:        const { selectedAdtnlDetails, selectedBatchIds, cohortId, batch, error } = this.state;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:417:hardcoded variable:        const commonProps = {
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:426:hardcoded object:            <SectionHeading>{`Please select a slot for the Weekly Workshops mentioned below:`}</SectionHeading>
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:428:hardcoded string:            {!isEmpty(selectedBatchIds) && selectedAdtnlDetails["electiveClasses"] ?
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:430:hardcoded string:                    courseTag={get(selectedAdtnlDetails["electiveClasses"], 'course_tag')}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:431:hardcoded string:                    availableSubjects={get(selectedAdtnlDetails["electiveClasses"], 'available_subjects')}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:432:hardcoded object:                    {...commonProps}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:437:hardcoded object:                <SectionHeading>{`Please select a slot for the Doubt Resolution Class mentioned below:`}</SectionHeading>
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:439:hardcoded string:                {!isEmpty(selectedBatchIds) && selectedAdtnlDetails["doubtResolutionClasses"] ?
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:441:hardcoded string:                        courseTag={get(selectedAdtnlDetails["doubtResolutionClasses"], 'course_tag')}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:442:hardcoded string:                        availableSubjects={[get(selectedAdtnlDetails["doubtResolutionClasses"], 'available_subjects.0')]}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:443:hardcoded object:                        {...commonProps}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:452:hardcoded object:        const { neoLiteDetailsForm } = this;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:454:hardcoded array:            [name]: value,
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:457:hardcoded string:        if(name =='languageId' && value){ 
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:460:hardcoded string:                languageOfInstruction: get(details, "name", "")
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:462:hardcoded object:            this.getSlotAndLanguageDetails({languageId: value});
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:467:hardcoded object:        const { error, batchError, batch, course, batches, languageId, langOptions } = this.state;
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:468:hardcoded variable:        const fields = this.getFields();
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:469:hardcoded variable:        const batchList = course && this.getBatchList(course);
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:470:hardcoded variable:        const isBatchesAvl = !isEmpty(batchList);
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:471:hardcoded variable:        const firstCourse = this.getAvailableCourses()
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:472:hardcoded string:        const initialValue = firstCourse && size(firstCourse) == 1 ? { course: get(firstCourse[0], "value") } : {}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:473:hardcoded variable:        const adtnlClsAllowd = this.isAdtnlClsApplicable();
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:476:hardcoded object:                <ErrorWrapper error={error} />
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:479:hardcoded string:                    ref="byjusLanguageDetailsForm"
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:480:hardcoded object:                    {...this.props}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:481:hardcoded string:                    classType="neo"
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:482:hardcoded object:                    handleParentCompChange = {this.onHandleLanguageChange}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:484:hardcoded string:                {languageId && langOptions.length > 0 && <h6 style={{ margin: "1rem" }}>Select Batches</h6>}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:487:hardcoded object:                    fields={fields}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:488:hardcoded object:                    wrappedComponentRef={(inst) => this.neoLiteDetailsForm = inst}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:489:hardcoded object:                    initialValues={initialValue}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:493:hardcoded object:                <ResetHandle onClick={this.onClickResetBatch}>Reset</ResetHandle>
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:496:hardcoded string:                {/* {errorMsg && <div ref={this.batchErrorRef}><ErrMsg>{"No batches available for the selected details!"} </ErrMsg></div>} */}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:497:hardcoded string:                {batchError && <div ref={this.batchErrorRef}><ErrMsg>{"Please select a Regular Batch"} </ErrMsg></div>}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:501:hardcoded string:                            <div className="d-inline-flex">
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:502:hardcoded string:                                <Card className="p-1"
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:503:hardcoded object:                                    key={index + `${btch.batchId}`}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:504:hardcoded object:                                    name={`card-${btch.batchId}`}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:505:hardcoded object:                                    onClick={() => this.myOnClick(btch.batchId)}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:506:hardcoded object:                                    bordered={true}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:509:hardcoded string:                                        backgroundColor: this.state[`card-${btch.batchId}`] ? "#F1F3F5" : "",
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:510:hardcoded string:                                        borderRadius: '15px',
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:511:hardcoded string:                                        borderColor: "#318DF2",
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:512:hardcoded string:                                        margin: '3px'
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:514:hardcoded object:                                    title={`${btch.name}`}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:518:hardcoded string:                                            <span><i className="fa fa-clock-o" aria-hidden="true"></i> <strong>Regular Class Timings:</strong></span><br />
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:519:hardcoded object:                                            <span>{btch.mandatorySchedule}</span><br /></div>
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:521:hardcoded number:                                        {btch.optionalSchedule.length > 0 &&
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:523:hardcoded string:                                                <span><i className="fa fa-clock-o" aria-hidden="true"></i> <strong>Additional Class Timings:</strong></span><br />
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:524:hardcoded object:                                                <span>{btch.optionalSchedule}</span><br />
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:533:hardcoded object:                {(adtnlClsAllowd && batch && this.getAdditionalClassComp())}
+microservices-middleware/client/src/modules/ordertype/neolite/mentoring/NeoLiteMentoringClasses.js:539:hardcoded object:export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(NeoLiteMentoringClasses);

@@ -1,0 +1,36 @@
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:1:hardcoded object:import _, { get, cloneDeep, isEmpty } from 'lodash';
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:2:hardcoded object:import { getCurrentAcademicYear } from "lib/validityHelper";
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:3:hardcoded object:import { WB_ELIGIBLE_GRADES, ELIGIBLE_GRADES, BOARD_ELIGIBLE_GRADES } from "modules/product/utils/productConstant"
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:5:hardcoded variable:export const getTabletList = (userDetails) => {
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:6:hardcoded variable:    let tabletList = [
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:7:hardcoded string:        // { label: "Lenovo Tablet (Add-on-BYJUS) (8 inch-WIFI)(Rs. 8000)", value: "TL8WZZ" },
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:8:hardcoded string:        //{ label: "Lenovo Tablet (Add-on-BYJUS) (8 inch)(Rs. 11000)", value: "TL8MZZ" },
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:9:hardcoded string:        // { label: "SAMSUNG Tablet (Add-on-BYJUS) (10 inch-4G)(Rs. 18000)", value: "TSXMZZ" },
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:10:hardcoded string:        // { label: "Lenovo 10 inch Tablet Mobile Data - V2(Rs. 16000)", value: "TLXMZ2" },
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:11:hardcoded string:        //{ label: "BYJU'S LearnStation 10inch Mobile Data Grey Tablet (Rs 10000)", value: 'SBXMGZ' },
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:12:hardcoded string:        {label : "SAMSUNG Tablet (Add-on-BYJUS) (8 inch-4G)" , value : "TS8MZZ"},
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:13:hardcoded string:        { label: "Lenovo 10 inch Tablet Mobile Data (3GB/ 32GB) - (Rs 16000)", value: "TLXMZZ" }
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:19:hardcoded variable:export const getGradeOptions = (selectedBoardConfig) => {
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:20:hardcoded array:    const { classes = [] } = selectedBoardConfig;
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:22:hardcoded string:    let classOptions = cloneDeep(classes.map((opt) => get(opt, 'value')));
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:23:hardcoded number:    classOptions = classOptions.filter(ele => parseInt(ele.value) >= 4 && parseInt(ele.value) <= 10)
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:28:hardcoded variable:export const filterFinalClass = (productDetails) => {
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:29:hardcoded object:    const { classes, selectedInitialClass } = productDetails
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:30:hardcoded number:    const allowedMaxClass = parseInt(selectedInitialClass) + 2;
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:31:hardcoded number:    let filteredClass = classes.filter(finalClass => (finalClass.value >= parseInt(selectedInitialClass) + 1 && finalClass.value <= allowedMaxClass));
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:32:hardcoded number:    filteredClass = filteredClass.filter(finalClass => (finalClass.value < 11));
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:36:hardcoded variable:export const getProfileOptions = (existingProfiles) => {
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:37:hardcoded number:    if (existingProfiles && existingProfiles.length > 0) {
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:38:hardcoded variable:        let newExistingProfile = existingProfiles;
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:39:hardcoded string:        newExistingProfile = newExistingProfile.find(profile => profile.value === "newProfile");
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:41:hardcoded string:            existingProfiles.push({ "label": "New Profile", value: "newProfile" })
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:47:hardcoded object:export const getValidityOptions = ({ isDevEnv, selectedInitialClass, state, selectedBoard, isPriviledgedUser }) => {
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:49:hardcoded string:    const previligedUserTransDate = new Date('2023, 5, 31');
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:50:hardcoded variable:    let validityOption = [{
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:51:hardcoded number:        label: 2023,
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:52:hardcoded number:        value: 2023
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:57:hardcoded array:                validityOption = []
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:62:hardcoded array:                validityOption = []
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:65:hardcoded number:        validityOption.push({ label: 2024, value: 2024 })
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:69:hardcoded number:                validityOption = [{ label: 2024, value: 2024 }]
+microservices-middleware/client/src/modules/ordertype/bdlc/helper/productHelper.js:74:hardcoded number:                validityOption = [{ label: 2024, value: 2024 }]

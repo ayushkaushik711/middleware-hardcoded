@@ -1,0 +1,12 @@
+microservices-middleware/server/src/cashbackmanagement/utils/cashbackContants.js:2:hardcoded variable:const order = {
+microservices-middleware/server/src/cashbackmanagement/utils/cashbackContants.js:3:hardcoded number:    ALLOWED_CUSTOMER_CASHBACK_PERCENTAGE: 5,
+microservices-middleware/server/src/cashbackmanagement/utils/cashbackContants.js:4:hardcoded number:    ALLOWED_SALES_PERSON_CASHBACK_PERCENTAGE: 3,
+microservices-middleware/server/src/cashbackmanagement/utils/cashbackContants.js:5:hardcoded number:    MIN_ORDER_VALUE_FOR_CASHBACK: 1000
+microservices-middleware/server/src/cashbackmanagement/utils/cashbackContants.js:8:hardcoded variable:const comment = {
+microservices-middleware/server/src/cashbackmanagement/utils/cashbackContants.js:9:hardcoded string:    TRIAL_ORDERS_NO_CASHBACK: "Cashback can't be available for trial orders",
+microservices-middleware/server/src/cashbackmanagement/utils/cashbackContants.js:10:hardcoded string:    REDEEMED_SUCCESS: "Cashback redeemed successfully",
+microservices-middleware/server/src/cashbackmanagement/utils/cashbackContants.js:11:hardcoded string:    EMI_ORDER_PUNCHED: "EMI order punched. Cashback can't be availed",
+microservices-middleware/server/src/cashbackmanagement/utils/cashbackContants.js:12:hardcoded string:    MULTIPLE_CASHBACK_CODES: "Both parent and student number had cashback. Deleted student one",
+microservices-middleware/server/src/cashbackmanagement/utils/cashbackContants.js:13:hardcoded string:    STUDENT_NUMBER_CASHBACK: "Student number had cashback. Marked unutilized",
+microservices-middleware/server/src/cashbackmanagement/utils/cashbackContants.js:14:hardcoded object:    MIN_ORDER_CRITERIA_NOT_PASSED: `Order value is less than ${order.MIN_ORDER_VALUE_FOR_CASHBACK}. Cashback can't be availed`,
+microservices-middleware/server/src/cashbackmanagement/utils/cashbackContants.js:15:hardcoded string:    MISSING_BANK_DETAILS: "Customer didn't fill bank details. Marked unutilized"

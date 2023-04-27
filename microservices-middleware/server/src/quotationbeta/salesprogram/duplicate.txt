@@ -1,0 +1,28 @@
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:1:hardcoded object:const { fetchSalesProgram, fetchSalesProgramById } = require('./dto');
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:3:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Sales Program Controller');
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:6:hardcoded variable:const getSalesProgram = async(req, res) => {
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:8:hardcoded variable:        const salesPrograms = await fetchSalesProgram();
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:9:hardcoded number:        return res.status(200).json({
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:11:hardcoded string:            message: "Sales Programs fetched successfully"
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:14:hardcoded string:        logger.error({ method: 'getSalesProgram', error }, 'Get Sales Program Error');
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:15:hardcoded number:        return res.status(500).json({
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:16:hardcoded number:            statusCode: 500,
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:18:hardcoded string:                response: 'Error while getting data from db.',
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:25:hardcoded variable:const getSalesProgramById = async(req, res) => {
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:27:hardcoded object:        const {salesProgramId} = req.body;
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:31:hardcoded variable:        const salesProgramDetails = await fetchSalesProgramById(salesProgramId);
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:32:hardcoded number:        return res.status(200).json({
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:34:hardcoded string:            message: "Sales Program By Id fetched successfully"
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:37:hardcoded string:        logger.error({ method: 'getSalesProgramById', error }, 'Get Sales Program By Id Error');
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:38:hardcoded number:        return res.status(500).json({
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:39:hardcoded number:            statusCode: 500,
+microservices-middleware/server/src/quotationbeta/salesprogram/controller.js:41:hardcoded string:                response: 'Error while getting data from db.',
+microservices-middleware/server/src/quotationbeta/salesprogram/dto.js:1:hardcoded string:const { SalesProgram } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/quotationbeta/salesprogram/dto.js:3:hardcoded variable:const fetchSalesProgram = async () => {
+microservices-middleware/server/src/quotationbeta/salesprogram/dto.js:5:hardcoded variable:        const salesProgram = await SalesProgram.findAll({
+microservices-middleware/server/src/quotationbeta/salesprogram/dto.js:7:hardcoded string:                quotationWorkflow: "applicable",
+microservices-middleware/server/src/quotationbeta/salesprogram/dto.js:8:hardcoded string:                status: "active"
+microservices-middleware/server/src/quotationbeta/salesprogram/dto.js:10:hardcoded string:            order: [['createdAt', 'DESC']],
+microservices-middleware/server/src/quotationbeta/salesprogram/dto.js:11:hardcoded number:            limit: 10,
+microservices-middleware/server/src/quotationbeta/salesprogram/dto.js:21:hardcoded variable:const fetchSalesProgramById = async (salesPogramId) => {
+microservices-middleware/server/src/quotationbeta/salesprogram/dto.js:23:hardcoded variable:        const salesProgram = await SalesProgram.findOne({

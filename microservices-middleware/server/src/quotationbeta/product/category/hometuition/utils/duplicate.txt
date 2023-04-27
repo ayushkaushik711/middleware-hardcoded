@@ -1,0 +1,295 @@
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:1:hardcoded variable:const bhtConstants = {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:2:hardcoded string:    tenant: 'bht',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:3:hardcoded string:    product: 'bht',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:5:hardcoded string:        reserveStatus: 'tempReserved',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:6:hardcoded string:        slotUrlSegment: 'trial/get-available-slots',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:7:hardcoded string:        reserveUrlSegment: 'trial/reserve',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:8:hardcoded number:        slotDuration: 60,
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:9:hardcoded string:        cancelReserveUrl: 'reservations',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:11:hardcoded number:            min: 0,
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:12:hardcoded number:            max: 14
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:16:hardcoded string:        slotUrlSegment: 'availability/recurring/eligible-available-tutors-slot-wise',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:17:hardcoded string:        reserveUrlSegment: 'recurring-reservations/reserve-eligible-tutor',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:18:hardcoded number:        slotInterval: 60,
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:19:hardcoded string:        cancelReserveUrl: 'recurring-reservations'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:22:hardcoded string:        STAGE_1: 'slot_saved',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:23:hardcoded string:        STAGE_2: 'slot_reserved',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:24:hardcoded string:        STAGE_3: 'slot_confirmed'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:27:hardcoded string:        1: 'tutor_available',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:28:hardcoded string:        2: 'tutor_unavailable'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:31:hardcoded string:        url: 'one_to_many/v2/courses',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:32:hardcoded string:        type: 'BHT'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:36:hardcoded variable:const dayMapping = {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:37:hardcoded string:    1: "Monday",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:38:hardcoded string:    2: "Tuesday",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:39:hardcoded string:    3: "Wednesday",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:40:hardcoded string:    4: "Thursday",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:41:hardcoded string:    5: "Friday",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:42:hardcoded string:    6: "Saturday",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:43:hardcoded string:    0: "Sunday"
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:46:hardcoded variable:const boardMapping = {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:47:hardcoded string:    "CBSE":"CBSE",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:48:hardcoded string:    "ICSE": "ICSE",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:49:hardcoded string:    "Punjab": "PSEB",	
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:50:hardcoded string:    "Bihar": "BSET",	
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:51:hardcoded string:    "West Bengal": "WBBSE",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:52:hardcoded string:    "Andhra Pradesh": "BSEAP",	 
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:53:hardcoded string:    "Kerala": "KBPE",	
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:54:hardcoded string:    "Karnataka": "KSEEB",	
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:55:hardcoded string:    "Gujarat": "GSEB",	
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:56:hardcoded string:    "Maharashtra": "MSBSHSE",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:57:hardcoded string:    "Tamil Nadu": "TNBSE",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/constants.js:58:hardcoded string:    "Telangana": "BSET",	
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:1:hardcoded object:const { get } = require('lodash');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:3:hardcoded variable:const getLeapYear = async (daysToGetExactMonth) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:4:hardcoded number:    const fullYear = new Date().getFullYear() // 2022
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:5:hardcoded number:    if(fullYear % 400 === 0) {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:6:hardcoded number:        daysToGetExactMonth = daysToGetExactMonth + 1
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:7:hardcoded number:    } else if(fullYear % 100 === 0) {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:9:hardcoded number:    } else if( fullYear % 4 === 0) {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:10:hardcoded number:        daysToGetExactMonth = daysToGetExactMonth + 1
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:17:hardcoded variable:const pushStaticSlotDetails = async (details) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:18:hardcoded array:    let slotDateList = []
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:19:hardcoded object:    let { daysToGetExactMonth, initialDate, dayTimingsConfig } = details
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:20:hardcoded number:    for(let i = 0; i < daysToGetExactMonth; i++) {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:21:hardcoded number:        let day = initialDate.getDay() // (0 - 6)(Mon-1, Sun-0)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:22:hardcoded number:        if(day === 0) day = 7
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:23:hardcoded variable:        const dayObject = dayTimingsConfig.filter(item => item.id === day)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:24:hardcoded string:        const timings = get(dayObject, '0.timings', [])
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:25:hardcoded number:        for(j = 0; j < timings.length; j++) {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:26:hardcoded array:          const { startTime, endTime } = timings[j]
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:27:hardcoded object:          const dateObject = await getHHMMFormat({initialDate, startTime, endTime})
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:30:hardcoded number:        initialDate.setDate(initialDate.getDate() + 1)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:35:hardcoded variable:const pushNonTrialStaticSlot = async (details) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:36:hardcoded array:    let slotDateList = []
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:37:hardcoded object:    let { dayTimingsConfig } = details
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:38:hardcoded number:    for(let i = 0; i < dayTimingsConfig.length; i++) {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:39:hardcoded array:        const dayDetails = dayTimingsConfig[i];
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:40:hardcoded string:        const dayOfWeek= dayDetails["id"];
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:41:hardcoded string:        const timings = get(dayDetails, 'timings', [])
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:42:hardcoded number:        for(j = 0; j < timings.length; j++) {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:43:hardcoded array:          const { startTime, endTime } = timings[j]
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:44:hardcoded number:          const dateObject = await getV2HHMMFormat({startMinute: startTime, endMinute: endTime})
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:45:hardcoded variable:          let slotDetail = {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:47:hardcoded number:            slotInterval: 60,
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:49:hardcoded object:            slotKey: `${dayOfWeek}:${dateObject.startMinute}`,
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:50:hardcoded string:            tutorIds: ["default"]
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:61:hardcoded variable:const getHHMMFormat = async (details) => {      // H:M:S format -> HH:MM:SS format
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:62:hardcoded string:    let dateObject = {"slotCount": 1,"tutorIds": []}
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:63:hardcoded object:    let {initialDate, startTime, endTime} = details
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:65:hardcoded string:    let startTimeHH = startTime.split(":")[0];
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:67:hardcoded string:    dateObject = {...dateObject, actualStartTime: `${initialDate.toISOString().split("T")[0]}T${startTimeHH}:00:00.000Z`, 
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:68:hardcoded string:    startTime: `${initialDate.toISOString().split("T")[0]}T${startTime}:00.000Z`}
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:71:hardcoded string:    dateObject = {...dateObject, endTime: `${initialDate.toISOString().split("T")[0]}T${endTime}:00.000Z`}
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:76:hardcoded number:const getV2HHMMFormat = async (details) => {      // H:M:S format -> HH:MM:SS format
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:77:hardcoded string:    let dateObject = {"slotCount": 1,"tutorIds": []}
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:78:hardcoded object:    let {startMinute, endMinute} = details
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:79:hardcoded string:    let startTimeHH = startMinute.split(":")[0];
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:80:hardcoded string:    let startTimeMM = startMinute.split(":")[1];
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:82:hardcoded string:    let endTimeHH = endMinute.split(":")[0];
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:83:hardcoded string:    let endTimeMM = endMinute.split(":")[1];
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:85:hardcoded number:    let minutes = 60 // 60 secs as min
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:89:hardcoded object:    startMinuteHHMM: `${startMinute}`}
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/service.js:92:hardcoded object:    endMinuteHHMM: `${endMinute}`}
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:1:hardcoded variable:const data = {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:2:hardcoded string:  "cohorts": {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:3:hardcoded string:    "grades": ["4", "5", "6", "7", "8", "9", "10"],
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:4:hardcoded string:    "boards": ["CBSE", "ICSE", "Karnataka"]
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:6:hardcoded string:  "subjects": [
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:7:hardcoded string:    { id: 1, name: "Science" },
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:8:hardcoded string:    { id: 2, name: "Mathematics" },
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:9:hardcoded string:    { id: 3, name: "Mathematics + Science" }
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:11:hardcoded string:  "languages": [
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:12:hardcoded string:    { id: 1, name: "English" },
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:14:hardcoded string:  "validityData": [
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:15:hardcoded string:    { id: "Trial Pack", name: "trial_pack" },
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:16:hardcoded string:    { id: 'Quarterly Pack', name: 'quarterly_pack' },
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:17:hardcoded string:    { id: '1 Month Pack', name: '1_month_pack' }
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/mockData.js:21:hardcoded object:module.exports = { ...data }microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:1:hardcoded object:const { get, isEmpty } = require('lodash');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:3:hardcoded file path:const logger = require('../../../../../../lib/bunyan-logger')('geoService');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:4:hardcoded object:const { NotFoundError } = require('../../../../../../lib/errors');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:5:hardcoded object:const { callTutorPlusAPI } = require('../../../../../../utility/externalApiUtility');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:8:hardcoded variable:const getStates = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:9:hardcoded string:  logger.info({ method: "getStates", reqBody: req.body, message: 'Fetching states...' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:11:hardcoded variable:    const countries = await fetchAllCountries();
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:12:hardcoded string:    const { id: countryId } = filterCountry({ isoCode: "IND", countries })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:13:hardcoded object:    const states = await getStatesByCountryId({ countryId });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:14:hardcoded number:    res.json({ status: 200, states });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:16:hardcoded string:    throw new Error(er || 'Something went wrong!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:20:hardcoded variable:const getCitiesByStateId = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:21:hardcoded string:  logger.info({ method: "getCitiesByStateId", reqBody: req.body, message: "Fetching cities...." });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:23:hardcoded object:    const { stateId } = req.body;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:24:hardcoded string:    if (!stateId) throw new NotFoundError('State id is required!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:26:hardcoded object:    const urlSegment = `state/${stateId}`;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:27:hardcoded string:    const response = await callTutorPlusAPI({ urlSegment, method: 'GET' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:28:hardcoded object:    logger.info({ stateDetails: response });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:29:hardcoded string:    const cities = get(response, 'data.cities', []);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:32:hardcoded number:      res.json({ status: 200, cities });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:34:hardcoded string:      res.json({ status: 400, message: 'No cities available!' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:37:hardcoded string:    throw new Error(er || 'Something went wrong!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:41:hardcoded variable:const getClustersByCityId = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:42:hardcoded string:  logger.info({ method: "getClusterByCityId", reqBody: req.body, message: "Fetching clusters..." });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:44:hardcoded object:    const { cityId } = req.body;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:45:hardcoded string:    if (!cityId) throw new NotFoundError('City id is required!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:47:hardcoded object:    const urlSegment = `city/${cityId}`;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:48:hardcoded string:    const response = await callTutorPlusAPI({ urlSegment, method: 'GET' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:49:hardcoded object:    logger.info({ clusterDetails: response });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:50:hardcoded string:    const clusters = get(response, 'data.areas', []);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:53:hardcoded number:      res.json({ status: 200, clusters });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:55:hardcoded string:      res.json({ status: 400, message: 'No clusters available!' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:58:hardcoded string:    throw new Error(er || 'Something went wrong!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:62:hardcoded variable:const fetchAllCountries = async () => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:63:hardcoded string:  logger.info({ method: "fetchAllCountries", message: 'Fetching all countries...' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:65:hardcoded string:    const response = await callTutorPlusAPI({ urlSegment: 'country', method: 'GET' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:66:hardcoded string:    const data = get(response, 'data', []);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:67:hardcoded string:    if (!data) throw new Error('Countries are not available!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:68:hardcoded object:    logger.info({ countries: data })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:71:hardcoded string:    throw new Error(er || 'Something went wrong!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:75:hardcoded variable:const filterCountry = (data) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:76:hardcoded object:  logger.info({ data })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:77:hardcoded object:  const { isoCode, countries } = data;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:78:hardcoded string:  if (!isoCode) throw new NotFoundError('isoCode is required');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:80:hardcoded variable:  const filteredCountry = countries.filter(ele => ele.isoCode === isoCode);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:81:hardcoded string:  if (isEmpty(filteredCountry)) throw new NotFoundError('Country not available!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:84:hardcoded number:    ...filteredCountry[0]
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:88:hardcoded variable:const getStatesByCountryId = async (details) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:89:hardcoded string:  logger.info({ method: 'getStatesByCountryId', message: "Fetching states by countryId..." })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:91:hardcoded object:    const { countryId } = details;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:92:hardcoded string:    if (!countryId) throw new NotFoundError('countryId is required!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:94:hardcoded string:    const response = await callTutorPlusAPI({ urlSegment: `country/${countryId}`, method: 'GET' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:95:hardcoded string:    const states = get(response, 'data.states', []);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:96:hardcoded object:    logger.info({ states })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:98:hardcoded object:    if (!states.length) throw new Error(`No states available for countryId: ${countryId}`);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/geoServiceApis.js:101:hardcoded string:    throw new Error(er || 'Something went wrong!')
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:1:hardcoded object:const { get, startCase, isEmpty } = require('lodash');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:3:hardcoded file path:const logger = require('../../../../../../lib/bunyan-logger')('bht-helper');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:4:hardcoded object:const { callTutorPlusForBhtDetails, callTutorPlusAPI } = require('../../../../../../utility/externalApiUtility');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:5:hardcoded object:const { getProficiencyFromStms } = require('../../../../../../utility/apis/uxosApiUtility');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:6:hardcoded object:const { subjects } = require('./mockData');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:7:hardcoded object:const { getTrialReservePayload, getNonTrialReservePayload, cancelReservationObj } = require('../assembler');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:8:hardcoded object:const { bhtConstants } = require('../utils/constants');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:9:hardcoded object:const { getLeapYear, pushStaticSlotDetails, pushNonTrialStaticSlot } = require('./service')
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:10:hardcoded file path:const ByjusConfig = require('../../../../../../models/ByjusConfig')
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:11:hardcoded object:const { SALES_PROGRAMS } = require('../../../../utils');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:12:hardcoded object:const { getExpiryFromConfig } = require('../service')
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:14:hardcoded variable:const getSubjects = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:15:hardcoded string:  logger.info({ method: "getSubjects", reqBody: req.body, msg: 'Fetching subjects...' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:17:hardcoded variable:    const urlSegment = `subject_sequences`;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:18:hardcoded string:    //const response = await callTutorPlusForBhtDetails({ urlSegment, method: 'GET' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:19:hardcoded string:    //const subjects = get(response, 'data', []);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:22:hardcoded number:    res.json({ status: 200, subjects });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:24:hardcoded object:    logger.error({ er });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:25:hardcoded string:    throw new Error(er || 'Something went wrong!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:29:hardcoded variable:const getLanguages = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:30:hardcoded string:  logger.info({ method: "getLanguages", reqBody: req.body, msg: 'Fetching languages...' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:32:hardcoded string:    const response = await callTutorPlusForBhtDetails({ urlSegment: `languages`, method: 'GET' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:33:hardcoded object:    logger.info({ response });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:34:hardcoded string:    res.json({ status: 200, languages: get(response, 'languages', [])});
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:36:hardcoded object:    logger.error({ er });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:37:hardcoded string:    throw new Error(er || 'Something went wrong!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:41:hardcoded variable:const getProficiency = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:42:hardcoded string:  logger.info({ method: "getProficiency", reqBody: req.body, message: "getting proficiency..."});
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:44:hardcoded object:    const { board, mathsMarks, scienceMarks, optional=true } = req.body;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:47:hardcoded object:    const payload = { board, mathsMarks, scienceMarks, optional };
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:48:hardcoded variable:    const response = await getProficiencyFromStms(payload)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:49:hardcoded object:    logger.info({proficiency: response})
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:52:hardcoded object:    logger.error({ error })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:53:hardcoded string:    throw new Error(error || 'Failed to get proficiency...please try again!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:57:hardcoded variable:const getStaticSlotDetails = async (validity) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:59:hardcoded string:    const configData = await ByjusConfig.findOne({ formattedModuleName: "STATIC_BHT_SLOT_CONFIG"});
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:60:hardcoded string:    const configs = get(configData, "configs.0",  {}) || {}
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:61:hardcoded string:    const monthDaysConfig = get(configs, "monthDaysConfig", []) || []
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:62:hardcoded string:    const dayTimingsConfig = get(configs, "dayTimingsConfig", []) || []
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:64:hardcoded number:    const month = new Date().getMonth() // (0- 11)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:65:hardcoded variable:    const monthObject = monthDaysConfig.filter(item => item.id === month)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:67:hardcoded number:    let daysToGetExactMonth = 0;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:68:hardcoded number:    let initialDate = new Date() // Fri Dec 30 2022 11:17:08 GMT+0530 (India Standard Time)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:69:hardcoded string:    if(validity == 'trial_pack') {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:70:hardcoded number:      initialDate.setDate(initialDate.getDate()) // currentDate + 2 days(trial)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:71:hardcoded number:      daysToGetExactMonth = 12 // T+2 to T+14 - T as currentDate
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:73:hardcoded number:      initialDate.setDate(initialDate.getDate()) // currentDate + 5 days(non-trial)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:74:hardcoded string:      daysToGetExactMonth = get(monthObject, '0.days', 0) // T+2 to T+ 1 month(30) - T as currentDate
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:77:hardcoded string:    if(month === 1 && validity != 'trial_pack') { // Feb month - checking leap year - 2000-02-01 - to show one exact month(ex: from feb 2nd to March 2nd)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:78:hardcoded object:      daysToGetExactMonth = await getLeapYear({daysToGetExactMonth})
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:80:hardcoded string:    if(validity!='trial_pack'){
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:81:hardcoded object:      let slotDateList = await pushNonTrialStaticSlot({ dayTimingsConfig, validity })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:84:hardcoded object:    let slotDateList = await pushStaticSlotDetails({daysToGetExactMonth, initialDate, dayTimingsConfig, validity })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:87:hardcoded object:    logger.error({ error });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:88:hardcoded string:    throw new Error(error || 'Something went wrong!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:92:hardcoded variable:const getSlotDetails = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:93:hardcoded string:  logger.info({ method: "getSlotDetails", reqBody: req.body, message: "fetching available slots..." })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:96:hardcoded string:    let { validity = '', gender = '', areaUniqueCode = '', board = '', grade = '',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:97:hardcoded string:      preferredLanguage = [], subject = [], teachingMode = '', proficiency = "", slotPreference } = req.body;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:98:hardcoded string:    if (!validity) throw new Error('Validity is required!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:101:hardcoded string:    const { urlSegment='', method='' } = getUrlSegmentAndMethod(validity);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:103:hardcoded variable:    let payload = {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:104:hardcoded string:      "product": "bht",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:105:hardcoded string:      "grade": `${grade}`,
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:106:hardcoded string:      "board": board.toUpperCase(),
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:107:hardcoded string:      "subject": subject,
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:108:hardcoded string:      "proficiency": proficiency,
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:109:hardcoded string:      "teachingMode": teachingMode.toLowerCase(),
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:110:hardcoded string:      "slotDuration": 60
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:112:hardcoded string:    if(['male','female'].includes(gender)) {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:113:hardcoded object:      payload = {...payload, gender}
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:116:hardcoded string:      payload["preferredLanguage"] = preferredLanguage
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:118:hardcoded string:    if(teachingMode && teachingMode.toLowerCase() === 'offline'){
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:119:hardcoded string:      payload["serviceArea"] = areaUniqueCode
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:121:hardcoded string:    console.log('Tutor Plus Payload', payload);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:122:hardcoded string:    logger.info('Tutor Plus Payload', payload);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:124:hardcoded string:    if(slotPreference === "tutorUnAvailable"){
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:125:hardcoded variable:      let response = await getStaticSlotDetails(validity)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:126:hardcoded number:      return res.json({ status: 200, slots: response });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:128:hardcoded string:      const response = await callTutorPlusAPI({ urlSegment, method, payload, type: 'tutor-availability' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:129:hardcoded string:      logger.info({ response, message: 'fetched slots...' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:130:hardcoded string:      let slots = get(response, 'data.slots', [])
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:131:hardcoded string:      if(validity=='trial_pack'){
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:132:hardcoded number:        slots = slots && slots.filter(ele => parseInt(ele.slotCount) > 0);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:133:hardcoded number:        return res.json({ status: 200, slots });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:135:hardcoded number:      return res.json({ status: 200, slots });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:139:hardcoded object:    logger.error({ error });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:140:hardcoded string:    throw new Error(error || 'Something went wrong!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:144:hardcoded variable:const reserveSlot = async (data) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:145:hardcoded string:  logger.info({ method: "reserveSlot", data, message: "reserving slot..." })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:146:hardcoded object:  const {quotationId} = data || {}
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:149:hardcoded string:    let payload = {}, urlSegment = '', subjectArray=[];
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:151:hardcoded string:    const { slotType = 'trial_pack', subject=[] } = data || {};
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:152:hardcoded string:    if (!slotType) throw new Error('slotType is required!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:153:hardcoded object:    const { expiry={} } = await getExpiryFromConfig(SALES_PROGRAMS.BHT);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:155:hardcoded array:    // forming subjects as an array[] to reseve slot
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:157:hardcoded string:      const array = get(e, 'name').split(" + ");
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:158:hardcoded number:      if(array.length > 1) {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:165:hardcoded string:    if (["trial_pack"].includes(slotType)) {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:167:hardcoded object:      payload = getTrialReservePayload({ ...data, subjectArray, expiry });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:170:hardcoded object:      payload = getNonTrialReservePayload({ ...data, subjectArray, expiry });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:172:hardcoded string:    console.log('Tutor Plus Reservation API payload', payload);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:173:hardcoded object:    logger.info(`Tutor Plus Reservation API payload - ${quotationId}`, payload);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:174:hardcoded string:    const response = await callTutorPlusAPI({ urlSegment, method: 'POST', payload, type: 'tutor-availability' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:175:hardcoded object:    logger.info({ response, message: `Slot reserved successfully! ${quotationId}` });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:176:hardcoded string:    return get(response, 'data', {});
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:178:hardcoded string:    console.log('Tutor Plus Reservation API Error', error);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:179:hardcoded object:    logger.info({ error, message: `Slot reservation failed ${quotationId} : ${error}` });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:180:hardcoded object:    logger.error({ error })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:181:hardcoded object:    return {}
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:182:hardcoded string:    //throw new Error(error || 'No tutors available!')
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:186:hardcoded variable:const cancelReservation = async (details) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:187:hardcoded string:  logger.info({ method:"cancelReservation", message: `cancelling slot ....`});
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:189:hardcoded string:    const { reservationId='', tutorId='', slotType='' } = details;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:190:hardcoded string:    if (!reservationId && !tutorId) throw new Error ('reservationId and tutorId are required...');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:192:hardcoded string:    const { urlSegment='', payload={} } = await cancelReservationObj({slotType, reservationId, tutorId});
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:193:hardcoded string:    const response = await callTutorPlusAPI({ urlSegment, method: 'PUT', payload, type: 'tutor-availability' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:194:hardcoded object:    logger.info({ response, message: `successfully cancelled reserved slots..`});
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:195:hardcoded string:    return get(response, 'data', {});
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:197:hardcoded object:    logger.info({ error, message: `Failed to cancel reserved slots!` });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:202:hardcoded variable:const getUrlSegmentAndMethod = (validity) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:203:hardcoded string:  let urlSegment='', method='';
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:205:hardcoded string:  if (['trial_pack'].includes(validity)) {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:206:hardcoded variable:    const curDate = new Date();
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:207:hardcoded number:    let minStartDate = new Date(curDate.setDate(curDate.getDate() + get(bhtConstants,`trial.dateRange.min`, 0))); // T+2
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:208:hardcoded number:    let maxStartDate = new Date(curDate.setDate(curDate.getDate() + get(bhtConstants,`trial.dateRange.max`, 0))); // T+14
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:209:hardcoded number:    minStartDate = `${minStartDate.getFullYear()}-${minStartDate.getMonth() + 1}-${minStartDate.getDate()}` // format:- YYYY-MM-DD
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:210:hardcoded number:    maxStartDate = `${maxStartDate.getFullYear()}-${maxStartDate.getMonth() + 1}-${maxStartDate.getDate()}`
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:212:hardcoded object:    urlSegment = bhtConstants.trial.slotUrlSegment + `?startTime=${minStartDate}&endTime=${maxStartDate}`;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:213:hardcoded string:    method = 'POST';
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:216:hardcoded string:    method = 'GET';
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/utils/helper.js:219:hardcoded object:  return { urlSegment, method }

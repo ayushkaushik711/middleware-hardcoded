@@ -1,0 +1,142 @@
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:8:hardcoded string:} from "react";
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:9:hardcoded object:import { useSelector } from "react-redux";
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:10:hardcoded object:import { startCase, get } from "lodash";
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:11:hardcoded number:import uuidv4 from "uuid/v4";
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:12:hardcoded object:import { AiOutlineUsergroupAdd } from "react-icons/ai";
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:13:hardcoded object:import { FiArrowUp, FiArrowDown } from "react-icons/fi";
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:15:hardcoded object:import { fetchStudentProfiles } from "./premiumAccountHelper";
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:16:hardcoded object:import { Card, Error, FlexBox, P, I, Button, Collapse, Heading, Center } from "./Styles";
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:17:hardcoded object:import { leadquaredRelatedPermissions } from "utility/screenPermission";
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:18:hardcoded string:const Masked = lazy(() => import("components/masking/Masked"));
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:20:hardcoded variable:const PremiumAccount = forwardRef((props, ref) => {
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:21:hardcoded object:  const { productCombination } = props;
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:22:hardcoded string:  const [error, setError] = useState("");
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:23:hardcoded string:  const [newPid, setNewPid] = useState("");
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:24:hardcoded array:  const [studentProfiles, setStudentProfiles] = useState([]);
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:25:hardcoded array:  const [selectedPid, setSelectedPid] = useState(null);
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:26:hardcoded array:  const [cardCollapse, setCardCollapse] = useState({
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:29:hardcoded variable:  const customerDetails = useSelector(
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:32:hardcoded string:  const user = useSelector((state) => get(state, "auth.details.user"));
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:33:hardcoded string:  const userPermissions = get(user, "permissions", [])
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:34:hardcoded variable:  const isPrivilegedUser = userPermissions.includes(leadquaredRelatedPermissions.allownMultipleOrderOnSameProspectId);
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:35:hardcoded string:  const primaryNumber = customerDetails?.studentMobileNo || "";
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:36:hardcoded string:  const secondaryNumber = customerDetails?.alternateMobileNo?.[0]?.mobile || "";
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:37:hardcoded variable:  let course = productCombination;
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:38:hardcoded variable:  const errorRef = useRef(null);
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:41:hardcoded number:    if (studentProfiles.length === 0) {
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:42:hardcoded object:      fetchStudentProfiles({ primaryNumber, secondaryNumber })
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:48:hardcoded array:              [res.premium_account_id]: false,
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:56:hardcoded string:    setNewPid("");
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:58:hardcoded array:  }, [productCombination]);
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:64:hardcoded string:          setError("Please select a profile");
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:66:hardcoded string:            behavior: "smooth",
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:67:hardcoded string:            block: "center",
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:68:hardcoded string:            inline: "nearest",
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:77:hardcoded variable:  const createNewPid = async () => {
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:78:hardcoded string:    setNewPid("newProfile");
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:79:hardcoded string:    setSelectedPid("newProfile");
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:80:hardcoded string:    setError("");
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:83:hardcoded variable:  const handleOnClick = (pid) => {
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:88:hardcoded string:      setError("");
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:92:hardcoded variable:  const collapseCard = (pid, e) => {
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:96:hardcoded array:      [pid]: !cardCollapse?.[pid],
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:100:hardcoded variable:  const renderStudentProfiles = () => {
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:103:hardcoded number:        key={uuidv4()}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:104:hardcoded object:        isSelected={selectedPid == profile?.premium_account_id}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:105:hardcoded object:        onClick={() => handleOnClick(profile?.premium_account_id)}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:107:hardcoded object:        <P>PID : {profile?.premium_account_id}</P>
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:108:hardcoded object:        <P>Student Name : {profile?.studentName}</P>
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:109:hardcoded array:        <Collapse isOpen={cardCollapse?.[profile?.premium_account_id]}>
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:110:hardcoded string:          <P>Phone No. : <Masked type="mobile" isSuperUser={isPrivilegedUser}>{primaryNumber}</Masked></P>
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:112:hardcoded number:            <P key={uuidv4()}>
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:113:hardcoded number:              Product {idx + 1}: {startCase(product)}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:118:hardcoded object:          isSelected={selectedPid == profile?.premium_account_id}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:119:hardcoded object:          onClick={(e) => collapseCard(profile?.premium_account_id, e)}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:122:hardcoded array:            {cardCollapse?.[profile?.premium_account_id] ? (
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:133:hardcoded variable:  const renderNewProfile = () => {
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:134:hardcoded variable:    const existingProfilesNames = studentProfiles?.map(
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:142:hardcoded object:        isSelected={selectedPid === newPid}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:143:hardcoded object:        onClick={() => handleOnClick(newPid)}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:146:hardcoded string:        <P>Student Name : {customerDetails?.studentName || ""}</P>
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:147:hardcoded object:        <Collapse isOpen={cardCollapse?.newPid}>
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:148:hardcoded string:          <P>Phone Number : <Masked type="mobile" isSuperUser={isPrivilegedUser}>{primaryNumber}</Masked></P>
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:149:hardcoded object:          <P>Product : {startCase(course)}</P>
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:153:hardcoded object:            isSelected={selectedPid == newPid}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:154:hardcoded string:            onClick={(e) => collapseCard("newPid", e)}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:156:hardcoded object:            <I>{cardCollapse?.newPid ? <FiArrowUp /> : <FiArrowDown />}</I>
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:164:hardcoded object:        isNewCard={true}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:165:hardcoded string:        isSelected={selectedPid == "newProfile"}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:166:hardcoded object:        onClick={() => createNewPid()}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:169:hardcoded number:          <AiOutlineUsergroupAdd size={50} />
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:183:hardcoded object:          {renderStudentProfiles()}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:184:hardcoded object:          {renderNewProfile()}
+microservices-middleware/client/src/modules/student/premiumaccount/PremiumAccount.js:185:hardcoded object:          <Error ref={errorRef}>{error}</Error>
+microservices-middleware/client/src/modules/student/premiumaccount/premiumAccountHelper.js:1:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/student/premiumaccount/premiumAccountHelper.js:3:hardcoded object:const fetchStudentProfiles = async ({primaryNumber, secondaryNumber}) => {
+microservices-middleware/client/src/modules/student/premiumaccount/premiumAccountHelper.js:4:hardcoded array:    let studentProfiles = [];
+microservices-middleware/client/src/modules/student/premiumaccount/premiumAccountHelper.js:6:hardcoded number:        url: `/api/studentProfile/getStudentProfileDetails/V2`,
+microservices-middleware/client/src/modules/student/premiumaccount/premiumAccountHelper.js:7:hardcoded string:        method: 'POST',
+microservices-middleware/client/src/modules/student/premiumaccount/premiumAccountHelper.js:8:hardcoded object:        body: { primaryNumber, secondaryNumber }
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:1:hardcoded string:import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:3:hardcoded variable:export const Card = styled.div`
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:4:hardcoded string:  display: ${(props) => (props?.grid ? "grid" : "inline-block")};
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:6:hardcoded string:  place-content: ${(props) => props?.center && "center"};
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:7:hardcoded string:  text-align: ${(props) => props?.center && "center"};
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:8:hardcoded string:  place-items: ${(props) => props?.center && "center"};
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:9:hardcoded number:  width: 225px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:10:hardcoded string:  background-color: ${(props) => (props?.isSelected ? "#e6f7ff" : "#fff")};
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:11:hardcoded number:  border-radius: 15px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:12:hardcoded string:  padding: ${(props) => (props?.isNewCard ? "25px 5px" : "5px 5px")};
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:16:hardcoded number:  margin: 5px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:18:hardcoded number:  z-index: 0;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:19:hardcoded number:  border: 1px solid #22b8f2;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:20:hardcoded number:  box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.1);
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:23:hardcoded string:  text-align: ${(props) => (props?.center ? "center" : "left")};
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:26:hardcoded number:    transition: all 0.2s ease-out;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:27:hardcoded number:    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:28:hardcoded number:    top: -4px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:29:hardcoded number:    border: 1px solid #cccccc;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:30:hardcoded string:    background-color: ${(props) => (props?.isSelected ? "#e6f7ff" : "#fff")};
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:34:hardcoded number:    transform: scale(2.15);
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:38:hardcoded number:    width: 0px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:47:hardcoded variable:export const P = styled.p`
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:48:hardcoded number:  font-size: 14px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:49:hardcoded number:  color: #6e6b6f;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:50:hardcoded number:  margin: 0;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:51:hardcoded number:  padding: 0;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:54:hardcoded variable:export const Error = styled.p`
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:56:hardcoded number:  margin: 0;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:57:hardcoded number:  padding: 0;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:62:hardcoded variable:export const FlexBox = styled.div`
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:64:hardcoded number:  flex-grow: 1;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:67:hardcoded string:  justify-content: ${(props) => (props?.center ? "center" : "flex-start")};
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:70:hardcoded variable:export const I = styled.i`
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:71:hardcoded number:  height: 40px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:72:hardcoded number:  width: 40px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:75:hardcoded variable:export const Button = styled.button`
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:76:hardcoded string:  background-color: ${(props) => (props?.isSelected ? "#e6f7ff" : "#fff")};
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:77:hardcoded number:  border-radius: 10%;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:80:hardcoded number:  font-size: 20px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:81:hardcoded number:  height: 40px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:82:hardcoded number:  width: 40px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:83:hardcoded number:  margin: 0;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:84:hardcoded number:  padding: 0;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:87:hardcoded number:  transition: all 0.2s ease-out;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:88:hardcoded number:  width: 100%;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:90:hardcoded string:    background-color: ${(props) => (props?.color ? props?.color : "lightblue")};
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:94:hardcoded variable:export const Collapse = styled.div`
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:95:hardcoded string:  display: ${(props) => (props?.isOpen ? "block" : "none")};
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:96:hardcoded number:  padding: 0;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:101:hardcoded number:    width: 0px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:109:hardcoded number:export const Heading = styled.h1`
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:111:hardcoded number:  font-size: 20px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:113:hardcoded number:  color: #6e6b6f;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:114:hardcoded number:  margin: 0;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:115:hardcoded number:  padding: 0;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:116:hardcoded number:  margin-bottom: 10px;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:119:hardcoded variable:export const Center = styled.div`
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:125:hardcoded number:  flex-grow: 1;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:126:hardcoded number:  flex-shrink: 1;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:128:hardcoded number:  margin: 0;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:129:hardcoded number:  padding: 0;
+microservices-middleware/client/src/modules/student/premiumaccount/Styles.js:134:hardcoded number:    width: 0px;

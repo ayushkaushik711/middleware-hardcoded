@@ -1,0 +1,299 @@
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:1:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('orderSplit.js');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:2:hardcoded string:const { ProductDetail } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:3:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:4:hardcoded object:const { getSkuItemId } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:6:hardcoded object:const { isEmpty } = require('lodash');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:8:hardcoded variable:const formatBepLineItems = async (orderDetails) => {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:9:hardcoded string:    logger.info({ method: 'formatLineItems' }, 'Checking if Order is eligible to be splitted');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:10:hardcoded object:    const { productDetails, orderPunchingCategory } = orderDetails;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:11:hardcoded array:    const { students = [], paymentType, student } = productDetails;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:12:hardcoded object:    let lineItems = {};
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:15:hardcoded number:        const { items, formValues, studentId } = students[0];
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:17:hardcoded string:        logger.info("BEP LOGGER : EMI : " + orderPunchingCategory);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:18:hardcoded variable:        const splittedLineItems = await getLineItems(items, formValues, paymentType, studentId)
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:19:hardcoded string:        logger.info("BEP LOGGER : splittedLineItems : " + splittedLineItems);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:21:hardcoded object:        const { parentLineItems, childLineItems } = splittedLineItems || {};
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:22:hardcoded string:        const orderType = childLineItems.length ? 'split_order' : 'single_order';
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:23:hardcoded string:        logger.info("%j", { method: 'formatLineItems' }, { orderType, lineItems: JSON.stringify(splittedLineItems) });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:30:hardcoded string:        logger.info("%j", { method: 'formatLineItems', message: "Error in splitting line Items" });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:31:hardcoded string:        throw new Error(error || "Error in splitting line Items");
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:37:hardcoded variable:const getLineItems = async (items, student, paymentType, studentId) => {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:38:hardcoded array:    let parentLineItems = [], childLineItems = [], tabletItem = [], skuItems = [], sdCardItem = [];
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:40:hardcoded string:        if (item.skuSubType === "Tablet" || item.subType === "tablet") {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:42:hardcoded string:        } else if (item.subType === "sd_card") {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:49:hardcoded array:        parentLineItems = [...tabletItem, ...sdCardItem]
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:54:hardcoded string:        if (paymentType === "EMI") {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:55:hardcoded string:            const [validityMonth, validityYear] = student["validity"].split(" ")
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:56:hardcoded variable:            const query = {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:57:hardcoded string:                subject: student["subject"] || null,
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:58:hardcoded string:                course: student["course"],    
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:59:hardcoded string:                category: `${student["course"].toLowerCase()}_learning_program`,
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:60:hardcoded string:                subType: 'extension'
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:62:hardcoded string:            if(student["course"] == "ESE_AND_GATE"){
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:64:hardcoded string:                delete query['subject']
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:66:hardcoded string:            if(student["course"] === 'STATE_PSC'){
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:67:hardcoded string:                query["subCourse"]= student["stateExams"]
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:68:hardcoded string:                delete query['subject']
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:70:hardcoded object:            let childLineItem = await SalesSkuMaster.findOne({ where: query, raw: true });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:71:hardcoded string:            childLineItem["studentId"] = studentId
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:72:hardcoded string:            childLineItem["itemId"] = getSkuItemId()
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:76:hardcoded string:            if (isEmpty(childLineItems)) throw new Error("Child line items are empty")
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:81:hardcoded string:        throw new NotFoundError("ParentLineItems are missing for this BEP order!");
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepOrderSplit.js:86:hardcoded array:        childLineItems: Array.isArray(childLineItems) ? childLineItems : [childLineItems]
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepRoutes.js:1:hardcoded file path:const Router = require('express-promise-router');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepRoutes.js:2:hardcoded file path:const controller = require('./bepController');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepRoutes.js:3:hardcoded object:const { getCustomPrice, validateCalculatedPriceMw, storeCalculatedPriceMw } = require('../productHelper')
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepRoutes.js:5:hardcoded object:const router = Router({ mergeParams: true });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepRoutes.js:8:hardcoded string:    const baseRoute = '/bep';
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepRoutes.js:10:hardcoded object:    router.route(`${baseRoute}/storeProductDetails`)
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepRoutes.js:17:hardcoded string:    const productTypes = ['competetive']
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepRoutes.js:19:hardcoded object:        router.use(`${baseRoute}/product/${productType}`,
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepRoutes.js:23:hardcoded object:    router.route(`${baseRoute}/product/competetive`)
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:1:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('orderSplit.js');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:2:hardcoded string:const { ProductDetail } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:3:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:4:hardcoded object:const { getSkuItemId } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:6:hardcoded object:const { isEmpty } = require('lodash');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:8:hardcoded variable:const formatBepMtsLineItems = async (orderDetails) => {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:9:hardcoded string:    logger.info({ method: 'formatLineItems' }, 'Checking if Order is eligible to be splitted');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:10:hardcoded object:    const { productDetails, orderPunchingCategory } = orderDetails;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:11:hardcoded array:    const { students = [], paymentType, student } = productDetails;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:12:hardcoded object:    let lineItems = {};
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:15:hardcoded number:        const { items, formValues, studentId } = students[0];
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:17:hardcoded string:        logger.info("BEP LOGGER : EMI : " + orderPunchingCategory);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:18:hardcoded variable:        const splittedLineItems = await getLineItems(items, formValues, paymentType, studentId)
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:19:hardcoded string:        logger.info("BEP LOGGER : splittedLineItems : " + splittedLineItems);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:21:hardcoded object:        const { parentLineItems, childLineItems } = splittedLineItems || {};
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:22:hardcoded string:        const orderType = childLineItems.length ? 'split_order' : 'single_order';
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:23:hardcoded string:        logger.info("%j", { method: 'formatLineItems' }, { orderType, lineItems: JSON.stringify(splittedLineItems) });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:30:hardcoded string:        logger.info("%j", { method: 'formatLineItems', message: "Error in splitting line Items" });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:31:hardcoded string:        throw new Error(error || "Error in splitting line Items");
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:37:hardcoded variable:const getLineItems = async (items, student, paymentType, studentId) => {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:38:hardcoded array:    let parentLineItems = [], childLineItems = [], tabletItem = [], skuItems = [], sdCardItem = [];
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:40:hardcoded string:        if (item.skuSubType === "Tablet" || item.subType === "tablet") {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:42:hardcoded string:        } else if (item.subType === "sd_card") {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:49:hardcoded array:        parentLineItems = [...tabletItem, ...sdCardItem]
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:54:hardcoded string:        if (paymentType === "EMI") {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:55:hardcoded string:            const [validityMonth, validityYear] = student["validity"].split(" ")
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:56:hardcoded variable:            const query = {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:57:hardcoded string:                course: student["course"],
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:58:hardcoded string:                category: `${student["course"].toLowerCase()}_learning_program`,
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:59:hardcoded string:                subType: 'extension'
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:61:hardcoded string:            if(student["course"] === 'STATE_PSC'){
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:62:hardcoded string:                query["subCourse"]= student["stateExams"]
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:65:hardcoded string:            if(student['course'] === 'AE_JE'){
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:66:hardcoded string:                query['subject'] = student['subject']
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:68:hardcoded object:            let childLineItem = await SalesSkuMaster.findOne({ where: query, raw: true });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:69:hardcoded string:            childLineItem["studentId"] = studentId
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:70:hardcoded string:            childLineItem["itemId"] = getSkuItemId()
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:74:hardcoded string:            if (isEmpty(childLineItems)) throw new Error("Child line items are empty")
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsOrderSplit.js:80:hardcoded array:        childLineItems: Array.isArray(childLineItems) ? childLineItems : [childLineItems]
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:1:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:2:hardcoded string:const { ProductDetail } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:3:hardcoded object:const { Op } = require("sequelize");
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:5:hardcoded object:const { ssb_interview } = require('./bepUtils')
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:7:hardcoded object:const { isEmpty ,startCase, capitalize } = require('lodash');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:8:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Product Helper');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:9:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:11:hardcoded object:const getProductsAndPrice = async ({ subject, course, language, product, validity, isSsbReq, stateExams, branch, orderPunchingType }) => {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:12:hardcoded string:    const isUpgradeFlow=["GATE_ESE_EXTENSION","GATE_EXTENSION","GATE_UPGRADE"].includes(orderPunchingType);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:14:hardcoded variable:    const subProducts = {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:15:hardcoded string:        "live_classes": ["learning_program", "live_classes"],
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:16:hardcoded string:        "sd_card_live_classes": (course === "GATE" || (isDevEnv && course === "CAT")) ? ["sd_card", "live_classes"] : ["sd_card", "learning_program", "live_classes"]
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:19:hardcoded array:    const productTypes = subProducts[product].map((type) => {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:20:hardcoded string:        let lang = '';
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:22:hardcoded string:            case 'GATE':
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:23:hardcoded string:                lang = (type === 'learning_program' || type === 'sd_card') ? 'english' : language;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:25:hardcoded string:            case 'ESE_AND_GATE':
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:26:hardcoded string:                lang = (type === 'learning_program') ? 'english' : language;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:28:hardcoded string:            case 'CAT':
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:31:hardcoded string:            case 'CLAT':
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:32:hardcoded string:                lang = 'english';
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:34:hardcoded string:            case 'STATE_PSC':
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:39:hardcoded object:            category: `${course.toLowerCase()}_${type}`,
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:44:hardcoded string:    const [validityMonth, validityYear] = validity.split(" ")
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:45:hardcoded variable:    let query = {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:50:hardcoded string:            subType: { [Op.ne]: "extension" },
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:51:hardcoded array:            [Op.or]: productTypes
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:54:hardcoded string:    if (["GATE", "ESE_AND_GATE"].includes(course)) {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:55:hardcoded string:        query["subject"] = subject
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:57:hardcoded string:    if (['local', 'development'].includes(process.env.NODE_ENV) && ["GATE"].includes(course)) {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:58:hardcoded string:        query["status"] = "active"
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:60:hardcoded string:    if (["GATE", "CAT", "CLAT", "ESE_AND_GATE"].includes(course)) {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:61:hardcoded string:        query["validity"] = validityYear
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:62:hardcoded string:        query["validityType"] = "year"
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:63:hardcoded string:        query["validityMonth"] = validityMonth
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:65:hardcoded string:    if( ['STATE_PSC'].includes(course)){
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:66:hardcoded string:        query["validityType"]="month"
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:67:hardcoded string:        query["validity"]=validityMonth
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:68:hardcoded string:        query["subCourse"]=stateExams;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:72:hardcoded string:        let subTypes= (product==="sd_card_live_classes") ? ["sd_card","live"] : ["streaming","live"];
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:73:hardcoded variable:        let products= subTypes.map((subType)=>{
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:74:hardcoded variable:            let lang=language;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:75:hardcoded string:            if(language==="english+hindi" && subType==="streaming")
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:77:hardcoded string:                lang="english";
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:79:hardcoded object:            return {subType,language:lang}
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:84:hardcoded string:            validityType:"year",
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:86:hardcoded array:            [Op.or]: products,
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:91:hardcoded variable:    // const courseSkus = await ProductDetail.find(query).lean();
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:92:hardcoded string:    // query={category:"gate_upgrade"};
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:93:hardcoded object:    let courseSkus = await SalesSkuMaster.findAll({ where: query, raw: true });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:95:hardcoded variable:        let query = {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:98:hardcoded string:            validityType: "month",
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:101:hardcoded object:        let ssbSkus = await SalesSkuMaster.findOne({ where: query, raw: true });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:109:hardcoded object:                throw Error(`${course} product sku's not found`)
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:115:hardcoded number:    const price = courseSkus.reduce((total, sku) => parseInt(sku.basePrice) + total, 0)
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepHelper.js:117:hardcoded object:    return { courseSkus, price }
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:1:hardcoded object:const { get, isEmpty, isArray, isNaN, flattenDeep } = require('lodash');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:2:hardcoded file path:const moment = require('moment');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:4:hardcoded string:const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:5:hardcoded object:const { productConstant, BEP_TABLETS_PROGRAMID, BEP_CLAT_CRASH_SALE_AMOUNT } = require('../utils/productConstants');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:7:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('BLC Product Explorer');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:8:hardcoded object:const { NotFoundError, BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:9:hardcoded object:const { manageCashbacks } = require('../../cashbackmanagement/cashbackHelper');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:10:hardcoded file path:const config = require('../../../config');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:11:hardcoded object:const { getSkuItemId, getTabletSku, getPostgresTabletSku, checkIsOmsOrder, attachSiblingDetails, getStudentProfileDetails, validatingFOCPremiumAccount } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:12:hardcoded object:const { getProductsAndPrice } = require('./bepHelper');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:13:hardcoded object:const { getDiscountDetails } = require('../vouchermanagement/voucherHelper');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:14:hardcoded object:const { checkIfDraftOrderExists } = require('../../../utility/draftOrderUtility')
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:15:hardcoded object:const { getBooksSku } = require('../../bookmanagement/bookController')
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:16:hardcoded object:const { reserveBonusPoints } = require('../../paymentmanagement/byjuswallet/bonusPoints');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:17:hardcoded object:const { getBooksSkuFromProductDetails } = require('../../bookmanagement/stationarySkuPriceCalculation');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:18:hardcoded file path:const BEP = require('../../../config/products/ByjusExamPrep')
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:19:hardcoded object:const { getBepMtsProductsAndPrice} =require('./bepMtsHelper');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:20:hardcoded object:const { isDevEnv } = require("../../../lib/featureHelper");
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:21:hardcoded object:const { getRegSku } = require("../dto");
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:24:hardcoded variable:const getMinimumRange = (productDetails) => {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:25:hardcoded string:    logger.info({ method: 'getMinimumRange' }, 'Calculating Minimum price');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:26:hardcoded object:    let { req, maxPrice, tabletSku, paymentType } = productDetails
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:32:hardcoded variable:    const tabletTotalPrice = tabletSku ? tabletSku.reduce((sum, sku) => {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:33:hardcoded string:        return sum + (parseInt(get(sku, 'quantity', 1)) * parseInt(get(sku, 'price', 0)));
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:34:hardcoded number:    }, 0) : 0;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:37:hardcoded variable:    const applicablePriceForDiscount = parseInt(maxPrice) - parseInt(tabletTotalPrice);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:43:hardcoded variable:    let minPrice = applicablePriceForDiscount - (applicablePriceForDiscount * minPricePercentage);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:45:hardcoded number:    /**Rounding-off min-price to nearest 1000 */
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:46:hardcoded number:    minPrice = (Math.floor(minPrice / 1000)) * 1000;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:50:hardcoded string:    logger.info({ method: 'getMinimumRange', minPrice }, 'Minimum Price');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:58:hardcoded variable:const getCompetetiveProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:59:hardcoded string:    logger.info({ method: 'getComboProduct' }, { message: "Fetching Combo Product" });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:61:hardcoded variable:    let tabletSku = null;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:62:hardcoded number:    let totalPrice = 0;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:63:hardcoded variable:    let bookSku = null;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:64:hardcoded number:    let booksPrice = 0;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:65:hardcoded string:    let { identifier, paymentType = "EMI", productType, productCombination, student, authDetails,orderPunchingType } = req.body;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:66:hardcoded object:    const { featureEnableList } = authDetails || {};
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:67:hardcoded string:    const isEligibleForBepClatCrashSale = get(featureEnableList, 'bep_clat_crash_sale', "");
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:72:hardcoded number:        student = isArray(student) ? student[0] : student
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:73:hardcoded object:        let { subject, course, language, product, validity, tablet = null,isSsbReq, stateExams } = student;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:74:hardcoded string:        const [validityMonth, validityYear] = validity.split(" ")
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:76:hardcoded string:        if(productType === 'bep_mts'){
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:77:hardcoded object:                result = await getBepMtsProductsAndPrice({ subject, course, language, product, validity, isSsbReq, stateExams })
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:80:hardcoded object:            result = await getProductsAndPrice({ subject, course, language, product, validity, isSsbReq, stateExams, orderPunchingType })
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:82:hardcoded object:        const {courseSkus, price} = result;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:84:hardcoded string:            courseSkus[i]["price"] = courseSkus[i]["basePrice"]
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:85:hardcoded string:            courseSkus[i]["combinationType"] = courseSkus[i]["category"]
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:86:hardcoded string:            courseSkus[i]["itemId"] = getSkuItemId(courseSkus[i]);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:88:hardcoded string:        if(isEligibleForBepClatCrashSale && course === "CLAT" && product === 'live_classes' && validityMonth === 'MAY' && validityYear === '2023'){
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:94:hardcoded string:            tabletSku = process.env.NODE_ENV != "production" ? await getPostgresTabletSku({ tabletId: tablet }) : await getTabletSku({ tabletId: tablet });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:99:hardcoded array:        tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:103:hardcoded array:            if (tabletSku[i]) {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:104:hardcoded number:                const { price = 0, quantity = 1, type } = tabletSku[i];
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:106:hardcoded string:                tabletSku[i]["programId"] = BEP_TABLETS_PROGRAMID
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:107:hardcoded string:                tabletSku[i]["combinationType"] = type
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:111:hardcoded string:        if (['local', 'development'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:112:hardcoded array:            bookSku = await getBooksSku({ course, subject }) || [];
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:114:hardcoded variable:        let maxPrice = totalPrice + booksPrice;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:115:hardcoded object:        let minPrice = getMinimumRange({ req, maxPrice, tabletSku, paymentType })
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:118:hardcoded string:        const products = [courseSkus, tabletSku, !['6 Months', '4 Months'].includes(validity) ?  await getRegSku({productCombination}) : null];
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:119:hardcoded string:        if (language === 'english') {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:122:hardcoded variable:        const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:124:hardcoded string:        student["formValues"] = { ...student };
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:125:hardcoded string:        student["items"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:126:hardcoded object:        const skuProductDetails = { tabletSku, maxPrice, minPrice, productCombination }
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:127:hardcoded object:        const discountDetails = await getDiscountDetails({identifier, productDetails : skuProductDetails});
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:128:hardcoded string:        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:137:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:148:hardcoded variable:const storeProductDetails = async (req, res) => {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:149:hardcoded string:    let { identifier, productDetails, productCombination = "", studentDetails } = req.body;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:150:hardcoded string:    const { email } = get(req, 'user', {});
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:151:hardcoded string:    logger.info({ method: 'storeProductDetails', msg: `Storing Product Details for _id:${identifier}` });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:155:hardcoded string:            throw new BadRequestError(`Parameters - ${identifier ? '' : 'identifier'} ${productDetails ? '' : 'productDetails'} Missing`);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:156:hardcoded variable:        const draftOrder = await checkIfDraftOrderExists(identifier);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:159:hardcoded object:            const { isOmsOrder, customerDetails } = draftOrder;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:160:hardcoded object:            const { productType, isGstIn, student = {} } = productDetails;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:161:hardcoded string:            const { validity = "", course, product } = student;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:162:hardcoded variable:            const isOmsEligibleOrder = await checkIsOmsOrder(productType, isOmsOrder, validity);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:163:hardcoded object:            const { redeemedCashback, unutilizedCashbacks, amountToCustomer, amountToSalesPerson } = await manageCashbacks(draftOrder, productDetails);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:164:hardcoded object:            let { orgFormattedName, orderPunchingType } = draftOrder
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:179:hardcoded string:            if (get(config, 'isStudentProfileAvailable') === "true" && productDetails.students && productDetails.students.length) {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:184:hardcoded array:            const { formattedProducts = [], formattedStudents = [] } = await attachSiblingDetails(productDetails, productType, draftOrder, studentDetails);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:185:hardcoded string:            productDetails["students"] = formattedStudents;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:186:hardcoded string:            productDetails["products"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:187:hardcoded object:            const orderPunchingCategory = `${course.toLowerCase()}_${product}`
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:189:hardcoded string:            let bookInvoicing = 'not_applicable';
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:190:hardcoded array:            let addOnLineItems = [];
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:191:hardcoded string:            if (['development', 'local'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:193:hardcoded string:                //    bookInvoicing = 'applicable';
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:198:hardcoded variable:            const updateObj = {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:201:hardcoded array:                addOnLineItems: addOnLineItems || [],
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:205:hardcoded string:                finalPrice: get(productDetails, 'finalPrice', 0),
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:206:hardcoded string:                status: "product_saved",
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:207:hardcoded array:                [`actionDetails.productSavedAt`]: new Date(),
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:208:hardcoded array:                [`actionDetails.productSavedBy`]: email,
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:210:hardcoded string:                "customerDetails.gstDetails.isGstIn": isGstIn,
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:213:hardcoded variable:            const transactionId = await reserveBonusPoints(draftOrder);
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:214:hardcoded string:            if (transactionId !== "") {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:215:hardcoded string:                updateObj["bonusPointsDetails.transactionId"] = transactionId;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:218:hardcoded string:            await DraftOrder.findOneAndUpdate({ '_id': identifier }, {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepController.js:221:hardcoded object:            return res.json({ productDetails, cashbackDetails: { redeemedCashback, unutilizedCashbacks } });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepUtils.js:7:hardcoded string:        course: "MTS_INTERVIEW",
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepUtils.js:8:hardcoded string:        category: "interview_live_classes"
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:1:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:2:hardcoded string:const { ProductDetail } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:3:hardcoded object:const { Op } = require("sequelize");
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:5:hardcoded object:const { ssb_interview }   = require('./bepUtils')
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:7:hardcoded object:const { isEmpty } = require('lodash');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:8:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Product Helper');
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:10:hardcoded object:const getBepMtsProductsAndPrice = async ({ subject, course, language, product, validity,isSsbReq, stateExams }) => {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:11:hardcoded variable:    const subProducts = {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:12:hardcoded string:        "live_classes": ["learning_program", "live_classes"]
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:15:hardcoded array:    const productTypes = subProducts[product].map((type) => {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:16:hardcoded string:        let lang = '';
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:18:hardcoded string:                case 'UGCNET' :
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:19:hardcoded string:                    lang = (type === 'learning_program') ? 'english' : language;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:21:hardcoded string:                case 'NDA' :
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:22:hardcoded string:                    lang = 'english';
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:24:hardcoded string:                case 'CDS' :
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:25:hardcoded string:                    lang = 'english';
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:27:hardcoded string:                case 'STATE_PSC' :
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:30:hardcoded string:                case 'CSIR_NET' :
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:33:hardcoded string:                case 'AE_JE' :
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:38:hardcoded object:                category: `${course.toLowerCase()}_${type}`,
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:43:hardcoded string:    const [validityMonth, validityYear] = validity.split(" ")
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:44:hardcoded variable:    let query= {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:46:hardcoded string:        subType: { [Op.ne]: "extension" },
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:47:hardcoded array:        [Op.or]: productTypes
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:50:hardcoded string:    if (course === "CSIR_NET") {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:51:hardcoded string:        query["subject"] = {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:52:hardcoded array:            [Op.or]: [
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:53:hardcoded string:                subject, "null"
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:58:hardcoded string:    if (course === "UGCNET") {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:59:hardcoded string:        query["subject"] = {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:60:hardcoded array:            [Op.or]: [
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:64:hardcoded string:        query["validityType"]="month"
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:65:hardcoded string:        query["validity"]=validityMonth
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:67:hardcoded string:    if( ['NDA','CDS','STATE_PSC','CSIR_NET','AE_JE'].includes(course)){
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:68:hardcoded string:        query["validityType"]="month"
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:69:hardcoded string:        query["validity"]=validityMonth
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:71:hardcoded string:    if(course==="STATE_PSC"){
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:72:hardcoded string:        query["subCourse"]=stateExams;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:74:hardcoded string:    if(course === "AE_JE"){
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:75:hardcoded string:        query['subject']=subject;
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:78:hardcoded variable:    // const courseSkus = await ProductDetail.find(query).lean();
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:79:hardcoded object:    let courseSkus = await SalesSkuMaster.findAll({ where: query, raw: true });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:81:hardcoded variable:        let query= {
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:84:hardcoded string:            validityType:"month",
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:87:hardcoded object:        let ssbSkus = await SalesSkuMaster.findOne({ where: query, raw: true });
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:93:hardcoded object:            throw Error(`${course} product sku's not found`)
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:97:hardcoded number:    const price = courseSkus.reduce((total, sku) => parseInt(sku.basePrice) + total, 0)
+microservices-middleware/server/src/productmanagement/byjusexamprepmanagement/bepMtsHelper.js:99:hardcoded object:    return { courseSkus, price }

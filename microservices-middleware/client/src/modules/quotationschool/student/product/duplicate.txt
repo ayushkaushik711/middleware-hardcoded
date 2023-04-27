@@ -1,0 +1,34 @@
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:1:hardcoded object:import React, { useRef, useState } from "react";
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:2:hardcoded file path:import FormBuilder from "components/form/ReactstrapFormBuilder";
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:3:hardcoded object:import { Button } from "reactstrap";
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:5:hardcoded variable:const ProductForm = (props) => {
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:6:hardcoded variable:  const productFormRef = useRef();
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:7:hardcoded array:  const [productFormValues, setProductFormValues] = useState({
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:8:hardcoded string:    poNumber: "",
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:9:hardcoded string:    productCategory: "",
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:10:hardcoded string:    category: "",
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:13:hardcoded variable:  const handleChanges = (value, name, params) => {
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:14:hardcoded object:    const { data } = params;
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:18:hardcoded string:      [name]: typeof params === "object" ? (data ? data : value) : value,
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:22:hardcoded variable:  const getFormDetails = () => {
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:23:hardcoded variable:    const formDetails = [
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:25:hardcoded string:        type: "text",
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:26:hardcoded string:        name: "poNumber",
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:27:hardcoded string:        label: "PO Number",
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:32:hardcoded string:        type: "select",
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:33:hardcoded string:        name: "productCategory",
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:34:hardcoded string:        label: "Product Category",
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:35:hardcoded string:        options: [{ label: "BYJU'S for Schools", value: "byjusforschools" }],
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:40:hardcoded string:        type: "select",
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:41:hardcoded string:        name: "category",
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:42:hardcoded string:        label: "Category",
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:43:hardcoded string:        options: [{ label: "BLTV/BLP", value: "bltv/blp" }],
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:52:hardcoded object:          ref={productFormRef}
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:53:hardcoded object:          initialValues={productFormValues}
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:54:hardcoded object:          fields={formDetails}
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:57:hardcoded string:        <div style={{ display: "flex", justifyContent: "space-between" }}>
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:59:hardcoded string:            color="primary"
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:60:hardcoded number:            onClick={props.toggleSection(props.index - 1)}
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:65:hardcoded string:            color="primary"
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:66:hardcoded number:            onClick={props.toggleSection(props.index + 1)}
+microservices-middleware/client/src/modules/quotationschool/student/product/index.js:75:hardcoded object:  return <>{getFormDetails()}</>;

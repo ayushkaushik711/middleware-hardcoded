@@ -1,0 +1,304 @@
+microservices-middleware/server/utility/apis/tutorPlusUtility.js:1:hardcoded file path:const request = require("request-promise");
+microservices-middleware/server/utility/apis/tutorPlusUtility.js:3:hardcoded file path:const config = require('../../config');
+microservices-middleware/server/utility/apis/tutorPlusUtility.js:4:hardcoded object:const { NODE_ENV } = process.env;
+microservices-middleware/server/utility/apis/tutorPlusUtility.js:6:hardcoded variable:const callTutorPlusApiForNeoBatches = async (urlSegment) => {
+microservices-middleware/server/utility/apis/tutorPlusUtility.js:8:hardcoded variable:        const option = {
+microservices-middleware/server/utility/apis/tutorPlusUtility.js:9:hardcoded string:            method: 'GET',
+microservices-middleware/server/utility/apis/tutorPlusUtility.js:10:hardcoded object:            url: `${config.tplus.baseUrl}/batches?${urlSegment}`,
+microservices-middleware/server/utility/apis/tutorPlusUtility.js:13:hardcoded string:                "Content-Type": "application/json",
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:1:hardcoded object:const { get } = require('lodash');
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:2:hardcoded object:const { isDevEnv } = require('../../lib/featureHelper');
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:3:hardcoded object:const { callNucleusApi, callCxmsApi } = require("../externalApiUtility")
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:5:hardcoded variable:const getAddressId = async (props) => {
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:6:hardcoded object:    const { addressDetails, customerId, email, parentName } = props;
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:7:hardcoded variable:    const billingAddress = {
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:8:hardcoded string:        "contactPersonName": parentName,
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:9:hardcoded string:        "addressLine": get(addressDetails, "address", ""),
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:10:hardcoded string:        "addressType": "billing",
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:11:hardcoded string:        "state": get(addressDetails, "state", ""),
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:12:hardcoded string:        "city": get(addressDetails, "city", ""),
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:13:hardcoded string:        "country": get(addressDetails, "country", ""),
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:14:hardcoded string:        "zipCode": String(get(addressDetails, "zipcode", "")) || "000000",
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:15:hardcoded string:        "isPrimary": true
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:17:hardcoded variable:    const shippingAddress = {
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:18:hardcoded string:        "contactPersonName": parentName,
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:19:hardcoded string:        "addressLine": get(addressDetails, "address", ""),
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:20:hardcoded string:        "addressType": "shipping",
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:21:hardcoded string:        "state": get(addressDetails, "state", ""),
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:22:hardcoded string:        "city": get(addressDetails, "city", ""),
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:23:hardcoded string:        "country": get(addressDetails, "country", ""),
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:24:hardcoded string:        "zipCode": String(get(addressDetails, "zipcode", "")) || "000000",
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:26:hardcoded variable:    const payload = {
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:28:hardcoded array:        address: [billingAddress, shippingAddress],
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:29:hardcoded string:        source: "kart",
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:33:hardcoded string:    response = await callCxmsApi("customer/addEntities", "POST", payload);
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:35:hardcoded string:    const billingAddressId = get(response, "addressDetails.0.addressId", "");
+microservices-middleware/server/utility/apis/cxmsApiUtility.js:36:hardcoded string:    const shippingAddressId = get(response, "addressDetails.1.addressId", "");
+microservices-middleware/server/utility/apis/lmsApiUtility.js:1:hardcoded object:const { get } = require("lodash");
+microservices-middleware/server/utility/apis/lmsApiUtility.js:2:hardcoded file path:const request = require("request-promise");
+microservices-middleware/server/utility/apis/lmsApiUtility.js:3:hardcoded file path:const bunyan = require('bunyan');
+microservices-middleware/server/utility/apis/lmsApiUtility.js:4:hardcoded file path:const config = require("../../config");
+microservices-middleware/server/utility/apis/lmsApiUtility.js:6:hardcoded variable:const logger = bunyan.createLogger({
+microservices-middleware/server/utility/apis/lmsApiUtility.js:7:hardcoded string:    name: 'lmsApiUtility',
+microservices-middleware/server/utility/apis/lmsApiUtility.js:8:hardcoded environment variable:    env: process.env.NODE_ENV,
+microservices-middleware/server/utility/apis/lmsApiUtility.js:13:hardcoded variable:const callLmsToGetLoanDetails = async (payload) => {
+microservices-middleware/server/utility/apis/lmsApiUtility.js:14:hardcoded string:    const { provider="bajaj" } = payload;
+microservices-middleware/server/utility/apis/lmsApiUtility.js:16:hardcoded variable:        const option = {
+microservices-middleware/server/utility/apis/lmsApiUtility.js:17:hardcoded string:            method: 'POST',
+microservices-middleware/server/utility/apis/lmsApiUtility.js:18:hardcoded object:            url: `${process.env. PTMS_BASE_URL}/preapprovedloans/${provider}/getLoanDetails`,
+microservices-middleware/server/utility/apis/lmsApiUtility.js:20:hardcoded string:                "x-api-key": process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/utility/apis/lmsApiUtility.js:21:hardcoded string:                "Content-Type": "application/json"
+microservices-middleware/server/utility/apis/lmsApiUtility.js:26:hardcoded object:        const {data} = await request(option);
+microservices-middleware/server/utility/apis/lmsApiUtility.js:28:hardcoded object:        const {appId:referenceId,kartLeadId:leadId,loanStatus:status,loanAmount:amount,paymentPartner=provider} = data || {};
+microservices-middleware/server/utility/apis/lmsApiUtility.js:29:hardcoded string:        const result = !["enquiry_initiated","eligibility_check_failed","eligibility_check_passed"].includes(status) ? {referenceId,leadId,status,amount,paymentPartner} : null;
+microservices-middleware/server/utility/apis/lmsApiUtility.js:38:hardcoded object:const callLmsLoanDetails = async ({key, value}) => {
+microservices-middleware/server/utility/apis/lmsApiUtility.js:40:hardcoded variable:        const option = {
+microservices-middleware/server/utility/apis/lmsApiUtility.js:41:hardcoded string:            method: 'GET',
+microservices-middleware/server/utility/apis/lmsApiUtility.js:42:hardcoded number:            url: `${config?.lmsLoanDetails?.url}/lending/v1/getData`,
+microservices-middleware/server/utility/apis/lmsApiUtility.js:44:hardcoded string:                "x-api-key": config?.lmsLoanDetails?.key,
+microservices-middleware/server/utility/apis/lmsApiUtility.js:45:hardcoded string:                "Content-Type": "application/json",
+microservices-middleware/server/utility/apis/lmsApiUtility.js:46:hardcoded string:                "x-api-origin": "kart"
+microservices-middleware/server/utility/apis/lmsApiUtility.js:50:hardcoded string:                role: "admin",
+microservices-middleware/server/utility/apis/lmsApiUtility.js:57:hardcoded string:        return get(await request(option), "content", []);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:1:hardcoded file path:const request = require("request-promise");
+microservices-middleware/server/utility/apis/paymentApiUtility.js:2:hardcoded number:const { sign } = require("aws4");
+microservices-middleware/server/utility/apis/paymentApiUtility.js:3:hardcoded object:const { get, upperCase } = require('lodash');
+microservices-middleware/server/utility/apis/paymentApiUtility.js:4:hardcoded file path:const bunyan = require('bunyan');
+microservices-middleware/server/utility/apis/paymentApiUtility.js:6:hardcoded file path:const config = require('../../config');
+microservices-middleware/server/utility/apis/paymentApiUtility.js:7:hardcoded object:const { isDevEnv } = require("../../lib/featureHelper");
+microservices-middleware/server/utility/apis/paymentApiUtility.js:8:hardcoded object:const { NODE_ENV } = process.env;
+microservices-middleware/server/utility/apis/paymentApiUtility.js:10:hardcoded variable:const logger = bunyan.createLogger({
+microservices-middleware/server/utility/apis/paymentApiUtility.js:11:hardcoded string:    name: 'ApiUtility',
+microservices-middleware/server/utility/apis/paymentApiUtility.js:12:hardcoded environment variable:    env: process.env.NODE_ENV,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:17:hardcoded variable:const callNucleusApi = async (urlSegment, method, payload, isSpecialReq) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:22:hardcoded variable:    const uriMap = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:23:hardcoded object:        local: `https://dev-nucleus.byjusorders.com/nucleusapi/${urlSegment}`,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:25:hardcoded number:        //local: `http://localhost:9007/nucleusapi/${urlSegment}`,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:27:hardcoded object:        //default: `https://dev-nucleus.byjusorders.com/nucleusapi/${urlSegment}`,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:28:hardcoded object:        default: `${config.nucleusBaseUrl}/${urlSegment}`
+microservices-middleware/server/utility/apis/paymentApiUtility.js:30:hardcoded string:    const uri = (isSpecialReq && NODE_ENV === "local") ? uriMap['local'] : uriMap['default'];
+microservices-middleware/server/utility/apis/paymentApiUtility.js:31:hardcoded variable:    const options = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:36:hardcoded string:            "Content-Type": "application/json",
+microservices-middleware/server/utility/apis/paymentApiUtility.js:37:hardcoded string:            "x-api-key": process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:38:hardcoded string:            "x-app-origin": "kart"
+microservices-middleware/server/utility/apis/paymentApiUtility.js:50:hardcoded variable:const linkIcrPayment = async (payload) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:51:hardcoded string:    return callNucleusApi(`paymentmanagement/cashreceipts/icr/updateLeadDetails`, "POST", payload);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:54:hardcoded variable:const getPaymentDetails = async payload => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:55:hardcoded string:    return callNucleusApi("paymentmanagement/payment/getPaymentDetails", "POST", payload);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:58:hardcoded variable:const linkMultiplePaymentsToOrder = async payload => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:60:hardcoded object:        const { referenceId, provider } = payment;
+microservices-middleware/server/utility/apis/paymentApiUtility.js:61:hardcoded string:        const updatePayment = `[{identifiers: [{key: \"referenceId\", value: \"${referenceId}\"}], action: \"orderAssociation\", orders: \"[{\\n  \\\"orderId\\\": \\\"${payload?.orderId}\\\",\\n  \\\"orderStatus\\\": \\\"payment_saved\\\"\\n,\\n  \\\"isUsed\\\": true\\n}]\"}], providerId: \"${provider?.toLowerCase()}\"`
+microservices-middleware/server/utility/apis/paymentApiUtility.js:62:hardcoded variable:        const data = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:63:hardcoded object:            query: `mutation {\n  updatePayment(updateDetails: {payments: ${updatePayment}}) {id  error  message }}`
+microservices-middleware/server/utility/apis/paymentApiUtility.js:65:hardcoded number:        await callPTMSV2(data);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:67:hardcoded string:    return callNucleusApi("paymentmanagement/payment/linkMultiplePaymentsToOrder", "POST", payload);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:70:hardcoded variable:const checkExistingRefEligibleForNewLoan = async payload => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:71:hardcoded string:    return callNucleusApi("paymentmanagement/payment/checkExistingRefEligibleForNewLoan", "POST", payload);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:77:hardcoded object: * @return objtect { isAllPaymentsUnlocked: Boolean, unlockingErrors: Array }
+microservices-middleware/server/utility/apis/paymentApiUtility.js:79:hardcoded variable:const unlinkMultiplePaymentsFromOrder = async payload => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:80:hardcoded number:    let identifier = (Array.isArray(payload?.identifiers))? payload?.identifiers[0]: payload?.identifiers;
+microservices-middleware/server/utility/apis/paymentApiUtility.js:81:hardcoded object:    const orderId = `DRAFT_ORDER_${identifier}`
+microservices-middleware/server/utility/apis/paymentApiUtility.js:83:hardcoded object:        const { referenceId, provider } = payment;
+microservices-middleware/server/utility/apis/paymentApiUtility.js:84:hardcoded string:        const updatePayment = `[{identifiers: [{key: \"referenceId\", value: \"${referenceId}\"}], action: \"orderAssociation\", orders: \"[{\\n  \\\"orderId\\\": \\\"${orderId}\\\",\\n  \\\"orderStatus\\\": \\\"cancelled\\\"\\n,\\n  \\\"isUsed\\\": false\\n}]\"}], providerId: \"${provider?.toLowerCase()}\"`
+microservices-middleware/server/utility/apis/paymentApiUtility.js:85:hardcoded variable:        const data = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:86:hardcoded object:            query: `mutation {\n  updatePayment(updateDetails: {payments: ${updatePayment}}) {id  error  message }}`
+microservices-middleware/server/utility/apis/paymentApiUtility.js:88:hardcoded number:        await callPTMSV2(data);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:90:hardcoded string:    return callNucleusApi("paymentmanagement/payment/unlinkMultiplePaymentsFromOrder", "POST", payload);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:93:hardcoded variable:const callPtmsToCreatePayment = async (payload) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:95:hardcoded variable:        const option = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:96:hardcoded string:            method: 'POST',
+microservices-middleware/server/utility/apis/paymentApiUtility.js:97:hardcoded object:            url: `${config.ptmsBaseUrl}/payments/generateTransaction`,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:100:hardcoded string:                "x-api-key": process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:101:hardcoded string:                "Content-Type": "application/json"
+microservices-middleware/server/utility/apis/paymentApiUtility.js:105:hardcoded string:        console.log("*******Added console for debugging purpose**********")
+microservices-middleware/server/utility/apis/paymentApiUtility.js:113:hardcoded variable:const callPtmsToCreateScrPayment = async (payload) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:115:hardcoded variable:        const option = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:116:hardcoded string:            method: 'POST',
+microservices-middleware/server/utility/apis/paymentApiUtility.js:117:hardcoded object:            url: `${config.ptmsBaseUrl}/payments/generateTransaction`,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:120:hardcoded string:                "x-api-key": process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:121:hardcoded string:                "Content-Type": "application/json"
+microservices-middleware/server/utility/apis/paymentApiUtility.js:125:hardcoded string:        console.log("*******Added console for debugging purpose**********")
+microservices-middleware/server/utility/apis/paymentApiUtility.js:133:hardcoded variable:const callPtmsToValidateShopse = async (payload) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:135:hardcoded variable:        const option = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:136:hardcoded string:            method: 'POST',
+microservices-middleware/server/utility/apis/paymentApiUtility.js:138:hardcoded string:                "x-api-key": process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:139:hardcoded string:                "Content-Type": "application/json"
+microservices-middleware/server/utility/apis/paymentApiUtility.js:141:hardcoded object:            url: `${config.ptmsBaseUrl}/shopse/getEligbility`,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:145:hardcoded string:        console.log("*******Added console for debugging purpose**********")
+microservices-middleware/server/utility/apis/paymentApiUtility.js:153:hardcoded variable:const callPtmsToUploadCheque = async (entityId, files) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:155:hardcoded variable:        const option = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:156:hardcoded string:            'method': 'POST',
+microservices-middleware/server/utility/apis/paymentApiUtility.js:157:hardcoded string:            'url': `${config.ptmsBaseUrl}/payments/uploadimage`,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:158:hardcoded string:            'headers': {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:159:hardcoded string:                'x-api-key': process.env.NUCLEUS_API_TOKEN
+microservices-middleware/server/utility/apis/paymentApiUtility.js:162:hardcoded string:                'file': {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:163:hardcoded string:                    'value': files[0].buffer,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:164:hardcoded string:                    'options': {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:165:hardcoded string:                        'filename': files[0].originalname,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:166:hardcoded string:                        'contentType': files[0].mimetype
+microservices-middleware/server/utility/apis/paymentApiUtility.js:172:hardcoded variable:        const response = await request(option);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:179:hardcoded number:const fetchPdcPaymentsV2 = async (payload) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:180:hardcoded object:    const { leadPhoneNo } = payload
+microservices-middleware/server/utility/apis/paymentApiUtility.js:182:hardcoded variable:        const data = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:183:hardcoded string:            query: `query {\n  listPayments(terms: [{value: \"${leadPhoneNo}\", fieldName: \"leadDetails.leadPhoneNo\"},
+microservices-middleware/server/utility/apis/paymentApiUtility.js:184:hardcoded string:            {value: \"pdccr\", fieldName: \"providerId\"}]) 
+microservices-middleware/server/utility/apis/paymentApiUtility.js:205:hardcoded number:        const response = await callPTMSV2(data);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:209:hardcoded string:        logger.error("ERROR", err)
+microservices-middleware/server/utility/apis/paymentApiUtility.js:213:hardcoded variable:const fetchGroupPdcs = async (payload) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:214:hardcoded object:    const { leadPhoneNo } = payload
+microservices-middleware/server/utility/apis/paymentApiUtility.js:216:hardcoded variable:        const data = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:217:hardcoded string:            query: `query {\n  listPayments(terms: [{value: \"${leadPhoneNo}\", fieldName: \"leadDetails.leadPhoneNo\"},
+microservices-middleware/server/utility/apis/paymentApiUtility.js:218:hardcoded string:            {value: \"gpdc\", fieldName: \"providerId\"}]) 
+microservices-middleware/server/utility/apis/paymentApiUtility.js:225:hardcoded number:        const response = await callPTMSV2(data);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:229:hardcoded string:        logger.error("ERROR", err)
+microservices-middleware/server/utility/apis/paymentApiUtility.js:232:hardcoded number:const getPaymentsV2ByRefId = async ({ payments }) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:233:hardcoded variable:    let finalRef = `[`
+microservices-middleware/server/utility/apis/paymentApiUtility.js:237:hardcoded object:        finalRef += `${payment.referenceId}`
+microservices-middleware/server/utility/apis/paymentApiUtility.js:239:hardcoded number:        if (i !== payments.length - 1) {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:240:hardcoded string:            finalRef += ","
+microservices-middleware/server/utility/apis/paymentApiUtility.js:246:hardcoded variable:        const data = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:247:hardcoded string:            query: `query {\n  listPayments(terms: [{values: ${finalRef}, fieldName: \"referenceId\"}]) 
+microservices-middleware/server/utility/apis/paymentApiUtility.js:269:hardcoded number:        const response = await callPTMSV2(data);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:270:hardcoded string:        let payments = get(response, "data.listPayments", [])
+microservices-middleware/server/utility/apis/paymentApiUtility.js:283:hardcoded number:const createPaymentV2 = async (payload) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:286:hardcoded string:        const createPayment = `{amount: \"${payload?.amount}\", customerEmail: \"${payload?.customerEmail}\", 
+microservices-middleware/server/utility/apis/paymentApiUtility.js:287:hardcoded string:            customerName: \"${payload?.customerName}\", description: \"${payload?.course}\", 
+microservices-middleware/server/utility/apis/paymentApiUtility.js:288:hardcoded string:            orgName: \"${payload?.orgFormattedName || "byjus"}\" phone: \"${payload?.phone}\", providerId: \"${payload?.provider?.toLowerCase()}\", 
+microservices-middleware/server/utility/apis/paymentApiUtility.js:289:hardcoded string:            salesEmail: \"${payload?.salesEmail}\", currency: \"INR\", source: \"kart\", 
+microservices-middleware/server/utility/apis/paymentApiUtility.js:290:hardcoded string:            leadDetails: \"{\\n  \\\"leadPhoneNo\\\":\\\"${payload?.leadPhoneNo}\\\",\\n \\\"leadAccountNo\\\": \\\"${payload.leadAccountNo}\\\",\\n  \\\"leadId\\\": \\\"${payload?.leadId}\\\"\\n}\"}`;
+microservices-middleware/server/utility/apis/paymentApiUtility.js:291:hardcoded variable:        const data = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:292:hardcoded object:            query: `mutation { createPayment(payment: ${createPayment} ) { amount paymentUrl referenceId  providerId } }`
+microservices-middleware/server/utility/apis/paymentApiUtility.js:294:hardcoded number:        return await callPTMSV2(data);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:300:hardcoded number:const callPTMSV2 = async (query) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:303:hardcoded number:        const { host, pathname, href } = new URL(`${config?.ptmsV2?.api}/payment-graphql`);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:304:hardcoded variable:        const signatureConfig = sign({
+microservices-middleware/server/utility/apis/paymentApiUtility.js:305:hardcoded string:            method: "POST",
+microservices-middleware/server/utility/apis/paymentApiUtility.js:306:hardcoded string:            service: "execute-api",
+microservices-middleware/server/utility/apis/paymentApiUtility.js:307:hardcoded string:            region: isDevEnv ? "us-east-1" : "ap-south-1",
+microservices-middleware/server/utility/apis/paymentApiUtility.js:310:hardcoded string:                "Content-Type": "application/json"
+microservices-middleware/server/utility/apis/paymentApiUtility.js:315:hardcoded number:            accessKeyId: config?.ptmsV2?.accessKeyId,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:316:hardcoded number:            secretAccessKey: config?.ptmsV2?.secretAccessKey,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:318:hardcoded variable:        const response = await request(({
+microservices-middleware/server/utility/apis/paymentApiUtility.js:325:hardcoded string:        logger.error(err, "error")
+microservices-middleware/server/utility/apis/paymentApiUtility.js:329:hardcoded variable:const callLmsToValidateBajaj = async (payload) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:331:hardcoded variable:        const option = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:332:hardcoded string:            method: 'POST',
+microservices-middleware/server/utility/apis/paymentApiUtility.js:334:hardcoded string:                "x-api-key": process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:335:hardcoded string:                "Content-Type": "application/json"
+microservices-middleware/server/utility/apis/paymentApiUtility.js:337:hardcoded object:            url: `${config?.lmsLoanDetails?.lmsApiUrl}/los/pre-approved-loan/bajaj`,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:347:hardcoded variable:const callPtmsToCreateBajajPayment = async (payload) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:349:hardcoded variable:        const option = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:350:hardcoded string:            method: 'POST',
+microservices-middleware/server/utility/apis/paymentApiUtility.js:351:hardcoded object:            url: `${config.ptmsBaseUrl}/preapprovedloans/bajaj/sendLinkToCustomer`,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:354:hardcoded string:                "x-api-key": process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:355:hardcoded string:                "Content-Type": "application/json"
+microservices-middleware/server/utility/apis/paymentApiUtility.js:365:hardcoded variable:const linkPdcWithDo = async payload => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:367:hardcoded object:        const { referenceId, provider } = payment;
+microservices-middleware/server/utility/apis/paymentApiUtility.js:368:hardcoded variable:        const data = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:369:hardcoded string:            "query": `mutation {\n  updatePayment(updateDetails: {payments: [{identifiers: [{key: \"referenceId\", value: \"${referenceId}\"}], source: \"ptms\",  action: \"orderAssociation\", orders: \"[{\\n  \\\"orderId\\\": \\\"${payload?.orderId}\\\",\\n  \\\"orderStatus\\\": \\\"payment_saved\\\"\\n,\\n  \\\"isUsed\\\": true\\n}]\"}] , providerId: \"pdccr\" }) {\n id\n  error\n  message\n }}`
+microservices-middleware/server/utility/apis/paymentApiUtility.js:371:hardcoded number:        const response = await callPTMSV2(data);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:376:hardcoded variable:const unlinkPdcPayments = async payload => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:377:hardcoded number:    const orderId = `DRAFT_ORDER_${payload?.identifiers?.[0]}`
+microservices-middleware/server/utility/apis/paymentApiUtility.js:379:hardcoded object:        const { referenceId, provider } = payment;
+microservices-middleware/server/utility/apis/paymentApiUtility.js:380:hardcoded variable:        const data = {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:381:hardcoded string:            "query": `mutation {\n  updatePayment(updateDetails: {payments: [{identifiers: [{key: \"referenceId\", value: \"${referenceId}\"}], source: \"ptms\",  action: \"orderAssociation\", orders: \"[{\\n  \\\"orderId\\\": \\\"${orderId}\\\",\\n  \\\"orderStatus\\\": \\\"payment_saved\\\"\\n,\\n  \\\"isUsed\\\": false\\n}]\"}] , providerId: \"pdccr\" }) {\n id\n  error\n  message\n }}`
+microservices-middleware/server/utility/apis/paymentApiUtility.js:383:hardcoded number:        const response = await callPTMSV2(data);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:388:hardcoded variable:const discardPaymentbyRefId = async (payload) => {
+microservices-middleware/server/utility/apis/paymentApiUtility.js:389:hardcoded object:    const { provider, body } = payload
+microservices-middleware/server/utility/apis/paymentApiUtility.js:391:hardcoded number:        const { host, pathname, href } = new URL(`${config?.ptmsV2?.webhookApi}?provider=${upperCase(provider)}`);
+microservices-middleware/server/utility/apis/paymentApiUtility.js:392:hardcoded variable:        const signatureConfig = sign({
+microservices-middleware/server/utility/apis/paymentApiUtility.js:393:hardcoded string:            method: "POST",
+microservices-middleware/server/utility/apis/paymentApiUtility.js:394:hardcoded string:            service: "execute-api",
+microservices-middleware/server/utility/apis/paymentApiUtility.js:395:hardcoded string:            region: isDevEnv ? "us-east-1" : "ap-south-1",
+microservices-middleware/server/utility/apis/paymentApiUtility.js:398:hardcoded string:                "Content-Type": "application/json"
+microservices-middleware/server/utility/apis/paymentApiUtility.js:403:hardcoded number:            accessKeyId: config?.ptmsV2?.accessKeyId,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:404:hardcoded number:            secretAccessKey: config?.ptmsV2?.secretAccessKey,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:406:hardcoded variable:        const response = await request(({
+microservices-middleware/server/utility/apis/paymentApiUtility.js:428:hardcoded number:    createPaymentV2,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:431:hardcoded number:    fetchPdcPaymentsV2,
+microservices-middleware/server/utility/apis/paymentApiUtility.js:433:hardcoded number:    getPaymentsV2ByRefId,
+microservices-middleware/server/utility/apis/sosApiUtility.js:1:hardcoded file path:const request = require("request-promise");
+microservices-middleware/server/utility/apis/sosApiUtility.js:2:hardcoded file path:const config = require('../../config')
+microservices-middleware/server/utility/apis/sosApiUtility.js:3:hardcoded variable:const callSosToGetRcnBadgeDetails = async (payload) => {
+microservices-middleware/server/utility/apis/sosApiUtility.js:5:hardcoded variable:        const option = {
+microservices-middleware/server/utility/apis/sosApiUtility.js:6:hardcoded string:            method: 'POST',
+microservices-middleware/server/utility/apis/sosApiUtility.js:7:hardcoded object:            url: `${process.env. SOS_WEBHOOK_BASE_URL}/employee/rcn/getDetails`,
+microservices-middleware/server/utility/apis/sosApiUtility.js:9:hardcoded string:                "x-api-key": process.env.SOS_API_TOKEN,
+microservices-middleware/server/utility/apis/sosApiUtility.js:10:hardcoded string:                "Content-Type": "application/json"
+microservices-middleware/server/utility/apis/sosApiUtility.js:22:hardcoded variable:const getActivitiesOfLead = async (urlSegment, payload) => {
+microservices-middleware/server/utility/apis/sosApiUtility.js:24:hardcoded object:        const { baseUrl, token } = config.sosActivity;
+microservices-middleware/server/utility/apis/sosApiUtility.js:25:hardcoded variable:        const option = {
+microservices-middleware/server/utility/apis/sosApiUtility.js:26:hardcoded string:            method: 'POST',
+microservices-middleware/server/utility/apis/sosApiUtility.js:27:hardcoded object:            url: `${baseUrl}/getActivitiesOfLead?${urlSegment}`,
+microservices-middleware/server/utility/apis/sosApiUtility.js:30:hardcoded string:                "Content-Type": "application/json",
+microservices-middleware/server/utility/apis/sosApiUtility.js:31:hardcoded string:                "x-api-source": "ByjusKart",
+microservices-middleware/server/utility/apis/sosApiUtility.js:32:hardcoded string:                "x-api-key"   : token,
+microservices-middleware/server/utility/apis/sosApiUtility.js:36:hardcoded variable:        const response = await request( option );
+microservices-middleware/server/utility/apis/uxosApiUtility.js:1:hardcoded file path:const request = require("request-promise");
+microservices-middleware/server/utility/apis/uxosApiUtility.js:3:hardcoded file path:const config = require('../../config');
+microservices-middleware/server/utility/apis/uxosApiUtility.js:4:hardcoded object:const { isDevEnv } = require("../../lib/featureHelper");
+microservices-middleware/server/utility/apis/uxosApiUtility.js:5:hardcoded object:const { NODE_ENV } = process.env;
+microservices-middleware/server/utility/apis/uxosApiUtility.js:7:hardcoded variable:const callNucleusApi = async (urlSegment, method, payload, isSpecialReq) => {
+microservices-middleware/server/utility/apis/uxosApiUtility.js:12:hardcoded variable:    const uriMap = {
+microservices-middleware/server/utility/apis/uxosApiUtility.js:13:hardcoded object:        local: `https://dev-nucleus.byjusorders.com/nucleusapi/${urlSegment}`,
+microservices-middleware/server/utility/apis/uxosApiUtility.js:15:hardcoded object:        //default: `https://dev-nucleus.byjusorders.com/nucleusapi/${urlSegment}`,
+microservices-middleware/server/utility/apis/uxosApiUtility.js:16:hardcoded object:        default: `${config.nucleusBaseUrl}/${urlSegment}`
+microservices-middleware/server/utility/apis/uxosApiUtility.js:18:hardcoded string:    const uri = (isSpecialReq && NODE_ENV === "local") ? uriMap['local'] : uriMap['default'];
+microservices-middleware/server/utility/apis/uxosApiUtility.js:19:hardcoded variable:    const options = {
+microservices-middleware/server/utility/apis/uxosApiUtility.js:24:hardcoded string:            "Content-Type": "application/json",
+microservices-middleware/server/utility/apis/uxosApiUtility.js:25:hardcoded string:            "x-api-key": process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/utility/apis/uxosApiUtility.js:26:hardcoded string:            "x-app-origin": "kart"
+microservices-middleware/server/utility/apis/uxosApiUtility.js:30:hardcoded string:    if (method.toLowerCase() === "post") {
+microservices-middleware/server/utility/apis/uxosApiUtility.js:31:hardcoded string:        options["body"] = payload
+microservices-middleware/server/utility/apis/uxosApiUtility.js:41:hardcoded variable:const callStmsApi = async (urlSegment, method, payload) => {
+microservices-middleware/server/utility/apis/uxosApiUtility.js:42:hardcoded object:    const uri = `${config.stmsBaseUrl}/${urlSegment}`
+microservices-middleware/server/utility/apis/uxosApiUtility.js:43:hardcoded variable:    const options = {
+microservices-middleware/server/utility/apis/uxosApiUtility.js:48:hardcoded string:            "Content-Type": "application/json",
+microservices-middleware/server/utility/apis/uxosApiUtility.js:49:hardcoded string:            "x-api-key": process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/utility/apis/uxosApiUtility.js:50:hardcoded string:            "x-app-origin": "kart"
+microservices-middleware/server/utility/apis/uxosApiUtility.js:54:hardcoded string:    if (["post"].includes(method.toLowerCase())) {
+microservices-middleware/server/utility/apis/uxosApiUtility.js:55:hardcoded string:        options["body"] = payload
+microservices-middleware/server/utility/apis/uxosApiUtility.js:65:hardcoded variable:const createPremiumAccount = async (payload) => {
+microservices-middleware/server/utility/apis/uxosApiUtility.js:66:hardcoded string:    return callStmsApi("stms/students/createLeadStudent", "POST", payload);
+microservices-middleware/server/utility/apis/uxosApiUtility.js:69:hardcoded variable:const getStudentProfileFromPremiumAccount = async (payload) => {
+microservices-middleware/server/utility/apis/uxosApiUtility.js:70:hardcoded string:    return callStmsApi("premiumaccount/getPremiumAccountsByOrderIdOrMobile", "POST", payload);
+microservices-middleware/server/utility/apis/uxosApiUtility.js:73:hardcoded variable:const getTodStudentProfileFromPremiumAccount = async (payload) => {
+microservices-middleware/server/utility/apis/uxosApiUtility.js:74:hardcoded string:    return callStmsApi("premiumaccount/getPremiumAccountsByOrderIdOrMobile", "POST", payload);
+microservices-middleware/server/utility/apis/uxosApiUtility.js:77:hardcoded variable:const getPremiumAccounts = async (payload) => {
+microservices-middleware/server/utility/apis/uxosApiUtility.js:78:hardcoded string:    return callStmsApi("premiumaccount/getPremiumAccountsByMobile", "POST", payload);
+microservices-middleware/server/utility/apis/uxosApiUtility.js:81:hardcoded variable:const getPremiumAccountsAkashAvailability = async (payload) => {
+microservices-middleware/server/utility/apis/uxosApiUtility.js:82:hardcoded string:    return callStmsApi("premiumaccount/getPremiumAccountsAkashAvailability", "POST", payload);
+microservices-middleware/server/utility/apis/uxosApiUtility.js:85:hardcoded variable:const getProficiencyFromStms = async (payload) => {
+microservices-middleware/server/utility/apis/uxosApiUtility.js:86:hardcoded string:    return await callStmsApi(`stms/students/getProficiency`, 'POST', payload);
+microservices-middleware/server/utility/apis/uxosApiUtility.js:89:hardcoded variable: const getPremiumAccountsByPidRecommender = async (payload) =>{
+microservices-middleware/server/utility/apis/uxosApiUtility.js:90:hardcoded string:    return callStmsApi("premiumaccount/pidRecommender", "POST", payload);
+microservices-middleware/server/utility/apis/dsslApiUtility.js:1:hardcoded file path:const request = require("request-promise");
+microservices-middleware/server/utility/apis/dsslApiUtility.js:3:hardcoded file path:const config = require('../../config');
+microservices-middleware/server/utility/apis/dsslApiUtility.js:4:hardcoded object:const { setupDsslToken } = require('../../config/setupToken');
+microservices-middleware/server/utility/apis/dsslApiUtility.js:5:hardcoded file path:const ByjusConfig = require('../../models/ByjusConfig');
+microservices-middleware/server/utility/apis/dsslApiUtility.js:7:hardcoded variable:const callDsslApi = async (urlSegment, method, payload) => {
+microservices-middleware/server/utility/apis/dsslApiUtility.js:8:hardcoded object:    const uri = `${config.dssl.baseUrl}${urlSegment}`
+microservices-middleware/server/utility/apis/dsslApiUtility.js:9:hardcoded variable:    const options = {
+microservices-middleware/server/utility/apis/dsslApiUtility.js:14:hardcoded string:            "Content-Type": "application/json",
+microservices-middleware/server/utility/apis/dsslApiUtility.js:15:hardcoded string:            // "x-api-key": process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/utility/apis/dsslApiUtility.js:16:hardcoded string:            // "x-app-origin": "kart"
+microservices-middleware/server/utility/apis/dsslApiUtility.js:29:hardcoded variable:const updateTokensInDb = async (tokens) => {
+microservices-middleware/server/utility/apis/dsslApiUtility.js:30:hardcoded object:    const { newAccessToken, newRefreshToken } = tokens;
+microservices-middleware/server/utility/apis/dsslApiUtility.js:34:hardcoded string:            "formattedAppName": "DSSLAPI",
+microservices-middleware/server/utility/apis/dsslApiUtility.js:35:hardcoded string:            "formattedModuleName": "DSSL_API_CONFIG"
+microservices-middleware/server/utility/apis/dsslApiUtility.js:38:hardcoded string:            "$set": {
+microservices-middleware/server/utility/apis/dsslApiUtility.js:39:hardcoded string:                "configs.0.accessToken": newAccessToken,
+microservices-middleware/server/utility/apis/dsslApiUtility.js:40:hardcoded string:                "configs.0.refreshToken": newRefreshToken,
+microservices-middleware/server/utility/apis/dsslApiUtility.js:41:hardcoded string:                "configs.0.tokenGeneratedAt": new Date()
+microservices-middleware/server/utility/apis/dsslApiUtility.js:47:hardcoded number:const callDsslApiV2 = async (urlSegment, method, payload) => {
+microservices-middleware/server/utility/apis/dsslApiUtility.js:48:hardcoded object:    const uri = `${config.dssl.baseUrl}${urlSegment}`
+microservices-middleware/server/utility/apis/dsslApiUtility.js:50:hardcoded variable:    const dssl = await setupDsslToken(uri);
+microservices-middleware/server/utility/apis/dsslApiUtility.js:51:hardcoded variable:    const resp = await dssl.callDsslApi();
+microservices-middleware/server/utility/apis/dsslApiUtility.js:52:hardcoded object:    const { apiResponse, newAccessToken, newRefreshToken, isNewToken } = resp;
+microservices-middleware/server/utility/apis/dsslApiUtility.js:55:hardcoded object:        await updateTokensInDb({ newAccessToken, newRefreshToken })
+microservices-middleware/server/utility/apis/dsslApiUtility.js:62:hardcoded variable:const callGoogleApiToGetSchools = async (searchText) => {
+microservices-middleware/server/utility/apis/dsslApiUtility.js:63:hardcoded object:    const uri = `${config.google.baseUrl}&types=school&query=${searchText}`
+microservices-middleware/server/utility/apis/dsslApiUtility.js:64:hardcoded variable:    const options = {
+microservices-middleware/server/utility/apis/dsslApiUtility.js:65:hardcoded string:        method: 'GET',
+microservices-middleware/server/utility/apis/dsslApiUtility.js:69:hardcoded string:            "Content-Type": "application/json"
+microservices-middleware/server/utility/apis/dsslApiUtility.js:82:hardcoded number:    callDsslApiV2,

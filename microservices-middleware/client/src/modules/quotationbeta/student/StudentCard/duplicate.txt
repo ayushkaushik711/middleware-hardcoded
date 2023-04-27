@@ -1,0 +1,190 @@
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:1:hardcoded object:import React, { useRef, useState, useEffect } from "react";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:2:hardcoded object:import { Button, Container, Row, Col } from "reactstrap";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:3:hardcoded object:import { get, isEmpty, startCase, upperCase, snakeCase, remove } from "lodash";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:4:hardcoded object:import { useRecoilState } from 'recoil';
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:6:hardcoded file path:import FormBuilder from 'components/form/AntDFormBuilder';
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:7:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:8:hardcoded object:import { quotationStudentDetails, salesProgramDetailState, upgradeOrderDetails, authenticationDetails } from 'store/atom';
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:10:hardcoded object:import { programName, upgradeEligibility, editAccess } from './constant'
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:11:hardcoded object:import { isUpgradeEligible } from "./helper";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:12:hardcoded object:import { SALES_PROGRAMS } from "modules/quotationbeta/utils/productConstants";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:26:hardcoded string:} from "./Styles";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:27:hardcoded object:import { STATUS, STAGE } from "modules/quotationbeta/utils/statusConstants";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:28:hardcoded file path:import ProductSummary from "../StudentProductSummary";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:29:hardcoded string:import profile from "@byjus-orders/nicons/assets/byjus kart/neo-kart-illustrations/profile.svg";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:30:hardcoded string:import profileBackground from "@byjus-orders/nicons/assets/byjus kart/neo-kart-illustrations/profile-background.svg";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:31:hardcoded string:import cardBackground from "@byjus-orders/nicons/assets/byjus kart/neo-kart-illustrations/card-background.svg";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:33:hardcoded variable:const StudentCard = (props) => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:34:hardcoded variable:    const programForm = useRef();
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:35:hardcoded array:    const [programs, setPrograms] = useState([]);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:36:hardcoded array:    const [loading, setLoading] = useState(false);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:37:hardcoded array:    const [error, setError] = useState();
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:38:hardcoded array:    const [spDetails, setSpDetails] = useRecoilState(salesProgramDetailState);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:39:hardcoded array:    const [authDetails, setAuthDetails] = useRecoilState(authenticationDetails);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:40:hardcoded array:    const [quotationStudent, setQuotationStudent] = useRecoilState(
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:43:hardcoded array:    const [upgradeData, setUpgradeData] = useRecoilState(upgradeOrderDetails);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:47:hardcoded string:        quotationId = "",
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:48:hardcoded string:        leadId = "",
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:49:hardcoded string:        customerId = "",
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:53:hardcoded string:    const { studentId = "", spId = "", upgradeDetails={} } = student;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:54:hardcoded object:    const { spId: orderSPId } = spDetails;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:56:hardcoded string:        get(student, "studentName") ||
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:57:hardcoded string:        get(student, "studentDetails.fullName", "");
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:58:hardcoded number:    const PRE_PRODUCT_SELECTION = [...STAGE[1], ...STAGE[2]];
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:65:hardcoded array:    }, []);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:67:hardcoded variable:    const getSalesProgram = async () => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:70:hardcoded variable:            const response = await CallApi({
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:71:hardcoded string:                url: "/api/quotation-beta/getSalesProgram",
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:72:hardcoded string:                method: "GET",
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:73:hardcoded object:                body: {},
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:75:hardcoded string:            const details = get(response, "data", {});
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:76:hardcoded string:            const salesProgramDetails = get(details, "salesPrograms", []);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:77:hardcoded variable:            const salesPrograms = salesProgramDetails.map((item) => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:79:hardcoded string:                    label: programName[get(item, "name", "")],
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:80:hardcoded string:                    value: get(item, "spId", ""),
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:92:hardcoded variable:    const onClickProceed = () => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:93:hardcoded string:        const salesProgram = get(formValues, "salesProgram", "");
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:94:hardcoded variable:        const isUpgrade = isSPUpgradeEligble(salesProgram, programs)
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:102:hardcoded variable:        const url = `/quotation-beta/product`;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:106:hardcoded string:                search: get(history, "location.search"),
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:118:hardcoded variable:    const isSPUpgradeEligble = (salesProgram, programs) =>{
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:119:hardcoded string:        const { premium_account_id = '', productSelectionType } = upgradeData
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:120:hardcoded variable:        let isUpgrade=false;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:121:hardcoded variable:        const isUpgradeAvailable = studentId === premium_account_id ? true : false
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:122:hardcoded variable:        const selectedSp = programs.find((sp)=>sp.value === salesProgram)
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:123:hardcoded string:        const spLabel = get(selectedSp, 'label')
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:124:hardcoded object:        isUpgrade = isUpgradeEligible({isUpgradeAvailable, spLabel, productSelectionType, upgradeEligibility})
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:128:hardcoded array:    const [formValues, setFormValues] = useState({
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:129:hardcoded string:        salesProgram: spId || "",
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:132:hardcoded variable:    const handleChanges = (value, name) => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:135:hardcoded array:            [name]: value,
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:139:hardcoded variable:    const salesFormDetails = () => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:140:hardcoded variable:        const initialValues = formValues;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:141:hardcoded variable:        const programFields = [
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:143:hardcoded string:                type: "select",
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:144:hardcoded string:                name: "salesProgram",
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:145:hardcoded string:                label: "Sales Program",
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:149:hardcoded string:                message: "Please select sales program",
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:153:hardcoded variable:        const formItemLayout = {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:155:hardcoded number:                xs: { span: 8 },
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:156:hardcoded number:                sm: { span: 8 },
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:159:hardcoded number:                xs: { span: 16 },
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:160:hardcoded number:                sm: { span: 16 },
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:165:hardcoded object:                ref={programForm}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:166:hardcoded object:                fields={programFields}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:167:hardcoded object:                initialValues={initialValues}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:168:hardcoded object:                formItemLayout={formItemLayout}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:173:hardcoded variable:    const eligiblePrograms = () => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:174:hardcoded variable:        let eligiblePrograms = programs;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:176:hardcoded object:            const { isBhtEnabled=false, isBtcEnabled=false } = authDetails;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:188:hardcoded variable:    const getStudentDetails = () => (
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:189:hardcoded string:        <Container fluid="md" style={{ height: "20%", marginBottom: "2rem" }}>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:190:hardcoded string:            <Row className="justify-content-md-center">
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:191:hardcoded string:                <Col md="auto">
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:192:hardcoded string:                    <h4 style={{ color: "#a0a0a0" }}>Student Id :</h4>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:194:hardcoded string:                <Col md="auto" xs={5}>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:195:hardcoded number:                    <h4>{studentId}</h4>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:201:hardcoded string:                        className="justify-content-md-center"
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:202:hardcoded string:                        style={{ alignItems: "flex-end" }}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:204:hardcoded string:                        <Col md="auto">
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:205:hardcoded string:                            <h4 style={{ color: "#a0a0a0" }}>Sales Program:</h4>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:207:hardcoded string:                        <Col md="auto">
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:208:hardcoded number:                            <h5>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:212:hardcoded string:                                        "spDetails.name",
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:213:hardcoded string:                                        ""
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:216:hardcoded number:                            </h5>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:220:hardcoded string:                        className="justify-content-md-center"
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:221:hardcoded string:                        style={{ alignItems: "flex-end" }}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:223:hardcoded string:                        <Col md="auto">
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:224:hardcoded string:                            <h4 style={{ color: "#a0a0a0" }}>Status:</h4>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:226:hardcoded string:                        <Col md="auto">
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:227:hardcoded string:                            <h5>{startCase("Product Saved")}</h5>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:235:hardcoded variable:    const getProceedButton = () => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:237:hardcoded string:            return "Proceed";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:239:hardcoded string:            return "Edit";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:243:hardcoded variable:    const onClickRemove = async (event) => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:250:hardcoded string:                <CloseButton onClick={onClickRemove}>{"X"}</CloseButton>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:251:hardcoded object:                <CardBackground src={cardBackground} />
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:252:hardcoded object:                <IconBackground src={profileBackground} />
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:253:hardcoded object:                <StudentImage src={profile} />
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:257:hardcoded string:                        startCase(get(student, "studentDetails.fullName", ""))}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:260:hardcoded object:                {getStudentDetails()}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:265:hardcoded string:                        color="success"
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:266:hardcoded object:                        onClick={onClickProceed}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:267:hardcoded object:                        disabled={(!formValues.salesProgram || editAccess.includes(quotationStatus))}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:269:hardcoded object:                        {getProceedButton()}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/index.js:273:hardcoded object:            {spId && <ProductSummary productDetails={student}></ProductSummary>}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/constant.js:1:hardcoded variable:export const programName = {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/constant.js:2:hardcoded string:    'htp_at_btc': 'HTP at BTC',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/constant.js:3:hardcoded string:    'byjus_home_tuition': 'Byjus Home Tuition'
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/constant.js:6:hardcoded variable:export const upgradeEligibility = [{
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/constant.js:7:hardcoded string:    spName:'HTP at BTC', 
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/constant.js:8:hardcoded string:    allowedUpgrades:['tlp','byjus_classes']
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/constant.js:10:hardcoded string:    spName:'Byjus Home Tuition', 
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/constant.js:11:hardcoded string:    allowedUpgrades:['tlp']
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/constant.js:13:hardcoded string:export const editAccess = ['pov_pending', 'otp_verification_sent', 'otp_verified', 'otp_verification_pending']microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:1:hardcoded string:import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:3:hardcoded variable:export const StudentCardContainer = styled.div`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:4:hardcoded number:    line-height: 1.15;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:5:hardcoded number:    font-size: 16px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:6:hardcoded number:    color: #404040;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:9:hardcoded number:    min-width: 410px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:12:hardcoded number:    border-radius: 2rem;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:13:hardcoded number:    box-shadow: 0px 1rem 1.5rem rgba(0, 0, 0, 0.5);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:14:hardcoded number:    margin-top: 2rem;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:15:hardcoded number:    min-height: 500px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:16:hardcoded number:    height: 500px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:21:hardcoded variable:export const StudentMenu = styled.div`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:22:hardcoded number:    line-height: 1.15;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:23:hardcoded number:    font-size: 16px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:24:hardcoded number:    color: #404040;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:26:hardcoded number:    width: 100%;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:27:hardcoded number:    height: 3rem;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:28:hardcoded number:    padding: 1rem;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:34:hardcoded number:    margin-top: 5rem;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:37:hardcoded variable:export const StudentTitle = styled.div`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:38:hardcoded number:    line-height: 1.15;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:40:hardcoded number:    color: #404040;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:41:hardcoded number:    font-size: 1rem;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:43:hardcoded number:    padding: 0 2rem 1.2rem;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:46:hardcoded number:export const StudentName = styled.h1`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:47:hardcoded number:    line-height: 1.15;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:48:hardcoded number:    color: #404040;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:51:hardcoded number:    padding: 0 2rem 0.5rem;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:52:hardcoded number:    margin: 0;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:55:hardcoded variable:export const StudentDetails = styled.div`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:56:hardcoded number:    color: #404040;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:60:hardcoded number:    order: 99;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:62:hardcoded variable:export const StudentCardFooter = styled.div`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:63:hardcoded number:    line-height: 1.15;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:64:hardcoded number:    font-size: 16px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:65:hardcoded number:    color: #404040;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:68:hardcoded number:    padding: 0 2rem 2.5rem;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:69:hardcoded number:    order: 100;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:73:hardcoded number:    top: 0;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:76:hardcoded variable:export const StudentImage = styled.img`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:78:hardcoded number:    top: 5rem;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:79:hardcoded number:    width: 150px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:80:hardcoded number:    height: 100px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:84:hardcoded variable:export const CardBackground = styled.img`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:86:hardcoded number:    width: 100%;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:87:hardcoded number:    border-radius: 2rem;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:90:hardcoded variable:export const IconBackground = styled.img`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:92:hardcoded number:    top: 5rem;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:93:hardcoded number:    width: 150px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:94:hardcoded number:    height: 100px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:97:hardcoded variable:export const Close = styled.div`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:98:hardcoded number:    width: 80%;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:99:hardcoded number:    padding: 15px 15px 15px 15px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:100:hardcoded number:    margin: 20px 20px 20px 20px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:101:hardcoded number:    background: #a4d3ee;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:103:hardcoded number:    box-shadow: 5px 5px 2px #888888;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:106:hardcoded variable:export const CloseButton = styled.button`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:110:hardcoded number:    top: -8px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:111:hardcoded number:    right: -4px;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:114:hardcoded variable:export const CustomContainer = styled.div`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/Styles.js:118:hardcoded number:    margin-left: 2rem;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/helper.js:1:hardcoded object:import { get } from "lodash";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/helper.js:3:hardcoded variable:export const isUpgradeEligible = (details) => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/helper.js:4:hardcoded object:    const { isUpgradeAvailable, spLabel, productSelectionType, upgradeEligibility } = details
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/helper.js:5:hardcoded variable:    const eligibleProgram = upgradeEligibility.filter(program => program.spName === spLabel)
+microservices-middleware/client/src/modules/quotationbeta/student/StudentCard/helper.js:6:hardcoded string:    const allowedUpgrades = get(eligibleProgram, '0.allowedUpgrades', []) || []

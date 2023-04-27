@@ -1,0 +1,103 @@
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:1:hardcoded file path:const request = require('request-promise');
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:2:hardcoded file path:const Promise = require('bluebird');
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:4:hardcoded object:const { get, isEmpty, flattenDeep } = require('lodash');
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:6:hardcoded string:const { DraftOrder, ProductDetail, PremiumAccount } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:7:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Aakash Upgrade Explorer');
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:8:hardcoded object:const { NotFoundError } = require('../../../lib/errors');
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:9:hardcoded object:const { productConstant } = require('../../productmanagement/utils/productConstants');
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:10:hardcoded object:const { getUpdatedProductDetailsWithHlpDetails } = require('../../productmanagement/hlpmanagement/hlpProductController');
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:11:hardcoded file path:const draftOrderConverterUtility = require('../../../utility/draftOrderConverterUtility');
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:12:hardcoded object:const { getBoardForState, getUpdatedTotalPrice, getSkuItemId, getCourseSku, getStudentProfileDetails } = require('../../productmanagement/productHelper')
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:13:hardcoded object:const { checkIfDraftOrderExists } = require('../../../utility/draftOrderUtility')
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:14:hardcoded file path:const externalApiUtility = require('../../../utility/externalApiUtility');
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:15:hardcoded object:const { generateDraftOrderId } = require('../../../utility/draftOrderUtility');
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:16:hardcoded object:const { getDraftCustomerId } = require('../../customermanagement/customerController');
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:17:hardcoded object:const { reserveBonusPoints, getBonusPointsDiscount } = require('../../paymentmanagement/byjuswallet/bonusPoints')
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:20:hardcoded variable:const getUpgradeProduct = async (req, res) => {
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:21:hardcoded string:    logger.info({ method: 'getUpgradeProduct' }, { message: "Fetching Aakash Live Upgrade Product" });
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:22:hardcoded number:    let maxPrice = 0, minPrice = 0;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:23:hardcoded string:    let { paymentType, updatedStudentDetails, productType, productCombination, leadDetails, identifier = '' } = req.body;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:25:hardcoded string:    const loggedInUserRole = get(leadDetails, "orderPunchedByRole", "");
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:28:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:29:hardcoded number:    for (var i = 0; i < updatedStudentDetails.length; i++) {
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:30:hardcoded array:        let { initialClass, finalClass, board, subCourse, state, validity } = updatedStudentDetails[i];
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:31:hardcoded object:        if (!board) { board = null; }
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:36:hardcoded number:        //let validity = new Date().getFullYear() + 1;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:37:hardcoded variable:        let grade = initialClass;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:38:hardcoded array:        let courseSkuArray = [];
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:40:hardcoded number:            if (grade === 11 && finalClass === 12) {
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:41:hardcoded string:                grade = '11+12';
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:43:hardcoded number:            if (grade == 13) {
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:44:hardcoded string:                grade = "13+"
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:46:hardcoded variable:            const productDetails = {
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:50:hardcoded variable:            let courseSku = await getCourseSku(productDetails)
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:52:hardcoded string:            courseSku["price"] = courseSku["basePrice"]
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:53:hardcoded string:            courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:54:hardcoded string:            courseSku["combinationType"] = get(courseSku, "type", "").toLowerCase()
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:57:hardcoded string:            grade += (grade === '11+12') ? 2 : 1;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:61:hardcoded string:        updatedStudentDetails[i]["formValues"] = { ...updatedStudentDetails[i] };
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:62:hardcoded string:        updatedStudentDetails[i]["items"] = flattenDeep(courseSkuArray);
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:66:hardcoded number:    maxPrice = skuArray.reduce((total, sku) => parseInt(sku.basePrice) + total, 0)
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:69:hardcoded number:    minPrice = (Math.floor(minPrice / 1000)) * 1000
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:71:hardcoded variable:    let discountDetails = {
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:72:hardcoded number:        discountedPrice: 0,
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:74:hardcoded number:        bonusPointsDiscount: 0
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:76:hardcoded variable:    const bonusPointsDiscount = await getBonusPointsDiscount(identifier);
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:77:hardcoded number:    if (parseInt(bonusPointsDiscount) > 0) {
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:78:hardcoded string:        discountDetails['discountedPrice'] = minPrice - bonusPointsDiscount;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:79:hardcoded string:        discountDetails['areBonusPointsUsed'] = true;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:80:hardcoded string:        discountDetails['bonusPointsDiscount'] = bonusPointsDiscount;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:91:hardcoded array:            mentoringDetails: [],
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:92:hardcoded array:            bhlpCourseDetails: [],
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:93:hardcoded string:            areBonusPointsUsed: get(discountDetails, 'areBonusPointsUsed'),
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:94:hardcoded string:            bonusPointsDiscount: get(discountDetails, 'bonusPointsDiscount'),
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:95:hardcoded string:            discountedPrice: get(discountDetails, 'discountedPrice'),
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:104:hardcoded variable:const storeProductDetails = async (req, res) => {
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:106:hardcoded object:        let { tlpOrderData, productDetail, identifier, leadDetails } = req.body;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:107:hardcoded array:        let { minPrice, maxPrice, finalPrice, paymentType, updatedStudentDetails = [], products, students } = productDetail;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:110:hardcoded string:            throw new BadRequestError("Parameter missing");
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:112:hardcoded object:        let { customerDetails: orderCustomerDetails, orderId, customerId: tlpCustomerId } = tlpOrderData;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:113:hardcoded number:        const type = orderCustomerDetails[0].type
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:114:hardcoded string:        const { productSelectionType: oldProductSelectionType } = orderCustomerDetails[0].type || ""
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:115:hardcoded variable:        let draftOrder = await draftOrderConverterUtility.getDraftOrderConverter(tlpOrderData);
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:116:hardcoded object:        let { customerDetails = {}, addressDetails, salesDetails, contactDetails } = draftOrder
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:117:hardcoded object:        let productDetails = {};
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:118:hardcoded string:        if (type !== 'sibling') {
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:119:hardcoded number:            let { initialClass, finalClass, subCourse } = updatedStudentDetails[0];
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:121:hardcoded string:            let { board, state = "", items } = students[0];
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:122:hardcoded number:            students[0].initialClass = initialClass
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:123:hardcoded string:            students[0]["studentId"] = orderCustomerDetails[0].studentName;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:125:hardcoded number:                item.studentId = orderCustomerDetails[0].studentName
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:127:hardcoded string:            students["items"] = items[0];
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:128:hardcoded string:            productDetails["students"] = students[0]
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:134:hardcoded string:                    let { board, subCourse, state = "", items } = st;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:135:hardcoded variable:                    let initialClass = st.initialClass, finalClass = st.finalClass;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:137:hardcoded string:                    st.productSelectionType = "byjus_aakash";
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:139:hardcoded array:                    st.studentId = `${orderCustomerDetails[idx].studentName}-${idx}`
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:141:hardcoded array:                        item.studentId = `${orderCustomerDetails[idx].studentName}-${idx}`
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:143:hardcoded string:                    st["items"] = items;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:147:hardcoded object:        const { customerId, customerType } = (!tlpCustomerId) ? await getDraftCustomerId(customerDetails, leadDetails) : { customerId: tlpCustomerId };
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:149:hardcoded string:        productDetails["students"] = await getStudentProfileDetails({ students, productCombination: "aakash_live_upgrade" });
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:150:hardcoded string:        productDetails["products"] = products;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:151:hardcoded string:        productDetails["productType"] = type;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:152:hardcoded string:        productDetails["minPrice"] = minPrice;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:153:hardcoded string:        productDetails["maxPrice"] = maxPrice;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:154:hardcoded string:        productDetails["finalPrice"] = finalPrice;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:155:hardcoded string:        productDetails["paymentType"] = paymentType;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:158:hardcoded string:            studentMobileNo: orderCustomerDetails[0]["studentMobile"] || "",
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:159:hardcoded string:            parentMobileNo: orderCustomerDetails[0]["parentMobile"] || "",
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:163:hardcoded string:        const finalProductPrice = get(productDetails, 'finalPrice', 0);
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:166:hardcoded variable:            const draftOrder = await checkIfDraftOrderExists(identifier);
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:168:hardcoded string:                await DraftOrder.findOneAndUpdate({ '_id': identifier }, {
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:172:hardcoded string:                        status: "product_saved",
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:173:hardcoded string:                        orderPunchingType: "UPGRADE",
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:176:hardcoded string:                            newCourse: "aakash_live",
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:179:hardcoded string:                        orgFormattedName: 'aakash',
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:180:hardcoded string:                        orderPunchingCategory: "aakash_live",
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:190:hardcoded variable:        const updateData = {
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:200:hardcoded string:            status: "product_saved"
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:203:hardcoded variable:        const transactionId = await reserveBonusPoints(draftOrder);
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:204:hardcoded string:        if (transactionId !== "") {
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:205:hardcoded string:            updateData["bonusPointsDetails.transactionId"] = transactionId;
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:208:hardcoded variable:        const newOrder = new DraftOrder({
+microservices-middleware/server/src/upgradeordermanagement/aakashlive/aakashLiveUpgradeProductController.js:222:hardcoded string:        logger.error({ method: 'storeProductDetails', error }, 'Error occured');

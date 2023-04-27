@@ -1,0 +1,351 @@
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:1:hardcoded object:import React, { Component, createRef, forwardRef } from 'react';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:2:hardcoded object:import { connect } from 'react-redux';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:3:hardcoded object:import { get, find, isEqual, cloneDeep, isEmpty, size, isUndefined } from 'lodash';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:4:hardcoded object:import { Button, Input } from 'reactstrap';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:5:hardcoded object:import { Modal } from 'antd';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:7:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:8:hardcoded file path:import ErrorWrapper from 'components/ErrorWrapper';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:9:hardcoded file path:import AntDFormBuilder from 'components/form/AntDFormBuilder';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:11:hardcoded object:import { saveProductDetails, addLoader, removeLoader, resetPrice } from 'modules/product/productReducer';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:12:hardcoded object:import { ELIGIBLE_ACCOUNTS_FOR_AAKASH_CRP } from './../aakashCrpConstants'
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:13:hardcoded file path:import defaultAutoFillJson from '../util/autoFillJson'
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:14:hardcoded object:import { fetchSubCourseOptions, getSubCourses, getClasses } from 'modules/product/components/productHelper';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:15:hardcoded object:import { filterAakashInitialClass, filterAakashFinalClass, getStates, getCities, getBranches, getAakashSubCourses, getDurationOptions, getStateBoardStatus, getJctStatus, getProductCourseDetails, getTabletStatus } from '../AakashProductHelper';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:16:hardcoded file path:import ProductDetailsForm from 'modules/product/components/ProducDetailsForm';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:17:hardcoded file path:import FetchPrices from '../FetchPrices';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:18:hardcoded file path:import Scholarship from '../Scholarship'
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:19:hardcoded file path:import SpecialScholarship from "../SpecialScholarship";
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:20:hardcoded file path:import PdcModalDetails from '../pdc/PdcModalDetails';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:21:hardcoded file path:import AutoFillForm from '../util/AutoFillForm';
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:23:hardcoded object:const { leadquaredRelatedPermissions } = require('../../../../utility/screenPermission');
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:24:hardcoded variable:const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:25:hardcoded string:    authDetails: get(state, 'auth.details'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:26:hardcoded string:    leadDetails: get(state, 'auth.leadDetails', {}),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:27:hardcoded string:    directSalesBy: get(state, 'details.directSalesBy'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:28:hardcoded string:    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:29:hardcoded string:    partnerIdentifierDetails: get(state, 'details.partnerIdentifierDetails', {}),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:30:hardcoded string:    showProfileSelectionOption: get(state, 'product.showProfileSelectionOption'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:31:hardcoded string:    productDetails: get(state, 'product.details'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:32:hardcoded string:    productConfig: get(state, 'product.config'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:33:hardcoded string:    specialScholarshipConfig: get(state, 'quotation.specialScholarshipConfig', []),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:34:hardcoded string:    loading: get(state, 'product.loading'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:35:hardcoded string:    error: get(state, 'product.error'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:36:hardcoded string:    orderPunchingType: get(state, 'auth.orderPunchingType'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:37:hardcoded string:    selectedPriceAndScholarship: get(state, 'auth.selectedPriceAndScholarship'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:38:hardcoded string:    customerDetails: get(state, 'details.customerDetails', {}),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:39:hardcoded string:    voucherDetails: get(state, "quotation.reviewDetails.voucherDetails", {})
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:42:hardcoded variable:const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:63:hardcoded object:            productConfig: {},
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:64:hardcoded array:            fields: [],
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:67:hardcoded string:            acstGiven: "",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:84:hardcoded object:        const { identifier, productCombination, partnerIdentifierDetails, selectedPriceAndScholarship, directSalesBy, customerDetails, leadDetails } = this.props;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:85:hardcoded object:        const { productDetailsForm } = this.refs;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:86:hardcoded object:        const { orderPunchingType } = this.props;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:87:hardcoded object:        const { isScholarship, acstGiven, selectedCourseId, tabletStatus, isPdc } = this.state
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:88:hardcoded string:        const { prospectId = "" } = leadDetails
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:90:hardcoded variable:        const details = await productDetailsForm.getProductDetails();
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:91:hardcoded variable:        const scholarshipForm = this.scholarshipForm.current
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:92:hardcoded variable:        const scholarshipDetails = scholarshipForm && await scholarshipForm.validateFields()
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:94:hardcoded string:        const { partnerId = "" } = partnerIdentifierDetails
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:96:hardcoded string:        const productDetails = get(details, 'productDetails');
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:99:hardcoded string:            this.setError("Scholarship details incomplete");
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:102:hardcoded string:        if (!isEmpty(scholarshipDetails) && ["yes", "no", "bnat"].includes(acstGiven)) {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:103:hardcoded number:            let scholarshipAddedCount = 0
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:105:hardcoded array:                if (!size(scholarshipDetails[key])) {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:106:hardcoded number:                    scholarshipAddedCount = scholarshipAddedCount + 1
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:110:hardcoded string:                this.setError("Scholarship details incomplete");
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:116:hardcoded object:            productDetails.isTablet = getTabletStatus({ selectedCourseId, tabletStatus });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:122:hardcoded string:                productDetails.boardValue = "";
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:127:hardcoded variable:            const payload = {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:129:hardcoded string:                productType: 'aakashCRP',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:135:hardcoded string:                acstGiven: acstGiven ? acstGiven : get(selectedPriceAndScholarship, "productDetails.acstGiven", ""),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:142:hardcoded string:                url: '/api/quotation/product/getProduct' + (isPdc ? 'ForPdc' : '')
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:148:hardcoded object:        let { identifier, selectedPriceAndScholarship, voucherDetails } = this.props;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:150:hardcoded object:            const { voucherDetails: BNATVoucherDetails = {} } = selectedPriceAndScholarship
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:153:hardcoded object:        const { student = {} } = productDetails
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:154:hardcoded object:        const { isPdc = false } = student
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:156:hardcoded object:            const { pdcRef } = this.refs
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:157:hardcoded object:            const { aakashPriceBreakup, schedules, scholarshipDetails } = pdcRef
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:158:hardcoded object:            const { maxPrice, netPrice } = aakashPriceBreakup
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:159:hardcoded string:            productDetails["pdcSchedules"] = schedules
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:160:hardcoded string:            productDetails["maxPrice"] = maxPrice
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:161:hardcoded string:            productDetails["finalPrice"] = netPrice
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:162:hardcoded string:            productDetails["netPrice"] = netPrice
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:163:hardcoded string:            productDetails["aakashPriceBreakup"] = aakashPriceBreakup
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:164:hardcoded string:            productDetails["scholarshipDetails"] = scholarshipDetails
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:167:hardcoded variable:        const payload = JSON.stringify({
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:178:hardcoded string:                url: '/api/quotation/product/storeProduct',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:179:hardcoded string:                method: 'POST',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:182:hardcoded string:                const { productDetails } = get(response, 'data', {});
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:185:hardcoded object:                this.setState({ error: null });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:187:hardcoded string:                this.navigateToScreen('/quotation/address');
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:189:hardcoded object:                this.setState({ error }, () => {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:197:hardcoded object:        const { history } = this.props;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:198:hardcoded string:        const url = `${path}${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:207:hardcoded object:        const { fetchComp } = this.refs;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:208:hardcoded object:        const { showPdcModal, isPdc } = this.state
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:211:hardcoded object:            const { status, productDetails, error } = fetchComp.getProductsAndFinalPrice() || {};
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:213:hardcoded string:                if (status && productDetails && (get(productDetails, 'finalPrice') >= 0)) {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:214:hardcoded object:                    (isPdc && !showPdcModal) ? this.setState({ showPdcModal: true }) : await this.storeProductDetailsinDb(productDetails);
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:217:hardcoded string:                    this.setState({ error: error ? error : 'Product Details Missing' });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:220:hardcoded string:                const errMsg = get(error, 'message', 'Error') || error;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:221:hardcoded object:                this.setState({ error: errMsg });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:228:hardcoded object:        const { autoFillRef } = this.refs
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:229:hardcoded variable:        const autoFillObj = autoFillRef.getAutoFillObj()
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:230:hardcoded object:        this.setState({ autoFillJson: autoFillObj })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:234:hardcoded object:        const { fetchComp } = this.refs;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:236:hardcoded object:            const { status, productDetails, error } = fetchComp.getProductsAndFinalPrice() || {};
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:238:hardcoded string:            if (status && productDetails && (get(productDetails, 'finalPrice') >= 0)) {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:242:hardcoded string:                this.setState({ error: error ? error : 'Product Details Missing' });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:249:hardcoded object:        let { productConfig, course: selectedCourse, city: selectedCity, state: selectedState, initialClass, integratedBatch, branch: selectedBranch, isBranchSelected, typeOfClass: selectedTypeOfClass, subCourse, courseIdOptions, isJct, hasStateBoardDropdown, selectedCourseId, tabletStatus, hasTablet, isCourseSelected, isPdc, selectedTablet, autoFillJson } = this.state;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:250:hardcoded array:        const { Boards = [], Products = [], branches: crpBranches, courseData = {}, supplementaryTablets = [] } = productConfig || {};
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:251:hardcoded string:        !selectedCourse && this.handleChanges('K10/K12', 'course');
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:252:hardcoded variable:        const states = getStates(crpBranches)
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:253:hardcoded variable:        const cities = getCities(crpBranches, selectedState)
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:254:hardcoded variable:        const branches = getBranches(crpBranches, selectedCity)
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:255:hardcoded variable:        let hasStateBoard = false, hasJct = false;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:258:hardcoded object:        const { productType, selectedPriceAndScholarship, authDetails, leadDetails } = this.props;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:259:hardcoded object:        const { env, user, featureEnableList } = authDetails;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:260:hardcoded string:        const isPdcEnabled = get(featureEnableList, "aakash_crp_pdc_sm_launch", false)
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:261:hardcoded string:        const vertical = (get(user, "vertical", ""))
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:262:hardcoded string:        const unit = (get(user, "unit", ""))
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:263:hardcoded string:        const isDevEnv = ["development", "local"].includes(env)
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:264:hardcoded string:        const accountNo = get(leadDetails, 'accountNumber')
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:265:hardcoded string:        const userPermissions = get(user, 'permissions', []);
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:266:hardcoded variable:        const isPriviledgedUser = userPermissions.includes(leadquaredRelatedPermissions.allownMultipleOrderOnSameProspectId);
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:267:hardcoded object:        const productConfiguration = find(Products, { formattedName: productType }) || {};
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:268:hardcoded array:        const { batch = [], typeOfClass = [] } = productConfiguration || {};
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:270:hardcoded string:        const selectedBoardConfig = find(Boards, { formattedName: "CBSE" }) || {};
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:271:hardcoded variable:        let classes = cloneDeep(getClasses(selectedBoardConfig));
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:273:hardcoded variable:        const isSelectedPriceAndScholarship = !isEmpty(selectedPriceAndScholarship);
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:274:hardcoded object:        const akashSubCourses = getAakashSubCourses({ courseData, initialClass, productType });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:275:hardcoded object:        const courseDurationOptions = getDurationOptions({ initialClass: initialClass, courseData });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:276:hardcoded object:        hasTablet = !isEmpty(selectedCourseId) ? getTabletStatus({ selectedCourseId, tabletStatus }) : false
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:279:hardcoded string:            isJct = (get(selectedPriceAndScholarship, "productDetails.isJct", false))
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:280:hardcoded string:            const board = (get(selectedPriceAndScholarship, "productDetails.board", "CBSE"))
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:281:hardcoded string:            hasStateBoardDropdown = (board == "STB");
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:282:hardcoded string:            hasTablet = (get(selectedPriceAndScholarship, "productDetails.isTablet", false))
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:283:hardcoded string:            selectedCity = get(selectedPriceAndScholarship, "productDetails.city", "")
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:286:hardcoded variable:        let fields = [
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:288:hardcoded string:                type: 'hidden',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:289:hardcoded string:                name: 'course',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:290:hardcoded string:                label: 'Select Course',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:291:hardcoded string:                options: get(productConfiguration, 'courses'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:292:hardcoded string:                value: 'K10/K12',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:293:hardcoded string:                message: "Please select Course",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:296:hardcoded string:                type: 'select',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:297:hardcoded string:                name: 'state',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:298:hardcoded string:                label: 'Select State',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:302:hardcoded string:                message: "Please select State",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:307:hardcoded string:                type: 'select',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:308:hardcoded string:                name: 'city',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:309:hardcoded string:                label: 'Select City',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:313:hardcoded string:                message: "Please select City",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:316:hardcoded string:                type: (selectedCity || isSelectedPriceAndScholarship) ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:317:hardcoded string:                name: 'branch',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:318:hardcoded string:                label: 'Select Branch',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:322:hardcoded string:                message: "Please select Branch",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:325:hardcoded string:                type: 'select',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:326:hardcoded string:                name: 'initialClass',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:327:hardcoded string:                label: "Initial Grade",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:329:hardcoded object:                options: filterAakashInitialClass({ classes: classes, integratedBatch: integratedBatch, isDevEnv, accountNo, vertical, isPriviledgedUser, unit }),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:331:hardcoded string:                message: "Initial Grade",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:334:hardcoded string:                type: 'select',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:335:hardcoded string:                name: 'board',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:336:hardcoded string:                label: "Select Board",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:337:hardcoded string:                value: (!hasStateBoard) ? "CBSE" : "",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:339:hardcoded string:                options: !hasStateBoard ? [{ label: "CBSE", value: "CBSE" }] : [{ label: "CBSE", value: "CBSE" }, { label: "STB", value: "STB" }],
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:341:hardcoded string:                message: "Select Board",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:344:hardcoded string:                type: hasStateBoardDropdown ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:345:hardcoded string:                name: 'boardValue',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:346:hardcoded string:                label: "Select State Board",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:347:hardcoded string:                required: (this.state.board === "STB") ? true : false,
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:348:hardcoded string:                options: [{ label: selectedState + " Board", value: selectedState + " Board", }],
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:350:hardcoded string:                message: "Select State Board",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:353:hardcoded string:                type: ELIGIBLE_ACCOUNTS_FOR_AAKASH_CRP.K12.includes(accountNo) ? 'readonly' : 'hidden',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:354:hardcoded string:                name: "note",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:355:hardcoded string:                label: "Note : For advance admission of class 10, select 11 in initial grade",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:358:hardcoded string:                type: 'hidden',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:359:hardcoded string:                name: 'finalClass',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:360:hardcoded string:                label: "Final Grade",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:362:hardcoded object:                options: filterAakashFinalClass({ initialClass: initialClass, classes: classes, isDevEnv }),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:364:hardcoded string:                message: "Final Grade",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:367:hardcoded string:                type: 'select',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:368:hardcoded string:                name: 'subCourse',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:369:hardcoded string:                label: 'Select Sub Course',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:373:hardcoded string:                message: "Please select Sub Course",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:376:hardcoded string:                type: 'select',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:377:hardcoded string:                name: 'batch',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:378:hardcoded string:                label: 'Select Preferred Batch',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:382:hardcoded string:                message: "Please select Preferred Batch",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:385:hardcoded string:                type: (selectedCity == 'Hyderabad') ? 'checkbox' : 'hidden',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:386:hardcoded string:                name: 'integratedBatch',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:387:hardcoded string:                label: "Do you want to enroll for integrated batch?",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:391:hardcoded string:                type: integratedBatch ? 'hidden' : 'select',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:392:hardcoded string:                name: 'typeOfClass',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:393:hardcoded string:                label: 'Select ClassType',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:397:hardcoded string:                message: "Please select Batch",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:400:hardcoded string:                type: ((hasJct && isBranchSelected) || isSelectedPriceAndScholarship || autoFillJson?.hasJct) ? 'checkbox' : 'hidden',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:401:hardcoded string:                name: 'isJct',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:402:hardcoded string:                label: "JCT Required",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:408:hardcoded string:                type: 'select',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:409:hardcoded string:                name: 'courseDuration',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:410:hardcoded string:                label: "Please Select Duration",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:414:hardcoded string:                message: "Please Select Duration",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:417:hardcoded string:                type: 'select',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:418:hardcoded string:                name: 'selectedCourseId',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:419:hardcoded string:                label: "Select Course",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:423:hardcoded string:                message: "Please Select Course",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:427:hardcoded string:                type: 'hidden',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:428:hardcoded string:                name: 'selectedTablet',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:429:hardcoded string:                label: 'Please Select Tablet',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:431:hardcoded string:                message: "Please Select tablet",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:436:hardcoded string:                type: 'hidden',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:437:hardcoded string:                name: 'validity',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:438:hardcoded string:                label: "Please Select Academic Year",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:439:hardcoded array:                options: [{ label: new Date().getFullYear(), value: new Date().getFullYear() }],
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:441:hardcoded string:                message: "Please Select Academic Year",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:444:hardcoded string:                type: hasTablet && isCourseSelected ? 'readonly' : 'hidden',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:445:hardcoded string:                name: "isTablet",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:447:hardcoded string:                label: "Note: Tablet is already included in the pricing packaging. No separate selection is required. ",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:450:hardcoded string:                type: !selectedTablet && isPdcEnabled ? 'checkbox' : 'hidden',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:451:hardcoded string:                name: 'isPdc',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:452:hardcoded string:                label: "Payment via PDC (Post Dated Cheques)",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:464:hardcoded object:        const { productDetailsForm } = this.refs;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:465:hardcoded variable:        const detailsForm = productDetailsForm && productDetailsForm.getProductForm();
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:466:hardcoded string:        if (name == "state") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:467:hardcoded string:            detailsForm && detailsForm.setFieldsValue({ city: "", branch: "", initialClass: "", board: "", boardValue: "", finalClass: "", subCourse: "", batch: "", integratedBatch: "", typeOfClass: "", courseDuration: "", selectedCourseId: "" });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:468:hardcoded object:            this.setState({ hasStateBoardDropdown: false, isBranchSelected: false, isJct: false, hasTablet: false, isCourseSelected: false })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:470:hardcoded string:        if (name == "city") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:471:hardcoded string:            detailsForm && detailsForm.setFieldsValue({ branch: "", initialClass: "", board: "", boardValue: "", finalClass: "", subCourse: "", batch: "", integratedBatch: "", typeOfClass: "", courseDuration: "", selectedCourseId: "" });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:472:hardcoded object:            this.setState({ hasStateBoardDropdown: false, isBranchSelected: false, isJct: false, hasTablet: false, isCourseSelected: false })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:475:hardcoded string:        if (name == "branch") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:476:hardcoded string:            detailsForm && detailsForm.setFieldsValue({ initialClass: "", board: "", boardValue: "", finalClass: "", subCourse: "", batch: "", integratedBatch: "", typeOfClass: "", courseDuration: "", selectedCourseId: "" });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:477:hardcoded string:            this.setState({ isBranchSelected: true, hasStateBoardDropdown: false, isJct: false, hasTablet: false, isCourseSelected: false, board: "CBSE" })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:480:hardcoded string:        if (name == "initialClass") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:481:hardcoded string:            detailsForm && detailsForm.setFieldsValue({ board: "", boardValue: "", subCourse: "", batch: "", integratedBatch: "", typeOfClass: "", courseDuration: "", selectedCourseId: "" });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:482:hardcoded object:            this.setState({ isJct: false, hasStateBoardDropdown: false, hasTablet: false, isCourseSelected: false })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:485:hardcoded string:        if (name == "board" && value == "STB") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:486:hardcoded string:            detailsForm && detailsForm.setFieldsValue({ boardValue: "", subCourse: "", batch: "", integratedBatch: "", typeOfClass: "", courseDuration: "", selectedCourseId: "" });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:487:hardcoded object:            this.setState({ hasStateBoardDropdown: true, isJct: false, hasTablet: false, isCourseSelected: false })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:490:hardcoded string:        if (name == "board" && value == "CBSE") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:491:hardcoded string:            detailsForm && detailsForm.setFieldsValue({ boardValue: "", subCourse: "", batch: "", integratedBatch: "", typeOfClass: "", courseDuration: "", selectedCourseId: "" })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:492:hardcoded object:            this.setState({ hasStateBoardDropdown: false, isJct: false, hasTablet: false, isCourseSelected: false })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:495:hardcoded string:        if (name == "boardValue") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:496:hardcoded string:            detailsForm && detailsForm.setFieldsValue({ subCourse: "", batch: "", integratedBatch: "", typeOfClass: "", courseDuration: "", selectedCourseId: "" })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:497:hardcoded object:            this.setState({ isJct: false, hasTablet: false, isCourseSelected: false })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:500:hardcoded string:        if (name == "subCourse") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:501:hardcoded string:            detailsForm && detailsForm.setFieldsValue({ batch: "", integratedBatch: "", typeOfClass: "", courseDuration: "", selectedCourseId: "" })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:502:hardcoded object:            this.setState({ isJct: false, hasTablet: false, isCourseSelected: false })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:505:hardcoded string:        if (name == "batch") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:506:hardcoded string:            detailsForm && detailsForm.setFieldsValue({ integratedBatch: "", typeOfClass: "", courseDuration: "", selectedCourseId: "" })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:507:hardcoded object:            this.setState({ isJct: false, hasTablet: false, isCourseSelected: false })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:511:hardcoded string:        if (name == "integratedBatch") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:512:hardcoded string:            detailsForm && detailsForm.setFieldsValue({ typeOfClass: "", courseDuration: "", selectedCourseId: "" });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:513:hardcoded object:            this.setState({ isJct: false, hasTablet: false, isCourseSelected: false })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:516:hardcoded string:        if (name == "typeOfClass") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:517:hardcoded string:            detailsForm && detailsForm.setFieldsValue({ courseDuration: "", selectedCourseId: "" });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:518:hardcoded object:            this.setState({ isJct: false, hasTablet: false, isCourseSelected: false })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:521:hardcoded string:        if (name == "isJct") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:522:hardcoded string:            detailsForm && detailsForm.setFieldsValue({ courseDuration: "", selectedCourseId: "" });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:523:hardcoded object:            this.setState({ hasTablet: false, isCourseSelected: false })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:526:hardcoded string:        if (name == "courseDuration") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:527:hardcoded string:            detailsForm && detailsForm.setFieldsValue({ selectedCourseId: "" });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:528:hardcoded array:            this.setState({ courseIdOptions: [], hasTablet: false, isCourseSelected: false });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:531:hardcoded string:        if (name == "selectedCourseId") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:532:hardcoded object:            this.setState({ isCourseSelected: true })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:534:hardcoded string:        if (name == 'selectedTablet' && !isEmpty(value)) {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:535:hardcoded object:            detailsForm && detailsForm.setFieldsValue({ isPdc: false })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:536:hardcoded object:            this.setState({ isPdc: false })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:541:hardcoded array:            [name]: value,
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:547:hardcoded object:        this.setState({ error });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:552:hardcoded object:            this.setState({ productConfig: nextProps.productConfig }, async () => await this.getFields());
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:557:hardcoded object:        const { productDetails, productConfig, productType } = this.props;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:559:hardcoded string:        if (productType === get(productDetails, 'productType')) {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:560:hardcoded string:            const formValues = get(productDetails, 'students[0].formValues');
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:564:hardcoded string:                course: get(formValues, 'course'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:565:hardcoded string:                board: get(formValues, 'board'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:566:hardcoded string:                initialClass: get(formValues, 'initialClass'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:567:hardcoded string:                finalClass: get(formValues, 'finalClass'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:568:hardcoded string:                subCourse: get(formValues, 'subCourse'),
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:573:hardcoded string:        this.setState({ productConfig, course: 'K10/K12' });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:577:hardcoded object:        this.setState({ isScholarship: !this.state.isScholarship, error: null })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:579:hardcoded object:            const { acstForm } = this;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:580:hardcoded string:            const antDForm = get(acstForm, 'props.form');
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:581:hardcoded string:            antDForm && antDForm.setFieldsValue({ "acst-given": "" });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:583:hardcoded object:            this.setState({ acstGiven: null });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:586:hardcoded object:        const { fetchComp } = this.refs
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:592:hardcoded object:        this.setState({ acstGiven: value, error: null });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:597:hardcoded string:        const { initialClass = "" } = this.state;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:598:hardcoded string:        let finalClass = "";
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:599:hardcoded string:        if (initialClass.toString() == "11" || initialClass.toString() == "12") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:600:hardcoded string:            finalClass = "12"
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:601:hardcoded string:        } else if (initialClass.toString() == "12+") {
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:602:hardcoded string:            finalClass = "12+"
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:608:hardcoded array:        let getCourseIdOptions = [];
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:609:hardcoded array:        let tabletOption = [];
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:610:hardcoded string:        const { branch, initialClass, subCourse, typeOfClass: selectedTypeOfClass, courseDuration, courseIdOptions, isJct, board, boardValue = "", tabletStatus } = this.state;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:613:hardcoded object:                let courseIdOptionsData = await getProductCourseDetails({ branch, initialClass, subCourse, selectedTypeOfClass, courseDuration, isJct, board, boardValue });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:616:hardcoded object:                this.setState({ courseIdOptions: getCourseIdOptions, tabletStatus: tabletOption })
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:619:hardcoded object:            //this.setState({ error, loading: false });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:624:hardcoded object:        const { productDetailsForm } = this.refs;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:625:hardcoded variable:        const detailsForm = productDetailsForm && productDetailsForm.getProductForm();
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:626:hardcoded variable:        let autoFillJson = defaultAutoFillJson
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:630:hardcoded object:        detailsForm && detailsForm.setFieldsValue({ ...autoFillJson });
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:632:hardcoded array:            ...autoFillJson, autoFill: true, tabletStatus: [], autofillModal: false
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:638:hardcoded object:        const { error, productConfig, productLearningType, isScholarship, initialClass, acstGiven, showPdcModal, autoFill, isPdc } = this.state;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:639:hardcoded object:        const { changeNextBtnMode, productType, productCombination, identifier, authDetails, selectedPriceAndScholarship } = this.props;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:640:hardcoded array:        const { scholarshipConfigs = [] } = productConfig || {};
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:641:hardcoded object:        const { env } = authDetails
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:642:hardcoded string:        const isDevEnv = ["local", "development"].includes(env)
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:643:hardcoded array:        const fields = productConfig ? this.getFields() : [];
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:644:hardcoded string:        let initialValues = !isEmpty(selectedPriceAndScholarship) ? get(selectedPriceAndScholarship, "productDetails", {}) : { finalClass: this.getFinalClass(), validity: 2022, isJct: false, isTablet: false }
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:646:hardcoded variable:        const specialScholarshipConfig = this.props.specialScholarshipConfig;
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:649:hardcoded string:                {isDevEnv && <>{"   "}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:650:hardcoded number:                    <Button onClick={() => this.autoFill(false)}> Auto Fill  &#128540;</Button></>}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:651:hardcoded string:                {isDevEnv && <>{"   "}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:652:hardcoded number:                    <Button onClick={() => this.setState({ autofillModal: true })}> Auto Fill Pro <span>&#10024;</span></Button></>}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:653:hardcoded object:                <ErrorWrapper error={error} />
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:655:hardcoded string:                    ref="productDetailsForm"
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:656:hardcoded object:                    productLearningType={productLearningType}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:657:hardcoded object:                    productType={productType}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:658:hardcoded object:                    fields={fields}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:659:hardcoded object:                    initialValues={initialValues}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:663:hardcoded string:                    {isEmpty(selectedPriceAndScholarship) && <div style={{ margin: "2%" }}>
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:664:hardcoded string:                        <Input type="checkbox" defaultChecked={isScholarship} onChange={() => this.setScholarship()} />{' '}  <i class="fa fa-graduation-cap" aria-hidden="true"></i> Have you appeared for any Scholarship Exam ?
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:667:hardcoded object:                        // singleField={true}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:668:hardcoded object:                        wrappedComponentRef={(inst) => this.acstForm = inst}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:670:hardcoded string:                            type: 'select',
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:672:hardcoded string:                            // label: "Have you appeared for any Aakash Scholarship Exam? (iACST/ACST/ANTHE/AKTHE)",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:673:hardcoded string:                            // style: { width: 500, margin: "10px" },
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:676:hardcoded string:                            // placeholder: "Select",
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:678:hardcoded string:                                { label: "Exams Conducted by Aakash (ACST/ACST/ANTHE/AKTHE)", value: "yes" },
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:679:hardcoded string:                                // { label: "Exam Conducted by BYJU'S (BNAT)", value: "bnat" },
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:680:hardcoded string:                                { label: "None of the above", value: "no" }],
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:683:hardcoded string:                    {acstGiven === "no" && isScholarship && specialScholarshipConfig && <SpecialScholarship isUploadRequired={true} ref={this.scholarshipForm} resetPrice={() => this.props.resetPrice(true)} scholarshipConfigs={specialScholarshipConfig} selectedClass={initialClass} identifier={identifier} authToken={authDetails.token} />}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:684:hardcoded string:                    {acstGiven === "yes" && scholarshipConfigs && isScholarship && <Scholarship ref={this.scholarshipForm} isUploadRequired={true} scholarshipConfigs={scholarshipConfigs} resetPrice={() => this.props.resetPrice(true)} identifier={identifier} authToken={authDetails.token} />}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:685:hardcoded string:                    {acstGiven === "bnat" && isScholarship && specialScholarshipConfig && <SpecialScholarship acstGiven={acstGiven} isUploadRequired={true} ref={this.scholarshipForm} scholarshipConfigs={specialScholarshipConfig} selectedClass={initialClass} identifier={identifier} authToken={authDetails.token} resetPrice={() => this.props.resetPrice(true)} />}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:686:hardcoded object:                    {/* {!isEmpty(selectedPriceAndScholarship) && <ScholarshipSummary ref={this.scholarshipForm} PriceAndScholarship={selectedPriceAndScholarship} identifier={identifier} authToken={authDetails.token} />} */}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:690:hardcoded string:                    ref='fetchComp'
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:691:hardcoded object:                    onClickFetchPrices={this.onClickFetchPrices}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:692:hardcoded object:                    getProductDetails={this.getProductDetails}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:693:hardcoded object:                    changeNextBtnMode={changeNextBtnMode}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:694:hardcoded object:                    productType={productType}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:695:hardcoded object:                    setError={this.setError}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:696:hardcoded object:                    productCombination={productCombination}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:697:hardcoded object:                    isScholarshipChecked={isScholarship}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:698:hardcoded object:                    isPdc={this.state.isPdc}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:701:hardcoded object:                    visible={showPdcModal}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:702:hardcoded string:                    okText={"Confirm"}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:703:hardcoded object:                    onOk={() => this.onClickNextBtn()}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:704:hardcoded object:                    onCancel={() => this.setState({ showPdcModal: false })}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:707:hardcoded string:                        ref="pdcRef"
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:708:hardcoded object:                        getProductDetailsForPdc={this.getProductDetailsForPdc}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:712:hardcoded object:                    visible={this.state.autofillModal}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:713:hardcoded string:                    okText={" Fill "}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:714:hardcoded object:                    onOk={() => this.autoFill(true)}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:715:hardcoded object:                    onCancel={() => this.setState({ autofillModal: false })}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:718:hardcoded string:                        ref='autoFillRef'
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:719:hardcoded object:                        setAutoFillJson={this.setAutoFillJson}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:720:hardcoded object:                        productConfig={this.state.productConfig}
+microservices-middleware/client/src/modules/quotation/product/types/AakashCRPProduct.js:729:hardcoded object:export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(AakashCRPProduct);

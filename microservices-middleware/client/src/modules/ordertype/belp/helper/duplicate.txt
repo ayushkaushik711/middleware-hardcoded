@@ -1,0 +1,34 @@
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:1:hardcoded object:import { get, parseInt } from 'lodash';
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:2:hardcoded number:import { D4_1_1_TABLET_LIST } from 'modules/product/utils/productConstant';
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:3:hardcoded object:import { getCurrentAcademicYear } from "lib/validityHelper";
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:6:hardcoded string:} from 'modules/product/utils/epicSampler';
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:8:hardcoded variable:export const getDeviceTypeOptions = (env, tablet) => {
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:10:hardcoded number:    if (D4_1_1_TABLET_LIST.includes(tablet)) {
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:11:hardcoded string:        formField = 'Tablet(LearnStation)'
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:16:hardcoded variable:export const filterInitialClass = (details) => {
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:17:hardcoded object:    const { classes, productType, env } = details
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:18:hardcoded variable:    let filteredClass = classes;
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:20:hardcoded number:    filteredClass = filteredClass.filter(initialClass => parseInt(initialClass.value) < 4);
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:21:hardcoded number:    filteredClass = filteredClass.filter(initialClass => parseInt(initialClass.value) >= -1);
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:23:hardcoded object:    filteredClass = getSamplerByjusMathInitialClass({ filteredClass, env, productType })
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:28:hardcoded variable:export const filterFinalClass = (productDetails) => {
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:29:hardcoded object:    const { classes, selectedInitialClass, env, productType, productCombination, isPrivilegedUser } = productDetails
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:30:hardcoded string:    const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:31:hardcoded variable:    let allowedMaxClass = parseInt(selectedInitialClass);
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:32:hardcoded number:    allowedMaxClass+=(!isPrivilegedUser) ? 3 : 4; 
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:33:hardcoded string:    if (['belp'].includes(productCombination) && isPrivilegedUser) {
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:34:hardcoded number:        allowedMaxClass = parseInt(selectedInitialClass) + 4;
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:36:hardcoded number:    let filteredClass = classes.filter(finalClass => (finalClass.value >= parseInt(selectedInitialClass) + 1 && finalClass.value < allowedMaxClass));
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:37:hardcoded number:    filteredClass = filteredClass.filter(finalClass => (finalClass.value < parseInt(selectedInitialClass) + 8))
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:39:hardcoded object:    filteredClass = getSamplerByjusMathFinalClass({ filteredClass, env, productCombination, selectedInitialClass, productType })
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:42:hardcoded variable:export const filterInitialYear = (details) => {
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:43:hardcoded object:    const { isPrivilegedUser, env } = details || {};
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:44:hardcoded string:    const isDevEnv = ["development", "local"].includes(env)
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:45:hardcoded array:    let validityOption = []
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:47:hardcoded number:        validityOption.push({ label: getCurrentAcademicYear() + 1, value: getCurrentAcademicYear() + 1 })
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:49:hardcoded number:    validityOption.push({ label: getCurrentAcademicYear() + 2, value: getCurrentAcademicYear() + 2 });
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:53:hardcoded variable:export const getTablets = (details) => {
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:54:hardcoded object:    const { Tablets } = details
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:55:hardcoded array:    let tabletName = [];
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:56:hardcoded array:    let tabletList = []
+microservices-middleware/client/src/modules/ordertype/belp/helper/BelpHelper.js:58:hardcoded string:    tabletName.push("BYJU'S LearnStation Junior 10inch Mobile Data Grey Tablet (Rs 16000)")

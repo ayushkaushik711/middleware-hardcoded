@@ -1,0 +1,13 @@
+microservices-middleware/client/src/modules/quotationschool/student/Styles.js:1:hardcoded string:import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/quotationschool/student/Styles.js:2:hardcoded object:import { Button } from "reactstrap";
+microservices-middleware/client/src/modules/quotationschool/student/Styles.js:4:hardcoded variable:export const CardContainer = styled.div`
+microservices-middleware/client/src/modules/quotationschool/student/Styles.js:11:hardcoded variable:export const ButtonContainer = styled.div`
+microservices-middleware/client/src/modules/quotationschool/student/Styles.js:14:hardcoded number:    margin-top: 2rem;
+microservices-middleware/client/src/modules/quotationschool/student/Styles.js:18:hardcoded variable:export const ProceedButton = styled(Button)`
+microservices-middleware/client/src/modules/quotationschool/student/Styles.js:19:hardcoded number:    width: 270px;
+microservices-middleware/client/src/modules/quotationschool/student/Styles.js:21:hardcoded number:    height: 38px;
+microservices-middleware/client/src/modules/quotationschool/student/Styles.js:22:hardcoded number:    margin: 0px 10px 0px 10px;
+microservices-middleware/client/src/modules/quotationschool/student/Styles.js:25:hardcoded variable:export const ProfileContainer = styled.div`
+microservices-middleware/client/src/modules/quotationschool/student/Styles.js:26:hardcoded number:    box-shadow: 0rem 0.2rem 0.5rem #c6c6c6;
+microservices-middleware/client/src/modules/quotationschool/student/Styles.js:28:hardcoded number:    padding: 0.8rem;
+microservices-middleware/client/src/modules/quotationschool/student/Styles.js:29:hardcoded number:    height: 300px;

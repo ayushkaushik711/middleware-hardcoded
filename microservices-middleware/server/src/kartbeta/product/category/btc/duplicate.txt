@@ -1,0 +1,110 @@
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:1:hardcoded object:const { get, isEmpty, isNaN } = require('lodash');
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:2:hardcoded file path:const moment = require('moment');
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:3:hardcoded string:const { OrderPunchingConfig } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:4:hardcoded file path:const logger = require('../../../../../lib/bunyan-logger')('BTC minimum price');
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:5:hardcoded object:const { productConstant } = require('../../../../productmanagement/utils/productConstants');
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:6:hardcoded object:const { getReportingEmailByRole } = require('./../../../../productmanagement/productHelper')
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:7:hardcoded object:const { getUpdateSkuDetails } = require("../../assembler");
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:8:hardcoded object:const { getCourseSku } = require('./dto');
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:10:hardcoded variable:const getBlcProductAndPrice = async (details) => {
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:12:hardcoded number:    let skuPrice = 0;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:13:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:14:hardcoded string:    const type = "byjus_learning_center";
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:15:hardcoded object:    let { initialClass, finalClass, board, validity, city } = details
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:19:hardcoded variable:    let grade = initialClass;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:23:hardcoded number:            let coursePrice = 0
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:32:hardcoded object:            let updatedPrice = await getUpdatedBlcPrice({ grade, initialClass, finalClass, courseSku });
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:35:hardcoded object:            courseSku = await getUpdateSkuDetails({coursePrice, type, courseSku})
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:38:hardcoded number:            grade += 1;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:43:hardcoded variable:        const cityCategory = await getBLCCityCategory(city)
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:45:hardcoded string:        const { configs } = await OrderPunchingConfig.findOne({ formattedModuleName: "BLC_CITY_CATEGORY_DISCOUNT" })
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:46:hardcoded object:        const { categoryDiscount } = configs || {}
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:48:hardcoded array:        skuPrice = skuPrice * categoryDiscount[cityCategory]
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:59:hardcoded variable:const getTlpProductAndPrice = async (details) => {
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:61:hardcoded number:    let skuPrice = 0;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:62:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:63:hardcoded string:    const type = "btlp";
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:64:hardcoded object:    let { initialClass, finalClass, board, validity, extnFinalClass, tablet } = details
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:67:hardcoded number:    finalClass = extnFinalClass ? parseInt(extnFinalClass, 10) : parseInt(finalClass)
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:68:hardcoded variable:    let grade = initialClass;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:72:hardcoded number:            let coursePrice = 0
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:81:hardcoded object:            let updatedPrice = await getUpdatedBlcPrice({ grade, initialClass, finalClass, courseSku });
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:84:hardcoded object:            courseSku = await getUpdateSkuDetails({coursePrice, type, courseSku})
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:87:hardcoded number:            grade += 1;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:99:hardcoded variable:const getUpdatedBlcPrice = async (details) => {
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:100:hardcoded object:    let { grade, initialClass, courseSku } = details;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:103:hardcoded number:        let newPrice = 0;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:104:hardcoded string:        let continuousPrice = get(courseSku, "continuousPrice") ? get(courseSku, "continuousPrice") : get(courseSku, "continousPrice")
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:112:hardcoded variable:const getBLCCityCategory = async (cityId) => {
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:113:hardcoded string:    let category = "A"
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:118:hardcoded variable:const getDiscountDetailsAndPrice = (details) => {
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:119:hardcoded number:    let { maxPrice, minPrice, batchDetails, tabletPrice=0 } = details
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:120:hardcoded string:    const offerDetails = get(batchDetails, 'batchOffers[0]', []);
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:121:hardcoded variable:    let tabletExclusiveMaxPrice = parseInt(maxPrice) - parseInt(tabletPrice);
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:122:hardcoded object:    let discountDetails={};
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:130:hardcoded variable:const getOfferDiscountedPrice = (data) => {
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:131:hardcoded number:    let { offerDetails, minimumPrice, tabletExclusiveMaxPrice, tabletTotalPrice=0 } = data;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:132:hardcoded number:    let totalDiscountedPrice = 0, offerCalValue = 0;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:134:hardcoded object:    const { offerId, offers } = offerDetails;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:135:hardcoded object:    const { offerValue, offerCalculationType} = offers;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:138:hardcoded string:    if ((offerCalculationType === "percentage")) {
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:139:hardcoded number:        offerCalValue = Number(tabletExclusiveMaxPrice) * (Number(totalDiscountedPrice)) / 100;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:148:hardcoded object:    return { offerDetails, discountedPrice, offerId, minimumPrice, totalDiscountedPrice }
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:151:hardcoded variable:const getMinimumRange = (productDetails) => {
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:152:hardcoded string:    logger.info({ method: 'getMinimumRange' }, 'Calculating Minimum price');
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:153:hardcoded object:    let { user, maxPrice, tabletSku, paymentType } = productDetails
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:154:hardcoded number:    let minPricePercentage = 0.2;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:156:hardcoded string:    const teamManager = getReportingEmailByRole(user, 'team_manager');
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:159:hardcoded string:    const tabletTotalPrice = tabletSku ? get(tabletSku, 'price', 0) : 0; 
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:162:hardcoded variable:    const applicablePriceForDiscount = parseInt(maxPrice) - parseInt(tabletTotalPrice);
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:166:hardcoded string:        moment().isBetween(productConstant.OFFER_START_DATE, productConstant.OFFER_END_DATE, '[]')) {
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:171:hardcoded variable:    let minPrice = applicablePriceForDiscount - (applicablePriceForDiscount * minPricePercentage);
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:173:hardcoded number:    /**Rounding-off min-price to nearest 1000 */
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:174:hardcoded number:    minPrice = (Math.floor(minPrice / 1000)) * 1000;
+microservices-middleware/server/src/kartbeta/product/category/btc/service.js:178:hardcoded string:    logger.info({ method: 'getMinimumRange', minPrice }, 'Minimum Price');
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:1:hardcoded object:const { get, flattenDeep, isEmpty } = require('lodash');
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:2:hardcoded file path:const logger = require('../../../../../lib/bunyan-logger')('BTC Product');
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:3:hardcoded object:const { getBlcProductAndPrice, getTlpProductAndPrice, getDiscountDetailsAndPrice, getMinimumRange } = require('./service')
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:4:hardcoded object:const { getBtcRegistrationSku } = require('./dto')
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:5:hardcoded object:const { getPostgresTabletSku } = require('../../../../productmanagement/dto')
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:7:hardcoded variable:const getBtcProduct = async (req, res) => {
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:8:hardcoded string:  logger.info({ method: 'getBtcProduct' }, { message: "Fetching Btc Product" });
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:9:hardcoded number:  let skuPrice = 0, products = [];
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:10:hardcoded object:  let { initialClass, finalClass, board, validity, city, extnFinalClass, formValues, batchDetails={}, studentId, tablet } = req.body;
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:13:hardcoded object:    const { blcCoursePrice, blcSkuArray } = await getBlcProductAndPrice({ initialClass, finalClass, board, validity, city  })
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:14:hardcoded object:    const { tlpCoursePrice, tlpSkuArray } = await getTlpProductAndPrice({ initialClass, finalClass, board, validity, extnFinalClass, tablet })
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:15:hardcoded array:    const tabletSku = tablet ? await getPostgresTabletSku({tabletId: tablet, studentId, uniqueTabletId: tablet}) : [];
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:25:hardcoded array:      products.push(blcSkuArray, tlpSkuArray, [btcRegistrationSku], tabletSku);
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:27:hardcoded array:      products.push(blcSkuArray, tlpSkuArray, [btcRegistrationSku]);
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:30:hardcoded variable:    let maxPrice = skuPrice;
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:31:hardcoded object:    let minPrice = getMinimumRange({user: req.user, maxPrice, tabletSku})
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:33:hardcoded variable:    const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:34:hardcoded string:    const discountDetails = getDiscountDetailsAndPrice({maxPrice, minPrice, batchDetails, tabletPrice: get(tabletSku, 'basePrice', 0)});    
+microservices-middleware/server/src/kartbeta/product/category/btc/controller.js:42:hardcoded string:      discountedPrice: get(discountDetails, 'discountedPrice', '')
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:1:hardcoded object:const { isEmpty } = require('lodash')
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:2:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:3:hardcoded object:const { NotFoundError } = require('../../../../../lib/errors')
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:4:hardcoded object:const { productConstant } = require('../../../../productmanagement/utils/productConstants')
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:5:hardcoded object://const { getSkuItemId } = require('./../')
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:7:hardcoded variable:const getCourseSku = async (details) => {
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:8:hardcoded object:    const { type, grade, board, validity, tablet } = details
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:10:hardcoded variable:    const query = {
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:11:hardcoded string:        status: "active",
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:13:hardcoded string:        brand: productConstant.D4_SKU_ID.includes(tablet) && type === "btlp" ? "D4" : null,
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:14:hardcoded object:        grade: `${grade}`,
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:15:hardcoded object:        validity: `${validity}`
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:18:hardcoded string:    if (["4", "5"].indexOf(grade.toString()) >= 0) {
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:19:hardcoded string:        query['board'] = null
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:22:hardcoded string:    if (["6", "7", "8", "9", "10"].indexOf(grade.toString()) >= 0) {
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:23:hardcoded string:        query['board'] = board
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:26:hardcoded variable:    const product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:34:hardcoded string:            itemType: 'course'
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:38:hardcoded object:        const errorMsg = getErrorMsg({ grade, board, validity, type });
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:43:hardcoded variable:const getBtcRegistrationSku = async () => {
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:45:hardcoded variable:    let query = {
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:46:hardcoded string:        type: "service",
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:47:hardcoded string:        subType: "registration",
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:48:hardcoded string:        category: "btc_registration"
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:61:hardcoded string:        throw new NotFoundError("BTC Registration SKU not found!")
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:64:hardcoded string:    sku['price'] = sku.basePrice;
+microservices-middleware/server/src/kartbeta/product/category/btc/dto.js:65:hardcoded string:    //sku["itemId"] = getSkuItemId(sku);

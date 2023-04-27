@@ -1,0 +1,146 @@
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:1:hardcoded object:import React, {useState, useEffect, useRef} from "react";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:2:hardcoded object:import {Form, Input, Label, Row, Col} from "reactstrap";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:3:hardcoded object:import {get, range} from "lodash";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:5:hardcoded object:import {SectionHeader, FormLabel} from "./Styles";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:7:hardcoded string:import studentIcon from "@byjus-orders/nicons/assets/byjus kart/neo-kart-icons/student-icons.svg";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:9:hardcoded variable:const LanguageForm = (props) => {
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:10:hardcoded array:    const { onClickSubmit, onClickReset, languages=[], courses=[] } = props;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:11:hardcoded array:    const [languageList, setLanguageList] = useState(languages);
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:12:hardcoded array:    const [courseList, setCourseList] = useState(courses);
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:13:hardcoded variable:    const formRef = useRef();
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:15:hardcoded variable:    const handleOnChange = async (event) => {
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:16:hardcoded variable:      const name = event.target.name;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:17:hardcoded variable:      const value = event.target.value;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:18:hardcoded variable:      //const initialGradeItem = grades.find((item)=>item.value==value);
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:19:hardcoded string:      //const initialGrade = parseInt(get(initialGradeItem, 'label', 1));
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:20:hardcoded string:      if (name === "initialGrade") {
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:21:hardcoded number:        //const updatedFGList = finalGradeList.filter((item) => range(initialGrade, 13).includes(parseInt(item.label)));
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:27:hardcoded string:    <div style={{ width: "67%", marginTop: "21px"}}>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:28:hardcoded string:        <SectionHeader>Language Perference <span><img style={{marginInline:"0.5rem"}} src = {studentIcon}></img></span></SectionHeader>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:29:hardcoded string:        <Form onSubmit={onClickSubmit} name="Filter" id="proficiency-form" ref={formRef}>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:31:hardcoded string:                flexDirection: "row",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:32:hardcoded string:                display: "flex",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:33:hardcoded string:                flexWrap: "nowrap",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:34:hardcoded string:                alignItems: "center",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:35:hardcoded string:                margin: "1rem",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:39:hardcoded string:                <Input type="select"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:40:hardcoded string:                aria-label="Default select example"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:41:hardcoded string:                name="language"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:42:hardcoded object:                onChange={handleOnChange}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:43:hardcoded string:                style={{ width: "430px" }}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:48:hardcoded object:                    <option value={item} key={idx}>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:49:hardcoded object:                        {item}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:57:hardcoded string:                <Input type="select"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:58:hardcoded string:                aria-label="Default select example"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:59:hardcoded string:                name="course"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:60:hardcoded object:                onChange={handleOnChange}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:61:hardcoded string:                style={{ width: "430px" }}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:66:hardcoded object:                    <option value={item} key={idx}>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/LanguageDetails.js:67:hardcoded object:                        {item}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:1:hardcoded object:import React, {useState, useEffect, useRef} from "react";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:2:hardcoded object:import {Form, Input, Label, Row, Col} from "reactstrap";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:3:hardcoded object:import {get, range} from "lodash";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:5:hardcoded object:import {SectionHeader, FormLabel} from "./Styles";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:7:hardcoded string:import studentIcon from "@byjus-orders/nicons/assets/byjus kart/neo-kart-icons/student-icons.svg";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:9:hardcoded variable:const ProficiencyForm = (props) => {
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:10:hardcoded object:    const { onClickSubmit, onClickReset, masterDetails = {} } = props;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:11:hardcoded number:    const [numberList, setNumberList] = useState([...Array(101).keys()]
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:13:hardcoded variable:    const formRef = useRef();
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:15:hardcoded variable:    const handleOnChange = async (event) => {
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:16:hardcoded variable:      const name = event.target.name;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:17:hardcoded variable:      const value = event.target.value;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:18:hardcoded variable:      //const initialGradeItem = grades.find((item)=>item.value==value);
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:19:hardcoded string:      //const initialGrade = parseInt(get(initialGradeItem, 'label', 1));
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:20:hardcoded string:      if (name === "initialGrade") {
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:21:hardcoded number:        //const updatedFGList = finalGradeList.filter((item) => range(initialGrade, 13).includes(parseInt(item.label)));
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:27:hardcoded string:    <div style={{ width: "67%", marginTop: "21px"}}>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:28:hardcoded string:        <SectionHeader>Student Proficiency <span><img style={{marginInline:"0.5rem"}} src = {studentIcon}></img></span></SectionHeader>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:29:hardcoded string:        <Form onSubmit={onClickSubmit} name="Filter" id="proficiency-form" ref={formRef}>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:31:hardcoded string:                flexDirection: "row",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:32:hardcoded string:                display: "flex",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:33:hardcoded string:                flexWrap: "nowrap",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:34:hardcoded string:                alignItems: "center",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:35:hardcoded string:                margin: "1rem",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:39:hardcoded string:                <Input type="select"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:40:hardcoded string:                aria-label="Default select example"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:41:hardcoded string:                name="maths"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:42:hardcoded object:                onChange={handleOnChange}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:43:hardcoded string:                style={{ width: "430px" }}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:48:hardcoded object:                    <option value={item} key={idx}>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:49:hardcoded object:                        {item}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:57:hardcoded string:                <Input type="select"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:58:hardcoded string:                aria-label="Default select example"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:59:hardcoded string:                name="science"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:60:hardcoded object:                onChange={handleOnChange}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:61:hardcoded string:                style={{ width: "430px" }}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:66:hardcoded object:                    <option value={item} key={idx}>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Proficiency.js:67:hardcoded object:                        {item}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:1:hardcoded object:import React, {useState, useEffect, useRef} from "react";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:2:hardcoded object:import {Form, Input, Label, Row, Col} from "reactstrap";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:3:hardcoded object:import {get, range} from "lodash";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:5:hardcoded object:import {SectionHeader, FormLabel} from "./Styles";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:7:hardcoded string:import studentIcon from "@byjus-orders/nicons/assets/byjus kart/neo-kart-icons/student-icons.svg";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:9:hardcoded variable:const SchoolForm = (props) => {
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:10:hardcoded object:    const { onClickSubmit, onClickReset, masterDetails = {} } = props;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:11:hardcoded array:    const [stateList, setStateList] = useState([]);
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:12:hardcoded array:    const [cityList, setCityList] = useState([]);
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:13:hardcoded array:    const [schoolList, setSchoolList] = useState([]);
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:14:hardcoded variable:    const formRef = useRef();
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:18:hardcoded array:    }, []);
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:20:hardcoded variable:    const getSchoolDetails = async() => {
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:21:hardcoded array:        setStateList([]);
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:22:hardcoded array:        setCityList([]);
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:23:hardcoded array:        setSchoolList([]);
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:26:hardcoded variable:    const handleOnChange = async (event) => {
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:27:hardcoded variable:      const name = event.target.name;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:28:hardcoded variable:      const value = event.target.value;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:29:hardcoded variable:      //const initialGradeItem = grades.find((item)=>item.value==value);
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:30:hardcoded string:      //const initialGrade = parseInt(get(initialGradeItem, 'label', 1));
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:31:hardcoded string:      if (name === "initialGrade") {
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:32:hardcoded number:        //const updatedFGList = finalGradeList.filter((item) => range(initialGrade, 13).includes(parseInt(item.label)));
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:39:hardcoded string:        <SectionHeader>School Details <span><img style={{marginInline:"0.5rem"}} src = {studentIcon}></img></span></SectionHeader>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:40:hardcoded string:        <Form onSubmit={onClickSubmit} name="Filter" id="school-form" ref={formRef}>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:42:hardcoded string:                flexDirection: "row",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:43:hardcoded string:                display: "flex",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:44:hardcoded string:                flexWrap: "nowrap",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:45:hardcoded string:                alignItems: "center",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:46:hardcoded string:                margin: "1rem",
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:50:hardcoded string:                <Input type="select"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:51:hardcoded string:                aria-label="Default select example"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:52:hardcoded string:                name="state"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:53:hardcoded object:                onChange={handleOnChange}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:54:hardcoded string:                style={{ width: "430px" }}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:59:hardcoded object:                    <option value={item.value} key={idx}>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:60:hardcoded object:                        {item.label}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:68:hardcoded string:                <Input type="select"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:69:hardcoded string:                aria-label="Default select example"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:70:hardcoded string:                name="city"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:71:hardcoded object:                onChange={handleOnChange}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:72:hardcoded string:                style={{ width: "430px" }}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:77:hardcoded object:                    <option value={item.value} key={idx}>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:78:hardcoded object:                        {item.label}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:86:hardcoded string:                <Input type="select"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:87:hardcoded string:                    style={{width: "430px"}}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:88:hardcoded string:                    name="school"
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:89:hardcoded object:                    onChange={handleOnChange}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:94:hardcoded object:                        <option value={item.value} key={idx}>
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/SchoolDetails.js:95:hardcoded object:                            {item.label}
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:1:hardcoded string:import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:2:hardcoded object:import { Label } from "reactstrap";
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:4:hardcoded variable:export const SectionHeader = styled.p`
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:5:hardcoded number:    height: 21px;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:6:hardcoded number:    left: 40px;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:7:hardcoded number:    top: 257px;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:10:hardcoded number:    font-weight: 500;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:11:hardcoded number:    font-size: 14px;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:12:hardcoded number:    line-height: 21px;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:13:hardcoded number:    color: #434343;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:14:hardcoded number:    margin-inline: 2rem;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:17:hardcoded variable:export const FormLabel = styled(Label)`
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:18:hardcoded number:    height: 15px;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:19:hardcoded number:    left: 500px;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:20:hardcoded number:    top: 290px;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:23:hardcoded number:    font-weight: 400;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:24:hardcoded number:    font-size: 12px;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:25:hardcoded number:    line-height: 15px;
+microservices-middleware/client/src/modules/kartbeta/batches/K12/Form/Styles.js:26:hardcoded number:    color: #666666;

@@ -1,0 +1,106 @@
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/crpRoutes.js:1:hardcoded file path:const Router = require('express-promise-router');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/crpRoutes.js:2:hardcoded file path:const controller = require('./salesAndCustomerDetailsController');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/crpRoutes.js:3:hardcoded file path:const productController = require('./productController');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/crpRoutes.js:4:hardcoded file path:// const productController = require('./upgradeProductController');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/crpRoutes.js:5:hardcoded file path:// const tlpProductController = require('./tlpToByjusClassController')
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/crpRoutes.js:6:hardcoded object:const { storeCalculatedPriceMw }= require('../../../productmanagement/productHelper')
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/crpRoutes.js:10:hardcoded object:    const router = Router({ mergeParams: true });
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/crpRoutes.js:12:hardcoded string:    router.route('/crp/saveSalesAndCustomerDetails')
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/crpRoutes.js:17:hardcoded string:    router.route('/crp/getProductAndScholarship')
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/crpRoutes.js:22:hardcoded string:    router.route('/crp/aakashCRP')
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:1:hardcoded object:const { get, isEmpty } = require('lodash');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:2:hardcoded object:const { BadRequestError } = require('../../../../lib/errors');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:4:hardcoded string:const { DraftOrder, Quotation  } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:7:hardcoded file path:    checkIfCashbackLockedWithDiffDraftOrder, getUpdatedSalesDetails, getLeadEvaluationDetails } = require("../../../detailsmanagement/detailsHelper");
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:8:hardcoded object:const { generateDraftOrderId } = require('../../../../utility/draftOrderUtility');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:9:hardcoded object:const { getSalesComments } = require("../../../../lib/featureHelper");
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:10:hardcoded file path:const logger = require('../../../../lib/bunyan-logger')('Upgrade Sales and Customer Details Controller');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:13:hardcoded variable:const saveSalesAndCustomerDetails = async (req, res) => {
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:15:hardcoded string:        let { quotationId, customerId, salesDetails, customerDetails, leadDetails, identifier, orderPunchingType = "AAKASH_CRP_ORDER", omsConfig = {}, loggedInUserDetails = {} } = req.body;
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:16:hardcoded string:        const { email } = get(req, 'user', {});
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:18:hardcoded string:            throw new BadRequestError("Parameter missing");
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:22:hardcoded variable:        const salesDetailsValidation = await validateSalesDetails(salesDetails, orderPunchingType, leadDetails);
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:24:hardcoded number:            return res.status(400).json(salesDetailsValidation);
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:27:hardcoded variable:        const lockedErrors = await checkIfCashbackLockedWithDiffDraftOrder(customerDetails);
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:29:hardcoded number:            return res.status(400).json({ lockedErrors });
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:32:hardcoded object:        let draftOrder = {};
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:34:hardcoded variable:        const updatedSalesDetails = await getUpdatedSalesDetails(salesDetails, omsConfig, loggedInUserDetails);
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:36:hardcoded string:        if (get(updatedSalesDetails, 'isOmsOrderEligible')) {
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:40:hardcoded variable:        const comments = getSalesComments(email,updatedSalesDetails?.directSalesBy,updatedSalesDetails?.salesAppointmentBy);
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:42:hardcoded string:        leadDetails["isLeadMobileUsed"] = get(leadDetails, "studentMobile", "").split(",")[0] === get(customerDetails, "parentMobileNo", "");
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:43:hardcoded string:        const isEligibleForEvalution = await getLeadEvaluationDetails(leadDetails, get(salesDetails, "directSalesBy", ""));
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:44:hardcoded string:        leadDetails["isEligibleForEvalution"] = isEligibleForEvalution;
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:45:hardcoded string:        leadDetails["loggedInRole"] = get(leadDetails, "orderPunchedByRole", "");
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:47:hardcoded string:        customerDetails["customerId"] = customerId
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:48:hardcoded variable:        const updateData = {
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:49:hardcoded string:            isOmsOrder: get(updatedSalesDetails, 'isOmsOrderEligible', false),//to track oms orders in Draft order worker
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:53:hardcoded string:            status: "details_saved",
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:55:hardcoded array:            [`actionDetails.detailsSavedAt`]: new Date(),
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:56:hardcoded array:            [`actionDetails.detailsSavedBy`]: email,
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:58:hardcoded string:            orgFormattedName: "aakash",
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:66:hardcoded object:            await DraftOrder.findOneAndUpdate({ _id: identifier }, {
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:73:hardcoded variable:            const newOrder = new DraftOrder({
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:80:hardcoded object:        await Quotation.findOneAndUpdate({ quotationId }, {
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:82:hardcoded string:                status: "order_processing"
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/salesAndCustomerDetailsController.js:94:hardcoded string:        logger.error({ method: 'getSalesPersonDetails', error }, 'Error occured');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:1:hardcoded object:const { get, isEmpty } = require('lodash');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:2:hardcoded object:const { BadRequestError } = require('../../../../lib/errors');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:4:hardcoded string:const { Quotation, LineItems } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:6:hardcoded object:const { checkIfDraftOrderExists } = require('../../../../utility/draftOrderUtility');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:7:hardcoded file path:const logger = require('../../../../lib/bunyan-logger')('Upgrade Sales and Customer Details Controller');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:8:hardcoded object:const { getBonusPointsDiscount } = require('../../../paymentmanagement/byjuswallet/bonusPoints');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:10:hardcoded variable:const getProductAndScholarship = async (req, res) => {
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:12:hardcoded object:        let { identifier } = req.body;
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:14:hardcoded string:            throw new BadRequestError("Parameter missing");
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:16:hardcoded variable:        const draftOrder = await checkIfDraftOrderExists(identifier);
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:17:hardcoded string:        if (!draftOrder) { throw new BadRequestError("Draft order discarded by someone else") }
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:19:hardcoded string:        const { quotationId = "" } = draftOrder;
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:20:hardcoded string:        if (!quotationId) throw new BadRequestError("Quotation Id does not exists against the order. Please discard the order and select quotation to continue")
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:22:hardcoded string:        const quotationDoc = await Quotation.findOne({ quotationId }, { scholarshipDetails: 1, "productDetails.formValues": 1, finalPrice: 1, actualCourseFees: 1, customerDetails: 1 }).lean();
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:23:hardcoded string:        if (!quotationDoc) throw new BadRequestError("Quotation details does not exists");
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:24:hardcoded string:        const { actualCourseFees = "", finalPrice, productDetails, customerDetails } = quotationDoc
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:26:hardcoded object:        let lineItemsDoc = await LineItems.find({ quotationId }).lean();
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:27:hardcoded string:        if (!lineItemsDoc) throw new BadRequestError("Line items does not exists");
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:29:hardcoded string:            item["name"] = item["skuName"]
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:30:hardcoded string:            item["sku"] = item["skuName"]
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:31:hardcoded string:            item["productId"] = item["skuId"]
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:36:hardcoded string:            productDetails: { ...get(productDetails, "formValues", {}), actualCourseFees, finalPrice },
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:37:hardcoded string:            scholarshipDetails: get(quotationDoc, "scholarshipDetails", {}),
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:42:hardcoded string:        logger.error({ method: 'getProductAndScholarship', error }, 'Error occured');
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:47:hardcoded variable:const aakashCRP = async (req, res) => {
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:49:hardcoded object:        let { identifier, paymentType } = req.body;
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:51:hardcoded string:            throw new BadRequestError("Parameter missing");
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:53:hardcoded variable:        const draftOrder = await checkIfDraftOrderExists(identifier);
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:54:hardcoded string:        if (!draftOrder) { throw new BadRequestError("Draft order discarded by someone else") }
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:56:hardcoded object:        const { quotationId } = draftOrder;
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:57:hardcoded string:        if (!quotationId) throw new BadRequestError("Quotation Id does not exists against the order. Please discard the order and select quotation to continue")
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:59:hardcoded number:        const quotationDoc = await Quotation.findOne({ quotationId }, { scholarshipDetails: 1, productDetails: 1, finalPrice: 1, actualCourseFees: 1 }).lean();
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:60:hardcoded string:        if (!quotationDoc) throw new BadRequestError("Quotation details does not exists");
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:63:hardcoded object:        let lineItemsDoc = await LineItems.find({ quotationId }).lean();
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:64:hardcoded string:        if (!lineItemsDoc) throw new BadRequestError("Line items does not exists");
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:66:hardcoded string:            item["name"] = item["skuName"]
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:67:hardcoded string:            item["sku"] = item["skuName"]
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:68:hardcoded string:            item["productId"] = item["skuId"]
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:69:hardcoded string:            item["itemType"]=   item["type"]=="product"?"tablet":"course"
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:74:hardcoded variable:        const students = [{
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:75:hardcoded string:            ...get(quotationDoc.productDetails, "formValues", {}),
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:76:hardcoded string:            formValues: get(quotationDoc.productDetails, "formValues", {}),
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:79:hardcoded string:        let minPrice = get(quotationDoc, "finalPrice", 0);
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:80:hardcoded variable:        let discountDetails = {
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:81:hardcoded number:            discountedPrice: 0,
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:83:hardcoded number:            bonusPointsDiscount: 0
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:85:hardcoded variable:        const bonusPointsDiscount = await getBonusPointsDiscount(identifier);
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:86:hardcoded number:        if(parseInt(bonusPointsDiscount) > 0){
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:87:hardcoded string:            discountDetails['discountedPrice'] = minPrice - bonusPointsDiscount;
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:88:hardcoded string:            discountDetails['areBonusPointsUsed'] = true;
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:89:hardcoded string:            discountDetails['bonusPointsDiscount'] = bonusPointsDiscount;
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:93:hardcoded array:            bhlpCourseDetails: [],
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:94:hardcoded string:            discountedPrice: get(discountDetails,'discountedPrice'),
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:95:hardcoded string:            maxPrice: get(quotationDoc, "actualCourseFees", 0),
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:96:hardcoded number:            mentoring: { count: 0, items: [null] },
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:97:hardcoded array:            mentoringDetails: [],
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:98:hardcoded string:            minPrice: get(quotationDoc, "finalPrice", 0),
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:99:hardcoded string:            finalPrice: get(quotationDoc, "finalPrice", 0),
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:101:hardcoded string:            productType: "aakashCRP",
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:104:hardcoded string:            areBonusPointsUsed: get(discountDetails,'areBonusPointsUsed'),
+microservices-middleware/server/src/ordermanagement/ordertype/aakashcrp/productController.js:105:hardcoded string:            bonusPointsDiscount: get(discountDetails,'bonusPointsDiscount')

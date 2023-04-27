@@ -1,0 +1,988 @@
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:1:hardcoded object:import React, { Component } from 'react';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:2:hardcoded object:import { connect } from 'react-redux';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:3:hardcoded object:import { Divider, Card, Alert } from 'antd';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:4:hardcoded file path:import moment from 'moment';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:5:hardcoded object:import { get, isEqual, size, isEmpty, find, camelCase, startCase } from 'lodash';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:7:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:9:hardcoded file path:import ErrorWrapper from 'components/ErrorWrapper';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:10:hardcoded file path:import AntDFormBuilder from 'components/form/AntDFormBuilder';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:11:hardcoded object:import { addLoader, removeLoader, resetPrice, saveLanguageDetails } from '../../productReducer';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:13:hardcoded variable:const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:14:hardcoded string:    appConfig: get(state, 'auth.details.config'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:15:hardcoded string:    userDetails: get(state, 'auth.details.draftOrder'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:16:hardcoded string:    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:17:hardcoded string:    productDetails: get(state, 'product.details'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:18:hardcoded string:    productConfig: get(state, 'product.config'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:19:hardcoded string:    error: get(state, 'product.error'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:20:hardcoded string:    authDetails: get(state, 'auth.details', {}),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:21:hardcoded string:    orderPunchingType: get(state, 'auth.orderPunchingType'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:22:hardcoded string:    user: get(state, "auth.details.user", {}),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:25:hardcoded variable:const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:45:hardcoded object:            initialValues: {},
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:46:hardcoded array:            langOptions: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:47:hardcoded array:            languageOfInstructionList: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:48:hardcoded array:            otherLanguageOfInstructionList: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:53:hardcoded string:        const { batches, batch, langOptions, trackId = '', selectedBatchIds } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:54:hardcoded object:        const { initialClass, classType, productCombination } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:55:hardcoded object:        const { byjusLanguageDetailsForm } = this;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:56:hardcoded array:        let mentoring = [], courseInfo = {}, formValue = {};
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:58:hardcoded string:        const isK12 = ["11", 11, "11+12", "14", "13", "12", 12, "12+", "13+"].includes(initialClass);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:59:hardcoded string:        let mentoringDetails = { type: isK12 ? 'oneToMega' : classType }
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:61:hardcoded object:        this.setState({ batchError: false, error: null });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:64:hardcoded string:            this.setState({ batchError: true, error: "Please select a Regular Batch" });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:67:hardcoded object:        const adtnClsBatchDetails = this.getAdtnClsDetails() || {};
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:69:hardcoded object:        if (this.state.error) { return; }
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:71:hardcoded variable:        const values = byjusLanguageDetailsForm && await byjusLanguageDetailsForm.getFormValues();
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:74:hardcoded string:        if (values && classType === "neo" && ["byjus_classes_upgrade", "byjus_classes"].includes(productCombination)) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:75:hardcoded string:            let languageOfInstruction = get(values, "languageOfInstruction") === "english+" ? get(values, "otherLanguageOfInstruction") : get(values, "languageOfInstruction")
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:76:hardcoded number:            const selectedk10Lang = find(langOptions, { value: languageOfInstruction }) || {};
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:77:hardcoded number:            const { id } = selectedk10Lang || {}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:80:hardcoded string:                electivesDetails: adtnClsBatchDetails["electivesDetails"],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:81:hardcoded string:                selectedDoubtClass: adtnClsBatchDetails["selectedDoubtClass"],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:90:hardcoded array:            let sessions = [];
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:93:hardcoded string:            const slots = get(courseInfo, "slots", []);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:96:hardcoded string:                    day: get(slot, "day", ""),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:97:hardcoded string:                    is_mandatory: get(slot, "is_mandatory", ""),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:98:hardcoded string:                    time: `${get(slot, "start_time", "")}-${get(slot, "end_time", "")}`
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:103:hardcoded object:            this.setState({ batchError: true });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:116:hardcoded string:            proficiency, trackId, yearSelection=""
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:123:hardcoded object:        let { classType, orderPunchingType } = this.props
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:124:hardcoded string:        const isK12 = ["11", 11, "11+12", "14", "13", "12", 12, "12+", "13+"].includes(initialClass);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:126:hardcoded string:        classType = isK12 ? 'oneToMega' : classType
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:128:hardcoded variable:        const payload = {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:134:hardcoded string:            url: '/api/product/getLanguageDetails',
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:135:hardcoded string:            method: 'POST',
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:138:hardcoded string:            const resp = get(response, 'data', {});
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:139:hardcoded string:            const language = get(resp, 'languages', []);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:144:hardcoded string:            console.log('---language', language)
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:159:hardcoded array:                langOptions: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:160:hardcoded array:                languageOfInstructionList: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:161:hardcoded array:                otherLanguageOfInstructionList: []
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:167:hardcoded object:        const { orderPunchingType, authDetails } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:168:hardcoded string:        const env = get(authDetails, "env")
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:169:hardcoded string:        const isDevEnv = ['development', 'local'].includes(env);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:172:hardcoded string:            let languageOfInstructionList = language.filter(lang => lang.value == "english");
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:173:hardcoded string:            let otherLanguageOfInstructionList = language.filter(lang => lang.value != "english");
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:175:hardcoded string:            if (orderPunchingType !== "MIDDLEEAST_ORDER" && otherLanguageOfInstructionList.length) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:177:hardcoded string:                    label: "English+",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:178:hardcoded string:                    value: "english+"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:181:hardcoded object:                    lang.label = `English+${lang.label}`;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:184:hardcoded string:                if (['TRIAL_PACK', 'mini_learning_program'].includes(validity)) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:186:hardcoded string:                        ele.value.toLowerCase() == 'hindi')
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:196:hardcoded number:    getLanguageOptions = (initialClass, isK12) => {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:197:hardcoded array:        let languageOptions = []
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:198:hardcoded number:        if (isK12) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:200:hardcoded string:                label: "English",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:201:hardcoded string:                value: "english"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:203:hardcoded string:            if (!["13", "14"].includes(initialClass)) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:205:hardcoded string:                    label: "Hindi+English",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:206:hardcoded string:                    value: "hinglish"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:216:hardcoded array:            [item[key]]: [
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:217:hardcoded array:                ...(result[item[key]] || []),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:221:hardcoded object:        {},
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:225:hardcoded object:        const { initialClass, classType, productCombination, orderPunchingType } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:226:hardcoded object:        const { languageOfInstruction, languageOfInstructionList, otherLanguageOfInstructionList, course } = this.state
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:227:hardcoded string:        const isK12 = ["11", 11, "11+12", "14", "13", "12", 12, "12+", "13+"].includes(initialClass);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:228:hardcoded string:        const isMeOrder = orderPunchingType === "MIDDLEEAST_ORDER" ? true : false;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:230:hardcoded variable:        const fields = [{
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:231:hardcoded string:            type: isK12 ? "select" : "hidden",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:232:hardcoded string:            name: "language",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:233:hardcoded string:            label: "Select language",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:234:hardcoded number:            required: isK12,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:235:hardcoded number:            options: this.getLanguageOptions(initialClass, isK12),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:238:hardcoded string:            type: languageOfInstructionList.length && classType == "neo" && ["byjus_classes_upgrade", "byjus_classes", "neo_lite_value_product"].includes(productCombination) ? "select" : "hidden",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:239:hardcoded string:            name: "languageOfInstruction",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:240:hardcoded string:            label: "Primary Language Of Instruction In Class",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:241:hardcoded string:            required: isK12 || languageOfInstructionList.length && classType == "neo" && ["byjus_classes_upgrade", "byjus_classes", "neo_lite_value_product"].includes(productCombination),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:244:hardcoded string:            helpText: isMeOrder ? "" : "Select English+ for additional language option"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:246:hardcoded string:            type: languageOfInstruction == "english+" && otherLanguageOfInstructionList.length ? "select" : "hidden",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:247:hardcoded string:            name: "otherLanguageOfInstruction",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:248:hardcoded string:            label: "Additional Language",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:249:hardcoded string:            required: languageOfInstruction == "english+" && otherLanguageOfInstructionList.length ? true : false,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:257:hardcoded object:        const { byjusLanguageDetailsForm } = this;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:258:hardcoded object:        const { handleParentCompChange } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:259:hardcoded array:        const {languageOfInstructionList=[], otherLanguageOfInstructionList=[]} = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:260:hardcoded string:        if (name === "language") {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:261:hardcoded object:            byjusLanguageDetailsForm && byjusLanguageDetailsForm.setFieldsValue({});
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:263:hardcoded string:        if (name==="languageOfInstruction") {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:264:hardcoded string:            if( value == 'english'){
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:265:hardcoded string:                const languageDetails = languageOfInstructionList.find(item=>item.name=="english") || {};
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:266:hardcoded string:                byjusLanguageDetailsForm && byjusLanguageDetailsForm.setFieldsValue({otherLanguageOfInstruction: ""});
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:267:hardcoded string:                handleParentCompChange("languageId", get(languageDetails, "language_id"), languageDetails);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:269:hardcoded string:                handleParentCompChange("languageId", "", {});
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:273:hardcoded string:        if(name === "otherLanguageOfInstruction"){
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:274:hardcoded object:            const languageDetails = otherLanguageOfInstructionList.find(item=>item.name==value) || {};
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:275:hardcoded string:            handleParentCompChange("languageId", get(languageDetails, "language_id"), languageDetails);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:278:hardcoded array:        this.setState({ [name]: value, error: null, batchError: null });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:295:hardcoded object:        const { initialClass, authDetails, classType, productCombination, orderPunchingType, handleParentCompChange } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:296:hardcoded variable:        const fields = this.getFields();
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:297:hardcoded string:        const isK12 = ["11", 11, "11+12", "14", "13", "12", 12, "12+", "13+"].includes(initialClass);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:298:hardcoded string:        const isMeOrder = orderPunchingType === "MIDDLEEAST_ORDER" ? true : false;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:299:hardcoded string:        if(classType && productCombination && (classType !== "neo" || !["byjus_classes_upgrade", "byjus_classes", "neo_lite_value_product"].includes(productCombination))){
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:300:hardcoded string:            handleParentCompChange("languageId", 1, {})
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:302:hardcoded string:        return (classType == "neo" && ["byjus_classes_upgrade", "byjus_classes", "neo_lite_value_product"].includes(productCombination)) && (
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:304:hardcoded object:                <ErrorWrapper error={error} />
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:306:hardcoded string:                {langOptions.length > 0 && classType == "neo" && ["byjus_classes_upgrade", "byjus_classes", "neo_lite_value_product"].includes(productCombination) && <h6 style={{ margin: "1rem" }}>Language Preference</h6>}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:308:hardcoded object:                    fields={fields}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:309:hardcoded object:                    wrappedComponentRef={(inst) => this.byjusLanguageDetailsForm = inst}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:310:hardcoded object:                    initialValues={{}}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusLanguage.js:317:hardcoded object:export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(ByjusLanguage);microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:1:hardcoded object:import React, { Component } from 'react';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:2:hardcoded object:import { connect } from 'react-redux';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:3:hardcoded object:import { Divider, Card, Alert } from 'antd';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:4:hardcoded file path:import moment from 'moment';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:5:hardcoded object:import { get, isEqual, size, isEmpty, find, camelCase, startCase } from 'lodash';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:7:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:9:hardcoded file path:import ErrorWrapper from 'components/ErrorWrapper';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:10:hardcoded file path:import AntDFormBuilder from 'components/form/AntDFormBuilder';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:11:hardcoded object:import { addLoader, removeLoader, resetPrice, saveSlotDetails } from '../../productReducer';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:12:hardcoded file path:import Electives from 'modules/student/Electives';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:13:hardcoded file path:import DoubtClasses from 'modules/student/DoubtClasses';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:14:hardcoded file path:import AdditionalClassBatch from '../byjusclasses/AdditionalClassBatch';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:15:hardcoded object:import { BatchFetchMsg, ErrMsg, SectionHeading, ResetHandle } from '../byjusclasses/Styles';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:16:hardcoded file path:import ByjusLanguage from './ByjusLanguage';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:18:hardcoded variable:const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:19:hardcoded string:    appConfig: get(state, 'auth.details.config'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:20:hardcoded string:    userDetails: get(state, 'auth.details.draftOrder'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:21:hardcoded string:    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:22:hardcoded string:    productDetails: get(state, 'product.details'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:23:hardcoded string:    productConfig: get(state, 'product.config'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:24:hardcoded string:    error: get(state, 'product.error'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:25:hardcoded string:    authDetails: get(state, 'auth.details', {}),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:26:hardcoded string:    orderPunchingType: get(state, 'auth.orderPunchingType'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:27:hardcoded string:    user: get(state, "auth.details.user", {}),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:30:hardcoded variable:const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:50:hardcoded object:            initialValues: {},
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:51:hardcoded array:            batches: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:54:hardcoded array:            langOptions: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:55:hardcoded array:            languageOfInstructionList: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:56:hardcoded array:            otherLanguageOfInstructionList: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:57:hardcoded object:            selectedAdtnlDetails: {},
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:58:hardcoded array:            selectedBatchIds: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:59:hardcoded object:            languageDetails: {}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:64:hardcoded object:        const { validity, productCombination, orderPunchingType, selectedAdtnlDetails } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:65:hardcoded array:        let electivesDetails = [], selectedDoubtClass = [];
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:67:hardcoded object:        const details = this.state.overallBatchDetails || {};
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:68:hardcoded string:        electivesDetails = get(details, 'elective')
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:69:hardcoded string:        selectedDoubtClass = get(details, 'doubtResolution')
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:71:hardcoded object:        let adtnClsBatchDetails = { electivesDetails, selectedDoubtClass }
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:74:hardcoded string:            const errorKey = clsKey === 'electivesDetails' ? 'Weekly Workshop' : 'Doubt Resolution';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:76:hardcoded string:            if (!["TRIAL_PACK", "mini_learning_program"].includes(validity) && !["mini_learning_program"].includes(productCombination) &&
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:77:hardcoded string:                !["MIDDLEEAST_ORDER"].includes(orderPunchingType) && isEmpty(adtnClsBatchDetails[clsKey])
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:81:hardcoded object:                    error: `Please select all ${errorKey} batches.`
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:90:hardcoded string:        const { batches, batch, langOptions, trackId = '', selectedBatchIds, languageDetails } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:91:hardcoded object:        const { initialClass, classType, productCombination } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:92:hardcoded object:        const { byjusMentoringClassesForm } = this;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:93:hardcoded array:        let mentoring = [], courseInfo = {}, formValue = {};
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:95:hardcoded string:        const isK12 = ["11", 11, "11+12", "14", "13", "12", 12, "12+", "13+"].includes(initialClass);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:96:hardcoded string:        let mentoringDetails = { type: isK12 ? 'oneToMega' : classType }
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:98:hardcoded object:        this.setState({ batchError: false, error: null });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:101:hardcoded string:            this.setState({ batchError: true, error: "Please select a Regular Batch" });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:104:hardcoded object:        const adtnClsBatchDetails = this.getAdtnClsDetails() || {};
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:106:hardcoded object:        if (this.state.error) { return; }
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:108:hardcoded variable:        const values = byjusMentoringClassesForm && await byjusMentoringClassesForm.getFormValues();
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:111:hardcoded string:        if (values && classType === "neo" && ["byjus_classes_upgrade", "byjus_classes"].includes(productCombination)) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:112:hardcoded string:            // let languageOfInstruction = get(values, "languageOfInstruction") === "english+" ? get(values, "otherLanguageOfInstruction") : get(values, "languageOfInstruction")
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:113:hardcoded number:            // const selectedk10Lang = find(langOptions, { value: languageOfInstruction }) || {};
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:114:hardcoded number:            // const { id } = selectedk10Lang || {}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:117:hardcoded string:                electivesDetails: adtnClsBatchDetails["electivesDetails"],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:118:hardcoded string:                selectedDoubtClass: adtnClsBatchDetails["selectedDoubtClass"],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:119:hardcoded string:                languageOfInstruction: get(languageDetails, "name"),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:120:hardcoded string:                languageOfInstructionId: get(languageDetails, "language_id"),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:127:hardcoded array:            let sessions = [];
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:130:hardcoded string:            const slots = get(courseInfo, "slots", []);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:133:hardcoded string:                    day: get(slot, "day", ""),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:134:hardcoded string:                    is_mandatory: get(slot, "is_mandatory", ""),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:135:hardcoded string:                    time: `${get(slot, "start_time", "")}-${get(slot, "end_time", "")}`
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:140:hardcoded object:            this.setState({ batchError: true });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:153:hardcoded string:            proficiency, trackId, isV4Batch = false, schoolState = '',yearSelection=''
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:155:hardcoded object:        let {languageId} = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:163:hardcoded object:        let { classType, orderPunchingType } = this.props
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:168:hardcoded string:        const isK12 = ["11", 11, "11+12", "14", "13", "12", 12, "12+", "13+"].includes(initialClass);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:170:hardcoded string:        classType = isK12 ? 'oneToMega' : classType
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:172:hardcoded variable:        const payload = {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:176:hardcoded number:            isV4Batch, language: nextProps.language, schoolState
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:179:hardcoded string:            url: '/api/product/getMentoringCourseDetails',
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:180:hardcoded string:            method: 'POST',
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:183:hardcoded string:            const resp = get(response, 'data', {});
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:184:hardcoded string:            const language = get(resp, 'language', []);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:185:hardcoded string:            const doubtClasses = get(resp, 'doubtClasses', []);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:186:hardcoded string:            const electives = get(resp, 'electives', []);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:187:hardcoded string:            const cohortId = get(resp, 'cohortId', "");
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:189:hardcoded string:            let adtnlClsDetails = get(resp, 'adtnlClsDetails', {});
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:190:hardcoded string:            //adtnlClsDetails = flattenDeep(sortBy(adtnlClsDetails, ['priority']));
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:191:hardcoded number:            //const selectedAdtnlDetails = [adtnlClsDetails[0]];
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:193:hardcoded string:            const trackId = get(resp, 'trackId', '');
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:194:hardcoded variable:            const firstCourse = this.getAvailableCourses(resp.batches)
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:196:hardcoded string:            const course = firstCourse && size(firstCourse) == 1 && !isK12 ? get(firstCourse[0], "value", "") : ""
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:218:hardcoded array:                batches: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:219:hardcoded object:                adtnlClsDetails: {},
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:220:hardcoded array:                doubtClasses: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:221:hardcoded array:                electives: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:224:hardcoded array:                langOptions: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:226:hardcoded array:                languageOfInstructionList: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:227:hardcoded array:                otherLanguageOfInstructionList: []
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:233:hardcoded object:        const { orderPunchingType, authDetails } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:234:hardcoded string:        const env = get(authDetails, "env")
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:235:hardcoded string:        const isDevEnv = ['development', 'local'].includes(env);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:238:hardcoded string:            let languageOfInstructionList = language.filter(lang => lang.value == "english");
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:239:hardcoded string:            let otherLanguageOfInstructionList = language.filter(lang => lang.value != "english");
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:241:hardcoded string:            if (orderPunchingType !== "MIDDLEEAST_ORDER" && otherLanguageOfInstructionList.length) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:243:hardcoded string:                    label: "English+",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:244:hardcoded string:                    value: "english+"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:247:hardcoded object:                    lang.label = `English+${lang.label}`;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:250:hardcoded string:                if (['TRIAL_PACK', 'mini_learning_program'].includes(validity)) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:252:hardcoded string:                        ele.value.toLowerCase() == 'hindi')
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:262:hardcoded number:    getLanguageOptions = (initialClass, isK12) => {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:263:hardcoded array:        let languageOptions = []
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:264:hardcoded number:        if (isK12) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:266:hardcoded string:                label: "English",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:267:hardcoded string:                value: "english"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:269:hardcoded string:            if (!["13", "14"].includes(initialClass)) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:271:hardcoded string:                    label: "Hindi+English",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:272:hardcoded string:                    value: "hinglish"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:280:hardcoded variable:        let availableCourses = batches
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:287:hardcoded string:            availableCourses = this.groupBy(availableCourses, "batch_start_date")
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:288:hardcoded variable:            let course_timing = Object.keys(availableCourses)
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:289:hardcoded number:            course_timing = course_timing.sort((d1, d2) => new Date(d2).getTime() - new Date(d1).getTime());
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:290:hardcoded number:            availableCourses = availableCourses[course_timing[0]]
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:298:hardcoded array:            [item[key]]: [
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:299:hardcoded array:                ...(result[item[key]] || []),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:303:hardcoded object:        {},
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:307:hardcoded array:        let { batches = [], language } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:310:hardcoded variable:        let availableCourses = this.getUpdatedBatches(batches, language);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:312:hardcoded array:        const result = [];
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:313:hardcoded variable:        const map = new Map();
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:323:hardcoded array:        // const unique = [...new Set(availableCourses.map(item => item.course_id))];
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:325:hardcoded string:        // availableCourses = size(availableCourses) && this.groupBy(availableCourses, "course_id")
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:330:hardcoded string:        const dayObj = { monday: "Mon", tuesday: "Tues", wednesday: "Wed", thursday: "Thur", friday: "Fri", saturday: "Sat", sunday: "Sun" }
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:331:hardcoded object:        // const { batch, batches } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:332:hardcoded string:        let mandatorySchedule = '', optionalSchedule = '';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:333:hardcoded variable:        // const availableCourses = batch && batches.find(dt => dt.id === batch);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:334:hardcoded string:        const slots = get(availableCourses, "slots", [])
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:337:hardcoded string:                let day = `${get(slot, "day", "").toLowerCase()}`
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:338:hardcoded array:                day = dayObj[day];
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:339:hardcoded string:                mandatorySchedule += `${day}: ${get(slot, "start_time", "")}${" , "}`
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:341:hardcoded string:                let day = `${get(slot, "day", "").toLowerCase()}`
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:342:hardcoded array:                day = dayObj[day];
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:343:hardcoded string:                optionalSchedule += `${day}: ${get(slot, "start_time", "")}${" "}`
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:346:hardcoded object:        return ({ optionalSchedule, mandatorySchedule })
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:350:hardcoded object:        let { batches, language } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:351:hardcoded variable:        let availableBatches = this.getUpdatedBatches(batches, language);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:354:hardcoded variable:            let getSlots = this.getAvailableSlot(course)
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:355:hardcoded string:            const batchStartDate = moment(course.batch_start_date).format("MMMM Do, YYYY")
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:356:hardcoded variable:            const batchId = course.id
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:357:hardcoded variable:            const name = course.name
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:358:hardcoded string:            const time_zone = get(course, 'time_zone', null)
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:359:hardcoded object:            return { batchId, batchStartDate, ...getSlots, name, time_zone }
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:365:hardcoded object:        const { initialClass, classType, productCombination, orderPunchingType } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:366:hardcoded object:        const { languageOfInstruction, languageOfInstructionList, otherLanguageOfInstructionList, course } = this.state
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:367:hardcoded string:        const isK12 = ["11", 11, "11+12", "14", "13", "12", 12, "12+", "13+"].includes(initialClass);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:368:hardcoded string:        const isMeOrder = orderPunchingType === "MIDDLEEAST_ORDER" ? true : false;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:370:hardcoded variable:        const courses = this.getAvailableCourses()
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:372:hardcoded variable:        const fields = [/* {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:373:hardcoded string:            type: isK12 ? "select" : "hidden",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:374:hardcoded string:            name: "language",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:375:hardcoded string:            label: "Select language",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:376:hardcoded number:            required: isK12,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:377:hardcoded number:            options: this.getLanguageOptions(initialClass, isK12),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:380:hardcoded string:            type: languageOfInstructionList.length && classType == "neo" && ["byjus_classes_upgrade", "byjus_classes"].includes(productCombination) ? "select" : "hidden",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:381:hardcoded string:            name: "languageOfInstruction",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:382:hardcoded string:            label: "Primary Language Of Instruction In Class",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:383:hardcoded string:            required: isK12 || languageOfInstructionList.length && classType == "neo" && ["byjus_classes_upgrade", "byjus_classes"].includes(productCombination),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:386:hardcoded string:            helpText: isMeOrder ? "" : "Select English+ for additional language option"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:388:hardcoded string:            type: languageOfInstruction == "english+" && otherLanguageOfInstructionList.length ? "select" : "hidden",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:389:hardcoded string:            name: "otherLanguageOfInstruction",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:390:hardcoded string:            label: "Additional Language",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:391:hardcoded string:            required: languageOfInstruction == "english+" && otherLanguageOfInstructionList.length ? true : false,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:395:hardcoded string:            type: course || courses ? "select" : "hidden",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:396:hardcoded string:            name: "course",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:397:hardcoded string:            label: "Select Course",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:406:hardcoded object:        const { byjusMentoringClassesForm } = this;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:407:hardcoded object:        const { batch, batches } = this.state
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:409:hardcoded string:        if (name === "language") {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:410:hardcoded variable:            const firstCourse = this.getAvailableCourses(batches, value)
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:411:hardcoded string:            const course = firstCourse && size(firstCourse) == 1 ? get(firstCourse[0], "value", "") : ""
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:413:hardcoded object:            byjusMentoringClassesForm && byjusMentoringClassesForm.setFieldsValue({ course: course });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:414:hardcoded object:            this.setState({ course })
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:416:hardcoded string:        if (!["languageOfInstruction", "otherLanguageOfInstruction"].includes(name)) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:418:hardcoded array:                [`card-${batch}`]: false,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:419:hardcoded string:                batch: ""
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:423:hardcoded array:        this.setState({ [name]: value, error: null, batchError: null });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:438:hardcoded object:            const { batch } = this.state
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:440:hardcoded object:                const { id } = nextProps.initialValues
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:443:hardcoded array:                    [`card-${batch}`]: false,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:444:hardcoded array:                    [`card-${id}`]: true,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:448:hardcoded object:            this.setState({ initialValues: nextProps.initialValues });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:451:hardcoded object:            const { batch } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:454:hardcoded array:                [`card-${batch}`]: false,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:461:hardcoded object:        const { batch } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:464:hardcoded variable:        let isSelectingAnotherBatch = false
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:472:hardcoded array:            [`card-${batch}`]: false,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:473:hardcoded array:            [`card-${batchId}`]: true,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:475:hardcoded array:            selectedBatchIds: [batchId] //Push selected BatchIds 
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:482:hardcoded object:        const { batch } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:484:hardcoded string:            batch: null, [`card-${batch}`]: "",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:485:hardcoded array:            selectedBatchIds: [], selectedAdtnlDetails: {},
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:486:hardcoded array:            overallBatchDetails: []
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:493:hardcoded number:        if (batchList && batchList.length > 0) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:494:hardcoded string:            timeZone = get(batchList[0], 'time_zone', null);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:500:hardcoded object:        const { orderPunchingType, classType, productCombination, validity } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:501:hardcoded object:        const { adtnlClsDetails } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:502:hardcoded variable:        let isApplicable = false
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:505:hardcoded string:            !['mini_learning_program'].includes(productCombination) &&
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:507:hardcoded string:            !["MIDDLEEAST_ORDER"].includes(orderPunchingType) &&
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:508:hardcoded string:            validity != 'TRIAL_PACK' &&
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:509:hardcoded string:            classType == "neo") {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:517:hardcoded object:        const { selectedBatchIds } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:518:hardcoded string:        this.setState({ "selectedBatchIds": !isEmpty(batchId) ? batchId : selectedBatchIds });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:523:hardcoded object:        const { adtnlClsDetails, selectedAdtnlDetails } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:524:hardcoded variable:        const adtnlClsKeys = Object.keys(adtnlClsDetails);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:525:hardcoded variable:        const indexToPush = Object.keys(selectedAdtnlDetails).length;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:531:hardcoded number:                    [camelCase(adtnlClsKeys[0])]: adtnlClsDetails[adtnlClsKeys[0]]
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:538:hardcoded array:                    [camelCase(adtnlClsKeys[indexToPush])]: adtnlClsDetails[adtnlClsKeys[indexToPush]]
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:548:hardcoded array:                [courseTag]: selectedBatches
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:554:hardcoded object:        const { selectedAdtnlDetails, selectedBatchIds, cohortId, batch, error } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:556:hardcoded variable:        const commonProps = {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:563:hardcoded number:            isV4Batch: this.props.isV4Batch,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:565:hardcoded string:            language: get(this.state, 'languageDetails.value', ""),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:566:hardcoded string:            schoolState: get(this.props, 'schoolState')
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:569:hardcoded object:            <SectionHeading>{`Please select a slot for the Weekly Workshops mentioned below:`}</SectionHeading>
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:571:hardcoded string:            {!isEmpty(selectedBatchIds) && selectedAdtnlDetails["electiveClasses"] ?
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:573:hardcoded string:                    courseTag={get(selectedAdtnlDetails["electiveClasses"], 'course_tag')}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:574:hardcoded string:                    availableSubjects={get(selectedAdtnlDetails["electiveClasses"], 'available_subjects')}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:575:hardcoded object:                    {...commonProps}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:580:hardcoded string:                <SectionHeading>{!isEmpty(selectedAdtnlDetails["doubtResolutionClasses"]) && `Please select a slot for the Doubt Resolution Class mentioned below:`}</SectionHeading>
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:582:hardcoded string:                {!isEmpty(selectedBatchIds) && !isEmpty(selectedAdtnlDetails["doubtResolutionClasses"]) ?
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:584:hardcoded string:                        courseTag={get(selectedAdtnlDetails["doubtResolutionClasses"], 'course_tag')}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:585:hardcoded string:                        availableSubjects={[get(selectedAdtnlDetails["doubtResolutionClasses"], 'available_subjects.0')]}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:586:hardcoded object:                        {...commonProps}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:588:hardcoded string:                    !isEmpty(selectedAdtnlDetails["doubtResolutionClasses"]) && <BatchFetchMsg>Batches to be Fetched..... </BatchFetchMsg>
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:595:hardcoded object:        const { byjusMentoringClassesForm } = this;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:597:hardcoded array:            [name]: value,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:600:hardcoded string:        if(name=='languageId' && value){ 
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:603:hardcoded string:                languageOfInstruction: get(details, "name", "")
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:605:hardcoded string:            this.getSlotAndLanguageDetails({languageId: value, language: get(details, 'value', "")  });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:612:hardcoded object:        const { initialClass, authDetails, classType, productCombination, orderPunchingType } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:613:hardcoded variable:        const fields = this.getFields();
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:614:hardcoded variable:        const batchList = selectedCourseId && this.getBatchList(selectedCourseId);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:615:hardcoded string:        const timeZone = orderPunchingType == "MIDDLEEAST_ORDER" ? this.getMeTimeZoneMessage(batchList) : null;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:616:hardcoded string:        const isK12 = ["11", 11, "11+12", "14", "13", "12", 12, "12+", "13+"].includes(initialClass);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:617:hardcoded variable:        const firstCourse = this.getAvailableCourses()
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:618:hardcoded string:        const initialValue = firstCourse && size(firstCourse) == 1 && !isK12 ? { course: get(firstCourse[0], "value") } : {}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:619:hardcoded string:        const isMeOrder = orderPunchingType === "MIDDLEEAST_ORDER" ? true : false;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:620:hardcoded variable:        const adtnlClsAllowd = this.isAdtnlClsApplicable();
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:621:hardcoded variable:        const isBatchesAvl = !isEmpty(batchList);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:625:hardcoded object:                <ErrorWrapper error={error} />
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:628:hardcoded string:                    ref="byjusLanguageDetailsForm"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:629:hardcoded object:                    {...this.props}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:630:hardcoded object:                    handleParentCompChange = {this.onHandleLanguageChange}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:632:hardcoded string:                {languageId && langOptions.length > 0 && classType == "neo" && ["byjus_classes_upgrade", "byjus_classes"].includes(productCombination) && <h6 style={{ margin: "1rem" }}>Select Batches</h6>}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:636:hardcoded object:                    fields={fields}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:637:hardcoded object:                    wrappedComponentRef={(inst) => this.byjusMentoringClassesForm = inst}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:638:hardcoded object:                    initialValues={initialValue}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:640:hardcoded string:                <span className="d-inline-flex p-3">{timeZone && isMeOrder && <Alert
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:641:hardcoded string:                    description={`Following Slot(s) time zone is: '${timeZone}'`}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:642:hardcoded string:                    type="warning"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:647:hardcoded object:                    <ResetHandle onClick={this.onClickResetBatch}>Reset</ResetHandle>
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:649:hardcoded string:                {batchError && <ErrMsg>{error || "Please select the batch."} </ErrMsg>}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:653:hardcoded string:                            <div className="d-inline-flex">
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:654:hardcoded string:                                <Card className="p-1"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:655:hardcoded object:                                    key={index + `${btch.batchId}`}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:656:hardcoded object:                                    name={`card-${btch.batchId}`}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:657:hardcoded object:                                    onClick={() => this.myOnClick(btch.batchId)}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:658:hardcoded object:                                    bordered={true}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:661:hardcoded string:                                        backgroundColor: this.state[`card-${btch.batchId}`] ? "#F1F3F5" : "",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:662:hardcoded string:                                        borderRadius: '15px',
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:663:hardcoded string:                                        borderColor: "#318DF2",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:664:hardcoded string:                                        margin: '3px'
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:666:hardcoded number:                                    title={isK12 ? `${btch.name}` : `Slot`}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:668:hardcoded number:                                    {!isK12 && <div>
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:670:hardcoded string:                                            <span><i className="fa fa-clock-o" aria-hidden="true"></i> <strong>Regular Class Timings:</strong></span><br />
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:671:hardcoded object:                                            <span>{btch.mandatorySchedule}</span><br /></div>
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:673:hardcoded number:                                        {btch.optionalSchedule.length > 0 &&
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:675:hardcoded string:                                                <span><i className="fa fa-clock-o" aria-hidden="true"></i> <strong>Additional Class Timings:</strong></span><br />
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:676:hardcoded object:                                                <span>{btch.optionalSchedule}</span><br />
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:685:hardcoded object:                {(adtnlClsAllowd && batch && this.getAdditionalClassComp())}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMentoringClasses.js:692:hardcoded object:export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(ByjusMentoringClasses);microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:1:hardcoded variable:const mentoringConstant = {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:2:hardcoded string:    premiumSchoolNonApplicableCampaign: ["Bangalore"],
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:4:hardcoded string:        "JEE": 266,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:5:hardcoded string:        "NEET": 267,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:6:hardcoded string:        "JEE/NEET": 265
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:9:hardcoded string:        "JEE": 873,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:10:hardcoded string:        "NEET": 874,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:11:hardcoded string:        "JEE/NEET": 872
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:15:hardcoded number:const availableCourseIdForK12ByjusClasses = {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:17:hardcoded string:        "11": {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:19:hardcoded string:                "JEE": 986,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:20:hardcoded string:                "NEET": 988,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:21:hardcoded string:                "JEE/NEET": 990
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:24:hardcoded string:                "JEE": 987,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:25:hardcoded string:                "NEET": 989,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:26:hardcoded string:                "JEE/NEET": 991
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:29:hardcoded string:        "12": {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:31:hardcoded string:                "JEE": 992,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:32:hardcoded string:                "NEET": 1000,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:33:hardcoded string:                "JEE/NEET": 994
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:36:hardcoded string:                "JEE": 993,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:37:hardcoded string:                "NEET": 1001,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:38:hardcoded string:                "JEE/NEET": 995
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:41:hardcoded string:        "12+": {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:43:hardcoded string:                "JEE": 996,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:44:hardcoded string:                "NEET": 998,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:47:hardcoded string:                "JEE": 997,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:48:hardcoded string:                "NEET": 999,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:53:hardcoded string:        "11": {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:55:hardcoded string:                "JEE": 1899,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:56:hardcoded string:                "NEET": 1900,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:57:hardcoded string:                "JEE/NEET": 1898
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:60:hardcoded string:                "JEE": 1902,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:61:hardcoded string:                "NEET": 1903,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:62:hardcoded string:                "JEE/NEET": 1901
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:65:hardcoded string:        "12": {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:67:hardcoded string:                "JEE": 1905,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:68:hardcoded string:                "NEET": 1906,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:69:hardcoded string:                "JEE/NEET": 1904
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:72:hardcoded string:                "JEE": 1908,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:73:hardcoded string:                "NEET": 1909,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:74:hardcoded string:                "JEE/NEET": 1907
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:77:hardcoded string:        "12+": {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:79:hardcoded string:                "JEE": 1910,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:80:hardcoded string:                "NEET": 1911,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:83:hardcoded string:                "JEE": 1912,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:84:hardcoded string:                "NEET": 1913,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:90:hardcoded variable:const availableCourseIdForJumpstart = {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:92:hardcoded number:        12: {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:94:hardcoded string:                "JEE": 684,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:95:hardcoded string:                "NEET": 685,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:96:hardcoded string:                "JEE/NEET": 683
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:99:hardcoded string:                "JEE": 687,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:100:hardcoded string:                "NEET": 688,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:101:hardcoded string:                "JEE/NEET": 686
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:106:hardcoded number:        12: {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:108:hardcoded string:                "JEE": 1393,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:109:hardcoded string:                "NEET": 1394,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:110:hardcoded string:                "JEE/NEET": 1392
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:113:hardcoded string:                "JEE": 1396,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:114:hardcoded string:                "NEET": 1397,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:115:hardcoded string:                "JEE/NEET": 1395
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:121:hardcoded variable:const availableCourseIdForAdvanceCourses = {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:123:hardcoded number:        11: {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:125:hardcoded string:                "JEE": 540,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:126:hardcoded string:                "NEET": 541,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:127:hardcoded string:                "JEE/NEET": 539
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:130:hardcoded string:                "JEE": 543,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:131:hardcoded string:                "NEET": 544,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:132:hardcoded string:                "JEE/NEET": 542
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:135:hardcoded number:        12: {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:137:hardcoded string:                "JEE": 546,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:138:hardcoded string:                "NEET": 547,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:139:hardcoded string:                "JEE/NEET": 545
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:142:hardcoded string:                "JEE": 549,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:143:hardcoded string:                "NEET": 550,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:144:hardcoded string:                "JEE/NEET": 548
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:147:hardcoded number:        13: {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:149:hardcoded string:                "JEE": 546,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:150:hardcoded string:                "NEET": 547,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:151:hardcoded string:                "JEE/NEET": 545
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:154:hardcoded string:                "JEE": 549,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:155:hardcoded string:                "NEET": 550,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:156:hardcoded string:                "JEE/NEET": 548
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:159:hardcoded number:        14: {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:161:hardcoded string:                "JEE": 551,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:162:hardcoded string:                "NEET": 552
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:165:hardcoded string:        "12+": {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:167:hardcoded string:                "JEE": 573,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:168:hardcoded string:                "NEET": 552
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:171:hardcoded string:                "JEE": 553,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:172:hardcoded string:                "NEET": 550,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:173:hardcoded string:                "JEE/NEET": 554
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:178:hardcoded number:        11: {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:180:hardcoded string:                "JEE": 1586,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:181:hardcoded string:                "NEET": 1587,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:182:hardcoded string:                "JEE/NEET": 1585
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:185:hardcoded string:                "JEE": 1589,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:186:hardcoded string:                "NEET": 1590,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:187:hardcoded string:                "JEE/NEET": 1588
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:190:hardcoded number:        12: {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:192:hardcoded string:                "JEE": 1586,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:193:hardcoded string:                "NEET": 1587,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:194:hardcoded string:                "JEE/NEET": 1585
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:197:hardcoded string:                "JEE": 1589,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:198:hardcoded string:                "NEET": 1590,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:199:hardcoded string:                "JEE/NEET": 1588
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:202:hardcoded number:        13: {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:204:hardcoded string:                "JEE": 546,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:205:hardcoded string:                "NEET": 547,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:206:hardcoded string:                "JEE/NEET": 545
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:209:hardcoded string:                "JEE": 549,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:210:hardcoded string:                "NEET": 550,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:211:hardcoded string:                "JEE/NEET": 548
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:214:hardcoded number:        14: {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:216:hardcoded string:                "JEE": 551,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:217:hardcoded string:                "NEET": 552
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:220:hardcoded string:        "12+": {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:222:hardcoded string:                "JEE": 1591,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:223:hardcoded string:                "NEET": 1592,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:224:hardcoded string:                "JEE/NEET": 545
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:227:hardcoded string:                "JEE": 1593,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:228:hardcoded string:                "NEET": 1594,
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:229:hardcoded string:                "JEE/NEET": 548
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:235:hardcoded variable:const fetchTllmsMentoringType = {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:236:hardcoded string:    "oneToMany": "one_to_many_enabled",
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:237:hardcoded string:    "oneToMega": "one_to_mega_enabled"
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringConstant.js:246:hardcoded number:    availableCourseIdForK12ByjusClasses
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:1:hardcoded object:import React, { Component } from 'react';
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:2:hardcoded object:import { connect } from 'react-redux';
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:3:hardcoded object:import { Divider } from 'antd';
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:5:hardcoded object:import { get, flattenDeep, isEmpty } from 'lodash';
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:7:hardcoded file path:import CallApi from '../../../../api/callApi';
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:9:hardcoded file path:import ErrorWrapper from '../../../../components/ErrorWrapper';
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:10:hardcoded file path:import AntDFormBuilder from '../../../../components/form/AntDFormBuilder';
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:11:hardcoded object:import { addLoader, removeLoader, resetPrice, saveSlotDetails } from '../../productReducer';
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:12:hardcoded object:import { courseKeyMap, getApplicableCourseList, getAvailableMentoringType } from './MentoringHelper';
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:13:hardcoded object:import { mentoringSlots } from './MentoringConstant';
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:15:hardcoded variable:const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:16:hardcoded string:    appConfig: get(state, 'auth.details.config'),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:17:hardcoded string:    userDetails: get(state, 'auth.details.draftOrder'),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:18:hardcoded string:    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:19:hardcoded string:    productDetails: get(state, 'product.details'),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:20:hardcoded string:    productConfig: get(state, 'product.config'),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:21:hardcoded string:    error: get(state, 'product.error'),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:22:hardcoded string:    authDetails: get(state, 'auth.details', {}),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:25:hardcoded variable:const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:45:hardcoded array:            slotsDetail: [],
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:47:hardcoded array:            slotDetails: [],
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:49:hardcoded object:            initialValues: {}
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:58:hardcoded array:                ...{ [courseKeyMap[key] || key]: courseInfo[key] }
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:60:hardcoded object:            {}
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:65:hardcoded object:        const { oneToManyMentoringForm } = this;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:66:hardcoded object:        const { isOneToManyAvailable, courseDetails } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:67:hardcoded object:        const { initialClass } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:68:hardcoded array:        let mentoring = [];
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:69:hardcoded object:        let courseInfo = {};
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:71:hardcoded variable:            const mentoringDetails = {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:72:hardcoded string:                type: 'oneToMany'
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:74:hardcoded variable:            const values = oneToManyMentoringForm && await oneToManyMentoringForm.getFormValues();
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:77:hardcoded array:                const sessions = [];
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:78:hardcoded string:                const { hlpCourse, slotFrequency, mentoringType = "oneToMany" } = values;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:79:hardcoded array:                courseInfo = courseDetails[slotFrequency]
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:82:hardcoded string:                if (!["11", 11, "11+12"].includes(initialClass)) {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:83:hardcoded number:                    for (let i = 0; i < parseInt(slotFrequency, 10); i++) {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:85:hardcoded number:                            day: values[`day${i + 1}`],
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:86:hardcoded number:                            time: values[`time${i + 1}`]
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:90:hardcoded string:                mentoringDetails["type"] = mentoringType
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:92:hardcoded number:                if ([9, 12].includes(parseInt(slotFrequency, 10))) {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:93:hardcoded string:                    const { cohortId = "" } = courseInfo
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:94:hardcoded array:                    mentoringDetails.sessions = mentoringSlots[cohortId]
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:106:hardcoded object:        const { oneToManyMentoringForm } = this;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:108:hardcoded number:        /**Reset all other fields if day1 changes */
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:109:hardcoded string:        if (name === 'day1') {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:110:hardcoded string:            oneToManyMentoringForm && oneToManyMentoringForm.setFieldsValue({ day2: '', time1: '', time2: '', day3: '', time3: '' });
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:112:hardcoded number:        /**Reset day2 values if day1 is changed */
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:113:hardcoded string:        if (name === 'time1') {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:114:hardcoded string:            oneToManyMentoringForm && oneToManyMentoringForm.setFieldsValue({ day2: '', time2: '', day3: '', time3: '' });
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:115:hardcoded string:        } if (name === "slotFrequency") {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:116:hardcoded string:            oneToManyMentoringForm && oneToManyMentoringForm.setFieldsValue({ day1: '', time1: '', day2: '', time2: '', day3: '', time3: '' });
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:119:hardcoded string:        if (name === "time2") {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:120:hardcoded string:            oneToManyMentoringForm && oneToManyMentoringForm.setFieldsValue({ day3: '', time3: '' });
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:122:hardcoded string:        if (name === "day2") {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:123:hardcoded string:            oneToManyMentoringForm && oneToManyMentoringForm.setFieldsValue({ day3: '', time3: '', time2: '' });
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:127:hardcoded array:            [name]: value,
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:129:hardcoded string:        }, (name === "slotFrequency") ? this.getCourseList : null);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:135:hardcoded object:        const { identifier, initialClass, board, state, productType, subCourse, productCombination } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:137:hardcoded object:        const payload = { identifier, initialClass, board, state, productType, subCourse, productCombination };
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:140:hardcoded string:            url: '/api/product/getMentoringCourseDetails',
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:141:hardcoded string:            method: 'POST',
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:144:hardcoded string:            const resp = get(response, 'data', {});
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:156:hardcoded object:            this.setState({ error });
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:162:hardcoded array:        this.setState({ slotsDetail: [] });
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:167:hardcoded object:        const { authDetails, validity, initialClass, board, userDetails } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:168:hardcoded string:        const featureConfig = get(authDetails, 'config.featureCheck', {});
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:169:hardcoded object:        const { isOneToMega } = featureConfig;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:171:hardcoded object:        let { slotFrequency, courseDetails } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:172:hardcoded array:        const selectedFrequencyCourseDetail = courseDetails && courseDetails[slotFrequency];
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:173:hardcoded string:        const salesDetails = get(userDetails, "salesDetails", {});
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:174:hardcoded string:        const campaign = get(salesDetails, "directSalesByCampaign", "");
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:175:hardcoded object:        const { availableCourses, mentoringType } = selectedFrequencyCourseDetail && getApplicableCourseList(selectedFrequencyCourseDetail, validity, isOneToMega, initialClass, board, campaign);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:177:hardcoded number:        if (availableCourses.length > 0) {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:178:hardcoded number:            this.setState({ hlpCourse: availableCourses[0].name, initialValues: { hlpCourse: availableCourses[0].name, mentoringType }, mentoringType });
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:183:hardcoded object:        const { courseDetails = {} } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:184:hardcoded variable:        const availableFrequency = Object.keys(courseDetails);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:195:hardcoded variable:        const slotDetails = this.selectedSlotDetails(frequency);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:196:hardcoded array:        let availableTimeSlots = slotDetails.find(ele => ele.formattedName === this.state[`day${count}`] && this.state[`day${count}`]);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:197:hardcoded number:        availableTimeSlots = count === 1 ? availableTimeSlots && this.getSlot1Time(availableTimeSlots) : this.getNextAvailableTime(count, slotDetails, frequency)
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:201:hardcoded number:    /**T1 in all cases irrespective of frequency selected is the combination of peak+non-peak */
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:202:hardcoded number:    getSlot1Time = (availableTimeSlots) => {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:203:hardcoded object:        const { availableNonPeakTimeSlots, availablePeakTimeSlots } = availableTimeSlots;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:205:hardcoded string:            "Group 1": availablePeakTimeSlots.map(tm => { return { label: tm, value: tm }; }),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:206:hardcoded string:            "Group 2": availableNonPeakTimeSlots.map(tm => { return { label: tm, value: tm }; }),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:212:hardcoded object:        const { slotDetails } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:213:hardcoded variable:        let updatedSlotDetails = slotDetails.find(ele => Object.keys(ele).includes(frequency));
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:221:hardcoded string:            "Group 1": availablePeakTimeSlots.map(tm => { return { label: tm, value: tm }; }),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:222:hardcoded string:            "Group 2": availableNonPeakTimeSlots.map(tm => { return { label: tm, value: tm }; }),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:228:hardcoded array:            [`Group ${count}`]: timeStotDetails.map(tm => { return { label: tm, value: tm }; }),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:232:hardcoded number:    getNextAvailableTimeFor2Frequency = (previousPeakSlotTime, selectedTimeValue, selectedPreviousSlotDetail, selectedCurrentSlotDetail) => {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:234:hardcoded number:            /**Selected T1 time belongs from non Peak slot hence for T2 peak_non-peak slots will be available*/
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:235:hardcoded object:            const { availablePeakTimeSlots, availableNonPeakTimeSlots } = selectedCurrentSlotDetail;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:238:hardcoded number:            /**Selected T1 time belongs from peak slot hence for T2 non-peak slots will be available */
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:239:hardcoded string:            const availableNonPeakTimeSlots = get(selectedCurrentSlotDetail, "availableNonPeakTimeSlots", []);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:240:hardcoded number:            return this.getPeakOrNonPeakSlots(2, availableNonPeakTimeSlots)
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:244:hardcoded number:    getNextAvailableTimeFor3Frequency = (slotDetails, selectedPreviousSlotDetail, selectedTimeValue, selectedCurrentSlotDetail) => {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:245:hardcoded number:        /**If T1 T2 belongs to same group then T3 will be from other group.
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:246:hardcoded number:         * If T1 T2 belongs to different group then T3 will be the combination of two groups*/
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:247:hardcoded string:        let time1SlotGroup = 'availableNonPeakTimeSlots', time2SlotGroup = 'availableNonPeakTimeSlots'
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:248:hardcoded number:        const { time1, day1 } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:249:hardcoded number:        const day1Details = slotDetails.find(ele => ele.formattedName === day1);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:250:hardcoded number:        const { availablePeakTimeSlots } = day1Details;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:251:hardcoded number:        if (availablePeakTimeSlots.includes(time1)) {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:252:hardcoded string:            time1SlotGroup = 'availablePeakTimeSlots'
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:254:hardcoded string:        const previousPeakSlotTime = selectedPreviousSlotDetail && get(selectedPreviousSlotDetail, "availableNonPeakTimeSlots", []);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:256:hardcoded number:            /**Selected T2 time belongs from Group2 slot hence for 3 peak+non-peak slots will be available*/
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:257:hardcoded string:            time2SlotGroup = 'availableNonPeakTimeSlots';
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:259:hardcoded string:            time2SlotGroup = 'availablePeakTimeSlots';
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:261:hardcoded number:        if (time1SlotGroup === time2SlotGroup) {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:263:hardcoded string:            if (time1SlotGroup === "availablePeakTimeSlots") {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:264:hardcoded array:                const { availableNonPeakTimeSlots = [] } = selectedCurrentSlotDetail;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:265:hardcoded number:                return this.getPeakOrNonPeakSlots(2, availableNonPeakTimeSlots)
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:267:hardcoded array:                const { availablePeakTimeSlots = [] } = selectedCurrentSlotDetail;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:268:hardcoded number:                return this.getPeakOrNonPeakSlots(1, availablePeakTimeSlots)
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:272:hardcoded object:            const { availablePeakTimeSlots, availableNonPeakTimeSlots } = selectedCurrentSlotDetail;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:278:hardcoded number:        const selectedTimeValue = this.state[`time${count - 1}`]
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:279:hardcoded array:        const selectedCurrentDayValue = this.state[`day${count}`]
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:280:hardcoded number:        const selectedPreviousDayValue = this.state[`day${count - 1}`]
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:282:hardcoded variable:        let selectedCurrentSlotDetail = selectedCurrentDayValue && slotDetails.find(ele => ele.formattedName === selectedCurrentDayValue);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:283:hardcoded variable:        let selectedPreviousSlotDetail = selectedPreviousDayValue && slotDetails.find(ele => ele.formattedName === selectedPreviousDayValue);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:285:hardcoded string:        if (frequency === "2") {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:286:hardcoded number:            /**For 2 frequency time Slot 2 will either show peak slot or non peak slot depending on the value selected on T1
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:287:hardcoded number:             * If day1 timeslot is non-peak, for day2 allow peak+non-peak
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:288:hardcoded number:             * If day1 timeslot is peak, for day2 allow only non-peak
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:291:hardcoded string:            const previousPeakSlotTime = selectedPreviousSlotDetail && get(selectedPreviousSlotDetail, "availableNonPeakTimeSlots", []);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:292:hardcoded number:            return this.getNextAvailableTimeFor2Frequency(previousPeakSlotTime, selectedTimeValue, selectedPreviousSlotDetail, selectedCurrentSlotDetail)
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:294:hardcoded number:            /**For 3 frequency T2 will be the combination of both peak+non-peak slot irrespective of what is selected on T1 */
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:295:hardcoded number:            if (count === 2 && selectedCurrentDayValue) {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:296:hardcoded number:                /**T2 will be the combination of peak+non-peak time slot*/
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:297:hardcoded string:                const availablePeakTimeSlots = get(selectedCurrentSlotDetail, "availablePeakTimeSlots", [])
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:298:hardcoded string:                const availableNonPeakTimeSlots = get(selectedCurrentSlotDetail, "availableNonPeakTimeSlots", [])
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:300:hardcoded number:            } else if (count === 3 && selectedCurrentDayValue) {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:301:hardcoded number:                return this.getNextAvailableTimeFor3Frequency(slotDetails, selectedPreviousSlotDetail, selectedTimeValue, selectedCurrentSlotDetail)
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:307:hardcoded number:        const selectedDayValue = this.state[`day${count - 1}`]
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:308:hardcoded variable:        let selectedSlotDetail = selectedDayValue && slotDetails.find(ele => ele.formattedName === selectedDayValue);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:309:hardcoded string:        const availableDaysOption = get(selectedSlotDetail, "availableDaysOption", []);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:320:hardcoded object:        const dayOptionToFilter = `isDay${count}`;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:321:hardcoded variable:        const slotDetails = this.selectedSlotDetails(frequency)
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:322:hardcoded number:        const dayDetails = count === 1 ? slotDetails.filter(day => day[dayOptionToFilter] === true) : this.getNextAvailableDay(count, slotDetails);
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:323:hardcoded number:        if (count === 1) {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:336:hardcoded object:        const { slotFrequency } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:337:hardcoded object:        const { initialClass } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:338:hardcoded variable:        const fields = [{
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:339:hardcoded string:            type: 'checkbox',
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:340:hardcoded string:            name: 'isOneToManyAvailable',
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:341:hardcoded string:            checkBoxLabel: 'Byjus Mentoring (One To Many/ One To Mega)',
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:345:hardcoded string:            type: "select",
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:346:hardcoded string:            name: "slotFrequency",
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:347:hardcoded string:            label: "Select Frequency (weekly sessions)",
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:352:hardcoded string:            type: "text",
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:353:hardcoded string:            name: "hlpCourse",
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:354:hardcoded string:            label: "Course Name",
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:358:hardcoded string:            type: "text",
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:359:hardcoded string:            name: "mentoringType",
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:360:hardcoded string:            label: "Mentoring Type",
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:365:hardcoded number:        /**Show slot preferences to K10 only */
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:366:hardcoded string:        if (!["11", 11, "11+12"].includes(initialClass)) {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:367:hardcoded number:            for (let index = 0; index < parseInt(slotFrequency, 10); index++) {
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:369:hardcoded string:                    type: 'select',
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:370:hardcoded number:                    name: `day${index + 1}`,
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:371:hardcoded number:                    label: `Select Day ${index + 1}`,
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:373:hardcoded number:                    options: this.getAvailableDaysOption(index + 1, slotFrequency),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:374:hardcoded number:                    message: `Please select day ${index + 1}`,
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:377:hardcoded string:                    type: 'select',
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:378:hardcoded number:                    name: `time${index + 1}`,
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:379:hardcoded number:                    label: `Select Time ${index + 1}`,
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:381:hardcoded number:                    grpOptions: this.getAvailableTimeOption(index + 1, slotFrequency),
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:382:hardcoded number:                    message: `Please select time ${index + 1}`,
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:392:hardcoded object:        const { error, initialValues } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:393:hardcoded variable:        const fields = this.getFields();
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:397:hardcoded object:                <ErrorWrapper error={error} />
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:400:hardcoded object:                    fields={fields}
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:401:hardcoded object:                    wrappedComponentRef={(inst) => this.oneToManyMentoringForm = inst}
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:402:hardcoded object:                    initialValues={initialValues}
+microservices-middleware/client/src/modules/product/components/mentoring/OneToManyMentoring.js:410:hardcoded object:export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(OneToManyMentoring);microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:1:hardcoded object:import React, { Component } from 'react';
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:2:hardcoded object:import { connect } from 'react-redux';
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:4:hardcoded object:import { find, get, map, isEmpty, remove, concat, isEqual, intersection } from 'lodash';
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:5:hardcoded object:import { Divider } from 'antd';
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:7:hardcoded file path:import CallApi from '../../../../api/callApi';
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:8:hardcoded file path:import ErrorWrapper from '../../../../components/ErrorWrapper';
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:9:hardcoded file path:import InfoWrapper from '../../../../components/InfoWrapper';
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:10:hardcoded file path:import AntDFormBuilder from '../../../../components/form/AntDFormBuilder';
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:11:hardcoded object:import { saveProductDetails, addLoader, removeLoader, resetPrice, saveCashbackDetails } from '../../productReducer';
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:12:hardcoded file path:import FetchPrices from '../FetchPrices';
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:14:hardcoded variable:const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:15:hardcoded string:    appConfig: get(state, 'auth.details.config'),
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:16:hardcoded string:    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:17:hardcoded string:    productDetails: get(state, 'product.details'),
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:18:hardcoded string:    productConfig: get(state, 'product.config'),
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:19:hardcoded string:    loading: get(state, 'product.loading'),
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:20:hardcoded string:    error: get(state, 'product.error')
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:23:hardcoded variable:const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:51:hardcoded object:        const { mentoringForm } = this;
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:52:hardcoded variable:        const details = await mentoringForm.getFormValues();
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:55:hardcoded variable:            const payload = {
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:61:hardcoded string:                url: '/api/product/getMentoring'
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:67:hardcoded object:        const { identifier } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:68:hardcoded variable:        const payload = {
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:77:hardcoded string:                url: '/api/product/storeProductDetails',
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:78:hardcoded string:                method: 'POST',
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:81:hardcoded string:                const { productDetails, cashbackDetails } = get(response, 'data', {});
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:85:hardcoded object:                this.setState({ error: null });
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:87:hardcoded string:                this.navigateToScreen('address');
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:89:hardcoded object:                this.setState({ error });
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:96:hardcoded object:        const { history } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:97:hardcoded string:        const url = `/${path}${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:106:hardcoded object:        const { fetchComp } = this.refs;
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:109:hardcoded object:            const { status, productDetails } = fetchComp.getProductsAndFinalPrice();
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:111:hardcoded string:                if (status && productDetails && (get(productDetails, 'finalPrice') >= 0)) {
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:115:hardcoded string:                    this.setState({ error: 'Product Details Missing' });
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:118:hardcoded string:                const errMsg = get(error, 'message', 'Error') || error;
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:119:hardcoded object:                this.setState({ error: errMsg });
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:125:hardcoded object:        this.setState({ error });
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:130:hardcoded string:            label: 'Byjus One-on-One - 1-month validity',
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:131:hardcoded string:            value: 'oneOnOne1Month'
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:133:hardcoded string:            label: 'Byjus One-on-One - 3-month validity',
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:134:hardcoded string:            value: 'oneOnOne3Month'
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:136:hardcoded string:            label: 'Byjus One-on-One',
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:137:hardcoded string:            value: 'oneOnOne'
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:142:hardcoded object:        const { resetPrice, changeNextBtnMode } = this.props; //To render some specific component after the main product details form
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:143:hardcoded object:        const { error } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:144:hardcoded variable:        const mentoringOptions = this.getMentoringOptions()
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:148:hardcoded object:                <ErrorWrapper error={error} />
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:151:hardcoded string:                        type: 'select',
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:152:hardcoded string:                        name: 'mentoringType',
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:153:hardcoded string:                        label: 'Select mentoring type',
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:156:hardcoded string:                        message: "Please select mentoring type"
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:158:hardcoded string:                        type: 'number',
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:159:hardcoded number:                        min: 1,
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:160:hardcoded number:                        max: 1,
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:161:hardcoded number:                        value: 1,
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:162:hardcoded string:                        name: 'mentoringCount',
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:163:hardcoded string:                        label: "Byjus One-on-One",
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:164:hardcoded string:                        helpText: "1 = 40 Sessions",
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:167:hardcoded object:                    wrappedComponentRef={(inst) => this.mentoringForm = inst}
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:173:hardcoded string:                    ref='fetchComp'
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:174:hardcoded object:                    onClickFetchPrices={this.onClickFetchPrices}
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:175:hardcoded object:                    getProductDetails={this.getProductDetails}
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:176:hardcoded object:                    changeNextBtnMode={changeNextBtnMode}
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:177:hardcoded object:                    setError={this.setError}
+microservices-middleware/client/src/modules/product/components/mentoring/ProductMentoring.js:185:hardcoded object:export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(ProductMentoring);
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:1:hardcoded object:import { get, find, isEmpty, cloneDeep, flattenDeep } from 'lodash';
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:2:hardcoded object:import { productPermissions } from '../../../../utility/screenPermission';
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:3:hardcoded object:import { mentoringConstant, fetchTllmsMentoringType } from './MentoringConstant';
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:5:hardcoded variable:export const isOneToManyOptionAvailable = (user) => {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:6:hardcoded string:    const userPermissions = get(user, 'permissions', []);
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:7:hardcoded number:    return userPermissions.indexOf(productPermissions.acceptK3Check) >= 0;
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:10:hardcoded variable:export const courseKeyMap = {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:11:hardcoded string:    cohort_id: 'cohortId',
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:12:hardcoded string:    start_at: 'startAt',
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:13:hardcoded string:    session_frequency: "sessionFrequency",
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:14:hardcoded string:    is_active: "isActive"
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:18:hardcoded variable:export const validateBhlpMentoringDetails = (oneToManyFormValue, productDetails) => {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:19:hardcoded array:    let oneToManyMentoringDetails = [], bhlpCourseDetails = [], validatedResponse = { status: true };
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:20:hardcoded object:    const { mentoring, courseInfo } = oneToManyFormValue
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:22:hardcoded number:    if (productDetails && mentoring.length > 0 && !isEmpty(courseInfo)) {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:28:hardcoded number:    } else if (oneToManyMentoringDetails.length === 0 || isEmpty(courseInfo)) {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:40:hardcoded variable:export const validateByjusClassesMentoringDetails = (byjusClassesFormValue, productDetails) => {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:41:hardcoded array:    let byjusClassesMentoringDetails = [], bhlpCourseDetails = [], validatedResponse = { status: true };
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:42:hardcoded object:    const { mentoring, courseInfo, formValue } = byjusClassesFormValue
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:43:hardcoded string:    const { trackId = "" } = formValue || {}
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:44:hardcoded number:    if (productDetails && mentoring.length > 0 && !isEmpty(courseInfo)) {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:50:hardcoded number:    } else if (byjusClassesMentoringDetails.length === 0 || isEmpty(courseInfo)) {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:60:hardcoded variable:const getMentoringType = (initialClass, board, campaign) => {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:62:hardcoded number:         * 11 11+12 is applicable for 1 to mega (Premium school)
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:63:hardcoded number:         * one_to_mega_enabled - CBSE + Non Bangalore campaign + 4 / 5 + Non Bangalore Campaign
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:65:hardcoded string:    let mentoringType = "";
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:66:hardcoded string:    if ((["4", "5"].includes(initialClass) && !mentoringConstant.premiumSchoolNonApplicableCampaign.includes(campaign))) {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:67:hardcoded string:        mentoringType = "oneToMega";
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:68:hardcoded string:    } else if ((!["11", 11, "11+12", "4", "5"].includes(initialClass) && !mentoringConstant.premiumSchoolNonApplicableCampaign.includes(campaign) && board === "CBSE")) {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:69:hardcoded string:        mentoringType = "oneToMega";
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:70:hardcoded string:    } else if (!["11", 11, "11+12"].includes(initialClass)) {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:71:hardcoded string:        mentoringType = "oneToMany";
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:73:hardcoded string:        mentoringType = "oneToMega";
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:79:hardcoded variable:export const getApplicableCourseList = (courses, validity, isOneToMega, initialClass, board, campaign) => {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:80:hardcoded variable:    const mentoringType = getMentoringType(initialClass, board, campaign);
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:82:hardcoded string:    courses = courses && courses.filter(ele => !ele.name.toLowerCase().includes("free") && ele[fetchTllmsMentoringType[mentoringType]] === true & ele.is_active === true);
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:84:hardcoded number:    let availableCourses = courses && courses.sort((d1, d2) => new Date(d1.end_at).getTime() - new Date(d2.end_at).getTime());
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:85:hardcoded number:    availableCourses = availableCourses.slice(-1)
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:87:hardcoded string:    if (!isOneToMega && !["11", 11, "11+12"].includes(initialClass)) {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:89:hardcoded string:            course["one_to_mega_enabled"] = false;
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:93:hardcoded object:    return { availableCourses, mentoringType };
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:96:hardcoded string:export const getByjusClassesApplicableCourseList = (courses = "", board = "", initialClass = "", frequency) => {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:97:hardcoded number:    let mandatorySessionsCount = 4, optionalSessionsCount = 1;
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:98:hardcoded number:    if (Number(frequency) === 4) {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:99:hardcoded number:        mandatorySessionsCount = 3
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:100:hardcoded number:        optionalSessionsCount = 1
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:103:hardcoded string:    const availableCourses = courses && courses.filter(ele => !ele.name.toLowerCase().includes("free") &&
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:109:hardcoded variable:export const getAvailableMentoringType = (mentoringDetails) => {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:110:hardcoded variable:    const availableMentoringType = [{
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:111:hardcoded string:        label: 'One To Many',
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:112:hardcoded string:        value: 'oneToMany',
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:115:hardcoded string:        label: 'One To Mega / Premium School',
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:116:hardcoded string:        value: 'oneToMega',
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:120:hardcoded string:        if (mentoringDetails.one_to_many_enabled && type.value === "oneToMany") {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:123:hardcoded string:        if (mentoringDetails.one_to_mega_enabled && type.value === "oneToMega") {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:130:hardcoded variable:export const latestBatchDetails = (courseList) => {
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:131:hardcoded variable:    let course = courseList && courseList.filter(ele => ele.is_active && ele.one_to_mega_enabled);
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:133:hardcoded number:        const { start_at: c1StartAt } = a;
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:134:hardcoded number:        const { start_at: c2StartAt } = b;
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:135:hardcoded number:        return new Date(c2StartAt) - new Date(c1StartAt);
+microservices-middleware/client/src/modules/product/components/mentoring/MentoringHelper.js:137:hardcoded number:    return [course[0]]
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:1:hardcoded object:import React, { Component, createRef } from 'react';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:2:hardcoded object:import { connect } from 'react-redux';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:3:hardcoded object:import { Divider, Card } from 'antd';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:4:hardcoded file path:import moment from 'moment';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:5:hardcoded object:import { get, isEqual, size, isEmpty } from 'lodash';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:7:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:9:hardcoded file path:import ErrorWrapper from 'components/ErrorWrapper';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:10:hardcoded file path:import AntDFormBuilder from 'components/form/AntDFormBuilder';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:11:hardcoded object:import { addLoader, removeLoader, resetPrice, saveSlotDetails } from '../../productReducer';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:12:hardcoded object:import { ErrMsg, SectionHeading, ResetHandle } from '../byjusclasses/Styles';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:13:hardcoded number:import { BELP_K3_GRADES } from '../../../../modules/product/utils/productConstant'
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:15:hardcoded variable:const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:16:hardcoded string:    appConfig: get(state, 'auth.details.config'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:17:hardcoded string:    userDetails: get(state, 'auth.details.draftOrder'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:18:hardcoded string:    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:19:hardcoded string:    productDetails: get(state, 'product.details'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:20:hardcoded string:    productConfig: get(state, 'product.config'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:21:hardcoded string:    error: get(state, 'product.error'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:22:hardcoded string:    authDetails: get(state, 'auth.details', {}),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:23:hardcoded string:    orderPunchingType: get(state, 'auth.orderPunchingType'),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:24:hardcoded string:    user: get(state, "auth.details.user", {}),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:27:hardcoded variable:const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:47:hardcoded object:            initialValues: {},
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:48:hardcoded array:            batches: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:50:hardcoded array:            langOptions: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:51:hardcoded array:            languageOfInstructionList: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:52:hardcoded array:            otherLanguageOfInstructionList: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:53:hardcoded object:            selectedAdtnlDetails: {},
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:59:hardcoded string:        let { bfsBatch: classFormat, board, initialClass, productCombination, finalClass, isGauntletTwoUser = false, isGauntletBDAUser = false, orderType = "" } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:61:hardcoded string:        const payload = { classType : "BMath", classFormat, board, initialClass, productCombination, finalClass, isGauntletTwoUser, isGauntletBDAUser ,orderType};
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:63:hardcoded string:            url: '/api/product/getBfsMentoringCourseDetails',
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:64:hardcoded string:            method: 'POST',
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:67:hardcoded string:            const resp = get(response, 'data', {});
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:68:hardcoded string:            const language = get(resp, 'languages', []);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:85:hardcoded array:                batches: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:88:hardcoded array:                langOptions: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:89:hardcoded array:                languageOfInstructionList: [],
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:90:hardcoded array:                otherLanguageOfInstructionList: []
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:96:hardcoded array:        const {  batch, batches=[] } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:97:hardcoded object:        const { productCombination, initialClass, finalClass } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:98:hardcoded object:        const { bfsMentoringClassesForm } = this;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:99:hardcoded array:        let formValue = {}, courseInfo={}, mentoring = [];
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:101:hardcoded variable:        const values = bfsMentoringClassesForm && await bfsMentoringClassesForm.getFormValues();
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:104:hardcoded object:        this.setState({ batchError: false, error: null });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:107:hardcoded string:            if(["belp", "byjus_tlp"].includes(productCombination) && !BELP_K3_GRADES.includes(initialClass) || !BELP_K3_GRADES.includes(finalClass)) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:108:hardcoded object:                this.setState({ batchError: false});
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:111:hardcoded object:                this.setState({ batchError: true});
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:113:hardcoded string:                behavior : "smooth"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:120:hardcoded array:                let sessions = [];
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:122:hardcoded string:                const slots = get(courseInfo, 'slots', []);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:125:hardcoded string:                        day: get(slot, "day", ""),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:126:hardcoded string:                        time: `${get(slot, "start_time", "")}-${get(slot, "end_time", "")}`
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:144:hardcoded string:            let languageOfInstructionList = language.filter(lang => lang.name == "English");
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:145:hardcoded string:            let otherLanguageOfInstructionList = language.filter(lang => lang.name != "English");
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:147:hardcoded array:                let languagesList = [];
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:159:hardcoded string:                    label: "English+",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:160:hardcoded string:                    value: "english+"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:163:hardcoded array:                let otherLanguagesList = [];
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:166:hardcoded object:                        label: `English + ${ele.name}`,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:167:hardcoded object:                        value: `english+${ele.name.toLowerCase()}`
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:180:hardcoded variable:        let availableCourses = batches
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:187:hardcoded string:            availableCourses = this.groupBy(availableCourses, "batch_start_date")
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:188:hardcoded variable:            let course_timing = Object.keys(availableCourses)
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:189:hardcoded number:            course_timing = course_timing.sort((d1, d2) => new Date(d2).getTime() - new Date(d1).getTime());
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:190:hardcoded number:            availableCourses = availableCourses[course_timing[0]]
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:198:hardcoded array:            [item[key]]: [
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:199:hardcoded array:                ...(result[item[key]] || []),
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:203:hardcoded object:        {},
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:207:hardcoded string:        let mandatorySchedule = '', optionalSchedule = '';
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:208:hardcoded string:        const slots = get(availableCourses, "slots", [])
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:210:hardcoded string:            mandatorySchedule += `${get(slot, "day", "")}: ${get(slot, "start_time", "")}-${get(slot, "end_time", "")}${" , "}`
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:213:hardcoded object:        return ({ optionalSchedule, mandatorySchedule })
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:217:hardcoded object:        const { productCombination, initialClass, authDetails } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:218:hardcoded object:        const { languageOfInstruction, languageOfInstructionList, otherLanguageOfInstructionList, course } = this.state
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:219:hardcoded object:        const { env } = authDetails
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:220:hardcoded string:        const isLocalEnv = ["local"].includes(env);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:221:hardcoded string:        const dbelByjusMathSampler =  isLocalEnv && ['tlp', 'byjus_tlp'].includes(productCombination) && BELP_K3_GRADES.includes(initialClass) 
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:223:hardcoded variable:        const fields = [{
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:224:hardcoded string:            type: languageOfInstructionList.length ? "select" : "hidden",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:225:hardcoded string:            name: "languageOfInstruction",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:226:hardcoded string:            label: "Primary Language Of Instruction In Class",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:227:hardcoded string:            required: languageOfInstructionList.length && ["byjus_math", "belp", "math_streaming"].includes(productCombination) || dbelByjusMathSampler,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:230:hardcoded string:            helpText: otherLanguageOfInstructionList.length ? "Select English+ for additional language option" : null
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:232:hardcoded string:            type: languageOfInstruction == "english+" && otherLanguageOfInstructionList.length ? "select" : "hidden",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:233:hardcoded string:            name: "otherLanguageOfInstruction",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:234:hardcoded string:            label: "Additional Language",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:235:hardcoded string:            required: languageOfInstruction === "english+" && otherLanguageOfInstructionList.length ? true : false,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:243:hardcoded object:        const { batch } = this.state
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:244:hardcoded string:        if (!["languageOfInstruction", "otherLanguageOfInstruction"].includes(name)) {
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:246:hardcoded array:                [`card-${batch}`]: false,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:247:hardcoded string:                batch: ""
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:251:hardcoded array:        this.setState({ [name]: value, error: null, batchError: null });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:264:hardcoded object:            const { batch } = this.state
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:266:hardcoded object:                const { id } = nextProps.initialValues
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:269:hardcoded array:                    [`card-${batch}`]: false,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:270:hardcoded array:                    [`card-${id}`]: true,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:274:hardcoded object:            this.setState({ initialValues: nextProps.initialValues });
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:277:hardcoded object:            const { batch } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:280:hardcoded array:                [`card-${batch}`]: false,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:287:hardcoded object:        const { batch } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:294:hardcoded array:            [`card-${batch}`]: false,
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:295:hardcoded array:            [`card-${batchId}`]: true, 
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:301:hardcoded object:        const { batch } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:303:hardcoded string:            batch: null, [`card-${batch}`]: "",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:309:hardcoded object:        let { batches, language } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:310:hardcoded variable:        let availableBatches = this.getUpdatedBatches(batches, language);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:312:hardcoded variable:            let getSlots = this.getAvailableSlot(course)
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:313:hardcoded string:            const batchStartDate = moment(course.batch_start_date).format("MMMM Do, YYYY")
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:314:hardcoded variable:            const batchId = course.id
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:315:hardcoded variable:            const name = course.name
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:316:hardcoded string:            const time_zone = get(course, 'time_zone', null)
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:317:hardcoded object:            return { batchId, batchStartDate, ...getSlots, name, time_zone }
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:318:hardcoded array:        }) : [];
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:323:hardcoded object:        let { isDevEnv, isBatchesAvl, productCombination, initialClass, finalClass, isGauntletTwoUser, isGauntletBDAUser } = details
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:324:hardcoded string:        return (productCombination === "belp" && (BELP_K3_GRADES.includes(finalClass) || BELP_K3_GRADES.includes(initialClass)) && isGauntletTwoUser
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:325:hardcoded string:        && !isBatchesAvl && <div ref={this.batchErrorRef}><ErrMsg>{"No batches available for the selected details!"} </ErrMsg></div>)
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:330:hardcoded object:        const { error, batchError, langOptions, languageOfInstruction, otherLanguageOfInstruction } = this.state;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:331:hardcoded object:        const { productCombination, initialClass, finalClass, authDetails } = this.props;
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:332:hardcoded object:        const { featureEnableList, env } = authDetails
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:333:hardcoded string:        const isDevEnv = ["local","development"].includes(env);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:334:hardcoded variable:        const fields = this.getFields();
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:335:hardcoded variable:        const batchList = this.getBatchList();
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:336:hardcoded variable:        const isBatchesAvl = !isEmpty(batchList) && (languageOfInstruction || otherLanguageOfInstruction);
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:337:hardcoded number:        const isGauntletTwoUser = featureEnableList.gauntlet_2
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:338:hardcoded variable:        const isGauntletBDAUser = featureEnableList.gauntlet_for_bda_level
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:339:hardcoded object:        const isBatchError = this.getBatchError({ isDevEnv, isBatchesAvl, productCombination, initialClass, finalClass, isGauntletTwoUser, isGauntletBDAUser })
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:343:hardcoded object:                <ErrorWrapper error={error} />
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:345:hardcoded string:                {langOptions.length > 0 && ["byjus_math", "belp", "byjus_tlp"].includes(productCombination) && <h6 style={{ margin: "1rem" }}>Language Preference</h6>}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:347:hardcoded object:                    fields={fields}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:348:hardcoded object:                    wrappedComponentRef={(inst) => this.bfsMentoringClassesForm = inst}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:352:hardcoded object:                <ResetHandle onClick={this.onClickResetBatch}>Reset</ResetHandle>
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:355:hardcoded object:                {isBatchError}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:356:hardcoded string:                {productCombination === "byjus_tlp" && BELP_K3_GRADES.includes(initialClass)
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:357:hardcoded string:                 && !isBatchesAvl && <div ref={this.batchErrorRef}><ErrMsg>{"No batches available for the selected details!"} </ErrMsg></div>}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:358:hardcoded string:                {batchError && <div ref={this.batchErrorRef}><ErrMsg>{"Please select a Regular Batch"} </ErrMsg></div>}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:362:hardcoded string:                            <div className="d-inline-flex">
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:363:hardcoded string:                                <Card className="p-1"
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:364:hardcoded object:                                    key={index + `${btch.batchId}`}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:365:hardcoded object:                                    name={`card-${btch.batchId}`}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:366:hardcoded object:                                    onClick={() => this.myOnClick(btch.batchId)}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:367:hardcoded object:                                    bordered={true}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:370:hardcoded string:                                        backgroundColor: this.state[`card-${btch.batchId}`] ? "#F1F3F5" : "",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:371:hardcoded string:                                        borderRadius: '15px',
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:372:hardcoded string:                                        borderColor: "#318DF2",
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:373:hardcoded string:                                        margin: '3px'
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:375:hardcoded object:                                    title={`${btch.name}`}
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:379:hardcoded string:                                            <span><i className="fa fa-clock-o" aria-hidden="true"></i> <strong>Regular Class Timings:</strong></span><br />
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:380:hardcoded object:                                            <span>{btch.mandatorySchedule}</span><br /></div>
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:382:hardcoded number:                                        {btch.optionalSchedule.length > 0 &&
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:384:hardcoded string:                                                <span><i className="fa fa-clock-o" aria-hidden="true"></i> <strong>Additional Class Timings:</strong></span><br />
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:385:hardcoded object:                                                <span>{btch.optionalSchedule}</span><br />
+microservices-middleware/client/src/modules/product/components/mentoring/ByjusMathMentoringClasses.js:399:hardcoded object:export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(ByjusMathMentoringClasses);

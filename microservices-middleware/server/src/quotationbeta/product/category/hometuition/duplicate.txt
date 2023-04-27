@@ -1,0 +1,132 @@
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:1:hardcoded object:const { get } = require('lodash');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:3:hardcoded file path:const logger = require('../../../../../lib/bunyan-logger')('getBhtProduct');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:4:hardcoded object:const { NotFoundError } = require('../../../../../lib/errors');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:5:hardcoded object:const { getCourseSku, getStudentAndProductDetails } = require('./assembler');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:6:hardcoded object:const { checkIfUpgradeOrder, getMinimumRange, getDiscountDetails } = require('./service');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:7:hardcoded object:const { getTotalSkuAndPrice } = require('../../../../productmanagement/service/totalSkusPrice');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:9:hardcoded variable:const getBhtProduct = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:10:hardcoded string:    logger.info({ method: 'getBhtProduct', reqBody: req.body, message: 'fetching bht product and price...' });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:12:hardcoded object:        const { initialClass, board, validity, formValues, studentId, batchDetails={}, studentMobile, 
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:13:hardcoded string:            tablet, quotationId, voucherDetails, session='', isUpgrade, stateBoard = '' } = req.body;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:15:hardcoded string:        if (!studentId && !quotationId) throw new NotFoundError('studentId and quotationId are required!');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:16:hardcoded object:        const courseSku = await getCourseSku({ initialClass, state: stateBoard, board, validity, tablet, session, isUpgrade });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:17:hardcoded object:        const { formattedProducts, totalPrice } = getTotalSkuAndPrice({ courseSku })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:18:hardcoded string:        const tabletSku = formattedProducts.filter(ele => ele.category === "tablet");
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:19:hardcoded string:        const isTrialPack = ['trial_pack'].includes(validity);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:21:hardcoded number:        let maxPrice = isTrialPack ? (totalPrice/1000) * 1000 : Math.ceil((totalPrice/1000)) * 1000;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:22:hardcoded object:        let minPrice = isTrialPack ? maxPrice : await getMinimumRange({ maxPrice, tabletSku });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:23:hardcoded object:        const { studentData, productDetails } = getStudentAndProductDetails({...req.body, tabletSku, maxPrice, minPrice })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:24:hardcoded variable:        let discountDetails = await getDiscountDetails({ productDetails, voucherDetails, studData: studentData, 
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:25:hardcoded number:            tabletSku, quotationId, batchDetails, tabletTotalPrice: tabletSku.reduce((acc, ele) => { return ele.basePrice + acc }, 0) });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:26:hardcoded string:        minPrice = get(discountDetails, 'minimumPrice', minPrice);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:27:hardcoded variable:        const response = {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:33:hardcoded string:            discountedPrice: get(discountDetails, 'discountedAmount', '')
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:35:hardcoded object:        logger.info({ response });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/controller.js:38:hardcoded object:        logger.error({ error })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:1:hardcoded object:const { Op } = require('sequelize');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:3:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:5:hardcoded object:const { getSalesSku, getSalesSkuWithAttribute, getPostgresTabletSku } = require('../../../../productmanagement/dto');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:6:hardcoded object:const { getUpdateSkuDetails } = require('../../assembler')
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:7:hardcoded object:const { getPostgresBoard } = require('../../../../productmanagement/service/commonHelper');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:8:hardcoded object:const { productConstant } = require('../../../../productmanagement/utils/productConstants');
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:10:hardcoded variable:const getTrialProductAndPrice = async (details) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:11:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:12:hardcoded object:    const { initialClass, board, isUpgrade, state } = details
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:15:hardcoded variable:    let query = {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:16:hardcoded string:        validity: '12',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:17:hardcoded string:        validityType: 'day',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:20:hardcoded string:    query['board'] = await getPostgresBoard({ grade: initialClass, board, state, query })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:22:hardcoded variable:    const complimentarySku = await getDocSku({
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:23:hardcoded string:        category: "doubts_on_chat",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:24:hardcoded string:        package: "doc_complimentary",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:25:hardcoded string:        validity: "40",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:26:hardcoded string:        validityType: 'day'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:27:hardcoded number:    }, 30)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:32:hardcoded number:        const isK5 = parseInt(initialClass) < 6 ? true : false
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:33:hardcoded string:        const streamingSku = board == 'CBSE' || isK5
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:36:hardcoded string:                subType: "streaming",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:37:hardcoded string:                category: "mlp"
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:40:hardcoded string:                subType: 'streaming',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:41:hardcoded string:                category: 'online_premium_app'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:44:hardcoded variable:        const trialSku = await getSalesSku({
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:46:hardcoded string:            category: "home_tuition"
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:51:hardcoded variable:        const trialUpgradeSku = await getSalesSku({
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:53:hardcoded string:            category: "home_tuition_upgrade"
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:59:hardcoded number:        const { price, category, basePrice=0 } = obj;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:60:hardcoded variable:        const coursePrice = price ? price : basePrice;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:61:hardcoded object:        return  getUpdateSkuDetails({ courseSku: obj, coursePrice, type: category }) 
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:67:hardcoded variable:const getMonthlyProductAndPrice = async (details) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:68:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:69:hardcoded string:    const { initialClass, board, tablet='', session='', isUpgrade, state } = details
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:70:hardcoded variable:    const grade = initialClass
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:72:hardcoded variable:    let query = {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:76:hardcoded variable:    const complimentarySku = await getDocSku({
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:77:hardcoded string:        category: "doubts_on_chat",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:78:hardcoded string:        package: "doc_complimentary", 
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:79:hardcoded string:        validity: "40",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:80:hardcoded string:        validityType: 'day'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:81:hardcoded number:    }, 30)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:85:hardcoded string:        query ["board"] = await getPostgresBoard({ grade, board, query, state })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:86:hardcoded variable:        const streamingSku = await getSalesSku({
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:88:hardcoded string:            subType: "streaming",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:89:hardcoded string:            category: 'online_premium_app',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:90:hardcoded string:            validity: "40",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:91:hardcoded string:            validityType: 'day'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:94:hardcoded variable:        const monthlySku = await getHomeTuitionSku({
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:96:hardcoded string:            category: "home_tuition",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:97:hardcoded string:            validity: '1',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:98:hardcoded string:            validityType: 'Month'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:102:hardcoded string:        query["board"] = await getPostgresBoard({ grade, board, query });
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:103:hardcoded variable:        const monthlyUpgradeSku = await getHomeTuitionSku({
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:105:hardcoded string:            category: "home_tuition_upgrade",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:106:hardcoded string:            validity: '1',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:107:hardcoded string:            validityType: 'Month'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:113:hardcoded object:        const tabletSku = await getPostgresTabletSku({ tabletId: tablet })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:118:hardcoded number:        const { price, category, basePrice=0 } = obj;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:119:hardcoded variable:        const coursePrice = price ? price : basePrice;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:120:hardcoded object:        return  getUpdateSkuDetails({ courseSku: obj, coursePrice, type: category }) 
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:126:hardcoded variable:const getQuarterlyProductAndPrice = async (details) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:127:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:128:hardcoded string:    const { initialClass, board, tablet='', session='', isUpgrade, state } = details
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:129:hardcoded variable:    let currentYear = (new Date()).getFullYear();
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:130:hardcoded number:    const nextYear = currentYear + 1;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:131:hardcoded variable:    let currentGrade = parseInt(initialClass);
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:132:hardcoded variable:    let query = {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:134:hardcoded string:        validity: '90',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:135:hardcoded string:        validityType: 'day'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:138:hardcoded string:    query['board'] = await getPostgresBoard({ grade: initialClass, board, query, state })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:140:hardcoded variable:    const complimentarySku = await getDocSku({
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:141:hardcoded string:        category: "doubts_on_chat",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:142:hardcoded string:        package: "doc_complimentary",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:143:hardcoded string:        validity: '3',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:144:hardcoded string:        validityType: 'month'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:145:hardcoded string:    }, 30, "recurring")
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:150:hardcoded variable:        let btlpStreamingSku = await getSalesSku({
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:153:hardcoded string:            board: { [Op.or]: [null, ""] },
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:154:hardcoded string:            subType: "streaming",
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:155:hardcoded string:            category: 'online_premium_app',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:157:hardcoded string:            validityType: 'year'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:161:hardcoded string:            // btlpStreamingSku['price'] = productConstant.CURRENT_YEAR_BHT_QUARTERLY_BTLP_DISCOUNTED_PRICE
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:166:hardcoded variable:        const quarterlySku = await getHomeTuitionSku({
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:168:hardcoded string:            category: "home_tuition"
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:173:hardcoded variable:        const quarterlyUpgradeSku = await getHomeTuitionSku({
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:175:hardcoded string:            category: "home_tuition_upgrade"
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:181:hardcoded object:        const tabletSku = await getPostgresTabletSku({ tabletId: tablet })
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:186:hardcoded number:        const { price, category, basePrice=0 } = obj;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:187:hardcoded variable:        const coursePrice = price ? price : basePrice;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:188:hardcoded object:        return  getUpdateSkuDetails({ courseSku: obj, coursePrice, type: category }) 
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:193:hardcoded variable:const getDocSku = async (query, session, renewalMode) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:194:hardcoded variable:    let includeQuery = { 
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:196:hardcoded object:            frequency: `${session}`, 
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:197:hardcoded string:            renewal_mode: renewalMode ? renewalMode : 'non-recurring'
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:200:hardcoded variable:    let product = await getSalesSkuWithAttribute(query, includeQuery)
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:205:hardcoded variable:const getCohortId = async (query) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:206:hardcoded variable:    const productDetails = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:207:hardcoded string:        attributes: ["cohortId"],
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:209:hardcoded string:            status: 'active',
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:214:hardcoded string:    if (!productDetails) throw new Error("Cohort Id is missing please mail optech@byjus.com to get it added.");
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:216:hardcoded object:    const { cohortId } = productDetails;
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:217:hardcoded string:    if (!cohortId || cohortId === "") throw new Error("Cohort Id is missing please mail optech@byjus.com to get it added.")
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:222:hardcoded variable:const getHomeTuitionSku = async (query, session) => {
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:223:hardcoded object:    let includeQuery = { where: { frequency: `${session}` } }
+microservices-middleware/server/src/quotationbeta/product/category/hometuition/dto.js:224:hardcoded variable:    let product = await getSalesSkuWithAttribute(query, includeQuery)

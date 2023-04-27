@@ -1,0 +1,45 @@
+microservices-middleware/server/src/productmanagement/doc/assembler.js:1:hardcoded object:const { get } = require('lodash');
+microservices-middleware/server/src/productmanagement/doc/assembler.js:3:hardcoded object:const { getSalesSkuWithAttribute } = require('../dto')
+microservices-middleware/server/src/productmanagement/doc/assembler.js:4:hardcoded object:const { getSkuItemId } = require('../service/skuIdHelper');
+microservices-middleware/server/src/productmanagement/doc/assembler.js:6:hardcoded variable:const getDocSku = async (details) => {
+microservices-middleware/server/src/productmanagement/doc/assembler.js:7:hardcoded string:    const {  frequency='', productCombination='' } = details;
+microservices-middleware/server/src/productmanagement/doc/assembler.js:8:hardcoded variable:    let query = {
+microservices-middleware/server/src/productmanagement/doc/assembler.js:9:hardcoded string:        category: 'doubts_on_chat',
+microservices-middleware/server/src/productmanagement/doc/assembler.js:10:hardcoded string:        type: 'service',
+microservices-middleware/server/src/productmanagement/doc/assembler.js:11:hardcoded string:        subType: 'live',
+microservices-middleware/server/src/productmanagement/doc/assembler.js:12:hardcoded string:        orgId: 'ORG-1'
+microservices-middleware/server/src/productmanagement/doc/assembler.js:15:hardcoded string:    let includeQuery = { where: { frequency : `${frequency}`, renewal_mode : 'non-recurring' }}
+microservices-middleware/server/src/productmanagement/doc/assembler.js:16:hardcoded variable:    let docSku = await getSalesSkuWithAttribute(query, includeQuery);
+microservices-middleware/server/src/productmanagement/doc/assembler.js:17:hardcoded string:    docSku['combinationType'] = productCombination;
+microservices-middleware/server/src/productmanagement/doc/assembler.js:18:hardcoded string:    docSku['price'] = get(docSku, 'basePrice', 0)
+microservices-middleware/server/src/productmanagement/doc/assembler.js:19:hardcoded string:    docSku['itemId'] = getSkuItemId();
+microservices-middleware/server/src/productmanagement/doc/controller.js:1:hardcoded object:const { isEmpty, isArray, get, flattenDeep } = require('lodash');
+microservices-middleware/server/src/productmanagement/doc/controller.js:2:hardcoded object:const { BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/doc/controller.js:3:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Quarterly Pack DTO');
+microservices-middleware/server/src/productmanagement/doc/controller.js:5:hardcoded object:const { getCourseSku } = require('./dto')
+microservices-middleware/server/src/productmanagement/doc/controller.js:6:hardcoded object:const { getUpdatedStudentDetails } = require('../byjusneo/assembler');
+microservices-middleware/server/src/productmanagement/doc/controller.js:7:hardcoded object:const { getTotalSkuAndPrice } = require('../../productmanagement/service/totalSkusPrice')
+microservices-middleware/server/src/productmanagement/doc/controller.js:9:hardcoded variable:const getDocProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/doc/controller.js:10:hardcoded string:    logger.info({ method: 'getDocProduct' }, { message: "Fetching DOC Product" });
+microservices-middleware/server/src/productmanagement/doc/controller.js:12:hardcoded string:    let { paymentType = "NON-EMI", productType, productCombination, student } = req.body;
+microservices-middleware/server/src/productmanagement/doc/controller.js:15:hardcoded object:        const courseSku = await getCourseSku({student, productCombination})
+microservices-middleware/server/src/productmanagement/doc/controller.js:16:hardcoded array:        const { formattedProducts, totalPrice } = getTotalSkuAndPrice({ courseSku: [courseSku] })
+microservices-middleware/server/src/productmanagement/doc/controller.js:18:hardcoded string:        student['items'] = formattedProducts;
+microservices-middleware/server/src/productmanagement/doc/controller.js:25:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/doc/dto.js:1:hardcoded object:const { getDocSku } = require('./assembler');
+microservices-middleware/server/src/productmanagement/doc/dto.js:3:hardcoded variable:const getCourseSku = async (details) => {
+microservices-middleware/server/src/productmanagement/doc/dto.js:4:hardcoded object:    const { student, productCombination } = details;
+microservices-middleware/server/src/productmanagement/doc/dto.js:5:hardcoded object:    const { validity } = student;
+microservices-middleware/server/src/productmanagement/doc/dto.js:6:hardcoded string:    let frequency = '';
+microservices-middleware/server/src/productmanagement/doc/dto.js:8:hardcoded string:    if (validity === "3_months") {
+microservices-middleware/server/src/productmanagement/doc/dto.js:9:hardcoded string:        frequency = '100';
+microservices-middleware/server/src/productmanagement/doc/dto.js:10:hardcoded string:    } else if (validity === "6_months") {
+microservices-middleware/server/src/productmanagement/doc/dto.js:11:hardcoded string:        frequency = '200';
+microservices-middleware/server/src/productmanagement/doc/dto.js:12:hardcoded string:    } else if (validity === "12_months") {
+microservices-middleware/server/src/productmanagement/doc/dto.js:13:hardcoded string:        frequency = '500';
+microservices-middleware/server/src/productmanagement/doc/dto.js:16:hardcoded object:    let docSku = await getDocSku({frequency, productCombination});
+microservices-middleware/server/src/productmanagement/doc/routes.js:1:hardcoded file path:const Router = require('express-promise-router');
+microservices-middleware/server/src/productmanagement/doc/routes.js:2:hardcoded file path:const controller = require('./controller');
+microservices-middleware/server/src/productmanagement/doc/routes.js:3:hardcoded object:const { storeCalculatedPriceMw } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/doc/routes.js:5:hardcoded object:const router = Router({ mergeParams: true });
+microservices-middleware/server/src/productmanagement/doc/routes.js:10:hardcoded string:    router.route('/product/doc')

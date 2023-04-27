@@ -1,0 +1,705 @@
+microservices-middleware/server/src/productmanagement/blc/constants.js:1:hardcoded variable:const statesList = [
+microservices-middleware/server/src/productmanagement/blc/constants.js:3:hardcoded string:        value:"01",
+microservices-middleware/server/src/productmanagement/blc/constants.js:4:hardcoded string:        label:"Andhra Pradesh"
+microservices-middleware/server/src/productmanagement/blc/constants.js:7:hardcoded string:        value:"02",
+microservices-middleware/server/src/productmanagement/blc/constants.js:8:hardcoded string:        label:"Arunachal Pradesh"
+microservices-middleware/server/src/productmanagement/blc/constants.js:11:hardcoded string:        value:"03",
+microservices-middleware/server/src/productmanagement/blc/constants.js:12:hardcoded string:        label:"Assam"
+microservices-middleware/server/src/productmanagement/blc/constants.js:15:hardcoded string:        value:"04",
+microservices-middleware/server/src/productmanagement/blc/constants.js:16:hardcoded string:        label:"Bihar"
+microservices-middleware/server/src/productmanagement/blc/constants.js:19:hardcoded string:        value:"05",
+microservices-middleware/server/src/productmanagement/blc/constants.js:20:hardcoded string:        label:"Chhattisgarh"
+microservices-middleware/server/src/productmanagement/blc/constants.js:23:hardcoded string:        value:"06",
+microservices-middleware/server/src/productmanagement/blc/constants.js:24:hardcoded string:        label:"Goa"
+microservices-middleware/server/src/productmanagement/blc/constants.js:27:hardcoded string:        value:"07",
+microservices-middleware/server/src/productmanagement/blc/constants.js:28:hardcoded string:        label:"Gujrat"
+microservices-middleware/server/src/productmanagement/blc/constants.js:31:hardcoded string:        value:"08",
+microservices-middleware/server/src/productmanagement/blc/constants.js:32:hardcoded string:        label:"Haryana"
+microservices-middleware/server/src/productmanagement/blc/constants.js:35:hardcoded string:        value:"09",
+microservices-middleware/server/src/productmanagement/blc/constants.js:36:hardcoded string:        label:"Himachal Pradesh"
+microservices-middleware/server/src/productmanagement/blc/constants.js:39:hardcoded string:        value:"10",
+microservices-middleware/server/src/productmanagement/blc/constants.js:40:hardcoded string:        label:"Jharkhand"
+microservices-middleware/server/src/productmanagement/blc/constants.js:43:hardcoded string:        value:"11",
+microservices-middleware/server/src/productmanagement/blc/constants.js:44:hardcoded string:        label:"Karnataka"
+microservices-middleware/server/src/productmanagement/blc/constants.js:47:hardcoded string:        value:"12",
+microservices-middleware/server/src/productmanagement/blc/constants.js:48:hardcoded string:        label:"Kerla"
+microservices-middleware/server/src/productmanagement/blc/constants.js:51:hardcoded string:        value:"13",
+microservices-middleware/server/src/productmanagement/blc/constants.js:52:hardcoded string:        label:"Madhya Pradesh"
+microservices-middleware/server/src/productmanagement/blc/constants.js:55:hardcoded string:        value:"14",
+microservices-middleware/server/src/productmanagement/blc/constants.js:56:hardcoded string:        label:"Maharashtra"
+microservices-middleware/server/src/productmanagement/blc/constants.js:59:hardcoded string:        value:"15",
+microservices-middleware/server/src/productmanagement/blc/constants.js:60:hardcoded string:        label:"Manipur"
+microservices-middleware/server/src/productmanagement/blc/constants.js:63:hardcoded string:        value:"16",
+microservices-middleware/server/src/productmanagement/blc/constants.js:64:hardcoded string:        label:"Meghalaya"
+microservices-middleware/server/src/productmanagement/blc/constants.js:67:hardcoded string:        value:"17",
+microservices-middleware/server/src/productmanagement/blc/constants.js:68:hardcoded string:        label:"Mizoram"
+microservices-middleware/server/src/productmanagement/blc/constants.js:71:hardcoded string:        value:"18",
+microservices-middleware/server/src/productmanagement/blc/constants.js:72:hardcoded string:        label:"Nagaland"
+microservices-middleware/server/src/productmanagement/blc/constants.js:75:hardcoded string:        value:"19",
+microservices-middleware/server/src/productmanagement/blc/constants.js:76:hardcoded string:        label:"Odisha"
+microservices-middleware/server/src/productmanagement/blc/constants.js:79:hardcoded string:        value:"20",
+microservices-middleware/server/src/productmanagement/blc/constants.js:80:hardcoded string:        label:"Punjab"
+microservices-middleware/server/src/productmanagement/blc/constants.js:83:hardcoded string:        value:"21",
+microservices-middleware/server/src/productmanagement/blc/constants.js:84:hardcoded string:        label:"Rajasthan"
+microservices-middleware/server/src/productmanagement/blc/constants.js:87:hardcoded string:        value:"22",
+microservices-middleware/server/src/productmanagement/blc/constants.js:88:hardcoded string:        label:"Sikkim"
+microservices-middleware/server/src/productmanagement/blc/constants.js:91:hardcoded string:        value:"23",
+microservices-middleware/server/src/productmanagement/blc/constants.js:92:hardcoded string:        label:"Tamil Nadu"
+microservices-middleware/server/src/productmanagement/blc/constants.js:95:hardcoded string:        value:"24",
+microservices-middleware/server/src/productmanagement/blc/constants.js:96:hardcoded string:        label:"Telangana"
+microservices-middleware/server/src/productmanagement/blc/constants.js:99:hardcoded string:        value:"25",
+microservices-middleware/server/src/productmanagement/blc/constants.js:100:hardcoded string:        label:"Tripura"
+microservices-middleware/server/src/productmanagement/blc/constants.js:103:hardcoded string:        value:"26",
+microservices-middleware/server/src/productmanagement/blc/constants.js:104:hardcoded string:        label:"Uttar Pradesh"
+microservices-middleware/server/src/productmanagement/blc/constants.js:107:hardcoded string:        value:"27",
+microservices-middleware/server/src/productmanagement/blc/constants.js:108:hardcoded string:        label:"Uttarakhand"
+microservices-middleware/server/src/productmanagement/blc/constants.js:111:hardcoded string:        value:"28",
+microservices-middleware/server/src/productmanagement/blc/constants.js:112:hardcoded string:        label:"West Bengal"
+microservices-middleware/server/src/productmanagement/blc/constants.js:116:hardcoded variable:const citiesList = [
+microservices-middleware/server/src/productmanagement/blc/constants.js:118:hardcoded string:        stateId:"01",
+microservices-middleware/server/src/productmanagement/blc/constants.js:119:hardcoded string:        stateName:"Andhra Pradesh",
+microservices-middleware/server/src/productmanagement/blc/constants.js:122:hardcoded string:                cityId:"ap01",
+microservices-middleware/server/src/productmanagement/blc/constants.js:123:hardcoded string:                cityName:"Visakhapatnam",
+microservices-middleware/server/src/productmanagement/blc/constants.js:124:hardcoded string:                cityCategory:"A",
+microservices-middleware/server/src/productmanagement/blc/constants.js:125:hardcoded string:                value: 'ap01',
+microservices-middleware/server/src/productmanagement/blc/constants.js:126:hardcoded string:                label: 'Visakhapatnam'
+microservices-middleware/server/src/productmanagement/blc/constants.js:129:hardcoded string:                cityId:"ap02",
+microservices-middleware/server/src/productmanagement/blc/constants.js:130:hardcoded string:                cityName:"Eluru",
+microservices-middleware/server/src/productmanagement/blc/constants.js:131:hardcoded string:                cityCategory:"B",
+microservices-middleware/server/src/productmanagement/blc/constants.js:132:hardcoded string:                value: 'ap02',
+microservices-middleware/server/src/productmanagement/blc/constants.js:133:hardcoded string:                label: 'Eluru'
+microservices-middleware/server/src/productmanagement/blc/constants.js:138:hardcoded string:        stateId:"08",
+microservices-middleware/server/src/productmanagement/blc/constants.js:139:hardcoded string:        stateName:"Haryana",
+microservices-middleware/server/src/productmanagement/blc/constants.js:142:hardcoded string:                cityId:"hr01",
+microservices-middleware/server/src/productmanagement/blc/constants.js:143:hardcoded string:                cityName:"Rohtak",
+microservices-middleware/server/src/productmanagement/blc/constants.js:144:hardcoded string:                cityCategory:"B",
+microservices-middleware/server/src/productmanagement/blc/constants.js:145:hardcoded string:                label: 'Rohtak',
+microservices-middleware/server/src/productmanagement/blc/constants.js:146:hardcoded string:                value: 'hr01'
+microservices-middleware/server/src/productmanagement/blc/constants.js:149:hardcoded string:                cityId:"hr02",
+microservices-middleware/server/src/productmanagement/blc/constants.js:150:hardcoded string:                cityName:"Gohana",
+microservices-middleware/server/src/productmanagement/blc/constants.js:151:hardcoded string:                cityCategory:"C",
+microservices-middleware/server/src/productmanagement/blc/constants.js:152:hardcoded string:                label: 'Gohana',
+microservices-middleware/server/src/productmanagement/blc/constants.js:153:hardcoded string:                value: 'hr02'
+microservices-middleware/server/src/productmanagement/blc/constants.js:162:hardcoded string:        stateId:"01",
+microservices-middleware/server/src/productmanagement/blc/constants.js:163:hardcoded string:        stateName:"Andhra Pradesh",
+microservices-middleware/server/src/productmanagement/blc/constants.js:166:hardcoded string:                cityId:"ap01",
+microservices-middleware/server/src/productmanagement/blc/constants.js:167:hardcoded string:                cityName:"Visakhapatnam",
+microservices-middleware/server/src/productmanagement/blc/constants.js:168:hardcoded string:                cityCategory:"A",
+microservices-middleware/server/src/productmanagement/blc/constants.js:171:hardcoded string:                        centreId:"apVz01",
+microservices-middleware/server/src/productmanagement/blc/constants.js:172:hardcoded string:                        centreName:"Vizag01",
+microservices-middleware/server/src/productmanagement/blc/constants.js:175:hardcoded string:                                courseAliasId:"01",
+microservices-middleware/server/src/productmanagement/blc/constants.js:176:hardcoded string:                                courseAliasName:"Maths",
+microservices-middleware/server/src/productmanagement/blc/constants.js:177:hardcoded string:                                cohortId:"01"
+microservices-middleware/server/src/productmanagement/blc/constants.js:180:hardcoded string:                                courseAliasId:"02",
+microservices-middleware/server/src/productmanagement/blc/constants.js:181:hardcoded string:                                courseAliasName:"Coding",
+microservices-middleware/server/src/productmanagement/blc/constants.js:182:hardcoded string:                                cohortId:"02"
+microservices-middleware/server/src/productmanagement/blc/constants.js:185:hardcoded string:                        label:'Vizag01',
+microservices-middleware/server/src/productmanagement/blc/constants.js:186:hardcoded string:                        value: "apVz01"
+microservices-middleware/server/src/productmanagement/blc/constants.js:191:hardcoded string:                cityId:"ap02",
+microservices-middleware/server/src/productmanagement/blc/constants.js:192:hardcoded string:                cityName:"Eluru",
+microservices-middleware/server/src/productmanagement/blc/constants.js:193:hardcoded string:                cityCategory:"B",
+microservices-middleware/server/src/productmanagement/blc/constants.js:196:hardcoded string:                        centreId:"apEl01",
+microservices-middleware/server/src/productmanagement/blc/constants.js:197:hardcoded string:                        centreName:"Eluru01",
+microservices-middleware/server/src/productmanagement/blc/constants.js:200:hardcoded string:                                courseAliasId:"01",
+microservices-middleware/server/src/productmanagement/blc/constants.js:201:hardcoded string:                                courseAliasName:"Maths",
+microservices-middleware/server/src/productmanagement/blc/constants.js:202:hardcoded string:                                cohortId:"01"
+microservices-middleware/server/src/productmanagement/blc/constants.js:205:hardcoded string:                                courseAliasId:"02",
+microservices-middleware/server/src/productmanagement/blc/constants.js:206:hardcoded string:                                courseAliasName:"Coding",
+microservices-middleware/server/src/productmanagement/blc/constants.js:207:hardcoded string:                                cohortId:"02"
+microservices-middleware/server/src/productmanagement/blc/constants.js:210:hardcoded string:                        value:"apEl01",
+microservices-middleware/server/src/productmanagement/blc/constants.js:211:hardcoded string:                        label:"Eluru01"
+microservices-middleware/server/src/productmanagement/blc/constants.js:219:hardcoded variable:const blcRenewalYr = {
+microservices-middleware/server/src/productmanagement/blc/constants.js:220:hardcoded string:    year:"2024"
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:1:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:2:hardcoded object:const { get, concat, map, flattenDeep } = require('lodash');
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:4:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('orderSplit.js');
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:5:hardcoded object:const { NotFoundError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:6:hardcoded object:const { getExtensionSku } = require('./dto.js')
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:7:hardcoded file path:const isDevEnv = require('../../../lib/featureHelper')
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:9:hardcoded variable:const formatBlcLineItems = async (orderDetails) => {
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:10:hardcoded string:    logger.info({ method: 'formatLineItems' }, 'Checking if Order is eligible to be splitted');
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:11:hardcoded object:    const { productDetails, orderPunchingCategory, orderPunchingType } = orderDetails;
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:12:hardcoded array:    const { students = [], paymentType } = productDetails;
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:13:hardcoded string:    const { initialClass } = students.length ? students[0] : '';
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:14:hardcoded object:    let lineItems = {};
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:17:hardcoded string:        const items = flattenDeep(map(students, 'items'));
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:19:hardcoded string:        logger.info("BLC LOGGER : EMI : " + orderPunchingCategory);
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:20:hardcoded object:        const splittedLineItems = await getLineItems({ items, initialClass, paymentType, orderPunchingType })
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:21:hardcoded string:        logger.info("BLC LOGGER : splittedLineItems : " + splittedLineItems);
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:23:hardcoded object:        const { parentLineItems, childLineItems } = splittedLineItems || {};
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:24:hardcoded number:        if (parentLineItems?.length === 0) {
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:25:hardcoded string:            throw new NotFoundError("ParentLineItems are missing!");
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:28:hardcoded string:        const orderType = childLineItems.length ? 'split_order' : 'single_order';
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:29:hardcoded string:        logger.info("%j", { method: 'formatLineItems' }, { orderType, lineItems: JSON.stringify(splittedLineItems) });
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:36:hardcoded string:        logger.info("%j", { method: 'formatLineItems', message: "Error in splitting line Items" });
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:37:hardcoded string:        throw new Error(error || "Error in splitting line Items");
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:45:hardcoded variable:const getLineItems = async (details) => {
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:46:hardcoded object:    const { items, initialClass, paymentType, orderPunchingType } = details
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:49:hardcoded string:    childLineItems = items.filter(course => course.type === "service");
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:51:hardcoded string:        const childItemIds = map(childLineItems, 'skuId');
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:53:hardcoded string:        if (!childItemIds.includes(get(item, 'skuId', ''))) {
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:58:hardcoded number:    if (parentLineItems.length === 0) {
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:59:hardcoded string:        if (paymentType === 'EMI') {
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:60:hardcoded variable:            const extensionSku = await getExtensionSku(initialClass)
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:62:hardcoded array:            childLineItems = [extensionSku];
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:63:hardcoded string:        } else if (orderPunchingType.toLowerCase() === 'upgrade') { // when we already have tablet in fresh order
+microservices-middleware/server/src/productmanagement/blc/orderSplit.js:65:hardcoded array:            childLineItems = []
+microservices-middleware/server/src/productmanagement/blc/service.js:1:hardcoded object:const { get, isEmpty } = require('lodash')
+microservices-middleware/server/src/productmanagement/blc/service.js:2:hardcoded file path:const bunyan = require('bunyan');
+microservices-middleware/server/src/productmanagement/blc/service.js:3:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper')
+microservices-middleware/server/src/productmanagement/blc/service.js:5:hardcoded variable:const logger = bunyan.createLogger({
+microservices-middleware/server/src/productmanagement/blc/service.js:6:hardcoded string:    name: 'computeSkuPrice',
+microservices-middleware/server/src/productmanagement/blc/service.js:7:hardcoded environment variable:    env: process.env.NODE_ENV,
+microservices-middleware/server/src/productmanagement/blc/service.js:13:hardcoded variable:const priceSplit = async (skuArray) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:14:hardcoded number:    let totalPrice = 0;
+microservices-middleware/server/src/productmanagement/blc/service.js:15:hardcoded string:    let courseSku = skuArray.filter(sku => sku.category !== 'btc_registration' &&
+microservices-middleware/server/src/productmanagement/blc/service.js:16:hardcoded string:        get(sku, "subType") !== "tablet")
+microservices-middleware/server/src/productmanagement/blc/service.js:19:hardcoded string:        totalPrice += get(sku, "price")
+microservices-middleware/server/src/productmanagement/blc/service.js:22:hardcoded variable:    const splitedPrice = totalPrice / courseSku.length
+microservices-middleware/server/src/productmanagement/blc/service.js:25:hardcoded string:        sku["price"] = splitedPrice
+microservices-middleware/server/src/productmanagement/blc/service.js:29:hardcoded variable:const getComponentPriceShare = (productSkus, maxCourseSkuPrice, productCombination) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:30:hardcoded number:    let btcShare = 0;
+microservices-middleware/server/src/productmanagement/blc/service.js:31:hardcoded string:    if(productCombination === 'byjus_learning_centre_upgrade') {
+microservices-middleware/server/src/productmanagement/blc/service.js:35:hardcoded string:            if (['byjus_learning_center', 'tlp_blc_upgrade', 'bocp_blc_upgrade'].includes(sku.category)) {
+microservices-middleware/server/src/productmanagement/blc/service.js:36:hardcoded string:                btcShare += get(sku, "price");
+microservices-middleware/server/src/productmanagement/blc/service.js:40:hardcoded number:    btcShare = btcShare ? Math.ceil((btcShare * 100) / maxCourseSkuPrice) : 0;
+microservices-middleware/server/src/productmanagement/blc/service.js:44:hardcoded variable:const getUpdatedProducts = (productDetails, btcShare, priceToBeDivided) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:45:hardcoded array:    let { products = [], students = [] } = productDetails || {};
+microservices-middleware/server/src/productmanagement/blc/service.js:47:hardcoded string:    const btcSku = products.filter(ele => ['byjus_learning_center', 'tlp_blc_upgrade', 'bocp_blc_upgrade'].includes(ele.category)) || null;
+microservices-middleware/server/src/productmanagement/blc/service.js:48:hardcoded string:    const tlpSkus = products.filter(ele => !['byjus_learning_center', 'tlp_blc_upgrade', 'bocp_blc_upgrade', 'tablet', 'btc_registration'].includes(ele.category));
+microservices-middleware/server/src/productmanagement/blc/service.js:50:hardcoded variable:    const totalBtcGrades = btcSku.length;
+microservices-middleware/server/src/productmanagement/blc/service.js:51:hardcoded variable:    const totalTlpGrades = tlpSkus.length;
+microservices-middleware/server/src/productmanagement/blc/service.js:53:hardcoded number:    const btcPrice = Math.round((priceToBeDivided * btcShare) / (100 * totalBtcGrades) * 100) / 100;
+microservices-middleware/server/src/productmanagement/blc/service.js:54:hardcoded number:    const btlpPrice = Math.round((priceToBeDivided * (100 - btcShare)) / (100 * totalTlpGrades) * 100) / 100;
+microservices-middleware/server/src/productmanagement/blc/service.js:58:hardcoded string:        if (['byjus_learning_center', 'tlp_blc_upgrade', 'bocp_blc_upgrade'].includes(sku.category)) {
+microservices-middleware/server/src/productmanagement/blc/service.js:61:hardcoded string:        if (!['byjus_learning_center', 'tlp_blc_upgrade', 'bocp_blc_upgrade', 'tablet', 'btc_registration'].includes(sku.category)) {
+microservices-middleware/server/src/productmanagement/blc/service.js:65:hardcoded variable:    const updatedProducts = products;
+microservices-middleware/server/src/productmanagement/blc/service.js:67:hardcoded object:    return { updatedProducts, btcPrice, btlpPrice };
+microservices-middleware/server/src/productmanagement/blc/service.js:70:hardcoded variable:const getUpdatedStudents = (students, btcPrice, btlpPrice) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:71:hardcoded number:    for (let i = 0; i < students.length; i++) {
+microservices-middleware/server/src/productmanagement/blc/service.js:72:hardcoded array:        const { items = [] } = students[i] || {}
+microservices-middleware/server/src/productmanagement/blc/service.js:75:hardcoded string:            if (['byjus_learning_center', 'tlp_blc_upgrade', 'bocp_blc_upgrade'].includes(sku.category)) {
+microservices-middleware/server/src/productmanagement/blc/service.js:78:hardcoded string:            if (!['byjus_learning_center', 'tlp_blc_upgrade', 'bocp_blc_upgrade', 'tablet', 'btc_registration'].includes(sku.category)) {
+microservices-middleware/server/src/productmanagement/blc/service.js:82:hardcoded array:        students[i].items = items;
+microservices-middleware/server/src/productmanagement/blc/service.js:89:hardcoded variable:const getUpdatedEpicProducts = (productDetails, costPerSku) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:90:hardcoded array:    let { products = [] } = productDetails || {};
+microservices-middleware/server/src/productmanagement/blc/service.js:93:hardcoded string:        if (!['epic', 'tynker_jr', 'tablet'].includes(sku.category || sku.type)) {
+microservices-middleware/server/src/productmanagement/blc/service.js:97:hardcoded variable:    const updatedProducts = products;
+microservices-middleware/server/src/productmanagement/blc/service.js:99:hardcoded object:    return { updatedProducts };
+microservices-middleware/server/src/productmanagement/blc/service.js:102:hardcoded variable:const getUpdatedEpicStudents = (students, costPerSku) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:103:hardcoded number:    for (let i = 0; i < students.length; i++) {
+microservices-middleware/server/src/productmanagement/blc/service.js:104:hardcoded array:        const { items = [] } = students[i] || {}
+microservices-middleware/server/src/productmanagement/blc/service.js:107:hardcoded string:            if (!['epic', 'tynker_jr','tablet'].includes(sku.category || sku.type)) {
+microservices-middleware/server/src/productmanagement/blc/service.js:111:hardcoded array:        students[i].items = items;
+microservices-middleware/server/src/productmanagement/blc/service.js:117:hardcoded variable:const getRegSkuPrice = (productDetails, tabletPrice) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:118:hardcoded array:    let { products = [], finalPrice } = productDetails || {};
+microservices-middleware/server/src/productmanagement/blc/service.js:119:hardcoded string:    const reqistrationSkus = products.filter(ele => ele.category == 'btc_registration') || null;
+microservices-middleware/server/src/productmanagement/blc/service.js:121:hardcoded number:    let regSkuPrice = 0;
+microservices-middleware/server/src/productmanagement/blc/service.js:123:hardcoded variable:    const totalRegSkuPrice = reqistrationSkus.reduce((acc, sku) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:125:hardcoded number:    }, 0);
+microservices-middleware/server/src/productmanagement/blc/service.js:133:hardcoded number:    regSkuPrice = regSkuPrice > 0 ? regSkuPrice : 0
+microservices-middleware/server/src/productmanagement/blc/service.js:134:hardcoded number:    regSkuPrice = Math.round((regSkuPrice + Number.EPSILON) * 100) / 100
+microservices-middleware/server/src/productmanagement/blc/service.js:135:hardcoded object:    const productDetailsObj = Object.assign({}, productDetails);
+microservices-middleware/server/src/productmanagement/blc/service.js:137:hardcoded string:        if (sku.category == 'btc_registration') {
+microservices-middleware/server/src/productmanagement/blc/service.js:142:hardcoded variable:    const totalRegSkuPriceAfterSplit = regSkuPrice * reqistrationSkus.length;
+microservices-middleware/server/src/productmanagement/blc/service.js:143:hardcoded string:    console.log("Reg sku", totalRegSkuPriceAfterSplit)
+microservices-middleware/server/src/productmanagement/blc/service.js:144:hardcoded string:    logger.info('computeSkuPrice:registration sku : ', totalRegSkuPriceAfterSplit);
+microservices-middleware/server/src/productmanagement/blc/service.js:146:hardcoded object:    return { totalRegSkuPriceAfterSplit, productDetailsObj };
+microservices-middleware/server/src/productmanagement/blc/service.js:149:hardcoded variable:const getUpdatedTabletPriceSibling = (details) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:150:hardcoded array:    const { products = [], siblingProducts = [] } = details;
+microservices-middleware/server/src/productmanagement/blc/service.js:151:hardcoded array:    let tabletIds = []
+microservices-middleware/server/src/productmanagement/blc/service.js:153:hardcoded string:        if (['tablet'].includes(ele.category)) {
+microservices-middleware/server/src/productmanagement/blc/service.js:154:hardcoded array:            tabletIds[ele.tabletId] = ele.price;
+microservices-middleware/server/src/productmanagement/blc/service.js:159:hardcoded string:            if (['tablet'].includes(ele.category)) {
+microservices-middleware/server/src/productmanagement/blc/service.js:160:hardcoded string:                ele['price'] = tabletIds[ele.tabletId];
+microservices-middleware/server/src/productmanagement/blc/service.js:167:hardcoded variable:const getUpdatedTabletPriceStudents = (details) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:168:hardcoded object:    const { student, tabletPrice } = details
+microservices-middleware/server/src/productmanagement/blc/service.js:169:hardcoded array:    const { items = [] } = student || {}
+microservices-middleware/server/src/productmanagement/blc/service.js:171:hardcoded string:        if (['tablet'].includes(sku.category)) {
+microservices-middleware/server/src/productmanagement/blc/service.js:176:hardcoded object:    return { ...student };
+microservices-middleware/server/src/productmanagement/blc/service.js:179:hardcoded variable:const getUpdatedTabletPriceProducts = (details) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:180:hardcoded array:    let { products = [], updatedTabletPrices = [] } = details
+microservices-middleware/server/src/productmanagement/blc/service.js:182:hardcoded string:        if (['tablet'].includes(ele.category)) {
+microservices-middleware/server/src/productmanagement/blc/service.js:183:hardcoded array:            ele.price = updatedTabletPrices[ele.studentId];
+microservices-middleware/server/src/productmanagement/blc/service.js:190:hardcoded variable:const updatedTabletSkuPrice = (productDetails) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:191:hardcoded string:    let { products = [], students = [], finalPrice = 0, productType = '', siblingProducts = [] } = productDetails || {};
+microservices-middleware/server/src/productmanagement/blc/service.js:192:hardcoded string:    const tabletSkus = products.filter(ele => ele.category == 'tablet') || null;
+microservices-middleware/server/src/productmanagement/blc/service.js:193:hardcoded number:    const totalTabletPrice = tabletSkus.reduce((acc, ele) => acc + ele.basePrice, 0);
+microservices-middleware/server/src/productmanagement/blc/service.js:194:hardcoded array:    let updatedTabletPrices = [];
+microservices-middleware/server/src/productmanagement/blc/service.js:197:hardcoded number:    for (let i = 0; i < tabletSkus.length; i++) {
+microservices-middleware/server/src/productmanagement/blc/service.js:198:hardcoded string:        const basePrice = get(tabletSkus[i], 'basePrice', 0);
+microservices-middleware/server/src/productmanagement/blc/service.js:199:hardcoded number:        const tabletPrice = parseFloat(((basePrice / totalTabletPrice) * finalPrice).toFixed(2));
+microservices-middleware/server/src/productmanagement/blc/service.js:200:hardcoded array:        students[i] = getUpdatedTabletPriceStudents({ student: students[i], tabletPrice })
+microservices-middleware/server/src/productmanagement/blc/service.js:201:hardcoded array:        updatedTabletPrices[tabletSkus[i].studentId] = tabletPrice
+microservices-middleware/server/src/productmanagement/blc/service.js:203:hardcoded object:    products = getUpdatedTabletPriceProducts({ products, updatedTabletPrices })
+microservices-middleware/server/src/productmanagement/blc/service.js:204:hardcoded string:    if (productType === "sibling" || students.length > 1) {
+microservices-middleware/server/src/productmanagement/blc/service.js:205:hardcoded string:        productDetails['siblingProducts'] = getUpdatedTabletPriceSibling({ products, siblingProducts })
+microservices-middleware/server/src/productmanagement/blc/service.js:216:hardcoded variable:const computeSkuPrice = async (productDetails) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:217:hardcoded string:    logger.info('computeSkuPrice: productDetails', productDetails);
+microservices-middleware/server/src/productmanagement/blc/service.js:219:hardcoded string:    let { productCombination = '', products = [], students = [], finalPrice, maxPrice } = productDetails || {};
+microservices-middleware/server/src/productmanagement/blc/service.js:220:hardcoded string:    const { productSelectionType = '' } = students[0] || {};
+microservices-middleware/server/src/productmanagement/blc/service.js:221:hardcoded number:    let tabletPrice = 0;
+microservices-middleware/server/src/productmanagement/blc/service.js:223:hardcoded string:    const tabletSku = products.filter(ele => (ele.category == 'tablet'|| ele.type == 'tablet')) || null;
+microservices-middleware/server/src/productmanagement/blc/service.js:228:hardcoded string:    if (['byjus_learning_centre', 'byjus_learning_centre_upgrade'].includes(productSelectionType)) {
+microservices-middleware/server/src/productmanagement/blc/service.js:229:hardcoded string:        const productSkus = products.filter(ele => !['btc_registration', 'tablet'].includes(ele.category)) || null;
+microservices-middleware/server/src/productmanagement/blc/service.js:231:hardcoded object:        const { totalRegSkuPriceAfterSplit, productDetailsObj } = getRegSkuPrice(productDetails, tabletPrice);
+microservices-middleware/server/src/productmanagement/blc/service.js:232:hardcoded object:        productDetails = Object.assign({}, productDetailsObj);
+microservices-middleware/server/src/productmanagement/blc/service.js:233:hardcoded variable:        let priceToBeExcluded = tabletPrice + totalRegSkuPriceAfterSplit;
+microservices-middleware/server/src/productmanagement/blc/service.js:235:hardcoded variable:        let maxCourseSkuPrice = parseInt(maxPrice) - parseInt(priceToBeExcluded);
+microservices-middleware/server/src/productmanagement/blc/service.js:236:hardcoded variable:        let priceToBeDivided = parseInt(finalPrice) - parseInt(priceToBeExcluded);
+microservices-middleware/server/src/productmanagement/blc/service.js:237:hardcoded number:        maxCourseSkuPrice = maxCourseSkuPrice > 0 ? maxCourseSkuPrice : 0;
+microservices-middleware/server/src/productmanagement/blc/service.js:238:hardcoded number:        priceToBeDivided = priceToBeDivided > 0 ? priceToBeDivided : 0;
+microservices-middleware/server/src/productmanagement/blc/service.js:240:hardcoded variable:        const btcShare = getComponentPriceShare(productSkus, maxCourseSkuPrice, productCombination);
+microservices-middleware/server/src/productmanagement/blc/service.js:241:hardcoded object:        const { updatedProducts, btcPrice, btlpPrice } = getUpdatedProducts(productDetails, btcShare, priceToBeDivided);
+microservices-middleware/server/src/productmanagement/blc/service.js:243:hardcoded string:        productDetails['products'] = updatedProducts;
+microservices-middleware/server/src/productmanagement/blc/service.js:244:hardcoded string:        productDetails['students'] = students;
+microservices-middleware/server/src/productmanagement/blc/service.js:251:hardcoded string:    else if (['byjus_tlp', 'byjus_math'].includes(productSelectionType)) {
+microservices-middleware/server/src/productmanagement/blc/service.js:252:hardcoded string:        const epicSku = products.filter(ele => (ele.category == 'epic')) || null;
+microservices-middleware/server/src/productmanagement/blc/service.js:253:hardcoded string:        const tynkerSku = products.filter(ele => (ele.category == 'tynker_jr')) || null;
+microservices-middleware/server/src/productmanagement/blc/service.js:255:hardcoded string:            const courseSku = products.filter(ele => !['epic', 'tynker_jr', 'tablet'].includes(ele.category || ele.type)) || null;
+microservices-middleware/server/src/productmanagement/blc/service.js:256:hardcoded variable:            const totalPriceToBeDivided = parseInt(finalPrice) - parseInt(tabletPrice);
+microservices-middleware/server/src/productmanagement/blc/service.js:257:hardcoded variable:            const skuLength = courseSku.length;
+microservices-middleware/server/src/productmanagement/blc/service.js:258:hardcoded number:            const costPerSku = Math.round((totalPriceToBeDivided / skuLength) * 100) / 100;
+microservices-middleware/server/src/productmanagement/blc/service.js:260:hardcoded object:            const { updatedProducts } = getUpdatedEpicProducts(productDetails, costPerSku);
+microservices-middleware/server/src/productmanagement/blc/service.js:262:hardcoded string:            productDetails['products'] = updatedProducts;
+microservices-middleware/server/src/productmanagement/blc/service.js:263:hardcoded string:            productDetails['students'] = students;
+microservices-middleware/server/src/productmanagement/blc/service.js:270:hardcoded variable:const getVoucherEnabledSkuArray = (details) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:271:hardcoded object:    const {blcSkuArray, tlpSkuArray, btcRegistrationSku} = details;
+microservices-middleware/server/src/productmanagement/blc/service.js:272:hardcoded array:    let voucherEnabledSkuArray = [];
+microservices-middleware/server/src/productmanagement/blc/service.js:273:hardcoded string:    voucherEnabledSkuArray['blcSkuArray'] = blcSkuArray;
+microservices-middleware/server/src/productmanagement/blc/service.js:274:hardcoded string:    voucherEnabledSkuArray['tlpSkuArray'] = tlpSkuArray;
+microservices-middleware/server/src/productmanagement/blc/service.js:275:hardcoded string:    voucherEnabledSkuArray['btcRegistrationSku'] = btcRegistrationSku;
+microservices-middleware/server/src/productmanagement/blc/service.js:279:hardcoded variable:const getTotalSiblingSkuPrice = (details) => {
+microservices-middleware/server/src/productmanagement/blc/service.js:280:hardcoded array:    const { skuArray = [] } = details;
+microservices-middleware/server/src/productmanagement/blc/service.js:281:hardcoded string:    let formattedSkus = skuArray.filter(ele=> ele.category != "tablet"); //excluding tablet price if present.
+microservices-middleware/server/src/productmanagement/blc/service.js:282:hardcoded number:    const totalPrice = formattedSkus.reduce((acc, ele) => { return acc + ele.price}, 0);
+microservices-middleware/server/src/productmanagement/blc/controller.js:1:hardcoded object:const { get } = require('lodash');
+microservices-middleware/server/src/productmanagement/blc/controller.js:3:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Product Controller');
+microservices-middleware/server/src/productmanagement/blc/controller.js:4:hardcoded object:const { BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/blc/controller.js:5:hardcoded file path:const config = require('../../../config');
+microservices-middleware/server/src/productmanagement/blc/controller.js:6:hardcoded string:const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/blc/controller.js:8:hardcoded object:const { callNucleusApi, callStmsApi, callUxosApi } = require('../../../utility/externalApiUtility');
+microservices-middleware/server/src/productmanagement/blc/controller.js:9:hardcoded object:const { checkIfDraftOrderExists } = require('../../../utility/draftOrderUtility')
+microservices-middleware/server/src/productmanagement/blc/controller.js:10:hardcoded object:const { manageCashbacks } = require('../../cashbackmanagement/cashbackHelper');
+microservices-middleware/server/src/productmanagement/blc/controller.js:11:hardcoded object:const { checkIsOmsOrder, attachSiblingDetails, getStudentProfileDetails, validatingFOCPremiumAccount } = require("../productHelper");
+microservices-middleware/server/src/productmanagement/blc/controller.js:12:hardcoded object:const { attachBlcCenterAndBatchDetails } = require('./helper')
+microservices-middleware/server/src/productmanagement/blc/controller.js:13:hardcoded object:const { getCohortId } = require("../../configmanagement/configController")
+microservices-middleware/server/src/productmanagement/blc/controller.js:14:hardcoded object:const { getBoardForState } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/blc/controller.js:15:hardcoded object:const { getUpdatedProductDetailsWithHlpDetails } = require('../hlpmanagement/hlpProductController')
+microservices-middleware/server/src/productmanagement/blc/controller.js:16:hardcoded object:const { reserveBonusPoints } = require('../../paymentmanagement/byjuswallet/bonusPoints');
+microservices-middleware/server/src/productmanagement/blc/controller.js:17:hardcoded object:const { getBooksSkuFromProductDetails } = require('../../bookmanagement/stationarySkuPriceCalculation');
+microservices-middleware/server/src/productmanagement/blc/controller.js:18:hardcoded object:const { computeSkuPrice } = require('./service');
+microservices-middleware/server/src/productmanagement/blc/controller.js:19:hardcoded object:const { blcRenewalYr } = require('./constants');
+microservices-middleware/server/src/productmanagement/blc/controller.js:20:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper');
+microservices-middleware/server/src/productmanagement/blc/controller.js:23:hardcoded variable:const storeProductDetails = async (req, res) => {
+microservices-middleware/server/src/productmanagement/blc/controller.js:24:hardcoded string:    let { identifier, productDetails, productCombination = "", studentDetails, isRenewalFlow } = req.body;
+microservices-middleware/server/src/productmanagement/blc/controller.js:25:hardcoded string:    let opunt = req.body.orderPunchingType || "";
+microservices-middleware/server/src/productmanagement/blc/controller.js:26:hardcoded string:    const { email } = get(req, 'user', {});
+microservices-middleware/server/src/productmanagement/blc/controller.js:27:hardcoded string:    logger.info({ method: 'storeProductDetails', msg: `Storing Product Details for _id:${identifier}` });
+microservices-middleware/server/src/productmanagement/blc/controller.js:31:hardcoded string:            throw new BadRequestError(`Parameters - ${identifier ? '' : 'identifier'} ${productDetails ? '' : 'productDetails'} Missing`);
+microservices-middleware/server/src/productmanagement/blc/controller.js:32:hardcoded variable:        const draftOrder = await checkIfDraftOrderExists(identifier);
+microservices-middleware/server/src/productmanagement/blc/controller.js:35:hardcoded object:            const { isOmsOrder, customerDetails } = draftOrder;
+microservices-middleware/server/src/productmanagement/blc/controller.js:36:hardcoded object:            const { productType, isGstIn, student = {}, discountDetails = {} } = productDetails;
+microservices-middleware/server/src/productmanagement/blc/controller.js:37:hardcoded string:            const { validity = "" } = student;
+microservices-middleware/server/src/productmanagement/blc/controller.js:38:hardcoded variable:            const isOmsEligibleOrder = await checkIsOmsOrder(productType, isOmsOrder, validity);
+microservices-middleware/server/src/productmanagement/blc/controller.js:39:hardcoded object:            const { redeemedCashback, unutilizedCashbacks, amountToCustomer, amountToSalesPerson } = await manageCashbacks(draftOrder, productDetails);
+microservices-middleware/server/src/productmanagement/blc/controller.js:40:hardcoded string:            let { orgFormattedName, orderPunchingType = "NORMAL_ORDER" } = draftOrder
+microservices-middleware/server/src/productmanagement/blc/controller.js:55:hardcoded string:            if (get(config, 'isStudentProfileAvailable') === "true" && productDetails.students && productDetails.students.length) {
+microservices-middleware/server/src/productmanagement/blc/controller.js:63:hardcoded array:            const { formattedProducts = [], formattedStudents = [] } = await attachSiblingDetails(productDetails, productType, draftOrder, studentDetails);
+microservices-middleware/server/src/productmanagement/blc/controller.js:64:hardcoded string:            productDetails["students"] = formattedStudents;
+microservices-middleware/server/src/productmanagement/blc/controller.js:65:hardcoded string:            productDetails["products"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/blc/controller.js:69:hardcoded array:            const { formattedStudentDetails = [] } = await attachBlcCenterAndBatchDetails(productDetails);
+microservices-middleware/server/src/productmanagement/blc/controller.js:70:hardcoded string:            productDetails["students"] = formattedStudentDetails;
+microservices-middleware/server/src/productmanagement/blc/controller.js:72:hardcoded string:            let bookInvoicing = 'not_applicable';
+microservices-middleware/server/src/productmanagement/blc/controller.js:73:hardcoded array:            let addOnLineItems = [];
+microservices-middleware/server/src/productmanagement/blc/controller.js:74:hardcoded string:            if (['development', 'local'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/blc/controller.js:76:hardcoded string:                //    bookInvoicing = 'applicable';
+microservices-middleware/server/src/productmanagement/blc/controller.js:81:hardcoded variable:            const updateObj = {
+microservices-middleware/server/src/productmanagement/blc/controller.js:85:hardcoded array:                addOnLineItems: addOnLineItems || [],
+microservices-middleware/server/src/productmanagement/blc/controller.js:87:hardcoded string:                orderPunchingType: isRenewalFlow ? "revenue_renewal" : orderPunchingType,
+microservices-middleware/server/src/productmanagement/blc/controller.js:88:hardcoded string:                finalPrice: get(productDetails, 'finalPrice', 0),
+microservices-middleware/server/src/productmanagement/blc/controller.js:89:hardcoded string:                status: "product_saved",
+microservices-middleware/server/src/productmanagement/blc/controller.js:90:hardcoded array:                [`actionDetails.productSavedAt`]: new Date(),
+microservices-middleware/server/src/productmanagement/blc/controller.js:91:hardcoded array:                [`actionDetails.productSavedBy`]: email,
+microservices-middleware/server/src/productmanagement/blc/controller.js:93:hardcoded string:                "customerDetails.gstDetails.isGstIn": isGstIn,
+microservices-middleware/server/src/productmanagement/blc/controller.js:94:hardcoded string:                orderPunchingCategory: "blc",
+microservices-middleware/server/src/productmanagement/blc/controller.js:97:hardcoded variable:            const transactionId = await reserveBonusPoints(draftOrder);
+microservices-middleware/server/src/productmanagement/blc/controller.js:98:hardcoded string:            if (transactionId !== "") {
+microservices-middleware/server/src/productmanagement/blc/controller.js:99:hardcoded string:                updateObj["bonusPointsDetails.transactionId"] = transactionId;
+microservices-middleware/server/src/productmanagement/blc/controller.js:102:hardcoded string:            await DraftOrder.findOneAndUpdate({ '_id': identifier }, {
+microservices-middleware/server/src/productmanagement/blc/controller.js:105:hardcoded object:            return res.json({ productDetails, cashbackDetails: { redeemedCashback, unutilizedCashbacks } });
+microservices-middleware/server/src/productmanagement/blc/controller.js:112:hardcoded variable:const states = async (req, res) => {
+microservices-middleware/server/src/productmanagement/blc/controller.js:115:hardcoded string:        uri = 'blc/states'
+microservices-middleware/server/src/productmanagement/blc/controller.js:116:hardcoded string:        statesList = await callStmsApi(uri, 'GET', {})
+microservices-middleware/server/src/productmanagement/blc/controller.js:119:hardcoded number:            return res.status(200).json(statesList)
+microservices-middleware/server/src/productmanagement/blc/controller.js:122:hardcoded string:            throw new Error("No states are available.Please mail support-optech@byjus.com")
+microservices-middleware/server/src/productmanagement/blc/controller.js:126:hardcoded string:        logger.error({ method: 'getBlcStates', error })
+microservices-middleware/server/src/productmanagement/blc/controller.js:127:hardcoded number:        return res.status(500).json({ message: error.message })
+microservices-middleware/server/src/productmanagement/blc/controller.js:131:hardcoded variable:const cities = async (req, res) => {
+microservices-middleware/server/src/productmanagement/blc/controller.js:133:hardcoded object:        const { body } = req
+microservices-middleware/server/src/productmanagement/blc/controller.js:134:hardcoded object:        const { stateId, stateName } = body
+microservices-middleware/server/src/productmanagement/blc/controller.js:136:hardcoded object:        uri = `blc/cities/state/${stateId}`
+microservices-middleware/server/src/productmanagement/blc/controller.js:137:hardcoded string:        citiesList = await callStmsApi(uri, 'GET', {})
+microservices-middleware/server/src/productmanagement/blc/controller.js:140:hardcoded number:            return res.status(200).json(citiesList)
+microservices-middleware/server/src/productmanagement/blc/controller.js:143:hardcoded object:            throw new Error(`No cities are available for ${stateName}. Please mail support-optech@byjus.com`)
+microservices-middleware/server/src/productmanagement/blc/controller.js:147:hardcoded string:        logger.error({ method: 'getBlcCities', error })
+microservices-middleware/server/src/productmanagement/blc/controller.js:148:hardcoded number:        return res.status(500).json({ message: error.message })
+microservices-middleware/server/src/productmanagement/blc/controller.js:152:hardcoded variable:const centres = async (req, res) => {
+microservices-middleware/server/src/productmanagement/blc/controller.js:154:hardcoded object:        const { body } = req
+microservices-middleware/server/src/productmanagement/blc/controller.js:155:hardcoded object:        const { cityId, cityName } = body
+microservices-middleware/server/src/productmanagement/blc/controller.js:157:hardcoded object:        uri = `blc/centres/city/${cityId}`
+microservices-middleware/server/src/productmanagement/blc/controller.js:158:hardcoded string:        centresList = await callStmsApi(uri, 'GET', {})
+microservices-middleware/server/src/productmanagement/blc/controller.js:161:hardcoded number:            return res.status(200).json(centresList)
+microservices-middleware/server/src/productmanagement/blc/controller.js:164:hardcoded object:            throw new Error(`No centres are available for ${cityName}.Please mail support-optech@byjus.com`)
+microservices-middleware/server/src/productmanagement/blc/controller.js:168:hardcoded string:        logger.error({ method: 'getBlcCentres', error })
+microservices-middleware/server/src/productmanagement/blc/controller.js:169:hardcoded number:        return res.status(500).json({ message: error.message })
+microservices-middleware/server/src/productmanagement/blc/controller.js:173:hardcoded variable:const getActiveBatches = async (req, res) => {
+microservices-middleware/server/src/productmanagement/blc/controller.js:175:hardcoded string:    let { centreId, batchType, initialClass, board, stateBoard = "other" } = req.body
+microservices-middleware/server/src/productmanagement/blc/controller.js:176:hardcoded string:    if (!centreId || !batchType || !initialClass || !board) throw new BadRequestError("Missing Parameter");
+microservices-middleware/server/src/productmanagement/blc/controller.js:178:hardcoded string:    board = ["4", "5"].includes(initialClass) ? null : board === "STATE" ? getBoardForState(stateBoard) : board
+microservices-middleware/server/src/productmanagement/blc/controller.js:181:hardcoded variable:        const cohortId = await getCohortId(initialClass, board)
+microservices-middleware/server/src/productmanagement/blc/controller.js:182:hardcoded variable:        const payload = {
+microservices-middleware/server/src/productmanagement/blc/controller.js:190:hardcoded string:        batchesList = await callStmsApi(uri, 'POST', payload)
+microservices-middleware/server/src/productmanagement/blc/controller.js:193:hardcoded number:            return res.status(200).json(batchesList)
+microservices-middleware/server/src/productmanagement/blc/controller.js:196:hardcoded string:            throw new Error("No active batches are available.Please mail support-optech@byjus.com")
+microservices-middleware/server/src/productmanagement/blc/controller.js:200:hardcoded string:        logger.error({ method: 'getBlcBatch', error })
+microservices-middleware/server/src/productmanagement/blc/controller.js:201:hardcoded number:        return res.status(500).json({ message: error.message })
+microservices-middleware/server/src/productmanagement/blc/dto.js:1:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/blc/dto.js:2:hardcoded object:const { isEmpty } = require('lodash');
+microservices-middleware/server/src/productmanagement/blc/dto.js:4:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Product Helper');
+microservices-middleware/server/src/productmanagement/blc/dto.js:5:hardcoded object:const { getSkuItemId } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/blc/dto.js:6:hardcoded object:const { NotFoundError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/blc/dto.js:8:hardcoded variable:const getBtcRegistrationSku = async () => {
+microservices-middleware/server/src/productmanagement/blc/dto.js:9:hardcoded string:    logger.info({ method: 'getBtcRegistrationSku' }, 'Fetching BTC Registration SKU');
+microservices-middleware/server/src/productmanagement/blc/dto.js:11:hardcoded variable:    let query = {
+microservices-middleware/server/src/productmanagement/blc/dto.js:12:hardcoded string:        type: "service",
+microservices-middleware/server/src/productmanagement/blc/dto.js:13:hardcoded string:        subType: "registration",
+microservices-middleware/server/src/productmanagement/blc/dto.js:14:hardcoded string:        category: "btc_registration"
+microservices-middleware/server/src/productmanagement/blc/dto.js:23:hardcoded string:        logger.info({ method: 'getBtcRegistrationSku' }, 'Error while fetching BTC Registration SKU');
+microservices-middleware/server/src/productmanagement/blc/dto.js:28:hardcoded string:        throw new NotFoundError("BTC Registration SKU not found!")
+microservices-middleware/server/src/productmanagement/blc/dto.js:31:hardcoded string:    sku['price'] = sku.basePrice;
+microservices-middleware/server/src/productmanagement/blc/dto.js:32:hardcoded string:    sku["itemId"] = getSkuItemId(sku);
+microservices-middleware/server/src/productmanagement/blc/dto.js:37:hardcoded variable:const getExtensionSku = async (grade) => {
+microservices-middleware/server/src/productmanagement/blc/dto.js:38:hardcoded string:    logger.info({ method: 'getExtensionSku' }, 'Fetching Extension SKU');
+microservices-middleware/server/src/productmanagement/blc/dto.js:41:hardcoded variable:    let query = {
+microservices-middleware/server/src/productmanagement/blc/dto.js:42:hardcoded string:        status: "active",
+microservices-middleware/server/src/productmanagement/blc/dto.js:43:hardcoded string:        category: "extension",
+microservices-middleware/server/src/productmanagement/blc/dto.js:53:hardcoded string:        logger.info({ method: 'getExtensionSku' }, 'Error while fetching Extension SKU');
+microservices-middleware/server/src/productmanagement/blc/dto.js:58:hardcoded string:        throw new NotFoundError("Extension SKU not found!")
+microservices-middleware/server/src/productmanagement/blc/dto.js:60:hardcoded string:    extensionSku['price'] = extensionSku.basePrice;
+microservices-middleware/server/src/productmanagement/blc/routes.js:1:hardcoded file path:const Router = require('express-promise-router');
+microservices-middleware/server/src/productmanagement/blc/routes.js:2:hardcoded file path:const controller = require('./controller');
+microservices-middleware/server/src/productmanagement/blc/routes.js:3:hardcoded file path:const explorer = require('./explorer')
+microservices-middleware/server/src/productmanagement/blc/routes.js:5:hardcoded object:const { getCustomPrice, storeCalculatedPriceMw, validateCalculatedPriceMw } = require('../productHelper')
+microservices-middleware/server/src/productmanagement/blc/routes.js:7:hardcoded object:const router = Router({ mergeParams: true });
+microservices-middleware/server/src/productmanagement/blc/routes.js:10:hardcoded string:    const baseRoute = '/blc';
+microservices-middleware/server/src/productmanagement/blc/routes.js:12:hardcoded object:    router.route(`${baseRoute}/storeProductDetails`)
+microservices-middleware/server/src/productmanagement/blc/routes.js:19:hardcoded string:    const productTypes = ['single', 'combo']
+microservices-middleware/server/src/productmanagement/blc/routes.js:21:hardcoded object:        router.use(`${baseRoute}/product/${productType}`,
+microservices-middleware/server/src/productmanagement/blc/routes.js:25:hardcoded object:    router.route(`${baseRoute}/product/single`)
+microservices-middleware/server/src/productmanagement/blc/routes.js:32:hardcoded object:    router.route(`${baseRoute}/product/combo`)
+microservices-middleware/server/src/productmanagement/blc/routes.js:39:hardcoded object:    router.route(`${baseRoute}/product/sibling`)
+microservices-middleware/server/src/productmanagement/blc/routes.js:47:hardcoded object:    router.route(`${baseRoute}/states`)
+microservices-middleware/server/src/productmanagement/blc/routes.js:53:hardcoded object:    router.route(`${baseRoute}/cities`)
+microservices-middleware/server/src/productmanagement/blc/routes.js:59:hardcoded object:    router.route(`${baseRoute}/centres`)
+microservices-middleware/server/src/productmanagement/blc/routes.js:65:hardcoded object:    router.route(`${baseRoute}/batches`)
+microservices-middleware/server/src/productmanagement/blc/explorer.js:1:hardcoded object:const { get, isEmpty, isArray, isNaN, flattenDeep } = require('lodash');
+microservices-middleware/server/src/productmanagement/blc/explorer.js:2:hardcoded file path:const moment = require('moment');
+microservices-middleware/server/src/productmanagement/blc/explorer.js:4:hardcoded string:const { OrderPunchingConfig } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/blc/explorer.js:5:hardcoded object:const { productConstant } = require('../utils/productConstants');
+microservices-middleware/server/src/productmanagement/blc/explorer.js:7:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('BLC Product Explorer');
+microservices-middleware/server/src/productmanagement/blc/explorer.js:8:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper')
+microservices-middleware/server/src/productmanagement/blc/explorer.js:9:hardcoded object:const { NotFoundError, BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/blc/explorer.js:10:hardcoded object:const { getSkuItemId, getBoardForState, getReportingEmailByRole } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/blc/explorer.js:11:hardcoded object:const { getCourseSku, getBLCCityCategory, getTabletSku, getOfferDetails, getPricingEngineUpdatedPrices, getPriceMultiPaymentType } = require('./helper')
+microservices-middleware/server/src/productmanagement/blc/explorer.js:12:hardcoded object:const { getDiscountDetails } = require('../vouchermanagement/voucherHelper');
+microservices-middleware/server/src/productmanagement/blc/explorer.js:13:hardcoded object:const { getBooksSku, getBooksProduct } = require('../../bookmanagement/bookController')
+microservices-middleware/server/src/productmanagement/blc/explorer.js:14:hardcoded object:const { getUpdatedBlcPrice } = require('../pricingHelper');
+microservices-middleware/server/src/productmanagement/blc/explorer.js:15:hardcoded object:const { getBtcRegistrationSku } = require('./dto');
+microservices-middleware/server/src/productmanagement/blc/explorer.js:16:hardcoded object:const { priceSplit, getVoucherEnabledSkuArray, getTotalSiblingSkuPrice } = require('./service')
+microservices-middleware/server/src/productmanagement/blc/explorer.js:19:hardcoded variable:const getMinimumRange = async (productDetails) => {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:20:hardcoded string:    logger.info({ method: 'getMinimumRange' }, 'Calculating Minimum price');
+microservices-middleware/server/src/productmanagement/blc/explorer.js:21:hardcoded object:    let { req, maxPrice, tabletSku, paymentType } = productDetails
+microservices-middleware/server/src/productmanagement/blc/explorer.js:22:hardcoded variable:    const user = req.user;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:24:hardcoded string:    const teamManager = getReportingEmailByRole(user, 'team_manager');
+microservices-middleware/server/src/productmanagement/blc/explorer.js:28:hardcoded array:    tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:31:hardcoded variable:    const tabletTotalPrice = tabletSku ? tabletSku.reduce((sum, sku) => {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:32:hardcoded string:        return sum + (parseInt(get(sku, 'quantity', 1)) * parseInt(get(sku, 'price', 0)));
+microservices-middleware/server/src/productmanagement/blc/explorer.js:33:hardcoded number:    }, 0) : 0;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:36:hardcoded variable:    const applicablePriceForDiscount = parseInt(maxPrice) - parseInt(tabletTotalPrice);
+microservices-middleware/server/src/productmanagement/blc/explorer.js:39:hardcoded string:    if (paymentType === 'EMI') {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:47:hardcoded string:        moment().isBetween(productConstant.OFFER_START_DATE, productConstant.OFFER_END_DATE, '[]')) {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:52:hardcoded variable:    let minPrice = applicablePriceForDiscount - (applicablePriceForDiscount * minPricePercentage);
+microservices-middleware/server/src/productmanagement/blc/explorer.js:54:hardcoded number:    /**Rounding-off min-price to nearest 1000 */
+microservices-middleware/server/src/productmanagement/blc/explorer.js:55:hardcoded number:    minPrice = (Math.floor(minPrice / 1000)) * 1000;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:59:hardcoded string:    logger.info({ method: 'getMinimumRange', minPrice }, 'Minimum Price');
+microservices-middleware/server/src/productmanagement/blc/explorer.js:67:hardcoded variable:const getSingleProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:68:hardcoded string:    logger.info({ method: 'getSingleProduct' }, { message: "Fetching Single Product" });
+microservices-middleware/server/src/productmanagement/blc/explorer.js:71:hardcoded number:    let skuPrice = 0;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:72:hardcoded array:    let products = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:73:hardcoded variable:    let booksSku = null;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:74:hardcoded array:    let btcTutionSkuPrices = []
+microservices-middleware/server/src/productmanagement/blc/explorer.js:75:hardcoded array:    let nonDiscountableSkuPrices = [], voucherEnabledSkuArray = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:76:hardcoded array:    let updatedProducts = []
+microservices-middleware/server/src/productmanagement/blc/explorer.js:77:hardcoded number:    let updatedPrice = 0
+microservices-middleware/server/src/productmanagement/blc/explorer.js:78:hardcoded string:    let pricingSchemeId = ''
+microservices-middleware/server/src/productmanagement/blc/explorer.js:80:hardcoded string:    let { identifier, paymentType = "EMI", productType, productCombination, student, mentoringDetails = [], bhlpCourseDetails = [], workshopChannel, loggedInMobile, isBlcMarkUpAndDownApplicable = false } = req.body;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:84:hardcoded number:        student = isArray(student) ? student[0] : student
+microservices-middleware/server/src/productmanagement/blc/explorer.js:85:hardcoded string:        let { initialClass, board, validity, city, tablet = null, stateBoard = "", course } = student;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:87:hardcoded object:        let { blcCoursePrice, blcSkuArray } = await getBlcProductAndPrice({ initialClass, finalClass: initialClass, board, validity, city, stateBoard, student, productCombination, productType })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:88:hardcoded object:        let { tlpCoursePrice, tlpSkuArray } = await getTlpProductAndPrice({ initialClass, finalClass: initialClass, board, validity, tablet, stateBoard, student, productCombination, productType })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:94:hardcoded variable:        let registrationSkuFee = btcRegistrationSku.basePrice
+microservices-middleware/server/src/productmanagement/blc/explorer.js:100:hardcoded object:        tabletSku = tablet ? await getTabletSku({ tabletId: tablet }) : null;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:101:hardcoded array:        tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:105:hardcoded number:                const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:110:hardcoded array:        products.push(blcSkuArray, tlpSkuArray, tabletSku, [btcRegistrationSku]);
+microservices-middleware/server/src/productmanagement/blc/explorer.js:111:hardcoded variable:        const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/productmanagement/blc/explorer.js:113:hardcoded object:        const result = await getPricingEngineUpdatedPrices({ formattedProducts, student, isBlcMarkUpAndDownApplicable, paymentType })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:120:hardcoded number:        let maxPrice = Math.floor(updatedPrice / 1000) * 1000;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:121:hardcoded object:        booksSku = await getBooksSku({ board, initialClass, course });
+microservices-middleware/server/src/productmanagement/blc/explorer.js:123:hardcoded object:        let minPrice = await getMinimumRange({ req, maxPrice, tabletSku, paymentType })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:129:hardcoded string:        student["formValues"] = { ...student };
+microservices-middleware/server/src/productmanagement/blc/explorer.js:130:hardcoded string:        student["items"] = updatedProducts;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:133:hardcoded array:        voucherEnabledSkuArray = getVoucherEnabledSkuArray({ blcSkuArray, tlpSkuArray, btcRegistrationSku: [btcRegistrationSku] });
+microservices-middleware/server/src/productmanagement/blc/explorer.js:135:hardcoded variable:        const offerDetails = await getOfferDetails(student)
+microservices-middleware/server/src/productmanagement/blc/explorer.js:137:hardcoded object:        const skuProductDetails = { initialClass, finalClass: initialClass, tabletSku, maxPrice, minPrice, productCombination, productType, voucherEnabledSkuArray }
+microservices-middleware/server/src/productmanagement/blc/explorer.js:138:hardcoded variable:        const discountDetails = await getDiscountDetails({
+microservices-middleware/server/src/productmanagement/blc/explorer.js:141:hardcoded string:        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:150:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/blc/explorer.js:153:hardcoded number:                count: 0,
+microservices-middleware/server/src/productmanagement/blc/explorer.js:154:hardcoded array:                items: []
+microservices-middleware/server/src/productmanagement/blc/explorer.js:156:hardcoded array:            mentoringDetails: [],
+microservices-middleware/server/src/productmanagement/blc/explorer.js:170:hardcoded variable:const getComboProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:171:hardcoded string:    logger.info({ method: 'getComboProduct' }, { message: "Fetching Combo Product" });
+microservices-middleware/server/src/productmanagement/blc/explorer.js:174:hardcoded number:    let skuPrice = 0;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:175:hardcoded array:    let products = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:176:hardcoded array:    let booksSku = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:177:hardcoded array:    let btcTutionSkuPrices = []
+microservices-middleware/server/src/productmanagement/blc/explorer.js:178:hardcoded array:    let nonDiscountableSkuPrices = [], voucherEnabledSkuArray = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:179:hardcoded array:    let updatedProducts = []
+microservices-middleware/server/src/productmanagement/blc/explorer.js:180:hardcoded number:    let updatedPrice = 0
+microservices-middleware/server/src/productmanagement/blc/explorer.js:181:hardcoded string:    let pricingSchemeId = ''
+microservices-middleware/server/src/productmanagement/blc/explorer.js:183:hardcoded string:    let { identifier, paymentType = "EMI", productType, productCombination, student, mentoringDetails = [], bhlpCourseDetails = [], workshopChannel, loggedInMobile, isBlcMarkUpAndDownApplicable = false } = req.body;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:187:hardcoded number:        student = isArray(student) ? student[0] : student
+microservices-middleware/server/src/productmanagement/blc/explorer.js:188:hardcoded string:        let { initialClass, finalClass, board, stateBoard = "", validity, city, tablet = null, course, tlpFinalGrade } = student;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:190:hardcoded object:        const { blcCoursePrice, blcSkuArray } = await getBlcProductAndPrice({ initialClass, finalClass, board, validity, city, stateBoard, student, tlpFinalGrade })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:191:hardcoded object:        const { tlpCoursePrice, tlpSkuArray } = await getTlpProductAndPrice({ initialClass, finalClass, board, validity, tablet, stateBoard, student, tlpFinalGrade })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:196:hardcoded variable:        let registrationSkuFee = btcRegistrationSku.basePrice
+microservices-middleware/server/src/productmanagement/blc/explorer.js:202:hardcoded object:        tabletSku = tablet ? await getTabletSku({ tabletId: tablet }) : null;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:203:hardcoded array:        tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:208:hardcoded number:                const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:213:hardcoded string:        if (['local', 'development'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:214:hardcoded array:            booksSku = await getBooksProduct({ board, initialClass, finalClass, course }) || [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:215:hardcoded string:            const booksPrice = booksSku.reduce((acc, curr) => acc + parseInt(get(curr, 'basePrice', 0)), 0);
+microservices-middleware/server/src/productmanagement/blc/explorer.js:218:hardcoded array:        products.push(blcSkuArray, tlpSkuArray, tabletSku, [btcRegistrationSku]);
+microservices-middleware/server/src/productmanagement/blc/explorer.js:219:hardcoded variable:        const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/productmanagement/blc/explorer.js:220:hardcoded object:        const result = await getPricingEngineUpdatedPrices({ formattedProducts, student, isBlcMarkUpAndDownApplicable, paymentType })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:227:hardcoded number:        let maxPrice = Math.floor(updatedPrice / 1000) * 1000;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:228:hardcoded object:        let minPrice = await getMinimumRange({ req, maxPrice, tabletSku, paymentType })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:231:hardcoded string:        if (['local', 'development'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:237:hardcoded string:        student["formValues"] = { ...student };
+microservices-middleware/server/src/productmanagement/blc/explorer.js:238:hardcoded string:        student["items"] = updatedProducts;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:241:hardcoded array:        voucherEnabledSkuArray = getVoucherEnabledSkuArray({ blcSkuArray, tlpSkuArray, btcRegistrationSku: [btcRegistrationSku] });
+microservices-middleware/server/src/productmanagement/blc/explorer.js:243:hardcoded variable:        const offerDetails = await getOfferDetails(student)
+microservices-middleware/server/src/productmanagement/blc/explorer.js:244:hardcoded object:        const skuProductDetails = { initialClass, finalClass, tabletSku, maxPrice, minPrice, productCombination, voucherEnabledSkuArray }
+microservices-middleware/server/src/productmanagement/blc/explorer.js:245:hardcoded variable:        const discountDetails = await getDiscountDetails({
+microservices-middleware/server/src/productmanagement/blc/explorer.js:248:hardcoded string:        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:257:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/blc/explorer.js:260:hardcoded number:                count: 0,
+microservices-middleware/server/src/productmanagement/blc/explorer.js:261:hardcoded array:                items: []
+microservices-middleware/server/src/productmanagement/blc/explorer.js:263:hardcoded array:            mentoringDetails: [],
+microservices-middleware/server/src/productmanagement/blc/explorer.js:275:hardcoded variable:const getSiblingProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:276:hardcoded string:    logger.info({ method: 'getSiblingProduct' }, { message: "Fetching Sibling Product" });
+microservices-middleware/server/src/productmanagement/blc/explorer.js:277:hardcoded array:    let tabletSku = [], mentoringSku = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:278:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:279:hardcoded array:    let booksSku = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:280:hardcoded array:    let siblingProducts = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:281:hardcoded array:    let tabletArray = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:282:hardcoded string:    let grade = ""
+microservices-middleware/server/src/productmanagement/blc/explorer.js:283:hardcoded number:    let skuPrice = 0;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:284:hardcoded number:    let totalPrice = 0;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:285:hardcoded string:    let pricingSchemeId = ''
+microservices-middleware/server/src/productmanagement/blc/explorer.js:286:hardcoded array:    let productCombinationArray = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:287:hardcoded string:    let { identifier, paymentType = "EMI", productType, productCombination, student: studentArray, mentoringCount, mentoringDetails, bhlpCourseDetails, workshopChannel, loggedInMobile, isBlcMarkUpAndDownApplicable = false } = req.body;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:288:hardcoded variable:    let siblingCount = studentArray.length
+microservices-middleware/server/src/productmanagement/blc/explorer.js:289:hardcoded array:    let btcTutionSkuPrices = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:290:hardcoded number:    let nonDiscountableSkuPrices = [], voucherEnabledSkuArray = [], remainingSiblingSkus = [], remainingSiblingPriceToAdd = 0;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:297:hardcoded number:        for (var i = 0; i < studentArray.length; i++) {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:298:hardcoded array:            let { initialClass, finalClass, validity, city, tablet = null, board, stateBoard, tabletId, tlpFinalGrade, voucherApplied, course } = studentArray[i];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:299:hardcoded array:            let products = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:300:hardcoded array:            let siblingSkuArray = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:301:hardcoded array:            let updatedProducts = []
+microservices-middleware/server/src/productmanagement/blc/explorer.js:302:hardcoded number:            let updatedPrice = 0
+microservices-middleware/server/src/productmanagement/blc/explorer.js:306:hardcoded number:            const isSibling = (i > 0) ? true : false;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:307:hardcoded array:            const { blcCoursePrice, blcSkuArray } = await getBlcProductAndPrice({ initialClass, finalClass, board, validity, city, stateBoard, student: studentArray[i], isSibling, tlpFinalGrade })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:308:hardcoded array:            const { tlpCoursePrice, tlpSkuArray } = await getTlpProductAndPrice({ initialClass, finalClass, board, validity, tablet, stateBoard, student: studentArray[i], isSibling, tlpFinalGrade })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:313:hardcoded variable:            let registrationSkuFee = btcRegistrationSku.basePrice
+microservices-middleware/server/src/productmanagement/blc/explorer.js:319:hardcoded object:            tabletSku = tablet ? await getTabletSku({ tabletId: tablet, uniqueTabletId: tabletId }) : null;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:320:hardcoded array:            tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:325:hardcoded number:                    const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:334:hardcoded array:                voucherEnabledSkuArray = getVoucherEnabledSkuArray({ blcSkuArray, tlpSkuArray, btcRegistrationSku: [btcRegistrationSku] })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:342:hardcoded array:            booksSku = await getBooksProduct({ board, initialClass, finalClass, course }) || [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:347:hardcoded variable:            const formattedSiblingProducts = flattenDeep(products).filter(prod => prod);
+microservices-middleware/server/src/productmanagement/blc/explorer.js:348:hardcoded array:            const result = await getPricingEngineUpdatedPrices({ formattedProducts: formattedSiblingProducts, student: studentArray[i], isBlcMarkUpAndDownApplicable, paymentType })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:355:hardcoded string:            studentArray[i]["formValues"] = { ...studentArray[i] };
+microservices-middleware/server/src/productmanagement/blc/explorer.js:356:hardcoded string:            studentArray[i]["items"] = updatedProducts;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:364:hardcoded number:        let maxPrice = Math.floor(totalPrice / 1000) * 1000;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:365:hardcoded object:        let minPrice = await getMinimumRange({ req, maxPrice, tabletSku: tabletArray, paymentType })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:368:hardcoded object:        remainingSiblingPriceToAdd = getTotalSiblingSkuPrice({ skuArray: flattenDeep(remainingSiblingSkus) });
+microservices-middleware/server/src/productmanagement/blc/explorer.js:370:hardcoded array:        remainingSiblingPriceToAdd = await getMinimumRange({ req, maxPrice: remainingSiblingPriceToAdd, tabletSku: [], paymentType })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:373:hardcoded variable:        const offerDetails = await getOfferDetails(studentArray)
+microservices-middleware/server/src/productmanagement/blc/explorer.js:374:hardcoded variable:        const skuProductDetails = {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:378:hardcoded variable:        const discountDetails = await getDiscountDetails({
+microservices-middleware/server/src/productmanagement/blc/explorer.js:381:hardcoded string:        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:412:hardcoded variable:const getBlcProductAndPrice = async (details) => {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:414:hardcoded number:    let skuPrice = 0;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:415:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:416:hardcoded string:    const type = "byjus_learning_center";
+microservices-middleware/server/src/productmanagement/blc/explorer.js:417:hardcoded object:    let { initialClass, finalClass, board, validity, city, stateBoard, student, productCombination, productType } = details
+microservices-middleware/server/src/productmanagement/blc/explorer.js:418:hardcoded object:    let { tabletId } = student;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:422:hardcoded variable:    let grade = initialClass;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:426:hardcoded number:            let coursePrice = 0
+microservices-middleware/server/src/productmanagement/blc/explorer.js:431:hardcoded string:                board: board === "STATE" ? getBoardForState(stateBoard) : board,
+microservices-middleware/server/src/productmanagement/blc/explorer.js:435:hardcoded object:            let updatedPrice = await getUpdatedBlcPrice({ grade, initialClass, finalClass, student, courseSku, productCombination, productType });
+microservices-middleware/server/src/productmanagement/blc/explorer.js:438:hardcoded string:            courseSku['price'] = coursePrice
+microservices-middleware/server/src/productmanagement/blc/explorer.js:439:hardcoded string:            courseSku["combinationType"] = type;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:440:hardcoded string:            courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/productmanagement/blc/explorer.js:441:hardcoded string:            courseSku["tabletId"] = tabletId
+microservices-middleware/server/src/productmanagement/blc/explorer.js:444:hardcoded number:            grade += 1;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:449:hardcoded variable:        const cityCategory = await getBLCCityCategory(city)
+microservices-middleware/server/src/productmanagement/blc/explorer.js:451:hardcoded string:        const { configs } = await OrderPunchingConfig.findOne({ formattedModuleName: "BLC_CITY_CATEGORY_DISCOUNT" })
+microservices-middleware/server/src/productmanagement/blc/explorer.js:452:hardcoded object:        const { categoryDiscount } = configs || {}
+microservices-middleware/server/src/productmanagement/blc/explorer.js:454:hardcoded array:        skuPrice = skuPrice * categoryDiscount[cityCategory]
+microservices-middleware/server/src/productmanagement/blc/explorer.js:465:hardcoded variable:const getTlpProductAndPrice = async (details) => {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:467:hardcoded number:    let skuPrice = 0;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:468:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/productmanagement/blc/explorer.js:469:hardcoded string:    const type = "btlp";
+microservices-middleware/server/src/productmanagement/blc/explorer.js:470:hardcoded object:    let { initialClass, finalClass, board, validity, tablet, stateBoard, student, tlpFinalGrade, productCombination, productType } = details
+microservices-middleware/server/src/productmanagement/blc/explorer.js:471:hardcoded object:    let { tabletId, subCourse } = student;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:474:hardcoded number:    finalClass = tlpFinalGrade ? parseInt(tlpFinalGrade, 10) : parseInt(finalClass);
+microservices-middleware/server/src/productmanagement/blc/explorer.js:475:hardcoded variable:    let grade = initialClass;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:479:hardcoded number:            let coursePrice = 0
+microservices-middleware/server/src/productmanagement/blc/explorer.js:480:hardcoded string:            if (grade == "11") {
+microservices-middleware/server/src/productmanagement/blc/explorer.js:481:hardcoded string:                grade = "11+12"
+microservices-middleware/server/src/productmanagement/blc/explorer.js:482:hardcoded number:                validity += 1;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:488:hardcoded string:                board: board === "STATE" ? getBoardForState(stateBoard) : board,
+microservices-middleware/server/src/productmanagement/blc/explorer.js:493:hardcoded object:            let updatedPrice = await getUpdatedBlcPrice({ grade, initialClass, finalClass, student, courseSku, productCombination, productType });
+microservices-middleware/server/src/productmanagement/blc/explorer.js:496:hardcoded string:            courseSku['price'] = coursePrice
+microservices-middleware/server/src/productmanagement/blc/explorer.js:497:hardcoded string:            courseSku["combinationType"] = type;
+microservices-middleware/server/src/productmanagement/blc/explorer.js:498:hardcoded string:            courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/productmanagement/blc/explorer.js:499:hardcoded string:            courseSku["tabletId"] = tabletId
+microservices-middleware/server/src/productmanagement/blc/explorer.js:502:hardcoded number:            grade += 1;
+microservices-middleware/server/src/productmanagement/blc/helper.js:1:hardcoded object:const { Op } = require("sequelize");
+microservices-middleware/server/src/productmanagement/blc/helper.js:2:hardcoded object:const { isArray, get } = require('lodash');
+microservices-middleware/server/src/productmanagement/blc/helper.js:3:hardcoded file path:const axios = require('axios');
+microservices-middleware/server/src/productmanagement/blc/helper.js:5:hardcoded string:const { SalesSkuMaster, BlcBatchOfferMapping, Offer } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/blc/helper.js:6:hardcoded object:const { productConstant } = require('../utils/productConstants');
+microservices-middleware/server/src/productmanagement/blc/helper.js:7:hardcoded object:const { getSkuItemId } = require('../service/skuIdHelper')
+microservices-middleware/server/src/productmanagement/blc/helper.js:8:hardcoded number:const { getUpdatedK10K12Price } = require('../../productmanagement/pricingHelper');
+microservices-middleware/server/src/productmanagement/blc/helper.js:10:hardcoded object:const { NotFoundError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/blc/helper.js:11:hardcoded file path:const ByjusConfig = require('../../../models/ByjusConfig');
+microservices-middleware/server/src/productmanagement/blc/helper.js:12:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Product Helper');
+microservices-middleware/server/src/productmanagement/blc/helper.js:14:hardcoded variable:const getCourseSku = async (details) => {
+microservices-middleware/server/src/productmanagement/blc/helper.js:15:hardcoded object:    const { type, grade, board, validity, tablet, subCourse } = details
+microservices-middleware/server/src/productmanagement/blc/helper.js:17:hardcoded variable:    const query = {
+microservices-middleware/server/src/productmanagement/blc/helper.js:18:hardcoded string:        status: "active",
+microservices-middleware/server/src/productmanagement/blc/helper.js:20:hardcoded string:        brand: productConstant.D4_SKU_ID.includes(tablet) && type === "btlp" ? "D4" : null,
+microservices-middleware/server/src/productmanagement/blc/helper.js:21:hardcoded object:        grade: `${grade}`,
+microservices-middleware/server/src/productmanagement/blc/helper.js:22:hardcoded object:        validity: `${validity}`
+microservices-middleware/server/src/productmanagement/blc/helper.js:25:hardcoded string:    if (["4", "5"].indexOf(grade.toString()) >= 0) {
+microservices-middleware/server/src/productmanagement/blc/helper.js:26:hardcoded string:        query['board'] = null
+microservices-middleware/server/src/productmanagement/blc/helper.js:29:hardcoded string:    if (["6", "7", "8", "9", "10"].indexOf(grade.toString()) >= 0) {
+microservices-middleware/server/src/productmanagement/blc/helper.js:30:hardcoded string:        query['board'] = board
+microservices-middleware/server/src/productmanagement/blc/helper.js:32:hardcoded string:    if (grade == "11+12") {
+microservices-middleware/server/src/productmanagement/blc/helper.js:33:hardcoded string:        query['subCourse'] = subCourse
+microservices-middleware/server/src/productmanagement/blc/helper.js:34:hardcoded string:        query["category"] = "aakash"
+microservices-middleware/server/src/productmanagement/blc/helper.js:37:hardcoded variable:    const product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/productmanagement/blc/helper.js:45:hardcoded string:            itemType: 'course'
+microservices-middleware/server/src/productmanagement/blc/helper.js:49:hardcoded object:        const errorMsg = getErrorMsg({ grade, board, validity, type });
+microservices-middleware/server/src/productmanagement/blc/helper.js:54:hardcoded variable:const getTabletSku = async (details) => {
+microservices-middleware/server/src/productmanagement/blc/helper.js:55:hardcoded object:    let { tabletId, studentId, uniqueTabletId } = details
+microservices-middleware/server/src/productmanagement/blc/helper.js:56:hardcoded number:    let price = 0
+microservices-middleware/server/src/productmanagement/blc/helper.js:62:hardcoded array:                [Op.or]: [
+microservices-middleware/server/src/productmanagement/blc/helper.js:63:hardcoded object:                    { skuId: `${tabletId}` },
+microservices-middleware/server/src/productmanagement/blc/helper.js:64:hardcoded object:                    { ohProductId: `${tabletId}` }
+microservices-middleware/server/src/productmanagement/blc/helper.js:66:hardcoded string:                status: "active"
+microservices-middleware/server/src/productmanagement/blc/helper.js:82:hardcoded string:            itemType: 'tablet',
+microservices-middleware/server/src/productmanagement/blc/helper.js:87:hardcoded object:        throw new NotFoundError(`Tablet with SKU Id:${tabletId} is not found`);
+microservices-middleware/server/src/productmanagement/blc/helper.js:91:hardcoded variable:const getBLCCityCategory = async (cityId) => {
+microservices-middleware/server/src/productmanagement/blc/helper.js:92:hardcoded string:    let category = "A"
+microservices-middleware/server/src/productmanagement/blc/helper.js:97:hardcoded variable:const getErrorMsg = function (queryDetails) {
+microservices-middleware/server/src/productmanagement/blc/helper.js:98:hardcoded object:    const { grade, board, validity, type } = queryDetails || {};
+microservices-middleware/server/src/productmanagement/blc/helper.js:101:hardcoded string:    ${grade ? `Grade: ${grade}` : ''}
+microservices-middleware/server/src/productmanagement/blc/helper.js:102:hardcoded string:    ${board ? `Board: ${board}` : ''}
+microservices-middleware/server/src/productmanagement/blc/helper.js:103:hardcoded string:    ${type ? `Type: ${type}` : ''}
+microservices-middleware/server/src/productmanagement/blc/helper.js:104:hardcoded string:    ${validity ? `Validity: ${validity}` : ''}
+microservices-middleware/server/src/productmanagement/blc/helper.js:108:hardcoded object:const attachBlcCenterAndBatchDetails = (productDetails = {}) => {
+microservices-middleware/server/src/productmanagement/blc/helper.js:109:hardcoded array:    const { students = [] } = productDetails;
+microservices-middleware/server/src/productmanagement/blc/helper.js:111:hardcoded variable:    const formattedStudentDetails = students.map((student, index) => {
+microservices-middleware/server/src/productmanagement/blc/helper.js:113:hardcoded object:        const { state, stateName, city, cityName, centre, centreName, requestedBatchId, batchType, courseAliasId, cohortId, pincode } = student
+microservices-middleware/server/src/productmanagement/blc/helper.js:115:hardcoded variable:        let centreDetails = {
+microservices-middleware/server/src/productmanagement/blc/helper.js:116:hardcoded string:            "stateId": state,
+microservices-middleware/server/src/productmanagement/blc/helper.js:117:hardcoded string:            "state": stateName,
+microservices-middleware/server/src/productmanagement/blc/helper.js:118:hardcoded string:            "cityId": city,
+microservices-middleware/server/src/productmanagement/blc/helper.js:119:hardcoded string:            "city": cityName,
+microservices-middleware/server/src/productmanagement/blc/helper.js:120:hardcoded string:            "centreId": centre,
+microservices-middleware/server/src/productmanagement/blc/helper.js:121:hardcoded string:            "centre": centreName,
+microservices-middleware/server/src/productmanagement/blc/helper.js:122:hardcoded string:            "requestedBatchId": requestedBatchId,
+microservices-middleware/server/src/productmanagement/blc/helper.js:123:hardcoded string:            "requestId": null,
+microservices-middleware/server/src/productmanagement/blc/helper.js:124:hardcoded string:            "batchType": batchType,
+microservices-middleware/server/src/productmanagement/blc/helper.js:125:hardcoded string:            "courseAliasId": courseAliasId,
+microservices-middleware/server/src/productmanagement/blc/helper.js:126:hardcoded string:            "cohortId": cohortId,
+microservices-middleware/server/src/productmanagement/blc/helper.js:127:hardcoded string:            "pincode": pincode
+microservices-middleware/server/src/productmanagement/blc/helper.js:130:hardcoded string:        student["centreDetails"] = centreDetails;
+microservices-middleware/server/src/productmanagement/blc/helper.js:139:hardcoded variable:const getOfferDetails = async (student) => {
+microservices-middleware/server/src/productmanagement/blc/helper.js:141:hardcoded array:    const studentArray = isArray(student) ? student : [student];
+microservices-middleware/server/src/productmanagement/blc/helper.js:142:hardcoded array:    let offerDetails = [];
+microservices-middleware/server/src/productmanagement/blc/helper.js:145:hardcoded object:        const { bhlpCourseDetails } = stdnt
+microservices-middleware/server/src/productmanagement/blc/helper.js:146:hardcoded object:        const { batchOffers } = bhlpCourseDetails || {}
+microservices-middleware/server/src/productmanagement/blc/helper.js:155:hardcoded variable:const getSkuDetails = async (formattedProducts) => {
+microservices-middleware/server/src/productmanagement/blc/helper.js:156:hardcoded array:    let skuDetails = [];
+microservices-middleware/server/src/productmanagement/blc/helper.js:157:hardcoded number:    for (let i = 0; i < formattedProducts.length; i++) {
+microservices-middleware/server/src/productmanagement/blc/helper.js:158:hardcoded array:        const { skuId, price, category, subType } = formattedProducts[i]
+microservices-middleware/server/src/productmanagement/blc/helper.js:159:hardcoded object:        let detailsObj = { skuId: skuId, skuPrice: price, skuCategory: category, skuSubType: subType }
+microservices-middleware/server/src/productmanagement/blc/helper.js:165:hardcoded variable:const getUpdatedPrice = async (skuDetails, formattedProducts, isUpgrade, student, isBlcMarkUpAndDownApplicable, paymentType) => {
+microservices-middleware/server/src/productmanagement/blc/helper.js:166:hardcoded array:    let updatedProducts = [];
+microservices-middleware/server/src/productmanagement/blc/helper.js:167:hardcoded number:    let updatedPrice = 0;
+microservices-middleware/server/src/productmanagement/blc/helper.js:168:hardcoded number:    let tlpSkusRemovedPrice = 0;
+microservices-middleware/server/src/productmanagement/blc/helper.js:169:hardcoded object:    const { initialClass, finalClass } = student;
+microservices-middleware/server/src/productmanagement/blc/helper.js:170:hardcoded number:    for (let i = 0; i < skuDetails.length; i++) {
+microservices-middleware/server/src/productmanagement/blc/helper.js:171:hardcoded array:        let { skuId, pricingSchemeMultiplier, updatedSkuPrice, originalSkuPrice } = skuDetails[i]
+microservices-middleware/server/src/productmanagement/blc/helper.js:172:hardcoded variable:        let product = formattedProducts.find(item => item.skuId === skuId)
+microservices-middleware/server/src/productmanagement/blc/helper.js:175:hardcoded string:        if (isBlcMarkUpAndDownApplicable && product?.subType !== 'tablet') updatedSkuPrice *= await getPriceMultiPaymentType(paymentType);
+microservices-middleware/server/src/productmanagement/blc/helper.js:177:hardcoded string:        if (['btlp', 'byjus_classes_upgrade'].includes(product.category) && isUpgrade) {
+microservices-middleware/server/src/productmanagement/blc/helper.js:178:hardcoded string:            if (!['byjus_classes_upgrade'].includes(product.category)) {
+microservices-middleware/server/src/productmanagement/blc/helper.js:183:hardcoded number:                let { skuPrice } = getUpdatedK10K12Price({ courseSku: product, grade: product.grade, initialClass: Number(initialClass), finalClass: Number(finalClass), student, isInsideSalesEnabled: false })
+microservices-middleware/server/src/productmanagement/blc/helper.js:196:hardcoded number:        updatedPrice = Math.floor(updatedPrice / 1000) * 1000 - tlpSkusRemovedPrice
+microservices-middleware/server/src/productmanagement/blc/helper.js:198:hardcoded object:    return { updatedProducts, updatedPrice }
+microservices-middleware/server/src/productmanagement/blc/helper.js:201:hardcoded variable:const callPricingEngineApi = async (payload) => {
+microservices-middleware/server/src/productmanagement/blc/helper.js:203:hardcoded variable:        const response = await axios({
+microservices-middleware/server/src/productmanagement/blc/helper.js:204:hardcoded object:            url: `${process.env.PRICING_ENGINE_URL}/getUpdatedPriceDetails`,
+microservices-middleware/server/src/productmanagement/blc/helper.js:205:hardcoded string:            method: "GET",
+microservices-middleware/server/src/productmanagement/blc/helper.js:207:hardcoded string:                "x-api-key": process.env.PRICING_ENGINE_X_API_KEY,
+microservices-middleware/server/src/productmanagement/blc/helper.js:208:hardcoded string:                "Content-Type": "application/json"
+microservices-middleware/server/src/productmanagement/blc/helper.js:212:hardcoded string:        const data = get(response, 'data')
+microservices-middleware/server/src/productmanagement/blc/helper.js:220:hardcoded variable:const getPricingEngineUpdatedPrices = async (details) => {
+microservices-middleware/server/src/productmanagement/blc/helper.js:221:hardcoded object:    let { formattedProducts, student, isUpgrade, isBlcMarkUpAndDownApplicable = false, paymentType } = details
+microservices-middleware/server/src/productmanagement/blc/helper.js:222:hardcoded variable:    const skudetails = await getSkuDetails(formattedProducts)
+microservices-middleware/server/src/productmanagement/blc/helper.js:223:hardcoded variable:    let payload = {
+microservices-middleware/server/src/productmanagement/blc/helper.js:224:hardcoded string:        programName: 'htp_at_btc',
+microservices-middleware/server/src/productmanagement/blc/helper.js:232:hardcoded object:    const { skuDetails, pricingSchemeId } = await callPricingEngineApi(payload)
+microservices-middleware/server/src/productmanagement/blc/helper.js:233:hardcoded object:    const { updatedProducts, updatedPrice } = await getUpdatedPrice(skuDetails, formattedProducts, isUpgrade, student, isBlcMarkUpAndDownApplicable, paymentType)
+microservices-middleware/server/src/productmanagement/blc/helper.js:234:hardcoded object:    return { updatedProducts, updatedPrice, pricingSchemeId }
+microservices-middleware/server/src/productmanagement/blc/helper.js:238:hardcoded variable:const getMinOrderThres = async (details) => {
+microservices-middleware/server/src/productmanagement/blc/helper.js:239:hardcoded array:    let { maxPrice, tabletSku = [], isDevEnv, productSelectionType, noOfYears } = details
+microservices-middleware/server/src/productmanagement/blc/helper.js:240:hardcoded string:    const thresholdData = await ByjusConfig.findOne({ "formattedModuleName": "BTC_UPGRADE_THRESHOLD" });
+microservices-middleware/server/src/productmanagement/blc/helper.js:241:hardcoded array:    const { configs = [] } = thresholdData || []
+microservices-middleware/server/src/productmanagement/blc/helper.js:242:hardcoded array:    const thresholdValues = configs.filter(value => value.programName === productSelectionType) || []
+microservices-middleware/server/src/productmanagement/blc/helper.js:243:hardcoded number:    const { baseThreshold = 0, continuousThreshold = 0 } = thresholdValues[0] || {}
+microservices-middleware/server/src/productmanagement/blc/helper.js:244:hardcoded variable:    let price = baseThreshold + (continuousThreshold * noOfYears);
+microservices-middleware/server/src/productmanagement/blc/helper.js:245:hardcoded string:    price = price + parseInt(get(tabletSku, '0.price', 0))
+microservices-middleware/server/src/productmanagement/blc/helper.js:250:hardcoded variable:const getPriceMultiPaymentType = async (paymentType) => {
+microservices-middleware/server/src/productmanagement/blc/helper.js:251:hardcoded string:    const btcPriceConfig = await ByjusConfig.findOne({ "formattedModuleName": "BTC_PRICE_BASED_ON_PAYMENT_MODE" });
+microservices-middleware/server/src/productmanagement/blc/helper.js:252:hardcoded array:    const { configs = [] } = btcPriceConfig || []
+microservices-middleware/server/src/productmanagement/blc/helper.js:253:hardcoded array:    const { multiplier } = configs.find(value => value.paymentType === paymentType) || []
+microservices-middleware/server/src/productmanagement/blc/helper.js:254:hardcoded number:    return multiplier || 1;

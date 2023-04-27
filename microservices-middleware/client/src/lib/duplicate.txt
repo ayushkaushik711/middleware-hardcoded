@@ -1,0 +1,50 @@
+microservices-middleware/client/src/lib/validityHelper.js:1:hardcoded variable:const getCourseAcademicEndMonth = (course) => {
+microservices-middleware/client/src/lib/validityHelper.js:3:hardcoded variable:    const courseMap = {
+microservices-middleware/client/src/lib/validityHelper.js:4:hardcoded string:        'k12': 4,
+microservices-middleware/client/src/lib/validityHelper.js:5:hardcoded string:        'k10': 3,
+microservices-middleware/client/src/lib/validityHelper.js:6:hardcoded string:        'competitive': 8,
+microservices-middleware/client/src/lib/validityHelper.js:7:hardcoded string:        'crpCompetitive':8,
+microservices-middleware/client/src/lib/validityHelper.js:8:hardcoded string:        'gate': 11,
+microservices-middleware/client/src/lib/validityHelper.js:9:hardcoded string:        'cat': 2,
+microservices-middleware/client/src/lib/validityHelper.js:12:hardcoded string:    return courseMap[course] || courseMap['k12']; //Return K12 end month by default
+microservices-middleware/client/src/lib/validityHelper.js:15:hardcoded variable:export const getCurrentAcademicYear = (course) => {
+microservices-middleware/client/src/lib/validityHelper.js:16:hardcoded variable:    const academicEndMonth = getCourseAcademicEndMonth(course); // Jan-April of next year of calendar is to be considered as current academic year only.
+microservices-middleware/client/src/lib/validityHelper.js:17:hardcoded variable:    const currentYear = (new Date()).getFullYear();
+microservices-middleware/client/src/lib/validityHelper.js:18:hardcoded variable:    const currentMonth = (new Date()).getMonth();
+microservices-middleware/client/src/lib/validityHelper.js:21:hardcoded number:        return currentYear - 1;
+microservices-middleware/client/src/lib/maskedNumberHelper.js:1:hardcoded object:import { get } from 'lodash';
+microservices-middleware/client/src/lib/maskedNumberHelper.js:2:hardcoded object:import { getStore } from 'store/index'
+microservices-middleware/client/src/lib/maskedNumberHelper.js:3:hardcoded object:import { MASKED_ELIGIBLE_VERTICAL_USERS } from "../modules/product/utils/productConstant"
+microservices-middleware/client/src/lib/maskedNumberHelper.js:5:hardcoded variable:export const getMaskedMobileDetails  = (details) => {
+microservices-middleware/client/src/lib/maskedNumberHelper.js:7:hardcoded variable:    const store = getStore();
+microservices-middleware/client/src/lib/maskedNumberHelper.js:9:hardcoded object:        const reduxState = store.getState() || {};
+microservices-middleware/client/src/lib/maskedNumberHelper.js:10:hardcoded string:        vertical = get(reduxState, 'auth.details.user.vertical');
+microservices-middleware/client/src/lib/maskedNumberHelper.js:12:hardcoded object:    let { customerMobileNo } = details;
+microservices-middleware/client/src/lib/maskedNumberHelper.js:13:hardcoded string:    customerMobileNo = customerMobileNo.split('-')[1];
+microservices-middleware/client/src/lib/maskedNumberHelper.js:14:hardcoded variable:    const maskedMobileUser = MASKED_ELIGIBLE_VERTICAL_USERS.includes(vertical)
+microservices-middleware/client/src/lib/maskedNumberHelper.js:16:hardcoded string:        const maskedMobileNo = customerMobileNo && customerMobileNo.replace(/\d(?=\d{2})/g, "*");
+microservices-middleware/client/src/lib/nwConnectionMap.js:1:hardcoded variable:const getConnectionUrl = () => {
+microservices-middleware/client/src/lib/nwConnectionMap.js:2:hardcoded variable:    const urlMap = {
+microservices-middleware/client/src/lib/nwConnectionMap.js:3:hardcoded string:        "localhost": "http://localhost:7000",
+microservices-middleware/client/src/lib/nwConnectionMap.js:4:hardcoded string:        "dev-middleware.byjusorders.com": "https://dev-middleware-nucleus.byjusorders.com",
+microservices-middleware/client/src/lib/nwConnectionMap.js:5:hardcoded string:        "uat-middleware.byjusorders.com": "https://uat-middleware-nucleus.byjusorders.com",
+microservices-middleware/client/src/lib/nwConnectionMap.js:6:hardcoded string:        "staging-middleware.byjusorders.com": "https://staging-middleware-nucleus.byjusorders.com",
+microservices-middleware/client/src/lib/nwConnectionMap.js:7:hardcoded string:        "middleware.byjusorders.com": "https://middleware-nucleus.byjusorders.com"
+microservices-middleware/client/src/lib/nwConnectionMap.js:9:hardcoded variable:    const hostName = window.location.host;
+microservices-middleware/client/src/lib/nwConnectionMap.js:10:hardcoded array:    const url = `${urlMap[hostName]}`
+microservices-middleware/client/src/lib/featureHelper.js:1:hardcoded object:import { get,snakeCase } from "lodash";
+microservices-middleware/client/src/lib/featureHelper.js:3:hardcoded string:export const isMeAccount = (leadDetails) => {return get(leadDetails, 'accountNumber', '') == 24694 ? true : false;}
+microservices-middleware/client/src/lib/featureHelper.js:5:hardcoded string:const ALOWED_PRE_APPROVED_LOAN_ACCOUNTS = ['24692', '5989', '52269'];
+microservices-middleware/client/src/lib/featureHelper.js:7:hardcoded string:const LsAccounts = ['.new', '+19088', '+17139', '+24692', '+24692', '+24693', '+DS', '+ds',
+microservices-middleware/client/src/lib/featureHelper.js:8:hardcoded string:    '+46867', '+7461', '+50476', '+56293staging', '+staging', '+52269', '+5989'];
+microservices-middleware/client/src/lib/featureHelper.js:10:hardcoded string:export const getFormattedUserEmail = (userEmail = "") => {
+microservices-middleware/client/src/lib/featureHelper.js:11:hardcoded variable:    let email = userEmail.toLowerCase();
+microservices-middleware/client/src/lib/featureHelper.js:14:hardcoded string:        email = email.replace(account, '');
+microservices-middleware/client/src/lib/featureHelper.js:20:hardcoded variable:export const checkEligibleForPreApprovedLoan = (leadDetails, salesOrders) => {
+microservices-middleware/client/src/lib/featureHelper.js:21:hardcoded string:    const { workshopChannel = '', workshopVendor = '', preApprovedLoanStatus = '', accountNumber = '' } = leadDetails;
+microservices-middleware/client/src/lib/featureHelper.js:23:hardcoded string:    const isMlpProductPurchased = salesOrders?.findIndex(order => order?.orderPunchingCategory === "mlp");
+microservices-middleware/client/src/lib/featureHelper.js:25:hardcoded variable:    const validForPreApprovedLoan = (ALOWED_PRE_APPROVED_LOAN_ACCOUNTS.includes(accountNumber) &&
+microservices-middleware/client/src/lib/featureHelper.js:26:hardcoded string:        isMlpProductPurchased > -1 && snakeCase(workshopChannel) === "bank_partner" &&
+microservices-middleware/client/src/lib/featureHelper.js:27:hardcoded string:        workshopVendor === "hdfc" && (preApprovedLoanStatus || "").toLowerCase() === 'approved') ? true : false;
+microservices-middleware/client/src/lib/arrayExtender.js:1:hardcoded variable:const insert = (array, index, elementToInsert) => {
+microservices-middleware/client/src/lib/arrayExtender.js:2:hardcoded number:    array.splice(index, 0, elementToInsert);

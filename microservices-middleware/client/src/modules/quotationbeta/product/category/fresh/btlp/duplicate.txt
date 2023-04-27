@@ -1,0 +1,3 @@
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btlp/shopCart.js:1:hardcoded file path:import React from 'react';
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btlp/shopCart.js:3:hardcoded variable:const Btlp = (props) => {
+microservices-middleware/client/src/modules/quotationbeta/product/category/fresh/btlp/shopCart.js:4:hardcoded object:    const {  } = props

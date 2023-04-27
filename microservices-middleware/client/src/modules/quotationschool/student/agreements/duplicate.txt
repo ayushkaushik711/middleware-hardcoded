@@ -1,0 +1,70 @@
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:1:hardcoded object:import { Button, Table } from "reactstrap";
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:2:hardcoded object:import React, { useState, useRef } from "react";
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:3:hardcoded file path:import callApi from "../../../../api/callApi"
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:4:hardcoded file path:import Notify from "react-s-alert";
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:5:hardcoded file path:import axios from "axios";
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:7:hardcoded variable:const Agreements = (props) => {
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:8:hardcoded array:  const [showForm, setShowForm] = useState(false);
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:9:hardcoded array:  const [data,setData]=useState([]);
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:12:hardcoded string:  const poNumberRef=useRef("");
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:13:hardcoded variable:  const fileInputRef = useRef(null);
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:15:hardcoded variable:  const handleButtonClick = () => {
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:16:hardcoded string:    if(poNumberRef.current.value!=="")
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:20:hardcoded variable:  const enterDetails = () => {
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:26:hardcoded variable:  const handleChange = async (event) => {
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:28:hardcoded number:    const selectedFile = event.target.files[0];
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:29:hardcoded variable:    const path = selectedFile;
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:31:hardcoded variable:    let reader = new FileReader()
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:33:hardcoded object:    reader.onload = (e) => { image = e.target.result }
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:36:hardcoded variable:    const response=await callApi({
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:37:hardcoded string:        url: "/api/quotation-school/getUploadQuotationUrl",
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:38:hardcoded string:        method: "GET"
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:41:hardcoded string:    let binary = atob(image.split(',')[1])
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:42:hardcoded array:    let array = []
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:43:hardcoded number:    for (var i = 0; i < binary.length; i++) {
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:49:hardcoded number:    let blobData = new Blob([new Uint8Array(array)], { type: path.type })
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:50:hardcoded string:    const options = { headers: { 'Content-Type': path.type, 'AllowedHeaders': '*' } };
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:55:hardcoded string:      console.log("inside upload",uploadResponse)
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:56:hardcoded variable:        const payload={
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:59:hardcoded string:            salesIdentifierType: "PURCHASE_ORDER",
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:62:hardcoded string:        await callApi('/api/quotation-school/addQuotationFileRecord', 'POST', payload, null, null, true)
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:65:hardcoded object:            let { status } = response;
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:66:hardcoded string:            if (status != 'success') {
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:67:hardcoded string:              throw new Error("Upload failed")
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:69:hardcoded string:            Notify.success("Uploaded successfully!");
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:75:hardcoded string:        const newData={["poNumber"]:poNumberRef.current.value,["email"]:props.salesEmail,["url"]:response.data.key}
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:76:hardcoded array:        return [...prev,newData];
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:81:hardcoded variable:  const onDelete=async (event)=>{
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:82:hardcoded variable:    const index=event.target.id;
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:85:hardcoded string:        url : '/api/quotation-school/deleteQuotationFile',
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:86:hardcoded string:        method: "POST",
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:89:hardcoded array:            salesIdentifier: data[index].poNumber,
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:94:hardcoded number:        return [...prevArray.slice(0, index), ...prevArray.slice(index + 1)];
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:100:hardcoded number:      <h3
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:102:hardcoded string:          border: " black 2px",
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:103:hardcoded string:          backgroundColor: "#D3D3D3",
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:104:hardcoded string:          textAlign: "center",
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:108:hardcoded number:      </h3>
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:115:hardcoded string:            marginLeft: "30px",
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:116:hardcoded string:            display: "flex",
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:117:hardcoded string:            flexDirection: "row",
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:118:hardcoded string:            alignItems: "center",
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:119:hardcoded string:            justifyContent: "space-between",
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:123:hardcoded string:            PO Number<span style={{ color: "red" }}>*</span>
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:125:hardcoded string:          <input type="text" required ref={poNumberRef}/>
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:127:hardcoded string:            PO Uploaded by<span style={{ color: "red" }}>*</span>
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:130:hardcoded string:            type="email"
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:131:hardcoded object:            value={props.salesEmail}
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:136:hardcoded string:            <Button type="button" color="primary" onClick={handleButtonClick}>
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:140:hardcoded object:              ref={fileInputRef}
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:141:hardcoded string:              type="file"
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:142:hardcoded object:              onChange={handleChange}
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:143:hardcoded string:              style={{ display: "none" }}
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:145:hardcoded string:            {"   "}
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:147:hardcoded string:              type="button"
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:148:hardcoded string:              color="danger"
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:149:hardcoded object:              onClick={() => setShowForm(false)}
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:156:hardcoded string:        <Button color="primary" outline onClick={enterDetails}>
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:175:hardcoded number:                    <td>{index+1}</td>
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:177:hardcoded object:                        return <td>{value}</td>
+microservices-middleware/client/src/modules/quotationschool/student/agreements/index.js:179:hardcoded string:                    <td><Button id={index} color="danger" onClick={onDelete}>Delete</Button></td>

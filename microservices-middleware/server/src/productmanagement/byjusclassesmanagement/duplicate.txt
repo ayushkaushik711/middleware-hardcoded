@@ -1,0 +1,68 @@
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:1:hardcoded object:const { get, isEmpty, flattenDeep, intersection } = require('lodash');
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:2:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Byjus Classes Plus TLP Controller');
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:4:hardcoded string:const { ProductDetail } = require('@byjus-orders/nexemplum/oms')
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:5:hardcoded object:const {isAdvanceAdmission, productConstant} = require('../utils/productConstants')
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:6:hardcoded object:const { getCourseSku, getSkuItemId } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:7:hardcoded object:const { isDiscountedPriceApplicable, getGradeMap } = require('../pricingHelper');
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:10:hardcoded object: * @param {*} byjusFinalClass
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:11:hardcoded object: * @param {*} validity 
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:12:hardcoded object: * @param {*} tlpFinalClass 
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:14:hardcoded object:const fetchCombinationPrices = async ({ byjusInitialClass ,byjusFinalClass, validity, tlpFinalClass, student, productType, tabletId}) => {
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:16:hardcoded string:        logger.info({ method: "fetchCombinationPrices", byjusFinalClass, validity, tlpFinalClass });
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:17:hardcoded number:        let skuArray = [], skuPrice = 0, courseSku;
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:18:hardcoded number:        let initialClass = byjusFinalClass + 1;
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:19:hardcoded number:        const finalClass = parseInt(tlpFinalClass, 10);
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:21:hardcoded object:        const isDiscountApplicable = isDiscountedPriceApplicable({ initialClass: byjusInitialClass, finalClass: tlpFinalClass, student })
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:22:hardcoded string:        const productCombination = get(student, "productLearningType", "") === "byjus_tlp_plus_byjus_classes" ? "byjus_classes" : "byjus_tlp";
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:23:hardcoded string:        student["productCombination"] = productCombination;
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:24:hardcoded number:        let count = 0 ;
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:25:hardcoded variable:        const gradeMap = getGradeMap(initialClass, finalClass);
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:26:hardcoded string:        const k12ClassArray = ["11", "12", "11+12"];
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:27:hardcoded number:        let k12BasePriceToAdd = (intersection(gradeMap, k12ClassArray)).length > 0;
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:28:hardcoded variable:        let grade = initialClass;
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:31:hardcoded number:            if (initialClass === 11 && finalClass === 12) {
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:32:hardcoded string:                initialClass = '11+12';
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:38:hardcoded string:                grade: productType === "streaming" ? `Streaming ${initialClass}` : initialClass,
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:43:hardcoded number:            let coursePrice = 0;
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:45:hardcoded number:            if(k12BasePriceToAdd){
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:46:hardcoded number:                if(k12ClassArray.includes(grade)) {
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:47:hardcoded string:                    coursePrice += parseInt(get(courseSku, 'basePrice'), 10);
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:49:hardcoded string:                    coursePrice +=  parseInt(get(courseSku, 'continousPrice'), 10);
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:52:hardcoded number:                if(byjusInitialClass === byjusFinalClass && isDiscountApplicable && count < 1){     //tlp basePrice should be calculated only once if byjusClass->initial === final
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:53:hardcoded string:                    coursePrice +=  parseInt(get(courseSku, 'basePrice'), 10);
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:56:hardcoded string:                    coursePrice +=  parseInt(get(courseSku, 'continousPrice'), 10);
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:60:hardcoded string:            courseSku["price"] = coursePrice;
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:61:hardcoded string:            courseSku["combinationType"] = get(courseSku, "type", "").toLowerCase().indexOf("byjus_classes") >= 0 ? "byjus_classes" : "tlp"
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:62:hardcoded string:            courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:63:hardcoded string:            if (productType == "sibling") { courseSku["tabletId"] = tabletId }
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:66:hardcoded string:            initialClass += (initialClass === '11+12') ? 2 : 1;
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:75:hardcoded string:        logger.error({ method: "fetchCombinationPrices" }, error);
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:80:hardcoded variable:const fetchAdvanceCoursesDetails = async (tlpFinalClass, validity, advanceFinalClass, student, productType) => {
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:82:hardcoded string:        logger.info({ method: "fetchAdvanceCoursesDetails", advanceFinalClass, validity, tlpFinalClass });
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:83:hardcoded string:        let skuArray = [], skuPrice = 0, courseSku, initialClass = "";
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:84:hardcoded string:        if (tlpFinalClass === 11 && advanceFinalClass === "12") {
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:85:hardcoded string:            initialClass = '11+12';
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:91:hardcoded string:        const productCombination = isAdvanceAdmission.includes(get(student, "productLearningType", ""))? "byjus_classes" : "byjus_tlp";
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:92:hardcoded string:        student["productCombination"] = productCombination;
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:97:hardcoded string:            grade: productType === "streaming" ? `Streaming ${initialClass}` : initialClass,
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:102:hardcoded number:        let coursePrice = 0;
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:103:hardcoded string:        coursePrice += parseInt(get(courseSku, 'continousPrice'), 10);
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:104:hardcoded string:        courseSku["price"] = coursePrice;
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:105:hardcoded string:        courseSku["combinationType"] = "byjus_classes"
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:106:hardcoded string:        courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesPlusTlpController.js:115:hardcoded string:        logger.error({ method: "fetchCombinationPrices" }, error);
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:1:hardcoded string:const { ProductDetail } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:2:hardcoded object:const { flattenDeep } = require('lodash');
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:4:hardcoded variable:const getCompetitiveByjusClassesSku = async (courseSkus, query, validitySet) => {
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:6:hardcoded string:        query["type"] = "Extension_BYJUS_CLASSES";
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:7:hardcoded string:        query["$and"] = [{ "status": { "$not": { "$regex": "inactive" } } }]
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:8:hardcoded string:        delete query["skuSubType"]
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:9:hardcoded variable:        const productDetails = await getProducts(query, validitySet)
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:11:hardcoded variable:        const skuDetails = flattenDeep(courseSkus);
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:18:hardcoded variable:const getProducts = async (query, validitySet) => {
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:19:hardcoded array:    let productDetails = []
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:21:hardcoded string:        query["validity"] = year.replace('DECEMBER', 'AUGUST')
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:22:hardcoded string:        query["category"] = "ias"
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:23:hardcoded variable:        let sku = await ProductDetail.find(query).lean();
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:24:hardcoded string:        if (sku.length === 0) throw new Error("SKU Missing for this validity")
+microservices-middleware/server/src/productmanagement/byjusclassesmanagement/byjusClassesController.js:28:hardcoded string:    if (!productDetails) throw new Error("Byjus Classes SKU Missing");

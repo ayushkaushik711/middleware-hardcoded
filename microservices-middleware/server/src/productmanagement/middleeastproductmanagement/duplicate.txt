@@ -1,0 +1,74 @@
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:1:hardcoded object:const { BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:2:hardcoded object:const { get, find } = require('lodash');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:4:hardcoded string:const { DraftOrder, PremiumAccount } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:5:hardcoded file path:const ByjusConfig = require('../../../models/ByjusConfig');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:7:hardcoded object:const { callGetCountriesApi, callNucleusApi } = require('../../../utility/externalApiUtility');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:8:hardcoded object:const { checkIfDraftOrderExists } = require('../../../utility/draftOrderUtility')
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:9:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('ME Product Controller');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:10:hardcoded object:const { manageCashbacks } = require('../../cashbackmanagement/cashbackHelper');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:11:hardcoded object:const { checkIsOmsOrder, attachSiblingDetails, getStudentProfileDetails, validatingFOCPremiumAccount } = require("../productHelper");
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:12:hardcoded object:const { getUpdatedProductDetailsWithHlpDetails } = require('../hlpmanagement/hlpProductController');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:13:hardcoded object:const { attachAddonDetails } = require('../addOnDetailsHelper');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:14:hardcoded object:const { reserveBonusPoints } = require('../../paymentmanagement/byjuswallet/bonusPoints');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:16:hardcoded file path:const config = require('../../../config');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:17:hardcoded object:const { productConstant } = require('../utils/productConstants');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:19:hardcoded variable:const storeProductDetails = async (req, res) => {
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:20:hardcoded object:    let { identifier, productDetails } = req.body;
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:21:hardcoded string:    const { email } = get(req, 'user', {});
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:22:hardcoded variable:    let orderPunchingCategory = null;
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:23:hardcoded string:    logger.info({ method: 'storeProductDetails', msg: `Storing Product Details for _id:${identifier}` });
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:27:hardcoded string:            throw new BadRequestError(`Parameters - ${identifier ? '' : 'identifier'} ${productDetails ? '' : 'productDetails'} Missing`);
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:28:hardcoded variable:        const draftOrder = await checkIfDraftOrderExists(identifier);
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:31:hardcoded object:            const { isOmsOrder, customerDetails } = draftOrder;
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:32:hardcoded object:            const { productType, isGstIn } = productDetails;
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:33:hardcoded variable:            const isOmsEligibleOrder = false;
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:34:hardcoded object:            const { redeemedCashback, unutilizedCashbacks, amountToCustomer, amountToSalesPerson } = await manageCashbacks(draftOrder, productDetails);
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:49:hardcoded string:            if (get(config, 'isStudentProfileAvailable') === "true" && productDetails.students && productDetails.students.length) {
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:52:hardcoded object:            const { productCombination } = productDetails;
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:53:hardcoded string:            if (["home_learning_program", "byjus_classes", "byjus_classes_plus_byjus_tlp", "byjus_aakash"].includes(productCombination)) {
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:59:hardcoded array:            const { formattedProducts = [], formattedStudents = [] } = await attachSiblingDetails(productDetails, productType, draftOrder);
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:60:hardcoded string:            productDetails["students"] = formattedStudents;
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:61:hardcoded string:            productDetails["products"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:64:hardcoded string:            if (productCombination === 'byjus_tlp') {
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:65:hardcoded string:                orderPunchingCategory = 'byjus_tlp'
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:66:hardcoded string:            } else if (productCombination === 'byjus_classes') {
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:67:hardcoded string:                orderPunchingCategory = 'byjus_classes'
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:71:hardcoded variable:            const transactionId = await reserveBonusPoints(draftOrder);
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:73:hardcoded string:            await DraftOrder.findOneAndUpdate({ '_id': identifier }, {
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:78:hardcoded string:                    finalPrice: get(productDetails, 'finalPrice', 0),
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:79:hardcoded string:                    status: "product_saved",
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:80:hardcoded array:                    [`actionDetails.productSavedAt`]: new Date(),
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:81:hardcoded array:                    [`actionDetails.productSavedBy`]: email,
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:83:hardcoded string:                    "customerDetails.gstDetails.isGstIn": isGstIn,
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:84:hardcoded string:                    'bonusPointsDetails.transactionId': transactionId != '' ? transactionId : null
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:87:hardcoded object:            return res.json({ productDetails, cashbackDetails: { redeemedCashback, unutilizedCashbacks } });
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:94:hardcoded variable:const getMiddleEastCountries = async (req, res) => {
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:96:hardcoded object:        const { countries } = await callGetCountriesApi();
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:98:hardcoded number:        if(countries.length > 0){
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:99:hardcoded number:            return res.status(200).json(countries)
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:102:hardcoded string:            throw new Error("No countries available. Please mail support-optech@byjus.com")
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/productController.js:105:hardcoded number:        return res.status(500).json({message: er.message})
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:1:hardcoded file path:const Promise = require ('bluebird');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:2:hardcoded object:const { isEmpty, flattenDeep, get } = require('lodash');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:3:hardcoded object:const { BadRequestError, NotFoundError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:4:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Middle-east Tablet Product');
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:6:hardcoded object:const { getMeTabletSku } = require('../dto')
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:7:hardcoded object:const { getSkuItemId } = require('../service/skuIdHelper')
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:9:hardcoded variable:const getMeTabletProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:10:hardcoded string:    logger.info({ method: 'getMeTabletProduct' }, { message: "Fetching Tablet Product" });
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:12:hardcoded object:    const { paymentType, productType, productCombination, student = {} } = req.body;
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:16:hardcoded array:        let tabletProducts = [];
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:17:hardcoded string:        const { tablets = [], studentName = "" } = student;
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:19:hardcoded object:            const tabletSku = await getMeTabletSku({ tabletId: tablet, studentId: studentName, uniqueTabletId: `T-${tablet}`, 
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:20:hardcoded string:                country: "united_arab_emirates" });
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:22:hardcoded string:                tabletSku["itemId"] = getSkuItemId(tabletSku);
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:26:hardcoded object:                throw new NotFoundError(`Tablet with SKU Id:${tablet} is not found`);
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:30:hardcoded variable:        const maxPrice = getSummedUpPrice(tabletProducts);
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:31:hardcoded variable:        const minPrice = maxPrice;
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:34:hardcoded variable:        const formattedProducts = flattenDeep(tabletProducts).filter(prdct => prdct);
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:35:hardcoded string:        const studentDoc = { "items": formattedProducts };
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:42:hardcoded array:            students: [studentDoc],
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:51:hardcoded variable:const getSummedUpPrice = (entity) => {
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:52:hardcoded variable:    const totalPrice = entity ? entity.reduce((sum, sku) => {
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:53:hardcoded string:        return sum + (parseInt(get(sku, 'quantity', 1)) * parseInt(get(sku, 'price', 0)));
+microservices-middleware/server/src/productmanagement/middleeastproductmanagement/tabletProduct.js:54:hardcoded number:    }, 0) : 0;

@@ -1,0 +1,16 @@
+microservices-middleware/server/src/paymentmanagement/paymentbanks/paymentBanksRoutes.js:1:hardcoded file path:const express = require('express');
+microservices-middleware/server/src/paymentmanagement/paymentbanks/paymentBanksRoutes.js:3:hardcoded file path:const controller = require('./banksController');
+microservices-middleware/server/src/paymentmanagement/paymentbanks/paymentBanksRoutes.js:5:hardcoded object:const router = express.Router({ mergeParams: true });
+microservices-middleware/server/src/paymentmanagement/paymentbanks/paymentBanksRoutes.js:8:hardcoded string:    const routeName = "payment/banks";
+microservices-middleware/server/src/paymentmanagement/paymentbanks/paymentBanksRoutes.js:10:hardcoded object:    router.route(`/${routeName}/getBankName/:ifscCode`)
+microservices-middleware/server/src/paymentmanagement/paymentbanks/banksController.js:1:hardcoded file path:const requestPromise = require('request-promise');
+microservices-middleware/server/src/paymentmanagement/paymentbanks/banksController.js:2:hardcoded object:const { callNucleusApi } = require('../../../utility/externalApiUtility');
+microservices-middleware/server/src/paymentmanagement/paymentbanks/banksController.js:4:hardcoded variable:const getBankName = async (req, res) => {
+microservices-middleware/server/src/paymentmanagement/paymentbanks/banksController.js:6:hardcoded string:        const { ifscCode = '' } = req.params;
+microservices-middleware/server/src/paymentmanagement/paymentbanks/banksController.js:7:hardcoded string:        const banksList = await callNucleusApi(`loanmanagement/finance/bank/search`, 'POST', {
+microservices-middleware/server/src/paymentmanagement/paymentbanks/banksController.js:8:hardcoded string:            field: "ifsc",
+microservices-middleware/server/src/paymentmanagement/paymentbanks/banksController.js:11:hardcoded string:        const bankName = banksList.find(bank => bank?.ifsc === ifscCode)?.name || "";
+microservices-middleware/server/src/paymentmanagement/paymentbanks/banksController.js:12:hardcoded number:        res.status(200).json({
+microservices-middleware/server/src/paymentmanagement/paymentbanks/banksController.js:13:hardcoded string:            status: 'success',
+microservices-middleware/server/src/paymentmanagement/paymentbanks/banksController.js:17:hardcoded number:        res.status(500).json({
+microservices-middleware/server/src/paymentmanagement/paymentbanks/banksController.js:18:hardcoded string:            status: 'error',

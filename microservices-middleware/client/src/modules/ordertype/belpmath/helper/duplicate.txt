@@ -1,0 +1,49 @@
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:1:hardcoded object:import { get, parseInt } from 'lodash';
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:2:hardcoded number:import { D4_1_1_TABLET_LIST } from 'modules/product/utils/productConstant';
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:5:hardcoded string:} from 'modules/product/utils/epicSampler';
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:8:hardcoded variable:const getBatchOption = (env) => {
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:9:hardcoded object:    let formField = {}
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:12:hardcoded string:        'label': '1:4', 'value': '1:4'
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:18:hardcoded variable:const getProductTypeOptions = (productDetails) => {
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:19:hardcoded object:    const { env } = productDetails || {}
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:20:hardcoded string:    const isDevEnv = ["development", "local"].includes(env)
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:21:hardcoded array:    let formField = []
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:24:hardcoded string:            'label': "DBEL+BYJU'S Math 56 Sessions", 'value': '56'
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:29:hardcoded variable:export const getDeviceTypeOptions = (tablet) => {
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:31:hardcoded number:    if (D4_1_1_TABLET_LIST.includes(tablet)) {
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:32:hardcoded string:        formField = 'Tablet(LearnStation)'
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:38:hardcoded variable:export const getBelpMathFields = (details) => {
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:39:hardcoded object:    const { props, handleChanges, isPrivilegedUser, env, initialGrade, validity, featureEnableList } = details;
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:40:hardcoded object:    const { productCombination, productType } = props;
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:44:hardcoded string:            type: 'select',
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:45:hardcoded string:            name: 'bfsBatch',
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:46:hardcoded string:            label: "Select Batch Option",
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:50:hardcoded string:            message: 'Please Select Batch Option'
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:53:hardcoded string:            type: 'select',
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:54:hardcoded string:            name: 'bfsProductType',
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:55:hardcoded string:            label: 'Select Product Type',
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:56:hardcoded object:            options: getProductTypeOptions({ productType, isPrivilegedUser, env, initialGrade, validity }),
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:59:hardcoded string:            message: 'Please Select Product Type'
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:64:hardcoded variable:export const filterInitialClass = (details) => {
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:65:hardcoded object:    const { classes, productType, env, featureEnableList } = details
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:66:hardcoded variable:    let filteredClass = classes;
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:68:hardcoded number:    filteredClass = filteredClass.filter(initialClass => parseInt(initialClass.value) < 4);
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:69:hardcoded number:    filteredClass = filteredClass.filter(initialClass => parseInt(initialClass.value) >= 1)
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:71:hardcoded object:    filteredClass = getSamplerByjusMathInitialClass({ filteredClass, env, productType })
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:76:hardcoded variable:export const filterFinalClass = (productDetails) => {
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:77:hardcoded object:    const { classes, selectedInitialClass, featureEnableList, env, productType, productCombination } = productDetails
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:78:hardcoded number:    const allowedMaxClass = parseInt(selectedInitialClass) + 3;
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:79:hardcoded number:    let filteredClass = classes.filter(finalClass => (finalClass.value >= parseInt(selectedInitialClass) + 1 && finalClass.value <= allowedMaxClass));
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:81:hardcoded number:    filteredClass = filteredClass.filter(finalClass => (finalClass.value < parseInt(selectedInitialClass) + 8));
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:83:hardcoded object:    filteredClass = getSamplerByjusMathFinalClass({ filteredClass, env, productCombination, selectedInitialClass, productType })
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:86:hardcoded variable:export const filterInitialYear = (details) => {
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:87:hardcoded object:    const { isPrivilegedUser, featureEnableList } = details
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:88:hardcoded variable:    let options = [
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:90:hardcoded number:            label: new Date().getFullYear() + 1,
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:91:hardcoded number:            value: new Date().getFullYear() + 1
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:96:hardcoded number:    //     options = options.slice(1)
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:101:hardcoded variable:export const getTablets = (details) => {
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:102:hardcoded object:    const { Tablets } = details
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:104:hardcoded array:    let tabletName = [];
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:105:hardcoded array:    let tabletList = []
+microservices-middleware/client/src/modules/ordertype/belpmath/helper/BelpMathHelper.js:107:hardcoded string:    tabletName.push("BYJU'S LearnStation Junior 10inch Mobile Data Grey Tablet (Rs 16000)")

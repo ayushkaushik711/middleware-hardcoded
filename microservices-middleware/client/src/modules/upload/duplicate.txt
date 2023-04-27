@@ -1,0 +1,77 @@
+microservices-middleware/client/src/modules/upload/UploadFile.js:1:hardcoded file path:import React from 'react';
+microservices-middleware/client/src/modules/upload/UploadFile.js:2:hardcoded object:import { connect } from 'react-redux';
+microservices-middleware/client/src/modules/upload/UploadFile.js:4:hardcoded object:import { Modal, Upload, Icon, Form, Button } from 'antd';
+microservices-middleware/client/src/modules/upload/UploadFile.js:5:hardcoded object:import { get, isEmpty, isEqual, toLower } from 'lodash';
+microservices-middleware/client/src/modules/upload/UploadFile.js:7:hardcoded object:import { UPLOAD_FILE_FORMATS } from 'modules/product/utils/productConstant';
+microservices-middleware/client/src/modules/upload/UploadFile.js:8:hardcoded file path:import getConnectionUrl from 'lib/nwConnectionMap';
+microservices-middleware/client/src/modules/upload/UploadFile.js:11:hardcoded variable:const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/upload/UploadFile.js:12:hardcoded string:    identifier: get(state, "details.identifier"),
+microservices-middleware/client/src/modules/upload/UploadFile.js:13:hardcoded string:    authToken: get(state, 'auth.details.token')
+microservices-middleware/client/src/modules/upload/UploadFile.js:19:hardcoded string:        previewImage: '',
+microservices-middleware/client/src/modules/upload/UploadFile.js:20:hardcoded array:        fileList: [],
+microservices-middleware/client/src/modules/upload/UploadFile.js:25:hardcoded object:        this.setState({ previewVisible: false });
+microservices-middleware/client/src/modules/upload/UploadFile.js:36:hardcoded array:        const { fileList = [] } = this.state;
+microservices-middleware/client/src/modules/upload/UploadFile.js:37:hardcoded number:        if (fileList.length > 0) {
+microservices-middleware/client/src/modules/upload/UploadFile.js:38:hardcoded number:            const file = fileList[0];
+microservices-middleware/client/src/modules/upload/UploadFile.js:47:hardcoded number:        const { fileSize = 8 } = this.props.documentDetails || {};
+microservices-middleware/client/src/modules/upload/UploadFile.js:50:hardcoded number:        const isValidFileSize = file.size / 1024 / 1024 < fileSize;
+microservices-middleware/client/src/modules/upload/UploadFile.js:51:hardcoded variable:        const UploadedFileName = file.name
+microservices-middleware/client/src/modules/upload/UploadFile.js:52:hardcoded string:        const ext = toLower(UploadedFileName.substring(UploadedFileName.lastIndexOf('.') + 1));
+microservices-middleware/client/src/modules/upload/UploadFile.js:53:hardcoded variable:        const isValidExtension = UPLOAD_FILE_FORMATS.includes(ext);
+microservices-middleware/client/src/modules/upload/UploadFile.js:56:hardcoded object:            errorMessage = ` Only  ${ UPLOAD_FILE_FORMATS }  formats are allowed`;
+microservices-middleware/client/src/modules/upload/UploadFile.js:60:hardcoded object:            errorMessage = `File Size Must Smaller Than ${fileSize}MB`;
+microservices-middleware/client/src/modules/upload/UploadFile.js:66:hardcoded object:        this.setState({ error: null });
+microservices-middleware/client/src/modules/upload/UploadFile.js:72:hardcoded object:        const { uid } = file;
+microservices-middleware/client/src/modules/upload/UploadFile.js:74:hardcoded array:            fileList: get(prevState, `fileList`, []).filter(ele => ele.uid !== uid)
+microservices-middleware/client/src/modules/upload/UploadFile.js:79:hardcoded object:        const { status, response, error } = file;
+microservices-middleware/client/src/modules/upload/UploadFile.js:81:hardcoded variable:        let errorMessage = this.verifyFileBeforeUpload(file);
+microservices-middleware/client/src/modules/upload/UploadFile.js:85:hardcoded string:        else if (status === "error" || (status === "done" && get(response, "message") !== "Doc Upload Successfull")) {
+microservices-middleware/client/src/modules/upload/UploadFile.js:88:hardcoded string:            const errorStatus = get(error, "status");
+microservices-middleware/client/src/modules/upload/UploadFile.js:90:hardcoded object:                errorMessage += `Status: ${errorStatus}. `
+microservices-middleware/client/src/modules/upload/UploadFile.js:93:hardcoded string:            const responseMsg = get(response, "message");
+microservices-middleware/client/src/modules/upload/UploadFile.js:95:hardcoded object:                errorMessage += `Reason: ${responseMsg}`
+microservices-middleware/client/src/modules/upload/UploadFile.js:100:hardcoded object:        this.setState({ error: errorMessage });
+microservices-middleware/client/src/modules/upload/UploadFile.js:105:hardcoded array:        const { fileList = [] } = this.state;
+microservices-middleware/client/src/modules/upload/UploadFile.js:106:hardcoded number:        const { count = 1, name } = this.props.documentDetails || {};
+microservices-middleware/client/src/modules/upload/UploadFile.js:107:hardcoded array:        const files = [];
+microservices-middleware/client/src/modules/upload/UploadFile.js:110:hardcoded object:            const { response, status } = ele;
+microservices-middleware/client/src/modules/upload/UploadFile.js:111:hardcoded string:            if (status !== "uploading") {
+microservices-middleware/client/src/modules/upload/UploadFile.js:114:hardcoded array:                    url: get(response, `uploadedDocs[${name}]`)
+microservices-middleware/client/src/modules/upload/UploadFile.js:119:hardcoded array:        if (files.length !== count) return [];
+microservices-middleware/client/src/modules/upload/UploadFile.js:123:hardcoded object:    onChangeUpload = ({ fileList, file }) => {
+microservices-middleware/client/src/modules/upload/UploadFile.js:130:hardcoded object:        const { headers, authToken } = this.props;
+microservices-middleware/client/src/modules/upload/UploadFile.js:131:hardcoded string:        // const authToken = localStorage.getItem('auth_token');
+microservices-middleware/client/src/modules/upload/UploadFile.js:133:hardcoded string:            "authToken": authToken
+microservices-middleware/client/src/modules/upload/UploadFile.js:138:hardcoded object:        const { name } = documentDetails || {};
+microservices-middleware/client/src/modules/upload/UploadFile.js:140:hardcoded array:            let values = [];
+microservices-middleware/client/src/modules/upload/UploadFile.js:147:hardcoded array:            const fileList = [];
+microservices-middleware/client/src/modules/upload/UploadFile.js:148:hardcoded number:            let uid = -1;
+microservices-middleware/client/src/modules/upload/UploadFile.js:153:hardcoded string:                    status: 'done',
+microservices-middleware/client/src/modules/upload/UploadFile.js:157:hardcoded array:                            [name]: ele.url,
+microservices-middleware/client/src/modules/upload/UploadFile.js:162:hardcoded object:            this.setState({ fileList });
+microservices-middleware/client/src/modules/upload/UploadFile.js:179:hardcoded object:        const { previewVisible, previewImage, fileList, error } = this.state;
+microservices-middleware/client/src/modules/upload/UploadFile.js:180:hardcoded object:        const { documentDetails = {}, identifier } = this.props;
+microservices-middleware/client/src/modules/upload/UploadFile.js:181:hardcoded number:        const { name, listType, uploadText, label, count = 1, action, accept } = documentDetails;
+microservices-middleware/client/src/modules/upload/UploadFile.js:183:hardcoded variable:        const url = getConnectionUrl();
+microservices-middleware/client/src/modules/upload/UploadFile.js:187:hardcoded string:                <div className="row" style={{ "margin": "2%" }}>
+microservices-middleware/client/src/modules/upload/UploadFile.js:188:hardcoded string:                    <Form.Item className="col-md-4 col-xs-12" label={label || name} />
+microservices-middleware/client/src/modules/upload/UploadFile.js:189:hardcoded string:                    <div className="row">
+microservices-middleware/client/src/modules/upload/UploadFile.js:190:hardcoded string:                        <div className="col-md-8 col-xs-12">
+microservices-middleware/client/src/modules/upload/UploadFile.js:192:hardcoded object:                                {...documentDetails}
+microservices-middleware/client/src/modules/upload/UploadFile.js:193:hardcoded number:                                action={`${url}/api/s3Upload/upload/${identifier}`}
+microservices-middleware/client/src/modules/upload/UploadFile.js:194:hardcoded object:                                fileList={fileList}
+microservices-middleware/client/src/modules/upload/UploadFile.js:195:hardcoded string:                                listType={listType || "picture-card"}
+microservices-middleware/client/src/modules/upload/UploadFile.js:196:hardcoded string:                                accept={accept || ".jpg"}
+microservices-middleware/client/src/modules/upload/UploadFile.js:197:hardcoded object:                                headers={this.getHeaders()}
+microservices-middleware/client/src/modules/upload/UploadFile.js:198:hardcoded object:                                onPreview={this.handlePreview}
+microservices-middleware/client/src/modules/upload/UploadFile.js:199:hardcoded object:                                beforeUpload={(file) => this.beforeUploadFile(file)}
+microservices-middleware/client/src/modules/upload/UploadFile.js:200:hardcoded object:                                onChange={this.onChangeUpload}
+microservices-middleware/client/src/modules/upload/UploadFile.js:204:hardcoded string:                                        <Icon type="upload" />
+microservices-middleware/client/src/modules/upload/UploadFile.js:205:hardcoded string:                                        <div className="ant-upload-text">{uploadText || "Upload"}</div>
+microservices-middleware/client/src/modules/upload/UploadFile.js:210:hardcoded string:                        <div className="col-md-4 col-xs-12">
+microservices-middleware/client/src/modules/upload/UploadFile.js:211:hardcoded number:                            {fileList.length !== 0 &&
+microservices-middleware/client/src/modules/upload/UploadFile.js:212:hardcoded string:                                <Button className="mt-md-4 mt-xs-2" style={{ display: 'inline' }} onClick={this.onPreview}>Preview</Button>
+microservices-middleware/client/src/modules/upload/UploadFile.js:216:hardcoded string:                    {error && <div style={{ color: 'red' }}>{error}</div>}
+microservices-middleware/client/src/modules/upload/UploadFile.js:219:hardcoded object:                <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
+microservices-middleware/client/src/modules/upload/UploadFile.js:220:hardcoded string:                    <img alt="example" style={{ width: '100%' }} src={previewImage} />
+microservices-middleware/client/src/modules/upload/UploadFile.js:227:hardcoded object:export default connect(mapStateToProps, null, null, { forwardRef: true })(UploadFile);

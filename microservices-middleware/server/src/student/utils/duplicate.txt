@@ -1,0 +1,10 @@
+microservices-middleware/server/src/student/utils/dsslHelper.js:1:hardcoded object:const { startCase, camelCase } = require('lodash');
+microservices-middleware/server/src/student/utils/dsslHelper.js:3:hardcoded object:const mapDsslBoardValue = ({ board, state, grade }) => {
+microservices-middleware/server/src/student/utils/dsslHelper.js:4:hardcoded variable:    let response = board;
+microservices-middleware/server/src/student/utils/dsslHelper.js:5:hardcoded number:    /**if grade is 4 or 5 or state is other for applicable grades, then send cbse as board by default */
+microservices-middleware/server/src/student/utils/dsslHelper.js:6:hardcoded string:    if (['4', '5', 4, 5].includes(grade)) {
+microservices-middleware/server/src/student/utils/dsslHelper.js:7:hardcoded string:        response = "CBSE";
+microservices-middleware/server/src/student/utils/dsslHelper.js:9:hardcoded string:    else if (board == "STATE") {
+microservices-middleware/server/src/student/utils/dsslHelper.js:11:hardcoded string:        response = state == "Other" ? "CBSE" : state
+microservices-middleware/server/src/student/utils/meProficiency.js:1:hardcoded variable:const meProficiency = {
+microservices-middleware/server/src/student/utils/meProficiency.js:2:hardcoded string:    defaultProficiency: "A2"

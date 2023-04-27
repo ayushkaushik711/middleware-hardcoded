@@ -1,0 +1,101 @@
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:1:hardcoded object:import React, { useEffect, useState, memo } from 'react';
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:2:hardcoded object:import { camelCase, find, get, isEmpty } from 'lodash';
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:3:hardcoded object:import { useRecoilState } from 'recoil';
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:4:hardcoded object:import { Spin } from 'antd';
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:6:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:7:hardcoded object:import { neoBatchDetails } from 'store/atom';
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:8:hardcoded object:import { BatchCard, SubRow, SubHeading, ErrMsg, BatchFetchMsg } from './Styles';
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:10:hardcoded variable:const AdditionalClassBatch = (props) => {
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:11:hardcoded string:    const { cohortId, courseTag = "", selectedBatchIds, isV4Batch = false, validity = '', 
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:12:hardcoded string:        language = '', pushSelectedBatchIds, pushSelectedAdtnlDetails, updateOverallBatchDetails, neoClassroomId, schoolState = '' } = props;
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:13:hardcoded variable:    const availableSubjects = props.availableSubjects?.sort((a, b) => a.subject_sequence_id - b.subject_sequence_id);
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:14:hardcoded array:    const [overallBatchDetails, setOverallBatchDetails] = useRecoilState(neoBatchDetails);
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:16:hardcoded array:    const [loading, setLoading] = useState(false);
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:17:hardcoded array:    const [error, setError] = useState(null);
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:18:hardcoded array:    const [selectedBatches, setSelectedBatches] = useState([]);
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:19:hardcoded array:    const [subBatchDetails, setSubBatchDetails] = useState({});
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:20:hardcoded array:    const [newBatchIds, setNewBatchIds] = useState(selectedBatchIds);
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:21:hardcoded array:    const [selectedSubjectIds, setSelectedSubjectIds] = useState([]);
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:22:hardcoded string:    const [curSubSeqId, setCurSubSeqId] = useState(get(availableSubjects[0], 'subject_sequence_id'));
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:23:hardcoded string:    const colorArray = ["#faad14", "#007bff", "#dc3545", "#c271dc", "#71d6dc", "#71dc85", "#dcb071", "#71dc86"];
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:27:hardcoded array:        setSelectedBatches([])
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:28:hardcoded object:        setSubBatchDetails({})
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:29:hardcoded array:        setNewBatchIds([neoClassroomId])
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:30:hardcoded array:        setSelectedSubjectIds([])
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:31:hardcoded string:        setCurSubSeqId(get(availableSubjects[0], 'subject_sequence_id'))
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:32:hardcoded string:        getBatches(get(availableSubjects[0], 'subject_sequence_id'), selectedBatchIds)
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:33:hardcoded array:    }, [neoClassroomId])
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:35:hardcoded variable:    const getBatches = (subjectSequenceId, newBatchId) => {
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:36:hardcoded variable:        const payload = {
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:38:hardcoded number:            isV4Batch, validity, language, schoolState
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:43:hardcoded string:            url: '/api/product/getAdditionalClassDetails',
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:44:hardcoded string:            method: 'POST',
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:47:hardcoded array:            const { batches = [] } = response.data;
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:48:hardcoded object:            const subData = find(availableSubjects, { subject_sequence_id: subjectSequenceId }) || {};
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:53:hardcoded array:                    [subjectSequenceId]: {
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:55:hardcoded string:                        selectedBatchId: "",
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:63:hardcoded array:                    [subjectSequenceId]: {
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:65:hardcoded string:                        selectedBatchId: "",
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:78:hardcoded variable:    const addSubjectBatchDetails = (batchData) => {
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:79:hardcoded object:        const subData = find(availableSubjects, { subject_sequence_id: curSubSeqId }) || {};
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:80:hardcoded array:        const subBatchData = subBatchDetails[curSubSeqId];
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:81:hardcoded string:        subBatchData["selectedBatchId"] = batchData.id;
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:84:hardcoded array:            [curSubSeqId]: subBatchData
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:86:hardcoded string:        const selectedBatchData = { batch: batchData, subject: get(subData, 'subjects.0', ""), slot: batchData.slots };
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:87:hardcoded array:        const updatedSelection = [...selectedBatches, selectedBatchData];
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:89:hardcoded array:        setOverallBatchDetails({ ...overallBatchDetails, [camelCase(courseTag)]: updatedSelection })
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:93:hardcoded variable:    const getNextSubSeqId = () => {
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:97:hardcoded variable:        const indexToPush = selectedSubjectIds.length;
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:98:hardcoded string:        const nextSubSeqId = get(availableSubjects[indexToPush], 'subject_sequence_id')
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:104:hardcoded variable:    const onSelectBatch = (batchData) => {
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:114:hardcoded variable:        const nextSubSeqId = getNextSubSeqId();
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:127:hardcoded variable:    const showSubjectHeading = (subjects) => {
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:130:hardcoded string:            courseTag === 'elective' ?
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:131:hardcoded object:                <SubHeading>{subjects.join()}</SubHeading>
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:137:hardcoded object:        error ? <ErrMsg>{`${error}`}</ErrMsg>
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:139:hardcoded string:            <Spin tip="Fetching Batches" spinning={loading}>
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:142:hardcoded string:                        const { batches = [], selectedBatchId = "", subjects = [] } = sub || {};
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:143:hardcoded variable:                        const disableCard = selectedBatchId ? true : false;
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:146:hardcoded object:                            {showSubjectHeading(subjects)}
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:150:hardcoded string:                                        color="black"
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:151:hardcoded object:                                        selected={res.id === selectedBatchId}
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:152:hardcoded object:                                        onClick={() => onSelectBatch(res)}
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:153:hardcoded object:                                        disabled={disableCard}
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:154:hardcoded object:                                        key={index}
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:156:hardcoded object:                                        <div key={index}>
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:158:hardcoded number:                                                return <p>{`${slot.day.substring(0, 3)}: ${slot.start_time}`}</p>
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:168:hardcoded object:                            const { subjects, subject_sequence_id } = sub;
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:169:hardcoded array:                            if (!subBatchDetails[subject_sequence_id]) {
+microservices-middleware/client/src/modules/product/components/byjusclasses/AdditionalClassBatch.js:171:hardcoded object:                                    {showSubjectHeading(subjects)}
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:1:hardcoded string:import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:2:hardcoded object:import { Button, Row } from 'reactstrap';
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:4:hardcoded variable:export const BatchCard = styled(Button)`
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:5:hardcoded number:    margin: 5px;
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:6:hardcoded number:    border: 1px solid black;
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:7:hardcoded string:    background: linear-gradient(45deg, ${props => props.selected ? "#d94ce6" : "#d2d0ca"}, transparent);
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:9:hardcoded string:    color: ${props => props.color || "black"};
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:10:hardcoded string:    box-shadow: ${props => props.selected ? `0px 0px 10px grey;` : ""}; 
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:13:hardcoded variable:export const SubRow = styled(Row)`
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:18:hardcoded variable:export const SubHeading = styled.div`
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:19:hardcoded number:    width: 15%;
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:21:hardcoded number:    margin: 1%;
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:23:hardcoded number:    color:#d94ce6;
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:26:hardcoded variable:export const ResetHandle = styled.div`
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:27:hardcoded number:    color: #e02f2f;
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:30:hardcoded number:    margin-left:1%
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:33:hardcoded variable:export const SectionHeading = styled.div`
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:34:hardcoded number:    color: #4487b2;
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:36:hardcoded number:    font-weight: 500;
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:37:hardcoded number:    margin: 10px;
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:41:hardcoded variable:export const BatchFetchMsg = styled.div`
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:42:hardcoded number:    margin: 1%;
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:44:hardcoded number:    color: #4487b2;
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:47:hardcoded variable:export const ErrMsg = styled.div`
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:49:hardcoded number:    margin-left: 0.5rem;
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:50:hardcoded number:    font-weight: 600;
+microservices-middleware/client/src/modules/product/components/byjusclasses/Styles.js:51:hardcoded number:    font-size: 1.1rem;
+microservices-middleware/client/src/modules/product/components/byjusclasses/ClassroomBatch.js:1:hardcoded object:import React, { useEffect } from 'react';
+microservices-middleware/client/src/modules/product/components/byjusclasses/ClassroomBatch.js:3:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/product/components/byjusclasses/ClassroomBatch.js:5:hardcoded variable:const ClassroomBatch = (props) => {
+microservices-middleware/client/src/modules/product/components/byjusclasses/ClassroomBatch.js:8:hardcoded array:    }, []);
+microservices-middleware/client/src/modules/product/components/byjusclasses/ClassroomBatch.js:10:hardcoded object:    const getClassroomBatches = () => { }

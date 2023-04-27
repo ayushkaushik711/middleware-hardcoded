@@ -1,0 +1,19 @@
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:1:hardcoded variable:const splitOrderConstants = {
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:2:hardcoded number:    ALLOWED_DP_PERCENTAGE: 10,
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:3:hardcoded number:    ALLOWED_DP_NO_TABLET: 5000,
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:4:hardcoded number:    ALLOWED_DP_FOR_BYJUS_EMI_NO_TABLET: 8000,
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:5:hardcoded number:    BYJUS_ASSURE_ALLOWED_DP_FOR_BYJUS_EMI_NO_TABLET: 10000,
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:6:hardcoded number:    TABLET_7_INCH_ALLOWED_DP: 5000,
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:7:hardcoded number:    TABLET_10_INCH_ALLOWED_DP: 10000,
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:8:hardcoded number:    TABLET_REPEATING_ALLOWED_DP: 5000,
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:9:hardcoded string:    ALLOWED_PRODUCT_TYPES: ["SINGLE", "COMBO", "SIBLING", "COMPETITIVE", "CRPCOMPETITIVE", "AAKASHCRP"],
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:10:hardcoded string:    ALLOWED_PAYMENT_PROVIDERS_FOR_UMRN_CHECK: ["BYJUS_ASSURE", "BYJUS_DIRECT"],
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:11:hardcoded string:    BYJUS_EMI_PROVIDER: ["BYJUS_DIRECT", "BYJUS_SUBSCRIBE"],
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:12:hardcoded string:    BYJUS_EMI_PROVIDER_EXCEPTION: ["BYJUS_ASSURE"]
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:15:hardcoded variable:const onSpotOrderConstants = {
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:16:hardcoded number:    ALLOWED_DP_NO_TABLET: 5000,
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:17:hardcoded number:    TABLET_7_INCH_ALLOWED_DP: 5000,
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:18:hardcoded number:    TABLET_10_INCH_ALLOWED_DP: 10000,
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:19:hardcoded string:    ALLOWED_NON_EMI_METHOD: ['PAYU', 'PAYTM', 'BAJAJ', 'ICR', 'CHALLAN'],
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:20:hardcoded string:    ALLOWED_PRODUCT_TYPE: ['COMBO', 'SIBLING']
+microservices-middleware/server/src/ordermanagement/utils/orderConstant.js:23:hardcoded string:const NON_REMOVEABLE_DRAFT_ORDER_STATUS = ["soft_approved", "order_created"];

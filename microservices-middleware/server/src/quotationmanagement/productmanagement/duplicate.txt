@@ -1,0 +1,825 @@
+microservices-middleware/server/src/quotationmanagement/productmanagement/productRoutes.js:1:hardcoded file path:const Router = require('express-promise-router');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productRoutes.js:2:hardcoded file path:const productController = require('./productController');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productRoutes.js:3:hardcoded file path:const productAndScholarshipController = require('./productAndScholarshipController');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productRoutes.js:5:hardcoded object:const router = Router({ mergeParams: true });
+microservices-middleware/server/src/quotationmanagement/productmanagement/productRoutes.js:8:hardcoded string:    const baseRoute = '/quotation/product';
+microservices-middleware/server/src/quotationmanagement/productmanagement/productRoutes.js:9:hardcoded object:    router.route(`${baseRoute}/getProduct`)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productRoutes.js:14:hardcoded object:    router.route(`${baseRoute}/getProductForPdc`)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productRoutes.js:19:hardcoded object:    router.route(`${baseRoute}/getProductPriceWithoutQuotation`)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productRoutes.js:25:hardcoded object:    router.route(`${baseRoute}/storeProduct`)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productRoutes.js:30:hardcoded object:    router.route(`${baseRoute}/storePriceAndScholarShip`)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productRoutes.js:35:hardcoded object:    router.route(`${baseRoute}/checkAakashPSID`)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:1:hardcoded object:const { nanoid } = require('nanoid');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:2:hardcoded object:const { get, isEmpty, unset, flattenDeep, forIn, isArray } = require('lodash');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:4:hardcoded string:const { ByjusConfig, Quotation } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:5:hardcoded string:const { AakashCourseId, AakashCourseIdMapping, AakashBranch } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:6:hardcoded object:const { callAakashAPIToGetConcession, callAakashToGetPSID } = require('../../../utility/externalApiUtility');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:7:hardcoded object:const { getAakashCRPConfig } = require("../configmanagement/configController")
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:8:hardcoded file path:const specialScholarshipConfigEnum = require("../../../utility/aakashSpecialScholarshipEnum");
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:10:hardcoded variable:const getAcademicCarrier = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:11:hardcoded string:    regular: "RCC",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:12:hardcoded string:    hybrid: "HYB"
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:15:hardcoded variable:const getCRPFinalClass = (details) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:16:hardcoded object:    let { initialClass, courseDuration} = details;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:18:hardcoded string:    if (courseDuration.toLowerCase().includes("years")){
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:19:hardcoded variable:       let finalduration = courseDuration.match(/\d+/);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:20:hardcoded number:        finalClass = Number(initialClass)+Number(finalduration)-1;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:27:hardcoded variable:const fetchCourseFeesPayload = async (student) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:29:hardcoded object:        const { branch, subCourse, typeOfClass, initialClass, selectedCourseId, validity, courseTimePeriod, courseDuration } = student;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:30:hardcoded variable:        const branchDetails = await AakashBranch.findOne({
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:31:hardcoded string:            attributes: ['businessUnit'],
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:35:hardcoded string:                status: "active"
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:38:hardcoded object:        if (isEmpty(branchDetails)) { throw new Error(`Branch details  are missing for the selected Combination ${subCourse}, ${typeOfClass}, ${initialClass} `) }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:39:hardcoded variable:        const bsUnit = branchDetails.businessUnit;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:40:hardcoded variable:        const env = process.env.NODE_ENV;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:41:hardcoded array:        const academicCarrier = getAcademicCarrier[typeOfClass.toLowerCase()];
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:42:hardcoded variable:        let validityOfCourse = await fetchCourseValidity(selectedCourseId);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:43:hardcoded number:        //const term = validity.toString().substr(-2) + (Number(validity.toString().substr(-2)) + courseTimePeriod);// terms: 2Year: 2123 1Year 2122 likewise
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:44:hardcoded variable:        const term = validityOfCourse;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:47:hardcoded string:            "BUUnitId": bsUnit,
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:48:hardcoded string:            "AcadCarrier": academicCarrier,
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:49:hardcoded string:            "Term": term
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:56:hardcoded variable:const fetchCourseValidity = async(courseId)=> {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:57:hardcoded variable:    const courseIdList = await AakashCourseId.findOne({
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:58:hardcoded string:        attributes: ['validity'],
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:65:hardcoded object:    if (isEmpty(courseIdList)) { throw new Error`(Incorrect validity for the selected course:, ${courseId})` }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:72:hardcoded variable:const getAakashCategory = (concessionDetails, student, acstGiven) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:73:hardcoded object:    const { subCourse, typeOfClass } = student
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:74:hardcoded string:    const scholarships = concessionDetails["scholarships"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:75:hardcoded variable:    let courseMap = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:76:hardcoded string:        Regular: "CRC",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:77:hardcoded string:        Hybrid: "CHC",  
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:79:hardcoded variable:    const acstMap = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:80:hardcoded string:        Regular: "CRC",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:81:hardcoded string:        Hybrid: "CHC",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:82:hardcoded string:        Regular_JEE: "SRE",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:83:hardcoded string:        Regular_NEET: "SRM",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:84:hardcoded string:        Regular_FDN:"SRF",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:85:hardcoded string:        Hybrid_JEE: "SQE",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:86:hardcoded string:        Hybrid_NEET: "SQM",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:87:hardcoded string:        Hybrid_FDN:"SQF"
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:90:hardcoded variable:    const nonAcstMap = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:91:hardcoded string:        Regular: "CRC",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:92:hardcoded string:        Hybrid: "CHC",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:93:hardcoded string:        Regular_JEE: "ARE",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:94:hardcoded string:        Regular_NEET: "ARM",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:95:hardcoded string:        Regular_FDN:"ARF",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:96:hardcoded string:        Hybrid_JEE: "AQE",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:97:hardcoded string:        Hybrid_NEET: "AQM",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:98:hardcoded string:        Hybrid_FDN:"AQF"
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:100:hardcoded string:    courseMap = (acstGiven == 'no' || acstGiven == "bnat" ) ? nonAcstMap : acstMap
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:103:hardcoded array:        const { category ,aakashCategory} = scholarships[i]
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:108:hardcoded string:        if(category === "A" && (acstGiven == 'no' || acstGiven == "bnat" )){  
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:109:hardcoded string:            scholarships[i]["aakashCategory"] =  nonAcstMap[`${typeOfClass}_${subCourse}`]
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:111:hardcoded string:        if(category === "C" && acstGiven == 'yes'){ 
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:112:hardcoded string:            scholarships[i]["aakashCategory"] = scholarships[i]["formattedLabel"] == "PARENT_MARTYR" ? courseMap[typeOfClass] : courseMap[`${typeOfClass}_${subCourse}`]
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:114:hardcoded string:        if(category === "C" && (acstGiven == 'no' || acstGiven == "bnat" )) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:115:hardcoded string:            scholarships[i]["aakashCategory"] = scholarships[i]["formattedLabel"] == "PARENT_MARTYR" ? courseMap[typeOfClass] : acstMap[`${typeOfClass}_${subCourse}`]
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:117:hardcoded string:        if(category === "D"){
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:118:hardcoded string:            scholarships[i]["aakashCategory"] = courseMap[typeOfClass]
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:121:hardcoded string:    concessionDetails["scholarships"] =  scholarships
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:126:hardcoded variable:const getPriceBreakup = (courseFees) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:127:hardcoded object:    const { priceBreakup } = courseFees;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:128:hardcoded number:    let count = 0, registrationFee = 0, admissionFee = 0, classroomFee = 0, tuitionFee = 0, techAndExamFee = 0;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:131:hardcoded string:        if (priceBreakup[count].Item_type_title.includes('Registration')) registrationFee = registrationFee + parseInt(get(priceBreakup[count], "Total", 0), 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:132:hardcoded string:        else if (priceBreakup[count].Item_type_title.includes('Admission')) { admissionFee = admissionFee + parseInt(get(priceBreakup[count], "Total", 0), 0) }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:133:hardcoded string:        else if (priceBreakup[count].Item_type_title.includes('Classroom')) { classroomFee = classroomFee + parseInt(get(priceBreakup[count], "Total", 0), 0) }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:134:hardcoded string:        if (priceBreakup[count].Item_type_title.includes('Tuition')) { tuitionFee = tuitionFee + parseInt(get(priceBreakup[count], "Total", 0), 0) }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:135:hardcoded string:        else if (priceBreakup[count].Item_type_title.includes('Tech')) { techAndExamFee = techAndExamFee + parseInt(get(priceBreakup[count], "Total", 0), 0) }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:139:hardcoded variable:    const maxPrice = registrationFee + admissionFee + classroomFee + tuitionFee + techAndExamFee
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:140:hardcoded object:    return { registrationFee, admissionFee, classroomFee, tuitionFee, techAndExamFee, maxPrice }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:143:hardcoded variable:const getPriceBreakups = (courseFees) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:146:hardcoded string:    registrationFee = get(courseFees, "registrationFee", 0);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:147:hardcoded string:    admissionFee = get(courseFees, "admissionFee", 0);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:148:hardcoded string:    classroomFee = get(courseFees, "classroomFee", 0);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:149:hardcoded string:    tuitionFee = get(courseFees, "tuitionFee", 0);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:150:hardcoded string:    techAndExamFee = get(courseFees, "techAndExamFee", 0);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:151:hardcoded string:    maxPrice = get(courseFees, "totalFee", (registrationFee + admissionFee + classroomFee + tuitionFee + techAndExamFee));
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:153:hardcoded object:    return { registrationFee, admissionFee, classroomFee, tuitionFee, techAndExamFee, maxPrice }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:156:hardcoded variable:const getCourseWisePrice = (courses, priceBreakup) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:158:hardcoded string:        if (dt.course === "REGISTRATION") { dt["price"] = priceBreakup.registrationFee }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:159:hardcoded string:        else if (dt.course === "ADMISSION") { dt["price"] = priceBreakup.admissionFee }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:160:hardcoded string:        else if (dt.course === "TECH_AND_EXAM") { dt["price"] = priceBreakup.techAndExamFee }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:161:hardcoded string:        else if (dt.course === "CLASSROOM") { dt["price"] = priceBreakup.classroomFee }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:162:hardcoded string:        else if (dt.course === "TUITION") { dt["price"] = priceBreakup.tuitionFee }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:163:hardcoded string:        else { dt["price"] = priceBreakup.tabletPrice }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:168:hardcoded variable:const getCourseWisePriceDev = (courses, priceBreakup) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:170:hardcoded string:        if ( dt.subCourse === "registration") { dt["price"] = priceBreakup.registrationFee }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:171:hardcoded string:        else if ( dt.subCourse === "admission") { dt["price"] = priceBreakup.admissionFee }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:172:hardcoded string:        else if ( dt.subCourse === "tech_and_exam") { dt["price"] = priceBreakup.techAndExamFee }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:173:hardcoded string:        else if ( dt.subCourse === "classroom") { dt["price"] = priceBreakup.classroomFee }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:174:hardcoded string:        else if ( dt.subCourse === "tuition") { dt["price"] = priceBreakup.tuitionFee }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:175:hardcoded string:        else { dt["price"] = priceBreakup.tabletPrice }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:180:hardcoded variable:const checkIfQuotationExists = async (identifier) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:181:hardcoded string:    if (!identifier) throw new BadRequestError('Identifier is missing.');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:183:hardcoded variable:        const quotation = await Quotation.findById(identifier);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:189:hardcoded object:        throw new Error(error || `Error in fetching draft order - ${identifier}`);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:195:hardcoded variable:const courseIdList = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:196:hardcoded string:    "712615": "JEE Prep - 1 year Revision Powerstep Program-Hybrid",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:197:hardcoded string:    "712590": "JEE Prep - 1 year Revision Powerstep Classroom Program",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:198:hardcoded string:    "712597": "NEET Prep - 1 year Revision Program-Hybrid",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:199:hardcoded string:    "712643": "NEET Prep - 1 year Revision Classroom Program"
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:202:hardcoded variable:const getProductName = (formValues) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:203:hardcoded string:    let name = ""
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:204:hardcoded string:    if (courseIdList[get(formValues, "courseId", "")]) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:205:hardcoded string:        name = courseIdList[get(formValues, "courseId", "")]
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:207:hardcoded string:        name = `${formValues.subCourse} Prep - ${formValues.initialClass == "11" ? "2" : "1"} year ${formValues.typeOfClass === "Regular" ? "Classroom" : "Hybrid"} program`
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:212:hardcoded variable:const getAakashSkuItemId = () => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:213:hardcoded number:    //length of itemId should be 24 characters
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:214:hardcoded number:    const itemId = nanoid(24)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:218:hardcoded object:const getFocPriceBreakup = ({ productDetails, aakashPriceBreakup, finalPrice, scholarshipDetails, tabletPrice, isPdc, actualPriceBreakup }) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:219:hardcoded string:    const feeTypes = ["registrationFee", "admissionFee", "techAndExamFee", "classroomFee", "tuitionFee"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:220:hardcoded variable:    let remainingAmount = (finalPrice - tabletPrice);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:221:hardcoded string:    let totalConcessionDetails = { "registrationFee": {}, "admissionFee": {}, "techAndExamFee": {}, "classroomFee": {}, "tuitionFee": {} }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:222:hardcoded variable:    let scholarshipE = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:223:hardcoded string:        "acstGiven": "",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:224:hardcoded string:        "basedOn": "Discretionary discount",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:225:hardcoded string:        "category": "E",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:226:hardcoded string:        "subCategory": 14,
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:227:hardcoded string:        "subSubCategory": 74,
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:228:hardcoded string:        "aakashCategory": "CRC"
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:231:hardcoded number:    scholarshipE.value = Math.round(10000 * (scholarshipE.amount / actualPriceBreakup.maxPrice))/100
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:234:hardcoded number:        if (remainingAmount == 0) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:235:hardcoded number:            aakashPriceBreakup[feetype] = 0
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:237:hardcoded array:            if (remainingAmount > aakashPriceBreakup[feetype]) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:238:hardcoded array:                remainingAmount -= aakashPriceBreakup[feetype]
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:240:hardcoded array:                aakashPriceBreakup[feetype] = remainingAmount;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:241:hardcoded number:                remainingAmount = 0;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:244:hardcoded array:        totalConcessionDetails[feetype].amount = actualPriceBreakup[feetype] - aakashPriceBreakup[feetype];
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:245:hardcoded number:        totalConcessionDetails[feetype].value = Math.round((totalConcessionDetails[feetype].amount / actualPriceBreakup[feetype]) * 10000)/100
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:249:hardcoded array:            scholarships: [scholarshipE],
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:258:hardcoded number:        scholarshipDetails.totalScholarshipPercentage = Math.round(10000 * (actualPriceBreakup.maxPrice - (finalPrice - tabletPrice)) / actualPriceBreakup.maxPrice)/100
+microservices-middleware/server/src/quotationmanagement/productmanagement/productHelper.js:262:hardcoded object:    return { aakashPriceBreakup, scholarshipDetails }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:1:hardcoded object:const { get, isEmpty, padStart, random, forIn, isArray, size,round } = require('lodash');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:2:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Product Controller');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:3:hardcoded file path:const moment = require('moment');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:5:hardcoded string:const { ProductDetail, QuotationPriceAndScholarship } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:6:hardcoded string:const { AakashPrice, AkashPriceList } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:7:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:9:hardcoded object:const { BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:10:hardcoded object:const { fetchCourseFeesPayload, getPriceBreakup, getCourseWisePrice,getCourseWisePriceDev, getCourseDetails, getPriceBreakups, getAakashCategory, getCRPFinalClass } = require('./productHelper');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:11:hardcoded object:const { getMinSalesPrice, getScholarshipDetails, getAakashSpecialScholarshipBreakup, getFinalPriceBreakup } = require('./scholarshipHelper')
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:12:hardcoded object:const { sharePriceDetailToSalesPerson } = require('../otpmanagement/otpController')
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:13:hardcoded object:const { callAakashAPIToFetchCourseFees, callAakashToGetPSID } = require('../../../utility/externalApiUtility');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:14:hardcoded file path:const scholarshipConfigEnum = require('../../../utility/aakashSpecialScholarshipEnum');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:15:hardcoded object:const { getFormattedUserEmail, isDevEnv } = require('../../../lib/featureHelper');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:18:hardcoded variable:const getProductPriceWithoutQuotation = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:19:hardcoded string:    logger.info({ method: 'getProductPriceWithoutQuotation' }, { message: "Fetching Aakash Product" });
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:21:hardcoded object:    let partnerApiResponse = {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:23:hardcoded number:    let courseTimePeriod = 1;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:24:hardcoded object:    let BANTVoucherDetails = {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:26:hardcoded number:    let discountPercentage = 0.45;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:27:hardcoded string:    let { productType, student, scholarshipDetails, partnerId, acstGiven, identifier = "", isPriceAndScholarship, customerDetails, salesEmail, prospectId = "" } = req.body;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:30:hardcoded string:    let { initialClass, finalClass, validity, subCourse, typeOfClass, branch, courseDuration = [], selectedCourseId, isJct, board, selectedTablet = "" } = student;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:31:hardcoded variable:    let grade = initialClass;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:33:hardcoded string:        if (grade === "11" && finalClass === "12") {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:34:hardcoded number:            courseTimePeriod = 2;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:37:hardcoded variable:        const courseSku = isDevEnv ? await SalesSkuMaster.findAll({
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:39:hardcoded string:                category :'aakash_crp'
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:42:hardcoded string:        }) : await ProductDetail.find({ type: "BYJUS_AKASH_CRP" }).lean()
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:43:hardcoded object:        const payload = await fetchCourseFeesPayload({ branch, subCourse, typeOfClass, initialClass, validity, courseTimePeriod, courseDuration, isJct, board, selectedCourseId });
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:44:hardcoded string:        payload["CrseID"] = selectedCourseId
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:45:hardcoded variable:        const formattedPayload = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:52:hardcoded object:        let aakashPriceBreakup = {};
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:53:hardcoded object:        let priceBreakup = {};
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:62:hardcoded object:        let tabletDetail = {};
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:73:hardcoded object:        if (isEmpty(aakashPriceBreakup)) { throw new Error(`Price Breakup is not available for the selected course ${payload.CrseID} on this branch ${payload.BUUnitId}`) }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:74:hardcoded object:        const { dataValues = {} } = aakashPriceBreakup || {};
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:75:hardcoded string:        discountPercentage = (1 - dataValues["mspPercentage"]).toFixed(4)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:76:hardcoded string:        mspFee = round(dataValues["mspFee"])
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:83:hardcoded string:            if (acstGiven === "no" || acstGiven === "bnat") {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:84:hardcoded object:                const { primaryMobileNo } = customerDetails;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:85:hardcoded object:                const { scholarshipPriceBreakup, scholarshipDetails: details, voucherDetails } = await getAakashSpecialScholarshipBreakup({ scholarshipDetails, priceBreakup, payload, isPriceAndScholarship, primaryMobileNo, discountPercentage, mspFee, partnerId, acstGiven });
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:91:hardcoded object:                const { scholarshipPriceBreakup, scholarshipDetails: details, concession } = await getScholarshipDetails({ scholarshipDetails, priceBreakup, payload, partnerId, identifier, discountPercentage })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:95:hardcoded string:                partnerApiResponse["concession"] = concession
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:102:hardcoded variable:            const tabletPrice = tabletDetail.dataValues.basePrice
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:109:hardcoded variable:        const formattedProducts = isDevEnv ? getCourseWisePriceDev(courseSku, priceBreakup) :getCourseWisePrice(courseSku, priceBreakup);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:111:hardcoded object:            const { dataValues } = tabletDetail;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:112:hardcoded variable:            const tabletProduct = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:115:hardcoded string:                course: "aakashCrp",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:116:hardcoded string:                type: "product", ...dataValues
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:120:hardcoded object:        const { maxPrice, minPrice, netPrice } = priceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:122:hardcoded string:        student["formValues"] = { ...student, ...formattedPayload, acstGiven };
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:123:hardcoded string:        student["items"] = formattedProducts;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:127:hardcoded object:        await sharePriceDetailToSalesPerson({ salesEmail: salesEmail, customerDetails, productDetails: student, maxPrice, minPrice, netPrice, aakashPriceBreakup: priceBreakup })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:131:hardcoded string:            logger.info({ method: 'getProductPriceWithoutQuotation' }, { message: `${prospectId} - minPrice: ${minPrice}, netPrice: ${netPrice}, maxPrice: ${maxPrice}` });
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:132:hardcoded string:            throw new Error("Invalid Price - Error in price calculation");
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:134:hardcoded variable:        const priceAndScholarshipId = generatePriceAndScholarShipId()
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:139:hardcoded string:            status: "initiated"
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:148:hardcoded array:            students: [student],
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:163:hardcoded variable:const storePriceAndScholarShip = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:164:hardcoded object:    let { priceAndScholarshipId, scholarshipDetails, productDetails, prospectId, finalPrice, actualCourseFees, aakashPriceBreakup, products, customerDetails, partnerIdentifierDetails, partnerAPIResponseDetails, leadDetails, voucherDetails } = req.body;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:165:hardcoded string:    logger.info({ method: 'storeProductDetails', msg: `Storing Product Details for` });
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:167:hardcoded string:    const { email } = get(req, 'user', {});
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:168:hardcoded string:    const tablet = products.filter((prod) => prod.category === "tablet")
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:169:hardcoded string:    const tabletPrice = get(tablet[0], 'basePrice', "");
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:170:hardcoded string:    const { initialClass = "", courseDuration = "" } = productDetails
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:172:hardcoded object:    let finalClassValue = getCRPFinalClass({ initialClass, courseDuration })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:173:hardcoded string:    productDetails["finalClass"] = finalClassValue + ""
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:175:hardcoded object:    const { partnerPriceBreakup = {} } = await QuotationPriceAndScholarship.findOne({ priceAndScholarshipId })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:176:hardcoded object:    const { netPrice, minPrice } = partnerPriceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:181:hardcoded object:    const { aakashPriceBreakup: priceBreakup, scholarshipDetails: scholarships } = getFinalPriceBreakup({ productDetails, aakashPriceBreakup, finalPrice, scholarshipDetails, tabletPrice })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:182:hardcoded variable:    const formattedProducts = isDevEnv ? getCourseWisePriceDev(products, priceBreakup) :  getCourseWisePrice(products, priceBreakup);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:184:hardcoded string:    customerDetails["primaryMobileNo"] = "+91-" + get(customerDetails, "primaryMobileNo")
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:189:hardcoded object:        await QuotationPriceAndScholarship.findOneAndUpdate({ priceAndScholarshipId }, {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:200:hardcoded array:            [`actionDetails.createdAt`]: new Date(),
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:201:hardcoded array:            [`actionDetails.createdBy`]: email,
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:203:hardcoded string:            orgFormattedName: "aakash",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:205:hardcoded object:            voucherDetails: voucherDetails || {},
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:206:hardcoded string:            status: "created"
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:208:hardcoded string:        return res.json('Created Successfully');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:215:hardcoded variable:const generatePriceAndScholarShipId = () => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:216:hardcoded string:    const currentDate = moment().format('YYMMDDHHmmss');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:217:hardcoded number:    const randomNumber = random(1, 999);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:218:hardcoded number:    const paddedRandomNumber = padStart(randomNumber, 4, 0);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:219:hardcoded object:    const lineId = `PS-${currentDate}${paddedRandomNumber}`;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:223:hardcoded variable:const checkAakashPSID = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:224:hardcoded object:    let { customerDetails } = req.body;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:225:hardcoded object:    let { studentName, parentName, dob, primaryMobileNo } = customerDetails
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:228:hardcoded string:        dob = dob.split("T")
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:229:hardcoded string:        dob = dob[0].split("-")
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:230:hardcoded string:        dob = dob[2] + "-" + dob[1] + "-" + dob[0].toString().substr(-2)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:231:hardcoded string:        // dob = dob.getDate()+"-"+dob.getMonth()+"-"+ dob.getFullYear().toString().substr(-2)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:233:hardcoded variable:        const payload = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:240:hardcoded string:        let aakashPSID = ""
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:244:hardcoded number:            let response = aakashPSID[0]
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:245:hardcoded object:            let { EMPLID } = response
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:248:hardcoded string:            aakashPSID = ""
+microservices-middleware/server/src/quotationmanagement/productmanagement/productAndScholarshipController.js:254:hardcoded string:        logger.error({ method: 'getAakashPSID', error }, 'Error occured');
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:1:hardcoded file path:const Promise = require('bluebird')
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:3:hardcoded string:const { Quotation, ByjusConfig } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:4:hardcoded object:const { get, isEmpty, unset, flattenDeep, forIn, isArray, isObject, round } = require('lodash');
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:5:hardcoded object:const { callAakashAPIToGetConcession, callAakashToGetPSID } = require('../../../utility/externalApiUtility');
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:6:hardcoded object:const { getEmptyProps } = require('../../../utility/errorLogUtility');
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:7:hardcoded object:const { getAakashCRPConfig } = require("../configmanagement/configController")
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:8:hardcoded file path:const specialScholarshipConfigEnum = require("../../../utility/aakashSpecialScholarshipEnum");
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:9:hardcoded object:const { validateVoucherAndGetBaseValue } = require("../vouchermanagement/voucherController");
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:10:hardcoded object:const { isDevEnv } = require("../../../lib/featureHelper");
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:12:hardcoded variable:const getMinSalesPrice = (priceBreakup, mspFee) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:13:hardcoded object:    let { maxPrice, ...actualPriceBreakup } = priceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:14:hardcoded object:    // const { classroomFee, tuitionFee } = actualPriceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:16:hardcoded variable:    const netPrice = maxPrice
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:17:hardcoded number:    // const minPrice = maxPrice - Math.min(Math.floor(0.45 * maxPrice), classroomFee + tuitionFee)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:19:hardcoded string:    actualPriceBreakup["maxPrice"] = maxPrice
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:20:hardcoded string:    actualPriceBreakup["netPrice"] = netPrice
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:21:hardcoded string:    actualPriceBreakup["minPrice"] = mspFee
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:22:hardcoded string:    actualPriceBreakup["discretionaryAmount"] = getMaxDiscretionaryAmount (actualPriceBreakup,0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:27:hardcoded variable:const getDiscountValue = (amount, value) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:28:hardcoded number:    return Math.floor(Number(amount) * Number(value) / 100)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:31:hardcoded variable:const getAakashSpecialScholarshipConfig = async () => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:32:hardcoded string:    const specialScholarshipConigs = await ByjusConfig.findOne({ formattedAppName: "MIDDLEWARE", formattedModuleName: "AAKASH_SPECIAL_CAMPAIGN_SCHOLARSHIP_CONFIGS" }).lean();
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:33:hardcoded array:    const { configs = [] } = specialScholarshipConigs;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:35:hardcoded number:    return configs[0]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:38:hardcoded number:const sumOfObjects = (obj1, obj2) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:39:hardcoded number:    return Object.keys(obj1).reduce((acc, key) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:40:hardcoded string:        if (typeof obj2[key] === 'object') {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:41:hardcoded number:            acc[key] = sumOfObjects(obj1[key], obj2[key]);
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:42:hardcoded number:        } else if (obj2.hasOwnProperty(key) && !isNaN(parseFloat(obj2[key]))) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:43:hardcoded number:            acc[key] = obj1[key] + obj2[key]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:46:hardcoded object:    }, {});
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:49:hardcoded variable:const getDiscountPercentage = (totalAmount, amount) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:50:hardcoded number:    const percentage = amount / totalAmount * 100
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:51:hardcoded number:    return Math.round(percentage * 100) / 100
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:54:hardcoded object:const getClassroomTutitionFee = ({ finalPrice, discountedAmount, aakashPriceBreakup, scholarshipDetails, tabletPrice, isPdc, actualPriceBreakup }) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:56:hardcoded object:    const { netPrice, classroomFee, tuitionFee } = aakashPriceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:57:hardcoded variable:    const totalDiscount = Number(netPrice) - Number(finalPrice)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:58:hardcoded variable:    const discountPercentage = totalDiscount / (classroomFee + tuitionFee)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:61:hardcoded variable:    const totalBaseFee = classroomFee + tuitionFee + discountedAmount
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:62:hardcoded variable:    const roundPercentage = getDiscountPercentage(totalBaseFee, totalDiscount)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:68:hardcoded object:    const { verifiedPriceBreakup } = verifyLineItems({ aakashPriceBreakup, finalPrice, tabletPrice, isPdc })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:69:hardcoded object:    return { priceBreakup: verifiedPriceBreakup, roundPercentage, totalDiscount }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:73:hardcoded object:const reComputeScholarships = ({ verifiedPriceBreakup, scholarshipDetails, originalPriceBreakup, roundPercentage, netPrice, maxPrice, finalPrice }) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:75:hardcoded object:    const { scholarships, totalScholarshipAmount, totalScholarshipPercentage } = scholarshipDetails;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:76:hardcoded variable:    const appliedScholarships = scholarships.length;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:80:hardcoded number:        const percentage = Math.round((totalScholarshipPercentage / appliedScholarships)*100)/100
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:81:hardcoded number:        const amount = Math.round((totalScholarshipAmount / appliedScholarships)*100)/100
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:96:hardcoded object:const recomputeClassAndTutionFees = ({ maxPrice, netPrice, actualPriceBreakup, finalPrice, isPdc,scholarshipDetails = {} }) =>{
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:98:hardcoded object:    let { classroomFee: actualClassroomFee, tuitionFee: actualTuitionFee } = actualPriceBreakup;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:99:hardcoded variable:    const classroomAndTuitionFee = (actualClassroomFee + actualTuitionFee)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:100:hardcoded variable:    const totalDiscount = maxPrice - finalPrice;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:101:hardcoded variable:    const roundPercentage = getDiscountPercentage(classroomAndTuitionFee, totalDiscount)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:102:hardcoded variable:    const discountPercentage = totalDiscount / (actualClassroomFee + actualTuitionFee)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:105:hardcoded object:    const { verifiedPriceBreakup } = verifyLineItems({ actualPriceBreakup, finalPrice, isPdc })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:109:hardcoded number:    scholarshipDetails.totalScholarshipPercentage = Math.floor((1 - (finalPrice / maxPrice)) * 100)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:111:hardcoded string:    scholarshipDetails.totalConcessionDetails.classroomFee.amount = actualClassroomFee - verifiedPriceBreakup["classroomFee"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:113:hardcoded string:    scholarshipDetails.totalConcessionDetails.tuitionFee.amount = actualTuitionFee - verifiedPriceBreakup["tuitionFee"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:124:hardcoded number:const verifyLineItems = ({ aakashPriceBreakup, finalPrice, tabletPrice = 0, isPdc, actualPriceBreakup = {} }) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:126:hardcoded number:    let sumOfLineItems = 0
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:127:hardcoded number:    let priceDiff = 0;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:128:hardcoded string:    const feeComponents = ["classroomFee", "tuitionFee", "techAndExamFee", "admissionFee", "registrationFee"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:131:hardcoded number:        if (aakashPriceBreakup[lineItem] < 0) throw new Error(`Line Item ${lineItem} is negative`)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:132:hardcoded array:        sumOfLineItems += Number(aakashPriceBreakup[lineItem])
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:139:hardcoded number:        //priceDiff can range from negative -5 to 5 in some cases , if out of range error will be shown
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:140:hardcoded number:        if (priceDiff > 5) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:141:hardcoded string:            throw new Error("Price difference due to rounding off is more than Rs.5 Please contact Optech Support to proceed.")
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:151:hardcoded string:    if (sumOfLineItems != finalPrice && !isPdc) throw new Error("Sum of Line Items is not equal to Final Price")
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:152:hardcoded object:    return { verifiedPriceBreakup: aakashPriceBreakup }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:155:hardcoded object:const getFinalPriceBreakup = ({ productDetails, aakashPriceBreakup, scholarshipDetails = {}, finalPrice, tabletPrice, isPdc }) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:156:hardcoded string:    let { acstGiven = "", typeOfClass = "" } = productDetails
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:158:hardcoded string:    const courseMap = { Regular: "CRC", Hybrid: "CHC" }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:159:hardcoded object:    const { netPrice, maxPrice, classroomFee, tuitionFee, registrationFee, techAndExamFee, admissionFee } = aakashPriceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:160:hardcoded object:    let { actualPriceBreakup } = productDetails
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:162:hardcoded variable:    const originalPriceBreakup = JSON.parse(JSON.stringify(actualPriceBreakup))
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:164:hardcoded string:    // if(netPrice > finalPrice && ["development", "local"].includes(process.env.NODE_ENV)){
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:168:hardcoded number:                scholarships: [], totalScholarshipAmount: 0, totalScholarshipPercentage: 0,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:169:hardcoded number:                totalConcessionDetails: { classroomFee: { value: 0, amount: 0 }, tuitionFee: { value: 0, amount: 0 } },
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:172:hardcoded string:        const discountedAmount = scholarshipDetails.totalConcessionDetails["classroomFee"]["amount"] + scholarshipDetails.totalConcessionDetails["tuitionFee"]["amount"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:173:hardcoded object:        const { priceBreakup, roundPercentage, totalDiscount } = getClassroomTutitionFee({ finalPrice, discountedAmount, aakashPriceBreakup, tabletPrice, isPdc })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:177:hardcoded string:            basedOn: "Discretionary discount",
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:178:hardcoded string:            category: "D",
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:179:hardcoded number:            subCategory: 14,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:180:hardcoded number:            subSubCategory: 74,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:183:hardcoded array:            aakashCategory: courseMap[typeOfClass]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:186:hardcoded number:        scholarshipDetails.totalScholarshipPercentage += Math.floor((1 - (finalPrice / maxPrice)) * 100)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:188:hardcoded string:        scholarshipDetails.totalConcessionDetails.classroomFee.amount += classroomFee - priceBreakup["classroomFee"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:190:hardcoded string:        scholarshipDetails.totalConcessionDetails.tuitionFee.amount += tuitionFee - priceBreakup["tuitionFee"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:192:hardcoded object:        return { aakashPriceBreakup, scholarshipDetails }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:196:hardcoded object:        const { recomputedClassFee, recomputedTutionFee, verifiedPriceBreakup, roundPercentage } = recomputeClassAndTutionFees({ maxPrice, netPrice, actualPriceBreakup, finalPrice, isPdc,scholarshipDetails })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:197:hardcoded string:        productDetails["actualPriceBreakup"] = originalPriceBreakup;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:200:hardcoded object:        const { recomputedScholarshipDetails } = reComputeScholarships({ verifiedPriceBreakup, scholarshipDetails,originalPriceBreakup, roundPercentage,netPrice, maxPrice,finalPrice  })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:201:hardcoded object:        return { aakashPriceBreakup :verifiedPriceBreakup, scholarshipDetails }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:205:hardcoded number:    // these conditions are not useful 3/10/2022
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:206:hardcoded string:    if ((acstGiven === "no" || acstGiven === "bnat") && netPrice > finalPrice && !isPdc ) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:207:hardcoded string:        const discountedAmount = scholarshipDetails.totalConcessionDetails["base"]["amount"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:208:hardcoded object:        const { priceBreakup, roundPercentage, totalDiscount } = getClassroomTutitionFee({ finalPrice, discountedAmount, aakashPriceBreakup })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:212:hardcoded string:            acstGiven: "no",
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:213:hardcoded string:            basedOn: "Discretionary discount",
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:214:hardcoded string:            category: "E",
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:215:hardcoded object:            concessionDetails: { base: { value: roundPercentage, amount: totalDiscount } },
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:223:hardcoded string:    } else if (acstGiven === "yes" && finalPrice < netPrice && !isPdc ) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:224:hardcoded string:        const discountedAmount = scholarshipDetails["totalScholarshipAmount"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:225:hardcoded object:        const { priceBreakup, roundPercentage, totalDiscount } = getClassroomTutitionFee({ finalPrice, discountedAmount, aakashPriceBreakup })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:229:hardcoded string:            acstGiven: "yes",
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:230:hardcoded string:            basedOn: "Discretionary discount",
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:231:hardcoded string:            category: "E",
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:239:hardcoded number:        const discountedAmount = 0
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:240:hardcoded object:        const { priceBreakup, roundPercentage, totalDiscount } = getClassroomTutitionFee({ finalPrice, discountedAmount, aakashPriceBreakup })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:243:hardcoded string:        scholarshipDetails["scholarships"] = []
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:245:hardcoded string:            acstGiven: "",
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:246:hardcoded string:            basedOn: "Discretionary discount",
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:247:hardcoded string:            category: "E",
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:255:hardcoded object:    verifyLineItems({ aakashPriceBreakup, finalPrice, tabletPrice, isPdc })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:256:hardcoded object:    return { aakashPriceBreakup, scholarshipDetails }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:259:hardcoded object:const validateConcessionDetails = ({ totalConcessionDetails, appicalbleScholarships, priceBreakup }) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:260:hardcoded object:    const { classroomFee, tuitionFee, techAndExamFee, admissionFee, maxPrice } = priceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:262:hardcoded string:    if (totalConcessionDetails["base"].value > 100) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:263:hardcoded variable:        let amountDelta = totalConcessionDetails.base.amount - (classroomFee + tuitionFee)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:264:hardcoded number:        totalConcessionDetails.base.value = 100
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:268:hardcoded array:            const { concessionDetails } = appicalbleScholarships[key]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:269:hardcoded object:            let { value, amount } = concessionDetails.base
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:273:hardcoded number:                    appicalbleScholarships[key].concessionDetails.base = { value: 0, amount: 0 }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:274:hardcoded number:                    appicalbleScholarships[key].amount = Object.values(appicalbleScholarships[key].concessionDetails).reduce((total, obj) => obj.amount + total, 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:276:hardcoded array:                    delete appicalbleScholarships[key]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:281:hardcoded number:                amountDelta = 0
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:282:hardcoded array:                appicalbleScholarships[key].concessionDetails.base = { value, amount }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:283:hardcoded number:                appicalbleScholarships[key].amount = Object.values(appicalbleScholarships[key].concessionDetails).reduce((total, obj) => obj.amount + total, 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:288:hardcoded object:    return { totalConcessionDetails, appicalbleScholarships }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:291:hardcoded object:const checkAvailableAakashScholarships = async ({ scholarshipB, payload, partnerId }) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:293:hardcoded string:        "BU": payload.BUUnitId,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:294:hardcoded string:        "Course_ID": payload.CrseID,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:295:hardcoded string:        "AcadCareer": payload.AcadCarrier,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:296:hardcoded string:        "Term": payload.Term,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:298:hardcoded string:    payload["PSID"] = partnerId
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:299:hardcoded object:    let scholarship = {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:305:hardcoded object:            const { ResponseCode } = concession
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:306:hardcoded number:            if (ResponseCode == 405) return
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:307:hardcoded number:            for (let i = 0; i < concession.length; i++) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:308:hardcoded number:                const { CATEGORY_CD, CATEGORY_CD2, CONCESION_PERCENTAGE, CATEGORY, CATEGORY_CD_DESCR, CATEGORY_DESCR } = concession[i]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:309:hardcoded string:                if (CATEGORY_CD == "12" || CATEGORY_DESCR.includes(("Category B"))) {   //scholarship is B for BNAT 
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:310:hardcoded number:                    scholarship = { ...(scholarshipB[0]) }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:314:hardcoded number:                    scholarship.subSubCategory = CATEGORY_CD2
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:323:hardcoded object:const checkAakashScholarships = async ({ scholarshipB, payload, partnerId }) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:325:hardcoded string:        "BU": payload.BUUnitId,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:326:hardcoded string:        "Course_ID": payload.CrseID,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:327:hardcoded string:        "AcadCareer": payload.AcadCarrier,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:328:hardcoded string:        "Term": payload.Term,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:330:hardcoded string:    payload["PSID"] = partnerId
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:332:hardcoded string:    //if(!isEmpty(scholarshipB) && ["development", "local"].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:334:hardcoded string:        payload["subCategory"] = scholarshipB["subCategory"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:335:hardcoded string:        payload["subSubCategory"] = scholarshipB["subSubCategory"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:339:hardcoded object:            const { ResponseCode } = concession
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:340:hardcoded number:            if (ResponseCode == 405) return
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:341:hardcoded number:            for (let i = 0; i < concession.length; i++) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:342:hardcoded number:                const { CATEGORY_CD, CATEGORY_CD2, CONCESION_PERCENTAGE, CATEGORY } = concession[i]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:343:hardcoded string:                if (CATEGORY_CD == "12") {   //scholarship is B for BNAT 
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:344:hardcoded array:                    scholarshipB[i].aakashCategory = CATEGORY;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:345:hardcoded array:                    scholarshipB[i].subCategory = CATEGORY_CD;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:346:hardcoded number:                    scholarshipB[i].subSubCategory = CATEGORY_CD2;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:356:hardcoded object:const getAakashSpecialScholarshipBreakup = async ({ scholarshipDetails, payload, priceBreakup, isPriceAndScholarship, primaryMobileNo, discountPercentage, mspFee, partnerId, acstGiven, subCourse }) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:358:hardcoded object:    let { classroomFee, tuitionFee, techAndExamFee, admissionFee, maxPrice } = priceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:359:hardcoded object:    let appicalbleScholarships = {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:360:hardcoded number:    let additonalDiscount = 0
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:361:hardcoded object:    let voucherDetails = {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:363:hardcoded string:    scholarshipDetails["B"] = await checkAakashScholarships({ scholarshipB: scholarshipDetails["B"], payload, partnerId })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:364:hardcoded variable:    const scholarshipDoc = Object.keys(scholarshipDetails);
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:366:hardcoded array:        let currScholarships = scholarshipDetails[key]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:367:hardcoded object:        let maxScholarship = {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:371:hardcoded object:                const { fileUrl, value: keyValue, basedOn } = scholarship
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:372:hardcoded number:                let baseValue = 0
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:373:hardcoded object:                if (!fileUrl && !isPriceAndScholarship) throw new Error(`Docs are missing for ${basedOn}`);
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:374:hardcoded string:                // if basedOn=="BNAT"; instead of getting value from enum do voucher validation
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:375:hardcoded string:                if (basedOn === "BNAT") {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:376:hardcoded variable:                    const BNATDetails = await validateVoucherAndGetBaseValue(keyValue, primaryMobileNo)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:377:hardcoded string:                    voucherDetails = get(BNATDetails, "voucherDetails", {})
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:378:hardcoded string:                    baseValue = get(BNATDetails, "discountPercentage", 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:379:hardcoded string:                    if (baseValue > 100) throw new Error("BNAT Discount percentage is greater that 100")
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:381:hardcoded string:                    //if(process.env.NODE_ENV !== "production"){
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:382:hardcoded object:                    const { scholarshipConfig } = await getAakashSpecialScholarshipConfig()
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:383:hardcoded string:                    const { scholarships } = scholarshipConfig.find(ele => ele.category === "A")
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:384:hardcoded string:                    const { subCategory, options } = scholarships.find(ele => ele.formattedLabel === "BNAT").fields[0]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:385:hardcoded object:                    const { subSubCategory } = options.find(ele => baseValue >= Number(ele.min) && baseValue <= Number(ele.max))
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:390:hardcoded array:                    baseValue = specialScholarshipConfigEnum[keyValue]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:391:hardcoded string:                    if (keyValue == "A-9TH_AGGREGATE-1") {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:392:hardcoded array:                        baseValue = get(baseValue, courseMap[subCourse])
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:395:hardcoded number:                //value made to 0, in order to ensure scholarship is not apllied on techAndExam and Admission Fee components.
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:396:hardcoded number:                const examTechValue = 0;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:397:hardcoded number:                const admissionValue = 0;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:399:hardcoded object:                let concessionDetails = {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:400:hardcoded number:                if (baseValue > 100) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:402:hardcoded string:                        "base": { value: getDiscountPercentage(classroomFee + tuitionFee, baseValue), amount: baseValue },
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:403:hardcoded string:                        "techAndExamFee": { value: getDiscountPercentage(techAndExamFee, examTechValue), amount: examTechValue },
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:404:hardcoded string:                        "admissionFee": { value: getDiscountPercentage(admissionFee, admissionValue), amount: admissionValue }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:408:hardcoded string:                        "base": { value: baseValue, amount: getDiscountValue(classroomFee, baseValue) + getDiscountValue(tuitionFee, baseValue) },
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:409:hardcoded string:                        "techAndExamFee": { value: examTechValue, amount: getDiscountValue(techAndExamFee, examTechValue) },
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:410:hardcoded string:                        "admissionFee": { value: admissionValue, amount: getDiscountValue(admissionFee, admissionValue) }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:413:hardcoded number:                const totalAmount = Object.values(concessionDetails).reduce((total, obj) => obj.amount + total, 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:415:hardcoded object:                return { ...scholarship, concessionDetails, amount: totalAmount, value: baseValue, keyValue }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:418:hardcoded string:            if (key !== "D") {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:420:hardcoded array:                appicalbleScholarships[key] = maxScholarship
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:422:hardcoded variable:                const allConcessionDetails = currScholarships.map(scholarship => scholarship.concessionDetails)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:423:hardcoded variable:                const sumConcessionDetails = allConcessionDetails.reduce((acc, obj) => acc = sumOfObjects(acc, obj));
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:424:hardcoded number:                const totalAmount = Object.values(sumConcessionDetails).reduce((total, obj) => obj.amount + total, 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:425:hardcoded number:                const totalValue = Object.values(sumConcessionDetails).reduce((total, obj) => obj.value + total, 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:426:hardcoded array:                appicalbleScholarships[key] = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:427:hardcoded number:                    scholarships: currScholarships, concessionDetails: sumConcessionDetails, subCategory: 14,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:428:hardcoded string:                    subSubCategory: 74, category: key, amount: totalAmount, value: totalValue, acstGiven: "no"
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:434:hardcoded array:    if (isEmpty(appicalbleScholarships)) return { scholarshipPriceBreakup: getMinSalesPrice(priceBreakup, mspFee), scholarshipDetails: [] }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:436:hardcoded array:    const { D = [] } = appicalbleScholarships
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:438:hardcoded string:    const minDiscount = Math.floor(discountPercentage * maxPrice) - get(appicalbleScholarships["A"], "amount", 0) - get(appicalbleScholarships["B"], "amount", 0) - get(appicalbleScholarships["C"], "amount", 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:439:hardcoded string:    let scholarshipsDSum = get(appicalbleScholarships["D"], "amount", 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:440:hardcoded number:    let sumOfScholarships = Object.values(appicalbleScholarships).reduce((total, obj) => obj.amount + total, 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:443:hardcoded number:        if (minDiscount > 0 && sumOfScholarships < (classroomFee + tuitionFee)) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:445:hardcoded string:                appicalbleScholarships["D"].concessionDetails.base.value = getDiscountPercentage(classroomFee + tuitionFee, minDiscount)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:446:hardcoded string:                appicalbleScholarships["D"].concessionDetails.base.amount = minDiscount
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:447:hardcoded string:                appicalbleScholarships["D"].amount = minDiscount
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:450:hardcoded string:            delete appicalbleScholarships["D"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:454:hardcoded variable:    let totalConcessionDetails = Object.values(appicalbleScholarships).map(scholarship => scholarship.concessionDetails).reduce((acc, obj) => acc = sumOfObjects(acc, obj));
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:455:hardcoded object:    ({ totalConcessionDetails, appicalbleScholarships } = validateConcessionDetails({ totalConcessionDetails, appicalbleScholarships, priceBreakup }))
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:457:hardcoded number:    sumOfScholarships = Object.values(appicalbleScholarships).reduce((total, obj) => obj.amount + total, 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:459:hardcoded string:    scholarshipsDSum = get(appicalbleScholarships["D"], "amount", 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:462:hardcoded variable:    const effAdditoalnDiscount = (classroomFee + tuitionFee) - baseScholarshipsSum
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:463:hardcoded number:    additonalDiscount = Math.min(Math.max(additonalDiscount, 0), Math.max(effAdditoalnDiscount, 0))
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:465:hardcoded object:    return getSpecialConcessionDetails({ appicalbleScholarships, priceBreakup, additonalDiscount, sumOfScholarships, totalConcessionDetails, voucherDetails, acstGiven })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:469:hardcoded object:const getScholarshipDetailsForPdc = async ({ scholarshipDetails, payload, partnerId, primaryMobileNo, subCourse }) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:470:hardcoded array:    let scholarships = []
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:471:hardcoded object:    let voucherDetails = {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:472:hardcoded string:    const scholarshipB = await checkAvailableAakashScholarships({ scholarshipB: scholarshipDetails["B"], payload, partnerId })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:474:hardcoded array:        scholarships = [scholarshipB]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:476:hardcoded variable:    const scholarshipDoc = Object.keys(scholarshipDetails);
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:478:hardcoded array:        let currScholarships = scholarshipDetails[key]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:479:hardcoded object:        let maxScholarship = {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:481:hardcoded string:        if (!isEmpty(currScholarships) && key === 'D') {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:482:hardcoded variable:            let scholarshipD = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:483:hardcoded string:                category: 'D',
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:484:hardcoded number:                subCategory: 14,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:485:hardcoded number:                subSubCategory: 74,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:486:hardcoded array:                scholarships: [],
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:487:hardcoded number:                value: 0
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:490:hardcoded object:                const { value: keyValue } = scholarship
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:491:hardcoded array:                value = specialScholarshipConfigEnum[keyValue]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:492:hardcoded object:                scholarshipD.scholarships.push({ ...scholarship, keyValue, value })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:496:hardcoded string:        } else if (!isEmpty(currScholarships) && (key !== 'B' && key !== 'D')) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:498:hardcoded string:                const { value: keyValue, basedOn = "" } = scholarship
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:499:hardcoded string:                // if basedOn=="BNAT"; instead of getting value from enum do voucher validation
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:500:hardcoded string:                if (basedOn === "BNAT") {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:501:hardcoded number:                    let baseValue = 0
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:502:hardcoded variable:                    const BNATDetails = await validateVoucherAndGetBaseValue(keyValue, primaryMobileNo)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:503:hardcoded string:                    voucherDetails = get(BNATDetails, "voucherDetails", {})
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:504:hardcoded string:                    baseValue = get(BNATDetails, "discountPercentage", 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:505:hardcoded string:                    if (baseValue > 100) throw new Error("BNAT Discount percentage is greater that 100")
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:507:hardcoded object:                    const { scholarshipConfig } = await getAakashSpecialScholarshipConfig()
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:508:hardcoded string:                    const { scholarships } = scholarshipConfig.find(ele => ele.category === "A")
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:509:hardcoded string:                    const { subCategory, options } = scholarships.find(ele => ele.formattedLabel === "BNAT").fields[0]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:510:hardcoded object:                    const { subSubCategory } = options.find(ele => baseValue >= Number(ele.min) && baseValue <= Number(ele.max))
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:515:hardcoded array:                    scholarship.value = specialScholarshipConfigEnum[keyValue]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:516:hardcoded string:                    if (keyValue == "A-9TH_AGGREGATE-1") {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:517:hardcoded array:                        scholarship.value = get(scholarship.value, courseMap[subCourse])
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:520:hardcoded object:                scholarships.push({ ...scholarship, keyValue })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:525:hardcoded object:    return { scholarships, voucherDetails }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:529:hardcoded number:const getMaxDiscretionaryAmount = (actualPriceBreakup, totalDiscount = 0) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:530:hardcoded variable:    const classAndTuition = actualPriceBreakup?.classroomFee + actualPriceBreakup?.tuitionFee;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:531:hardcoded number:    const maxCap = (classAndTuition*0.4)-((totalDiscount/100)*classAndTuition)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:532:hardcoded number:    const minCap = (classAndTuition*0.2)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:533:hardcoded variable:    const minValue = Math.min(maxCap, minCap)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:534:hardcoded number:    const discretionaryAmount =  minValue >=0 ? Math.round(minValue) : 0;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:539:hardcoded object:const getSpecialConcessionDetails = ({ appicalbleScholarships, priceBreakup, additonalDiscount, sumOfScholarships, totalConcessionDetails, voucherDetails, acstGiven }) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:540:hardcoded object:    let { maxPrice, ...actualPriceBreakup } = priceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:541:hardcoded object:    let { classroomFee, tuitionFee, techAndExamFee, admissionFee } = actualPriceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:542:hardcoded variable:    const actualCourseFees = maxPrice
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:543:hardcoded number:    const totalDiscount = totalConcessionDetails?.base?.value || 0;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:544:hardcoded variable:    const discretionaryAmount =  getMaxDiscretionaryAmount(actualPriceBreakup, totalDiscount);
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:547:hardcoded object:        const { base, techAndExamFee: examTech, admissionFee: admission } = totalConcessionDetails
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:550:hardcoded string:            tuitionFee -= base.value <= 100 ? getDiscountValue(actualPriceBreakup["tuitionFee"], base.value) : base.value
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:551:hardcoded string:            classroomFee -= getDiscountValue(actualPriceBreakup["classroomFee"], base.value)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:554:hardcoded string:            techAndExamFee -= examTech.value <= 100 ? getDiscountValue(actualPriceBreakup["techAndExamFee"], examTech.value) : examTech.value
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:557:hardcoded string:            admissionFee -= admission.value <= 100 ? getDiscountValue(actualPriceBreakup["admissionFee"], admission.value) : admission.value
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:561:hardcoded string:    actualPriceBreakup["classroomFee"] = classroomFee
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:562:hardcoded string:    actualPriceBreakup["tuitionFee"] = tuitionFee
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:563:hardcoded string:    actualPriceBreakup["techAndExamFee"] = techAndExamFee
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:564:hardcoded string:    actualPriceBreakup["admissionFee"] = admissionFee
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:565:hardcoded number:    netPrice = Object.values(actualPriceBreakup).reduce((a, b) => Number(a) + Number(b), 0);
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:567:hardcoded string:    actualPriceBreakup["minPrice"] = netPrice - additonalDiscount
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:568:hardcoded string:    actualPriceBreakup["netPrice"] = netPrice
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:569:hardcoded string:    actualPriceBreakup["maxPrice"] = actualCourseFees
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:570:hardcoded number:    const totalScholarshipPercentage = Math.floor((1 - (netPrice / actualCourseFees)) * 100)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:571:hardcoded string:    const typeOfScholarship = acstGiven === "bnat" ? "bnat" : "nonacst"
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:573:hardcoded string:    totalConcessionDetails["classroomFee"] = { value: totalConcessionDetails.base.value, amount: priceBreakup["classroomFee"] - classroomFee }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:574:hardcoded string:    totalConcessionDetails["tuitionFee"] = { value: totalConcessionDetails.base.value, amount: priceBreakup["tuitionFee"] - tuitionFee }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:575:hardcoded string:    totalConcessionDetails["registrationFee"] = { value: 0, amount: 0 }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:576:hardcoded string:    delete totalConcessionDetails["base"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:578:hardcoded object:    const scholarshipDetails = { scholarships: Object.values(appicalbleScholarships), totalScholarshipAmount: sumOfScholarships, totalConcessionDetails, totalScholarshipPercentage, typeOfScholarship }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:579:hardcoded string:    actualPriceBreakup["discretionaryAmount"] = discretionaryAmount;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:580:hardcoded object:    return { scholarshipPriceBreakup: actualPriceBreakup, scholarshipDetails, voucherDetails }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:583:hardcoded variable:const getConcessionDetails = (concessionDetails, priceBreakup, discountPercentage) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:584:hardcoded object:    let { maxPrice, ...actualPriceBreakup } = priceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:585:hardcoded object:    let { classroomFee, tuitionFee } = actualPriceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:586:hardcoded variable:    let netPrice = maxPrice
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:587:hardcoded object:    let totalConcessionDetails = {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:590:hardcoded number:        const { value = 0 } = concessionDetails[i]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:591:hardcoded string:        let classroomDiscount = getDiscountValue(actualPriceBreakup["classroomFee"], value)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:592:hardcoded string:        let tutionDiscount = getDiscountValue(actualPriceBreakup["tuitionFee"], value)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:594:hardcoded number:        //This check is introduced on 10th March 2022 to make sure the values does not go to negative when there is a 
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:595:hardcoded number:        //concession percentage more than 100. Keep a cap at 100
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:603:hardcoded string:        concessionDetails[i]["amount"] = classroomDiscount + tutionDiscount
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:605:hardcoded string:    actualPriceBreakup["classroomFee"] = classroomFee
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:606:hardcoded string:    actualPriceBreakup["tuitionFee"] = tuitionFee
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:607:hardcoded number:    netPrice = Object.values(actualPriceBreakup).reduce((a, b) => Number(a) + Number(b), 0);
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:609:hardcoded string:    actualPriceBreakup["maxPrice"] = maxPrice
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:610:hardcoded string:    actualPriceBreakup["netPrice"] = netPrice
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:613:hardcoded variable:    const totalScholarshipAmount = maxPrice - netPrice
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:614:hardcoded variable:    const effAdditoalnDiscount = classroomFee + tuitionFee
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:615:hardcoded string:    const scholarshipABC = concessionDetails.filter(ele => ["A", "B", "C"].includes(ele.category)).reduce((total, obj) => obj.amount + total, 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:616:hardcoded variable:    let additonalDiscount = Math.floor(discountPercentage * maxPrice) - scholarshipABC
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:617:hardcoded number:    additonalDiscount = Math.min(Math.max(additonalDiscount, 0), Math.max(effAdditoalnDiscount, 0))
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:618:hardcoded variable:    const minPrice = netPrice - additonalDiscount
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:619:hardcoded string:    actualPriceBreakup["minPrice"] = minPrice
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:621:hardcoded number:    const totaldiscountPercentage = concessionDetails.reduce((sum, ele) => sum + Number(ele.value), 0);
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:622:hardcoded string:    totalConcessionDetails["classroomFee"] = { value: totaldiscountPercentage, amount: priceBreakup["classroomFee"] - classroomFee }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:623:hardcoded string:    totalConcessionDetails["tuitionFee"] = { value: totaldiscountPercentage, amount: priceBreakup["tuitionFee"] - tuitionFee };
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:624:hardcoded string:    ["techAndExamFee", "admissionFee", "registrationFee"].forEach(ele => totalConcessionDetails[ele] = { value: 0, amount: 0 })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:625:hardcoded number:    const totalScholarshipPercentage = Math.floor((1 - (netPrice / maxPrice)) * 100)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:626:hardcoded string:    const scholarshipDetails = { scholarships: concessionDetails, totalScholarshipPercentage, totalScholarshipAmount, totalConcessionDetails, typeOfScholarship: "acst" }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:627:hardcoded string:    actualPriceBreakup["discretionaryAmount"] = getMaxDiscretionaryAmount(priceBreakup, totaldiscountPercentage);
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:629:hardcoded object:    return { scholarshipPriceBreakup: actualPriceBreakup, scholarshipDetails }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:632:hardcoded object:const getScholarshipDetails = async ({ scholarshipDetails, priceBreakup, payload, partnerId, identifier, discountPercentage, isPdc }) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:633:hardcoded object:    const { C: scholarshipC, ...AkkashScholarships } = scholarshipDetails
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:635:hardcoded string:        "BU": payload.BUUnitId,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:636:hardcoded string:        "Course_ID": payload.CrseID,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:637:hardcoded string:        "AcadCareer": payload.AcadCarrier,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:638:hardcoded string:        "Term": payload.Term,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:640:hardcoded array:    let concessionDetails = [];
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:641:hardcoded variable:    let concession = null;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:644:hardcoded object:        const { basedOn, fileUrl } = scholarshipC
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:645:hardcoded object:        if (!fileUrl) throw new Error(`Docs are missing for ${basedOn}`);
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:647:hardcoded string:    const selectedScholarship = isEmpty(AkkashScholarships["A"]) ? AkkashScholarships["B"] : AkkashScholarships["A"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:649:hardcoded object:        const { subCategory, subSubCategory, PsidReq, category, basedOn, fileUrl } = selectedScholarship
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:651:hardcoded object:        if (!fileUrl) throw new Error(`Docs are missing for ${basedOn}`);
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:653:hardcoded string:        // if(category === "B" || PsidReq){
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:655:hardcoded variable:        //         const response = await callAakashToGetPSID(customerDetails)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:656:hardcoded string:        //         partnerId = (!isEmpty(response) && isArray(response)) ? response[0]["EMPLID"] : ""
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:661:hardcoded string:        payload["PSID"] = partnerId
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:662:hardcoded string:        payload["subCategory"] = `${subCategory}`
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:663:hardcoded string:        payload["subSubCategory"] = `${subSubCategory}`
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:667:hardcoded object:            const { ResponseCode } = concession
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:668:hardcoded number:            if (ResponseCode == 405) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:673:hardcoded string:            await Quotation.findOneAndUpdate({ '_id': identifier }, {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:674:hardcoded string:                $set: { "partnerApiResponse.concession": concession }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:678:hardcoded number:        for (let i = 0; i < concession.length; i++) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:679:hardcoded number:            const { CATEGORY_CD, CATEGORY_CD2, CONCESION_PERCENTAGE, CATEGORY_CD2_DESCR, CATEGORY: aakashCategory, CATEGORY_DESCR } = concession[i]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:680:hardcoded number:            const emptyProps = getEmptyProps({ CATEGORY_CD, CATEGORY_CD2, CONCESION_PERCENTAGE, CATEGORY_CD2_DESCR, aakashCategory })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:682:hardcoded object:                throw new Error(`${emptyProps} details are missing from aakash scholarship details`);
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:685:hardcoded variable:            let concessCat = category;
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:687:hardcoded number:            //This is fixed on 10th march 2022 - to fix the issue of Category B also coming as Category A in UI
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:688:hardcoded string:            if (CATEGORY_DESCR.includes(("Category A"))) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:689:hardcoded string:                concessCat = "A";
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:690:hardcoded string:            } else if (CATEGORY_DESCR.includes(("Category B"))) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:691:hardcoded string:                concessCat = "B";
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:697:hardcoded number:                basedOn: CATEGORY_CD2_DESCR,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:699:hardcoded number:                subSubCategory: CATEGORY_CD2,
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:704:hardcoded number:            const { category, basedOn } = Object.values(AkkashScholarships).find(scholarhsip => scholarhsip.subCategory == CATEGORY_CD && scholarhsip.subSubCategory == CATEGORY_CD2) || {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:706:hardcoded object:                concessionDetails.push({ category, value: CONCESION_PERCENTAGE, basedOn, subCategory, subSubCategory })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:708:hardcoded number:                //unSelected.push({ value: CONCESION_PERCENTAGE, subCategory: CATEGORY_CD, subSubCategory: CATEGORY_CD2 })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:709:hardcoded object:                const { scholarshipConfig } = await getAakashCRPConfig()
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:710:hardcoded string:                const aakashScholarshipConfigs = scholarshipConfig.scholarshipConfigs.filter(config => config.category !== "C")
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:711:hardcoded string:                let unSelectedScholarship = {}, cat = ""
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:713:hardcoded object:                    const { scholarships } = config
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:715:hardcoded number:                    unSelectedScholarship = scholarships.find(scholarhsip => scholarhsip.subCategory == CATEGORY_CD && scholarhsip.subSubCategory == CATEGORY_CD2)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:718:hardcoded number:                concessionDetails.push({ category: cat, value: CONCESION_PERCENTAGE, basedOn: unSelectedScholarship.label, subCategory: CATEGORY_CD, subSubCategory: CATEGORY_CD2 })
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:730:hardcoded number:    //check if scholarshipC exists and total concession value has reached to 100%
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:731:hardcoded number:    let totalConcessionPercentage = concessionDetails.reduce((total, obj) => Number(obj.value) + total, 0)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:733:hardcoded number:    //This is introduced on 10th march 2022 to make sure that the maximum concession percentage given is 100
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:734:hardcoded number:    // if (totalConcessionPercentage > 100)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:735:hardcoded number:    //     totalConcessionPercentage = 100
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:736:hardcoded string:    if (!isEmpty(scholarshipC) && (totalConcessionPercentage + Number(scholarshipC["value"]) <= 100)) {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:740:hardcoded variable:    let scholarshipAndPriceBreakup = getConcessionDetails(concessionDetails, priceBreakup, discountPercentage)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:741:hardcoded string:    scholarshipAndPriceBreakup["concession"] = concession || null
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:745:hardcoded object:const getAppliedScholarships = ({ priceDisrtibution, schedule, aakashPriceBreakup, acstGiven, actualPriceBreakup, scholarshipDetails }) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:746:hardcoded object:    const { netPrice, maxPrice } = aakashPriceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:748:hardcoded object:        let { scholarships } = scholarshipDetails
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:749:hardcoded variable:        let appliedConcession = getAppliedConcession(schedule)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:750:hardcoded array:        let appliedScholarships = []
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:755:hardcoded variable:                let flag = false
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:768:hardcoded number:        totalScholarshipPercentage = round(totalScholarshipAmount * 100 / maxPrice)
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:769:hardcoded array:        typeOfScholarship = acstMap[acstGiven]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:770:hardcoded string:        const feeTypes = ["registrationFee", "admissionFee", "techAndExamFee", "classroomFee", "tuitionFee"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:771:hardcoded string:        let totalConcessionDetails = { "registrationFee": {}, "admissionFee": {}, "techAndExamFee": {}, "classroomFee": {}, "tuitionFee": {} }
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:773:hardcoded array:            const amount = actualPriceBreakup[feetype] - aakashPriceBreakup[feetype]
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:774:hardcoded number:            const value = round(amount * 100 / actualPriceBreakup[feetype])
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:775:hardcoded array:            totalConcessionDetails[feetype].amount = amount
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:776:hardcoded array:            totalConcessionDetails[feetype].value = value
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:788:hardcoded object:        return {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:793:hardcoded variable:const acstMap = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:794:hardcoded string:    yes: 'acst',
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:795:hardcoded string:    no: 'nonacst',
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:796:hardcoded string:    bnat: 'bnat'
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:799:hardcoded variable:const courseMap = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:800:hardcoded string:    NEET: "ARM",
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:801:hardcoded string:    FDN: "ARF",
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:802:hardcoded string:    JEE: "ARE"
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:805:hardcoded variable:const getAppliedConcession = (schedule) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:807:hardcoded string:    let concessionString = ""
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:810:hardcoded string:            if (value.type === "tuitionFee") {
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:816:hardcoded string:    const concessions = concessionString.split("CONCESSION ")
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:817:hardcoded string:    let appliedConcession = concessions.filter((con) => !con.includes("NOT"))
+microservices-middleware/server/src/quotationmanagement/productmanagement/scholarshipHelper.js:820:hardcoded string:        const value = con.split(" ")[0]
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:1:hardcoded object:const { get, isEmpty, padStart, random, round } = require('lodash');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:2:hardcoded file path:const Promise = require('bluebird');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:3:hardcoded file path:const moment = require('moment');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:4:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Product Controller');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:6:hardcoded string:const { ProductDetail, LineItems, Quotation, QuotationPriceAndScholarship } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:7:hardcoded string:const { AakashPrice, AkashPriceList } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:8:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:10:hardcoded object:const { BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:11:hardcoded object:const { fetchCourseFeesPayload, getPriceBreakup, getCourseWisePrice, getCourseWisePriceDev, checkIfQuotationExists, getCourseDetails, getPriceBreakups, getProductName, getAakashCategory, getCRPFinalClass, getAakashSkuItemId, getFocPriceBreakup } = require('./productHelper');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:12:hardcoded object:const { getMinSalesPrice, getScholarshipDetails, getAakashSpecialScholarshipBreakup, getFinalPriceBreakup, getScholarshipDetailsForPdc, getAppliedScholarships } = require('./scholarshipHelper')
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:13:hardcoded object:const { sharePriceDetailToSalesPerson } = require('../otpmanagement/otpController')
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:14:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:15:hardcoded object:const { insertSchedules } = require('../../paymentmanagement/pdcpayments/service');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:16:hardcoded object:const { storeSchedules } = require('../../paymentmanagement/pdcpayments/dto');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:17:hardcoded object:const { leadquaredRelatedPermissions } = require('../../../utility/screenPermission');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:18:hardcoded object:const { getCourseFeesSchedules } = require('./../../paymentmanagement/pdcpayments/service')
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:20:hardcoded variable:const getProduct = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:21:hardcoded string:    logger.info({ method: 'getProduct' }, { message: "Fetching Aakash Product" });
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:24:hardcoded number:    let courseTimePeriod = 1;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:26:hardcoded string:    let { productType, student, scholarshipDetails, partnerId, identifier, acstGiven, salesEmail, customerDetails, prospectId = "" } = req.body;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:30:hardcoded string:    let { initialClass, finalClass, validity, subCourse, integratedBatch = false, typeOfClass, branch, courseDuration = [], selectedCourseId, isJct, board, selectedTablet = "" } = student;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:31:hardcoded variable:    let grade = initialClass;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:33:hardcoded object:    let BnatVoucherDetails = {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:34:hardcoded number:    let discountPercentage = 0.45;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:35:hardcoded string:    //  partnerId='00001403909'
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:37:hardcoded string:        if (grade === "11" && finalClass === "12") {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:38:hardcoded number:            courseTimePeriod = 2;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:41:hardcoded variable:        const courseSku = isDevEnv ? await SalesSkuMaster.findAll({
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:43:hardcoded string:                category: 'aakash_crp'
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:46:hardcoded string:        }) : await ProductDetail.find({ type: "BYJUS_AKASH_CRP" }).lean()
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:47:hardcoded object:        const payload = await fetchCourseFeesPayload({ branch, subCourse, typeOfClass, initialClass, validity, courseTimePeriod, courseDuration, isJct, board, selectedCourseId })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:48:hardcoded string:        payload["CrseID"] = selectedCourseId
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:49:hardcoded variable:        const formattedPayload = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:56:hardcoded object:        let aakashPriceBreakup = {};
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:57:hardcoded object:        let priceBreakup = {};
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:66:hardcoded variable:        let actualPriceBreakup = getPriceBreakups(aakashPriceBreakup.dataValues)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:68:hardcoded object:        let tabletDetail = {};
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:71:hardcoded string:                where: { skuId: selectedTablet, status: 'active' }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:76:hardcoded object:        if (isEmpty(aakashPriceBreakup)) { throw new Error(`Price Breakup is not available for the selected course ${payload.CrseID} on this branch ${payload.BUUnitId} `) }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:77:hardcoded object:        const { dataValues = {} } = aakashPriceBreakup || {};
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:78:hardcoded string:        discountPercentage = (1 - dataValues["mspPercentage"]).toFixed(4)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:79:hardcoded string:        mspFee = round(dataValues["mspFee"])
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:86:hardcoded string:            if (acstGiven === "no" || acstGiven === "bnat") {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:87:hardcoded object:                const { primaryMobileNo } = customerDetails;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:88:hardcoded object:                const { scholarshipPriceBreakup, scholarshipDetails: details, voucherDetails } = await getAakashSpecialScholarshipBreakup({ scholarshipDetails, priceBreakup, primaryMobileNo, payload, partnerId, mspFee, acstGiven, discountPercentage, subCourse });
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:94:hardcoded object:                const { scholarshipPriceBreakup, scholarshipDetails: details } = await getScholarshipDetails({ scholarshipDetails, priceBreakup, payload, partnerId, identifier, discountPercentage })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:103:hardcoded variable:            const tabletPrice = tabletDetail.dataValues.basePrice
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:110:hardcoded variable:        const formattedProducts = isDevEnv ? getCourseWisePriceDev(courseSku, priceBreakup) : getCourseWisePrice(courseSku, priceBreakup);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:112:hardcoded object:            const { dataValues } = tabletDetail;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:113:hardcoded variable:            const tabletProduct = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:116:hardcoded string:                course: "aakashCrp",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:117:hardcoded string:                type: "product", ...dataValues
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:121:hardcoded object:        const { maxPrice, minPrice, netPrice } = priceBreakup
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:123:hardcoded string:        student["formValues"] = { ...student, ...formattedPayload };
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:124:hardcoded string:        student["items"] = formattedProducts;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:127:hardcoded string:        await Quotation.findOneAndUpdate({ '_id': identifier }, {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:128:hardcoded string:            $set: { "partnerApiResponse.courseFee": aakashPriceBreakup, minPrice, netPrice }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:131:hardcoded object:        await sharePriceDetailToSalesPerson({ salesEmail: salesEmail, customerDetails, productDetails: student, maxPrice, minPrice, netPrice, aakashPriceBreakup: priceBreakup })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:134:hardcoded string:            logger.info({ method: 'getProductPriceWithoutQuotation' }, { message: `${prospectId} - minPrice: ${minPrice}, netPrice: ${netPrice}, maxPrice: ${maxPrice}` });
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:135:hardcoded string:            throw new Error("Invalid Price - Error in price calculation");
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:143:hardcoded array:            students: [student],
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:158:hardcoded variable:const getProductForPdc = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:159:hardcoded string:    logger.info({ method: 'getProductForPdc' }, { message: "Fetching Aakash Product" });
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:160:hardcoded number:    let courseTimePeriod = 1;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:161:hardcoded string:    let { productType, student, scholarshipDetails, partnerId, identifier, acstGiven, salesEmail, customerDetails, prospectId = "" } = req.body;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:163:hardcoded object:    let concessionDetails = {};
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:164:hardcoded string:    let { initialClass, finalClass, validity, subCourse, integratedBatch = false, typeOfClass, branch, courseDuration = [], selectedCourseId, isJct, board, selectedTablet = "" } = student;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:165:hardcoded variable:    let grade = initialClass;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:167:hardcoded object:    let BnatVoucherDetails = {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:168:hardcoded number:    let discountPercentage = 0.45;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:172:hardcoded variable:        const courseSku = isDevEnv ? await SalesSkuMaster.findAll({
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:174:hardcoded string:                category: 'aakash_crp'
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:177:hardcoded string:        }) : await ProductDetail.find({ type: "BYJUS_AKASH_CRP" }).lean()
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:179:hardcoded object:        const payload = await fetchCourseFeesPayload({ branch, subCourse, typeOfClass, initialClass, validity, courseTimePeriod, courseDuration, isJct, board, selectedCourseId })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:180:hardcoded string:        payload["CrseID"] = selectedCourseId
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:181:hardcoded variable:        const formattedPayload = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:191:hardcoded string:            if (acstGiven === "no" || acstGiven === "bnat") {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:192:hardcoded object:                const { primaryMobileNo } = customerDetails;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:193:hardcoded object:                const { scholarships, voucherDetails } = await getScholarshipDetailsForPdc({ scholarshipDetails, partnerId, payload, primaryMobileNo, subCourse })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:194:hardcoded string:                concessionDetails['scholarships'] = scholarships
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:199:hardcoded string:                concessionDetails['scholarships'] = await getScholarshipDetails({ scholarshipDetails, priceBreakup: {}, payload, discountPercentage, partnerId, identifier, isPdc: true })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:204:hardcoded object:        const { priceDisrtibution, schedules } = await getCourseFeesSchedules(formattedPayload, concessionDetails)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:205:hardcoded variable:        const maxPrice = priceDisrtibution.totalAmountWoScholarship
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:206:hardcoded variable:        const netPrice = priceDisrtibution.totalAmount
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:207:hardcoded object:        const { mspFee } = await AakashPrice.findOne({   // reusing bunit and courseId from CourseFeesPayload 
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:213:hardcoded string:            attributes: ['mspFee'],
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:216:hardcoded variable:        const minPrice = round(mspFee) < netPrice ? round(mspFee) : netPrice
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:217:hardcoded object:        const aakashPriceBreakup = { ...priceDisrtibution.total, netPrice, maxPrice, minPrice }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:218:hardcoded variable:        const actualPriceBreakup = priceDisrtibution.totalWoScholarship;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:219:hardcoded number:        concessionDetails = getAppliedScholarships({ priceDisrtibution, schedule: schedules[0], aakashPriceBreakup, acstGiven, actualPriceBreakup, scholarshipDetails: concessionDetails })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:221:hardcoded variable:        const formattedProducts = isDevEnv ? getCourseWisePriceDev(courseSku, aakashPriceBreakup) : getCourseWisePrice(courseSku, aakashPriceBreakup);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:224:hardcoded variable:            const isVoucherApplied = false
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:225:hardcoded array:            const { scholarships = [], } = concessionDetails
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:227:hardcoded string:                if (sch.category === 'A') {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:232:hardcoded object:            BnatVoucherDetails = isVoucherApplied ? BnatVoucherDetails : {}
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:236:hardcoded string:        student["formValues"] = { ...student, ...formattedPayload };
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:237:hardcoded string:        student["items"] = formattedProducts;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:240:hardcoded string:        await Quotation.findOneAndUpdate({ '_id': identifier }, {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:241:hardcoded string:            $set: { "partnerApiResponse.courseFee": aakashPriceBreakup, minPrice, netPrice }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:244:hardcoded object:        await sharePriceDetailToSalesPerson({ salesEmail: salesEmail, customerDetails, productDetails: student, maxPrice, minPrice, netPrice, aakashPriceBreakup })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:247:hardcoded string:            logger.info({ method: 'getProductPriceWithoutQuotation' }, { message: `${prospectId} - minPrice: ${minPrice}, netPrice: ${netPrice}, maxPrice: ${maxPrice}` });
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:248:hardcoded string:            throw new Error("Invalid Price - Error in price calculation");
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:255:hardcoded array:            students: [student],
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:270:hardcoded variable:const storeProductDetails = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:271:hardcoded object:    let details = {};
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:272:hardcoded object:    let { identifier, productDetails, voucherDetails } = req.body;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:273:hardcoded string:    const tabletPrice = get(productDetails, 'tabletDetail.basePrice', 0);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:274:hardcoded string:    const { email, permissions } = get(req, 'user', {});
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:275:hardcoded string:    logger.info({ method: 'storeProductDetails', msg: `Storing Product Details for _id:${identifier}` });
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:279:hardcoded string:            throw new BadRequestError(`Parameters - ${identifier ? '' : 'identifier'} ${productDetails ? '' : 'productDetails'} Missing`);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:280:hardcoded variable:        const quotation = await checkIfQuotationExists(identifier);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:283:hardcoded string:            let { products, student = {}, scholarshipDetails = {}, maxPrice, finalPrice, aakashPriceBreakup, acstGiven, priceAndScholarshipId, students, tabletDetail, aakashPayload, pdcSchedules = [], actualPriceBreakup, mspFee = ""  } = productDetails
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:284:hardcoded object:            const { totalConcessionDetails = {} } = scholarshipDetails || {};
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:285:hardcoded string:            const { minPrice, netPrice } = await Quotation.findOne({ '_id': identifier })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:286:hardcoded string:            const { initialClass = "", courseDuration = "", typeOfClass = "", selectedTablet = "", isPdc = false, businessUnit } = student
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:287:hardcoded variable:            const isPriviledgedUser = permissions.includes(leadquaredRelatedPermissions.allownMultipleOrderOnSameProspectId) ? true : false;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:288:hardcoded variable:            const isFocOrder = (isPriviledgedUser && (finalPrice < minPrice) && !isPdc) ? true : false;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:289:hardcoded variable:            const isBelowMsp = finalPrice < mspFee;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:300:hardcoded object:            let finalClassValue = getCRPFinalClass({ initialClass, courseDuration })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:301:hardcoded string:            student["finalClass"] = finalClassValue + ""
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:302:hardcoded string:            productDetails["typeOfClass"] = typeOfClass;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:308:hardcoded object:            scholarshipDetails = isEmpty(scholarshipDetails) ? {} : scholarshipDetails
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:309:hardcoded string:            // const name = `${student.subCourse} Prep - ${student.initialClass == "11" ? "2" : "1"} year ${student.typeOfClass === "Regular" ? "Classroom" : "Hybrid"}`
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:310:hardcoded variable:            const name = getProductName(student);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:311:hardcoded string:            details["formValues"] = { acstGiven, name, ...student, tabletDetail, verificationRequired:isBelowMsp }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:314:hardcoded object:                const finalPriceBreakup = isFocOrder ? getFocPriceBreakup({ productDetails, aakashPriceBreakup, finalPrice, scholarshipDetails, tabletPrice, isPdc, actualPriceBreakup }) : getFinalPriceBreakup({ productDetails, aakashPriceBreakup, finalPrice, scholarshipDetails, tabletPrice, isPdc })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:315:hardcoded string:                products = isDevEnv ? getCourseWisePriceDev(products, finalPriceBreakup["aakashPriceBreakup"]) : getCourseWisePrice(products, finalPriceBreakup["aakashPriceBreakup"]);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:316:hardcoded string:                scholarshipDetails = finalPriceBreakup["scholarshipDetails"]
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:318:hardcoded string:                await Quotation.findOneAndUpdate({ '_id': identifier }, {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:319:hardcoded object:                    $set: { priceAndScholarshipId }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:321:hardcoded object:                await QuotationPriceAndScholarship.findOneAndUpdate({ priceAndScholarshipId }, {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:322:hardcoded string:                    $set: { quotationId: quotation["quotationId"] }
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:326:hardcoded string:            await storeLineItems({ products, quotationId: get(quotation, "quotationId", ""), student });
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:328:hardcoded variable:            const updateObj = {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:330:hardcoded string:                orgFormattedName: "aakash",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:332:hardcoded string:                status: "product_saved",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:333:hardcoded array:                [`actionDetails.productSavedAt`]: new Date(),
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:334:hardcoded array:                [`actionDetails.productSavedBy`]: email,
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:338:hardcoded string:                paymentType: isPdc ? "pdc" : "non_pdc",
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:339:hardcoded string:                orderType: isFocOrder ? "exception_order" : "normal"
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:342:hardcoded string:            const { quotationId } = await Quotation.findOneAndUpdate({ '_id': identifier }, {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:346:hardcoded object:                await storeSchedules(({ quotationId, schedules: pdcSchedules }))
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:347:hardcoded object:                await insertSchedules({ quotationId, pdcSchedules, businessUnit })
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:357:hardcoded variable:const storeLineItems = async (studentDetails) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:358:hardcoded object:    const { products, quotationId, student } = studentDetails;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:359:hardcoded object:    const lineItem = await LineItems.find({ quotationId }).lean();
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:360:hardcoded array:    let lineItemIdArray = []
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:364:hardcoded object:                let { skuName, skuId, price, course, subCourse, type, financeCode } = product;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:365:hardcoded variable:                const lineItemId = generateLineItemId(lineItemIdArray)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:366:hardcoded variable:                const itemId = getAakashSkuItemId();
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:376:hardcoded string:                    grade: get(student, "initialClass", ""),
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:377:hardcoded string:                    type: (type == "product" ? "product" : "service"),
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:379:hardcoded string:                    subCourse: get(student, "subCourse", ""),
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:381:hardcoded string:                    skuType: (type == "product" ? "product" : "Service"),
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:382:hardcoded string:                    skuSubType: (type == "product" ? "tablet" : "BYJUS_AKASH_CRP")
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:386:hardcoded object:                let { sku, skuId, price, course, type, financeCode } = product;
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:387:hardcoded variable:                const lineItemId = generateLineItemId(lineItemIdArray)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:388:hardcoded variable:                const itemId = getAakashSkuItemId();
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:399:hardcoded string:                    grade: get(student, "initialClass", ""),
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:400:hardcoded string:                    type: (type == "product" ? "product" : "service"),
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:402:hardcoded string:                    subCourse: get(student, "subCourse", ""),
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:404:hardcoded string:                    skuType: (type == "product" ? "product" : "Service"),
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:405:hardcoded string:                    skuSubType: (type == "product" ? "tablet" : "BYJUS_AKASH_CRP")
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:411:hardcoded variable:const getRandomNumber = (lineItemIdArray) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:412:hardcoded number:    const randomNumArray = lineItemIdArray.map(item => item.slice(-4))
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:413:hardcoded number:    const randomNumber = random(1, 999);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:414:hardcoded number:    let paddedRandomNumber = padStart(randomNumber, 4, 0);
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:422:hardcoded variable:const generateLineItemId = (lineItemIdArray) => {
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:423:hardcoded string:    const currentDate = moment().format('YYMMDDHHmmss');
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:424:hardcoded variable:    const paddedRandomNumber = getRandomNumber(lineItemIdArray)
+microservices-middleware/server/src/quotationmanagement/productmanagement/productController.js:425:hardcoded object:    const lineId = `LI-${currentDate}${paddedRandomNumber}`;

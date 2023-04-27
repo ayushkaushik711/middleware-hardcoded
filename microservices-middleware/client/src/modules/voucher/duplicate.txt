@@ -1,0 +1,172 @@
+microservices-middleware/client/src/modules/voucher/Voucher.js:1:hardcoded object:import React, { Fragment } from 'react';
+microservices-middleware/client/src/modules/voucher/Voucher.js:2:hardcoded object:import { connect } from 'react-redux';
+microservices-middleware/client/src/modules/voucher/Voucher.js:3:hardcoded object:import { Button, Row, Col, Form, Input, message, Select } from 'antd';
+microservices-middleware/client/src/modules/voucher/Voucher.js:4:hardcoded object:import { get, isEmpty } from 'lodash';
+microservices-middleware/client/src/modules/voucher/Voucher.js:5:hardcoded file path:import moment from 'moment';
+microservices-middleware/client/src/modules/voucher/Voucher.js:7:hardcoded file path:import CallApi from '../../api/callApi';
+microservices-middleware/client/src/modules/voucher/Voucher.js:8:hardcoded object:import { resetPrice, setVoucher } from '../product/productReducer';
+microservices-middleware/client/src/modules/voucher/Voucher.js:11:hardcoded file path:import ErrorWrapper from 'components/ErrorWrapper';
+microservices-middleware/client/src/modules/voucher/Voucher.js:12:hardcoded file path:import SiblingComponent from './SiblingComponent';
+microservices-middleware/client/src/modules/voucher/Voucher.js:13:hardcoded file path:import VoucherLogsModal from './VoucherLogsModal'
+microservices-middleware/client/src/modules/voucher/Voucher.js:14:hardcoded string:import './style.scss';
+microservices-middleware/client/src/modules/voucher/Voucher.js:16:hardcoded variable:const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/voucher/Voucher.js:17:hardcoded string:    leadDetails: get(state, 'auth.leadDetails', {}),
+microservices-middleware/client/src/modules/voucher/Voucher.js:18:hardcoded string:    salesEmail: get(state, 'details.salesDetails.directSalesBy'),
+microservices-middleware/client/src/modules/voucher/Voucher.js:19:hardcoded string:    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/voucher/Voucher.js:20:hardcoded string:    studentMobileNo: get(state, 'details.customerDetails.studentMobileNo'),
+microservices-middleware/client/src/modules/voucher/Voucher.js:21:hardcoded string:    orderPunchingType: get(state, 'auth.orderPunchingType'),
+microservices-middleware/client/src/modules/voucher/Voucher.js:22:hardcoded string:    authDetails: get(state, 'auth.details'),
+microservices-middleware/client/src/modules/voucher/Voucher.js:25:hardcoded variable:const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/voucher/Voucher.js:38:hardcoded string:            voucherCode: '',
+microservices-middleware/client/src/modules/voucher/Voucher.js:41:hardcoded object:            voucherDetails: {},
+microservices-middleware/client/src/modules/voucher/Voucher.js:42:hardcoded array:            voucherLogs: [],
+microservices-middleware/client/src/modules/voucher/Voucher.js:43:hardcoded array:            voucherOptions: []
+microservices-middleware/client/src/modules/voucher/Voucher.js:48:hardcoded object:        const { identifier, salesEmail, resetPrice, leadDetails = {}, productCombination, setVoucher, siblingVoucherDetails = {},
+microservices-middleware/client/src/modules/voucher/Voucher.js:49:hardcoded string:            productType = '', selectedCourse = '', stateExams = '', courseType = '', productLearningType = '' } = this.props;
+microservices-middleware/client/src/modules/voucher/Voucher.js:50:hardcoded object:        const { onSelectSibling = {} } = siblingVoucherDetails;
+microservices-middleware/client/src/modules/voucher/Voucher.js:51:hardcoded variable:        let mobileNo = leadDetails.studentMobile
+microservices-middleware/client/src/modules/voucher/Voucher.js:52:hardcoded object:        const { voucherCode } = this.state;
+microservices-middleware/client/src/modules/voucher/Voucher.js:55:hardcoded object:            this.setState({ applyVoucherLoading: true, error: null });
+microservices-middleware/client/src/modules/voucher/Voucher.js:57:hardcoded string:                url: '/api/voucher/applyVoucher',
+microservices-middleware/client/src/modules/voucher/Voucher.js:58:hardcoded string:                method: "POST",
+microservices-middleware/client/src/modules/voucher/Voucher.js:72:hardcoded object:                const { status, auditLogs, expiryDate, message: responseMessage } = response.data;
+microservices-middleware/client/src/modules/voucher/Voucher.js:80:hardcoded object:                    const data = { voucherApplied: true, identifier: identifier, voucherCode: voucherCode }
+microservices-middleware/client/src/modules/voucher/Voucher.js:83:hardcoded string:                    if (["sibling", "SIBLING"].includes(productType) && ['byjus_learning_centre', "dbel_streaming"].includes(productCombination)) {
+microservices-middleware/client/src/modules/voucher/Voucher.js:88:hardcoded object:                    this.setState({ error: responseMessage });
+microservices-middleware/client/src/modules/voucher/Voucher.js:89:hardcoded object:                    setVoucher({})
+microservices-middleware/client/src/modules/voucher/Voucher.js:91:hardcoded object:                this.setState({ applyVoucherLoading: false });
+microservices-middleware/client/src/modules/voucher/Voucher.js:94:hardcoded object:                this.setState({ applyVoucherLoading: false, error: error });
+microservices-middleware/client/src/modules/voucher/Voucher.js:100:hardcoded string:        const { salesEmail, resetPrice, identifier, leadDetails = {}, setVoucher, siblingVoucherDetails = {}, productType = '',
+microservices-middleware/client/src/modules/voucher/Voucher.js:102:hardcoded object:        const { onSelectSibling = {} } = siblingVoucherDetails;
+microservices-middleware/client/src/modules/voucher/Voucher.js:103:hardcoded variable:        let mobileNo = leadDetails.studentMobile
+microservices-middleware/client/src/modules/voucher/Voucher.js:104:hardcoded object:        const { voucherCode } = this.state;
+microservices-middleware/client/src/modules/voucher/Voucher.js:107:hardcoded object:            this.setState({ removeVoucherLoading: true, error: null });
+microservices-middleware/client/src/modules/voucher/Voucher.js:109:hardcoded string:                url: '/api/voucher/removeVoucher',
+microservices-middleware/client/src/modules/voucher/Voucher.js:110:hardcoded string:                method: "POST",
+microservices-middleware/client/src/modules/voucher/Voucher.js:118:hardcoded array:                const { voucherList = [] } = response.data;
+microservices-middleware/client/src/modules/voucher/Voucher.js:120:hardcoded array:                this.setState({ voucherApplied: false, removeVoucherLoading: false, voucherCode: null, error: null, voucherLogs: [], voucherOptions: voucherList });
+microservices-middleware/client/src/modules/voucher/Voucher.js:121:hardcoded object:                const data = {}
+microservices-middleware/client/src/modules/voucher/Voucher.js:125:hardcoded string:                if (["sibling", "SIBLING"].includes(productType) && ['byjus_learning_centre', "dbel_streaming"].includes(productCombination)) {
+microservices-middleware/client/src/modules/voucher/Voucher.js:130:hardcoded object:                this.setState({ removeVoucherLoading: false, error: error });
+microservices-middleware/client/src/modules/voucher/Voucher.js:136:hardcoded object:        const { name, value } = e
+microservices-middleware/client/src/modules/voucher/Voucher.js:137:hardcoded array:        this.setState({ [name]: value });
+microservices-middleware/client/src/modules/voucher/Voucher.js:141:hardcoded object:        const { identifier, setVoucher, studentMobileNo } = this.props
+microservices-middleware/client/src/modules/voucher/Voucher.js:142:hardcoded object:        const { voucherApplied } = this.state;
+microservices-middleware/client/src/modules/voucher/Voucher.js:143:hardcoded variable:        const isDevEnv = window.isDevEnv;
+microservices-middleware/client/src/modules/voucher/Voucher.js:145:hardcoded string:            url: '/api/voucher/getVoucherDetails',
+microservices-middleware/client/src/modules/voucher/Voucher.js:146:hardcoded string:            method: "POST",
+microservices-middleware/client/src/modules/voucher/Voucher.js:152:hardcoded object:            const { status, voucherCode, auditLogs, expiryDate, voucherList } = response.data;
+microservices-middleware/client/src/modules/voucher/Voucher.js:153:hardcoded object:            let data = {};
+microservices-middleware/client/src/modules/voucher/Voucher.js:158:hardcoded object:                data = { voucherApplied: true, identifier, voucherCode } 
+microservices-middleware/client/src/modules/voucher/Voucher.js:160:hardcoded object:                    this.setState({ applyVoucherLoading: true });
+microservices-middleware/client/src/modules/voucher/Voucher.js:162:hardcoded object:                    this.setState({ applyVoucherLoading: false });
+microservices-middleware/client/src/modules/voucher/Voucher.js:166:hardcoded object:                this.setState({ voucherOptions: voucherList });
+microservices-middleware/client/src/modules/voucher/Voucher.js:167:hardcoded string:                data["voucherOptions"] = voucherList
+microservices-middleware/client/src/modules/voucher/Voucher.js:170:hardcoded object:            this.setState({ applyVoucherLoading: false, error: null });
+microservices-middleware/client/src/modules/voucher/Voucher.js:172:hardcoded object:            this.setState({ applyVoucherLoading: false, error: null });
+microservices-middleware/client/src/modules/voucher/Voucher.js:177:hardcoded object:        this.setState({ showVoucherLogsModal: fetch });
+microservices-middleware/client/src/modules/voucher/Voucher.js:184:hardcoded string:        const voucherExpiryDate = moment(expiryDate).format('DD-MM-YYYY');
+microservices-middleware/client/src/modules/voucher/Voucher.js:185:hardcoded string:        const { orderPunchingType, voucherDisabled, authDetails, productCombination = '', productType = '',
+microservices-middleware/client/src/modules/voucher/Voucher.js:186:hardcoded object:            siblingVoucherDetails = {} } = this.props
+microservices-middleware/client/src/modules/voucher/Voucher.js:187:hardcoded number:        const { siblingNames = [], totalSiblings = 0, onSelectSibling, siblingVoucherError, selectedSiblingForVoucher = null } = siblingVoucherDetails
+microservices-middleware/client/src/modules/voucher/Voucher.js:188:hardcoded string:        const env = get(authDetails, "env", "")
+microservices-middleware/client/src/modules/voucher/Voucher.js:189:hardcoded string:        const isDevEnv = ['development', 'local'].includes(env)
+microservices-middleware/client/src/modules/voucher/Voucher.js:190:hardcoded variable:        const isVoucherDisabled = (voucherDisabled || voucherApplied) ? true : false
+microservices-middleware/client/src/modules/voucher/Voucher.js:191:hardcoded variable:        const siblingNameError = siblingNames.length !== totalSiblings ? true : false
+microservices-middleware/client/src/modules/voucher/Voucher.js:192:hardcoded number:        const eligibleForSiblingOptions = (!isEmpty(siblingNames) && siblingNames.length > 0 && totalSiblings > 0) &&
+microservices-middleware/client/src/modules/voucher/Voucher.js:198:hardcoded string:                <div className="card border-0">
+microservices-middleware/client/src/modules/voucher/Voucher.js:199:hardcoded string:                    <div className="card-body" style={{ padding: '0.75rem' }}>
+microservices-middleware/client/src/modules/voucher/Voucher.js:201:hardcoded string:                            <Row className="ant-row ant-form-item">
+microservices-middleware/client/src/modules/voucher/Voucher.js:202:hardcoded number:                                <Col xs={24} sm={24} lg={8}  >
+microservices-middleware/client/src/modules/voucher/Voucher.js:203:hardcoded string:                                    <Form.Item label="Voucher:" />
+microservices-middleware/client/src/modules/voucher/Voucher.js:205:hardcoded string:                                <Col xs={15} sm={10} lg={10} style={{ marginRight: '10px' }} >
+microservices-middleware/client/src/modules/voucher/Voucher.js:206:hardcoded string:                                    {<Select   name='voucherCode' value = {voucherCode} disabled = {isVoucherDisabled} allowClear onChange={(value)=>this.onChangeVoucherCode({name:"voucherCode", value})} >
+microservices-middleware/client/src/modules/voucher/Voucher.js:207:hardcoded object:                        {voucherOptions?.map((item,idx) => <Select.Option key = {idx} value={item?.value}>{item?.label}</Select.Option>)}
+microservices-middleware/client/src/modules/voucher/Voucher.js:209:hardcoded string:                                    {voucherApplied && <small>Voucher Expires on < b> {voucherExpiryDate}. </b></small>}{!["AAKASH_CRP_ORDER"].includes(orderPunchingType)}
+microservices-middleware/client/src/modules/voucher/Voucher.js:211:hardcoded string:                                <Col md={4} xs={24} style={{ marginTop: '2px' }}>
+microservices-middleware/client/src/modules/voucher/Voucher.js:214:hardcoded string:                                        type="primary"
+microservices-middleware/client/src/modules/voucher/Voucher.js:215:hardcoded object:                                        loading={applyVoucherLoading}
+microservices-middleware/client/src/modules/voucher/Voucher.js:216:hardcoded object:                                        onClick={this.onClickApplyVoucher}
+microservices-middleware/client/src/modules/voucher/Voucher.js:217:hardcoded object:                                        disabled={(!voucherCode || isVoucherDisabled)}
+microservices-middleware/client/src/modules/voucher/Voucher.js:218:hardcoded string:                                    >Apply</Button> {" "}
+microservices-middleware/client/src/modules/voucher/Voucher.js:220:hardcoded string:                                        type="danger"
+microservices-middleware/client/src/modules/voucher/Voucher.js:221:hardcoded object:                                        loading={removeVoucherLoading}
+microservices-middleware/client/src/modules/voucher/Voucher.js:222:hardcoded object:                                        onClick={this.onClickRemoveVoucher}
+microservices-middleware/client/src/modules/voucher/Voucher.js:223:hardcoded object:                                        disabled={(!voucherApplied)}
+microservices-middleware/client/src/modules/voucher/Voucher.js:224:hardcoded string:                                    >Remove</Button>{" "}
+microservices-middleware/client/src/modules/voucher/Voucher.js:225:hardcoded string:                                    {!isEmpty(voucherLogs) && <a onClick={() => this.onClickOfVoucherLogs(true)} style={{ color: "Blue" }}>History</a>}
+microservices-middleware/client/src/modules/voucher/Voucher.js:228:hardcoded string:                            {["byjus_learning_centre", "dbel_streaming"].includes(productCombination) && productType === "sibling" && eligibleForSiblingOptions &&
+microservices-middleware/client/src/modules/voucher/Voucher.js:230:hardcoded object:                                    siblingNames={siblingNames}
+microservices-middleware/client/src/modules/voucher/Voucher.js:231:hardcoded object:                                    onSelectSibling={onSelectSibling}
+microservices-middleware/client/src/modules/voucher/Voucher.js:232:hardcoded object:                                    siblingVoucherError={siblingVoucherError}
+microservices-middleware/client/src/modules/voucher/Voucher.js:233:hardcoded object:                                    selectedSiblingForVoucher={selectedSiblingForVoucher}
+microservices-middleware/client/src/modules/voucher/Voucher.js:237:hardcoded object:                        <ErrorWrapper error={error} />
+microservices-middleware/client/src/modules/voucher/Voucher.js:241:hardcoded object:                    logs={voucherLogs}
+microservices-middleware/client/src/modules/voucher/Voucher.js:242:hardcoded object:                    onClickCancel={() => this.onClickOfVoucherLogs(false)}
+microservices-middleware/client/src/modules/voucher/Voucher.js:250:hardcoded object:export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(Voucher);microservices-middleware/client/src/modules/voucher/CouponHelper.js:1:hardcoded file path:import axios from 'axios';
+microservices-middleware/client/src/modules/voucher/CouponHelper.js:3:hardcoded variable:const applyCouponCode = async(code, bdaEmail) => {
+microservices-middleware/client/src/modules/voucher/CouponHelper.js:4:hardcoded variable:    const options = {
+microservices-middleware/client/src/modules/voucher/CouponHelper.js:5:hardcoded string:        method: 'GET',
+microservices-middleware/client/src/modules/voucher/CouponHelper.js:6:hardcoded object:        url: `/api/coupon/isCouponValid/${bdaEmail}/${code}`,
+microservices-middleware/client/src/modules/voucher/CouponHelper.js:9:hardcoded variable:    const response = await axios(options).catch(err => console.error(err));
+microservices-middleware/client/src/modules/voucher/CouponHelper.js:13:hardcoded variable:const removeCoupon = async(code, bdaEmail) => {
+microservices-middleware/client/src/modules/voucher/CouponHelper.js:14:hardcoded variable:    const options = {
+microservices-middleware/client/src/modules/voucher/CouponHelper.js:15:hardcoded string:        method: 'GET',
+microservices-middleware/client/src/modules/voucher/CouponHelper.js:16:hardcoded object:        url: `/api/coupon/removeCoupon/${bdaEmail}/${code}`,
+microservices-middleware/client/src/modules/voucher/CouponHelper.js:19:hardcoded variable:    const response = await axios(options).catch(err => console.error(err));
+microservices-middleware/client/src/modules/voucher/CouponHelper.js:23:hardcoded object:export { applyCouponCode, removeCoupon }microservices-middleware/client/src/modules/voucher/SiblingComponent.js:1:hardcoded file path:import React from 'react';
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:2:hardcoded object:import { Radio, Alert, List, Form } from 'antd';
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:4:hardcoded variable:const SiblingComponent = (props) => {
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:5:hardcoded array:    const { siblingNames = [], onSelectSibling, siblingVoucherError = false, selectedSiblingForVoucher = null } = props;
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:7:hardcoded variable:    const buildSiblingOptions = (siblingNames) => {
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:10:hardcoded string:                <div class="d-flex flex-row">
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:12:hardcoded string:                        <b style={{color:'Red'}}>* </b><strong> Choose the student for whom the voucher has to be applied: &emsp;</strong>
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:19:hardcoded object:                                        value={name}
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:20:hardcoded object:                                        key={idx}
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:21:hardcoded object:                                        onChange={onSelectSibling}
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:22:hardcoded object:                                        checked={name === selectedSiblingForVoucher}>
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:23:hardcoded object:                                        <strong>{name}</strong>
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:30:hardcoded string:                {siblingVoucherError && <p style={{ "color": "red" }}>Please select one student.</p>}
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:36:hardcoded string:            <span className="d-inline-flex p-3">
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:38:hardcoded string:                    type="info"
+microservices-middleware/client/src/modules/voucher/SiblingComponent.js:39:hardcoded object:                    description={buildSiblingOptions(siblingNames)}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:1:hardcoded object:import React, { Component } from 'react';
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:2:hardcoded object:import { Modal, Table, Row } from 'antd';
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:3:hardcoded object:import { connect } from 'react-redux';
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:4:hardcoded object:import { get } from 'lodash'
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:6:hardcoded variable:const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:7:hardcoded string:    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:20:hardcoded array:        const { logs = [] } = this.props;
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:21:hardcoded number:        let index = 0;
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:22:hardcoded variable:        const columns = [{
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:23:hardcoded string:            title: 'Index',
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:24:hardcoded number:            dataIndex: index + 1,
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:25:hardcoded number:            key: index + 1,
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:26:hardcoded number:            render: (t, r, i) => (i + 1)
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:28:hardcoded string:            title: 'Old Value',
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:29:hardcoded string:            key: 'oldValue',
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:30:hardcoded string:            dataIndex: 'oldValue'
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:32:hardcoded string:            title: 'Old Discount Type',
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:33:hardcoded string:            dataIndex: 'oldDiscountType',
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:34:hardcoded string:            key: 'oldDiscountType'
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:40:hardcoded object:                    pagination={false}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:41:hardcoded object:                    columns={columns}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:42:hardcoded string:                    size="small"
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:43:hardcoded object:                    bordered={true}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:44:hardcoded object:                    dataSource={logs}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:45:hardcoded string:                    style={{ padding: '3%', overflowY: 'auto', height: '250px' }}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:52:hardcoded object:        const { visible, confirmLoading, isConfirmed } = this.state;
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:53:hardcoded object:        const { onClickCancel } = this.props;
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:56:hardcoded string:                title="History"
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:57:hardcoded object:                visible={visible}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:58:hardcoded string:                okText="Confirm"
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:59:hardcoded object:                confirmLoading={confirmLoading}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:60:hardcoded object:                onCancel={onClickCancel}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:61:hardcoded number:                zIndex={0}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:62:hardcoded object:                okButtonProps={{ disabled: isConfirmed }}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:63:hardcoded string:                width={'300px'}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:65:hardcoded string:                    height: '300px'
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:67:hardcoded object:                footer={null}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:68:hardcoded number:                cols={5}
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:70:hardcoded string:                <Row style={{ overflowY: 'auto', height: '350px' }}>  {this.VoucherLogs()}</Row>
+microservices-middleware/client/src/modules/voucher/VoucherLogsModal.js:76:hardcoded object:export default connect(mapStateToProps, null, null, { forwardRef: true })(VoucherLogsModal);

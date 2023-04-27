@@ -1,0 +1,8 @@
+microservices-middleware/client/src/modules/ordertype/upgrade/utils/upgradeDescription.js:1:hardcoded file path:import React from 'react';
+microservices-middleware/client/src/modules/ordertype/upgrade/utils/upgradeDescription.js:3:hardcoded variable:export const upgradeInfoMessage = () => {
+microservices-middleware/client/src/modules/ordertype/upgrade/utils/upgradeDescription.js:7:hardcoded number:            <strong>1.</strong> Only TLP and Trial Pack orders are eligible for upgrade.<br />
+microservices-middleware/client/src/modules/ordertype/upgrade/utils/upgradeDescription.js:8:hardcoded number:            <strong>2.</strong> Only K10 (4 to 10) and K12 (11-12) grades are eligible for upgrade.In case of K12 the initial class should be 11.<br />
+microservices-middleware/client/src/modules/ordertype/upgrade/utils/upgradeDescription.js:9:hardcoded number:            <strong>3.</strong> Non FOC orders are eligible for upgrade.<br />
+microservices-middleware/client/src/modules/ordertype/upgrade/utils/upgradeDescription.js:10:hardcoded number:            <strong>4.</strong> Order above confirm status are eligible for upgrade. Allowed statuses are: Confirmed, Delivered, Shipped, Partial shipped, To be delivered, Packed<br />
+microservices-middleware/client/src/modules/ordertype/upgrade/utils/upgradeDescription.js:11:hardcoded number:            <strong>5.</strong> Single and Parent order are eligible for upgrade.<br />
+microservices-middleware/client/src/modules/ordertype/upgrade/utils/upgradeDescription.js:12:hardcoded string:            In case, any of the condition fails "Upgrade To Byjus class" button will not be shown in action column against the order.

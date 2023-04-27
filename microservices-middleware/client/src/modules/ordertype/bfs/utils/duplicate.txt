@@ -1,0 +1,140 @@
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:1:hardcoded object:import { message } from 'antd';
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:2:hardcoded object:import { get, find, isEmpty, isEqual, parseInt } from 'lodash';
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:3:hardcoded object:import { productPermissions, leadquaredRelatedPermissions } from '../../../../utility/screenPermission';
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:4:hardcoded number:import { M8_TABLET_LIST, D4_1_1_TABLET_LIST } from 'modules/product/utils/productConstant';
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:8:hardcoded string:} from 'modules/product/utils/epicSampler';
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:11:hardcoded variable:const getBatchOption = (env, isEpicSamplerEnabled) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:12:hardcoded object:    let formField = {}
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:13:hardcoded string:    const isDevEnv = ["development", "local"].includes(env)
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:16:hardcoded string:        'label': '1:4', 'value': '1:4'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:19:hardcoded object:    formField = getSamplerByjusMathBatchOptions({ formField, env, isEpicSamplerEnabled })
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:23:hardcoded variable:const getNativeProductTypeOptions = (productDetails) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:24:hardcoded variable:    let currentYear = new Date().getFullYear()
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:25:hardcoded object:    const { isPrivilegedUser, env, initialGrade, productType, validity, isEpicSamplerEnabled } = productDetails || {}
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:26:hardcoded array:    let formField = [];
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:28:hardcoded object:    //     formField = getSamplerByjusMathProductOptions({ formField, env })
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:32:hardcoded string:            'label': "DBEL+BYJU'S Math 80 Sessions", 'value': 'bfsPremium'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:34:hardcoded string:        if (productType == 'single') {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:36:hardcoded string:                'label': "DBEL+BYJU'S Math Monthly Subscription", 'value': 'bfsSubscription'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:41:hardcoded string:                'label': "DBEL+BYJU'S Math 16 Sessions", 'value': '16'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:46:hardcoded number:    /*   if (initialGrade != 0) {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:48:hardcoded string:              'label': "DBEL+BYJU'S Math 16 Sessions", 'value': '16'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:50:hardcoded number:      } else if (initialGrade == 0) {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:52:hardcoded string:              'label': "DBEL+BYJU'S Math 80 Sessions", 'value': 'bfsPremium'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:57:hardcoded variable:const getProductTypeOptions = (productDetails) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:58:hardcoded variable:    let currentYear = new Date().getFullYear()
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:59:hardcoded object:    const { productType, isPrivilegedUser, env, initialGrade, validity } = productDetails || {}
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:60:hardcoded array:    let formField = []
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:61:hardcoded string:    const isDevEnv = ["development", "local"].includes(env)
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:65:hardcoded string:            'label': "DBEL+BYJU'S Math 56 Sessions", 'value': '56'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:69:hardcoded number:        if (initialGrade != 0) {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:71:hardcoded string:                 'label': "DBEL+BYJU'S Math 16 Sessions", 'value': '16'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:73:hardcoded number:         } else if (initialGrade == 0) {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:75:hardcoded string:                 'label': "DBEL+BYJU'S Math 80 Sessions", 'value': 'bfsPremium'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:78:hardcoded string:         if(env != "production" && productType == 'single') {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:80:hardcoded string:                 'label': "DBEL+BYJU'S Math Monthly Subscription", 'value': 'bfsSubscription' // added "Monthly Subscription" just for testing purpose
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:84:hardcoded string:         if (productType == 'single') {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:86:hardcoded string:                 'label': "DBEL+BYJU'S Math Monthly Subscription", 'value': 'bfsSubscription'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:89:hardcoded string:                 'label': "DBEL+BYJU'S Math 52 Sessions", 'value': 'bfsStandard'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:92:hardcoded string:                 'label': "DBEL+BYJU'S Math 80 Sessions", 'value': 'bfsPremium'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:94:hardcoded string:         } else if (productType == 'combo'){
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:96:hardcoded string:                 'label': "DBEL+BYJU'S Math 80 Sessions", 'value': 'bfsPremium'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:99:hardcoded number:         if(initialGrade != 0) {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:101:hardcoded string:                 'label': "DBEL+BYJU'S Math 24 Sessions", 'value': '24'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:103:hardcoded string:                 'label': "DBEL+BYJU'S Math 16 Sessions", 'value': '16'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:111:hardcoded variable:export const getDeviceTypeOptions = (env, tablet) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:113:hardcoded string:    if (env != "production") {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:114:hardcoded number:        if (M8_TABLET_LIST.includes(tablet)) {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:115:hardcoded string:            formField = 'Tablet(Lenovo M8)'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:116:hardcoded number:        } else if (D4_1_1_TABLET_LIST.includes(tablet)) {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:117:hardcoded string:            formField = 'Tablet(LearnStation)'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:124:hardcoded variable:export const getBfsFields = (details) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:125:hardcoded object:    const { props, handleChanges, isPrivilegedUser, env, isByjusMathNativeApp, initialGrade, validity, featureEnableList } = details;
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:126:hardcoded object:    const { productCombination, productType } = props;
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:128:hardcoded string:    const isBfs = (productCombination == 'byjus_math') ? true : false
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:129:hardcoded string:    const isDevEnv = (["development", "local"].includes(env))
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:130:hardcoded string:    const isEpicSamplerEnabled = get(featureEnableList, 'byjusmath_epic_sampler_bda');
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:134:hardcoded string:            type: (isBfs) ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:135:hardcoded string:            name: 'bfsBatch',
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:136:hardcoded string:            label: "Select Batch Option",
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:140:hardcoded string:            message: 'Please Select Batch Option'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:143:hardcoded string:            type: (isBfs) ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:144:hardcoded string:            name: 'bfsProductType',
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:145:hardcoded string:            label: 'Select Product Type',
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:146:hardcoded object:            options: getProductTypeOptions({ productType, isPrivilegedUser, env, initialGrade, validity }),
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:149:hardcoded string:            message: 'Please Select Product Type'
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:154:hardcoded variable:export const filterInitialClass = (details) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:155:hardcoded object:    const { classes, productType, env, isPrivilegedUser, featureEnableList, isByjusMathNativeApp } = details
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:156:hardcoded string:    const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:157:hardcoded string:    const isEpicSamplerEnabled = get(featureEnableList, 'byjusmath_epic_sampler_bda');
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:158:hardcoded variable:    let filteredClass = classes;
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:160:hardcoded number:    filteredClass = filteredClass.filter(initialClass => parseInt(initialClass.value) < 4);
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:161:hardcoded number:    filteredClass = filteredClass.filter(initialClass => parseInt(initialClass.value) >= 1)
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:163:hardcoded object:    filteredClass = getSamplerByjusMathInitialClass({ filteredClass, env, isEpicSamplerEnabled, productType })
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:168:hardcoded variable:export const filterFinalClass = (productDetails) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:169:hardcoded object:    const { classes, selectedInitialClass, featureEnableList, env, productType, productCombination } = productDetails
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:170:hardcoded string:    const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:171:hardcoded string:    const isEpicSamplerEnabled = get(featureEnableList, 'byjusmath_epic_sampler_bda');
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:172:hardcoded number:    const allowedMaxClass = parseInt(selectedInitialClass) + 4;
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:173:hardcoded number:    let filteredClass = classes.filter(finalClass => (finalClass.value >= parseInt(selectedInitialClass) + 1 && finalClass.value <= allowedMaxClass));
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:176:hardcoded number:    filteredClass = filteredClass.filter(finalClass => (finalClass.value < parseInt(selectedInitialClass) + 8));
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:178:hardcoded object:    filteredClass = getSamplerByjusMathFinalClass({ filteredClass, env, isEpicSamplerEnabled, productCombination, selectedInitialClass, productType })
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:181:hardcoded variable:export const filterInitialYear = (details) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:182:hardcoded object:    const { isPrivilegedUser, featureEnableList, env } = details
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:183:hardcoded string:    const isEpicSamplerEnabled = get(featureEnableList, 'byjusmath_epic_sampler_bda');
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:184:hardcoded variable:    let options = [
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:186:hardcoded number:            label: new Date().getFullYear() + 1,
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:187:hardcoded number:            value: new Date().getFullYear() + 1
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:192:hardcoded number:    //     options = options.slice(1)
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:201:hardcoded variable:export const getTablets = (details) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:202:hardcoded object:    const { Tablets, bfsProductType, productCombination, env, salesDetails, listOfManagers, isPrivilegedUser, teamManager, user, isByjusMathNativeApp, productType, featureEnableList } = details
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:203:hardcoded string:    const d4ByjusMathTeamManagers = get(listOfManagers, "ELIGIBLE_D4_BYJUS_MATH_MANAGERS", [])
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:204:hardcoded number:    const { teamManagers = [] } = d4ByjusMathTeamManagers;
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:205:hardcoded string:    const bfsNativeBda = get(listOfManagers, "BYJUS_MATH_NATIVE_BDA_LIST", [])
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:206:hardcoded array:    const { bdaList = [] } = bfsNativeBda;
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:207:hardcoded object:    const { email } = user;
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:208:hardcoded string:    const isEpicSamplerEnabled = get(featureEnableList, 'byjusmath_epic_sampler_bda');
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:210:hardcoded array:    let tabletName = [];
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:211:hardcoded array:    let tabletList = [];
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:213:hardcoded string:    tabletName.push("BYJU'S LearnStation Junior 10inch Mobile Data Grey Tablet (Rs 16000)")
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:215:hardcoded string:    if (env == "production") {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:216:hardcoded string:        if ((isPrivilegedUser || bdaList.includes(email)) && productCombination == 'byjus_math') {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:218:hardcoded string:                tabletName = tabletName.filter(tab => !['Lenovo 8 inch Tablet (Mobile Data) - V2 (Rs 13000)', "Lenovo 10 inch Tablet Mobile Data (4GB/ 64GB) - (Rs 16000)", "Lenovo 10 inch Tablet Mobile Data - V2(Rs. 16000)"].includes(tab))
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:235:hardcoded variable:const getByjusClassFinalGrade = (details) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:236:hardcoded object:    const { classes, initialClass, finalClass } = details
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:238:hardcoded number:    // As max of 3classes are allowed, so from initial class we will be calculating max class allowed
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:239:hardcoded number:    const maxClass = parseInt(initialClass) + 2
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:240:hardcoded variable:    let filteredClasses = classes.filter((classObj) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:241:hardcoded string:        const classValue = get(classObj, 'value', '');
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:242:hardcoded variable:        const isClassAllowed = (
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:250:hardcoded variable:// const getTlpCourse = (details) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:251:hardcoded object://     const { classes, initialClass, finalClass, byjusClassFinalGrade, addByjusClassCourses } = details
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:254:hardcoded number://     const maxClass = parseInt(initialClass) + 4
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:255:hardcoded variable://     const startClass = addByjusClassCourses ? byjusClassFinalGrade : parseInt(finalClass)
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:256:hardcoded variable://     let filteredClasses = classes.filter((classObj) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:257:hardcoded string://         const classValue = get(classObj, 'value', '');
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:258:hardcoded variable://         const isClassAllowed = (
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:266:hardcoded variable:// export const getByjusClassFormFields = (details) => {
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:267:hardcoded object://     const { state, props, handleChanges, classes, isPrivilegedUser } = details;
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:268:hardcoded object://     const { productType, authDetails } = props
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:269:hardcoded object://     const { addByjusClassCourses, addTlpCourse, initialClass, finalClass, byjusClassFinalGrade } = state
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:270:hardcoded object://     const { env, featureEnableList } = authDetails || {}
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:271:hardcoded string://     const isDevEnv = ['development', 'local'].includes(env);
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:272:hardcoded string://     const isEpicSamplerEnabled = get(featureEnableList, 'byjusmath_epic_sampler_bda');
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:276:hardcoded string://             type: !isDevEnv && productType == "combo" && ["3"].includes(finalClass) ? 'checkbox' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:277:hardcoded string://             name: 'addByjusClassCourses',
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:278:hardcoded string://             checkBoxLabel: "Extend Course using Byjus Classes",
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:282:hardcoded string://             type: !isDevEnv && addByjusClassCourses ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:283:hardcoded string://             name: "byjusClassFinalGrade",
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:284:hardcoded string://             label: 'Select Byjus Classes- Final Grade',
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:286:hardcoded object://             options: getByjusClassFinalGrade({ classes, initialClass, finalClass }),
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:288:hardcoded string://             message: "Select Byjus Classes- Final Grade"
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:291:hardcoded string://             //     type: ["development", "local"].includes(env) && productType == "combo" && isPrivilegedUser && ["3"].includes(finalClass) ? 'checkbox' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:292:hardcoded string://             //     name: 'addTlpCourse',
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:293:hardcoded string://             //     checkBoxLabel: "Extend Course using Byjus TLP",
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:297:hardcoded string://             //     type: ["development", "local"].includes(env) && addTlpCourse ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:298:hardcoded string://             //     name: "tlpFinalGrade",
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:299:hardcoded string://             //     label: 'Select Byjus TLP- Final Grade',
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:300:hardcoded string://             //     required: ["development", "local"].includes(env) && addTlpCourse ? true : false,
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:301:hardcoded object://             //     options: getTlpCourse({ classes, initialClass, finalClass, byjusClassFinalGrade, addByjusClassCourses }),
+microservices-middleware/client/src/modules/ordertype/bfs/utils/BfsHelper.js:303:hardcoded string://             //     message: "Select Byjus TLP- Final Grade"

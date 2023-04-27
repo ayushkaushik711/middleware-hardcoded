@@ -1,0 +1,50 @@
+microservices-middleware/server/src/otpmanagement/otpRoutes.js:1:hardcoded file path:const Router = require('express-promise-router');
+microservices-middleware/server/src/otpmanagement/otpRoutes.js:2:hardcoded file path:const controller = require('./otpController');
+microservices-middleware/server/src/otpmanagement/otpRoutes.js:4:hardcoded object:const router = Router({ mergeParams: true });
+microservices-middleware/server/src/otpmanagement/otpRoutes.js:7:hardcoded string:    const baseRoute = '/otp'; 
+microservices-middleware/server/src/otpmanagement/otpRoutes.js:9:hardcoded object:    router.route(`${baseRoute}/validateOtp`)
+microservices-middleware/server/src/otpmanagement/otpRoutes.js:14:hardcoded object:    router.route(`${baseRoute}/sendOtp`)
+microservices-middleware/server/src/otpmanagement/booksController.js:1:hardcoded string:const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/otpmanagement/booksController.js:2:hardcoded object:const { isDevEnv } = require("../../lib/featureHelper");
+microservices-middleware/server/src/otpmanagement/booksController.js:3:hardcoded object:const { isBooksDisabled } = require('./helper');
+microservices-middleware/server/src/otpmanagement/booksController.js:5:hardcoded variable:const updateIsBooksOpted = async (details) => {
+microservices-middleware/server/src/otpmanagement/booksController.js:7:hardcoded string:        const { draftOrder = {}, identifier = '' } = details
+microservices-middleware/server/src/otpmanagement/booksController.js:8:hardcoded string:        const { orderPunchingType = '', orderPunchingCategory = '', productDetails = {} } = draftOrder || {}
+microservices-middleware/server/src/otpmanagement/booksController.js:9:hardcoded string:        const {productType = '', students = []} = productDetails;
+microservices-middleware/server/src/otpmanagement/booksController.js:10:hardcoded number:        const {formValues = {}} = students[0];
+microservices-middleware/server/src/otpmanagement/booksController.js:11:hardcoded string:        let isBooksOpted = (orderPunchingType == "UPGRADE" && orderPunchingCategory == "byjus_math") ? false : true
+microservices-middleware/server/src/otpmanagement/booksController.js:12:hardcoded string:        if(isBooksOpted && !["MIDDLEEAST_ORDER"].includes(orderPunchingType)) {
+microservices-middleware/server/src/otpmanagement/booksController.js:13:hardcoded object:            isBooksOpted = await isBooksDisabled({ draftOrder })
+microservices-middleware/server/src/otpmanagement/booksController.js:15:hardcoded string:        if(productType === "competitive" && formValues?.optionalCourses === "Anthropology"){
+microservices-middleware/server/src/otpmanagement/booksController.js:18:hardcoded object:        await DraftOrder.updateOne({ _id: identifier }, {
+microservices-middleware/server/src/otpmanagement/booksController.js:19:hardcoded string:            "$set": {
+microservices-middleware/server/src/otpmanagement/booksController.js:20:hardcoded string:                "customerDetails.isBooksOpted": isBooksOpted
+microservices-middleware/server/src/otpmanagement/booksController.js:24:hardcoded object:        throw new Error(`Error: ${error}`)
+microservices-middleware/server/src/otpmanagement/helper.js:1:hardcoded object:const { isEmpty } = require('lodash');
+microservices-middleware/server/src/otpmanagement/helper.js:2:hardcoded file path:const ByjusConfig = require('../../models/ByjusConfig')
+microservices-middleware/server/src/otpmanagement/helper.js:4:hardcoded variable:const isBooksDisabled = async (details) => {
+microservices-middleware/server/src/otpmanagement/helper.js:6:hardcoded object:        const { draftOrder } = details
+microservices-middleware/server/src/otpmanagement/helper.js:7:hardcoded object:        const { productDetails } = draftOrder
+microservices-middleware/server/src/otpmanagement/helper.js:8:hardcoded array:        const { students, products = [] } = productDetails
+microservices-middleware/server/src/otpmanagement/helper.js:9:hardcoded string:        const { category = '' } = products[0] || [];
+microservices-middleware/server/src/otpmanagement/helper.js:10:hardcoded number:        const { productSelectionType: productCombination } = students[0]
+microservices-middleware/server/src/otpmanagement/helper.js:11:hardcoded string:        const configData = await ByjusConfig.findOne({ formattedModuleName: "BOOKS_EXCLUSION_CONFIG"});
+microservices-middleware/server/src/otpmanagement/helper.js:12:hardcoded array:        const { configs: booksConfig } = configData || []
+microservices-middleware/server/src/otpmanagement/helper.js:13:hardcoded string:        if(isEmpty(booksConfig)) throw new Error("No records found");
+microservices-middleware/server/src/otpmanagement/helper.js:14:hardcoded variable:        let value = true;
+microservices-middleware/server/src/otpmanagement/helper.js:15:hardcoded string:        const bookExclusionConfig = booksConfig.find(ele => ele.productCombination === productCombination && ele.status === 'active')
+microservices-middleware/server/src/otpmanagement/helper.js:16:hardcoded string:        const bookExclusionConfigCategories = booksConfig.find(ele => ele.category === category && ele.status === 'active')
+microservices-middleware/server/src/otpmanagement/helper.js:18:hardcoded object:            const { defaultRestrictBooks = null } = bookExclusionConfigCategories
+microservices-middleware/server/src/otpmanagement/helper.js:21:hardcoded object:            const { restrictOnFilters = {}, defaultRestrictBooks = null } = bookExclusionConfig
+microservices-middleware/server/src/otpmanagement/helper.js:22:hardcoded array:            const { grades = [] } = restrictOnFilters
+microservices-middleware/server/src/otpmanagement/helper.js:24:hardcoded object:                value = getCustomerBooksOptedValue({students, grades, defaultRestrictBooks})
+microservices-middleware/server/src/otpmanagement/helper.js:31:hardcoded object:        throw new Error(`Error: ${error}`)
+microservices-middleware/server/src/otpmanagement/helper.js:36:hardcoded variable:const getCustomerBooksOptedValue = (details) => {
+microservices-middleware/server/src/otpmanagement/helper.js:37:hardcoded variable:    let value = true
+microservices-middleware/server/src/otpmanagement/helper.js:38:hardcoded object:    const { students, grades, defaultRestrictBooks } = details
+microservices-middleware/server/src/otpmanagement/helper.js:39:hardcoded number:    for(let i = 0; i < students.length; i++) {
+microservices-middleware/server/src/otpmanagement/helper.js:40:hardcoded string:        const { initialClass = '', finalClass = '' } = students[i]
+microservices-middleware/server/src/otpmanagement/helper.js:41:hardcoded object:        value = getCheckboxConfigValue({initialClass, finalClass, grades, defaultRestrictBooks})
+microservices-middleware/server/src/otpmanagement/helper.js:49:hardcoded variable:const getCheckboxConfigValue = (details) => {
+microservices-middleware/server/src/otpmanagement/helper.js:50:hardcoded variable:    let configValue = true;
+microservices-middleware/server/src/otpmanagement/helper.js:51:hardcoded object:    const { initialClass, finalClass, grades, defaultRestrictBooks } = details

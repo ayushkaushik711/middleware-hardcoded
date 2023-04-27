@@ -1,0 +1,73 @@
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:1:hardcoded object:import React, { useEffect, useState, forwardRef, useImperativeHandle } from 'react'
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:2:hardcoded file path:import InfoWrapper from 'components/InfoWrapper';
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:3:hardcoded object:import { Button } from 'reactstrap';
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:4:hardcoded file path:import moment from 'moment';
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:5:hardcoded object:import { isEmpty, isEqual, round, isObject } from 'lodash';
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:7:hardcoded object:import { Table, Th, Td, TableContainer, Heading, RefreshIcon, Tdc } from './Styles';
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:10:hardcoded variable:const PdcTable = (props) => {
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:11:hardcoded object:    const { schedules, aakashPriceBreakup, showBeneficiary = false, beneficiary } = props
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:12:hardcoded variable:    const pdcSchedules = schedules
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:13:hardcoded object:    const { netPrice: total, registrationFee, admissionFee, techAndExamFee, classroomFee, tuitionFee } = aakashPriceBreakup
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:15:hardcoded variable:    const getIndividualFee = (schedule, feeType) => {
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:16:hardcoded number:        let feeAmount = 0
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:28:hardcoded object:        <Heading>{`The PDC Schedules are  `}</Heading>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:46:hardcoded object:                            <tr key={index}>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:47:hardcoded object:                                <Td>{schedule.installmentNo}</Td>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:48:hardcoded object:                                {showBeneficiary ? <><Td>{beneficiary}</Td>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:49:hardcoded string:                                    <Td>{moment(schedule.installmentDate).format('DD-MMM-YYYY')}</Td></> :
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:50:hardcoded string:                                    <> <Td>{getIndividualFee(schedule, "registrationFee")}</Td>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:51:hardcoded string:                                        <Td>{getIndividualFee(schedule, "admissionFee")}</Td>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:52:hardcoded string:                                        <Td>{getIndividualFee(schedule, "techAndExamFee")}</Td>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:53:hardcoded string:                                        <Td>{getIndividualFee(schedule, "classroomFee")}</Td>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:54:hardcoded string:                                        <Td>{getIndividualFee(schedule, "tuitionFee")}</Td></>}
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:55:hardcoded object:                                <Td>{schedule.total}</Td>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:62:hardcoded object:                                <Td>{registrationFee}</Td>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:63:hardcoded object:                                <Td>{admissionFee}</Td>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:64:hardcoded object:                                <Td>{techAndExamFee}</Td>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:65:hardcoded object:                                <Td>{classroomFee}</Td>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:66:hardcoded object:                                <Td>{tuitionFee}</Td></>}
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcTable.js:67:hardcoded object:                            <Td>{total}</Td>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:1:hardcoded file path:import React from 'react'
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:2:hardcoded file path:import PdcTable from './PdcTable'
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:3:hardcoded object:import { useState ,useEffect, useImperativeHandle, forwardRef} from 'react'
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:4:hardcoded object:import { isEmpty, isEqual, round ,isObject} from 'lodash';
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:8:hardcoded file path:import LoadingWrapper from 'components/LoadingWrapper';
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:9:hardcoded file path:import ErrorWrapper from 'components/ErrorWrapper';
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:10:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:12:hardcoded variable:const PdcModalDetails =  (props, ref) => {
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:13:hardcoded object:    const { getProductDetailsForPdc } = props
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:15:hardcoded array:    const [productDetails, setProductDetails] = useState(getProductDetailsForPdc())
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:16:hardcoded object:    const { finalPrice, netPrice, schedules, aakashPriceBreakup } = productDetails
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:17:hardcoded array:    const [loading, setLoading] = useState(false);
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:18:hardcoded array:    const [error, setError] = useState(null);
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:22:hardcoded variable:    const getUpdatedPdcSchedules = async () => {
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:24:hardcoded variable:            let payload = {
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:31:hardcoded string:                url: '/api/payment/pdc/getUpdatedPdcSchedules',
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:32:hardcoded string:                method: 'POST',
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:36:hardcoded object:                 setProductDetails({...productDetails,...response.data})
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:46:hardcoded array:}, [])
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:49:hardcoded object:    const {aakashPriceBreakup,beneficiary,schedules,scholarshipDetails}=productDetails
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:50:hardcoded object:    return {aakashPriceBreakup,beneficiary,schedules,scholarshipDetails}
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:56:hardcoded object:       <LoadingWrapper loading={loading}>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:57:hardcoded object:        <ErrorWrapper error={error}></ErrorWrapper>
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:59:hardcoded object:            schedules={productDetails.schedules}
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:60:hardcoded object:            aakashPriceBreakup={productDetails.aakashPriceBreakup}
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:61:hardcoded object:            showBeneficiary={true}
+microservices-middleware/client/src/modules/quotation/product/pdc/PdcModalDetails.js:62:hardcoded object:            beneficiary={productDetails.beneficiary}
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:1:hardcoded string:import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:3:hardcoded variable:export const Table = styled.table`
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:4:hardcoded number:    border: 1px solid black;
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:8:hardcoded variable:export const Th = styled.th`
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:9:hardcoded number:    border: 1px solid black;
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:13:hardcoded variable:export const Td = styled.td`
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:14:hardcoded number:    border: 1px solid black;
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:16:hardcoded number:    padding: 3px 18px;
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:19:hardcoded variable:export const Tdc = styled.td`
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:21:hardcoded number:    padding: 3px 18px;
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:24:hardcoded variable:export const TableContainer = styled.div`
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:28:hardcoded variable:export const RefreshIcon = styled.div`
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:30:hardcoded number:    color: #1bcd1b;
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:32:hardcoded number:    margin: 1%;
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:35:hardcoded variable:export const Heading = styled.span`
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:36:hardcoded number:    color: #b848cf;
+microservices-middleware/client/src/modules/quotation/product/pdc/Styles.js:37:hardcoded number:    font-weight: 600;

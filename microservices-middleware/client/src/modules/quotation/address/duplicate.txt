@@ -1,0 +1,145 @@
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:1:hardcoded object:import React, { Component } from 'react';
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:2:hardcoded object:import { connect } from 'react-redux';
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:3:hardcoded object:import { Row, Col, Layout } from 'antd';
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:5:hardcoded object:import { get, isEqual, concat, isEmpty, find } from 'lodash';
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:6:hardcoded object:import { countryList, stateList } from '../../address/utils/addressConfig';
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:8:hardcoded file path:import CallApi from '../../../api/callApi';
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:9:hardcoded file path:import AntDformBuilder from '../../../components/form/AntDFormBuilder';
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:10:hardcoded file path:import QuotationAppLayout from '../applayout/QuotationAppLayout';
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:12:hardcoded object:const { Header, Footer, Content } = Layout;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:14:hardcoded variable:const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:15:hardcoded string:    authDetails: get(state, 'auth.details'),
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:16:hardcoded string:    leadDetails: get(state, 'auth.leadDetails', {}),
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:17:hardcoded string:    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:18:hardcoded string:    addressDetails: get(state, 'address.details', {}),
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:19:hardcoded string:    loading: get(state, 'address.loading'),
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:20:hardcoded string:    error: get(state, 'address.error'),
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:23:hardcoded variable:const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:32:hardcoded object:            updatedFieldValue: {}
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:37:hardcoded object:        const { country } = this.state;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:39:hardcoded array:        let rule = []
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:40:hardcoded string:        if (country != 'India') {
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:42:hardcoded number:                pattern: new RegExp(/^[a-zA-Z1-9][a-zA-Z0-9]*$/), message: `Not a valid Zipcode`
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:46:hardcoded number:                pattern: new RegExp(/^[1-9][0-9]{5}$/), message: `Not a valid Zipcode`
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:53:hardcoded variable:        let rule = [{
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:54:hardcoded number:            pattern: new RegExp(/^[a-zA-Z0-9! :&()\-`.+,/\"]*$/), message: `Invalid Address.Only hyphen(-),colon(:),slash(\),comma(,) are allowed as a special Character`
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:58:hardcoded string:                type: "string",
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:59:hardcoded string:                "max": 30,
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:61:hardcoded string:                    return value ? value.trim() : '';
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:69:hardcoded object:        const { updatedFieldValue } = this.state;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:70:hardcoded string:        updatedFieldValue["zipcode"] = event.target.value;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:71:hardcoded object:        this.setState({ updatedFieldValue });
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:72:hardcoded object:        const { identifier } = this.props;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:73:hardcoded object:        this.setState({ loading: true, error: null });
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:74:hardcoded variable:        const payload = {
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:79:hardcoded string:            url: '/api/quotation/getPincodeInfo',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:80:hardcoded string:            method: 'POST',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:83:hardcoded string:            const data = get(response, 'data');
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:84:hardcoded string:            let { city = "", state = "" } = data;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:87:hardcoded string:            updatedFieldValue["city"] = city || ""
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:89:hardcoded string:            state = state && stateList.find(ele => ele.label.includes(state) || ele.label.split(" ")[0].includes(state.split(" ")[0]));
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:91:hardcoded string:            updatedFieldValue["state"] = state.value || undefined;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:93:hardcoded object:            this.setState({ loading: false, updatedFieldValue });
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:95:hardcoded object:            this.setState({ loading: false });
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:96:hardcoded object:            // this.setState({ error }, () => {
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:97:hardcoded object:            //     this.setState({ loading: false });
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:103:hardcoded object:        const { country, updatedFieldValue } = this.state;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:104:hardcoded string:        const { state = "", city = "" } = updatedFieldValue;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:105:hardcoded object:        const { authDetails } = this.props;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:106:hardcoded object:        const { env } = authDetails;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:107:hardcoded array:        const cityList = [];
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:109:hardcoded string:        if(['local', 'development'].includes(env) &&  typeof city !== "string") {
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:111:hardcoded object:                cityList.push({label: res, value: res})
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:116:hardcoded variable:        const fields = [{
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:117:hardcoded string:            type: 'text',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:118:hardcoded string:            name: 'addressLine1',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:119:hardcoded string:            label: 'Address 1(Apartment or House Number/Building Name)',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:120:hardcoded string:            placeholder: 'Address 1(Apartment or House Number/Building Name)',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:126:hardcoded string:            type: 'text',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:127:hardcoded string:            name: 'addressLine2',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:128:hardcoded string:            label: 'Address 2(Street Name/locality)',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:129:hardcoded string:            placeholder: 'Address 2(Street Name/locality)',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:135:hardcoded string:            type: 'textarea',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:136:hardcoded string:            name: 'addressLine3',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:137:hardcoded string:            label: 'Address 3(PO/Area Number/Landmark)',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:138:hardcoded string:            placeholder: 'Address 3(PO/Area Number/Landmark)',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:143:hardcoded string:            type: 'select',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:144:hardcoded string:            name: 'country',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:145:hardcoded string:            label: 'Country',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:147:hardcoded string:            placeholder: 'Select Country',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:148:hardcoded string:            value: "India",
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:152:hardcoded string:            type: country === "India" ? 'number' : 'text',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:153:hardcoded string:            name: 'zipcode',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:154:hardcoded string:            label: 'Zip Code',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:155:hardcoded string:            placeholder: 'Enter Zip Code',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:156:hardcoded string:            required: country === "India" ? true : false,
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:160:hardcoded string:            type: country === "India" ? 'select' : 'text',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:161:hardcoded string:            name: 'state',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:162:hardcoded string:            label: 'State',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:163:hardcoded string:            disabled: (state) && country === "India" ? true : false,
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:165:hardcoded string:            placeholder: country === "India" ? 'Select State' : 'Enter State',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:168:hardcoded string:            type: cityList.length > 1 ? 'select' : 'text',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:169:hardcoded string:            name: 'city',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:170:hardcoded string:            label: 'City',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:171:hardcoded string:            placeholder: 'Enter City',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:173:hardcoded string:            disabled: ['local', 'development'].includes(env) && (city !== "" && typeof city === 'string') ? true : false,
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:176:hardcoded array:                pattern: new RegExp(/^[a-zA-Z\s\.]+$/), message: `Enter valid city`
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:184:hardcoded object:        const { updatedFieldValue } = this.state;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:186:hardcoded array:        updatedFieldValue[name] = value;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:188:hardcoded object:        this.setState({ updatedFieldValue })
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:192:hardcoded object:        const { updatedFieldValue } = this.state;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:193:hardcoded array:        updatedFieldValue[name] = value;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:194:hardcoded string:        updatedFieldValue["city"] = "";
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:195:hardcoded string:        updatedFieldValue["state"] = undefined;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:196:hardcoded string:        updatedFieldValue["zipcode"] = "";
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:199:hardcoded array:            [name]: value,
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:205:hardcoded object:        const { identifier, productDetails = {} } = this.props;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:206:hardcoded object:        const { verificationRequired = false } = productDetails?.formValues;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:207:hardcoded object:        this.setState({ loading: true, error: null });
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:211:hardcoded string:                url: '/api/quotation/saveAddressDetails',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:212:hardcoded string:                method: 'POST',
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:219:hardcoded object:                this.setState({ loading: false });
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:221:hardcoded string:                // this.navigateToScreen('/quotation');
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:224:hardcoded object:                this.setState({ error }, () => {
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:225:hardcoded object:                    this.setState({ loading: false, error: JSON.stringify(error) });
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:232:hardcoded object:        const { history } = this.props;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:233:hardcoded string:        const url = `${path}${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:238:hardcoded string:        this.navigateToScreen('/quotation/product')
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:242:hardcoded object:        const { isDirectSales, addressDetails } = this.state;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:244:hardcoded object:        this.setState({ error: null, applicationFormError: null });
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:245:hardcoded variable:        const updatedAddressDetails = await this.addressForm.getFormValues();
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:248:hardcoded string:            const { addressLine1 = "", addressLine2 = "", addressLine3 = "" } = updatedAddressDetails;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:249:hardcoded string:            let address = '';
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:250:hardcoded string:            address = !isEmpty(updatedAddressDetails["addressLine3"]) ? `${addressLine1}, ${addressLine2}, ${addressLine3}` : `${addressLine1}, ${addressLine2}`;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:251:hardcoded string:            updatedAddressDetails["address"] = address;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:252:hardcoded array:            attachments = isDirectSales ? this.getAttachments() : [];
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:256:hardcoded variable:            const isAddressModified = !isEqual(addressDetails, updatedAddressDetails);
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:262:hardcoded object:        let { addressDetails, leadDetails, loading, error } = this.props;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:265:hardcoded string:            address: (get(leadDetails, 'homeAddress', "")),
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:269:hardcoded string:        if (!addressDetails["country"]) { this.setState({ country: 'India' }) }
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:270:hardcoded object:        else { this.setState({ country: addressDetails.country }) }
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:272:hardcoded object:        this.setState({ updatedFieldValue: addressDetails, addressDetails, loading, error });
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:276:hardcoded object:        const { loading, error } = nextProps;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:278:hardcoded object:        (!isEqual(loading, this.props.loading)) && this.setState({ loading });
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:279:hardcoded object:        (!isEqual(error, this.props.error)) && this.setState({ error });
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:283:hardcoded object:        const { loading, error, addressDetails, updatedFieldValue, country } = this.state;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:284:hardcoded variable:        const fields = this.getFormFields();
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:285:hardcoded object:        const {authDetails} = this.props;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:286:hardcoded object:        const {env} = authDetails;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:288:hardcoded string:        if(['local', 'development'].includes(env)) {
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:289:hardcoded string:            const {city = ''} = updatedFieldValue;
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:290:hardcoded string:            if( typeof city !== 'string' ) {
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:291:hardcoded string:                updatedFieldValue['city'] = updatedFieldValue['city'][0];
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:299:hardcoded string:                    step="address"
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:300:hardcoded object:                    onClickPrevBtn={this.onClickPrevBtn}
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:301:hardcoded object:                    prevBtnDisable={true}
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:302:hardcoded object:                    onClickNextBtn={this.onClickNextBtn}
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:303:hardcoded string:                    nextBtnText={"Submit"}
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:304:hardcoded object:                    loading={loading}
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:305:hardcoded object:                    error={error}
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:309:hardcoded string:                            <div className="card m-2" style={{ height: "100%", backgroundColor: "#E8E8E8" }}>
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:310:hardcoded string:                                <div className='card-header bg-quotation text-white'>Address details</div>
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:312:hardcoded string:                                    ref="addressDetailForm"
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:313:hardcoded object:                                    fields={fields}
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:314:hardcoded object:                                    wrappedComponentRef={(inst) => this.addressForm = inst}
+microservices-middleware/client/src/modules/quotation/address/QuotationAddressPage.js:315:hardcoded object:                                    initialValues={{ ...addressDetails, ...updatedFieldValue }}

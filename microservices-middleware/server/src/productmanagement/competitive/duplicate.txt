@@ -1,0 +1,327 @@
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:1:hardcoded file path:const bunyan = require('bunyan');
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:3:hardcoded variable:const logger = bunyan.createLogger({
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:4:hardcoded string:    name: 'computeIasSkuPrice',
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:5:hardcoded environment variable:    env: process.env.NODE_ENV,
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:10:hardcoded variable:const getIasRegSkuPrice = (products) => {
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:11:hardcoded number:    let iasRegSkuPrice = 0;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:12:hardcoded string:    const regSkus = products.filter((sku) => (sku.subType === "registration" && sku.category === "ias")) || null;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:19:hardcoded object:const getUpdatedIasDetails = ({ maxPrice, finalPrice, tabletPrice, iasRegSkuPrice, products, students }) => {
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:20:hardcoded number:    let updatedTabletPrice = 0;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:21:hardcoded number:    let updatedRegSkuPrice = 0;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:22:hardcoded number:    let priceToBeDivided = 0;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:23:hardcoded number:    let costPerSku = 0;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:24:hardcoded variable:    let priceToBeExcluded = tabletPrice + iasRegSkuPrice;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:26:hardcoded string:    let courseSkus = products.filter((sku) => !(sku.subType === "registration" && sku.category === "ias") && !(sku.category == 'tablet' || sku.type == 'tablet'));
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:29:hardcoded number:    updatedRegSkuPrice = (finalPrice >= priceToBeExcluded) ? iasRegSkuPrice : (finalPrice <= tabletPrice) ? 0 : (finalPrice - tabletPrice);
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:30:hardcoded number:    priceToBeDivided = (finalPrice > priceToBeExcluded) ? (finalPrice - priceToBeExcluded) : 0;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:32:hardcoded number:    costPerSku = (priceToBeDivided > 0) ? (Math.round((priceToBeDivided / courseSkus.length) * 100) / 100) : 0;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:36:hardcoded string:        if (sku.category === 'ias' && sku.subType === "registration") {
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:37:hardcoded string:            sku['price'] = updatedRegSkuPrice;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:38:hardcoded string:        } else if (sku.category == 'tablet' || sku.type == 'tablet') {
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:39:hardcoded string:            sku['price'] = updatedTabletPrice;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:41:hardcoded string:            sku['price'] = costPerSku;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:45:hardcoded variable:    const updatedIasProducts = products;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:49:hardcoded variable:const computeCompetitiveSkuPrice = async (productDetails) => {
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:50:hardcoded string:    logger.info('computeCompetitiveSkuPrice: productDetails', productDetails);
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:52:hardcoded array:    let { products = [], students = [], finalPrice, maxPrice } = productDetails || {}
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:53:hardcoded number:    let tabletPrice = 0;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:55:hardcoded string:    const tabletSku = products.filter(ele => (ele.category == 'tablet' || ele.type == 'tablet')) || null;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:61:hardcoded object:    let updatedIasProducts = getUpdatedIasDetails({ maxPrice, finalPrice, tabletPrice, iasRegSkuPrice, products, students })
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:62:hardcoded string:    productDetails['products'] = updatedIasProducts;
+microservices-middleware/server/src/productmanagement/competitive/priceSplit.js:63:hardcoded number:    productDetails.students[0].items = updatedIasProducts;
+microservices-middleware/server/src/productmanagement/competitive/util.js:7:hardcoded string:        type: "product",
+microservices-middleware/server/src/productmanagement/competitive/util.js:8:hardcoded string:        subType: "sd_card",
+microservices-middleware/server/src/productmanagement/competitive/util.js:9:hardcoded string:        category: "ias",
+microservices-middleware/server/src/productmanagement/competitive/util.js:10:hardcoded string:        subCourse: "ias_mains"
+microservices-middleware/server/src/productmanagement/competitive/util.js:14:hardcoded string:        type: "service",
+microservices-middleware/server/src/productmanagement/competitive/util.js:15:hardcoded string:        subType: "live",
+microservices-middleware/server/src/productmanagement/competitive/util.js:16:hardcoded string:        category: "ias",
+microservices-middleware/server/src/productmanagement/competitive/util.js:17:hardcoded string:        subCourse: "ias_byjus_classes"
+microservices-middleware/server/src/productmanagement/competitive/util.js:21:hardcoded string:        type: "product",
+microservices-middleware/server/src/productmanagement/competitive/util.js:22:hardcoded string:        subType: "sd_card+live",
+microservices-middleware/server/src/productmanagement/competitive/util.js:23:hardcoded string:        category: "ias",
+microservices-middleware/server/src/productmanagement/competitive/util.js:24:hardcoded string:        subCourse: "ias_mains"
+microservices-middleware/server/src/productmanagement/competitive/util.js:28:hardcoded string:        type: "product",
+microservices-middleware/server/src/productmanagement/competitive/util.js:29:hardcoded string:        subType: "sd_card",
+microservices-middleware/server/src/productmanagement/competitive/util.js:30:hardcoded string:        category: "ias_extension",
+microservices-middleware/server/src/productmanagement/competitive/util.js:31:hardcoded string:        subCourse: "ias_mains"
+microservices-middleware/server/src/productmanagement/competitive/util.js:35:hardcoded string:        type: "service",
+microservices-middleware/server/src/productmanagement/competitive/util.js:36:hardcoded string:        subType: "streaming",
+microservices-middleware/server/src/productmanagement/competitive/util.js:37:hardcoded string:        category: "ias"
+microservices-middleware/server/src/productmanagement/competitive/util.js:41:hardcoded string:        subCourse: "current_affairs",
+microservices-middleware/server/src/productmanagement/competitive/util.js:45:hardcoded string:        subCourse: "prelims_test_series",
+microservices-middleware/server/src/productmanagement/competitive/util.js:49:hardcoded string:        subCourse: "mains_test_series",
+microservices-middleware/server/src/productmanagement/competitive/util.js:53:hardcoded string:        type: "service",
+microservices-middleware/server/src/productmanagement/competitive/util.js:54:hardcoded string:        subType: "streaming",
+microservices-middleware/server/src/productmanagement/competitive/util.js:55:hardcoded string:        category: "ias",
+microservices-middleware/server/src/productmanagement/competitive/util.js:56:hardcoded string:        subCourse: "miscellaneous"
+microservices-middleware/server/src/productmanagement/competitive/util.js:60:hardcoded string:        type: "product",
+microservices-middleware/server/src/productmanagement/competitive/util.js:61:hardcoded string:        subType: "sd_card",
+microservices-middleware/server/src/productmanagement/competitive/util.js:62:hardcoded string:        category: "ias",
+microservices-middleware/server/src/productmanagement/competitive/util.js:63:hardcoded string:        subCourse: "optional"
+microservices-middleware/server/src/productmanagement/competitive/util.js:67:hardcoded string:        type: "service",
+microservices-middleware/server/src/productmanagement/competitive/util.js:68:hardcoded string:        subType: "crp",
+microservices-middleware/server/src/productmanagement/competitive/util.js:69:hardcoded string:        category: "ias_crp",
+microservices-middleware/server/src/productmanagement/competitive/util.js:70:hardcoded string:        subCourse: "ias_mains"
+microservices-middleware/server/src/productmanagement/competitive/util.js:74:hardcoded string:        type: "service",
+microservices-middleware/server/src/productmanagement/competitive/util.js:75:hardcoded string:        subType: "crp",
+microservices-middleware/server/src/productmanagement/competitive/util.js:76:hardcoded string:        category: "ias_crp",
+microservices-middleware/server/src/productmanagement/competitive/util.js:77:hardcoded string:        subCourse: "optional"
+microservices-middleware/server/src/productmanagement/competitive/util.js:81:hardcoded string:        type: "service",
+microservices-middleware/server/src/productmanagement/competitive/util.js:82:hardcoded string:        subType: "registration",
+microservices-middleware/server/src/productmanagement/competitive/util.js:83:hardcoded string:        category: "ias",
+microservices-middleware/server/src/productmanagement/competitive/service.js:1:hardcoded object:const { get, isEmpty, isArray, isNaN, flattenDeep } = require('lodash');
+microservices-middleware/server/src/productmanagement/competitive/service.js:3:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Product Explorer');
+microservices-middleware/server/src/productmanagement/competitive/service.js:4:hardcoded object:const { BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/competitive/service.js:6:hardcoded object:const { productConstant } = require('../utils/productConstants');
+microservices-middleware/server/src/productmanagement/competitive/service.js:7:hardcoded object:const { getTabletSku, getUpdatedTotalPrice, getSkuItemId } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/competitive/service.js:8:hardcoded object:const { getDiscountDetails } = require('../vouchermanagement/voucherHelper');
+microservices-middleware/server/src/productmanagement/competitive/service.js:9:hardcoded object:const { getBooksSku } = require('../../bookmanagement/bookController');
+microservices-middleware/server/src/productmanagement/competitive/service.js:12:hardcoded file path:    crpSdCardSku, crpSkuBundle, crpOptionalSku } = require('./betaHelper');
+microservices-middleware/server/src/productmanagement/competitive/service.js:13:hardcoded object:const { getIasRegistrationSku } = require('../../productmanagement/competitiveHelper');
+microservices-middleware/server/src/productmanagement/competitive/service.js:15:hardcoded object:const { isDevEnv } = require("../../../lib/featureHelper");
+microservices-middleware/server/src/productmanagement/competitive/service.js:17:hardcoded variable:const getTotalPrice = async (productDetails) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:18:hardcoded string:    let { finalPrice, tabletSku, productCombination = "", identifier, studentCount = 1, validity = "" } = productDetails;
+microservices-middleware/server/src/productmanagement/competitive/service.js:20:hardcoded variable:    let totalPrice = parseInt(finalPrice);
+microservices-middleware/server/src/productmanagement/competitive/service.js:21:hardcoded array:    tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/productmanagement/competitive/service.js:26:hardcoded number:            const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/competitive/service.js:31:hardcoded object:    totalPrice = await getUpdatedTotalPrice({ identifier, totalPrice, role: null, productCombination, studentCount, validity });
+microservices-middleware/server/src/productmanagement/competitive/service.js:32:hardcoded number:    // totalPrice = (Math.ceil(totalPrice / 1000)) * 1000;
+microservices-middleware/server/src/productmanagement/competitive/service.js:36:hardcoded variable:const getSummedUpPrice = (entity) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:37:hardcoded variable:    const totalPrice = entity ? entity.reduce((sum, sku) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:38:hardcoded string:        return sum + (parseInt(get(sku, 'quantity', 1)) * parseInt(get(sku, 'price', 0)));
+microservices-middleware/server/src/productmanagement/competitive/service.js:39:hardcoded number:    }, 0) : 0;
+microservices-middleware/server/src/productmanagement/competitive/service.js:44:hardcoded variable:const getMinimumRange = (productDetails) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:45:hardcoded string:    logger.info({ method: 'getMinimumRange' }, 'Calculating Minimum price');
+microservices-middleware/server/src/productmanagement/competitive/service.js:46:hardcoded string:    let { maxPrice, tabletSku, paymentType, couponDetails, productCombination, validity = "", user } = productDetails
+microservices-middleware/server/src/productmanagement/competitive/service.js:47:hardcoded string:    const loggedInUserRole = (get(user, 'role', '') || '');
+microservices-middleware/server/src/productmanagement/competitive/service.js:51:hardcoded object:    const { isCouponApplied, couponCode } = couponDetails || {};
+microservices-middleware/server/src/productmanagement/competitive/service.js:52:hardcoded array:    tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/productmanagement/competitive/service.js:54:hardcoded variable:    const tabletTotalPrice = getSummedUpPrice(tabletSku);
+microservices-middleware/server/src/productmanagement/competitive/service.js:56:hardcoded variable:    const applicablePriceForDiscount = parseInt(maxPrice) - (parseInt(tabletTotalPrice));
+microservices-middleware/server/src/productmanagement/competitive/service.js:58:hardcoded string:    if (paymentType === 'EMI') {
+microservices-middleware/server/src/productmanagement/competitive/service.js:59:hardcoded string:        minPricePercentage = productCombination === "byjus_classes" ? productConstant.BYJUS_CLASSES_EMI_MIN_PRICE : productConstant.EMI_MIN_PRICE;
+microservices-middleware/server/src/productmanagement/competitive/service.js:61:hardcoded string:        minPricePercentage = productCombination === "byjus_classes" ? productConstant.BYJUS_CLASSES_NON_EMI_MIN_PRICE : productConstant.NON_EMI_MIN_PRICE;
+microservices-middleware/server/src/productmanagement/competitive/service.js:65:hardcoded string:        logger.info({ method: 'getMinimumRange' }, isCouponApplied, 'Decreasing price range if coupon is applied');
+microservices-middleware/server/src/productmanagement/competitive/service.js:73:hardcoded variable:    let minPrice = applicablePriceForDiscount - (applicablePriceForDiscount * minPricePercentage);
+microservices-middleware/server/src/productmanagement/competitive/service.js:75:hardcoded string:    minPrice = validity === "TRIAL_PACK" ? (Math.floor(minPrice / 100)) * 100 : (Math.floor(minPrice / 1000)) * 1000;
+microservices-middleware/server/src/productmanagement/competitive/service.js:83:hardcoded variable:const getCompetitiveProductFromPg = async (req) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:84:hardcoded string:    logger.info({ method: 'getCompetitiveProductFromPg' }, { message: "Fetching Competitive Product from postgreSQL" });
+microservices-middleware/server/src/productmanagement/competitive/service.js:87:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/productmanagement/competitive/service.js:88:hardcoded variable:    let bookSku = null;
+microservices-middleware/server/src/productmanagement/competitive/service.js:89:hardcoded number:    let skuPrice = 0;
+microservices-middleware/server/src/productmanagement/competitive/service.js:90:hardcoded string:    let query = "";
+microservices-middleware/server/src/productmanagement/competitive/service.js:91:hardcoded object:    let skuDetails = { skuPrice, skuArray };
+microservices-middleware/server/src/productmanagement/competitive/service.js:93:hardcoded string:    const { paymentType = "EMI", productType, student, mentoringCount, couponDetails, productCombination, identifier, authDetails } = req;
+microservices-middleware/server/src/productmanagement/competitive/service.js:94:hardcoded string:    const { ias_sellon_discounted_price: featureEnable } = authDetails['featureEnableList'] || {};
+microservices-middleware/server/src/productmanagement/competitive/service.js:99:hardcoded string:        let { course, validity, type, miscellaneous = [], tablet, language, optionalCourses = [], courseType = "", product = "" } = student;
+microservices-middleware/server/src/productmanagement/competitive/service.js:105:hardcoded string:            validity: validity + "",
+microservices-middleware/server/src/productmanagement/competitive/service.js:106:hardcoded string:            status: "active"
+microservices-middleware/server/src/productmanagement/competitive/service.js:110:hardcoded string:        if (courseType === "IAS_TLP") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:114:hardcoded string:        } else if (courseType === "IAS_BHLP" && product == "sd_card_live_classes" ) {
+microservices-middleware/server/src/productmanagement/competitive/service.js:116:hardcoded string:        } else if(courseType === "IAS_BHLP" && product == "live_classes") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:121:hardcoded string:        if (courseType === "IAS_BHLP" && course === 'IAS' && miscellaneous.length == 0 && validity != 2022) {
+microservices-middleware/server/src/productmanagement/competitive/service.js:123:hardcoded array:            computeSKU([regSku], skuDetails)
+microservices-middleware/server/src/productmanagement/competitive/service.js:126:hardcoded string:        if (['local', 'development'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/competitive/service.js:127:hardcoded object:            bookSku = await getBooksSku({ productCombination, productType, course, type, language });
+microservices-middleware/server/src/productmanagement/competitive/service.js:130:hardcoded object:        tabletSku = tablet ? await getTabletSku({ tabletId: tablet }) : null;
+microservices-middleware/server/src/productmanagement/competitive/service.js:131:hardcoded number:        mentoringSku = (mentoringCount > 0) ? await getMentoringSku(mentoringCount) : null;
+microservices-middleware/server/src/productmanagement/competitive/service.js:133:hardcoded object:        const maxPrice = await getTotalPrice({ req, finalPrice: skuDetails.skuPrice, tabletSku, mentoringSku, identifier, productCombination });
+microservices-middleware/server/src/productmanagement/competitive/service.js:134:hardcoded string:        let minPrice = (isDevEnv && courseType === "IAS_TLP" && type == "Optional" && featureEnable) ? Math.floor(((23 / 100) * maxPrice) / 1000) * 1000 : getMinimumRange({ req, maxPrice, tabletSku, mentoringSku, paymentType, couponDetails });
+microservices-middleware/server/src/productmanagement/competitive/service.js:135:hardcoded array:        const products = [skuDetails.skuArray, tabletSku];
+microservices-middleware/server/src/productmanagement/competitive/service.js:139:hardcoded variable:        const formattedProducts = flattenDeep(products.filter(prdct => prdct));
+microservices-middleware/server/src/productmanagement/competitive/service.js:141:hardcoded string:        student["formValues"] = { ...student };
+microservices-middleware/server/src/productmanagement/competitive/service.js:142:hardcoded string:        student["items"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/competitive/service.js:144:hardcoded object:        const skuProductDetails = { tabletSku, regSku, maxPrice, minPrice, productCombination }
+microservices-middleware/server/src/productmanagement/competitive/service.js:145:hardcoded object:        const discountDetails = await getDiscountDetails({ identifier, productDetails: skuProductDetails });
+microservices-middleware/server/src/productmanagement/competitive/service.js:146:hardcoded string:        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/competitive/service.js:153:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/competitive/service.js:157:hardcoded array:                items: [mentoringSku]
+microservices-middleware/server/src/productmanagement/competitive/service.js:171:hardcoded variable:const getBtlpSkus = async (type, miscellaneous, query, language, optionalCourses, skuDetails) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:177:hardcoded string:        if (type == "New") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:180:hardcoded string:        } else if (type == "Extension") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:183:hardcoded string:        } else if (type == "Optional") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:186:hardcoded string:        } else if (type == "New+Optional") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:189:hardcoded string:        } else if (type == "Extension+Optional") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:199:hardcoded variable:const getByjusClassesSkus = async (type, miscellaneous, query, language, optionalCourses, skuDetails) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:205:hardcoded string:        if (type == "New_BYJUS_CLASSES") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:208:hardcoded string:        } else if (type == "Extension_BYJUS_CLASSES") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:211:hardcoded string:        } else if (type == "New+Optional_BYJUS_CLASSES") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:214:hardcoded string:        } else if (type == "Extension+Optional_BYJUS_CLASSES") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:216:hardcoded string:        } else if (type == "only_byjus_classes") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:234:hardcoded variable:const btlp_new = async (miscellaneous, query, sku, skuDetails, language) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:235:hardcoded number:    if (miscellaneous && miscellaneous.length > 0) {
+microservices-middleware/server/src/productmanagement/competitive/service.js:246:hardcoded variable:const btlp_extension = async (query, sku, skuDetails, language) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:253:hardcoded variable:const btlp_optional = async (optionalCourses, query, sku, skuDetails) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:254:hardcoded number:    if (optionalCourses && optionalCourses.length > 0) {
+microservices-middleware/server/src/productmanagement/competitive/service.js:260:hardcoded variable:const btlp_new_optional = async (optionalCourses, query, sku, skuDetails, language) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:265:hardcoded number:    if (optionalCourses && optionalCourses.length > 0) {
+microservices-middleware/server/src/productmanagement/competitive/service.js:271:hardcoded variable:const btlp_ext_optional = async (optionalCourses, query, sku, skuDetails, language) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:276:hardcoded number:    if (optionalCourses && optionalCourses.length > 0) {
+microservices-middleware/server/src/productmanagement/competitive/service.js:282:hardcoded variable:const byjusClasses_new_bc = async (miscellaneous, query, sku, skuDetails, language) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:283:hardcoded number:    if (miscellaneous && miscellaneous.length > 0) {
+microservices-middleware/server/src/productmanagement/competitive/service.js:296:hardcoded variable:const byjusClasses_only_bc = async (query, sku, skuDetails, language) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:303:hardcoded variable:const byjusClasses_ext_bc = async (query, sku, skuDetails, language) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:312:hardcoded variable:const byjusClasses_new_opt__bc = async (optionalCourses, query, sku, skuDetails, language) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:319:hardcoded number:    if (optionalCourses && optionalCourses.length > 0) {
+microservices-middleware/server/src/productmanagement/competitive/service.js:325:hardcoded variable:const byjusClasses_ext_opt__bc = async (optionalCourses, query, sku, skuDetails, language) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:334:hardcoded number:    if (optionalCourses && optionalCourses.length > 0) {
+microservices-middleware/server/src/productmanagement/competitive/service.js:340:hardcoded variable:const computeSKU = (courseSkus, skuDetails) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:343:hardcoded string:            sku['price'] = parseInt(get(sku, 'basePrice'), 0);
+microservices-middleware/server/src/productmanagement/competitive/service.js:344:hardcoded string:            sku["itemId"] = getSkuItemId(sku);
+microservices-middleware/server/src/productmanagement/competitive/service.js:345:hardcoded string:            skuDetails.skuPrice += get(sku, 'price');
+microservices-middleware/server/src/productmanagement/competitive/service.js:354:hardcoded variable:const getCRPCompetitiveProductFromPg = async (req) => {
+microservices-middleware/server/src/productmanagement/competitive/service.js:355:hardcoded string:    logger.info({ method: 'getCRPCompetitiveProductFromPg' }, { message: "Fetching CRP Competitive Product" });
+microservices-middleware/server/src/productmanagement/competitive/service.js:358:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/productmanagement/competitive/service.js:359:hardcoded number:    let skuPrice = 0;
+microservices-middleware/server/src/productmanagement/competitive/service.js:360:hardcoded variable:    let bookSku = null;
+microservices-middleware/server/src/productmanagement/competitive/service.js:361:hardcoded variable:    const env = process.env.NODE_ENV;
+microservices-middleware/server/src/productmanagement/competitive/service.js:362:hardcoded object:    let skuDetails = { skuPrice, skuArray };
+microservices-middleware/server/src/productmanagement/competitive/service.js:364:hardcoded string:    const { paymentType = "EMI", productType, student, mentoringCount, couponDetails, productCombination, identifier, type } = req;
+microservices-middleware/server/src/productmanagement/competitive/service.js:368:hardcoded string:        let { course, board, crpCity, validity, type = '', isCrpFlowReq = false, tablet, language, optional } = student;
+microservices-middleware/server/src/productmanagement/competitive/service.js:372:hardcoded string:        if (type === "New_BYJUS_CLASSES") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:381:hardcoded string:        } else if (type === "Optional" && optional != "") {
+microservices-middleware/server/src/productmanagement/competitive/service.js:386:hardcoded string:        if (['local'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/competitive/service.js:387:hardcoded object:            bookSku = await getBooksSku({ productCombination, productType, course, type, language });
+microservices-middleware/server/src/productmanagement/competitive/service.js:390:hardcoded object:        tabletSku = tablet ? await getTabletSku({ tabletId: tablet }) : null;
+microservices-middleware/server/src/productmanagement/competitive/service.js:391:hardcoded number:        mentoringSku = (mentoringCount > 0) ? await getMentoringSku(mentoringCount) : null;
+microservices-middleware/server/src/productmanagement/competitive/service.js:393:hardcoded object:        const maxPrice = await getTotalPrice({ req, finalPrice: skuDetails.skuPrice, tabletSku, mentoringSku, identifier });
+microservices-middleware/server/src/productmanagement/competitive/service.js:394:hardcoded object:        const minPrice = getMinimumRange({ req, maxPrice, tabletSku, mentoringSku, paymentType, couponDetails });
+microservices-middleware/server/src/productmanagement/competitive/service.js:395:hardcoded array:        const products = [skuDetails.skuArray, tabletSku];
+microservices-middleware/server/src/productmanagement/competitive/service.js:396:hardcoded variable:        const formattedProducts = flattenDeep(products.filter(prdct => prdct));
+microservices-middleware/server/src/productmanagement/competitive/service.js:400:hardcoded string:        student["formValues"] = { ...student };
+microservices-middleware/server/src/productmanagement/competitive/service.js:401:hardcoded string:        student["items"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/competitive/service.js:408:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/competitive/service.js:412:hardcoded array:                items: [mentoringSku]
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:1:hardcoded object:const { Op } = require("sequelize");
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:2:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:3:hardcoded file path:const IAS = require('./util');
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:4:hardcoded object:const { snakeCase } = require('lodash')
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:6:hardcoded variable:const fetchSKU = async (qry) => {
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:8:hardcoded variable:        const skus = await SalesSkuMaster.findAll({
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:10:hardcoded string:                status: 'active',
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:21:hardcoded variable:const sdCardSku = async (qry, language) => {
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:23:hardcoded string:        qry['subCourse'] = IAS.sd_card.subCourse;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:24:hardcoded string:        qry['category'] = IAS.sd_card.category;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:25:hardcoded string:        qry['type'] = IAS.sd_card.type;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:26:hardcoded string:        qry['subType'] = IAS.sd_card.subType;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:27:hardcoded string:        qry['language'] = language;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:29:hardcoded variable:        const skus = await fetchSKU(qry);
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:31:hardcoded string:        if (skus.length != 1) throw new Error("SD Card SKU Missing");
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:40:hardcoded variable:const byjusClassesSku = async (qry, language) => {
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:42:hardcoded string:        qry['subCourse'] = IAS.byjus_classes.subCourse;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:43:hardcoded string:        qry['category'] = IAS.byjus_classes.category;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:44:hardcoded string:        qry['type'] = IAS.byjus_classes.type;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:45:hardcoded string:        qry['subType'] = IAS.byjus_classes.subType;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:46:hardcoded string:        qry['language'] = language;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:48:hardcoded variable:        const skus = await fetchSKU(qry);
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:50:hardcoded string:        if (skus.length != 1) throw new Error("Byjus Classes SKU Missing");
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:59:hardcoded variable:const sdCardPlusByjusClassesSku = async (qry, language) => {
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:61:hardcoded string:        qry['subCourse'] = IAS.sd_card_byjus_classes.subCourse;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:62:hardcoded string:        qry['category'] = IAS.sd_card_byjus_classes.category;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:63:hardcoded string:        qry['type'] = IAS.sd_card_byjus_classes.type;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:64:hardcoded string:        qry['subType'] = IAS.sd_card_byjus_classes.subType;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:65:hardcoded string:        qry['language'] = language;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:67:hardcoded variable:        const skus = await fetchSKU(qry);
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:69:hardcoded string:        if (skus.length != 1) throw new Error("SD Card Byjus Classes SKU Missing");
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:78:hardcoded variable:const extSdCardSku = async (qry, language) => {
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:80:hardcoded string:        qry['subCourse'] = IAS.main_ext.subCourse;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:81:hardcoded string:        qry['category'] = IAS.main_ext.category;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:82:hardcoded string:        qry['type'] = IAS.main_ext.type;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:83:hardcoded string:        qry['subType'] = IAS.main_ext.subType;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:84:hardcoded string:        qry['language'] = language;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:86:hardcoded variable:        const skus = await fetchSKU(qry);
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:88:hardcoded string:        if (skus.length != 1) throw new Error("Extension SD Card SKU Missing");
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:96:hardcoded variable:const skuBundle = async (qry, language) => {
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:98:hardcoded string:        qry['category'] = IAS.bundle.category;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:99:hardcoded string:        qry['type'] = IAS.bundle.type;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:100:hardcoded string:        qry['subType'] = IAS.bundle.subType;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:101:hardcoded string:        qry['language'] = language;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:103:hardcoded array:        var bundles = [];
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:108:hardcoded string:        qry['subCourse'] = { [Op.or]: bundles };
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:110:hardcoded variable:        const skus = await fetchSKU(qry);
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:112:hardcoded string:        if (skus.length != 3) throw new Error("Discrepency with Prelims, Mains, Currnt affairs SKUs");
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:121:hardcoded variable:const miscSkus = async (miscellaneous, qry) => {
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:123:hardcoded string:        qry['subCourse'] = IAS.misc.subCourse;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:124:hardcoded string:        qry['category'] = IAS.misc.category;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:125:hardcoded string:        qry['type'] = IAS.misc.type;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:126:hardcoded string:        qry['subType'] = IAS.misc.subType;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:127:hardcoded string:        qry['subject'] = miscellaneous.map(misc => snakeCase(misc));
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:129:hardcoded variable:        const skus = await fetchSKU(qry);
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:131:hardcoded string:        if (skus.length != miscellaneous.length) throw new Error("Miscellaneous Courses SKU Missing");
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:140:hardcoded variable:const optionalSku = async (optionalCourses, qry) => {
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:142:hardcoded string:        qry['subCourse'] = IAS.opt.subCourse;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:143:hardcoded string:        qry['category'] = IAS.opt.category;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:144:hardcoded string:        qry['type'] = IAS.opt.type;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:145:hardcoded string:        qry['subType'] = IAS.opt.subType;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:146:hardcoded string:        qry['subject'] = snakeCase(optionalCourses);
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:148:hardcoded variable:        const skus = await fetchSKU(qry);
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:150:hardcoded string:        if (skus.length != 1) throw new Error("Optional Courses SKU Missing");
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:160:hardcoded variable:const crpByjusClassesSku = async (language, crpCity, course, validity) => {
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:162:hardcoded object:        let qry = {};
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:164:hardcoded string:        qry['course'] = course;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:165:hardcoded string:        qry['validity'] = validity + "";
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:166:hardcoded string:        qry['subCourse'] = IAS.crp_byjus_classes.subCourse;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:167:hardcoded string:        qry['category'] = IAS.crp_byjus_classes.category;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:168:hardcoded string:        qry['type'] = IAS.crp_byjus_classes.type;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:169:hardcoded string:        qry['subType'] = IAS.crp_byjus_classes.subType;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:170:hardcoded string:        qry['language'] = language;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:171:hardcoded string:        qry['city'] = crpCity.toLowerCase();
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:172:hardcoded string:        qry['status'] = 'active'
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:174:hardcoded variable:        const skus = await fetchSKU(qry);
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:176:hardcoded string:        if (skus.length != 1) throw new Error("Byjus Classes SKU Missing");
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:185:hardcoded variable:const crpSdCardSku = async (language, course, validity) => {
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:187:hardcoded object:        let qry = {};
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:189:hardcoded string:        qry['course'] = course;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:190:hardcoded string:        qry['validity'] = validity + "";
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:191:hardcoded string:        qry['subCourse'] = IAS.sd_card.subCourse;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:192:hardcoded string:        qry['category'] = IAS.sd_card.category;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:193:hardcoded string:        qry['type'] = IAS.sd_card.type;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:194:hardcoded string:        qry['subType'] = IAS.sd_card.subType;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:195:hardcoded string:        qry['language'] = language;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:196:hardcoded string:        qry['status'] = 'active'
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:198:hardcoded variable:        const skus = await fetchSKU(qry);
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:200:hardcoded string:        if (skus.length != 1) throw new Error("SD Card Byjus Classes SKU Missing");
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:209:hardcoded variable:const crpOptionalSku = async (optional, language, course, validity) => {
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:211:hardcoded object:        let qry = {};
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:213:hardcoded string:        qry['course'] = course;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:214:hardcoded string:        qry['validity'] = validity + "";
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:215:hardcoded string:        qry['subCourse'] = IAS.crp_optional.subCourse;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:216:hardcoded string:        qry['category'] = IAS.crp_optional.category;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:217:hardcoded string:        qry['type'] = IAS.crp_optional.type;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:218:hardcoded string:        qry['subType'] = IAS.crp_optional.subType;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:219:hardcoded string:        qry['language'] = language;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:220:hardcoded string:        qry['subject'] = snakeCase(optional);
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:222:hardcoded variable:        const skus = await fetchSKU(qry);
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:224:hardcoded string:        if (skus.length != 1) throw new Error("Optional SKU Missing");
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:232:hardcoded variable:const crpSkuBundle = async (language, course, validity) => {
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:234:hardcoded object:        let qry = {};
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:236:hardcoded string:        qry['course'] = course;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:237:hardcoded string:        qry['validity'] = validity + "";
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:238:hardcoded string:        qry['category'] = IAS.bundle.category;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:239:hardcoded string:        qry['type'] = IAS.bundle.type;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:240:hardcoded string:        qry['subType'] = IAS.bundle.subType;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:241:hardcoded string:        qry['language'] = language;
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:242:hardcoded string:        qry['status'] = 'active'
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:244:hardcoded array:        var bundles = [];
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:249:hardcoded string:        qry['subCourse'] = { [Op.or]: bundles };
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:251:hardcoded variable:        const skus = await fetchSKU(qry);
+microservices-middleware/server/src/productmanagement/competitive/betaHelper.js:253:hardcoded string:        if (skus.length != 3) throw new Error("Discrepency with Prelims, Mains, Currnt affairs SKUs");
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:1:hardcoded object:const { isEmpty } = require('lodash');
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:3:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Competitive Explorer');
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:4:hardcoded object:const { BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:6:hardcoded object:const { getCompetitiveProductFromPg, getCRPCompetitiveProductFromPg } = require('./service');
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:8:hardcoded variable:const getCompetitiveProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:9:hardcoded string:    logger.info({ method: 'getCompetitiveProduct' }, { message: "Fetching Competitive Product" });
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:11:hardcoded string:    const { paymentType = "EMI", productType, student } = req.body;
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:14:hardcoded variable:    let details = await getCompetitiveProductFromPg(req.body);
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:16:hardcoded object:    let { maxPrice, minPrice, discountedPrice, students, products, voucher, mentoring, coupon, areBonusPointsUsed, bonusPointsDiscount } = details;
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:34:hardcoded variable:const getCRPCompetitiveProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:35:hardcoded string:    logger.info({ method: 'getCRPCompetitiveProduct' }, { message: "Fetching CRP Competitive Product" });
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:38:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:39:hardcoded number:    let skuPrice = 0;
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:40:hardcoded variable:    let bookSku = null;
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:41:hardcoded variable:    const env = process.env.NODE_ENV;
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:43:hardcoded string:    const { paymentType = "EMI", productType, student, mentoringCount, couponDetails, productCombination, identifier, type } = req.body;
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:46:hardcoded variable:    let details = await getCRPCompetitiveProductFromPg(req.body);
+microservices-middleware/server/src/productmanagement/competitive/explorer.js:49:hardcoded object:    let { maxPrice, minPrice, discountedPrice, students, products, voucher, mentoring, coupon, areBonusPointsUsed, bonusPointsDiscount } = details;

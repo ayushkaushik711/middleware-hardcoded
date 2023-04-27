@@ -1,0 +1,74 @@
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:1:hardcoded object:const { flattenDeep, map, get, isEmpty } = require('lodash')
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:2:hardcoded file path:const logger = require('../../../../lib/bunyan-logger')('service.js');
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:4:hardcoded variable:const formattedQuaterlyLineItems = async (orderDetails, identifier) => {
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:5:hardcoded string:    logger.info({ method: 'formatLineItems' }, 'Checking if Order is eligible to be splitted');
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:6:hardcoded object:    const { productDetails, orderPunchingCategory } = orderDetails;
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:7:hardcoded array:    const { students = [] } = productDetails;
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:8:hardcoded object:    let lineItems = {};
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:11:hardcoded string:        const items = flattenDeep(map(students, 'items'));
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:13:hardcoded string:        logger.info("QUARTERLY-PACK LOGGER : " + orderPunchingCategory);
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:14:hardcoded variable:        const splittedLineItems = await getLineItems(items)
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:15:hardcoded string:        logger.info("QUARTERLY-PACK LOGGER : splittedLineItems : " + splittedLineItems);
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:17:hardcoded object:        const { parentLineItems, childLineItems } = splittedLineItems || {};
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:18:hardcoded string:        const orderType = childLineItems.length ? 'split_order' : 'single_order';
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:19:hardcoded string:        logger.info("%j", { method: 'formatLineItems' }, { orderType, lineItems: JSON.stringify(splittedLineItems) });
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:26:hardcoded string:        logger.info("%j", { method: 'formatLineItems', message: "Error in splitting line Items" });
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:27:hardcoded string:        throw new Error(error || "Error in splitting line Items");
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:33:hardcoded variable:const getLineItems = (items) => {
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:36:hardcoded string:    childLineItems = items.filter(course => course.type === "service"); 
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:38:hardcoded string:        const childItemIds = map(childLineItems, 'skuId');
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:40:hardcoded string:        if (!childItemIds.includes(get(item, 'skuId', ''))) {
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/service.js:47:hardcoded array:        childLineItems = []
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:1:hardcoded object:const { isEmpty, isArray, get } = require('lodash');
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:2:hardcoded object:const { BadRequestError } = require('../../../../lib/errors');
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:3:hardcoded file path:const logger = require('../../../../lib/bunyan-logger')('Quarterly Pack DTO');
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:5:hardcoded object:const { getCourseSku } = require('./dto')
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:6:hardcoded object:const { getUpdatedPrice } = require('./../services/skuAndPricing')
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:7:hardcoded object:const { getTotalSkuAndPrice } = require('../../service/totalSkusPrice')
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:8:hardcoded object:const { getUpdatedStudentDetails } = require('./../assembler')
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:10:hardcoded variable:const getQuarterlyPack = async (req, res) => {
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:11:hardcoded string:    logger.info({ method: 'getQuarterlyPack' }, { message: "Fetching Quaterly Single Product" });
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:13:hardcoded string:    let { paymentType = 'EMI', productType, productCombination, student } = req.body;
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:17:hardcoded number:        student = isArray(student) ? student[0] : student
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:19:hardcoded variable:        const courseSku = await getCourseSku(student) 
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:20:hardcoded object:        const { formattedProducts, totalPrice } = getTotalSkuAndPrice({
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:25:hardcoded object:        const details = { req, totalPrice }
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:26:hardcoded object:        const { maxPrice, minPrice, discountedPrice, voucher, areBonusPointsUsed, bonusPointsDiscount } = await getUpdatedPrice(details)
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:29:hardcoded string:            productType: "single",
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:30:hardcoded string:            paymentType: get(student, "paymentType"),
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:34:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/controller.js:37:hardcoded string:            bhlpCourseDetails: get(student, "bhlpCourseDetails"),
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:1:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:2:hardcoded object:const { NotFoundError } = require('./../../../../lib/errors');
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:3:hardcoded object:const { getUpdatedCourseSku } = require('./../assembler')
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:4:hardcoded object:const { getBoard } = require('../../service/boardAndState')
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:5:hardcoded object:const { getErrorMsg } = require('../../service/errorMessage')
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:7:hardcoded variable:const getCourseSku = async (student) => {
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:9:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:10:hardcoded object:    const { initialClass, board, state } = student
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:11:hardcoded variable:    const grade = initialClass
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:13:hardcoded variable:    let query = {
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:15:hardcoded string:        validity: '90'
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:17:hardcoded string:    query['board'] = await getBoard({grade, board, state})
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:19:hardcoded variable:    const byjusClassSku = await getByjusClassesSku(query)
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:20:hardcoded variable:    const streamingSku = await getStreamingSku(query)
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:23:hardcoded variable:    const courseSku = await getUpdatedCourseSku(skuArray)
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:28:hardcoded variable:const getByjusClassesSku = async (query) => {
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:32:hardcoded string:        category: "byjus_classes"
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:35:hardcoded variable:    let product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:37:hardcoded string:            status: 'active',
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:45:hardcoded string:            itemType: 'course'
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:49:hardcoded object:        const { grade, board, state, validity } = query
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:50:hardcoded object:        const errorMsg = getErrorMsg({ grade, board, state, validity });
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:55:hardcoded variable:const getStreamingSku = async (query) => {
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:59:hardcoded string:        category: "online_premium_app"
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:62:hardcoded variable:    let product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:64:hardcoded string:            status: 'active',
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:72:hardcoded string:            itemType: 'course'
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:76:hardcoded object:        const { grade, board, state, validity } = query
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/dto.js:77:hardcoded object:        const errorMsg = getErrorMsg({ grade, board, state, validity, course });
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/routes.js:1:hardcoded file path:const Router = require('express-promise-router');
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/routes.js:2:hardcoded file path:const controller = require('./controller');
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/routes.js:3:hardcoded object:const { storeCalculatedPriceMw } = require('../../productHelper')
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/routes.js:5:hardcoded object:const router = Router({ mergeParams: true });
+microservices-middleware/server/src/productmanagement/byjusneo/quarterly/routes.js:10:hardcoded string:    router.route('/neo/product/quarterlyPack')

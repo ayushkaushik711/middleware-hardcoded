@@ -1,0 +1,57 @@
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/index.js:1:hardcoded file path:import React from "react";
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/index.js:3:hardcoded file path:import CompetetiveForm from "./Competetive";
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/index.js:5:hardcoded variable:const ProductForm = (props) => {
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/index.js:6:hardcoded object:    const { onChangeGrade, masterDetails = {} } = props;
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/index.js:8:hardcoded variable:    const onClickSubmit = async (event) => {
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/index.js:10:hardcoded variable:        const formData = new FormData(event.target),
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/index.js:15:hardcoded variable:    const onClickReset = async (id, event) => {
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/index.js:17:hardcoded object:        onChangeGrade({});
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/index.js:23:hardcoded object:            onClickSubmit={onClickSubmit}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/index.js:24:hardcoded object:            onClickReset={onClickReset}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/index.js:25:hardcoded object:            masterDetails={masterDetails}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:1:hardcoded object:import React, { useEffect, useRef, useState } from "react";
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:2:hardcoded object:import { Form, Button, Row, Col, Label, Input } from "reactstrap";
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:3:hardcoded object:import { get, startCase, isEmpty } from "lodash";
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:5:hardcoded variable:const CompetetiveForm = (props) => {
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:6:hardcoded object:  const { onClickSubmit, onClickReset, masterDetails = {} } = props;
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:7:hardcoded array:  const {courses=[], subCourses=[]} = masterDetails || {};
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:9:hardcoded array:  const [courseList, setCourseList] = useState([]);
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:10:hardcoded array:  const [subCoursesList, setSubCoursesList] = useState([]);
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:11:hardcoded variable:  const formRef = useRef();
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:15:hardcoded array:  }, [masterDetails])
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:17:hardcoded variable:  const handleOnChange = async (event) => {
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:18:hardcoded variable:    const name = event.target.name;
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:19:hardcoded variable:    const value = event.target.value;
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:20:hardcoded variable:    const courseItem = courses.find((item)=>item.value==value);
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:21:hardcoded string:    const course = get(courseItem, 'value');
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:22:hardcoded string:    if (name === "course") {
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:23:hardcoded variable:      const updatedList = subCourses.filter((item) => item.details.courseId == course);
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:29:hardcoded string:    <Form onSubmit={onClickSubmit} name="Filter" id="course-form" ref={formRef}>
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:31:hardcoded string:          flexDirection: "row",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:32:hardcoded string:          display: "flex",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:33:hardcoded string:          flexWrap: "nowrap",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:34:hardcoded string:          alignItems: "center"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:36:hardcoded string:        <Col style={{margin: "1rem"}}>
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:38:hardcoded string:          <Input type="select"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:39:hardcoded string:            aria-label="Default select example"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:40:hardcoded string:            name="course"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:41:hardcoded object:            onChange={handleOnChange}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:42:hardcoded string:            style={{margin: "0.5rem", width: "500px"}}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:47:hardcoded object:                <option value={item.value} key={idx}>
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:48:hardcoded object:                  {startCase(item.label)}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:54:hardcoded string:        {!isEmpty(subCoursesList) && (<Col style={{margin: "1rem"}}>
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:56:hardcoded string:          <Input type="select"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:57:hardcoded string:            aria-label="Default select example"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:58:hardcoded string:            name="subCourse"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:59:hardcoded object:            onChange={handleOnChange}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:60:hardcoded string:            style={{margin: "0.5rem", width: "500px"}}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:65:hardcoded object:                <option value={item.value} key={idx}>
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:66:hardcoded object:                  {startCase(item.label)}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:74:hardcoded string:      display: "flex",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:75:hardcoded string:      flexDirection: "row-reverse"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:78:hardcoded string:        color="success"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:79:hardcoded string:        type="submit"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:80:hardcoded string:        style={{margin: "1rem"}}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:85:hardcoded string:        color="warning"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:86:hardcoded string:        onClick= {(event)=>onClickReset("grade-form", event)}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Form/Competetive.js:87:hardcoded string:        style={{margin: "1rem"}}

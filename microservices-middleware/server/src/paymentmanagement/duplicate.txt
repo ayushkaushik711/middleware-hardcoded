@@ -1,0 +1,359 @@
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:1:hardcoded object:const { isEmpty, get, map, flattenDeep, startCase, isNull, find, snakeCase } = require('lodash');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:3:hardcoded string:const { DraftOrder, LeadoOrder: Order, TotalSaleValue } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:4:hardcoded string:const { CondensedPdcSchedule } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:5:hardcoded object:const { pdcConfigs } = require('./pdcBeta/config');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:7:hardcoded file path:const Promise = require('bluebird');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:8:hardcoded object:const { BadRequestError } = require('../../lib/errors');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:9:hardcoded file path:const externalApiUtility = require('../../utility/externalApiUtility');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:10:hardcoded file path:const bunyan = require('bunyan');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:11:hardcoded object:const { paymentPermissions, orderPermissions } = require('../../utility/screenPermission');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:12:hardcoded object:const { createSCRDetail } = require('./scrHelper');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:13:hardcoded object:const { validateSubscriptionPayment, lockSubscriptionPayment } = require('./subscriptionHelper');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:14:hardcoded object:const { getOldPaymentProvider, RCN_BASED_DP_APPLICABLE_ROLE } = require('./utils/paymentUtil');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:15:hardcoded object:const { currencyFormatter, isDevEnv } = require('../../lib/featureHelper');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:17:hardcoded number:    BYJUS_DIRECT_SUBSCRIBE_MIN_DP, EMI_CARD_MIN_DP, ABFL_MIN_DP_FOR_AAKASH_CRP, EX_LOAN_MIN_DP_FOR_BTC, BYJUS_ASSURE_40_K_LOAN_AMOUNT, IAS_COURSE_LOAN_MIN_DP }
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:18:hardcoded file path:    = require('../../src/productmanagement/utils/productConstants')
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:19:hardcoded file path:const getLoanDetailsFromDB = require('./utils/loanDetailsHelper');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:20:hardcoded number:const { getPaymentsV2ByRefId, linkPdcWithDo } = require('../../utility/externalApiUtility');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:22:hardcoded variable:const logger = bunyan.createLogger({
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:23:hardcoded string:    name: 'Payment controller- Helper',
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:24:hardcoded environment variable:    env: process.env.NODE_ENV,
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:29:hardcoded variable:const isTotalPriceMatched = (emiDetails, nonEmiDetails, finalPrice) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:30:hardcoded number:    const totalEmiAmount = emiDetails.reduce((oldVal, ele) => oldVal + parseFloat(ele.amount), 0).toFixed(2);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:32:hardcoded string:    const subscriptionPayments = nonEmiDetails.filter(ele => ele.provider != "SUBSCRIPTION");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:34:hardcoded number:    const totalNonEmiAmount = subscriptionPayments.reduce((oldVal, ele) => oldVal + parseFloat(ele.amount), 0).toFixed(2);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:38:hardcoded variable:const isDownpaymentMatched = (nonEmiDetails, finalPrice) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:39:hardcoded number:    const downpaymentValue = Math.floor((finalPrice * 20) / 100)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:40:hardcoded variable:    const DownPayment = nonEmiDetails.filter(payment => payment.isDownPayment)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:42:hardcoded number:    if (DownPayment.length === 1) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:44:hardcoded number:        return (DownPayment[0].amount == downpaymentValue || DownPayment[0].amount == downpaymentValue + 1)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:47:hardcoded string:        throw new Error('Only one Donwpayment is allowed')
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:51:hardcoded variable:const getMinimumDpDetails = async (props) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:53:hardcoded object:        selectedEmiPayment, finalPrice, productDetails = {} } = props;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:54:hardcoded string:    const { provider = "" } = emiDetails?.[0] || {};
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:55:hardcoded variable:    const result = {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:57:hardcoded number:        minDownPaymentAmount: 0
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:60:hardcoded variable:    const isPrivilegeUser = userPermissions.includes(paymentPermissions.ignoreDownPaymentCheck);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:62:hardcoded variable:    const selectedEmiPaymentConfig = paymentConfig.find(ele => ele.formattedName === selectedEmiPayment);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:63:hardcoded string:    const isOptionalDownPayment = get(selectedEmiPaymentConfig, "otherConfigurations.isOptionalDownPayment", false);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:66:hardcoded string:    if (paymentType !== "EMI" || (isOptionalDownPayment && !["SHOPSE"].includes(provider))) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:70:hardcoded variable:    const priceToCompare = parseFloat(finalPrice);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:71:hardcoded number:    const totalNonEmiAmount = nonEmiDetails.reduce((oldVal, ele) => oldVal + parseFloat(ele.amount), 0);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:72:hardcoded variable:    const regularDpObj = {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:79:hardcoded variable:    const regularDpAmount = await getRegularDp(regularDpObj);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:81:hardcoded string:    result["minDownPaymentAmount"] = regularDpAmount;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:82:hardcoded string:    result['isMatched'] = (totalNonEmiAmount >= regularDpAmount);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:86:hardcoded object:const getdpAmount = ({ paymentConfig, source, nachType, productSelectionType, priceToCompare, loanDetailsNachType, tabletPrice, course, provider }) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:88:hardcoded string:        const productConfig = paymentConfig[productSelectionType] || paymentConfig["default"];
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:89:hardcoded string:        const flowConfig = productConfig[source] || productConfig['webapp'];
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:90:hardcoded string:        const nachConfig = flowConfig[loanDetailsNachType] || flowConfig[nachType] || flowConfig["default"];
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:94:hardcoded number:        const { dpConfig, maxValue = 1000000, maxTablet = 10, includeTabletPrice = false, minValue = 0, allowPrivilegedUsers = true } = nachConfig;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:95:hardcoded variable:        let dp = dpConfig.find(cf => cf.minRange <= priceToCompare && cf.maxRange >= priceToCompare)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:96:hardcoded string:        if (['byjus_exam_prep'].includes(productSelectionType) && course === "IAS") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:97:hardcoded string:            dp["amount"] = IAS_COURSE_LOAN_MIN_DP
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:100:hardcoded number:            dpAmount: dp?.amount + (includeTabletPrice ? tabletPrice : 0),
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:107:hardcoded object:        throw new BadRequestError(`Down payment config not available for ${provider} with ${startCase(productSelectionType)}. Please contact admin.`) 
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:111:hardcoded variable:const tabletCountError = (maxTabletCountAllowed, tabletCount, loanType) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:113:hardcoded object:    throw new BadRequestError(`For ${startCase(loanType)} max tablet count is ${maxTabletCountAllowed} allowed. Please have ${maxTabletCountAllowed} or less tablets to proceed with order punching.`)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:116:hardcoded variable:const maxApprovedLoanError = (maxLoanValueAllowed, amount, loanType) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:118:hardcoded string:    throw new BadRequestError(`For ${startCase(loanType)} max loan amount allowed is ${currencyFormatter(maxLoanValueAllowed, "INR")}. Please have loan of ${currencyFormatter(maxLoanValueAllowed, "INR")} or less to proceed with order punching.`)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:121:hardcoded variable:const minApprovedLoanError = (minLoanValueAllowed, amount, loanType) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:123:hardcoded string:    throw new BadRequestError(`For ${startCase(loanType)} min loan amount allowed is ${currencyFormatter(minLoanValueAllowed, "INR")}. Please have loan of ${currencyFormatter(minLoanValueAllowed, "INR")} or more to proceed with order punching.`)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:126:hardcoded variable:const getRegularDp = async (regularDpObj) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:127:hardcoded object:    const { selectedEmiPaymentConfig, priceToCompare, productDetails, emiDetails, isPrivilegeUser } = regularDpObj;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:128:hardcoded object:    const { students } = productDetails;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:129:hardcoded string:    const { productSelectionType, course = "" } = students[0];
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:130:hardcoded number:    const appId = emiDetails[0]?.appId || emiDetails[0]?.referenceId;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:131:hardcoded number:    const provider = emiDetails[0]?.provider;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:132:hardcoded object:    const { amount, source, nachType, loanDetailsNachType } = await getLoanDetailsFromDB(appId, provider) || {};
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:133:hardcoded string:    const tabletCount = flattenDeep(map(students, 'items'))?.reduce((acc, item) => item?.itemType === "tablet" ? acc + 1 : acc, 0) || 1;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:134:hardcoded string:    const tabletPrice = flattenDeep(map(students, 'items'))?.reduce((acc, item) => item?.itemType === "tablet" ? acc + parseInt(item.price) : acc, 0) || 0;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:135:hardcoded object:    const { dpAmount = null, maxTabletCountAllowed, maxLoanValueAllowed, minLoanValueAllowed, allowPrivilegedUsers } = getdpAmount({ paymentConfig: selectedEmiPaymentConfig?.dpConfig, source, nachType, productSelectionType, priceToCompare, loanDetailsNachType, tabletPrice, course, provider })
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:137:hardcoded object:        throw new BadRequestError(`Down Payment config is not present for ${selectedEmiPaymentConfig?.name} and ${startCase(productSelectionType)} combintation. Please contact support team.`);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:139:hardcoded number:    if (allowPrivilegedUsers && isPrivilegeUser) return 0;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:147:hardcoded variable:const getRegularDpDev = (regularDpObj) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:148:hardcoded object:    const { selectedEmiPaymentConfig, overallConfig, priceToCompare, userCampaign, selectedEmiPayment, productDetails, emiDetails } = regularDpObj;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:149:hardcoded object:    const { students } = productDetails;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:150:hardcoded number:    const { productSelectionType } = students[0];
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:151:hardcoded number:    const { amount } = emiDetails[0];
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:152:hardcoded object:    const { allowOnlyPrivilegedUser } = overallConfig;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:153:hardcoded string:    const items = flattenDeep(map(students, 'items'));
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:154:hardcoded string:    const tablets = items.filter(item => item && item.itemType == "tablet");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:155:hardcoded number:    let tabletCount = Math.max(tablets.length, 1);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:158:hardcoded string:    const { minDpCalcType = "", minDpAmountRange = [] } = selectedEmiPaymentConfig;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:176:hardcoded number:         * for byjus assure it should be normal DP, else it should be 5K
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:178:hardcoded string:        if (!allowOnlyPrivilegedUser && ['byjus_learning_centre'].includes(productSelectionType)) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:179:hardcoded string:            if (["BYJUS_DIRECT"].includes(selectedEmiPayment)) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:182:hardcoded string:            else if (["BYJUS_ASSURE"].includes(selectedEmiPayment)) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:183:hardcoded number:                minDownPaymentAmount = amount <= BYJUS_ASSURE_40_K_LOAN_AMOUNT ? (BYJUS_ASSURE_MIN_DP + BTC_ADDITIONAL_DP_AMOUNT) * tabletCount :
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:184:hardcoded number:                    (BYJUS_ASSURE_MIN_DP + BTC_ADDITIONAL_DP_AMOUNT * 2) * tabletCount;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:186:hardcoded string:            else if (["BYJUS_ADVANTAGE"].includes(selectedEmiPayment)) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:189:hardcoded string:            else if (isDevEnv && ["AVANSE", "IIFL", "ABFL", "FULLERTON", "KOTAK", "ICICI", "INCRED"].includes(selectedEmiPayment)) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:196:hardcoded string:        else if (isDevEnv && minDpCalcType === "minDpAmountRange") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:203:hardcoded string:        else if (["BYJUS_DIRECT"].includes(selectedEmiPayment)) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:206:hardcoded string:        else if (["BYJUS_DIRECT", "BYJUS_SUBSCRIBE"].includes(selectedEmiPayment)) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:209:hardcoded string:        else if (["BYJUS_ASSURE"].includes(selectedEmiPayment)) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:212:hardcoded string:        else if (selectedEmiPayment === "BYJUS_ADVANTAGE") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:213:hardcoded number:            minDownPaymentAmount = !isDevEnv ? 15000 : BYJUS_ADVANTAGE_MIN_DP;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:215:hardcoded string:        else if (["aakash_crp"].includes(productSelectionType) && selectedEmiPayment === "ABFL") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:218:hardcoded string:        else if (selectedEmiPayment !== "BYJUS_ASSURE") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:219:hardcoded number:            minDownPaymentAmount = BTC_ADDITIONAL_DP_AMOUNT * tabletCount;//(priceToCompare * downPaymentPercent) / 100;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:222:hardcoded number:            minDownPaymentAmount = (priceToCompare * downPaymentPercent) / 100;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:226:hardcoded string:        throw new Error("Unable to compute minimum down payment. Minimum down payment range not defined");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:230:hardcoded variable:const validateAllPayments = async (emiDetails, nonEmiDetails, paymentConfig, draftOrder, paymentType, userPermissions, productType, identifier) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:232:hardcoded string:        const leadId = get(draftOrder, 'leadDetails.prospectId', '');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:233:hardcoded string:        let leadPhoneNo = get(draftOrder, 'leadDetails.studentMobile', '');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:234:hardcoded string:        leadPhoneNo = leadPhoneNo.split('-')[leadPhoneNo.split('-').length - 1];
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:235:hardcoded string:        nonEmiDetails = nonEmiDetails.filter(ele => !['BYJUS_WALLET', 'BYJUS_GIFT_CARD', 'BYJUS_BONUS_POINTS'].includes(ele.provider));
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:236:hardcoded variable:        let payments = [
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:237:hardcoded object:            ...emiDetails.map(ele => ({ ...ele, requireActualStatus: true, requireCompleteDoc: true, leadId, leadPhoneNo })),
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:238:hardcoded object:            ...nonEmiDetails.map(ele => ({ ...ele, requireActualStatus: true, requireCompleteDoc: true, leadId, leadPhoneNo }))
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:240:hardcoded string:        const productDetails = get(draftOrder, "productDetails", {})
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:241:hardcoded string:        const quotationId = get(draftOrder, "quotationId", "")
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:242:hardcoded string:        const finalPrice = get(productDetails, "finalPrice", 0)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:243:hardcoded string:        const { formValues } = get(productDetails, "students.0", {});
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:245:hardcoded variable:        const result = {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:247:hardcoded array:            notFoundRefs: [],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:248:hardcoded array:            amountMismatchedRefs: [],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:249:hardcoded array:            usedRefs: [],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:250:hardcoded array:            improperStatusRefs: [],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:251:hardcoded array:            unauthorizedRefs: [],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:252:hardcoded array:            leadIdMismatchedRefs: [],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:253:hardcoded array:            leadPhoneNoMismatchedRefs: [],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:254:hardcoded array:            lockedErrors: [],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:255:hardcoded array:            improperPaymentModeRefs: [],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:256:hardcoded array:            improperPaymentRefs: [],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:257:hardcoded array:            additionalDetails: [],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:258:hardcoded array:            isDifferentBatch: [],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:259:hardcoded object:            mobileNoDetails: {},
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:260:hardcoded object:            currency: {},
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:261:hardcoded string:            orderCurrency: ""
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:263:hardcoded variable:        let isPriviledgedUser = userPermissions.includes(paymentPermissions.allowRepunch);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:264:hardcoded variable:        let PriviledgedUserPermission = userPermissions.includes(orderPermissions.ignoreOtpCheck);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:265:hardcoded object:        let repunchRefIdOrderDetails = {};
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:268:hardcoded variable:        const lockedErrors = await checkIfPaymentLockedWithDiffDraftOrder(payments);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:273:hardcoded string:            const { salesDetails = {}, _id, draftOrderId = "" } = draftOrder
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:275:hardcoded string:            const directSalesBy = get(salesDetails, 'directSalesBy', '')
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:280:hardcoded string:            // const scrPayments = payments.find(payment => get(payment, 'provider') === 'SCR')
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:283:hardcoded variable:            //     const response = await createSCRDetail(scrPayments, directSalesBy)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:292:hardcoded string:            const byjusDirectPayments = payments.filter(ele => ele.provider === "BYJUS_DIRECT");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:294:hardcoded string:                byjusDirectPayments.map(ele => ele.additionalFilter = { type: "byjusdirect" });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:297:hardcoded string:            const byjusAssurePayments = payments.filter(ele => ele.provider === "BYJUS_ASSURE");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:299:hardcoded string:                byjusAssurePayments.map(ele => ele.additionalFilter = { type: "byjusassure" });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:302:hardcoded string:            let byjusSubscribePayments = payments.filter(ele => ele.provider === "BYJUS_SUBSCRIBE");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:304:hardcoded string:                byjusSubscribePayments.map(ele => ele.additionalFilter = { type: "byjussubscribe" });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:307:hardcoded string:            const byjusAdvantagePayments = payments.filter(ele => ele.provider === "BYJUS_ADVANTAGE");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:309:hardcoded string:                byjusAdvantagePayments.map(ele => ele.additionalFilter = { type: "byjusadvantage" });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:313:hardcoded string:            const bankTransferPayments = payments.filter(ele => ele.provider === "BANK_TRANSFER");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:315:hardcoded string:                bankTransferPayments.map(ele => ele.additionalFilter = { btrType: { "$nin": ["BANK_TRANSFER_COLLECT"] } });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:318:hardcoded string:            if (paymentType === "PDC") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:319:hardcoded number:                let totalDp = 0
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:320:hardcoded string:                const pdcPayments = payments.filter(ele => ele.provider === "PDC_CCR")
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:322:hardcoded string:                    if (ele.provider !== "PDC_CCR") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:330:hardcoded number:                if (payments.length === 0) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:331:hardcoded string:                    throw new Error("Please add atleast one Downpayment")
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:334:hardcoded object:                const { minDp } = pdcConfigs
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:337:hardcoded object:                    throw new Error(`Total Downpayment Amount should be atleast ${Math.round(minDp)}`)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:340:hardcoded number:                const presentPdcPayments = await getPaymentsV2ByRefId({ payments: pdcPayments })
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:342:hardcoded variable:                    const presentRefs = presentPdcPayments.map((pres) => pres.referenceId)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:345:hardcoded object:                            const { provider, referenceId } = pdc
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:346:hardcoded string:                            result.notFoundRefs.push({ provider, referenceId, type: "EMI" })
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:352:hardcoded variable:                const currentPaymentConfig = {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:354:hardcoded string:                    formattedName: "PDC_CCR",
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:358:hardcoded string:                    name: "PDC(Cheque)",
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:359:hardcoded string:                    punchableStatus: ["cheque_handover", "ds_uploaded", "finance_verified", "reconciled"],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:360:hardcoded string:                    status: "active",
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:365:hardcoded object:                    const { referenceId, provider, amount: enteredAmount } = pdc
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:366:hardcoded variable:                    const presentPdc = find(presentPdcPayments, (item) => item.referenceId === referenceId)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:367:hardcoded array:                    let { status, amount, salesEmail, orders = [], leadDetails = [] } = presentPdc
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:368:hardcoded object:                    const { leadPhoneNo: presentLeadPhoneNo } = leadDetails
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:370:hardcoded array:                    const salesEmails = [salesEmail]
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:372:hardcoded object:                    const orderId = `DRAFT_ORDER_${identifier}`
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:373:hardcoded number:                    if (orders?.length > 0) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:378:hardcoded object:                    const { punchableStatus, isInPunchableState } = getPunchableStateDetails(currentPaymentConfig, status, presentPdc);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:379:hardcoded variable:                    const isAmountMatched = amount == enteredAmount
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:380:hardcoded number:                    const isUsedRefId = orders?.length > 0
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:381:hardcoded variable:                    const isLeadPhoneMatched = isValidLeadPhoneNo(leadDetails, leadPhoneNo)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:384:hardcoded string:                        result.improperStatusRefs.push({ provider, referenceId, type: "EMI", status, punchableStatus });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:386:hardcoded string:                        result.amountMismatchedRefs.push({ provider, referenceId, type: "EMI" });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:388:hardcoded string:                        result.unauthorizedRefs.push({ provider, referenceId, type: "EMI" });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:390:hardcoded string:                        result.usedRefs.push({ provider, referenceId, type: "EMI", orderId: orders[0]?.orderId });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:392:hardcoded string:                        result.leadPhoneNoMismatchedRefs.push({ provider, referenceId, type: "EMI", leadPhoneNo });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:401:hardcoded string:            const subscriptionPayments = payments.filter(ele => ele.provider == "SUBSCRIPTION");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:402:hardcoded string:            payments = payments.filter(ele => ele.provider != "SUBSCRIPTION").map((ele) => ele?.provider === "BAJAJ_VIA_PAYU" ? {...ele, provider: "PAYU"} : ele);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:403:hardcoded object:            const apiResponse = await externalApiUtility.getPaymentDetails({ payments });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:406:hardcoded object:                const { provider, referenceId, details, type } = ele;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:407:hardcoded object:                const { isExist, isAmountMatched, isLeadIdMatched = true, isUsed, status, salesEmails, paymentReference, payment, mobileNo, amountDetails = {}, isLeadPhoneMatched = true } = details;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:408:hardcoded string:                const { mode = "" } = payment || {};
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:409:hardcoded string:                if (provider === "PAYU" && mode === "bajaj_emi" && type === "DOWN_PAYMENT") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:410:hardcoded object:                    throw new BadRequestError(`PayU Bajaj EMI Payment (${referenceId}) is not down payment`);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:412:hardcoded variable:                const currentPaymentConfig = paymentConfig.find(ele => ele.formattedName === provider);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:414:hardcoded object:                const { punchableStatus, isInPunchableState } = getPunchableStateDetails(currentPaymentConfig, status, payment);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:415:hardcoded variable:                let isUsedRefId = isUsed
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:416:hardcoded array:                const isRepunchRefId = repunchRefIdOrderDetails[referenceId] ? true : false;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:422:hardcoded string:                if (!PriviledgedUserPermission && productType === "aakashCRP") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:423:hardcoded string:                    if (!isNull(ele) && ele.type === 'EMI') {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:424:hardcoded string:                        //if (ele?.details?.payment?.orgFormattedName !== "aakash") we will not do type checking here because, in some 
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:425:hardcoded number:                        // cases, orgFormatted name is an array of 1 element and in some cases, it is a string
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:432:hardcoded string:                            ele.details.payment.orgFormattedName != 'aakash'
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:434:hardcoded string:                            throw new BadRequestError("EMI payment has to be created from Neo Kart");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:440:hardcoded object:                    result.notFoundRefs.push({ provider, referenceId, type });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:442:hardcoded object:                    result.unauthorizedRefs.push({ provider, referenceId, type });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:444:hardcoded object:                    result.amountMismatchedRefs.push({ provider, referenceId, type });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:446:hardcoded string:                    result.usedRefs.push({ provider, referenceId, type, orderId: get(paymentReference, "orderId") });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:448:hardcoded object:                    result.improperStatusRefs.push({ provider, referenceId, type, status, punchableStatus });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:450:hardcoded object:                    result.leadPhoneNoMismatchedRefs.push({ provider, referenceId, type, mobileNo });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:453:hardcoded string:                    if (["PAYU", "PINE_LABS", "RAZORPAY"].includes(provider)) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:454:hardcoded string:                        const mode = get(payment, "mode") || get(paymentReference, "mode");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:455:hardcoded string:                        if (mode && ((paymentType === "EMI" && type === "EMI" && mode !== "EMI" && mode !== "bajaj_emi"))) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:456:hardcoded object:                            result.improperPaymentModeRefs.push({ provider, referenceId, type, mode });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:461:hardcoded variable:                let additionalDetails = getAdditionalDetails(provider, payment, referenceId);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:464:hardcoded array:                result.mobileNoDetails[`${provider}_${referenceId}`] = mobileNo;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:465:hardcoded string:                result.currency[referenceId] = get(amountDetails, "currencyCode", "")
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:466:hardcoded string:                result.orderCurrency = get(amountDetails, "currencyCode", "")
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:471:hardcoded string:                logger.info("entering validateSubscriptionPayment");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:472:hardcoded number:                const subscriptionResult = await validateSubscriptionPayment(subscriptionPayments[0], orderId = draftOrderId);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:473:hardcoded string:                logger.info("exiting validateSubscriptionPayment", subscriptionResult);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:475:hardcoded object:                const { provider, referenceId, details, type } = subscriptionResult;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:476:hardcoded object:                const { isExist, isAmountMatched, isUsed, status, salesEmails, payment, mobileNo, amountDetails = {}, isSameBatch,
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:477:hardcoded string:                    batch = "", bfsBatch = "", subscriptionOrderId = "" } = details;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:478:hardcoded variable:                const currentPaymentConfig = paymentConfig.find(ele => ele.formattedName === provider);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:480:hardcoded object:                const { punchableStatus, isInPunchableState } = getPunchableStateDetails(currentPaymentConfig, status, payment) || {};
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:481:hardcoded variable:                let isUsedRefId = isUsed;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:482:hardcoded array:                const isRepunchRefId = repunchRefIdOrderDetails[referenceId] ? true : false;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:489:hardcoded object:                    result.notFoundRefs.push({ provider, referenceId, type });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:491:hardcoded object:                    result.unauthorizedRefs.push({ provider, referenceId, type });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:493:hardcoded object:                    result.amountMismatchedRefs.push({ provider, referenceId, type });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:495:hardcoded object:                    result.usedRefs.push({ provider, referenceId, type, orderId: subscriptionOrderId });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:497:hardcoded object:                    result.improperStatusRefs.push({ provider, referenceId, type, status, punchableStatus });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:499:hardcoded object:                    result.isDifferentBatch.push({ provider, referenceId, batch, bfsBatch })
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:501:hardcoded variable:                let additionalDetails = getAdditionalDetails(provider, payment, referenceId);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:504:hardcoded array:                result.mobileNoDetails[`${provider}_${referenceId}`] = mobileNo;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:505:hardcoded string:                result.currency[referenceId] = get(amountDetails, "currencyCode", "")
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:506:hardcoded string:                result.orderCurrency = get(amountDetails, "currencyCode", "");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:511:hardcoded string:        if (productType === "aakashCRP") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:512:hardcoded string:            const isPdc = get(formValues, "isPdc", false)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:514:hardcoded string:                const pdcPayments = nonEmiDetails.filter((payment) => payment.provider === "PDC_CCR")
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:515:hardcoded number:                const createdPdcAmount = pdcPayments.reduce((prevAmount, currentPdc) => prevAmount + currentPdc.amount, 0)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:516:hardcoded variable:                let pdcs = await CondensedPdcSchedule.findAll({
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:519:hardcoded string:                        paymentType: "pdc"
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:521:hardcoded string:                    attributes: ["amount"],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:524:hardcoded number:                let actualTotalAmount = pdcs.reduce((prevAmount, currentPdc) => prevAmount + currentPdc.amount, 0)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:526:hardcoded string:                    throw new Error("Created Pdc Payment Amount is not Equal to Schedules Amount")
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:535:hardcoded string:        result["repunchRefIdOrderDetails"] = repunchRefIdOrderDetails;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:539:hardcoded string:        logger.error({ method: "validateAllPayments", error }, "Call to Nucleus API to validate all payments failed");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:544:hardcoded variable:const checkIfPaymentLockedWithDiffDraftOrder = async (payments) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:545:hardcoded array:    const lockedErrors = [];
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:550:hardcoded object:                const { referenceId, provider } = payment;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:552:hardcoded string:                if (provider !== 'SUBSCRIPTION') {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:554:hardcoded string:                        'status': { "$nin": ["soft_approved", "order_created", "errored", "approval_pending"] },
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:555:hardcoded string:                        'paymentDetails.payments.referenceId': referenceId,
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:556:hardcoded string:                        'paymentDetails.payments.provider': provider
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:561:hardcoded string:                        'status': { "$nin": ["soft_approved", "order_created", "errored", "approval_pending"] },
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:562:hardcoded string:                        'subscriptionDetails.subscriptionId': referenceId
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:566:hardcoded string:                    const { prospectId } = get(draftOrder, 'leadDetails');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:570:hardcoded string:                        identifier: get(draftOrder, '_id')
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:577:hardcoded string:        logger.error({ method: "checkIfPaymentLockedWithDiffDraftOrder", error });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:578:hardcoded string:        throw new Error(error || 'Error in checking payment validation');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:582:hardcoded variable:const getRepunchOrders = async (payments) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:583:hardcoded object:    let reusedPayment = {};
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:586:hardcoded object:            const { referenceId, provider, type } = payment;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:587:hardcoded string:            const orderTypeToCheck = type === "DOWN_PAYMENT" ? ["SINGLE", "SPLIT_PARENT"] : ["SINGLE", "SPLIT_CHILD"];
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:588:hardcoded array:            let orders = [];
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:590:hardcoded string:                'orderId': { "$exists": true },
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:591:hardcoded string:                'paymentDetails.referenceId': referenceId,
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:592:hardcoded string:                'paymentDetails.paymentType': { "$in": getOldPaymentProvider(provider) },
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:593:hardcoded string:                'orderType': { "$in": orderTypeToCheck }
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:594:hardcoded array:            }).lean() || [];
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:596:hardcoded string:            const repunchEligibleOrders = orders.filter(ord => ["returned", "cancelled", "canceled", "return", "cancel", "return_initiated"].includes(get(ord, 'orderhiveOrderStatus', '')));
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:600:hardcoded string:                console.log(referenceId, 'provider', 'repunch');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:602:hardcoded object:                    const { orderId, orderhiveOrderStatus } = order;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:603:hardcoded array:                    reusedPayment[referenceId] = {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:613:hardcoded string:        logger.error({ method: "checkIsRepunchCase", error });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:614:hardcoded string:        throw new Error(error || 'Error in checking reference Id validation');
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:618:hardcoded variable:const lockAllPayments = async (paymentDetails) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:619:hardcoded string:    let { emiDetails, nonEmiDetails, orderId, userPermissions, repunchRefIdOrderDetails = {}, draftOrderId, paymentType = "" } = paymentDetails || {}
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:621:hardcoded string:        nonEmiDetails = nonEmiDetails.filter(ele => !['BYJUS_WALLET', 'BYJUS_GIFT_CARD', 'BYJUS_BONUS_POINTS'].includes(ele.provider));
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:622:hardcoded array:        let payments = [...emiDetails, ...nonEmiDetails];
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:623:hardcoded string:        const subscriptionPayments = payments.filter(ele => ele.provider == "SUBSCRIPTION");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:624:hardcoded string:        payments = payments.filter(ele => ele.provider != "SUBSCRIPTION").map((ele) => ele?.provider === "BAJAJ_VIA_PAYU" ? {...ele, provider: "PAYU"} : ele);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:625:hardcoded string:        if (paymentType == "PDC") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:626:hardcoded string:            const pdcPayments = payments.filter(ele => ele.provider === "PDCCR")
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:627:hardcoded string:            payments = payments.filter(ele => ele.provider !== "PDCCR");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:628:hardcoded object:            await linkPdcWithDo({ payments: pdcPayments, orderId })
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:631:hardcoded object:        const paymentResult = await externalApiUtility.linkMultiplePaymentsToOrder({ payments, orderId });
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:632:hardcoded object:        let { isAllPaymentsLocked, lockingErrors } = paymentResult;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:635:hardcoded variable:            const subscriptionPaymentResult = await lockSubscriptionPayment(subscriptionPayments, orderId, draftOrderId);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:636:hardcoded string:            const { unlockingSubscriptionErrors = "" } = subscriptionPaymentResult;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:638:hardcoded number:            isAllPaymentsLocked = lockingErrors.length == 0;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:641:hardcoded object:        return { isAllPaymentsLocked, lockingErrors };
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:643:hardcoded string:        logger.error({ method: "lockAllPayments", error }, "Call to Nucleus API to lock all payments failed");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:648:hardcoded variable:const isValidPaymentOwner = (draftOrder, owners) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:649:hardcoded number:    if (owners.length == 0 || owners[0] == null) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:652:hardcoded object:    const { directSalesBy, salesAppointmentBy } = draftOrder.salesDetails;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:653:hardcoded array:    const ownersToCompare = [directSalesBy && directSalesBy.toLowerCase()].filter(ele => ele);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:654:hardcoded variable:    let isValid = false;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:664:hardcoded variable:const isValidLeadPhoneNo = (leadDetails, leadPhoneNo) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:665:hardcoded variable:    let isValid = false
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:674:hardcoded variable:const getPunchableStateDetails = (currentPaymentConfig, status, paymentDoc) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:675:hardcoded object:    const { type } = paymentDoc || {};
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:676:hardcoded array:    const { punchableStatus: actualPunchableStatus = [], formattedName } = currentPaymentConfig;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:678:hardcoded number:    /** Removed pre_approved for FULLERTON v1 */
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:679:hardcoded string:    const punchableStatus = formattedName === "FULLERTON" && type !== "fullertonv2" ?
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:680:hardcoded string:        actualPunchableStatus.filter(ele => ele !== "pre_approved") : actualPunchableStatus;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:681:hardcoded variable:    const isInPunchableState = status && punchableStatus.map(ele => ele.toLowerCase()).includes(status.toLowerCase());
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:683:hardcoded object:    return { isInPunchableState, punchableStatus };
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:686:hardcoded array:const getPaymentMethod = (nonEmiDetails = [], paymentType, selectedEmiPayment) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:688:hardcoded string:    const isFocSwap = nonEmiDetails.find(ele => ["FOC_SWAP"].includes(ele.provider));
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:689:hardcoded string:    const isFocDispatch = nonEmiDetails.find(ele => ["FOC_DISPATCH"].includes(ele.provider));
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:692:hardcoded string:        paymentMethod = 'SWAP TICKETS';
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:695:hardcoded string:        paymentMethod = 'FOC Dispatch';
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:697:hardcoded string:    else if (paymentType === "EMI") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:698:hardcoded string:        paymentMethod = `EMI Prepaid ${selectedEmiPayment.replace(/_/g, " ").toUpperCase()}`;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:701:hardcoded string:        paymentMethod = 'Non EMI Prepaid';
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:705:hardcoded string:    const codPayments = nonEmiDetails.filter(ele => ele.provider === "CASH_ON_DELIVERY");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:706:hardcoded number:    if (codPayments.length !== 0) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:707:hardcoded string:        if (paymentType === "EMI") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:708:hardcoded string:            paymentMethod = "Partial Cash on Delivery";
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:711:hardcoded string:            paymentMethod = "Cash on Delivery";
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:714:hardcoded string:            paymentMethod = "Partial Cash on Delivery";
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:718:hardcoded string:    const pdcPayments = nonEmiDetails.filter(ele => ele.provider === "PDCCR");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:719:hardcoded number:    if (pdcPayments.length !== 0) {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:720:hardcoded string:        if (paymentType === "PDC") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:721:hardcoded string:            paymentMethod = "EMI Prepaid"
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:727:hardcoded variable:const getAdditionalDetails = (provider, payment, referenceId) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:728:hardcoded string:    console.log("****getAdditionalDetails", provider, payment, referenceId);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:729:hardcoded object:    let additionalDetail = {};
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:730:hardcoded variable:    let isAwaitingNachTagRequired = false;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:731:hardcoded object:    let { enachDetails = {}, nachDetails = {}, documents, emandateDetails = {} } = payment || {};
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:732:hardcoded string:    const { isFilledNachUploaded = "" } = nachDetails;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:738:hardcoded string:        console.log("****emandateDetails", emandateDetails, enachDetails);
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:740:hardcoded string:            console.log("****nachDetails", isFilledNachUploaded)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:741:hardcoded string:            if (!isFilledNachUploaded && get(enachDetails, "umrn", "") === "" && get(emandateDetails, "umrn", "") === "") {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:748:hardcoded string:                console.log("****additionalDetail", additionalDetail)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:751:hardcoded object:                    const { generatedNachMandate = {} } = documents;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:752:hardcoded string:                    const nachUrl = get(generatedNachMandate, "url", "");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:753:hardcoded string:                    additionalDetail["nachUrl"] = nachUrl
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:758:hardcoded array:        const registrationStatus = [];
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:759:hardcoded string:        /** Push the registrationStatus of enachDetails and nachDetails to check "dest_register_success" exists or not*/
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:760:hardcoded string:        registrationStatus.push(get(enachDetails, "registrationStatus", ""));
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:761:hardcoded string:        registrationStatus.push(get(nachDetails, "registrationStatus", ""));
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:762:hardcoded object:        const { filledNachMandate = {} } = documents || {};
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:763:hardcoded string:        console.log("****documents", documents, filledNachMandate)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:764:hardcoded string:        additionalDetail["umrn"] = get(emandateDetails, "umrn", "") || get(enachDetails, "umrn", "");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:765:hardcoded string:        additionalDetail["provider"] = provider;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:766:hardcoded string:        additionalDetail["referenceId"] = referenceId;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:767:hardcoded string:        additionalDetail["registrationStatus"] = registrationStatus;
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:768:hardcoded string:        additionalDetail["filledNachMandate"] = get(filledNachMandate, "url", "");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:775:hardcoded object:const filterUnlinkedPdcs = async ({ quotationId, leadPayments }) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:776:hardcoded variable:    let pdcs = await CondensedPdcSchedule.findAll({
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:779:hardcoded string:            paymentType: "pdc"
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:781:hardcoded string:        attributes: ["referenceId"],
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:784:hardcoded variable:    let referenceIds = pdcs.map((pdc) => pdc.referenceId)
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:785:hardcoded variable:    const temp = leadPayments
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:787:hardcoded string:    return leadPayments?.filter((lp) => !(lp.type === "pdc_ccr" && !referenceIds.includes(lp.referenceId)))
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:790:hardcoded variable:const updateTsv = async (prospectId, totalSaleValue, referenceId, userEmail) => {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:793:hardcoded string:        throw new BadRequestError("Missing Parameters");
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:796:hardcoded variable:    const updateData = {
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:806:hardcoded variable:        const newTotalSaleValue = new TotalSaleValue({
+microservices-middleware/server/src/paymentmanagement/paymentHelper.js:809:hardcoded variable:        const res = await newTotalSaleValue.save();

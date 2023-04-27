@@ -1,0 +1,38 @@
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:1:hardcoded object:const { get, isEmpty, isArray, isNaN, flattenDeep } = require('lodash');
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:3:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:5:hardcoded number:const { ELIGIBLE_EPIC_GRADE, K3_MAX_GRADE, EPIC_PRICE } = require('../utils/productConstants');
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:6:hardcoded object:const { productConstant } = require('../../productmanagement/utils/productConstants');
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:7:hardcoded object:const { getSkuItemId } = require('../../productmanagement/service/skuIdHelper')
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:8:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper')
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:9:hardcoded object:const  { NotFoundError } = require('../../../lib/errors')
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:11:hardcoded variable:const getEpicCourseSku = async (details) => {
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:12:hardcoded object:    let { initialClass, finalClass, validity } = details
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:14:hardcoded number:    finalClass = (ELIGIBLE_EPIC_GRADE.includes(finalClass)) ? finalClass : K3_MAX_GRADE;
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:15:hardcoded object:    const scheme = getScheme({ initialClass, finalClass })
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:16:hardcoded object:    const epicValidity = getValidity({ initialClass, finalClass, validity })
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:18:hardcoded variable:    const query = {
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:19:hardcoded string:        status: 'active',
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:20:hardcoded string:        category: 'epic',
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:21:hardcoded string:        orgId:'ORG-1',
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:26:hardcoded variable:    const product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:34:hardcoded string:            price:get(product, "basePrice", null),
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:35:hardcoded string:            itemType: get(product, "subType", null),
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:41:hardcoded object:        const errorMsg = getErrorMsg({ initialClass, finalClass, validity, type });
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:46:hardcoded object:const getScheme = ({ initialClass, finalClass }) => {
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:47:hardcoded number:    let scheme = (parseInt(finalClass) - parseInt(initialClass)) + 1
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:48:hardcoded number:    scheme = `${scheme}y0m0d`
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:53:hardcoded object:const getValidity = ({ initialClass, finalClass, validity }) => {
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:60:hardcoded variable:const getErrorMsg = function (queryDetails) {
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:61:hardcoded object:    const { initialClass, finalClass, validity, type, course, state } = queryDetails || {};
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:64:hardcoded string:    ${course ? `Course: ${course}` : ''}
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:65:hardcoded string:    ${initialClass ? `initialClass: ${initialClass}` : ''}
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:66:hardcoded string:    ${finalClass ? `finalClass: ${finalClass}` : ''}
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:67:hardcoded string:    ${state ? `State: ${state}` : ''}
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:68:hardcoded string:    ${type ? `Type: ${type}` : ''}
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:69:hardcoded string:    ${validity ? `Validity: ${validity}` : ''}
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:73:hardcoded variable:const getEpicSku = async (details) => {
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:74:hardcoded object:    let { validity, tablet, initialClass, finalClass } = details;
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:75:hardcoded variable:    let epicSku = null;
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:76:hardcoded variable:    const currentYear = new Date().getFullYear();
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:77:hardcoded number:    if (productConstant.D4_SKU_ID.includes(tablet) && ELIGIBLE_EPIC_GRADE.includes(initialClass) && ![currentYear].includes(validity)) {
+microservices-middleware/server/src/productmanagement/epicmanagement/epicHelper.js:78:hardcoded object:        epicSku = await getEpicCourseSku({ validity, initialClass, finalClass });

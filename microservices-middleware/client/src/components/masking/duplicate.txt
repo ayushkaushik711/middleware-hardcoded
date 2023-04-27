@@ -1,0 +1,46 @@
+microservices-middleware/client/src/components/masking/maskedSpan.jsx:1:hardcoded file path:import React from 'react'
+microservices-middleware/client/src/components/masking/maskedSpan.jsx:2:hardcoded variable:const regex = {
+microservices-middleware/client/src/components/masking/maskedSpan.jsx:3:hardcoded string:    maskedMobile: [/\d(?=\d{4})/g, match => "*".repeat(match.length)],
+microservices-middleware/client/src/components/masking/maskedSpan.jsx:4:hardcoded string:    maskedMail: [/(\w{1})(\w{1})(?=.*@)/g, "$1*"],
+microservices-middleware/client/src/components/masking/maskedSpan.jsx:5:hardcoded string:    dob: [/(\d)/g, "x"],
+microservices-middleware/client/src/components/masking/maskedSpan.jsx:7:hardcoded variable:const maskedSpan = (props) => {
+microservices-middleware/client/src/components/masking/maskedSpan.jsx:8:hardcoded string: const {isSuperUser=false,type,label="",value,separator="-"}=props;
+microservices-middleware/client/src/components/masking/maskedSpan.jsx:9:hardcoded string: const isLabel=(label!=="");
+microservices-middleware/client/src/components/masking/maskedSpan.jsx:12:hardcoded object:        {isSuperUser  && isLabel && <span>{label}{separator} {value}</span>}
+microservices-middleware/client/src/components/masking/maskedSpan.jsx:13:hardcoded array:        {!isSuperUser && isLabel && <span>{label}{separator} {value.replace(...regex[type])}</span>}
+microservices-middleware/client/src/components/masking/maskedSpan.jsx:14:hardcoded object:        {isSuperUser  && !isLabel && <span>{value}</span>}
+microservices-middleware/client/src/components/masking/maskedSpan.jsx:15:hardcoded array:        {!isSuperUser && !isLabel && <span>{value.replace(...regex[type])}</span>}
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:1:hardcoded file path:import * as React from 'react';
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:2:hardcoded object:import { forwardRef, useState, useEffect, useImperativeHandle } from "react";
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:3:hardcoded object:import { Input } from "antd";
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:4:hardcoded variable:const regex = {
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:5:hardcoded string:    maskedMobile: [/\d(?=\d{4})/g, match => "*".repeat(match.length)],
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:6:hardcoded string:    maskedMail: [/(\w{1})(\w{1})(?=.*@)/g, "$1*"]
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:8:hardcoded object:const MaskedInput = forwardRef(({ field, initialValue }, ref) => {
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:9:hardcoded array:    const [value, setValue] = useState({
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:10:hardcoded string:        actual: "",
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:11:hardcoded string:        hidden: "",
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:15:hardcoded object:    const { isSuperUser = false, onChange, onBlur, onFocus, type } = field;
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:21:hardcoded array:                hidden: String(initialValue)?.replace(...regex[type])
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:24:hardcoded array:    }, []);
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:28:hardcoded object:    return (<Input {...field} value={value.isHidden ? value.hidden : value.actual} onChange={(e) => {
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:30:hardcoded variable:            const elementValue = e.target.value;
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:34:hardcoded string:                    actual: "",
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:35:hardcoded string:                    hidden: "",
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:46:hardcoded object:            setValue(prev => ({ ...prev, isHidden: (isSuperUser || value.isInitialChanged) ? false : true }));
+microservices-middleware/client/src/components/masking/MaskedInput.jsx:49:hardcoded array:            setValue(prev => ({ ...prev, isHidden: true, hidden: String(prev.hidden)?.replace(...regex[type]) }));
+microservices-middleware/client/src/components/masking/index.jsx:1:hardcoded string:export { default as MaskedInput } from "./MaskedInput";
+microservices-middleware/client/src/components/masking/index.jsx:2:hardcoded string:export { default as Masked } from "./Masked";
+microservices-middleware/client/src/components/masking/Masked.jsx:1:hardcoded file path:import * as React from "react";
+microservices-middleware/client/src/components/masking/Masked.jsx:2:hardcoded object:import { useState } from "react";
+microservices-middleware/client/src/components/masking/Masked.jsx:4:hardcoded variable:const regex = {
+microservices-middleware/client/src/components/masking/Masked.jsx:5:hardcoded string:    mobile: [/\d(?=\d{4})/g, match => "*".repeat(match.length)],
+microservices-middleware/client/src/components/masking/Masked.jsx:6:hardcoded string:    email: [/(\w{1})(\w{1})(?=.*@)/g, "$1*"]
+microservices-middleware/client/src/components/masking/Masked.jsx:8:hardcoded object:const Masked = ({ isSuperUser, children, type }) => {
+microservices-middleware/client/src/components/masking/Masked.jsx:9:hardcoded string:    let string = Array.isArray(children) ? children.filter(child => !!child.trim()).join("") : children;
+microservices-middleware/client/src/components/masking/Masked.jsx:10:hardcoded string:    const maskedStringNo = string?.split("-").pop()?.replace(...regex[type]);
+microservices-middleware/client/src/components/masking/Masked.jsx:11:hardcoded array:    const [text, setText] = useState(maskedStringNo);
+microservices-middleware/client/src/components/masking/Masked.jsx:12:hardcoded variable:    const showText = () => {
+microservices-middleware/client/src/components/masking/Masked.jsx:17:hardcoded variable:    const hideText = () => {
+microservices-middleware/client/src/components/masking/Masked.jsx:20:hardcoded string:    return <span onClick={showText} onMouseLeave={hideText} style={{ cursor: "pointer" }}>
+microservices-middleware/client/src/components/masking/Masked.jsx:21:hardcoded object:        {text}

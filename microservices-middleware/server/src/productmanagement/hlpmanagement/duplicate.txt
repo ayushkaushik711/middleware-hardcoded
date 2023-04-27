@@ -1,0 +1,27 @@
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:1:hardcoded object:const { get } = require('lodash');
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:2:hardcoded string:const { RevenueCycle, ProductDetail } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:3:hardcoded file path:const moment = require('moment');
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:4:hardcoded file path:const Promise = require('bluebird');
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:5:hardcoded file path:const crpCompetitiveAddress = require('../../../config/products/crpCityAddresses');
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:7:hardcoded variable:const getCompetitiveHlpSku = async (courseSkus, query, type) => {
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:9:hardcoded variable:        const productDetails = await ProductDetail.findOne(query).lean();
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:10:hardcoded string:        if (!productDetails) throw new Error("HLP SKU Missing");
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:12:hardcoded array:        let skuDetails = [...courseSkus];
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:14:hardcoded string:        skuDetails = skuDetails.filter(ele => !ele.name.includes("SD Card"));
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:22:hardcoded variable:const fetchBatchCode = async () => {
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:23:hardcoded string:    const cycle = await RevenueCycle.findOne({ cycleType: "weekly" }).sort({ "_id": -1 }).limit(1)
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:24:hardcoded object:    const { cycleEnd, incentiveEndDateTime } = cycle || {};
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:25:hardcoded variable:    let endDate = incentiveEndDateTime ? incentiveEndDateTime : cycleEnd;
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:26:hardcoded string:    endDate = moment(endDate).subtract(1, "days").format("DD-MM-YYYY");
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:27:hardcoded object:    return `Hlp_${endDate}`
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:30:hardcoded variable:const getUpdatedProductDetailsWithHlpDetails = async (productDetails) => {
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:32:hardcoded object:        let { students } = productDetails;
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:34:hardcoded variable:            const batchCode = await fetchBatchCode();
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:35:hardcoded object:            const { formValues = {} } = student;
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:36:hardcoded array:            const { bhlpCourseDetails, initialClass, mentoringDetails = [], workshops, validity } = formValues;
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:39:hardcoded string:                    type: "workshop",
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:40:hardcoded array:                    sessions: [workshops]
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:43:hardcoded variable:            const hlpDetails = {
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:50:hardcoded string:            student["hlpDetails"] = hlpDetails;
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:58:hardcoded variable:const getCRPAddress = (city) => {
+microservices-middleware/server/src/productmanagement/hlpmanagement/hlpProductController.js:59:hardcoded array:    return crpCompetitiveAddress[city];

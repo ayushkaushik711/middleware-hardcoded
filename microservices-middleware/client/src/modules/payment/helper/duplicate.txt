@@ -1,0 +1,83 @@
+microservices-middleware/client/src/modules/payment/helper/constants.js:1:hardcoded variable:export const ELIGIBLE_PAYMENT_STATUSES_FOR_ADVANCE_EMI = {
+microservices-middleware/client/src/modules/payment/helper/constants.js:2:hardcoded string:    "PAYTM": "success",
+microservices-middleware/client/src/modules/payment/helper/constants.js:3:hardcoded string:    "PAYU": "success",
+microservices-middleware/client/src/modules/payment/helper/constants.js:4:hardcoded string:    "RAZORPAY": "success",
+microservices-middleware/client/src/modules/payment/helper/constants.js:5:hardcoded string:    "SCR": ["pending", "Reconciled Successfully"],
+microservices-middleware/client/src/modules/payment/helper/constants.js:6:hardcoded string:    "CCR": "reconciled",
+microservices-middleware/client/src/modules/payment/helper/constants.js:7:hardcoded string:    "GPAY": "reconciled",
+microservices-middleware/client/src/modules/payment/helper/constants.js:8:hardcoded string:    "CASHFREE": "reconciled",
+microservices-middleware/client/src/modules/payment/helper/constants.js:9:hardcoded string:    "FULLERTON": ["disbursed", "active", "Post Sanc Doc", "Disbursal Initiation", "Disbursal Finish", "Disbursal Detail", "End"],
+microservices-middleware/client/src/modules/payment/helper/constants.js:10:hardcoded string:    "AVANSE": "approved",
+microservices-middleware/client/src/modules/payment/helper/constants.js:11:hardcoded string:    "RBL": ["disbursed", "active"],
+microservices-middleware/client/src/modules/payment/helper/constants.js:12:hardcoded string:    "IIFL": "disbursed",
+microservices-middleware/client/src/modules/payment/helper/constants.js:13:hardcoded string:    "BYJUS_ASSURE": "active",
+microservices-middleware/client/src/modules/payment/helper/constants.js:14:hardcoded string:    "BYJUS_ADVANTAGE": "active",
+microservices-middleware/client/src/modules/payment/helper/constants.js:15:hardcoded string:    "ICICI": "active",
+microservices-middleware/client/src/modules/payment/helper/constants.js:16:hardcoded string:    "ABFL": "disbursed",
+microservices-middleware/client/src/modules/payment/helper/constants.js:17:hardcoded string:    "KOTAK": "disbursed",
+microservices-middleware/client/src/modules/payment/helper/constants.js:18:hardcoded string:    "PARTNER_PAYMENT": "reconciled",
+microservices-middleware/client/src/modules/payment/helper/constants.js:19:hardcoded string:    "INCRED": "disbursed",
+microservices-middleware/client/src/modules/payment/helper/constants.js:20:hardcoded string:    "INTERNATIONAL_PAYMENT": "reconciled",
+microservices-middleware/client/src/modules/payment/helper/constants.js:21:hardcoded string:    "BANK_TRANSFER": "reconciled"
+microservices-middleware/client/src/modules/payment/helper/constants.js:24:hardcoded string:export const ACTIVE_LOAN_STATUS = ["success", "reconciled", "pending", "initiated", "link generated", "paid","disbursed","auth_success","link_sent"];
+microservices-middleware/client/src/modules/payment/helper/constants.js:26:hardcoded string:export const REINITIATE_LOAN_STATUS = ["matured","cancelled","foreclosed","foreclosure_initiated","to be matured","to_be_matured","soft_deleted"];
+microservices-middleware/client/src/modules/payment/helper/constants.js:28:hardcoded variable:export const BAJAJ_LOAN_TENURES = [
+microservices-middleware/client/src/modules/payment/helper/constants.js:30:hardcoded string:        label: "9 Months",
+microservices-middleware/client/src/modules/payment/helper/constants.js:31:hardcoded string:        value: "9"
+microservices-middleware/client/src/modules/payment/helper/constants.js:33:hardcoded string:        label: "12 Months",
+microservices-middleware/client/src/modules/payment/helper/constants.js:34:hardcoded string:        value: "12"
+microservices-middleware/client/src/modules/payment/helper/lsPaymentActivityHelper.js:1:hardcoded object:import React, { useState } from 'react';
+microservices-middleware/client/src/modules/payment/helper/lsPaymentActivityHelper.js:2:hardcoded object:import { get, isEmpty } from 'lodash';
+microservices-middleware/client/src/modules/payment/helper/lsPaymentActivityHelper.js:3:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/payment/helper/lsPaymentActivityHelper.js:5:hardcoded variable:export const createPaymentActivityOnLS = async (paymentDetails) => {
+microservices-middleware/client/src/modules/payment/helper/lsPaymentActivityHelper.js:6:hardcoded object:    const { accountNumber, selectedProduct, prospectId, provider, userEmail, amount, referenceId, customerName } =  paymentDetails
+microservices-middleware/client/src/modules/payment/helper/lsPaymentActivityHelper.js:7:hardcoded object:    const payload = { accountNumber, prospectId, provider, userEmail, amount, referenceId, customerName }
+microservices-middleware/client/src/modules/payment/helper/lsPaymentActivityHelper.js:9:hardcoded string:    if(!isEmpty(paymentDetails) && accountNumber === "46867" && selectedProduct === "Aakash") {
+microservices-middleware/client/src/modules/payment/helper/lsPaymentActivityHelper.js:11:hardcoded string:            url: '/api/ls/createPaymentActivityOnLS',
+microservices-middleware/client/src/modules/payment/helper/lsPaymentActivityHelper.js:12:hardcoded string:            method: 'POST',
+microservices-middleware/client/src/modules/payment/helper/lsPaymentActivityHelper.js:22:hardcoded object:export default { createPaymentActivityOnLS }microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:1:hardcoded object:import React, { useState } from 'react';
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:2:hardcoded object:import { get, isEmpty } from 'lodash';
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:3:hardcoded file path:import CallApi from 'api/callApi';
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:5:hardcoded variable:export const shopseValidation = async (paymentDetails) => {
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:6:hardcoded object:    const { payload, leadPayments, loading } = paymentDetails;
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:7:hardcoded object:    const { formValues } = payload
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:12:hardcoded string:    const instantEmiEligibleMessage = "This customer is approved for a cardless emi plan."
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:13:hardcoded string:    const instantEmiNotEligibleMessage = "Please note that the phone number entered is not approved for a cardless emi plan. If the customer wants to pay via EMI using debit card or credit card , please create a payment gateway link under Pre-Paid payments section."
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:18:hardcoded string:        url: '/api/payment/validateShopse',
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:19:hardcoded string:        method: 'POST',
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:23:hardcoded object:        const { data } = apiResponse;
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:24:hardcoded object:        const { resp } = data;
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:27:hardcoded string:            const { ccEmiAvailability, instantEmiEligibility } = get(resp, "response")
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:28:hardcoded string:            if (ccEmiAvailability === 'Y' && instantEmiEligibility === 'Y') {
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:30:hardcoded string:                    message: instantEmiEligibleMessage, code: "YY", isValidated: true
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:32:hardcoded string:            } else if (ccEmiAvailability === 'N' && instantEmiEligibility === 'N') {
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:34:hardcoded string:                    message: instantEmiNotEligibleMessage, code: "NN", isValidated: true
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:36:hardcoded string:            } else if (ccEmiAvailability === 'Y' && instantEmiEligibility === 'N') {
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:38:hardcoded string:                    message: instantEmiNotEligibleMessage, code: "YN", isValidated: true
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:40:hardcoded string:            } else if (ccEmiAvailability === 'N' && instantEmiEligibility === 'Y') {
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:42:hardcoded string:                    message: instantEmiEligibleMessage, code: "NY", isValidated: true
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:46:hardcoded object:        leadPayments({ ...resp, ...formValues })
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:51:hardcoded object:    return {validationResp, error}
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:54:hardcoded variable:export const bajajValidation = async (paymentDetails) => {
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:55:hardcoded object:    const { payload, leadPayments, loading } = paymentDetails;
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:56:hardcoded object:    const { formValues } = payload
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:60:hardcoded string:    const eligibleMessage = "The customer is eligible for a Bajaj EMI Payment. Please click on Create Payment to initiate the payment."
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:61:hardcoded string:    const notEligibleMessage = "The customer is not eligible for Bajaj EMI Card payment. Please enter an alternate number to proceed."
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:62:hardcoded string:    const apiFailedMessage = "Request timed out. Please try again." // when lms/bajaj api fails.
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:66:hardcoded string:        url: '/api/payment/validateBajaj',
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:67:hardcoded string:        method: 'POST',
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:71:hardcoded object:        const { data } = res;
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:72:hardcoded object:        const { resp } = data;
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:75:hardcoded object:            const { loanStatus } = resp;
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:77:hardcoded string:            if (["eligibility_check_failed"].includes(loanStatus)) {
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:79:hardcoded string:                    message: notEligibleMessage, code: "NN", isValidated: false
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:81:hardcoded string:            } else if(["eligibility_check_passed"].includes(loanStatus)) {
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:83:hardcoded string:                    message: eligibleMessage, code: "YY", isValidated: true
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:87:hardcoded string:                    message : apiFailedMessage, code: "NN", isValidated: false
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:91:hardcoded object:        leadPayments({ ...data, ...formValues })
+microservices-middleware/client/src/modules/payment/helper/paymentValidation.js:96:hardcoded object:    return {validationResp, error}
+microservices-middleware/client/src/modules/payment/helper/helper.js:1:hardcoded object:import {flattenDeep} from "lodash";
+microservices-middleware/client/src/modules/payment/helper/helper.js:3:hardcoded object:export const getReportersList = async ({ user }) => {
+microservices-middleware/client/src/modules/payment/helper/helper.js:4:hardcoded object:    const { reporters = {}} = user
+microservices-middleware/client/src/modules/payment/helper/helper.js:5:hardcoded object:    const reportingToList = flattenDeep(Object.values(reporters)).map(person => ({label: person?.email, value: person?.email }))
+microservices-middleware/client/src/modules/payment/helper/helper.js:6:hardcoded object:    reportingToList.push({label:user.email, value: user.email})

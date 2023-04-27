@@ -1,0 +1,24 @@
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:1:hardcoded variable:export const getInitialClassValues = (details) => {
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:2:hardcoded string:    const { productType='', classes=[]} = details;
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:3:hardcoded array:    let initialClassOptions = [];
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:5:hardcoded string:    if (productType === "single") {
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:6:hardcoded string:        initialClassOptions = classes.filter(ele => ['1', '2', '3'].includes(ele.value));
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:8:hardcoded string:        initialClassOptions = classes.filter(ele => ['1', '2'].includes(ele.value));
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:13:hardcoded variable:export const getFinalClassValues = (details) => {
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:14:hardcoded string:    let { selectedInitialClass='' } = details;
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:15:hardcoded array:    let finalClassOptions = [];
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:17:hardcoded number:    let finalClass = selectedInitialClass + 1;
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:19:hardcoded number:    if (selectedInitialClass >= 3) {
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:21:hardcoded number:    } else if (parseInt(selectedInitialClass) < 3 ) {
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:22:hardcoded object:        finalClassOptions.push({ label: `${finalClass}`, value: `${finalClass}`})
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:27:hardcoded variable:export const getBatchSizeOptions = () => {
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:28:hardcoded string:    return [{ label: '1:6', value: '1:6' }];    
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:31:hardcoded variable:export const getSessionOptions = (details) => {
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:32:hardcoded object:    const { productType } = details;
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:33:hardcoded string:    const noOfSession = productType === "combo" ? 110 : 80;
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:34:hardcoded array:    return [{label: `${noOfSession} sessions`, value: `${noOfSession}`}];
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:37:hardcoded variable:export const getTablets = (details) => {
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:38:hardcoded array:    const { Tablets=[] } = details;
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:39:hardcoded array:    let tabletsList = [], filteredTablets = [];
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:42:hardcoded string:            return ele.name === "BYJU'S LearnStation Junior 10inch Mobile Data Grey Tablet (Rs 16000)"
+microservices-middleware/client/src/modules/ordertype/byjusMathStreaming/helper/productHelper.js:46:hardcoded object:        filteredTablets.push({ label: tab.name, value: tab.productId })

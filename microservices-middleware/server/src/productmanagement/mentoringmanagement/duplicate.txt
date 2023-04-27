@@ -1,0 +1,331 @@
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:1:hardcoded object:const { get, snakeCase } = require('lodash');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:3:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Batches Filter');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:4:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:5:hardcoded object:const { productConstant } = require('../utils/productConstants');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:7:hardcoded variable:const getNeoClassLanguageOfInstruction = (response, cohortId) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:8:hardcoded object:    const { meta = {} } = response || {}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:9:hardcoded array:    const { cohort_tutor_languages = [] } = meta || {}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:10:hardcoded variable:    const languageObject = cohort_tutor_languages.filter(lang => lang.cohort_id == cohortId);
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:11:hardcoded number:    const { tutor_languages = [] } = languageObject.length ? languageObject[0] : {}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:13:hardcoded variable:    const language = tutor_languages.map(lang => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:23:hardcoded string:// course_type: "neo" 
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:24:hardcoded number:// for K12 product - one to mega is applicable
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:25:hardcoded number:// for K10 product - neo classes is applicable
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:26:hardcoded variable:const getNeoBatches = async (details) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:27:hardcoded array:    let batches = [], language = [];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:32:hardcoded string:        const adtnlClsDetails = get(response, 'meta.additional_classes_info', {});
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:34:hardcoded number:        if (productConstant.K12_GRADES.includes(initialClass)) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:35:hardcoded string:            batches = response["batches"].filter(batch => batch.course_type != "neo")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:36:hardcoded string:        } else if (orderPunchingType === "MIDDLEEAST_ORDER") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:37:hardcoded string:            batches = response["batches"].filter(batch => batch.course_type == "neo" &&
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:38:hardcoded string:                get(batch, "batch_type", "regular") == "regular" &&
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:39:hardcoded string:                get(batch, "course_tag") == "classroom"
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:41:hardcoded string:        } else if (productCombination == 'mini_learning_program' || validity == 'mini_learning_program') {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:42:hardcoded string:            batches = response["batches"].filter(batch => batch.course_type == "neo" &&
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:43:hardcoded string:                get(batch, "batch_type", "regular") == "regular" &&
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:44:hardcoded string:                get(batch, "course_tag") == "bootcamp" &&
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:45:hardcoded string:                snakeCase(get(batch, "course_sub_tag").toLowerCase()) == 'mini_learning_programs')
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:47:hardcoded string:            batches = response["batches"].filter(batch => batch.course_type == "neo" &&
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:48:hardcoded string:                get(batch, "batch_type", "regular") == "regular" &&
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:49:hardcoded string:                get(batch, "course_tag") == "bootcamp" &&
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:50:hardcoded string:                snakeCase(get(batch, "course_sub_tag").toLowerCase()) == 'trial_subscription')
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:52:hardcoded string:            batches = response["batches"].filter(batch => batch.course_type == "neo" &&
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:53:hardcoded string:                get(batch, "batch_type", "regular") == "regular" &&
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:54:hardcoded string:                get(batch, "course_tag") == "classroom"
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:60:hardcoded string:        if (orderPunchingType === "MIDDLEEAST_ORDER") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:61:hardcoded object:            const { trackId } = response;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:62:hardcoded object:            return { batches, electives, language, trackId, adtnlClsDetails, cohortId }
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:64:hardcoded object:            return { batches, doubtClasses, electives, language, adtnlClsDetails, cohortId }
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:67:hardcoded string:        logger.error({ method: 'getNeoBatches', error });
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:72:hardcoded variable:const getSessionCount = (details) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:73:hardcoded object:    const { productCombination, productLearningType, initialClass, classType, session, isTrialOrder, validity } = details
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:74:hardcoded number:    let mandatorySession = 0, optionalSession = 0;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:75:hardcoded string:    if (isDevEnv && productCombination == "byjus_math"){
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:76:hardcoded object:        return { mandatorySession, optionalSession }
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:78:hardcoded string:    if (productCombination == 'mini_learning_program' || validity == 'mini_learning_program') {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:80:hardcoded string:    } else if (productLearningType == "BYJUS_AKASH_CLASSES") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:81:hardcoded string:        mandatorySession = productConstant.APPLICABLE_FREQUENCY_FOR_BYJUS_AAKASH["mandatorySession"];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:82:hardcoded string:        optionalSession = productConstant.APPLICABLE_FREQUENCY_FOR_BYJUS_AAKASH["optionalSession"];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:84:hardcoded string:        mandatorySession = productConstant.APPLICABLE_FREQUENCY_FOR_K10_NEO_CLASSES["TRIAL_PACK"][initialClass]["mandatorySession"];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:85:hardcoded string:        optionalSession = productConstant.APPLICABLE_FREQUENCY_FOR_K10_NEO_CLASSES["TRIAL_PACK"][initialClass]["optionalSession"];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:86:hardcoded number:    } else if (parseInt(initialClass, 10) <= 10) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:87:hardcoded string:        if (classType == "oneToMega") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:88:hardcoded string:            mandatorySession = productConstant.APPLICABLE_FREQUENCY_FOR_K10_BYJUS_CLASSES["mandatorySession"];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:89:hardcoded string:            optionalSession = productConstant.APPLICABLE_FREQUENCY_FOR_K10_BYJUS_CLASSES["optionalSession"];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:91:hardcoded string:            mandatorySession = productConstant.APPLICABLE_FREQUENCY_FOR_K10_NEO_CLASSES[initialClass]["mandatorySession"];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:92:hardcoded string:            optionalSession = productConstant.APPLICABLE_FREQUENCY_FOR_K10_NEO_CLASSES[initialClass]["optionalSession"];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/batchFilter.js:96:hardcoded object:    return { mandatorySession, optionalSession }
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:1:hardcoded object:const { isEmpty, get, startCase, lowerCase } = require('lodash');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:3:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Additional Class Controller');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:4:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:6:hardcoded number:const { callTllmsToGetCourseDetailsFor14, tutorPlusBatchesApi } = require('../../../utility/externalApiUtility');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:7:hardcoded number:const { getV4BatchPayload } = require('./mentoringHelper');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:9:hardcoded variable:const getAdditionalClassDetails = async (req, res) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:11:hardcoded string:        logger.info({ method: "getAdditionalClassDetails" }, req.body);
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:12:hardcoded string:        let { identifier, courseType = "regular", cohortId, courseTag, schoolState = '',
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:13:hardcoded string:            selectedBatchIds, subjectSequenceId, isV4Batch = false, validity = '', language = '' } = req.body;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:15:hardcoded string:        let draftOrder, allocated_batch_ids='';
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:26:hardcoded string:        let response = '';
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:28:hardcoded number:        if (isV4Batch) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:29:hardcoded array:            let allocatedIds = []
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:31:hardcoded object:                allocatedIds.push(`${ele}`)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:34:hardcoded number:            let payload = await getV4BatchPayload({cohort_id: cohortId, academic_year: validity, courseTag, language, schoolState});
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:37:hardcoded array:                subject_sequence_ids: [subjectSequenceId],
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:40:hardcoded string:            response = await tutorPlusBatchesApi({ method: 'GET', payload })
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:41:hardcoded string:            if (!response.batches) throw new Error("Tutor+ API call failed.Please try again later")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:43:hardcoded object:            response = await getFilteredNeoBatches({ response }, courseTag);
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:46:hardcoded number:        for (let i = 0; i < selectedBatchIds.length; i++) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:47:hardcoded array:            allocated_batch_ids += `allocated_batch_ids[]=${selectedBatchIds[i]}&`;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:49:hardcoded number:        response = await callTllmsToGetCourseDetailsFor14(`cohort_id=${cohortId}&${allocated_batch_ids}subject_sequence_ids[]=${subjectSequenceId}&course_tag=${courseTag}&mandatory_sessions_count=1&optional_sessions_count=0&clash=false`);
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:51:hardcoded string:        if (!response.batches) throw new Error("Tllms API call failed.Please try again later")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:52:hardcoded string:        // if (isEmpty(response.batches)) throw new Error("Courses are not available on tllms side. Please mail optech@byjus.com")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:54:hardcoded object:        response = await getFilteredNeoBatches({ response }, courseTag);
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:58:hardcoded string:        logger.error({ method: 'getAdditionalClassDetails', error });
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:59:hardcoded string:        return res.status(400).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:63:hardcoded variable:const getFilteredNeoBatches = async (details, courseTag) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:64:hardcoded array:    let batches = [];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:65:hardcoded object:    let { response } = details
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:68:hardcoded string:        batches = response["batches"].filter(batch => lowerCase(batch.course_type) == "neo" &&
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:69:hardcoded string:            get(batch, "batch_type", "regular") == "regular"
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:73:hardcoded object:            throw new Error(`${startCase(courseTag)} : Batches not available.`);
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:76:hardcoded object:        return { batches }
+microservices-middleware/server/src/productmanagement/mentoringmanagement/additionalClassController.js:78:hardcoded string:        logger.error({ method: 'getNeoBatches', error });
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:1:hardcoded object:const { get, isEmpty, startCase } = require('lodash');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:2:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Mentoring Slot Controller');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:4:hardcoded string:const { ProductDetail: ProductDetails, CourseIdMapping: CourseIdMappings } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:5:hardcoded string:const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:6:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:8:hardcoded number:const { callTllmsToGetCourseDetailsFor14, callByjusMathBatchesApi, callTllmsToGetLanguage, callTllmsToGetLanguageV2, tutorPlusBatchesApi, callTutorPlusCoursesApi, callTutorPlusSlotsApi } = require('../../../utility/externalApiUtility');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:9:hardcoded object:const { productConstant, STATE_BOARD_MAP } = require('../utils/productConstants');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:10:hardcoded object:const { getBoardForState } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:11:hardcoded file path:const MentoringSku = require('../utils/products');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:13:hardcoded object:const { NotFoundError, BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:14:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:15:hardcoded object:const { getSessionCount, getNeoBatches } = require('./batchFilter')
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:16:hardcoded object:const { getTrackId } = require('../../student/schoolController')
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:17:hardcoded object:const { meProficiency } = require('../../student/utils/meProficiency')
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:18:hardcoded number:const { getV4BatchPayload, adtnlClsDetails } = require('./mentoringHelper');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:20:hardcoded object:const getFilter = ({ initialClass, board, state, productType, subCourse, productCombination, validity, courseType, productLearningType }) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:22:hardcoded string:        if (productType === "streaming" && productCombination != "byjus_classes") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:23:hardcoded object:            initialClass = `Streaming ${initialClass}`            
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:25:hardcoded string:        // board = board != "STATE" ? board : state;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:26:hardcoded variable:        const query = {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:29:hardcoded string:        if(subCourse==="1:6")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:31:hardcoded string:            query["subCourse"]=subCourse;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:32:hardcoded string:            query["category"]="K10";
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:33:hardcoded string:            query["grade"]=initialClass;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:35:hardcoded string:            if(!["4","5"].includes(initialClass))
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:37:hardcoded string:                query["board"] = board === "STATE" ? STATE_BOARD_MAP[state] : board;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:39:hardcoded string:            query["validity"]=validity.toString();
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:42:hardcoded string:        if (["4", "5"].indexOf(initialClass) >= 0) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:43:hardcoded string:            query["course"] = "Maths/Science";
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:45:hardcoded string:        else if (["Streaming 4", "Streaming 5"].indexOf(initialClass) >= 0) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:46:hardcoded string:            query["course"] = "Maths";
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:48:hardcoded string:        else if (["6", "7", "8", "9", "10"].indexOf(initialClass) >= 0) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:49:hardcoded string:            if (productType != "streaming") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:50:hardcoded string:                query["board"] = board === "STATE" ? getBoardForState(state) : board;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:52:hardcoded string:                query["validity"] = `MAY ${validity}`
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:55:hardcoded string:        else if (["11", "12", "11+12", "Streaming 11+12", "Streaming 11", "Streaming 12", "14", "13", "12+", "13+"].indexOf(initialClass) >= 0) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:56:hardcoded string:            query["course"] = subCourse;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:58:hardcoded string:            query["course"] = null;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:61:hardcoded string:        if (productType === "streaming" && productCombination === "byjus_classes" && courseType != "jumpstart") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:62:hardcoded string:            if (courseType != "advance" || initialClass != '12') {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:63:hardcoded string:                query["type"] = "ONLINE_LEARNING+BYJUS_CLASSES"
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:67:hardcoded string:        if (productLearningType == "BYJUS_AKASH_CLASSES") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:68:hardcoded string:            query["type"] = productLearningType
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:77:hardcoded variable:const getTutorPlusCourses = async (details) =>{
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:79:hardcoded object:    let response={};
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:80:hardcoded object:    let slots={};
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:81:hardcoded string:    const { cohort_id = '', country_id = '' , courseTag = "", language, state = "", proficiency = "" } = details;    
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:82:hardcoded string:    if (!cohort_id || !courseTag || !language || !state || !proficiency) throw new Error('Parameters missing!');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:83:hardcoded number:    let payload = await getV4BatchPayload(details)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:84:hardcoded string:    delete payload["batch_type"];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:85:hardcoded string:    delete payload["initiator"];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:86:hardcoded string:    delete payload["clash"];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:88:hardcoded string:    payload["state"]=state;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:89:hardcoded string:    payload["proficiency"]=proficiency;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:90:hardcoded string:    payload["country_id"]=country_id;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:91:hardcoded string:    response = await callTutorPlusCoursesApi({ method: 'GET', payload })
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:92:hardcoded string:    // slots = await callTutorPlusSlotsApi({ method: 'GET', payload })
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:98:hardcoded array:    // }) : []
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:99:hardcoded string:    if(isEmpty(response.courses)) throw new Error("Courses are not available on Tutor+.");
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:101:hardcoded string:        course["course_name"]=course.name;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:102:hardcoded string:        course["course_id"]=course.id;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:105:hardcoded number:    const updatedBatches = {...response.courses[0],slots};
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:107:hardcoded array:        batches: [updatedBatches],
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:108:hardcoded string:        adtnlClsDetails: get(response, 'meta.additional_classes_info', {}),
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:110:hardcoded object:        electives: {},
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:111:hardcoded object:        doubtClasses: {}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:116:hardcoded variable:const getLanguageDetails = async (req, res) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:118:hardcoded string:        logger.info({ method: "getLanguageDetails" }, req.body);
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:119:hardcoded string:        let { identifier, initialClass, board = "", state, productType, subCourse,
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:120:hardcoded string:            productCombination, courseType = "regular", validity, productLearningType,
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:127:hardcoded string:        if (!initialClass || !productCombination) throw new BadRequestError("Parameter missing");
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:139:hardcoded string:        validity = subCourse === "1:6" ? yearSelection.toString() : validity ; 
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:140:hardcoded object:        const query = getFilter({ initialClass, board, state, productType, subCourse, productCombination, validity, courseType, productLearningType, countryId });
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:141:hardcoded variable:        const cohort_id = !isEmpty(cohortId) ? cohortId : await getCohortId(query);
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:143:hardcoded object:        let payload={cohort_id};
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:144:hardcoded string:        if(subCourse==="1:6")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:146:hardcoded string:            payload["course_tag"]="1_few_classroom";
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:147:hardcoded string:            // payload["course_tag"]="classroom";
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:149:hardcoded string:        // response = subCourse==="1:6" ? await callTllmsToGetLanguage("",payload) : await callTllmsToGetLanguage(`cohort_id=${cohort_id}`)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:150:hardcoded string:        response = subCourse==="1:6" ? await callTllmsToGetLanguageV2(payload) : await callTllmsToGetLanguage(`cohort_id=${cohort_id}`)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:152:hardcoded string:        if (!response.languages) throw new Error("Tllms API call failed.Please try again later")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:153:hardcoded string:        if (isEmpty(response.languages)) throw new Error("Languages are not available on tllms side. Please mail optech@byjus.com")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:156:hardcoded string:        logger.error({ method: 'getLanguageDetails', error });
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:157:hardcoded string:        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:161:hardcoded variable:const getMentoringCourseDetails = async (req, res) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:163:hardcoded string:        logger.info({ method: "getMentoringCourseDetails" }, req.body);
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:164:hardcoded string:        let { identifier, initialClass, board = "", finalClass, state, productType, subCourse,
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:165:hardcoded string:            productCombination, courseType = "regular", validity, productLearningType, user,
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:166:hardcoded string:            classType, countryId = null, orderPunchingType, schoolState = '',
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:167:hardcoded number:            session, trackId, proficiency, cohortId, bfsBatch, language, languageId, isV4Batch = false } = req.body;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:168:hardcoded object:        let response, electives = {}, doubtClasses = {};
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:173:hardcoded string:        const isTrialOrder = validity?.length && validity === 'TRIAL_PACK' ? true : false
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:175:hardcoded string:        if (!initialClass || !productCombination) throw new BadRequestError("Parameter missing");
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:188:hardcoded object:        const query = getFilter({ initialClass, board, state, productType, subCourse, productCombination, validity, courseType, productLearningType, countryId });
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:189:hardcoded variable:        const cohort_id = !isEmpty(cohortId) ? cohortId : await getCohortId(query);
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:191:hardcoded string:        const { mandatorySession = "", optionalSession= "" } = getSessionCount({
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:196:hardcoded string:        if(classType == "neo" && ["byjus_classes_upgrade", "byjus_classes"].includes(productCombination) && !languageId){ 
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:197:hardcoded string:            return res.status(400).json({ message: "Language Id Required" });
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:200:hardcoded string:        if (orderPunchingType === "MIDDLEEAST_ORDER") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:205:hardcoded string:        } else if (classType == "oneToMega") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:206:hardcoded number:            response = await callTllmsToGetCourseDetailsFor14(`cohort_id=${cohort_id}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:207:hardcoded object:                &mandatory_sessions_count=${mandatorySession}&optional_sessions_count=${optionalSession}&language_id=${languageId}`)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:208:hardcoded string:        } else if (productCombination == 'mini_learning_program' || isTrialOrder || validity == 'mini_learning_program') {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:209:hardcoded number:            response = await callTllmsToGetCourseDetailsFor14(`cohort_id=${cohort_id}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:210:hardcoded object:                &mandatory_sessions_count=${mandatorySession}&optional_sessions_count=${optionalSession}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:212:hardcoded string:        } else if(subCourse==="1:6"){            
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:213:hardcoded string:            response = await getTutorPlusCourses({country_id : '22',courseTag : "1_few_classroom", cohort_id, language : language, state : schoolState, proficiency })   
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:214:hardcoded number:            return res.status(200).json(response)    
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:216:hardcoded number:        }else if (isV4Batch) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:217:hardcoded string:            response = await getTutorPlusV4Batches({cohort_id, academic_year: validity, courseTag: 'classroom', state, language, proficiency, initialClass, schoolState})
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:218:hardcoded number:            return res.status(200).json(response)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:220:hardcoded number:            response = await callTllmsToGetCourseDetailsFor14(`cohort_id=${cohort_id}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:221:hardcoded object:            &mandatory_sessions_count=${mandatorySession}&optional_sessions_count=${optionalSession}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:222:hardcoded object:            &fot_track_id=${trackId}&proficiency=${proficiency}&clash=false&language_id=${languageId}`)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:225:hardcoded string:        if (!response.batches) throw new Error("Tllms API call failed.Please try again later")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:226:hardcoded string:        if (isEmpty(response.batches)) throw new Error("Courses are not available on tllms side. Please mail optech@byjus.com")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:228:hardcoded string:        if (classType == "neo" && productCombination != "byjus_aakash") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:236:hardcoded string:        if (isEmpty(response.batches) && productCombination != "byjus_aakash") throw new Error("Courses are not available on tllms side. Please mail optech@byjus.com")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:240:hardcoded string:        logger.error({ method: 'getMentoringCourseDetails', error });
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:241:hardcoded string:        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:245:hardcoded number:const getTutorPlusV4Batches = async (details) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:246:hardcoded object:    let response = {};
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:247:hardcoded string:    const { cohort_id = '', academic_year = '',initialClass = '' } = details;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:248:hardcoded string:    if (!cohort_id || !academic_year) throw new Error('Parameters missing!');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:250:hardcoded number:    const payload = await getV4BatchPayload(details)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:252:hardcoded string:    response = await tutorPlusBatchesApi({ method: 'GET', payload })
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:253:hardcoded string:    if(isEmpty(response.batches)) throw new Error("Courses are not available on Tutor+.");
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:255:hardcoded variable:    const updatedBatches = response.batches.map(ele => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:256:hardcoded array:        let { slots = [] } = ele;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:263:hardcoded object:        return {...ele, slots}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:267:hardcoded string:        adtnlClsDetails: get(response, 'meta.additional_classes_info', {}),
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:269:hardcoded object:        electives: {},
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:270:hardcoded object:        doubtClasses: {}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:276:hardcoded variable:const getMiddleEastCourses = async (details) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:277:hardcoded object:    let { board, initialClass, classType, proficiency, trackId, state, response, mandatorySession, optionalSession, countryId, cohort_id, productType, languageId } = details
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:278:hardcoded string:    if (classType == "neo") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:279:hardcoded string:        if (productType == 'streaming') {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:280:hardcoded string:            board = 'CBSE'
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:283:hardcoded string:        board = ['igcse', 'IGCSE'].includes(board) ? "CBSE" : board
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:285:hardcoded object:        let body = {};
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:286:hardcoded object:        body = { grade: initialClass, schoolId, board, state }
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:287:hardcoded object:        const data = await getTrackId({ body })
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:288:hardcoded string:        trackId = get(data, 'track_id') ? get(data, 'track_id') : get(data, 'default_track_id', "")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:289:hardcoded number:        response = await callTllmsToGetCourseDetailsFor14(`cohort_id=${cohort_id}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:290:hardcoded object:        &mandatory_sessions_count=${mandatorySession}&optional_sessions_count=${optionalSession}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:291:hardcoded object:        &country_id=${countryId}&fot_track_id=${trackId}&proficiency=${proficiency}&languageId=${languageId}`)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:292:hardcoded object:        response = { ...response, trackId }
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:294:hardcoded number:        response = await callTllmsToGetCourseDetailsFor14(`cohort_id=${cohort_id}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:295:hardcoded object:        &mandatory_sessions_count=${mandatorySession}&optional_sessions_count=${optionalSession}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:296:hardcoded object:        &country_id=${countryId}`)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:302:hardcoded variable:const computeTrialAndCrashBatches = (response, validity, initialClass, board, subCourse, productType, classType) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:303:hardcoded variable:    const result = response
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:304:hardcoded string:    const env = ["local", "development", "uat"].includes(process.env.NODE_ENV) ? "development" : process.env.NODE_ENV
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:305:hardcoded array:    const trialCourseId = productConstant.APPLICABLE_COURSEIDS_FOR_TRIALPACK_VALIDITY[env][initialClass.toString()];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:307:hardcoded string:    if (classType != "neo") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:308:hardcoded string:        if (productType == "streaming") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:309:hardcoded string:            response = response["batches"].filter(batch => batch.course_id != trialCourseId)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:310:hardcoded string:        } else if (["TRIAL_PACK", "TRIAL_SUBSCRIPTION"].includes(validity) && board == "CBSE") {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:311:hardcoded string:            response = response["batches"].filter(batch => batch.course_id == trialCourseId)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:312:hardcoded string:        } else if (board == "CBSE" || ["4", "5"].includes(initialClass.toString())) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:313:hardcoded string:            response = response["batches"].filter(batch => batch.course_id != trialCourseId)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:315:hardcoded string:            response = response["batches"]
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:318:hardcoded string:        response = response["batches"]
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:321:hardcoded number:    // For same frequency TLLMS is returning courses for different K12 product, therefore need to put filter on course_batch
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:322:hardcoded string:    if (["11"].includes(initialClass.toString())) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:323:hardcoded string:        response = response.filter(batch => batch.course_batch == "11th")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:324:hardcoded string:    } else if (["12"].includes(initialClass.toString())) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:325:hardcoded string:        response = response.filter(batch => batch.course_batch == "12th")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:328:hardcoded object:    return { ...result, batches: response }
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:332:hardcoded variable:const getOneToManyDetails = (mentoringDetails) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:333:hardcoded object:    const { sessions } = mentoringDetails;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:334:hardcoded variable:    const sessionsCounts = sessions.length;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:338:hardcoded variable:const getMentoringSku = async (mentoringDoc) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:340:hardcoded string:        const { type = "", mentoringDetails = [] } = mentoringDoc;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:341:hardcoded array:        let name = MentoringSku.mentoring[type];
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:342:hardcoded variable:        let query = {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:344:hardcoded string:            type: "mentoring"
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:347:hardcoded string:        const oneToManyMentoringSession = ["oneToMega", "oneToMany", "neo"].includes(type) ? getOneToManyDetails(mentoringDetails[0]) : 0
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:348:hardcoded number:        /** Frequency 4 applicable for Byjus Classes
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:351:hardcoded number:        if ([3, 4, 5].includes(oneToManyMentoringSession)) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:352:hardcoded string:            name = MentoringSku.mentoring["byjusClasses"]
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:354:hardcoded number:        if (oneToManyMentoringSession != 0) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:355:hardcoded string:            query["name"] = {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:356:hardcoded object:                $regex: `${name}`,
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:357:hardcoded string:                $options: "i"
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:359:hardcoded string:            query["frequency"] = oneToManyMentoringSession;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:361:hardcoded variable:        const mentoringSku = await ProductDetails.findOne(query).lean();
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:364:hardcoded variable:            const details = {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:366:hardcoded string:                price: get(mentoringSku, 'basePrice', 0),
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:367:hardcoded number:                quantity: 1,
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:368:hardcoded string:                itemType: 'mentoring'
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:370:hardcoded string:            if (["oneToMega", "oneToMany", "neo"].includes(type)) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:371:hardcoded number:                /**Mentoring price differs for 2 and 3 slot frequency 
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:372:hardcoded number:                 * This also needs to be changed after the pricing logic is given for 11 12 premium school for now do it like this
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:374:hardcoded number:                if (oneToManyMentoringSession === 2) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:376:hardcoded number:                } else if (oneToManyMentoringSession === 3) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:390:hardcoded variable:const getUpdatedOneToManyPrice = (oneToManySku, initialClass, finalClass) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:392:hardcoded number:        /** 11 and 12 are not considered for HLP */
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:393:hardcoded number:        if (finalClass >= 10) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:394:hardcoded number:            finalClass = 10
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:396:hardcoded string:        oneToManySku["price"] = (finalClass - initialClass + 1) * oneToManySku.price;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:404:hardcoded variable:const getCohortId = async (query) => {    
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:405:hardcoded string:    const productDetails =query["subCourse"]==="1:6" ? await SalesSkuMaster.findOne({attributes : ["cohortId"], where : query, raw : true}) : await ProductDetails.findOne(query).select("cohort_id").lean();
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:406:hardcoded string:    if (!productDetails) throw new Error("Cohort Id is missing please mail optech@byjus.com to get it added.");
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:408:hardcoded variable:    let cohort_id  = productDetails.cohort_id || productDetails.cohortId;
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringProductController.js:414:hardcoded string:    if (!cohort_id || cohort_id === "") throw new Error("Cohort Id is missing please mail optech@byjus.com to get it added.")
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:1:hardcoded object:const { startCase } = require('lodash');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:2:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper');
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:4:hardcoded number:const getV4BatchPayload = (details) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:5:hardcoded string:    const { cohort_id = '', academic_year = '', schoolState = '',
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:6:hardcoded string:        language = '', proficiency = '', courseTag = '' } = details
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:8:hardcoded variable:    let payload = {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:9:hardcoded string:        "cohort_id": cohort_id.toString(),        
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:10:hardcoded string:        "course_tag": courseTag.toString(),
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:11:hardcoded string:        "batch_type": "regular",
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:12:hardcoded string:        "initiator": "uxos",
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:13:hardcoded string:        "clash": "false",
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:14:hardcoded string:        "languages": language ? [startCase(language)] : ['English']
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:18:hardcoded string:        payload["academic_year"]=Number(academic_year)
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:20:hardcoded string:    if (schoolState) payload['state'] = startCase(schoolState);
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:21:hardcoded string:    if (proficiency) payload['proficiency'] = proficiency.toString()
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:26:hardcoded variable:const adtnlClsDetails = (initialClass) => {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:28:hardcoded variable:    let availableSubjects = [
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:30:hardcoded string:            "subject_sequence_id": isDevEnv ? 20 : 10,
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:31:hardcoded string:            "subjects": [
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:32:hardcoded string:                "English"
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:37:hardcoded number:    if (Number(initialClass) > 5) {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:39:hardcoded string:            "subject_sequence_id": isDevEnv ? 21 : 11,
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:40:hardcoded string:            "subjects": [
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:41:hardcoded string:                "Social Studies"
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:46:hardcoded variable:    let classObj = {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:47:hardcoded string:        "elective_classes": {
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:48:hardcoded string:            "mandatory": true,
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:49:hardcoded string:            "priority": 1,
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:50:hardcoded string:            "course_tag": "elective",
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:51:hardcoded string:            "status": "active",
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:52:hardcoded string:            "available_subjects": availableSubjects
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:54:hardcoded string:        "doubt_resolution_classes": {}
+microservices-middleware/server/src/productmanagement/mentoringmanagement/mentoringHelper.js:62:hardcoded number:    getV4BatchPayload

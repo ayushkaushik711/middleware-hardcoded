@@ -1,0 +1,618 @@
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:1:hardcoded object:const { get, isEmpty, isArray, isNaN, flattenDeep } = require('lodash');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:2:hardcoded file path:const moment = require('moment');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:4:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('BLC Product Explorer');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:5:hardcoded object:const { NotFoundError, BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:6:hardcoded object:const { getTabletSku } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:7:hardcoded object:const { isDevEnv, isLocalEnv } = require('../../../lib/featureHelper')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:8:hardcoded object:const { fetchBfsPlusByjusClasses, fetchBfsPlusTlp } = require('./bfsCombinationHelper')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:9:hardcoded number:const { getUpdatedK10K12Price, getBfsCourseSku, getBfsSdCardSku, getUpdatedBfsPrice, 
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:10:hardcoded file path:    getEpicSamplerMathMinPrice } = require('./bfsHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:11:hardcoded object:const { getBfsPgCourseSku, getBfsSdCardSkuFromPg } = require('./bfsBetaHelper')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:12:hardcoded object:const { getDiscountDetails } = require('../vouchermanagement/voucherHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:13:hardcoded object:const { getBooksSku } = require('../../bookmanagement/bookController')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:14:hardcoded object:const { getEpicSku } = require('../epicmanagement/epicHelper')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:15:hardcoded object:const { productConstant } = require('../../productmanagement/utils/productConstants');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:16:hardcoded object:const { getTynkerSku } = require('../tynkerManagement/tynkerHelper')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:20:hardcoded variable:const getTotalPrice = async (details) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:21:hardcoded object:    let { finalPrice, tabletSku } = details
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:23:hardcoded variable:    let totalPrice = parseInt(finalPrice);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:24:hardcoded array:    tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:27:hardcoded number:            const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:34:hardcoded variable:const getSingleProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:35:hardcoded string:    logger.info({ method: 'getSingleProduct' }, { message: "Fetching Single Product" });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:39:hardcoded string:    let { identifier, paymentType = "EMI", productType, productCombination, isEpicSamplerEnabled } = req.body;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:40:hardcoded object:    let { student } = req.body
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:46:hardcoded number:        student = isArray(student) ? student[0] : student
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:47:hardcoded object:        let { tablet, initialClass, validity, bfsBatch, bfsProductType, board } = student;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:48:hardcoded variable:        let grade = initialClass
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:50:hardcoded object:        bfsSdCardSku = (global.isPgQuery) ? await getBfsSdCardSkuFromPg({ initialClass, bfsProductType, student, validity, tablet, isEpicSamplerEnabled, grade }) : await getBfsSdCardSku({ productType, initialClass, bfsProductType, student, validity, isEpicSamplerEnabled, grade })
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:51:hardcoded object:        bfsCourseSku = (global.isPgQuery) ? await getBfsPgCourseSku({ initialClass, board, bfsBatch, bfsProductType, validity, productType, student, isEpicSamplerEnabled, grade }) : await getBfsCourseSku({ productType, initialClass, board, bfsBatch, bfsProductType, validity, isEpicSamplerEnabled, grade })
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:52:hardcoded number:        // In case of D4 tablet selected Epic Sku will go
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:53:hardcoded object:        epicSku = isEpicSamplerEnabled ? await getEpicSku({ validity, tablet, initialClass, finalClass: initialClass }) : null;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:55:hardcoded number:        /** Adding Tynker sku & Tynker sku is available only if validity >= 2023 with Pre K3/K3 grades && Byjus's learnstation tablet(D41.1)*/
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:57:hardcoded object:            tynkerSku = isEpicSamplerEnabled ? await getTynkerSku({validity, tablet, initialClass, finalClass: initialClass}) : null;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:60:hardcoded object:        tabletSku = tablet ? await getTabletSku({ tabletId: tablet }) : null;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:62:hardcoded object:        const byjusMathPrice = getUpdatedBfsPrice({ tabletSku, bfSkuPrice, bfsProductType, isEpicSamplerEnabled, bfsSdCardSku });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:63:hardcoded object:        const { maxByjusMathPrice, minByjusMathPrice } = byjusMathPrice || {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:64:hardcoded string:        let maxPrice = (bfsProductType !== "bfsSubscription") ? Math.ceil(maxByjusMathPrice / 1000) * 1000 : maxByjusMathPrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:65:hardcoded variable:        let minPrice = minByjusMathPrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:67:hardcoded array:        const products = [bfsSdCardSku, bfsCourseSku, tabletSku, epicSku, tynkerSku];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:69:hardcoded string:        if (['local', 'development'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:70:hardcoded object:            booksSku = await getBooksSku({ board, initialClass, productCombination });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:72:hardcoded variable:        const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:75:hardcoded string:        student["formValues"] = { ...student };
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:76:hardcoded string:        student["items"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:77:hardcoded string:        student["bfsProductType"] = bfsProductType;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:78:hardcoded string:        student["bfsBatch"] = bfsBatch;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:79:hardcoded object:        const skuProductDetails = { initialClass, tabletSku, maxPrice, minPrice, productCombination }
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:80:hardcoded object:        const discountDetails = await getDiscountDetails({identifier, productDetails : skuProductDetails});
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:81:hardcoded string:        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:90:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:93:hardcoded number:                count: 0,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:94:hardcoded array:                items: []
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:96:hardcoded array:            mentoringDetails: [],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:98:hardcoded array:            bhlpCourseDetails: [],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:107:hardcoded variable:const getByjusMathProductType = (grade, initialClass, bfsProductType, isPrivilegedUser, isEpicSamplerEnabled) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:108:hardcoded variable:    let productType = bfsProductType;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:110:hardcoded string:        if (bfsProductType == '24' && isEpicSamplerEnabled) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:115:hardcoded string:        productType = '';
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:120:hardcoded variable:const getComboProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:121:hardcoded string:    logger.info({ method: 'getComboProduct' }, { message: "Fetching Combo Product" });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:123:hardcoded array:    let bfsSdCardSku, bfsCourseSku, tabletSku, booksSku = [], epicSku = [], tynkerSku= [];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:124:hardcoded number:    let skuPrice = 0, bfsCoursePrice = 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:125:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:127:hardcoded string:    let { paymentType = "EMI", productType, student, productCombination, identifier, isPrivilegedUser, isEpicSamplerEnabled } = req.body;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:130:hardcoded number:    student = isArray(student) ? student[0] : student;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:131:hardcoded object:    let { initialClass, finalClass, validity, tablet, byjusClassFinalGrade, tlpFinalGrade, board, bfsBatch, bfsProductType } = student;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:136:hardcoded variable:    let grade = initialClass;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:137:hardcoded variable:    let initialValidity = validity
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:140:hardcoded variable:        let updatedBfsProductType = bfsProductType
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:141:hardcoded object:        bfsCourseSku = await getBfsPgCourseSku({ initialClass, board, bfsBatch, bfsProductType, validity, productType, student, isEpicSamplerEnabled })
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:142:hardcoded string:        bfsCourseSku["price"] = parseInt(bfsCourseSku.basePrice);;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:147:hardcoded object:            bfsSdCardSku = (global.isPgQuery) ? await getBfsSdCardSkuFromPg({ initialClass: grade, bfsProductType, student, validity, isEpicSamplerEnabled, grade }) : await getBfsSdCardSku({ productType, initialClass: grade, bfsProductType, student, validity, isEpicSamplerEnabled, grade })
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:148:hardcoded variable:            const byjusMathProductType = getByjusMathProductType(grade, initialClass, bfsProductType, isPrivilegedUser, isEpicSamplerEnabled);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:154:hardcoded number:            let bfsSdCardPrice = 0, bfsCoursePrice = 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:155:hardcoded number:            let updatedPrice = getUpdatedK10K12Price({ req, courseSku: bfsSdCardSku, grade, initialClass, finalClass, validity, productCombination });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:156:hardcoded number:            bfsUpdatedPrice = getUpdatedK10K12Price({ req, courseSku: bfsCourseSku, grade, initialClass, finalClass, validity, productCombination });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:158:hardcoded string:            bfsSdCardPrice += get(updatedPrice, 'skuPrice');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:159:hardcoded string:            bfsCoursePrice += get(bfsUpdatedPrice, 'skuPrice');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:160:hardcoded string:            bfsSdCardSku["price"] = bfsSdCardPrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:164:hardcoded number:            grade += 1;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:167:hardcoded string:        skuPrice += parseInt(bfsCourseSku['basePrice']);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:171:hardcoded variable:            const bfsFinalClass = finalClass;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:172:hardcoded object:            const { neoSkus, neoPrice } = await fetchBfsPlusByjusClasses({ initialClass, bfsFinalClass, byjusClassFinalGrade, validity, student })
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:174:hardcoded number:            skuPrice += parseInt(neoPrice, 10);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:178:hardcoded variable:            const bfsFinalClass = finalClass;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:179:hardcoded object:            const { byjusMathSkus, byjusMathPrice } = await fetchBfsPlusTlp({ initialClass, byjusClassFinalGrade, bfsFinalClass, tlpFinalGrade, validity, student })
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:181:hardcoded number:            skuPrice += parseInt(byjusMathPrice, 10);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:183:hardcoded object:        epicSku = isEpicSamplerEnabled ? await getEpicSku({ validity: initialValidity, tablet, initialClass, finalClass }) : {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:186:hardcoded number:        /** Adding Tynker sku & Tynker sku is available only if validity >= 2023 with Pre K3/K3 grades && Byjus's learnstation tablet(D41.1)*/
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:188:hardcoded object:            tynkerSku = isEpicSamplerEnabled ? await getTynkerSku({ validity: initialValidity, tablet, initialClass, finalClass }) : null;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:192:hardcoded object:        tabletSku = tablet ? await getTabletSku({ tabletId: tablet }) : null;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:195:hardcoded object:        let maxPrice = await getTotalPrice({ finalPrice: skuPrice, tabletSku });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:196:hardcoded variable:        let minPrice = getEpicSamplerMathMinPrice(skuArray, tabletSku);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:198:hardcoded array:        const products = [skuArray, tabletSku];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:199:hardcoded string:        if (['local', 'development'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:202:hardcoded variable:        const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:204:hardcoded string:        student["formValues"] = { ...student };
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:205:hardcoded string:        student["items"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:206:hardcoded string:        student["bfsProductType"] = updatedBfsProductType;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:207:hardcoded object:        const skuProductDetails = { initialClass, tabletSku, maxPrice, minPrice, productCombination }
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:208:hardcoded object:        const discountDetails = await getDiscountDetails({identifier, productDetails : skuProductDetails});
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:209:hardcoded string:        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:218:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:221:hardcoded number:                count: 0,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:222:hardcoded array:                items: []
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:224:hardcoded array:            mentoringDetails: [],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/epicSamplerProductExplorer.js:226:hardcoded array:            bhlpCourseDetails: [],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:1:hardcoded object:const { get, isEmpty, isArray, isNaN, flattenDeep } = require('lodash');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:2:hardcoded file path:const moment = require('moment');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:4:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('BLC Product Explorer');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:5:hardcoded object:const { NotFoundError, BadRequestError } = require('../../../lib/errors');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:6:hardcoded object:const { getTabletSku } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:7:hardcoded object:const { isDevEnv, isLocalEnv } = require('../../../lib/featureHelper')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:8:hardcoded object:const { fetchBfsPlusByjusClasses, fetchBfsPlusTlp } = require('./bfsCombinationHelper')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:9:hardcoded number:const { getUpdatedK10K12Price, getBfsCourseSku, getBfsSdCardSku, getUpdatedBfsPrice,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:10:hardcoded file path:    getByjusMathMinPrice } = require('./bfsHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:11:hardcoded object:const { getBfsPgCourseSku, getBfsSdCardSkuFromPg } = require('./bfsBetaHelper')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:12:hardcoded object:const { getDiscountDetails } = require('../vouchermanagement/voucherHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:13:hardcoded object:const { getBooksSku } = require('../../bookmanagement/bookController')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:14:hardcoded object:const { getEpicSku } = require('../epicmanagement/epicHelper')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:15:hardcoded object:const { productConstant, BYJUS_MATH_MIN_PRICE } = require('../../productmanagement/utils/productConstants');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:16:hardcoded object:const { getTynkerSku } = require('../tynkerManagement/tynkerHelper')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:19:hardcoded variable:const getTotalPrice = async (details) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:20:hardcoded object:    let { finalPrice, tabletSku } = details
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:22:hardcoded variable:    let totalPrice = parseInt(finalPrice);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:23:hardcoded array:    tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:26:hardcoded number:            const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:33:hardcoded variable:const getSingleProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:34:hardcoded string:    logger.info({ method: 'getSingleProduct' }, { message: "Fetching Single Product" });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:38:hardcoded string:    let { identifier, paymentType = "EMI", productType, productCombination, isEpicEnabled, mentoringDetails, bhlpCourseDetails } = req.body;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:39:hardcoded object:    let { student } = req.body
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:40:hardcoded variable:    const user = req.user;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:44:hardcoded number:        student = isArray(student) ? student[0] : student
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:45:hardcoded object:        let { tablet, initialClass, validity, bfsBatch, bfsProductType, board } = student;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:47:hardcoded object:        bfsSdCardSku = isDevEnv ? await getBfsSdCardSkuFromPg({ initialClass, bfsProductType, student, validity, tablet, board }) : await getBfsSdCardSku({ productType, initialClass, bfsProductType, student, validity })
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:48:hardcoded object:        bfsCourseSku = await getBfsPgCourseSku({ initialClass, board, bfsBatch, bfsProductType, validity, productType, student })
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:49:hardcoded number:        // In case of D4 tablet selected Epic Sku will go
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:50:hardcoded object:        // epicSku = isEpicEnabled ? await getEpicSku({ validity, tablet, initialClass, finalClass: initialClass }) : null;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:52:hardcoded number:        /** Adding Tynker sku & Tynker sku is available only if validity >= 2023 with Pre K3/K3 grades && Byjus's learnstation tablet(D41.1)*/
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:54:hardcoded object:        //     tynkerSku = isEpicEnabled ? await getTynkerSku({validity, tablet, initialClass, finalClass: initialClass}) : null;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:57:hardcoded object:        tabletSku = tablet ? await getTabletSku({ tabletId: tablet }) : null;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:60:hardcoded string:            tabletSku['price'] = BYJUS_MATH_TABLET_PRICE[bfsProductType];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:61:hardcoded string:            tabletSku['price'] = BYJUS_MATH_TABLET_PRICE[bfsProductType];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:62:hardcoded string:            tabletSku['continousPrice'] = BYJUS_MATH_TABLET_PRICE[bfsProductType];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:65:hardcoded object:        const byjusMathPrice = getUpdatedBfsPrice({ tabletSku, bfSkuPrice, bfsProductType, bfsSdCardSku, productCombination, user });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:66:hardcoded object:        const { maxByjusMathPrice, minByjusMathPrice } = byjusMathPrice || {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:67:hardcoded string:        let maxPrice = (bfsProductType !== "bfsSubscription") ? Math.ceil(maxByjusMathPrice / 1000) * 1000 : maxByjusMathPrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:68:hardcoded string:        let minPrice = (bfsProductType !== "bfsSubscription") ? Math.floor(minByjusMathPrice / 1000) * 1000 : minByjusMathPrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:70:hardcoded array:        const products = [bfsSdCardSku, bfsCourseSku, tabletSku, epicSku, tynkerSku];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:72:hardcoded string:        if (['local', 'development'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:73:hardcoded object:            booksSku = await getBooksSku({ board, initialClass, productCombination });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:77:hardcoded variable:        const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:80:hardcoded string:        student["formValues"] = { ...student };
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:81:hardcoded string:        student["items"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:82:hardcoded string:        student["bfsProductType"] = bfsProductType;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:83:hardcoded string:        student["bfsBatch"] = bfsBatch;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:84:hardcoded object:        const skuProductDetails = { initialClass, tabletSku, maxPrice, minPrice, productCombination }
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:85:hardcoded object:        const discountDetails = await getDiscountDetails({ identifier, productDetails: skuProductDetails });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:86:hardcoded string:        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:95:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:98:hardcoded number:                count: 0,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:99:hardcoded array:                items: []
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:101:hardcoded array:            mentoringDetails: isDevEnv ? mentoringDetails : [],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:103:hardcoded array:            bhlpCourseDetails: isDevEnv ? bhlpCourseDetails : [],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:112:hardcoded variable:const getByjusMathProductType = (grade, initialClass, bfsProductType, isPrivilegedUser) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:113:hardcoded variable:    let productType = bfsProductType;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:115:hardcoded string:        if (bfsProductType == "16") {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:121:hardcoded string:        productType = 'bfsPremium';
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:124:hardcoded string:         if ( bfsProductType == 'bfsPremium') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:125:hardcoded string:             productType = 'bfsStandard';
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:126:hardcoded string:         } else if (["16","24"].includes(bfsProductType)) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:130:hardcoded string:         productType = 'bfsPremium';
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:135:hardcoded variable:const getComboProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:136:hardcoded string:    logger.info({ method: 'getComboProduct' }, { message: "Fetching Combo Product" });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:138:hardcoded array:    let bfsSdCardSku, bfsCourseSku, tabletSku, booksSku = [], epicSku = [], tynkerSku = [];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:139:hardcoded number:    let skuPrice = 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:140:hardcoded array:    let skuArray = [];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:142:hardcoded string:    let { paymentType = "EMI", productType, student, productCombination, identifier, isPrivilegedUser, isEpicEnabled, mentoringDetails,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:145:hardcoded variable:    const user = req.user;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:147:hardcoded number:    student = isArray(student) ? student[0] : student;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:148:hardcoded object:    let { initialClass, finalClass, validity, tablet, byjusClassFinalGrade, tlpFinalGrade, board, bfsBatch, bfsProductType } = student;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:153:hardcoded variable:    let grade = initialClass;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:154:hardcoded variable:    let initialValidity = validity
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:157:hardcoded variable:        let isUkgGrade = false;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:158:hardcoded number:        if (initialClass == 0) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:161:hardcoded object:            bfsSdCardSku = isDevEnv ? await getBfsSdCardSkuFromPg({ initialClass: grade, bfsProductType, student, validity, board }) : await getBfsSdCardSku({ productType, initialClass: ukgGrade, bfsProductType, student, validity })
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:162:hardcoded string:            bfsSdCardSku["price"] = bfsSdCardSku.basePrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:164:hardcoded string:            if (['local', 'development'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:165:hardcoded object:                const bookSku = await getBooksSku({ board, initialClass, productCombination });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:170:hardcoded string:            skuPrice += parseInt(get(bfsSdCardSku, 'basePrice'));
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:175:hardcoded variable:        let updatedBfsProductType = bfsProductType
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:178:hardcoded number:            let bfsSdCardPrice = 0, bfsCoursePrice = 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:179:hardcoded object:            bfsSdCardSku = await getBfsSdCardSkuFromPg({ initialClass: grade, bfsProductType, student, validity, board });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:180:hardcoded variable:            const byjusMathProductType = getByjusMathProductType(grade, initialClass, bfsProductType, isPrivilegedUser);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:184:hardcoded object:                bfsCourseSku = await getBfsPgCourseSku({ initialClass: grade, board, bfsBatch, bfsProductType, validity, productType, student });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:185:hardcoded string:                bfsCourseSku['basePrice'] = Math.ceil(bfsCourseSku['basePrice'] / 1000) * 1000
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:186:hardcoded number:                bfsUpdatedPrice = getUpdatedK10K12Price({ req, courseSku: bfsCourseSku, grade, initialClass, finalClass, validity, productCombination });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:187:hardcoded string:                bfsCoursePrice += get(bfsUpdatedPrice, 'skuPrice');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:188:hardcoded string:                bfsCourseSku['price'] = bfsCoursePrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:193:hardcoded number:            let updatedPrice = getUpdatedK10K12Price({ req, courseSku: bfsSdCardSku, grade, initialClass, finalClass, validity, productCombination });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:195:hardcoded string:            bfsSdCardPrice += get(updatedPrice, 'skuPrice');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:196:hardcoded string:            bfsSdCardSku["price"] = bfsSdCardPrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:202:hardcoded string:            if (['local', 'development'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:203:hardcoded object:                const bookSku = await getBooksSku({ board, initialClass: grade, productCombination });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:207:hardcoded number:            grade += 1;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:211:hardcoded string:        // if (!['local', 'development'].includes(process.env.NODE_ENV) && byjusClassFinalGrade) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:213:hardcoded variable:        //     const bfsFinalClass = finalClass;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:214:hardcoded object:        //     const { neoSkus, neoPrice } = await fetchBfsPlusByjusClasses({ initialClass, bfsFinalClass, byjusClassFinalGrade, validity, student })
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:216:hardcoded number:        //     skuPrice += parseInt(neoPrice, 10);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:220:hardcoded variable:        //     const bfsFinalClass = finalClass;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:221:hardcoded object:        //     const { byjusMathSkus, byjusMathPrice } = await fetchBfsPlusTlp({ initialClass, byjusClassFinalGrade, bfsFinalClass, tlpFinalGrade, validity, student })
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:223:hardcoded number:        //     skuPrice += parseInt(byjusMathPrice, 10);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:225:hardcoded object:        // epicSku = isEpicEnabled ? await getEpicSku({ validity: initialValidity, tablet, initialClass, finalClass }) : null;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:228:hardcoded number:        /** Adding Tynker sku & Tynker sku is available only if validity >= 2023 with Pre K3/K3 grades && Byjus's learnstation tablet(D41.1)*/
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:230:hardcoded object:        //     tynkerSku = isEpicEnabled ? await getTynkerSku({ validity: initialValidity, tablet, initialClass, finalClass }) : null;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:234:hardcoded object:        tabletSku = tablet ? await getTabletSku({ tabletId: tablet }) : null;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:237:hardcoded number:        let minPrice = 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:238:hardcoded object:        let maxPrice = await getTotalPrice({ finalPrice: skuPrice, tabletSku });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:240:hardcoded number:        const tabPrice = (tabletSku) ? parseInt(tabletSku.basePrice) : 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:242:hardcoded number:        minPrice = ((Math.floor((minByjusMathPrice) * BYJUS_MATH_MIN_PRICE / 1000)) * 1000) + tabPrice
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:244:hardcoded array:        const products = [skuArray, tabletSku];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:245:hardcoded string:        if (['local', 'development'].includes(process.env.NODE_ENV)) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:248:hardcoded variable:        const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:250:hardcoded string:        student["formValues"] = { ...student };
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:251:hardcoded string:        student["items"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:252:hardcoded string:        student["bfsProductType"] = updatedBfsProductType;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:253:hardcoded object:        const skuProductDetails = { initialClass, tabletSku, maxPrice, minPrice, productCombination }
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:254:hardcoded object:        const discountDetails = await getDiscountDetails({ identifier, productDetails: skuProductDetails });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:255:hardcoded string:        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:264:hardcoded array:            students: [student],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:267:hardcoded number:                count: 0,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:268:hardcoded array:                items: []
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:270:hardcoded array:            mentoringDetails: isDevEnv ? mentoringDetails : [],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductExplorer.js:272:hardcoded array:            bhlpCourseDetails: isDevEnv ? bhlpCourseDetails : [],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:1:hardcoded object:const { get, isArray } = require('lodash');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:3:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:4:hardcoded string:const { ProductDetail } = require("@byjus-orders/nexemplum/oms");
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:5:hardcoded object:const { getSkuItemId } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:6:hardcoded object:const { getErrorMsg } = require('../productHelper')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:7:hardcoded object:const { BYJUS_MATH_BTLA_BASE_PRICE, BYJUS_MATH_BTLA_CONT_PRICE, BYJUS_MATH_MIN_PRICE, productConstant } = require('../utils/productConstants')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:8:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('BFS Product Helper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:9:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:10:hardcoded object:const { NotFoundError } = require ('../../../lib/errors')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:12:hardcoded variable:const getPostgresCourseSKU = async (details) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:13:hardcoded object:    const { category, grade, validity, scheme, subCourse, board } = details
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:15:hardcoded variable:    const query = {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:16:hardcoded string:        status: "active",
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:21:hardcoded object:        grade: `${grade}`,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:22:hardcoded object:        validity: `${validity}`
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:25:hardcoded variable:    const product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:33:hardcoded string:            itemType: 'course'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:37:hardcoded object:        const errorMsg = getErrorMsg({ grade, board, validity, type });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:42:hardcoded variable:const getMathUpgradeSkus = async (details) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:43:hardcoded object:    let { bfsBatch, bfsProductType, finalClass, initialClass, validity:selectedValidity } = details
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:44:hardcoded variable:    let grade = parseInt(initialClass)
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:45:hardcoded array:    let skus = []
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:46:hardcoded variable:    let validity=parseInt(selectedValidity)
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:48:hardcoded number:    while (grade <= parseInt(finalClass) && grade <= 3) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:49:hardcoded string:        let scheme = (grade == initialClass) ? "80" : "80"
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:50:hardcoded variable:        const subCourse = bfsBatch
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:52:hardcoded variable:        let query = {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:53:hardcoded object:            grade: `${grade}`,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:54:hardcoded string:            subType: "live",
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:55:hardcoded object:            validity:`${validity}`,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:57:hardcoded string:            category: "byjus_math",
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:61:hardcoded variable:        const product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:69:hardcoded string:                itemType: 'course'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:73:hardcoded string:            const errorMsg = getErrorMsg({ grade, validity,  course:  "byjus_math_upgrade" });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:83:hardcoded variable:const getByjusClassesskus = async (details) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:84:hardcoded object:    const { finalClass, validity:selectedValidity } = details
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:86:hardcoded variable:    let grade = parseInt(finalClass)
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:87:hardcoded number:    let validity=parseInt(selectedValidity) + 1
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:90:hardcoded variable:        let query = {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:91:hardcoded object:            grade: `${grade}`,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:92:hardcoded object:            validity:`${validity}`,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:93:hardcoded string:            category: "byjus_classes_upgrade"
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:96:hardcoded variable:        const product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:103:hardcoded string:                itemType: 'course',
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:108:hardcoded string:            const errorMsg = getErrorMsg({ grade, validity,  course:  "byjus_classes_upgrade" });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:114:hardcoded variable:const getCourseSku = async (details) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:115:hardcoded object:    let { course, subCourse, board, grade, state, validity, type, tablet, productType, student, isEpicSamplerEnabled } = details;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:116:hardcoded string:    const initialClass = get(student, 'initialClass')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:118:hardcoded string:    let tlpm8EligibleGrades = ['0', '1', '2', '3', '4', '5', 0, 1, 2, 3, 4, 5];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:120:hardcoded variable:    let query = {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:125:hardcoded string:    query['validity'] = `MAY ${validity}`;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:127:hardcoded string:    if (["BYJUS_MATH", "BYJUS_MATH_UPGRADE"].includes(type)) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:128:hardcoded string:        query["course"] = course;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:129:hardcoded string:        query["board"] = board;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:130:hardcoded string:        if (subCourse == 'bfsSubscription') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:131:hardcoded string:            subType = 'monthly';
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:132:hardcoded string:            delete query['validity'];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:134:hardcoded string:        else if (subCourse == 'bfsStandard') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:135:hardcoded string:            subType = 'standard'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:137:hardcoded string:        else if (subCourse == '24' && isEpicSamplerEnabled) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:140:hardcoded string:        else if (subCourse == '24') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:141:hardcoded string:            subType = '24'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:143:hardcoded string:        else if (subCourse == '16') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:144:hardcoded string:            subType = '16'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:147:hardcoded string:            subType = 'premium'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:149:hardcoded string:        query["subType"] = subType;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:151:hardcoded string:    else if (type == 'BYJUS_MATH_SD_CARD') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:152:hardcoded string:        query["board"] = tlpm8EligibleGrades.includes(grade) ? null : board
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:154:hardcoded string:        if (tablet == 'SCXMGJ') query["type"] = 'D4_TLP'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:156:hardcoded string:    if (["6", "7", "8", "9", "10"].indexOf(grade) >= 0) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:157:hardcoded string:        query["board"] = board;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:160:hardcoded string:    logger.info("BFS: product query : ");
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:164:hardcoded variable:    const product = await ProductDetail.findOne(query).lean();
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:166:hardcoded string:    logger.info("BFS: picked product : ");
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:172:hardcoded string:            itemType: 'course',
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:177:hardcoded object:        const errorMsg = getErrorMsg({ grade, board, state, validity, course });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:182:hardcoded variable:const getBfsCourseSku = async (productDetails) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:183:hardcoded object:    const { initialClass, board, bfsBatch, bfsProductType, validity, productType, student, isEpicSamplerEnabled } = productDetails || {}
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:185:hardcoded string:        type: "BYJUS_MATH",
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:196:hardcoded string:    bfsCourseSku["combinationType"] = get(bfsCourseSku, "type", "").toLowerCase();
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:197:hardcoded string:    bfsCourseSku["itemId"] = getSkuItemId(bfsCourseSku);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:199:hardcoded string:        bfsCourseSku['subType'] = null
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:200:hardcoded string:        bfsCourseSku['price'] = bfsCourseSku.basePrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:205:hardcoded variable:const getBfsSdCardSku = async (details) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:206:hardcoded object:    const { initialClass, bfsProductType, student, validity, isEpicSamplerEnabled } = details || {}
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:207:hardcoded variable:    let grade = initialClass;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:210:hardcoded string:        type: 'BYJUS_MATH_SD_CARD',
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:216:hardcoded string:    courseSku["combinationType"] = get(courseSku, "type", "").toLowerCase();
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:217:hardcoded string:    courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:219:hardcoded string:    courseSku['basePrice'] = coursePrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:220:hardcoded string:    courseSku['continousPrice'] = courseSku.continousPrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:221:hardcoded string:    courseSku['price'] = grade == initialClass ? coursePrice : courseSku.continuousPrice
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:223:hardcoded string:    //     courseSku['basePrice'] = coursePrice 
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:224:hardcoded string:    //     courseSku['price'] = grade == initialClass ? coursePrice : courseSku.continuousPrice
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:230:hardcoded variable:const getUpdatedBfsPrice = (productDetails) => {   
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:231:hardcoded object:    const { tabletSku = {}, bfSkuPrice, bfsProductType, isEpicSamplerEnabled, bfsSdCardSku, productCombination, user } = productDetails || {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:232:hardcoded number:    let maxByjusMathPrice = 0, minByjusMathPrice = 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:234:hardcoded string:    const vertical = (get(user, "vertical", ""))
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:235:hardcoded string:    const campaign = (get(user, 'campaign', '') || '').toUpperCase();
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:236:hardcoded string:    const loggedInUserRole = (get(user, 'role', '') || '');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:237:hardcoded variable:    const minByjusMathVerticalPrice  = productConstant.UPGRADE_VERTICAL_TRIAL_CAMPAIGN_BYJUS_MATH_BDA_MIN_PRICE
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:238:hardcoded variable:    const tlpSdCardPrice = bfsSdCardSku.basePrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:241:hardcoded object:     && productConstant.UPGRADE_VERTICAL_TRIAL_CAMPAIGN_BDA_VERTICAL({ vertical, campaign})
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:243:hardcoded string:        minByjusMathPrice += (bfsProductType != "bfsSubscription") ?
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:244:hardcoded array:         minByjusMathVerticalPrice * bfSkuPrice + BYJUS_MATH_BTLA_BASE_PRICE[bfsProductType]
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:245:hardcoded array:         : bfSkuPrice + BYJUS_MATH_BTLA_BASE_PRICE[bfsProductType];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:248:hardcoded number:        const tabPrice = (tabletSku) ? parseInt(tabletSku.basePrice) : 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:251:hardcoded variable:        let minPrice = maxByjusMathPrice - tabPrice
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:252:hardcoded number:        minByjusMathPrice = ((Math.floor((minPrice )*BYJUS_MATH_MIN_PRICE/ 1000)) * 1000) + tabPrice 
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:254:hardcoded object:    const { maxPrice, minPrice } = epicSamplerPricing({ tabletSku, bfSkuPrice, isEpicSamplerEnabled, isDevEnv, bfsSdCardSku })
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:259:hardcoded variable:    const byjusMathPrice = {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:265:hardcoded variable:const epicSamplerPricing = (productDetails) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:266:hardcoded object:    const { tabletSku = {}, bfSkuPrice, isEpicSamplerEnabled, isDevEnv, bfsSdCardSku } = productDetails || {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:267:hardcoded number:    let maxPrice = 0, minPrice = 0, epicSamplerPrice = 0, epicMinByjusMathPrice = 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:268:hardcoded number:    const tabPrice = (tabletSku) ? parseInt(tabletSku.basePrice) : 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:269:hardcoded variable:    const sdCardPrice = parseInt(bfsSdCardSku.basePrice)
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:270:hardcoded number:    maxPrice += (tabletSku) ? parseInt(tabletSku.basePrice) : 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:287:hardcoded variable:const getByjusMathMinPrice = (skuArray, tabletSku, productCombination, user, bfsSdCardSku) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:288:hardcoded number:    let totalPrice = 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:289:hardcoded string:    let sdCards = skuArray.filter(item => item && item.itemType == "course" && item.type !== 'service' && ["0", "1", "2", "3"].includes(item.grade))
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:290:hardcoded string:    let byjusMath = skuArray.filter(item => item && item.itemType == "course" && item.type == 'service');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:291:hardcoded string:    let byjusClass = skuArray.filter(item => item && item.itemType == "course" && item.grade > 3);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:293:hardcoded string:    const vertical = (get(user, "vertical", ""))
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:294:hardcoded string:    const campaign = (get(user, 'campaign', '') || '').toUpperCase();
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:295:hardcoded string:    const loggedInUserRole = (get(user, 'role', '') || '');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:296:hardcoded variable:    const minByjusMathVerticalPrice  = productConstant.UPGRADE_VERTICAL_TRIAL_CAMPAIGN_BYJUS_MATH_BDA_MIN_PRICE
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:298:hardcoded array:    tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:299:hardcoded array:    sdCardSku = isArray(sdCards) ? sdCards : [sdCards];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:300:hardcoded array:    byjusMathSku = isArray(byjusMath) ? byjusMath : [byjusMath];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:301:hardcoded array:    byjusClassSku = isArray(byjusClass) ? byjusClass : [byjusClass];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:304:hardcoded object:        && productConstant.UPGRADE_VERTICAL_TRIAL_CAMPAIGN_BDA_VERTICAL({vertical, campaign})
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:309:hardcoded number:                const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:315:hardcoded number:                const { price = 0, quantity = 1, grade } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:316:hardcoded string:                totalPrice += (grade != '0') ? (parseInt(quantity) * parseInt(price)) : ((parseInt(quantity) * parseInt(price)) * minByjusMathVerticalPrice);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:321:hardcoded number:                const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:327:hardcoded number:                const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:336:hardcoded number:                const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:342:hardcoded number:                const { price = 0, quantity = 1, grade } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:343:hardcoded string:                totalPrice += (grade != '0') ? (parseInt(quantity) * parseInt(price)) : ((parseInt(quantity) * parseInt(price)) * BYJUS_MATH_MIN_PRICE);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:348:hardcoded number:                const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:354:hardcoded number:                const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:360:hardcoded number:    totalPrice = Math.floor(totalPrice / 1000) * 1000
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:364:hardcoded variable:const getEpicSamplerMathMinPrice = (skuArray, tabletSku) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:365:hardcoded number:    let totalPrice = 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:366:hardcoded string:    let sdCards = skuArray.filter(item => item && item.itemType == "course" && item.type !== 'BYJUS_MATH' && ["0", "1", "2", "3"].includes(item.grade));
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:367:hardcoded string:    let byjusMath = skuArray.filter(item => item && item.itemType == "course" && item.type == 'BYJUS_MATH');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:368:hardcoded string:    let byjusClass = skuArray.filter(item => item && item.itemType == "course" && item.grade > 3);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:370:hardcoded array:    tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:371:hardcoded array:    sdCardSku = isArray(sdCards) ? sdCards : [sdCards];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:372:hardcoded array:    byjusMathSku = isArray(byjusMath) ? byjusMath : [byjusMath];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:373:hardcoded array:    byjusClassSku = isArray(byjusClass) ? byjusClass : [byjusClass];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:377:hardcoded number:            const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:383:hardcoded number:            const { price = 0, quantity = 1, grade } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:389:hardcoded number:            const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:395:hardcoded number:            const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:403:hardcoded number:const getUpdatedK10K12Price = (details) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:404:hardcoded object:    let { courseSku, grade, initialClass } = details;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:405:hardcoded number:    let skuPrice = 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:413:hardcoded string:        skuPrice = courseSku['continuousPrice'] ? parseInt(courseSku.continuousPrice) : parseInt(courseSku.continousPrice);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:416:hardcoded string:    courseSku['price'] = skuPrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsHelper.js:428:hardcoded number:    getUpdatedK10K12Price,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:1:hardcoded object:const { callByjusMathBatchesApi } = require('../../../utility/externalApiUtility');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:2:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('Mentoring Slot Controller');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:3:hardcoded object:const { get, isEmpty } = require('lodash');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:4:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:5:hardcoded number:const { BELP_K3_GRADES } = require('../../productmanagement/utils/productConstants')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:7:hardcoded variable:const getBfsMentoringCourseDetails = async (req, res) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:9:hardcoded string:        logger.info({ method: "getBfsMentoringCourseDetails" }, req.body);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:10:hardcoded string:        let { initialClass, finalClass, board = "", classType, productCombination, classFormat, isGauntletTwoUser, isGauntletBDAUser, orderType = "" } = req.body;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:11:hardcoded object:        let response = {}
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:12:hardcoded string:        if (productCombination === "belp" && BELP_K3_GRADES.includes(initialClass) && isGauntletTwoUser && !isGauntletBDAUser) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:13:hardcoded object:            let grade = `G${initialClass}`
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:14:hardcoded string:            board = board === 'STATE' ? 'N/A' : board
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:15:hardcoded object:            response = await callByjusMathBatchesApi(`classType=${classType}&classFormat=${classFormat}&grade=${grade}&board=${board}`)
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:19:hardcoded string:                throw new Error('Batches are not available!');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:21:hardcoded string:        } else if (isDevEnv && productCombination == 'byjus_tlp' && BELP_K3_GRADES.includes(initialClass)) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:22:hardcoded object:            let grade = `G${initialClass}`
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:23:hardcoded object:            response = await callByjusMathBatchesApi(`classType=${classType}&classFormat=${classFormat}&grade=${grade}&board=${board}`)
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:27:hardcoded string:                throw new Error('Batches are not available!');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:30:hardcoded string:        else if (orderType === "UPGRADE_ORDER" && productCombination == "byjus_math") {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:31:hardcoded object:            let grade = `G${initialClass}`
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:32:hardcoded string:            board = board || 'CBSE'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:33:hardcoded object:            const url = `classType=${classType}&classFormat=${classFormat}&grade=${grade}&board=${board}&orderType=${orderType}`
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:38:hardcoded string:                throw new Error('Batches are not available!');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:41:hardcoded string:        else if (productCombination !== "belp") {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:42:hardcoded object:            let grade = `G${initialClass}`
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:43:hardcoded string:            board = board === 'STATE' ? 'N/A' : board
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:44:hardcoded object:            response = await callByjusMathBatchesApi(`classType=${classType}&classFormat=${classFormat}&grade=${grade}&board=${board}`)
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:48:hardcoded string:                throw new Error('Batches are not available!');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:56:hardcoded string:        logger.error({ method: 'getBfsMentoringCourseDetails', error });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsMentoringDetails.js:57:hardcoded string:        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:1:hardcoded object:const { get, isArray } = require('lodash');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:3:hardcoded object:const { getSkuItemId } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:4:hardcoded object:const { getCourseSku } = require('./bfsHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:5:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('BFS Product Helper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:7:hardcoded variable:const fetchBfsPlusByjusClasses = async (details) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:10:hardcoded object:        let { initialClass, bfsFinalClass, byjusClassFinalGrade, validity, student } = details
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:11:hardcoded string:        logger.info({ method: "fetchCombinationPrices", byjusClassFinalGrade, validity, bfsFinalClass });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:12:hardcoded string:        const { tablet = ''} = student
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:14:hardcoded number:        let skuArray = [], skuPrice = 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:15:hardcoded number:        let grade = parseInt(bfsFinalClass) + 1;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:16:hardcoded number:        const finalClass = parseInt(byjusClassFinalGrade, 10);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:18:hardcoded string:        let productTypeArray = ["BYJUS_MATH_SD_CARD", "BYJUS_CLASSES_UPGRADE"]
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:23:hardcoded array:                    type: productTypeArray[index],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:29:hardcoded string:                let coursePrice = parseInt(get(courseSku, "continousPrice"));
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:31:hardcoded string:                courseSku["price"] = coursePrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:32:hardcoded string:                courseSku["combinationType"] = productTypeArray[index]
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:33:hardcoded string:                courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:37:hardcoded number:            grade += 1;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:45:hardcoded string:        logger.error({ method: "fetchCombinationPrices" }, error);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:49:hardcoded variable:const fetchBfsPlusTlp = async (details) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:52:hardcoded object:        let { initialClass, bfsFinalClass, byjusClassFinalGrade, tlpFinalGrade, validity, student } = details
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:53:hardcoded string:        const { tablet = ''} = student
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:54:hardcoded string:        logger.info({ method: "fetchCombinationPrices", byjusClassFinalGrade,tlpFinalGrade, validity, bfsFinalClass });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:56:hardcoded number:        let skuArray = [], skuPrice = 0;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:57:hardcoded number:        let grade = parseInt(bfsFinalClass) + 1;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:58:hardcoded number:        const finalClass = parseInt(tlpFinalGrade, 10);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:61:hardcoded number:            grade = parseInt(byjusClassFinalGrade) + 1;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:65:hardcoded string:        let productTypeArray = ["BYJUS_MATH_SD_CARD"]
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:70:hardcoded array:                    type: productTypeArray[index],
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:76:hardcoded string:                let coursePrice = parseInt(get(courseSku, "continousPrice"));
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:78:hardcoded string:                courseSku["price"] = coursePrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:79:hardcoded string:                courseSku["combinationType"] = productTypeArray[index]
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:80:hardcoded string:                courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:84:hardcoded number:            grade += 1;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsCombinationHelper.js:92:hardcoded string:        logger.error({ method: "fetchCombinationPrices" }, error);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:1:hardcoded object:const { get} = require('lodash');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:3:hardcoded string:const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:4:hardcoded object:const { getSkuItemId } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:5:hardcoded object:const { getErrorMsg } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:6:hardcoded number:const { BYJUS_MATH_BTLA_BASE_PRICE, BYJUS_MATH_BTLA_CONT_PRICE, M8_TABLET } = require('../utils/productConstants')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:7:hardcoded object:const  { NotFoundError } = require('../../../lib/errors')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:9:hardcoded variable:const getPostgresCourseSKU = async (details) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:10:hardcoded object:    const { category, grade, validity, scheme, subType, board = null, subCourse, tablet, isEpicSamplerEnabled} = details
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:12:hardcoded variable:    const query = {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:13:hardcoded string:        status: "active",
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:16:hardcoded string:        type : "product",
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:17:hardcoded object:        grade: `${grade}`,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:18:hardcoded object:        validity: `${validity}`
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:21:hardcoded string:    if (subType !== 'sd_card') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:22:hardcoded string:        query["board"] = board;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:23:hardcoded string:        query["scheme"] = scheme;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:24:hardcoded string:        query["subCourse"] = subCourse;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:25:hardcoded string:        query["type"] = 'service';
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:28:hardcoded string:        M8_TABLET.includes(tablet) ? query["brand"] = 'M8' : query["brand"] = 'D4' ; 
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:29:hardcoded string:        query["board"] = ['1','2','3','4','5',1,2,3,4,5].includes(grade) ? null : board;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:33:hardcoded string:        query["scheme"] = null;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:36:hardcoded variable:    const product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:44:hardcoded string:            itemType: 'course'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:48:hardcoded object:        const errorMsg = getErrorMsg({ grade, board, validity, type });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:52:hardcoded variable:const getBfsPgCourseSku = async (productDetails) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:53:hardcoded object:    const { initialClass, board, bfsBatch, bfsProductType, productType , student, isEpicSamplerEnabled } = productDetails || {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:54:hardcoded object:    let { validity } = productDetails || {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:55:hardcoded object:    const { course } = student;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:57:hardcoded string:    let scheme = "";
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:59:hardcoded string:        if (bfsProductType == 'bfsSubscription') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:60:hardcoded string:            scheme = 'monthly';
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:61:hardcoded string:            validity ='1'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:63:hardcoded string:        else if ( bfsProductType == 'bfsStandard') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:64:hardcoded string:            scheme = 'standard'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:66:hardcoded string:        else if (bfsProductType == '24' && isEpicSamplerEnabled) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:69:hardcoded string:        else if (bfsProductType == '24') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:70:hardcoded string:            scheme = '24'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:72:hardcoded string:        else if (bfsProductType == '16') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:73:hardcoded string:            scheme = '16'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:76:hardcoded string:        else if (bfsProductType == '64') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:77:hardcoded string:            scheme = '64'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:79:hardcoded string:        else if (bfsProductType == '56') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:80:hardcoded string:            scheme = '56'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:83:hardcoded string:            scheme = 'premium'
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:87:hardcoded string:            status: "active",
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:88:hardcoded string:            category: "byjus_math",
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:93:hardcoded string:            subType : 'live',
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:99:hardcoded string:    bfsCourseSku["combinationType"] = get(bfsCourseSku, "type", "").toLowerCase();
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:100:hardcoded string:    bfsCourseSku["itemId"] = getSkuItemId(bfsCourseSku);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:101:hardcoded string:    bfsCourseSku['price'] = bfSkuPrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:106:hardcoded variable:const getBfsSdCardSkuFromPg = async (details) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:107:hardcoded object:    const { initialClass, bfsProductType, student, validity, tablet, isEpicSamplerEnabled, board, subCourse } = details || {}
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:108:hardcoded variable:    let grade = initialClass;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:111:hardcoded string:            category: "btlp",
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:113:hardcoded string:            subType : "sd_card",
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:119:hardcoded string:    courseSku["combinationType"] = get(courseSku, "type", "").toLowerCase();
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:120:hardcoded string:    courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:122:hardcoded string:    courseSku['basePrice'] = coursePrice;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:123:hardcoded string:    courseSku['price'] = grade == initialClass ? coursePrice : courseSku.continuousPrice
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:126:hardcoded string:        courseSku['basePrice'] = coursePrice = parseInt(courseSku.basePrice);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsBetaHelper.js:127:hardcoded string:        courseSku['price'] = grade == initialClass ? courseSku.basePrice : courseSku.continuousPrice
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductRoutes.js:1:hardcoded file path:const Router = require('express-promise-router');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductRoutes.js:2:hardcoded file path:const explorer = require('./bfsProductExplorer');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductRoutes.js:3:hardcoded file path:const epicExplorer = require('./epicSamplerProductExplorer');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductRoutes.js:4:hardcoded file path:const controller = require('./bfsMentoringDetails');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductRoutes.js:5:hardcoded object:const { storeCalculatedPriceMw, validateCalculatedPriceMw } = require('../productHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductRoutes.js:7:hardcoded object:const router = Router({ mergeParams: true });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductRoutes.js:10:hardcoded string:    const baseRoute = '/bfs';
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductRoutes.js:11:hardcoded string:    const epicBaseRoute = '/bfs/epic';
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductRoutes.js:13:hardcoded object:    router.route(`${baseRoute}/product/single`)
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductRoutes.js:20:hardcoded object:    router.route(`${baseRoute}/product/combo`)
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductRoutes.js:27:hardcoded object:        router.route(`${epicBaseRoute}/product/single`)
+microservices-middleware/server/src/productmanagement/bfsProductManagement/bfsProductRoutes.js:34:hardcoded object:    router.route(`${epicBaseRoute}/product/combo`)
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:1:hardcoded object:const { get, concat, map, flattenDeep, find, isEmpty, includes } = require('lodash');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:2:hardcoded object:const { splitOrderConstants } = require('../../ordermanagement/utils/orderConstant');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:3:hardcoded file path:const logger = require('../../../lib/bunyan-logger')('orderSplit.js');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:4:hardcoded string:const { ProductDetail } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:5:hardcoded object:const { isDevEnv } = require('../../../lib/featureHelper');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:9:hardcoded variable:const formatByjusMathLineItems = async (orderDetails) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:10:hardcoded string:    logger.info({ method: 'formatLineItems' }, 'Checking if byjus math order is eligible to be splitted');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:11:hardcoded object:    const { productDetails, paymentDetails, orderPunchingType } = orderDetails;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:12:hardcoded string:    const { productType = '', students = [], mentoring, tablets: seperateTablets = [], products = [], mentoringDetails } = productDetails;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:13:hardcoded string:    const { type: paymentType = '', totalAmount, totalPrepaidAmount, totalPostpaidAmount, payments } = paymentDetails;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:14:hardcoded string:    const { productSelectionType = "", validity } = students[0] || {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:15:hardcoded object:    let lineItems = {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:16:hardcoded variable:    const actualPaymentType = getPaymentType(paymentDetails);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:18:hardcoded string:     * and productType = "SINGLE" or "COMBO" or "SIBLING",
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:22:hardcoded string:    logger.info({ method: 'formatLineItems' }, { message: "Checking if eligible for splitting", paymentType, productType });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:24:hardcoded string:    const isUmrnGenerated = actualPaymentType === "EMI" ? checkUmrnGenerated(payments) : false;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:27:hardcoded string:    if (productSelectionType == 'byjus_math' || validity == 'subscription' && productSelectionType != 'byjus_classes_upgrade') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:28:hardcoded string:        const items = flattenDeep(map(students, 'items'));
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:29:hardcoded number:        let student = students[0] || {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:30:hardcoded object:        const splittedLineItems = await getBfsLineItems({ student, items, productSelectionType, actualPaymentType, productType });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:31:hardcoded object:        const { parentLineItems, childLineItems } = splittedLineItems || {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:32:hardcoded string:        const orderType = childLineItems.length ? 'split_order' : 'single_order';
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:33:hardcoded string:        logger.info("%j", { method: 'formatLineItems' }, { orderType, lineItems: JSON.stringify(splittedLineItems) });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:38:hardcoded string:    } else if (orderPunchingType == "UPGRADE") {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:39:hardcoded string:        const items = flattenDeep(map(students, 'items'));
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:41:hardcoded string:            "parentLineItems": items,
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:42:hardcoded string:            "childLineItems": []
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:49:hardcoded variable:const getBfsLineItems = async (orderDetails) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:50:hardcoded object:    const { student = {}, items, productSelectionType, actualPaymentType, productType } = orderDetails;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:51:hardcoded string:    let studentId = student.studentId || ""
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:52:hardcoded array:    let parentLineItems = [];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:53:hardcoded array:    let childLineItems = [];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:55:hardcoded string:    let tablets = items.filter(item => item && item.itemType == "tablet");
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:56:hardcoded string:    let courses = items.filter(item => item && item.itemType == "course"
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:57:hardcoded string:        && item.category != "epic" && item.category != "tynker_jr");
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:58:hardcoded string:    let epicSku = items.filter(item => item && item.category == "epic");
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:59:hardcoded string:    let tynkerSku = items.filter(item => item && item.category == "tynker_jr");
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:62:hardcoded string:    const splittedLineItems = (productType == 'combo' && productSelectionType != 'byjus_classes_upgrade')
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:63:hardcoded object:        ? byjusMathComboSplitLineItems({ student, courses, tablets, epicSku, tynkerSku })
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:64:hardcoded object:        : splitLineItems({ student, courses, tablets, epicSku, tynkerSku });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:65:hardcoded string:    parentLineItems = concat(parentLineItems, get(splittedLineItems, 'parentLineItems'));
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:66:hardcoded string:    childLineItems = concat(childLineItems, get(splittedLineItems, 'childLineItems'));
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:67:hardcoded string:    if (actualPaymentType == 'EMI') {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:68:hardcoded number:        const { grade, course } = courses[0];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:72:hardcoded object:    return { parentLineItems, childLineItems }
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:75:hardcoded variable:const checkUmrnGenerated = (payment) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:76:hardcoded variable:    let isUmrn = false;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:77:hardcoded string:    const emiDetails = payment.find(ele => ele.type === "EMI" && splitOrderConstants.ALLOWED_PAYMENT_PROVIDERS_FOR_UMRN_CHECK.includes(ele.provider));
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:79:hardcoded object:        const { additionalDetails = {} } = emiDetails;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:80:hardcoded string:        const umrn = get(additionalDetails, "umrn", "");
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:81:hardcoded string:        const registrationStatus = get(additionalDetails, "registrationStatus", "");
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:83:hardcoded string:        if (registrationStatus.includes("dest_register_success")) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:90:hardcoded variable:const getPaymentType = (paymentDetails) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:91:hardcoded object:    const { type, payments } = paymentDetails;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:92:hardcoded variable:    let paymentType = type;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:94:hardcoded object:        const { type, provider } = payment;
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:96:hardcoded string:        if (["BAJAJ", "PAYU", "PINE_LABS", "BYJUS_SUBSCRIBE", "RAZORPAY"].indexOf(provider) >= 0 && type === "EMI") {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:97:hardcoded string:            paymentType = "NON_EMI";
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:103:hardcoded variable:const getExtensionSku = async (grade, course, studentId) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:104:hardcoded string:    let query = { type: 'extension', course };
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:106:hardcoded string:        query["grade"] = grade
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:108:hardcoded variable:    const extensionSku = await ProductDetail.findOne(query).lean();
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:117:hardcoded array:        return [];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:121:hardcoded variable:const splitLineItems = (productDetails) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:122:hardcoded array:    const { student, courses = [], tablets = [], epicSku, orderPunchingType, isNeoClass, tynkerSku } = productDetails || {}
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:123:hardcoded string:    logger.info("%j", { method: 'splitLineItems' }, { message: `Slitting line Items by taking 1 tablet and 1 initial course` });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:124:hardcoded object:    const { initialClass, finalClass, validity, productSelectionType } = student || {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:125:hardcoded variable:    const mergedItems = concat(courses, tablets);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:126:hardcoded array:    let parentLineItems = [];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:127:hardcoded array:    let childLineItems = [];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:128:hardcoded string:    const initialCourse = find(courses, { "grade": initialClass }) || courses[0];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:130:hardcoded number:    /**Create parentLineItems as combination of 1st course and 1st tablet */
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:131:hardcoded number:    parentLineItems = [initialCourse, tablets[0]];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:133:hardcoded string:        const parentItemIds = map(parentLineItems, 'skuId');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:135:hardcoded string:        if (parentItemIds.indexOf(get(item, 'skuId', '')) < 0) {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:148:hardcoded variable:const byjusMathComboSplitLineItems = (productDetails) => {
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:149:hardcoded string:    logger.info("%j", { method: 'splitLineItems' }, { message: `Slitting line Items by taking 1 tablet and 1 initial course` });
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:150:hardcoded array:    const { student, courses = [], tablets = [], epicSku, tynkerSku } = productDetails || {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:151:hardcoded object:    const { initialClass, finalClass, validity, productSelectionType } = student || {};
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:152:hardcoded variable:    const mergedItems = concat(courses, tablets);
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:153:hardcoded array:    let parentLineItems = [];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:154:hardcoded array:    let childLineItems = [];
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:156:hardcoded string:        ele => ele.type !== 'BYJUS_MATH' && ele.type !== 'BYJUS_CLASSES_UPGRADE' && ele.category !== "epic" && ele.category !== "byjus_math" && ele.category !== "tynker_jr"
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:159:hardcoded string:        const parentItemIds = map(parentLineItems, 'skuId');
+microservices-middleware/server/src/productmanagement/bfsProductManagement/byjusMathOrderSplit.js:161:hardcoded string:        if (parentItemIds.indexOf(get(item, 'skuId', '')) < 0) {
