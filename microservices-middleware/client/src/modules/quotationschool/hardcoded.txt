@@ -1,0 +1,99 @@
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:17:hardcoded variable:	const QuotationBetaHome = (props) => {
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:18:hardcoded object:	    const { history } = props;
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:19:hardcoded array:	    const [loading, setLoading] = useState(false);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:20:hardcoded array:	    const [draftOrder, setDraftOrder] = useState(false);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:21:hardcoded array:	    const [error, setError] = useState(null);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:22:hardcoded array:	    const [quotations, setQuotations] = useState([]);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:23:hardcoded string:	    const [leadId, setLeadId] = useState('');
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:24:hardcoded string:	    const [customerId, setCustomerId] = useState('');
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:25:hardcoded array:	    const [enableCreateQuotation, setEnableCreateQuotation] = useState(false);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:26:hardcoded array:	    const [authDetails, setAuthDetails] = useRecoilState(authenticationDetails);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:28:hardcoded array:	    const [quotationSchool, setQuotationSchool] = useRecoilState(quotationSchoolDetails);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:29:hardcoded array:	    const [quotationDetails, setQuotationDetails] = useRecoilState(quotationDetailState);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:30:hardcoded string:	    const [spId, setSpId] = useState('')
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:32:hardcoded variable:	    const search = window.location.search;
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:33:hardcoded variable:	    const params = new URLSearchParams(search);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:34:hardcoded string:	    const accountNumber = params.get('accountNumber');
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:35:hardcoded string:	    const prospectId = params.get('prospectId');
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:36:hardcoded string:	    const studentName = params.get('studentName');
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:37:hardcoded string:	    const studentMobile = params.get('studentMobile');
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:38:hardcoded string:	    const studentEmail = params.get('studentEmail');
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:39:hardcoded string:	    const schoolUid = params.get('schoolUid');
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:41:hardcoded string:	    const orderPunchingType = useSelector(state => get(state, 'auth.orderPunchingType', []));
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:42:hardcoded variable:	    const isDevEnv = window.isDevEnv
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:47:hardcoded array:	    }, []);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:51:hardcoded array:	    }, [leadId, customerId]);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:53:hardcoded variable:	    const setParamsFromUrl = () => {
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:54:hardcoded variable:	        const urlParam = window.location;
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:55:hardcoded string:	        const { hash = "", search = "" } = urlParam;
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:56:hardcoded variable:	        const urlParamString = search + hash;
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:57:hardcoded string:	        const paramsArray = urlParamString.replace('?', '').replace(/%20/g, ' ').replace(/%2B/g, '+').replace(/%40/g, '@').split('&');
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:58:hardcoded object:	        const paramsObj = {};
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:62:hardcoded string:	                const keyValue = param ? param.split('=') : [];
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:64:hardcoded number:	                paramsObj[keyValue[0]?.trim()] = keyValue[1]?.trim();
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:71:hardcoded variable:	    const getAuthenticationDetails = async () => {
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:72:hardcoded variable:	        const leadDetails = setParamsFromUrl();
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:74:hardcoded variable:	            const response = await CallApi({
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:75:hardcoded string:	                url: '/api/quotation/authenticateLeadsquaredUser',
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:76:hardcoded string:	                method: 'POST',
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:80:hardcoded object:	            const { data, status } = response;
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:81:hardcoded object:	            const { featureEnableList = {} } = data;
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:84:hardcoded string:	                isSchoolQuotationEnabled: get(featureEnableList, 'school_quotation_enabled_bda', false),
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:88:hardcoded string:	                let data = get(error, 'response.data', {});
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:97:hardcoded variable:	    const getLeadAndCustomerData = async () => {
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:98:hardcoded variable:	        const body = {
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:107:hardcoded string:	            if (get(quotationDetails, "accountNumber") !== accountNumber || get(quotationDetails, 'prospectId') !== prospectId) {
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:108:hardcoded variable:	                const response = await CallApi({
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:109:hardcoded string:	                    url: '/api/quotation-school/generateLeadAndCustomer',
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:110:hardcoded string:	                    method: 'POST',
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:113:hardcoded string:	                const updatedLeadId = get(response, 'data.leadId', leadId);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:114:hardcoded string:	                const updatedCustomerId = get(response, 'data.customerId', customerId);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:142:hardcoded variable:	    const onClickCreateNewQuotation = async () => {
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:146:hardcoded string:	        const url = `/quotation-school/home${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:150:hardcoded variable:	    const createNewQuotation = async () => {
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:151:hardcoded string:	        let type = 'normal';
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:152:hardcoded variable:	        const body = {
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:158:hardcoded variable:	            const response = await CallApi({
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:159:hardcoded string:	                url: '/api/quotation-school/createQuotation',
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:160:hardcoded string:	                method: 'POST',
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:163:hardcoded string:	            const quotationId = get(response, 'data.quotationId');
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:175:hardcoded string:	    const quotationisSchoolQuotationEnabledschool = get(authDetails, 'quotationisSchoolQuotationEnabledschool', false);
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:178:hardcoded string:	        <LoadingWrapper loading={loading} message={"loading"}>
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:180:hardcoded object:	                <QuotationNavbar history={history} leadId={leadId} customerId={customerId}>
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:182:hardcoded string:	                <Card style={{ margin: "1rem" }}>
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:183:hardcoded object:	                    <ErrorWrapper error={error} message={error} />
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:186:hardcoded string:	                            type="info"
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:193:hardcoded string:	                                        <span style={{ color: "Red" }}>**</span>Maximum of 5 Quotation can be created for this lead Id.
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:197:hardcoded object:	                            showIcon={true}
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:202:hardcoded string:	                    className="m-2"
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:203:hardcoded string:	                    color="warning"
+microservices-middleware/client/src/modules/quotationschool/HomePage.js:204:hardcoded object:	                    onClick={onClickCreateNewQuotation}
+microservices-middleware/client/src/modules/quotationschool/Styles.js:1:hardcoded string:	import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/quotationschool/Styles.js:4:hardcoded variable:	export const QuotationLabel = styled.label`
+microservices-middleware/client/src/modules/quotationschool/Styles.js:5:hardcoded number:	    margin: 27px;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:6:hardcoded number:	    padding-top: 0.1px;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:7:hardcoded number:	    line-height: 30px;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:8:hardcoded number:	    font-size: 18px;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:11:hardcoded number:	    background-color: #813588;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:12:hardcoded number:	    border-color: #813588;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:13:hardcoded number:	    padding: 4px;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:16:hardcoded variable:	export const IdBadge = styled(Badge)`
+microservices-middleware/client/src/modules/quotationschool/Styles.js:17:hardcoded number:	    background-color: #FF8E32;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:18:hardcoded number:	    background-image: linear-gradient(to right, #FF8E32, #FF5263);
+microservices-middleware/client/src/modules/quotationschool/Styles.js:19:hardcoded number:	    height: 1.5rem;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:21:hardcoded number:	    margin: 0.3rem;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:23:hardcoded variable:	export const QuotationCardHeader = styled.div`
+microservices-middleware/client/src/modules/quotationschool/Styles.js:29:hardcoded variable:	export const BadgeContainer = styled.div`
+microservices-middleware/client/src/modules/quotationschool/Styles.js:32:hardcoded variable:	export const QuotationContainer = styled.div`
+microservices-middleware/client/src/modules/quotationschool/Styles.js:38:hardcoded variable:	export const CardContainer = styled.div`
+microservices-middleware/client/src/modules/quotationschool/Styles.js:44:hardcoded variable:	export const ProceedButton = styled(Button)`
+microservices-middleware/client/src/modules/quotationschool/Styles.js:45:hardcoded number:	    width: 270px;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:47:hardcoded number:	    height: 38px;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:50:hardcoded variable:	export const Nav = styled.div`
+microservices-middleware/client/src/modules/quotationschool/Styles.js:53:hardcoded number:	    margin: 1rem;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:55:hardcoded variable:	export const NavItem = styled.span`
+microservices-middleware/client/src/modules/quotationschool/Styles.js:57:hardcoded number:	    padding: 0px 10px;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:58:hardcoded string:	    font-family: "Haas Grot Text R Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:59:hardcoded number:	    font-size: 20px;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:60:hardcoded number:	    font-weight: 800;
+microservices-middleware/client/src/modules/quotationschool/Styles.js:61:hardcoded number:	    line-height: 20px;

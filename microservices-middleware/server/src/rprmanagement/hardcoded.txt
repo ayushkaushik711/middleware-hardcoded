@@ -1,0 +1,53 @@
+microservices-middleware/server/src/rprmanagement/rprController.js:3:hardcoded string:	const { RefundPolicyReceipt, RefundPolicyStatusHistory, RefundPolicyFileHistory, Sequelize } = require("@byjus-orders/npgexemplum")
+microservices-middleware/server/src/rprmanagement/rprController.js:4:hardcoded string:	const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/rprmanagement/rprController.js:5:hardcoded string:	const { FeatureLaunchConfig } = require("@byjus-orders/nexemplum/kart");
+microservices-middleware/server/src/rprmanagement/rprController.js:7:hardcoded object:	const { Op } = Sequelize;
+microservices-middleware/server/src/rprmanagement/rprController.js:11:hardcoded variable:	const uploadRpr = async (req, res) => {
+microservices-middleware/server/src/rprmanagement/rprController.js:13:hardcoded string:	        const { customerName = '', relationship = "", leadAccountNo = '', leadId = '', leadPhoneNo = "", salesEmail = "" } = req.body;
+microservices-middleware/server/src/rprmanagement/rprController.js:14:hardcoded array:	        const files = req.files || [];
+microservices-middleware/server/src/rprmanagement/rprController.js:15:hardcoded number:	        const file = files[0];
+microservices-middleware/server/src/rprmanagement/rprController.js:16:hardcoded string:	        const s3Response = await uploadFile(file, "rpr");
+microservices-middleware/server/src/rprmanagement/rprController.js:17:hardcoded variable:	        const rprData = await RefundPolicyReceipt.create({
+microservices-middleware/server/src/rprmanagement/rprController.js:20:hardcoded string:	            status: "initiated",
+microservices-middleware/server/src/rprmanagement/rprController.js:25:hardcoded number:	            fileUrl: s3Response?.uploadedDocs?.image,
+microservices-middleware/server/src/rprmanagement/rprController.js:41:hardcoded string:	        return res.status(201).json({message: "RPR uploaded successfully", rprData})
+microservices-middleware/server/src/rprmanagement/rprController.js:47:hardcoded variable:	const refundPolicyReceipt = async (req, res) => {
+microservices-middleware/server/src/rprmanagement/rprController.js:49:hardcoded object:	        const { leadId } = req.params;
+microservices-middleware/server/src/rprmanagement/rprController.js:50:hardcoded string:	        const { draftOrderId = null } = await DraftOrder.findOne({"leadDetails.prospectId": leadId}, {draftOrderId: 1, _id: 0}).sort({createdAt: -1}) || {};
+microservices-middleware/server/src/rprmanagement/rprController.js:51:hardcoded variable:	        const rprs = await RefundPolicyReceipt.findAll({
+microservices-middleware/server/src/rprmanagement/rprController.js:53:hardcoded array:	                [Op.or]: [
+microservices-middleware/server/src/rprmanagement/rprController.js:54:hardcoded object:	                    {doId: null},
+microservices-middleware/server/src/rprmanagement/rprController.js:55:hardcoded object:	                    {doId: draftOrderId}
+microservices-middleware/server/src/rprmanagement/rprController.js:59:hardcoded array:	        }) || [];
+microservices-middleware/server/src/rprmanagement/rprController.js:60:hardcoded string:	        const docs = await FeatureLaunchConfig.find({formattedName: "rpr_email_list" }, {emailList: 1, _id: 0}).lean();
+microservices-middleware/server/src/rprmanagement/rprController.js:61:hardcoded array:	        const enabledReportingTo = [...new Set(docs.reduce((acc, curr) => [...acc, ...curr?.emailList], []))];
+microservices-middleware/server/src/rprmanagement/rprController.js:62:hardcoded number:	        const { rprExcludedAccounts = [], excludedEmails = [], maxFileSize = 5} = {};
+microservices-middleware/server/src/rprmanagement/rprController.js:63:hardcoded string:	        const statusAllowed = ["initiated", "soft_approved", "hard_approved"];
+microservices-middleware/server/src/rprmanagement/rprController.js:64:hardcoded variable:	        const rprToCheck = rprs.find(rpr => (statusAllowed.includes(rpr?.status) && !rpr.doId))
+microservices-middleware/server/src/rprmanagement/rprController.js:65:hardcoded variable:	        const response = {
+microservices-middleware/server/src/rprmanagement/rprController.js:73:hardcoded number:	        return res.status(200).json(response)
+microservices-middleware/server/src/rprmanagement/rprController.js:79:hardcoded variable:	const paymentPageStatus = async(req, res) => {
+microservices-middleware/server/src/rprmanagement/rprController.js:81:hardcoded object:	        const { identifier } = req.params;
+microservices-middleware/server/src/rprmanagement/rprController.js:82:hardcoded string:	        const { draftOrderId, source = "" } = await DraftOrder.findOne({_id: identifier}, {draftOrderId: 1, source: 1, _id: 0});
+microservices-middleware/server/src/rprmanagement/rprController.js:83:hardcoded variable:	        const rprs = await RefundPolicyReceipt.findOne({
+microservices-middleware/server/src/rprmanagement/rprController.js:87:hardcoded string:	            attributes: ['status', 'rprId']
+microservices-middleware/server/src/rprmanagement/rprController.js:89:hardcoded string:	        const statusAllowed = ["soft_approved", "hard_approved"];
+microservices-middleware/server/src/rprmanagement/rprController.js:90:hardcoded string:	        const {status = "", rprId = ""} = rprs || {};
+microservices-middleware/server/src/rprmanagement/rprController.js:91:hardcoded string:	        return res.status(200).json({canProceedToPaymentPage: statusAllowed.includes(status), rprId, status} || source === "quotation_to_draftorder_converter")
+microservices-middleware/server/src/rprmanagement/rprController.js:93:hardcoded number:	        return res.status(500).json(err);
+microservices-middleware/server/src/rprmanagement/rprController.js:97:hardcoded variable:	const linkRprDO = async (doId, prospectId) => {
+microservices-middleware/server/src/rprmanagement/rprController.js:99:hardcoded string:	      await RefundPolicyReceipt.update({doId: doId}, {where: {leadId: prospectId, doId: null, status: {[Op.notIn]: ["discarded", "hard_rejected", "soft_rejected"]}}});
+microservices-middleware/server/src/rprmanagement/rprController.js:106:hardcoded object:	const discardRprs = async ({doId, rprId}) => {
+microservices-middleware/server/src/rprmanagement/rprController.js:109:hardcoded object:	        const query = doId ? {doId: doId} : {rprId: rprId};
+microservices-middleware/server/src/rprmanagement/rprController.js:110:hardcoded string:	        await RefundPolicyReceipt.update({ status: "discarded", doId: null }, { where: query })
+microservices-middleware/server/src/rprmanagement/rprController.js:117:hardcoded variable:	const discardRprCall = async(req, res) => {
+microservices-middleware/server/src/rprmanagement/rprController.js:118:hardcoded string:	    const { rprId = "" } = req.params;
+microservices-middleware/server/src/rprmanagement/rprController.js:120:hardcoded object:	        await discardRprs({rprId});
+microservices-middleware/server/src/rprmanagement/rprController.js:121:hardcoded number:	        res.status(200).json({message: `RPR: ${rprId} deleted successfully.`})
+microservices-middleware/server/src/rprmanagement/rprController.js:123:hardcoded number:	        res.status(500).json(err)
+microservices-middleware/server/src/rprmanagement/rprRoutes.js:5:hardcoded object:	const router = express.Router({ mergeParams: true });
+microservices-middleware/server/src/rprmanagement/rprRoutes.js:8:hardcoded string:	  const routeName = "rpr";
+microservices-middleware/server/src/rprmanagement/rprRoutes.js:10:hardcoded object:	  router.route(`/${routeName}/uploadRpr`)
+microservices-middleware/server/src/rprmanagement/rprRoutes.js:16:hardcoded object:	  router.route(`/${routeName}/refundPolicyRceipt/:leadId`)
+microservices-middleware/server/src/rprmanagement/rprRoutes.js:22:hardcoded object:	  router.route(`/${routeName}/paymentPageStatus/:identifier`)
+microservices-middleware/server/src/rprmanagement/rprRoutes.js:28:hardcoded object:	  router.route(`/${routeName}/discardRpr/:rprId`)

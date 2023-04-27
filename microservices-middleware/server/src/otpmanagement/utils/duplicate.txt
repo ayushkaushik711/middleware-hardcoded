@@ -1,2 +1,0 @@
-microservices-middleware/server/src/otpmanagement/utils/otpConfig.js:2:hardcoded number:    otpValidTime: 86400000,  // Validity: 24 hrs in ms.
-microservices-middleware/server/src/otpmanagement/utils/otpConfig.js:3:hardcoded string:    otpPassphrase: "OhVerify#2019"

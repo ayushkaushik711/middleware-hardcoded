@@ -1,6 +1,0 @@
-microservices-middleware/client/src/modules/ordertype/upgrade/trialpack/components/trialPackHelper.js:1:hardcoded object:import { isEmpty, get, isArray } from 'lodash';
-microservices-middleware/client/src/modules/ordertype/upgrade/trialpack/components/trialPackHelper.js:3:hardcoded variable:export const isTrialPackOrder = (customerDetails) => {
-microservices-middleware/client/src/modules/ordertype/upgrade/trialpack/components/trialPackHelper.js:4:hardcoded array:    customerDetails = isArray(customerDetails) ? customerDetails : [customerDetails];
-microservices-middleware/client/src/modules/ordertype/upgrade/trialpack/components/trialPackHelper.js:5:hardcoded variable:    const details = customerDetails.filter(ele => {
-microservices-middleware/client/src/modules/ordertype/upgrade/trialpack/components/trialPackHelper.js:6:hardcoded string:        let product = get(ele, "products", []);
-microservices-middleware/client/src/modules/ordertype/upgrade/trialpack/components/trialPackHelper.js:7:hardcoded string:        product = product.find(dt => get(dt, "type", "") === "trial_pack")

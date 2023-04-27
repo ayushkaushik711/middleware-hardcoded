@@ -1,0 +1,6 @@
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/aakashProductRoutes.js:4:hardcoded object:	const router = Router({ mergeParams: true });
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/aakashProductRoutes.js:7:hardcoded string:	    const baseRoute = '/aakash';
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/aakashProductRoutes.js:9:hardcoded object:	    router.route(`${baseRoute}/isPrimaryNumber`)
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/aakashProductRoutes.js:14:hardcoded object:	    router.route(`${baseRoute}/sendAppLinkSMS`)
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/aakashProductRoutes.js:19:hardcoded object:	    router.route(`${baseRoute}/aakashCRP`)
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/aakashProductRoutes.js:25:hardcoded object:	    router.route(`${baseRoute}/storeProductDetails`)

@@ -1,0 +1,65 @@
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:10:hardcoded variable:	const StudentForm = (props) => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:11:hardcoded array:	    const [modal, setModal] = useState(false);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:12:hardcoded array:	    const [loading, setLoading] = useState(false);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:13:hardcoded array:	    const [error, setError] = useState();
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:14:hardcoded variable:	    const toggle = () => setModal(!modal);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:15:hardcoded variable:	    const studentForm = useRef();
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:16:hardcoded object:	    const { addStudent, studentProfiles } = props;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:18:hardcoded variable:	    const search = window.location.search;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:19:hardcoded variable:	    const params = new URLSearchParams(search);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:20:hardcoded string:	    let studentPhone = params.get('studentMobile') || "";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:21:hardcoded number:	    studentPhone = studentPhone.substr(studentPhone.length - 10);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:23:hardcoded array:	    const [formValues, setFormValues] = useState({
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:24:hardcoded string:	        studentName: '',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:25:hardcoded string:	        studentEmail: '',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:26:hardcoded string:	        studentDOB: ''
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:28:hardcoded variable:	    const handleChanges = (value, name, params) => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:29:hardcoded array:	        setFormValues(prevState => ({ ...prevState, [name]: value }))
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:31:hardcoded variable:	    const studentFormDetails = () => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:32:hardcoded variable:	        const initialValues = formValues;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:33:hardcoded variable:	        const studentFields = [
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:35:hardcoded string:	                type: 'text',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:36:hardcoded string:	                name: 'studentName',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:37:hardcoded string:	                label: 'Student Name',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:42:hardcoded string:	                type: 'text',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:43:hardcoded string:	                name: 'studentEmail',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:44:hardcoded string:	                label: 'Student Email',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:49:hardcoded string:	                type: 'date',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:50:hardcoded string:	                name: 'studentDOB',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:51:hardcoded string:	                label: 'Student DOB',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:53:hardcoded string:	                message: 'Please enter student date of birth (DD/MM/YYYY)',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:59:hardcoded object:	                ref={studentForm}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:60:hardcoded object:	                fields={studentFields}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:61:hardcoded object:	                initialValues={initialValues}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:62:hardcoded object:	                validateValues={validateName}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:67:hardcoded variable:	    const createNewProfile = async (formValues) => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:70:hardcoded variable:	            const response = await CallApi({
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:71:hardcoded string:	                url: '/api/quotation-beta/createStudentProfile',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:72:hardcoded string:	                method: 'POST',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:73:hardcoded object:	                body: { ...formValues, studentPhone }
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:75:hardcoded string:	            const details = get(response, 'data', []);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:76:hardcoded string:	            const studentId = get(details, 'studentId');
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:85:hardcoded variable:	    const getMessage=(value)=>(
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:87:hardcoded string:	        Added New Student Profile for <span style={{fontSize: "x-large", color: "darkblue"}}>{value}</span>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:91:hardcoded object:	    const validateName = (formValues = {}) => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:92:hardcoded string:	        let { studentName = "" , studentEmail = ""} = formValues;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:93:hardcoded array:	        let nameRegex = new RegExp(/^[a-zA-Z\s\.]+$/);
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:94:hardcoded variable:	        const emailRegex = /\S+@\S+\.\S+/;
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:95:hardcoded object:	        let validationErrors = {};
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:98:hardcoded string:	            validationErrors["studentName"] = `Invalid Student Name.`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:101:hardcoded string:	            validationErrors["studentEmail"] = `Invalid Student Email.`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:107:hardcoded variable:	    const onClickCreateStudent = async () => {
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:108:hardcoded variable:	        const studentFormValues = studentForm.current.validateFormAndGetValues();
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:112:hardcoded object:	            await addStudent({notification: getMessage(formValues.studentName)});
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:114:hardcoded string:	                studentName: '',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:115:hardcoded string:	                studentEmail: '',
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:116:hardcoded string:	                studentDOB: ''
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:123:hardcoded string:	            <AddButton color="info" onClick={toggle} disabled={(studentProfiles.length>=3)}>Add Student</AddButton>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:124:hardcoded object:	            <Modal isOpen={modal} toggle={toggle}>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:125:hardcoded object:	                <ModalHeader toggle={toggle}>Create Student Profile</ModalHeader>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:127:hardcoded object:	                    {studentFormDetails()}
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:130:hardcoded string:	                    <Button color="primary" onClick={onClickCreateStudent}>Create Student</Button>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/index.js:131:hardcoded string:	                    <Button color="secondary" onClick={toggle}>Cancel</Button>
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/Styles.js:1:hardcoded string:	import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/Styles.js:4:hardcoded variable:	export const AddButton = styled(Button)`
+microservices-middleware/client/src/modules/quotationbeta/student/StudentForm/Styles.js:5:hardcoded number:	    margin-left:10px;  

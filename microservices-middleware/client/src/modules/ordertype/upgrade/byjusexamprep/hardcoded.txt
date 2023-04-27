@@ -1,0 +1,466 @@
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:17:hardcoded variable:	const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:18:hardcoded string:	    authDetails: get(state, 'auth.details'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:19:hardcoded string:	    leadDetails: get(state, 'auth.leadDetails'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:20:hardcoded string:	    salesDetails: get(state, "details.salesDetails"),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:21:hardcoded string:	    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:22:hardcoded string:	    existingProfiles: get(state, 'product.existingProfiles'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:23:hardcoded string:	    showProfileSelectionOption: get(state, 'product.showProfileSelectionOption'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:24:hardcoded string:	    productDetails: get(state, 'product.details'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:25:hardcoded string:	    productConfig: get(state, 'product.config'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:26:hardcoded string:	    loading: get(state, 'product.loading'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:27:hardcoded string:	    error: get(state, 'product.error'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:28:hardcoded string:	    listOfManagers: get(state, 'product.eligibleManagerList', []),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:29:hardcoded string:	    orderPunchingType: get(state, 'auth.orderPunchingType'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:30:hardcoded string:	    tlpOrderData: get(state, 'auth.tlpOrderData'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:33:hardcoded variable:	const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:60:hardcoded object:	            productConfig: {},
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:61:hardcoded array:	            fields: [],
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:63:hardcoded array:	            statesList: [],
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:64:hardcoded array:	            cityList: [],
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:65:hardcoded array:	            centerList: [],
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:70:hardcoded object:	            tlpOrderData:{}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:76:hardcoded object:	        const { identifier, authDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:77:hardcoded object:	        let { productType } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:78:hardcoded object:	        const { productDetailsForm } = this.refs;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:79:hardcoded string:	        const { courseType, productCombination, orderPunchingType="" } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:80:hardcoded string:	        productType = ['IAS_TLP', 'IAS_BHLP'].includes(courseType) ? 'competitive' : (courseType === 'IAS_CRP') ? 'crpCompetitive' : productType
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:81:hardcoded variable:	        const details = await productDetailsForm.getProductDetails();
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:82:hardcoded string:	        let productDetails = get(details, 'productDetails');
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:83:hardcoded string:	        let language = get(productDetails, 'Language');
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:84:hardcoded string:	        if (productDetails && productDetails["Language"]) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:85:hardcoded string:	            productDetails['language'] = language
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:87:hardcoded string:	        if (this.isUpgradeFlow(orderPunchingType) && productDetails && productDetails["program"]) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:88:hardcoded string:	            productDetails['validity'] = get(productDetails,"program")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:90:hardcoded string:	        if (productDetails && productDetails["tablet"]) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:91:hardcoded string:	            productDetails['tabletId'] = `T-${productDetails["tablet"]}`;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:94:hardcoded variable:	            const payload = {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:98:hardcoded string:	                couponDetails: get(details, 'couponDetails'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:99:hardcoded string:	                mentoringCount: get(details, 'mentoringCount'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:107:hardcoded string:	                url: ['IAS_TLP', 'IAS_BHLP'].includes(courseType) ? '/api/product/competitive' : (courseType === 'IAS_CRP') ? '/api/product/crpCompetitive' : '/api/bep/product/competetive'
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:113:hardcoded object:	        const { identifier } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:114:hardcoded object:	        const { courseType } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:115:hardcoded variable:	        const payload = {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:125:hardcoded string:	                url: ['IAS_TLP', 'IAS_BHLP', 'IAS_CRP'].includes(courseType) ? '/api/product/storeProductDetails' : '/api/bep/storeProductDetails',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:126:hardcoded string:	                method: 'POST',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:129:hardcoded string:	                const { productDetails, cashbackDetails } = get(response, 'data', {});
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:133:hardcoded object:	                this.setState({ error: null });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:135:hardcoded string:	                this.navigateToScreen('address');
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:137:hardcoded object:	                this.setState({ error });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:144:hardcoded object:	        const { history } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:145:hardcoded string:	        const url = `/${path}${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:154:hardcoded object:	        const { fetchComp } = this.refs;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:157:hardcoded object:	            const { status, productDetails } = fetchComp.getProductsAndFinalPrice();
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:159:hardcoded string:	                if (status && productDetails && (get(productDetails, 'finalPrice') >= 0)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:163:hardcoded string:	                    this.setState({ error: 'Product Details Missing' });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:166:hardcoded string:	                const errMsg = get(error, 'message', 'Error') || error;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:167:hardcoded object:	                this.setState({ error: errMsg });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:173:hardcoded object:	        const { productDetailsForm, fetchComp } = this.refs;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:174:hardcoded variable:	        const detailsForm = productDetailsForm && productDetailsForm.getProductForm();
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:175:hardcoded object:	        const {tlpOrderData,orderPunchingType}=this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:176:hardcoded string:	        if (name === "course") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:177:hardcoded string:	            detailsForm && detailsForm.setFieldsValue({ subject: "", validity: "", language: "", product: "", paper2Subject: "", tablet: "", stateExams: "", courseType: "", type: "", Language: "", crpCity: "" });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:178:hardcoded string:	            this.setState({ isSsbReq: false, courseType: "", type: "" })
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:181:hardcoded string:	        if (name === "courseType") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:182:hardcoded string:	            detailsForm && detailsForm.setFieldsValue({ type: "", validity: "", language: "", tablet: "", optionalCourses: [], isMiscellaneousReq: false, miscellaneous: [] });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:185:hardcoded string:	        if (name === "subject") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:186:hardcoded string:	            detailsForm && detailsForm.setFieldsValue({ language: "" });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:188:hardcoded string:	        if (name === "product" || name === "stateExams") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:189:hardcoded string:	            detailsForm && detailsForm.setFieldsValue({ subject: "", language: "", validity: "", tablet: "" });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:192:hardcoded string:	        if (name === "type") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:193:hardcoded array:	            detailsForm && detailsForm.setFieldsValue({ optionalCourses: [], miscellaneous: [], isMiscellaneousReq: false });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:194:hardcoded object:	            this.setState({ isMiscellaneousReq: false, isCrpFlowReq: true })
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:196:hardcoded string:	        if (name === "language") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:198:hardcoded string:	                detailsForm && detailsForm.setFieldsValue({ miscellaneous: [], optionalCourses: [], type: "" })
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:201:hardcoded array:	                detailsForm && detailsForm.setFieldsValue({ miscellaneous: [], optionalCourses: [] })
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:204:hardcoded string:	        if (name === "miscellaneous") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:205:hardcoded string:	            detailsForm && detailsForm.setFieldsValue({ miscellaneous: [], optionalCourses: [], validity: "" });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:206:hardcoded string:	            this.setState({ miscellaneous: [], validity: "" });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:208:hardcoded string:	        if (name === "crpCity") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:209:hardcoded string:	            detailsForm && detailsForm.setFieldsValue({ language: "", type: "", workshops: "", validity: "", isCrpFlowReq: false });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:210:hardcoded object:	            this.setState({ isCrpFlowReq: false })
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:212:hardcoded string:	        if (name === "isCrpFlowReq") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:213:hardcoded object:	            this.setState({ isCrpFlowReq: true })
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:217:hardcoded array:	            [name]: value,
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:223:hardcoded object:	        const { authDetails } = this.props
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:224:hardcoded object:	        const { env } = authDetails;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:225:hardcoded string:	        const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:226:hardcoded string:	        const currentYear = (course === "CAT") ? getCurrentAcademicYear('cat') : getCurrentAcademicYear('gate')
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:227:hardcoded object:	        // const {validity : selectedYear , orderPunchingType} = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:228:hardcoded string:	        const {orderPunchingType, validity = "2023"} = this.state
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:229:hardcoded variable:	        const programMap = (year) => ({
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:230:hardcoded string:	            "GATE": { label: `Vision ${year - 1}: Course for GATE`, value: `MARCH ${year - 1}` },
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:231:hardcoded string:	            "ESE_AND_GATE": { label: `Vision ${year}: Course for ESE & GATE`, value: `JUNE ${year}` },
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:232:hardcoded string:	            "CAT": { label: `CAT ${year - 1}`, value: `MARCH ${year}` },
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:233:hardcoded string:	            "CLAT": { label: `CLAT ${year - 1}`, value: `MAY ${year - 1}` }
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:236:hardcoded string:	        if ((course === "GATE" || (course === "CLAT" && isDevEnv )) && programs.length === 2) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:238:hardcoded string:	                label: "x+4",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:239:hardcoded string:	                value: "x+4",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:243:hardcoded string:	        if (['CAT'].includes(course)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:244:hardcoded string:	            programs = programs.filter((prog) => prog.value !== "x+4")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:246:hardcoded string:	        if (['ESE_AND_GATE'].includes(course)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:247:hardcoded string:	            programs = programs.filter((prog) => prog.value !== "x+4")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:250:hardcoded string:	        if (course === "CLAT") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:251:hardcoded string:	            programs = (product === "sd_card_live_classes" || (isDevEnv && product == "live_classes")) ? programs.filter((prog) => prog.value !== "x+2") : programs;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:254:hardcoded string:	            const year = eval(prog.value.replace("x", currentYear));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:255:hardcoded array:	            return course && programMap(year)[course];
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:257:hardcoded string:	        if(["GATE_ESE_EXTENSION","GATE_UPGRADE"].includes(orderPunchingType))
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:259:hardcoded string:	            const newYear= (orderPunchingType !== "GATE_UPGRADE") ? String(parseInt(validity)+1) : String(parseInt(validity)) ;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:262:hardcoded string:	        else if(["GATE_EXTENSION"].includes(orderPunchingType))
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:264:hardcoded number:	            const newYear= String(parseInt(validity)+1);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:271:hardcoded string:	        if (selectedSubject == "computer_science" || ['CAT', 'CLAT', 'AE_JE'].includes(course)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:272:hardcoded string:	            languages = languages.filter(prog => prog.value !== "english+hindi" && prog.value !== "hindi")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:274:hardcoded string:	        if (course === "GATE" || course === "ESE_AND_GATE") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:275:hardcoded string:	            languages = languages.filter(prog => prog.value !== "hindi")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:277:hardcoded string:	        if (course === "UGCNET") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:278:hardcoded string:	            languages = languages.filter(prog => prog.value !== "english+hindi")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:280:hardcoded string:	        if (course === "STATE_PSC") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:281:hardcoded string:	            languages = languages.filter(prog => prog.value !== "english+hindi" && prog.value !== "english")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:285:hardcoded string:	    getCourseOptions = (courses, teamManager, accountNumber, bepTeamManagers, isPriviledgedUser, productType, isDevEnv, directSalesBy = '') => {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:286:hardcoded object:	        const {orderPunchingType}=this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:287:hardcoded string:	        if(["GATE_ESE_EXTENSION","GATE_UPGRADE"].includes(orderPunchingType))
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:289:hardcoded string:	            courses = courses.filter(ele => 'ESE_AND_GATE'===ele.value)
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:292:hardcoded string:	        else if(orderPunchingType==="GATE_EXTENSION")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:294:hardcoded string:	            courses = courses.filter(ele => 'GATE'===ele.value)
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:298:hardcoded string:	        if (isDevEnv && ["mohnishsales@byjus.com"].includes(directSalesBy)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:299:hardcoded string:	            courses = courses.filter(ele => ['CAT', 'IAS'].includes(ele.value))
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:302:hardcoded number:	        if (isPriviledgedUser || bepTeamManagers.includes(teamManager) || [24693].includes(parseInt(accountNumber))) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:303:hardcoded string:	            if (productType === "bep_mts") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:304:hardcoded string:	                courses = courses.filter(ele => ele.value != 'STATE_PSC')
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:310:hardcoded string:	            if (productType === "bep_mts") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:311:hardcoded string:	                courses = courses.filter(ele => ele.value != 'STATE_PSC')
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:313:hardcoded string:	                courses = courses.filter(ele => ele.value != 'GATE');
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:319:hardcoded string:	        const {orderPunchingType=""}=this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:320:hardcoded string:	        if(orderPunchingType==="GATE_EXTENSION")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:322:hardcoded string:	            products = products.filter(ele => ele.value === "sd_card_live_classes")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:325:hardcoded string:	        if (course === "UGCNET" || course === "ESE_AND_GATE" || course === "STATE_PSC") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:326:hardcoded string:	            products = products.filter(ele => ele.value !== "sd_card_live_classes")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:331:hardcoded object:	        const { isDevEnv } = window;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:332:hardcoded string:	        // tablets = tablets.filter(ele => ele.value !== "1729564")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:333:hardcoded string:	        // if (course === 'GATE' || (course === 'CAT' && product === "live_classes")) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:334:hardcoded string:	        //     tablets = tablets.filter(ele => ele.value !== "1923980")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:336:hardcoded string:	        // if (course === 'CLAT') {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:337:hardcoded string:	        //     tablets = tablets.filter(ele => ele.value === "1923980" || ele.value === "1735413")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:341:hardcoded string:	            tablets = tablets.filter(ele => !["1865228", "1752094", "1923980", "1729564", "TLXMZ2"].includes(ele.value))
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:343:hardcoded string:	        tablets.push({ label: "SAMSUNG Tablet (Add-on-BYJUS) (8 inch-4G)", value: "TS8MZZ" },
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:344:hardcoded string:	            { label: "Lenovo 10 inch Tablet Mobile Data (3GB/ 32GB) - (Rs 16000)", value: "TLXMZZ" })
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:350:hardcoded object:	        const { selectedProfile } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:351:hardcoded object:	        const { existingProfiles, authDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:352:hardcoded string:	        const isPrivilegedUser = checkIsPrivilegedUser(authDetails["user"]);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:353:hardcoded number:	        if (existingProfiles && existingProfiles.length > 0) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:354:hardcoded variable:	            let newExistingProfile = existingProfiles;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:355:hardcoded string:	            newExistingProfile = newExistingProfile.find(profile => profile.value === "newProfile");
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:357:hardcoded string:	                existingProfiles.push({ "label": "New Profile", value: "newProfile" })
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:363:hardcoded string:	        if (course === "CSIR_NET") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:365:hardcoded string:	                return `Note: ${subject.split('_').map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(' ')} Live Class is available in English and English + Hindi`
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:368:hardcoded string:	                return `Note: ${subject.split('_').map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(' ')} Live Class is available in English + Hindi`
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:371:hardcoded number:	        if (PAPER2SUBJECT_ENG_HIN.includes(subject)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:372:hardcoded string:	            return `Note: ${subject.split('_').map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(' ')} is available in both "English" and "Hindi" language`
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:374:hardcoded number:	        else if (PAPER2SUBJECT_ENG.includes(subject)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:375:hardcoded string:	            return `Note: ${subject.split('_').map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(' ')}  is available in "English" language only`
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:378:hardcoded string:	            return `Note: ${subject.split('_').map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(' ')}  is available in "Hindi" language only`
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:382:hardcoded array:	        let durationOptions = [];
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:385:hardcoded string:	            durationsObj = { "label": duration, "value": duration }
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:392:hardcoded string:	        if (selectedCourse === 'CDS') {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:393:hardcoded string:	            courseDurationOptions = courseDurationOptions.filter(ele => ele.value !== "24 Months")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:395:hardcoded string:	        if (selectedCourse == 'STATE_PSC') {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:396:hardcoded string:	            courseDurationOptions = courseDurationOptions.filter(ele => ele.value !== "6 Months")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:398:hardcoded string:	        if (['UGCNET', 'CSIR_NET', 'AE_JE'].includes(selectedCourse)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:399:hardcoded string:	            courseDurationOptions = courseDurationOptions.filter(ele => ele.value !== "4 Months")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:405:hardcoded object:	        const { authDetails } = this.props
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:406:hardcoded object:	        const { env } = authDetails;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:407:hardcoded string:	        const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:408:hardcoded string:	        // if (!isDevEnv && product === 'sd_card_live_classes') {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:409:hardcoded string:	        //     subjects = subjects.filter(subject => subject.value !== "computer_science")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:411:hardcoded object:	        const {orderPunchingType,subjectSelected}=this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:412:hardcoded string:	        // const orderPunchingType="GATE_ESE_EXTENSION",subjectSelected="mechanical";
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:418:hardcoded string:	        if (course === 'ESE_AND_GATE') {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:419:hardcoded string:	            subjects = subjects.filter(subject => subject.value !== "computer_science")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:425:hardcoded variable:	        const types = [
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:427:hardcoded string:	                label: "IAS TLP",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:428:hardcoded string:	                value: "IAS_TLP"
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:431:hardcoded string:	                label: "IAS BHLP",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:432:hardcoded string:	                value: "IAS_BHLP",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:435:hardcoded string:	                label: "IAS CRP",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:436:hardcoded string:	                value: "IAS_CRP"
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:442:hardcoded array:	    getTypeOptions = (typeOptions = [], isHLPCompetitiveAllowed, env, courseType, crpCity, product, Language) => {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:443:hardcoded variable:	        let options = typeOptions;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:444:hardcoded object:	        const { user } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:445:hardcoded variable:	        const isPrivilegedUser = checkIsPrivilegedUser(user);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:446:hardcoded string:	        const isDevEnv = ["local", "development"].includes(env);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:448:hardcoded string:	        if (isDevEnv && Language === "Hindi") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:449:hardcoded string:	            options = options.filter(ele => !["Optional", "New+Optional", "Extension+Optional", "New+Optional_BYJUS_CLASSES", "New+Optional_BYJUS_CLASSES", "Extension+Optional_BYJUS_CLASSES"].includes(ele.value));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:452:hardcoded string:	        if (["IAS_TLP"].includes(courseType)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:454:hardcoded string:	                options = options.filter(ele => !["only_byjus_classes", 'New_BYJUS_CLASSES', "New+Optional_BYJUS_CLASSES"].includes(ele.value));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:457:hardcoded string:	                options = options.filter(ele => !["only_byjus_classes"].includes(ele.value));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:461:hardcoded string:	        if (!isDevEnv && courseType === "IAS_TLP" && product === "live_classes") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:462:hardcoded string:	            options = options.filter(ele => !["Optional", "New+Optional", "Extension+Optional"].includes(ele.value));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:464:hardcoded string:	        if (isDevEnv && courseType === "IAS_TLP" && product === "sd_card_live_classes") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:465:hardcoded string:	            options = options.filter(ele => !["Optional", "New+Optional", "Extension+Optional"].includes(ele.value));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:469:hardcoded string:	        if (!isDevEnv && courseType === "IAS_BHLP" && product === "live_classes") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:470:hardcoded string:	            options = options.filter(ele => !["Extension+Optional_BYJUS_CLASSES", "New+Optional_BYJUS_CLASSES", "only_byjus_classes"].includes(ele.value));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:472:hardcoded string:	        if (isDevEnv && courseType === "IAS_BHLP" && product === "sd_card_live_classes") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:473:hardcoded string:	            options = options.filter(ele => !["Extension+Optional_BYJUS_CLASSES", "New+Optional_BYJUS_CLASSES"].includes(ele.value));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:477:hardcoded string:	        if (courseType === "IAS_CRP" && (["HYD", "DELHI"].includes(crpCity))) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:478:hardcoded string:	            options = options.filter(ele => (get(ele, "value", "") === "New_BYJUS_CLASSES") || (get(ele, "value", "") === "Optional"));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:479:hardcoded string:	        } else if (courseType === "IAS_CRP") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:480:hardcoded string:	            options = options.filter(ele => (get(ele, "value", "") === "New_BYJUS_CLASSES"))
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:485:hardcoded string:	            if (["IAS_TLP"].includes(courseType)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:486:hardcoded string:	                options = options.filter(ele => !["Extension", "Extension+Optional"].includes(ele.value));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:487:hardcoded string:	            } else if (["IAS_BHLP"].includes(courseType)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:488:hardcoded string:	                options = options.filter(ele => !["Extension_BYJUS_CLASSES", "Extension+Optional_BYJUS_CLASSES"].includes(ele.value));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:491:hardcoded string:	        if (courseType === "IAS_BHLP") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:492:hardcoded string:	            options = options.filter(ele => (get(ele, "value", "").includes("BYJUS_CLASSES") || get(ele, "value", "").includes("byjus_classes")));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:493:hardcoded string:	        } else if (courseType === "home_learning_program" && isHLPCompetitiveAllowed) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:494:hardcoded string:	            options = options.filter(ele => get(ele, "value", "").includes("HLP"));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:495:hardcoded string:	        } else if (courseType !== "IAS_CRP") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:496:hardcoded string:	            options = ["development", "local"].includes(env) ? options.filter(ele => get(ele, "value", "").indexOf("HLP") <= 0 && get(ele, "value", "").indexOf("BYJUS_CLASSES") < 0) : options.filter(ele => get(ele, "value", "").indexOf("HLP") <= 0 && get(ele, "value", "").indexOf("BYJUS_CLASSES") <= 0);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:502:hardcoded array:	    getMiscellaneousCourses = (language, MiscellaneousCourses = [], courseType, env) => {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:503:hardcoded variable:	        let options = MiscellaneousCourses
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:504:hardcoded string:	        if (courseType == "IAS_TLP") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:505:hardcoded string:	            if (language === "Hindi") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:506:hardcoded string:	                options = options.filter(ele => ["Misc Prelims Test Series - Hindi"].includes(ele.value))
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:509:hardcoded string:	                options = options.filter(ele => ["Misc Prelims Test Series - English"].includes(ele.value))
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:512:hardcoded string:	        else if (courseType == 'IAS_BHLP') {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:513:hardcoded string:	            if (language === "Hindi") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:514:hardcoded string:	                options = options.filter(ele => get(ele, "value", "").includes("Misc Prelims Test Series - Hindi"));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:516:hardcoded string:	                options = options.filter(ele => get(ele, "value", "").includes('Misc Prelims Test Series - English'));
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:524:hardcoded object:	        const { productDetailsForm } = this.refs;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:525:hardcoded variable:	        const detailsForm = productDetailsForm && productDetailsForm.getProductForm();
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:527:hardcoded array:	        detailsForm && detailsForm.setFieldsValue({ miscellaneous: [] });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:528:hardcoded string:	        if (name === "isMiscellaneousReq") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:529:hardcoded string:	            detailsForm && detailsForm.setFieldsValue({ tablet: "", validity: "" });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:530:hardcoded string:	            this.setState({ validity: "" })
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:533:hardcoded array:	            [name]: checked,
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:534:hardcoded array:	            miscellaneous: [],
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:540:hardcoded variable:	        let options = courseLanguages;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:541:hardcoded string:	        if (!["LUCKNOW", "DELHI", "JAIPUR"].includes(crpCity)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:542:hardcoded string:	            options = options.filter(ele => get(ele, "value", "") === "English");
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:547:hardcoded array:	    getOptionalCourses = (language, OptionalCourses = []) => {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:548:hardcoded array:	        let options = []
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:549:hardcoded string:	        if (language === "English") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:556:hardcoded string:	        return ["GATE_ESE_EXTENSION","GATE_EXTENSION","GATE_UPGRADE"].includes(orderPunchingType);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:560:hardcoded object:	        const { productType, user, productCombination } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:561:hardcoded number:	        const { course: selectedCourse, product: selectedProduct, isSsbReq, subject: selectedSubject, courseType, tablet: selectedTablet, paper2Subject, stateExams: selectedStateExams, type, isMiscellaneousReq, Language, miscellaneous, optionalCourses = [],orderPunchingType, tlpOrderData } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:562:hardcoded object:	        const { salesDetails, listOfManagers, leadDetails, productConfig, showProfileSelectionOption, existingProfiles } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:563:hardcoded string:	        const userPermissions = get(user, 'permissions', []);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:564:hardcoded string:	        let popUpText = "";
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:565:hardcoded variable:	        let isBhlpApplicable = false;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:569:hardcoded variable:	        const isPriviledgedUser = userPermissions.includes(productPermissions.ignorePriceRangeCheck);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:570:hardcoded string:	        const accountNumber = get(leadDetails, "accountNumber", '')
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:571:hardcoded string:	        const { teamManagers: bepTeamManagers = [] } = get(listOfManagers, "BEP_MANAGER_ELIGIBLE_LIST", {})
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:572:hardcoded string:	        const teamManager = get(salesDetails, "directSalesByTeamManager", "");
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:573:hardcoded string:	        const directSalesBy = get(salesDetails, "directSalesBy", "");
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:574:hardcoded string:	        const { env } = get(this.props, "authDetails", {});
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:575:hardcoded array:	        const { Products = [], Courses = [] } = productConfig || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:576:hardcoded array:	        let { CrpCities = [] } = productConfig || {}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:577:hardcoded string:	        CrpCities = CrpCities.filter(val => val.value !== "Chandigarh")
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:578:hardcoded object:	        const selectedCourseConfig = find(Courses, { formattedName: selectedCourse }) || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:579:hardcoded string:	        const courseLanguages = get(selectedCourseConfig, 'languages', []);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:580:hardcoded string:	        let typeOptions = get(selectedCourseConfig, 'types', []);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:581:hardcoded string:	        const permissions = get(user, "permissions", []);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:582:hardcoded variable:	        const isHLPCompetitiveAllowed = permissions.includes(productPermissions.allowHLPCompetitive);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:585:hardcoded string:	        if (["IAS_TLP", "IAS_BHLP"].includes(courseType)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:586:hardcoded string:	            typeOfProduct = "competitive"
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:587:hardcoded string:	            productInfo = find(Products, { formattedName: "competitive" }) || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:588:hardcoded string:	        } else if (courseType === "IAS_CRP") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:589:hardcoded string:	            typeOfProduct = "crpCompetitive"
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:590:hardcoded string:	            productInfo = find(Products, { formattedName: "crpCompetitive" }) || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:593:hardcoded array:	        const { validity, tablets, batch = [], MeTablets = [] } = productInfo || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:594:hardcoded object:	        const productConfiguration = find(Products, { formattedName: productType }) || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:595:hardcoded number:	        let { programs, courses, products, languages, tablets:Tablets, subjects, paper2Subjects, stateExams, branches } = productConfiguration || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:596:hardcoded variable:	        const courseDurationOptions = this.getValidityOptions();
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:597:hardcoded string:	        const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:598:hardcoded string:	        if (type && type.includes("HLP") || type && type.includes("BYJUS_CLASSES") && selectedCourse === "IAS") {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:603:hardcoded variable:	        let feilds = [
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:605:hardcoded string:	            type: "select",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:606:hardcoded string:	            name: 'course',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:607:hardcoded string:	            label: 'Select Course',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:609:hardcoded string:	            message: 'Please Select Course',            
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:610:hardcoded array:	            options: this.getCourseOptions(courses, teamManager, accountNumber, bepTeamManagers, isPriviledgedUser, productType, isDevEnv, directSalesBy) || [],            
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:614:hardcoded string:	            type: selectedCourse === 'IAS' ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:615:hardcoded string:	            name: 'courseType',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:616:hardcoded string:	            label: 'Select Course Type',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:617:hardcoded string:	            required: (selectedCourse === 'IAS'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:618:hardcoded string:	            message: 'Please Select Course Type',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:623:hardcoded string:	            type: (courseType !== "IAS_CRP") ? 'select' : "hidden",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:624:hardcoded string:	            name: 'product',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:625:hardcoded string:	            label: 'Select Products',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:626:hardcoded string:	            required: (courseType !== "IAS_CRP"),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:627:hardcoded string:	            message: 'Please Select Products',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:628:hardcoded array:	            options: this.getProductOptions(products, selectedCourse, env) || [],
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:632:hardcoded string:	            type: courseType === "IAS_CRP" ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:633:hardcoded string:	            name: 'crpCity',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:634:hardcoded string:	            label: 'Select City',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:635:hardcoded array:	            options: CrpCities || [],
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:637:hardcoded string:	            required: (courseType === "IAS_CRP"),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:638:hardcoded string:	            message: "Please select City"
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:641:hardcoded string:	            type: selectedCourse === 'IAS' ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:642:hardcoded string:	            name: 'Language',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:643:hardcoded string:	            label: "Select Language",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:644:hardcoded string:	            required: (selectedCourse === 'IAS'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:645:hardcoded string:	            options: (courseType === "IAS_CRP") ? this.getLanguages(this.state.crpCity, courseLanguages) : courseLanguages,
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:647:hardcoded string:	            message: "Please select Language"
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:650:hardcoded string:	            type: selectedCourse === 'IAS' ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:652:hardcoded string:	            name: 'type',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:653:hardcoded string:	            label: 'Select Type',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:655:hardcoded string:	            required: (selectedCourse === 'IAS'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:656:hardcoded string:	            message: "Please select Type"
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:659:hardcoded string:	            courseType === "IAS_CRP" && this.state.isCrpFlowReq &&
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:661:hardcoded string:	                type: (["development", "local"].includes(env)) ? (get(selectedCourseConfig, 'miscellaneous.options', []).includes(type)) ? "checkbox" : "disable" : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:662:hardcoded string:	                name: 'isCrpFlowReq',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:663:hardcoded string:	                checkBoxLabel: 'Crp Only Flow',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:668:hardcoded string:	            type: (isBhlpApplicable || courseType === "IAS_CRP") ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:670:hardcoded string:	            name: 'workshops',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:671:hardcoded string:	            label: 'Select Batch',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:673:hardcoded string:	            required: !isBhlpApplicable || (courseType === "IAS_CRP" && this.state.crpCity == "DELHI") ? false : true,
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:674:hardcoded string:	            disabled: (courseType === "IAS_CRP" && type == "Optional" && this.state.crpCity === "DELHI") ? true : false,
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:675:hardcoded string:	            message: "Please select Batch"
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:678:hardcoded string:	            type: (!window.isDevEnv && selectedCourse === "IAS" && get(selectedCourseConfig, 'optionalCourses.options', []).includes(type)) ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:679:hardcoded string:	            options: this.getOptionalCourses(Language, get(selectedCourseConfig, 'optionalCourses.courses', [])),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:680:hardcoded string:	            required: (!window.isDevEnv && selectedCourse === "IAS" && get(selectedCourseConfig, 'optionalCourses.options', []).includes(type)) || (courseType === "IAS_CRP" && type == "Optional") ? true : false,
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:681:hardcoded string:	            name: 'optionalCourses',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:682:hardcoded string:	            label: 'Select Optional Course',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:684:hardcoded string:	            message: "Please select Optional Courses"
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:687:hardcoded string:	            type: (window.isDevEnv && selectedCourse === "IAS" && get(selectedCourseConfig, 'optionalCourses.options', []).includes(type)) ? 'readonly' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:688:hardcoded string:	            readOnlyText: 'Note: Optional Course includes all 5 subjects, Sociology, Political Science, History, Geography, Anthropology',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:689:hardcoded string:	            value: "Note",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:690:hardcoded string:	            name: "Note",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:691:hardcoded object:	            onChange: () => { }
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:694:hardcoded string:	            type: (['IAS_BHLP', 'IAS_TLP'].includes(courseType) && get(selectedCourseConfig, 'miscellaneous.options', []).includes(type)) && this.state.product !== "live_classes" ? "checkbox" : "disable",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:695:hardcoded string:	            name: 'isMiscellaneousReq',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:696:hardcoded string:	            checkBoxLabel: 'Select only Miscellaneous Courses',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:700:hardcoded string:	            type: isMiscellaneousReq && get(selectedCourseConfig, 'miscellaneous.options', []).includes(type) ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:701:hardcoded string:	            mode: 'multiple',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:702:hardcoded string:	            options: this.getMiscellaneousCourses(Language, get(selectedCourseConfig, 'miscellaneous.courses', []), courseType, env),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:703:hardcoded string:	            name: 'miscellaneous',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:704:hardcoded string:	            label: 'Select Miscellaneous Course',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:706:hardcoded string:	            required: isMiscellaneousReq && get(selectedCourseConfig, 'miscellaneous.options', []).includes(type),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:707:hardcoded array:	            value: !isMiscellaneousReq && [],
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:708:hardcoded string:	            message: "Please select Miscellaneous Courses"
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:711:hardcoded string:	            type: (selectedCourse === 'STATE_PSC') ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:712:hardcoded string:	            name: 'stateExams',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:713:hardcoded string:	            label: (selectedCourse === 'STATE_PSC') ? 'Select State Exam' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:714:hardcoded string:	            required: (selectedCourse === 'STATE_PSC'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:715:hardcoded string:	            message: 'Please Select State Exam',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:720:hardcoded string:	            type: ["NDA", "CDS"].includes(selectedCourse) ? 'readonly' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:721:hardcoded string:	            name: "note",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:722:hardcoded string:	            label: 'Note: Course content is available in English and English+Hindi',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:726:hardcoded string:	            type: (["NDA", "CDS"].includes(selectedCourse)) ? "checkbox" : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:727:hardcoded string:	            name: 'isSsbReq',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:728:hardcoded string:	            checkBoxLabel: 'Select SSB Interview Mentorship ',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:734:hardcoded string:	            type: (['GATE', 'UGCNET', 'CSIR_NET', 'AE_JE', "ESE_AND_GATE"].includes(selectedCourse)) ? 'select' : "hidden",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:735:hardcoded string:	            name: 'subject',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:736:hardcoded string:	            label: (['GATE', 'AE_JE', 'ESE_AND_GATE'].includes(selectedCourse)) ? 'Select Branch' : (selectedCourse === 'CSIR_NET' ? 'Select Subject' : "Select Paper 2 Subject"),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:737:hardcoded string:	            required: (['GATE', 'UGCNET', 'CSIR_NET', 'AE_JE', 'ESE_AND_GATE'].includes(selectedCourse)),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:738:hardcoded string:	            message: (['GATE', 'AE_JE', 'ESE_AND_GATE'].includes(selectedCourse)) ? 'Please Select Branch' : (selectedCourse === 'CSIR_NET' ? 'Select Subject' : 'Please Select Paper 2 Subject'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:739:hardcoded string:	            options: selectedCourse === 'UGCNET' ? paper2Subjects : selectedCourse === "AE_JE" ? branches : this.getSubjects(subjects,selectedProduct,selectedCourse),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:743:hardcoded string:	            type: (selectedCourse === 'UGCNET' || (selectedCourse === 'CSIR_NET')) ? 'readonly' : "hidden",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:744:hardcoded string:	            name: "isText",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:745:hardcoded string:	            label: (selectedCourse === 'UGCNET' || (selectedCourse === 'CSIR_NET')) ? popUpText : "",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:749:hardcoded string:	            type: selectedCourse ? 'select' : "hidden",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:750:hardcoded string:	            name: ["GATE", "CAT", "CLAT", "ESE_AND_GATE"].includes(selectedCourse) ? 'program' : 'validity',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:751:hardcoded string:	            label: ["GATE", "CAT", "CLAT", "ESE_AND_GATE"].includes(selectedCourse) ? 'Select Program' : 'Select Validity',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:753:hardcoded string:	            options: ["GATE", "CAT", "CLAT", "ESE_AND_GATE"].includes(selectedCourse) ? this.getProgramOptions(programs, selectedCourse, selectedProduct) : (selectedCourse === 'IAS' ? getFormattedValidity({ validity, user, productType: typeOfProduct, productCombination, selectedCourse, type, isMiscellaneousReq, miscellaneous, optionalCourses, courseType }) : this.getMonthOptions(courseDurationOptions, selectedCourse, selectedStateExams, isDevEnv)),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:755:hardcoded string:	            message: "Please select Program",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:757:hardcoded string:	            type: ["NDA", "CDS", "CSIR_NET", "IAS"].includes(selectedCourse) ? 'hidden' : 'select',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:758:hardcoded string:	            name: 'language',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:759:hardcoded string:	            label: ['GATE', 'UGCNET', 'STATE_PSC', 'ESE_AND_GATE'].includes(selectedCourse) ? 'Select Language for Live Classes' : "Select Language",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:760:hardcoded string:	            required: ["NDA", "CDS", "CSIR_NET", "IAS"].includes(selectedCourse) ? false : true,
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:763:hardcoded string:	            message: "Please select Language",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:766:hardcoded string:	            type: ["NDA", "CDS", "STATE_PSC", "CSIR_NET", 'AE_JE', 'IAS'].includes(selectedCourse) ? 'hidden' : 'readonly',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:767:hardcoded string:	            name: "note",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:768:hardcoded string:	            label: (['GATE', 'UGCNET', 'AE_JE', 'ESE_AND_GATE'].includes(selectedCourse)) ? 'Note: Async Content will be in English Only' : "Note: All content will be in English",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:772:hardcoded string:	            type: ["STATE_PSC", 'AE_JE'].includes(selectedCourse) ? 'readonly' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:773:hardcoded string:	            name: "note",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:774:hardcoded string:	            label: selectedCourse === 'AE_JE' ? 'Note: Course content is available in English or English+Hindi  ' : 'Note: All async content will be in Hindi',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:778:hardcoded string:	            // type: 'select',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:779:hardcoded string:	            type: (["AE_JE"].includes(selectedCourse)) ? 'hidden' : 'select',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:780:hardcoded string:	            name: 'tablet',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:781:hardcoded string:	            label: 'Select Tablet',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:782:hardcoded string:	            disabled: (courseType === "IAS_TLP" && isMiscellaneousReq && get(selectedCourseConfig, 'miscellaneous.options', []).includes(type)) || (courseType === "IAS_CRP" && type == "Optional") ? true : false,
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:783:hardcoded string:	            required: (isPriviledgedUser && selectedCourse == "IAS") || (isMiscellaneousReq && selectedProduct === "sd_card_live_classes") || (courseType == "IAS_CRP") || (selectedProduct === "live_classes") || this.isUpgradeFlow(orderPunchingType) ? false : true,
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:785:hardcoded string:	            options: checkPrivTabletAccess(leadDetails, user) ? getAllAvailableTabletsBasedOnUser(user, productCombination) : ['IAS_TLP', 'IAS_BHLP', 'IAS_CRP'].includes(courseType) ? getTablets({ tablets, user, productType: typeOfProduct, productCombination, leadDetails, MeTablets, courseType }) : this.getTabletOptions(selectedProduct, Tablets, selectedCourse, isPriviledgedUser),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:786:hardcoded string:	            message: 'Please select Tablet'
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:789:hardcoded string:	            type: (showProfileSelectionOption && existingProfiles.length > 0 ? 'radio' : 'hidden'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:791:hardcoded string:	            name: 'userProfile',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:792:hardcoded string:	            label: 'Choose Profile Type',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:794:hardcoded string:	            message: "Please Choose Profile Type",
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:796:hardcoded string:	                display: 'block',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:797:hardcoded string:	                height: '30px',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:798:hardcoded string:	                lineHeight: '30px',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:800:hardcoded number:	            required: (showProfileSelectionOption && existingProfiles.length > 0 ? true : false)
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:807:hardcoded object:	        this.setState({ error });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:811:hardcoded object:	        const { productDetails, productConfig, productType, orderPunchingType, tlpOrderData } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:814:hardcoded object:	            const {productDetails:previousOrderDetails}=tlpOrderData;            
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:815:hardcoded object:	            const {category, language, subject, validity}=previousOrderDetails;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:816:hardcoded string:	            await this.setState({productCombination:"byjus_exam_prep",category, language, subjectSelected :subject, validity});
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:826:hardcoded object:	        await this.setState({ productConfig });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:830:hardcoded object:	        const { error, validity } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:831:hardcoded string:	        const { course: selectedCourse,productCombination, stateExams = '', courseType = '' } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:832:hardcoded object:	        const { productType, productConfig, changeNextBtnMode } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:833:hardcoded array:	        const fields = productConfig ? this.getFields() : [];
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:836:hardcoded object:	                <ErrorWrapper error={error} />
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:838:hardcoded string:	                    ref="productDetailsForm"
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:839:hardcoded object:	                    productType={productType}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:840:hardcoded object:	                    fields={fields}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:843:hardcoded string:	                    ref='fetchComp'
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:844:hardcoded object:	                    onClickFetchPrices={this.onClickFetchPrices}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:845:hardcoded object:	                    getProductDetails={this.getProductDetails}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:846:hardcoded object:	                    changeNextBtnMode={changeNextBtnMode}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:847:hardcoded object:	                    productType={productType}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:848:hardcoded object:	                    setError={this.setError}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:849:hardcoded object:	                    productCombination={productCombination}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:850:hardcoded object:	                    validity={validity}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:851:hardcoded object:	                    selectedCourse={selectedCourse}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:852:hardcoded object:	                    stateExams={stateExams}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:853:hardcoded object:	                    courseType={courseType}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeCompetitive.js:860:hardcoded object:	export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(BEPCompetitive)
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:12:hardcoded variable:	const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:13:hardcoded string:	    authDetails: get(state, 'auth.details'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:14:hardcoded string:	    appConfig: get(state, 'auth.details.config'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:15:hardcoded string:	    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:16:hardcoded string:	    orderPunchingType: get(state, 'auth.orderPunchingType'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:17:hardcoded string:	    tlpOrderData: get(state, 'auth.tlpOrderData'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:18:hardcoded string:	    customerDetails: get(state, 'details.customerDetails'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:19:hardcoded string:	    productConfig: get(state, 'product.config'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:20:hardcoded string:	    existingProfiles: get(state, 'product.existingProfiles'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:21:hardcoded string:	    showProfileSelectionOption: get(state, 'product.showProfileSelectionOption'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:22:hardcoded string:	    reviewProductDetails: get(state, 'product.reviewDetails'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:23:hardcoded string:	    loading: get(state, 'product.loading'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:24:hardcoded string:	    error: get(state, 'product.error'),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:25:hardcoded string:	    user: get(state, "auth.details.user", {}),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:26:hardcoded string:	    cashbackDetails: get(state, "product.cashbackDetails", {}),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:27:hardcoded string:	    finalPrice: get(state, "product.finalPrice", 0),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:28:hardcoded string:	    repunchDoc: get(state, "repunch", {}),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:29:hardcoded string:	    salesDetails: get(state, 'details.salesDetails', {}),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:30:hardcoded string:	    addressDetail: get(state, 'address.details', {}),
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:33:hardcoded variable:	const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:56:hardcoded string:	            selectedProduct: 'byjus_exam_prep_competitive',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:58:hardcoded object:	            productConfig: {},
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:59:hardcoded array:	            fields: [],
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:64:hardcoded object:	        let { selectedProduct } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:65:hardcoded array:	        let productOptions = this.getProductOptions() || [];
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:67:hardcoded variable:	        const radioBtnStyle = {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:68:hardcoded string:	            fontWeight: '500',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:69:hardcoded string:	            fontSize: 'medium',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:70:hardcoded string:	            background: '#fcf5ff'
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:73:hardcoded string:	            <RadioGroup onChange={this.onChangeProduct} value={selectedProduct} buttonStyle="solid">
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:74:hardcoded object:	                {productOptions.map(({ label, value }, idx) => (
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:75:hardcoded object:	                    <RadioButton style={radioBtnStyle} value={value} key={idx}>{label}</RadioButton>
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:86:hardcoded string:	        const { value } = get(e, 'target');
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:87:hardcoded object:	        this.setState({ selectedProduct: null }, () => {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:88:hardcoded object:	            this.setState({ selectedProduct: value, });
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:94:hardcoded array:	        const { Products = [] } = this.props.productConfig || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:95:hardcoded variable:	        const products = Products.map((product) => {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:96:hardcoded object:	            const { name, formattedName } = product;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:98:hardcoded object:	                label: `${name}`,
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:106:hardcoded object:	        const {user } = compProps
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:108:hardcoded string:	                case 'byjus_exam_prep_competitive' : return <BEPCompetitive productType={selectedProduct} {...compProps} user= {user} productCombination={productCombination} />
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:114:hardcoded object:	        const { selectedProduct, error } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:115:hardcoded object:	        const { productCombination } = this.props; //To render some specific component after the main product details form
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:116:hardcoded variable:	        const compProps = {
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:117:hardcoded string:	            ref: 'bepProductComponent',
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:125:hardcoded object:	                <ErrorWrapper error={error} />
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:126:hardcoded object:	                {this.buildProductOptions()}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:127:hardcoded object:	                {this.buildProductComponent(selectedProduct, compProps, productCombination)}
+microservices-middleware/client/src/modules/ordertype/upgrade/byjusexamprep/BEPUpgradeProductPage.js:133:hardcoded object:	export default connect( mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(BEPProductPage)

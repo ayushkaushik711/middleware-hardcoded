@@ -1,0 +1,286 @@
+microservices-middleware/server/src/bookmanagement/bookController.js:1:hardcoded string:	const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/bookmanagement/bookController.js:3:hardcoded variable:	const getBooksSku = async ( details ) => {
+microservices-middleware/server/src/bookmanagement/bookController.js:4:hardcoded variable:	    const env = process.env.NODE_ENV;
+microservices-middleware/server/src/bookmanagement/bookController.js:5:hardcoded string:	    if(['local', 'development'].includes(env)){
+microservices-middleware/server/src/bookmanagement/bookController.js:6:hardcoded string:	        let { initialClass = '', board, subCourse = '', course, language, type, productCombination, subject = '' } = details;
+microservices-middleware/server/src/bookmanagement/bookController.js:7:hardcoded variable:	        let booksSku = null;
+microservices-middleware/server/src/bookmanagement/bookController.js:8:hardcoded number:	        let price = 0;
+microservices-middleware/server/src/bookmanagement/bookController.js:13:hardcoded variable:	        let query = {
+microservices-middleware/server/src/bookmanagement/bookController.js:14:hardcoded string:	            status: 'active',
+microservices-middleware/server/src/bookmanagement/bookController.js:15:hardcoded string:	            category: 'book',
+microservices-middleware/server/src/bookmanagement/bookController.js:19:hardcoded string:	        if( productCombination === 'byjus_math'){
+microservices-middleware/server/src/bookmanagement/bookController.js:20:hardcoded string:	            course = 'K10/K12';
+microservices-middleware/server/src/bookmanagement/bookController.js:23:hardcoded string:	        if( course === 'IAS' ){
+microservices-middleware/server/src/bookmanagement/bookController.js:24:hardcoded string:	            if( type === 'New' || type === 'New_BYJUS_CLASSES' ){
+microservices-middleware/server/src/bookmanagement/bookController.js:27:hardcoded string:	                    subCourse: 'mains',
+microservices-middleware/server/src/bookmanagement/bookController.js:30:hardcoded string:	                delete query['course'];
+microservices-middleware/server/src/bookmanagement/bookController.js:36:hardcoded string:	        if(course == 'K10/K12'){
+microservices-middleware/server/src/bookmanagement/bookController.js:37:hardcoded number:	            if(initialClass <= 10){
+microservices-middleware/server/src/bookmanagement/bookController.js:40:hardcoded string:	                    course : initialClass <= 3 ? initialClass <= 0 ? 'PRE_K3' : 'K3' : 'K10',
+microservices-middleware/server/src/bookmanagement/bookController.js:41:hardcoded string:	                    board: initialClass < 6 ? "N/A" : board,
+microservices-middleware/server/src/bookmanagement/bookController.js:49:hardcoded string:	                    course: 'K12'
+microservices-middleware/server/src/bookmanagement/bookController.js:53:hardcoded string:	        if(course ===  "GATE"){
+microservices-middleware/server/src/bookmanagement/bookController.js:64:hardcoded string:	        if(!booksSku && board == 'CBSE'){
+microservices-middleware/server/src/bookmanagement/bookController.js:67:hardcoded string:	                board: 'N/A'
+microservices-middleware/server/src/bookmanagement/bookController.js:75:hardcoded string:	            price = booksSku['basePrice'];
+microservices-middleware/server/src/bookmanagement/bookController.js:80:hardcoded string:	            itemType: 'book'
+microservices-middleware/server/src/bookmanagement/bookController.js:88:hardcoded variable:	const getBooksProduct = async (details) => {
+microservices-middleware/server/src/bookmanagement/bookController.js:89:hardcoded string:	    let { board, initialClass, finalClass, course, subCourse = "" } = details;
+microservices-middleware/server/src/bookmanagement/bookController.js:90:hardcoded array:	    const booksSkuArray = [];
+microservices-middleware/server/src/bookmanagement/bookController.js:91:hardcoded variable:	    let grade = parseInt(initialClass);
+microservices-middleware/server/src/bookmanagement/bookController.js:93:hardcoded object:	        const bookSku = await getBooksSku({board, initialClass: grade, course, subCourse});
+microservices-middleware/server/src/bookmanagement/assembler.js:4:hardcoded variable:	const buildQuery = body => {
+microservices-middleware/server/src/bookmanagement/assembler.js:5:hardcoded string:	    const { grade = '', board = '', subCourse = null, programId = '' } = body;
+microservices-middleware/server/src/bookmanagement/assembler.js:6:hardcoded variable:	    const query = {
+microservices-middleware/server/src/bookmanagement/assembler.js:8:hardcoded number:	        subCourse: parseInt(grade) <= 10 ? null : subCourse
+microservices-middleware/server/src/bookmanagement/assembler.js:10:hardcoded string:	    if (grade > '5' || grade == '10') {
+microservices-middleware/server/src/bookmanagement/assembler.js:13:hardcoded object:	    return { query, programId };
+microservices-middleware/server/src/bookmanagement/assembler.js:16:hardcoded variable:	const buildExamPrepQuery = body => {
+microservices-middleware/server/src/bookmanagement/assembler.js:17:hardcoded string:	    const { course = '', language = null, programId = '' } = body;
+microservices-middleware/server/src/bookmanagement/assembler.js:18:hardcoded object:	    const subject = makeSequelizeOrQuery({ subject: body?.subject })
+microservices-middleware/server/src/bookmanagement/assembler.js:19:hardcoded variable:	    const query = {
+microservices-middleware/server/src/bookmanagement/assembler.js:24:hardcoded object:	    return { query, programId };
+microservices-middleware/server/src/bookmanagement/assembler.js:27:hardcoded variable:	const makeSequelizeOrQuery = (field) => {
+microservices-middleware/server/src/bookmanagement/assembler.js:28:hardcoded number:	    const key = Object.keys(field)[0]
+microservices-middleware/server/src/bookmanagement/assembler.js:29:hardcoded number:	    const value = Object.values(field)[0]
+microservices-middleware/server/src/bookmanagement/assembler.js:30:hardcoded array:	    return value ? { [key]: value } : {
+microservices-middleware/server/src/bookmanagement/assembler.js:31:hardcoded array:	        [Op.or]: [
+microservices-middleware/server/src/bookmanagement/assembler.js:32:hardcoded string:	            { [key]: "" },
+microservices-middleware/server/src/bookmanagement/assembler.js:33:hardcoded array:	            { [key]: null }
+microservices-middleware/server/src/bookmanagement/assembler.js:38:hardcoded variable:	const formatSkus = (skus) => {
+microservices-middleware/server/src/bookmanagement/assembler.js:39:hardcoded number:	    if (!skus[0]) skus = [skus];
+microservices-middleware/server/src/bookmanagement/assembler.js:41:hardcoded array:	        Object.entries(sku).map(([key, value]) => {
+microservices-middleware/server/src/bookmanagement/assembler.js:42:hardcoded string:	            const newKey = key.split('.')[1] || key;
+microservices-middleware/server/src/bookmanagement/assembler.js:43:hardcoded array:	            sku[newKey] = value;
+microservices-middleware/server/src/bookmanagement/assembler.js:44:hardcoded array:	            if (newKey != key) delete sku[key];
+microservices-middleware/server/src/bookmanagement/assembler.js:47:hardcoded string:	        delete sku['programId'];
+microservices-middleware/server/src/bookmanagement/assembler.js:48:hardcoded string:	        sku.programId = sku['sales_program_id'];
+microservices-middleware/server/src/bookmanagement/assembler.js:49:hardcoded string:	        delete sku['sales_program_id'];
+microservices-middleware/server/src/bookmanagement/assembler.js:54:hardcoded variable:	const formatProgramIds = (programIds) => {
+microservices-middleware/server/src/bookmanagement/assembler.js:55:hardcoded array:	    Object.entries(programIds).map(([key, value]) => {
+microservices-middleware/server/src/bookmanagement/assembler.js:56:hardcoded string:	        if (key.includes("+") && key.indexOf("+")!=key.length -1) {
+microservices-middleware/server/src/bookmanagement/assembler.js:57:hardcoded string:	            const keys = key.split("+");
+microservices-middleware/server/src/bookmanagement/assembler.js:59:hardcoded array:	                programIds[k] = value
+microservices-middleware/server/src/bookmanagement/assembler.js:61:hardcoded array:	            delete programIds[key]
+microservices-middleware/server/src/bookmanagement/service.js:6:hardcoded variable:	const getBookSkuService = async body => {
+microservices-middleware/server/src/bookmanagement/service.js:7:hardcoded variable:	  const query = buildQuery(body);
+microservices-middleware/server/src/bookmanagement/service.js:8:hardcoded variable:	  const sku = await dto.getBooksSku(query);
+microservices-middleware/server/src/bookmanagement/service.js:12:hardcoded variable:	const getComboBooksServices = async body => {
+microservices-middleware/server/src/bookmanagement/service.js:13:hardcoded array:	  const { students = [] } = body;
+microservices-middleware/server/src/bookmanagement/service.js:14:hardcoded variable:	  const bookSkus = await Promise.all(students.map(async (student) => {
+microservices-middleware/server/src/bookmanagement/service.js:15:hardcoded variable:	    const programIds = formatProgramIds(student?.programIds)
+microservices-middleware/server/src/bookmanagement/service.js:16:hardcoded array:	    let skus = [];
+microservices-middleware/server/src/bookmanagement/service.js:18:hardcoded array:	      const sku = await getBookSkuService({ ...student, grade, programId: programIds[grade] });
+microservices-middleware/server/src/bookmanagement/service.js:20:hardcoded object:	        throw new NotFoundError(`Sku for ${grade} not found`);
+microservices-middleware/server/src/bookmanagement/service.js:30:hardcoded variable:	const getExamPrepSkuServices = async body => {
+microservices-middleware/server/src/bookmanagement/service.js:31:hardcoded object:	  const { students = {} } = body
+microservices-middleware/server/src/bookmanagement/service.js:32:hardcoded variable:	  const query = buildExamPrepQuery(students);
+microservices-middleware/server/src/bookmanagement/service.js:33:hardcoded variable:	  let skus = await dto.getBooksSku(query);
+microservices-middleware/server/src/bookmanagement/service.js:35:hardcoded object:	    throw new NotFoundError(`Sku for ${students?.course} not found`);
+microservices-middleware/server/src/bookmanagement/service.js:38:hardcoded array:	  return [skus];
+microservices-middleware/server/src/bookmanagement/service.js:41:hardcoded variable:	const saveBookSkus = async body => {
+microservices-middleware/server/src/bookmanagement/service.js:42:hardcoded string:	  const { bookSkus = [], identifier = '' } = body
+microservices-middleware/server/src/bookmanagement/service.js:43:hardcoded variable:	  const isSaved = await skuPriceCalculation(identifier,bookSkus)
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:1:hardcoded variable:	const calculateSkuPriceDistribution = (
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:5:hardcoded variable:	    const quantityCalculation = {
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:6:hardcoded number:	        totalItems: 0,
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:7:hardcoded number:	        totalTablets: 0,
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:8:hardcoded number:	        booksPrice: 0,
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:9:hardcoded number:	        tabletPrice: 0,
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:10:hardcoded number:	        numberOfK12Books: 0,
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:11:hardcoded number:	        numberOfNonK12Books: 0
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:14:hardcoded array:	        const { items = [] } = student;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:17:hardcoded string:	    const totalBooks = quantityCalculation['numberOfK12Books'] + quantityCalculation['numberOfNonK12Books'];
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:18:hardcoded string:	    const totalDigitalSkuPrice = finalPrice - (quantityCalculation['booksPrice'] + quantityCalculation['tabletPrice']);
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:21:hardcoded string:	            if (product.itemType == 'book') {
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:25:hardcoded string:	        if (totalDigitalSkuPrice * 0.4 > quantityCalculation['booksPrice']) {
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:26:hardcoded string:	            const diffPerItem = totalDigitalSkuPrice / (quantityCalculation['totalItems'] - totalBooks - quantityCalculation['totalTablets']);       //get price per item other than (tablets, books)
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:28:hardcoded string:	                if (!['tablet', 'book'].includes(product.itemType)) {
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:29:hardcoded number:	                    product.price = diffPerItem.toFixed(2);    //assign price per item price to all items other than (tablets, books)
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:34:hardcoded string:	            let priceForBooks = (finalPrice - quantityCalculation['tabletPrice']) * 0.4;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:35:hardcoded string:	            const priceForDigitalSkus = (finalPrice - quantityCalculation['tabletPrice']) * 0.6;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:36:hardcoded string:	            if (quantityCalculation['numberOfK12Books'] > 0) {
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:37:hardcoded string:	                if (quantityCalculation['numberOfNonK12Books'] > 0) {
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:38:hardcoded string:	                    const priceOfAllK10Books = student.items.filter(product => product.course !== 'K12' && product.itemType == 'book').reduce((acc, curr) => acc + parseInt(curr.basePrice), 0);
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:39:hardcoded number:	                    priceForBooks = priceForBooks - priceOfAllK10Books;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:42:hardcoded string:	            const pricePerDigitalSku = priceForDigitalSkus / (quantityCalculation['totalItems'] - totalBooks - quantityCalculation['totalTablets']);
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:43:hardcoded string:	            const pricePerBook = quantityCalculation['numberOfK12Books'] > 0 ? priceForBooks / quantityCalculation['numberOfK12Books'] : priceForBooks / quantityCalculation['numberOfNonK12Books'];
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:45:hardcoded string:	                if (!['book', 'tablet'].includes(product.itemType)) {
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:46:hardcoded number:	                    product.price = pricePerDigitalSku.toFixed(2);
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:48:hardcoded string:	                if (quantityCalculation['numberOfK12Books'] > 0 && product.itemType == 'book' && product.course == 'K12') {
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:49:hardcoded number:	                    product.price = pricePerBook.toFixed(2);
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:50:hardcoded string:	                } else if (quantityCalculation['numberOfK12Books'] === 0 && product.itemType == 'book' && product.course !== 'K12') {
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:51:hardcoded number:	                    product.price = pricePerBook.toFixed(2);
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:58:hardcoded variable:	const calculateSkuTypesPricesAndCount = (
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:62:hardcoded variable:	    const totalItemOfStudent = items.length;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:63:hardcoded string:	    const booksPriceOfStudent = items.filter(item => item.itemType === 'book').reduce((acc, item) => {
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:65:hardcoded number:	    }, 0);
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:66:hardcoded string:	    const tabletPriceOfStudent = items.filter(item => item.itemType === 'tablet').reduce((acc, item) => {
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:68:hardcoded number:	    }, 0);
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:69:hardcoded string:	    const totalTabletOfStudent = items.filter(item => item.itemType === 'tablet').length;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:70:hardcoded string:	    const numberOfK12BooksOfStudent = items.filter(product => product.course == 'K12' && product.itemType == 'book').length;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:71:hardcoded string:	    const numberOfNonK12BooksOfStudent = items.filter(product => product.course !== 'K12' && product.itemType == 'book').length;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:72:hardcoded string:	    quantityCalculation['numberOfNonK12Books'] += numberOfNonK12BooksOfStudent;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:73:hardcoded string:	    quantityCalculation['numberOfK12Books'] += numberOfK12BooksOfStudent;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:74:hardcoded string:	    quantityCalculation['totalTablets'] += totalTabletOfStudent;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:75:hardcoded string:	    quantityCalculation['booksPrice'] += booksPriceOfStudent;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:76:hardcoded string:	    quantityCalculation['tabletPrice'] += tabletPriceOfStudent;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:77:hardcoded string:	    quantityCalculation['totalItems'] += totalItemOfStudent;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:80:hardcoded variable:	const getBooksSkuFromProductDetails = (productDetails) => {
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:81:hardcoded string:	    const booksSku = productDetails.products.filter(product => product.itemType === 'book');
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:82:hardcoded string:	    productDetails['products'] = productDetails.products.filter(product => product.itemType !== 'book');
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:84:hardcoded string:	        // const booksSkuForIndividual = student.items.filter(product => product.itemType === 'book');
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:85:hardcoded string:	        student.items = student.items.filter(product => product.itemType !== 'book');
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:86:hardcoded string:	        // student['addOnItems'] = student['addOnItems'] ? [...student['addOnItems'], ...booksSkuForIndividual] : booksSkuForIndividual;
+microservices-middleware/server/src/bookmanagement/stationarySkuPriceCalculation.js:88:hardcoded string:	    // productDetails['addOnLineItems'] = productDetails['addOnLineItems'] ? [...productDetails['addOnLineItems'], ...booksSku] : booksSku;
+microservices-middleware/server/src/bookmanagement/controller.js:4:hardcoded variable:	const getBooksSku = async (req, res) => {
+microservices-middleware/server/src/bookmanagement/controller.js:6:hardcoded variable:	    const skus = await service?.getComboBooksServices(req?.body);
+microservices-middleware/server/src/bookmanagement/controller.js:8:hardcoded string:	      return res.status(404).json('Sku not found');
+microservices-middleware/server/src/bookmanagement/controller.js:10:hardcoded number:	    return res.status(200).json(skus);
+microservices-middleware/server/src/bookmanagement/controller.js:12:hardcoded number:	    return res.status(error?.status || 500).json({ message: error?.message });
+microservices-middleware/server/src/bookmanagement/controller.js:16:hardcoded variable:	const getExamPrepSku = async (req, res) => {
+microservices-middleware/server/src/bookmanagement/controller.js:18:hardcoded variable:	    const skus = await service?.getExamPrepSkuServices(req?.body);
+microservices-middleware/server/src/bookmanagement/controller.js:20:hardcoded string:	      return res.status(404).json('sku not found');
+microservices-middleware/server/src/bookmanagement/controller.js:22:hardcoded number:	    return res.status(200).json(skus);
+microservices-middleware/server/src/bookmanagement/controller.js:24:hardcoded number:	    return res.status(error?.status || 500).json({ message: error?.message });
+microservices-middleware/server/src/bookmanagement/controller.js:28:hardcoded variable:	const saveBookSkus = async (req, res) => {
+microservices-middleware/server/src/bookmanagement/controller.js:30:hardcoded variable:	    const isSaved = await service?.saveBookSkus(req?.body);
+microservices-middleware/server/src/bookmanagement/controller.js:32:hardcoded string:	      return res.status(200).json('Book sku saved successfully');
+microservices-middleware/server/src/bookmanagement/controller.js:33:hardcoded string:	    return res.status(500).json({ message: 'Something went wrong' });
+microservices-middleware/server/src/bookmanagement/controller.js:36:hardcoded number:	    return res.status(error?.status || 500).json({ message: error?.message });
+microservices-middleware/server/src/bookmanagement/controller.js:40:hardcoded object:	module.exports = { getBooksSku, getExamPrepSku, saveBookSkus };
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:4:hardcoded variable:	const skuPriceCalculation = async (identifier, addOnLineItems) => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:6:hardcoded variable:	    const skus = await dto?.getSavedSkus(identifier);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:8:hardcoded string:	      return res.status(404).json('Sku not found');
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:10:hardcoded variable:	    const isUpdated = priceCalculation(skus, identifier, addOnLineItems);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:17:hardcoded variable:	const getBasePrice = (skus,addOnLineItems) => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:18:hardcoded object:	  const { productDetails } = skus;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:19:hardcoded variable:	  const booksBasePrice = addOnLineItems?.reduce((acc, item) => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:21:hardcoded number:	  }, 0);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:22:hardcoded variable:	  const courseBasePrice = productDetails.products?.reduce((acc, item) => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:24:hardcoded number:	  }, 0);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:25:hardcoded variable:	  const tabletBasePrice = productDetails.products?.reduce((acc, item) => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:26:hardcoded string:	    return acc + Number(item.itemType === 'tablet' ? item?.basePrice : 0);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:27:hardcoded number:	  }, 0);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:28:hardcoded object:	  return { booksBasePrice, courseBasePrice, tabletBasePrice };
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:31:hardcoded variable:	const percentageOfCourse = (coursePriceArray, totalPerCalPrice) => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:33:hardcoded number:	    return (item / totalPerCalPrice) * 100;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:37:hardcoded variable:	const percentageCalBook = (bookPriceArray, booksBasePrice) => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:39:hardcoded number:	    return (item / booksBasePrice) * 100;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:43:hardcoded number:	const percentageCal12Book = (addOnLineItems, k12Books) => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:45:hardcoded string:	    if (item.course === 'K12') {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:46:hardcoded number:	      return (item.basePrice / k12Books) * 100;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:48:hardcoded number:	      return 0;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:53:hardcoded variable:	const priceCalculation = async (skus, identifier,addOnLineItems) => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:54:hardcoded object:	  const { productDetails, finalPrice } = skus;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:55:hardcoded object:	  const { booksBasePrice, courseBasePrice, tabletBasePrice } = getBasePrice(skus,addOnLineItems);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:56:hardcoded variable:	  const totalValueAfterTablets = finalPrice - tabletBasePrice;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:57:hardcoded variable:	  const totalPerCalPrice = courseBasePrice - tabletBasePrice;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:58:hardcoded variable:	  const coursePriceArray = productDetails.products?.map(item => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:59:hardcoded string:	    return Number(item.itemType !== 'tablet' ? item?.basePrice : 0);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:61:hardcoded variable:	  const percentageCal = percentageOfCourse(coursePriceArray, totalPerCalPrice);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:62:hardcoded variable:	  const afterBooks = totalValueAfterTablets - booksBasePrice;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:63:hardcoded variable:	  const reducedPrice = percentageCal?.map(item => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:64:hardcoded number:	    return (afterBooks * item) / 100;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:66:hardcoded variable:	  let totalDiff = afterBooks;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:68:hardcoded string:	    if (item.itemType !== 'tablet') {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:69:hardcoded array:	      const price = Math.round(reducedPrice[index]);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:76:hardcoded string:	    if (item.itemType !== 'tablet' && totalDiff > 0) {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:78:hardcoded number:	      totalDiff = 0;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:83:hardcoded string:	    if (item.course === 'K12' || item.course !== 'K12') {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:88:hardcoded object:	  const studentItemObj = {};
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:90:hardcoded string:	    const studentId = item.studentId.split('-')[
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:91:hardcoded string:	      item.studentId.split('-').length - 1
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:93:hardcoded array:	    studentItemObj[studentId] = [...(studentItemObj[studentId] || []), item];
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:95:hardcoded object:	  const studentItems = {};
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:96:hardcoded array:	  Object.entries(studentItemObj).forEach(([key, value]) => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:97:hardcoded number:	    studentItems[`productDetails.students.${Number(key) - 1}.items`] = value;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:100:hardcoded variable:	  let updateObject = {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:102:hardcoded string:	    'productDetails.products': productDetails.products,
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:106:hardcoded variable:	  const per = booksBasePrice / afterBooks;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:107:hardcoded number:	  if (per > 0.4) {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:108:hardcoded number:	    const fortyPerLogicValue = afterBooks * 0.4;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:109:hardcoded variable:	    const bookPriceArray = addOnLineItems?.map(item => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:110:hardcoded string:	      return (item.subType === 'book' && item.course !== 'K12') ||
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:111:hardcoded string:	        item.course === 'K12'
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:113:hardcoded number:	        : 0;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:115:hardcoded variable:	    const percentageBooksCal = percentageCalBook(
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:119:hardcoded variable:	    const reducedBookPrice = percentageBooksCal?.map(item => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:120:hardcoded number:	      return (item * fortyPerLogicValue) / 100;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:122:hardcoded variable:	    let totalDiff = fortyPerLogicValue;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:124:hardcoded array:	      const price = Math.round(reducedBookPrice[index]);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:126:hardcoded string:	        (item.subType === 'book' && item.course !== 'K12') ||
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:127:hardcoded string:	        item.course === 'K12'
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:136:hardcoded string:	        (totalDiff > 0 && item.subType === 'book' && item.course !== 'K12') ||
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:137:hardcoded string:	        item.course === 'K12'
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:140:hardcoded number:	        totalDiff = 0;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:143:hardcoded number:	    const numberOfK12Books = addOnLineItems?.filter(item => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:144:hardcoded string:	      return item.subType === 'book' && item.course === 'K12';
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:146:hardcoded number:	    const numberOfK10Books = addOnLineItems?.filter(item => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:147:hardcoded string:	      return item.subType === 'book' && item.course !== 'K12';
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:149:hardcoded number:	    if (numberOfK12Books > 0 && numberOfK10Books > 0) {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:151:hardcoded string:	        if (item.subType === 'book' && item.course !== 'K12') {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:155:hardcoded number:	      const k10Books = addOnLineItems?.reduce((acc, item) => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:158:hardcoded string:	          (item.subType === 'book' && item.course !== 'K12'
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:160:hardcoded number:	            : 0)
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:162:hardcoded number:	      }, 0);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:163:hardcoded number:	      const k12Books = addOnLineItems?.reduce((acc, item) => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:166:hardcoded string:	          (item.subType === 'book' && item.course === 'K12'
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:168:hardcoded number:	            : 0)
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:170:hardcoded number:	      }, 0);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:172:hardcoded number:	      const priceForK12Books = fortyPerLogicValue - k10Books;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:173:hardcoded number:	      const percentageBooksK12Cal = percentageCal12Book(
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:175:hardcoded number:	        k12Books
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:177:hardcoded number:	      const reducedBookPrice1 = percentageBooksK12Cal?.map(item => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:178:hardcoded number:	        return (item * priceForK12Books) / 100;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:181:hardcoded number:	      let totalDiff = priceForK12Books;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:183:hardcoded number:	        const price = Math.round(reducedBookPrice1[index]);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:184:hardcoded string:	        if (item.subType === 'book' && item.course !== 'K12') {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:186:hardcoded string:	        } else if (item.subType === 'book' && item.course === 'K12') {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:193:hardcoded string:	        if (totalDiff > 0 && item.subType === 'book' && item.course !== 'K12') {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:196:hardcoded number:	          totalDiff > 0 &&
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:197:hardcoded string:	          item.subType === 'book' &&
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:198:hardcoded string:	          item.course === 'K12'
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:201:hardcoded number:	          totalDiff = 0;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:206:hardcoded variable:	    const finalCourseValue = totalValueAfterTablets - fortyPerLogicValue;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:207:hardcoded variable:	    const reducedPrice = percentageCal?.map(item => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:208:hardcoded number:	      return (finalCourseValue * item) / 100;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:210:hardcoded variable:	    let totalDifference = finalCourseValue;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:212:hardcoded string:	      if (item.itemType !== 'tablet') {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:213:hardcoded array:	        const price = Math.round(reducedPrice[index]);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:220:hardcoded string:	      if (item.itemType !== 'tablet' && totalDifference > 0) {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:222:hardcoded number:	        totalDifference = 0;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:226:hardcoded object:	    const studentItemObj = {};
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:228:hardcoded string:	      const studentId = item.studentId.split('-')[
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:229:hardcoded string:	        item.studentId.split('-').length - 1
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:231:hardcoded array:	      studentItemObj[studentId] = [...(studentItemObj[studentId] || []), item];
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:233:hardcoded object:	    const studentItems = {};
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:234:hardcoded array:	    Object.entries(studentItemObj).forEach(([key, value]) => {
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:235:hardcoded number:	      studentItems[`productDetails.students.${Number(key) - 1}.items`] = value;
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:240:hardcoded string:	      'productDetails.products': productDetails.products,
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:244:hardcoded variable:	  const isUpdate = await dto?.saveUpdatedSkus(updateObject, identifier);
+microservices-middleware/server/src/bookmanagement/bookSkuPriceCalculation.js:248:hardcoded object:	module.exports = { skuPriceCalculation };
+microservices-middleware/server/src/bookmanagement/dto.js:1:hardcoded string:	const { SalesSkuMaster, SalesProgramSkuRecipes } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/bookmanagement/dto.js:2:hardcoded string:	const { DraftOrder } = require('@byjus-orders/nexemplum/oms')
+microservices-middleware/server/src/bookmanagement/dto.js:4:hardcoded variable:	const getBooksSku = async payload => {
+microservices-middleware/server/src/bookmanagement/dto.js:6:hardcoded object:	    const { query, programId } = payload;
+microservices-middleware/server/src/bookmanagement/dto.js:7:hardcoded variable:	    const sku = await SalesProgramSkuRecipes.findOne({
+microservices-middleware/server/src/bookmanagement/dto.js:10:hardcoded string:	        status: "active"
+microservices-middleware/server/src/bookmanagement/dto.js:12:hardcoded string:	      attributes: ["sales_program_id"],
+microservices-middleware/server/src/bookmanagement/dto.js:15:hardcoded string:	        as: "SalesSkuMaster",
+microservices-middleware/server/src/bookmanagement/dto.js:18:hardcoded string:	          status: "active",
+microservices-middleware/server/src/bookmanagement/dto.js:19:hardcoded string:	          subType: "book"
+microservices-middleware/server/src/bookmanagement/dto.js:30:hardcoded variable:	const getSavedSkus = async (identifier) => {
+microservices-middleware/server/src/bookmanagement/dto.js:32:hardcoded variable:	    const skus = await DraftOrder.findOne(
+microservices-middleware/server/src/bookmanagement/dto.js:37:hardcoded number:	        _id: 0,
+microservices-middleware/server/src/bookmanagement/dto.js:38:hardcoded string:	        "productDetails.products": 1,
+microservices-middleware/server/src/bookmanagement/dto.js:39:hardcoded string:	        "finalPrice": 1,
+microservices-middleware/server/src/bookmanagement/dto.js:40:hardcoded string:	        "addOnLineItems": 1,
+microservices-middleware/server/src/bookmanagement/dto.js:49:hardcoded variable:	const saveUpdatedSkus = async (updateObject, filter) => {
+microservices-middleware/server/src/bookmanagement/dto.js:51:hardcoded variable:	    const draftOrder = await DraftOrder.updateOne(
+microservices-middleware/server/src/bookmanagement/dto.js:52:hardcoded object:	      { _id: filter },
+microservices-middleware/server/src/bookmanagement/dto.js:63:hardcoded object:	module.exports = { getBooksSku, getSavedSkus, saveUpdatedSkus };microservices-middleware/server/src/bookmanagement/routes.js:5:hardcoded object:	const router = express.Router({ mergeParams: true });
+microservices-middleware/server/src/bookmanagement/routes.js:8:hardcoded string:	  const baseRoute = '/bookmanagement';
+microservices-middleware/server/src/bookmanagement/routes.js:10:hardcoded object:	    .route(`${baseRoute}/getBooksSku`)
+microservices-middleware/server/src/bookmanagement/routes.js:16:hardcoded object:	    .route(`${baseRoute}/getExamPrepSku`)
+microservices-middleware/server/src/bookmanagement/routes.js:22:hardcoded object:	    .route(`${baseRoute}/saveBookSkus`)

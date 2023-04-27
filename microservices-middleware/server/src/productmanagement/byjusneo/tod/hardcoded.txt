@@ -1,0 +1,20 @@
+microservices-middleware/server/src/productmanagement/byjusneo/tod/controller.js:9:hardcoded variable:	const getTODProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/byjusneo/tod/controller.js:10:hardcoded string:	    logger.info({ method: 'getTODProduct' }, { message: "Fetching TOD Product" });
+microservices-middleware/server/src/productmanagement/byjusneo/tod/controller.js:12:hardcoded string:	    let { paymentType = "EMI", productType, productCombination, student } = req.body;
+microservices-middleware/server/src/productmanagement/byjusneo/tod/controller.js:15:hardcoded variable:	        const courseSku = await getCourseSku(student)
+microservices-middleware/server/src/productmanagement/byjusneo/tod/controller.js:16:hardcoded object:	        const { formattedProducts, totalPrice } = getTotalSkuAndPrice({ courseSku })
+microservices-middleware/server/src/productmanagement/byjusneo/tod/controller.js:18:hardcoded variable:	        let maxPrice = totalPrice;
+microservices-middleware/server/src/productmanagement/byjusneo/tod/controller.js:19:hardcoded number:	        let minPrice = 0.8 * maxPrice
+microservices-middleware/server/src/productmanagement/byjusneo/tod/controller.js:20:hardcoded number:	        minPrice = Math.round(minPrice/1000)*1000
+microservices-middleware/server/src/productmanagement/byjusneo/tod/controller.js:23:hardcoded string:	            paymentType: get(student, "paymentType"),
+microservices-middleware/server/src/productmanagement/byjusneo/tod/controller.js:27:hardcoded array:	            students: [student],
+microservices-middleware/server/src/productmanagement/byjusneo/tod/controller.js:29:hardcoded string:	            bhlpCourseDetails: get(student, "bhlpCourseDetails"),
+microservices-middleware/server/src/productmanagement/byjusneo/tod/dto.js:6:hardcoded variable:	const getCourseSku = async (student) => {
+microservices-middleware/server/src/productmanagement/byjusneo/tod/dto.js:7:hardcoded object:	    const { validity } = student
+microservices-middleware/server/src/productmanagement/byjusneo/tod/dto.js:8:hardcoded variable:	    let query = {
+microservices-middleware/server/src/productmanagement/byjusneo/tod/dto.js:10:hardcoded string:	        category: 'tutor_on_demand',
+microservices-middleware/server/src/productmanagement/byjusneo/tod/dto.js:12:hardcoded string:	        orgId: 'ORG-1'
+microservices-middleware/server/src/productmanagement/byjusneo/tod/dto.js:14:hardcoded variable:	    let product = await getSalesSkuWithAttribute(query)
+microservices-middleware/server/src/productmanagement/byjusneo/tod/dto.js:15:hardcoded array:	    const courseSku = await getUpdatedCourseSku([product])
+microservices-middleware/server/src/productmanagement/byjusneo/tod/routes.js:5:hardcoded object:	const router = Router({ mergeParams: true });
+microservices-middleware/server/src/productmanagement/byjusneo/tod/routes.js:10:hardcoded string:	    router.route('/byjusclass/tutor')

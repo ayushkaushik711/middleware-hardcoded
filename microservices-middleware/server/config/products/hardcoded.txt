@@ -1,0 +1,82 @@
+microservices-middleware/server/config/products/crpCityAddresses.js:3:hardcoded string:	        centreAddress: "Byjus classes,2nd floor,Above bioline laboratory,Opposite to forum mall,Behind Nexa showroom, Tavarekere",
+microservices-middleware/server/config/products/crpCityAddresses.js:4:hardcoded string:	        state: "Karnataka",
+microservices-middleware/server/config/products/crpCityAddresses.js:5:hardcoded string:	        centreGst: "29AAECT0931A1ZR",
+microservices-middleware/server/config/products/crpCityAddresses.js:6:hardcoded string:	        centrePinCode: "560029"
+microservices-middleware/server/config/products/crpCityAddresses.js:9:hardcoded string:	        centreAddress:"BYJU's Classes ,2nd Floor, Prime Plaza, Himayatnagar Main Road, Above Woodland Showroom, Himayatnagar, AP state Housing Board, Himayatnagar, Hyderabad",
+microservices-middleware/server/config/products/crpCityAddresses.js:10:hardcoded string:	        state:"Telangana",
+microservices-middleware/server/config/products/crpCityAddresses.js:11:hardcoded string:	        centreGst:"36AAECT0931A1ZW",
+microservices-middleware/server/config/products/crpCityAddresses.js:12:hardcoded string:	        centrePinCode:"500029"
+microservices-middleware/server/config/products/crpCityAddresses.js:15:hardcoded string:	        centreAddress:"BYJU'S CLASSES UPSC,2nd Floor, Newry Properties Private Limited,Newry Grandeur, No. 19, B Block, 2nd Avenue,Annanagar East, Chennai, Tamil Nadu",
+microservices-middleware/server/config/products/crpCityAddresses.js:16:hardcoded string:	        state:"Tamil Nadu",
+microservices-middleware/server/config/products/crpCityAddresses.js:17:hardcoded string:	        centreGst:"33AAECT0931A6ZX",
+microservices-middleware/server/config/products/crpCityAddresses.js:18:hardcoded string:	        centrePinCode:"600102"
+microservices-middleware/server/config/products/crpCityAddresses.js:21:hardcoded string:	        centreAddress:"BYJU's Classes ,1-B, 3rd Floor, Pusa Road,Near Karol Bagh Metro Station Gate No-8,New Delhi",
+microservices-middleware/server/config/products/crpCityAddresses.js:22:hardcoded string:	        state:"New Delhi",
+microservices-middleware/server/config/products/crpCityAddresses.js:23:hardcoded string:	        centreGst:"07AAECT0931A1ZX",
+microservices-middleware/server/config/products/crpCityAddresses.js:24:hardcoded string:	        centrePinCode:"110060"
+microservices-middleware/server/config/products/crpCityAddresses.js:26:hardcoded string:	    "DELHI-Hindi":{
+microservices-middleware/server/config/products/crpCityAddresses.js:27:hardcoded string:	        centreAddress:"Hindi Centre -BYJU's Classes,Plot no. 21, 1st Floor, Commercial Complex, Savitri Bhawan BLK-A, Community Centre, Dr. Mukherjee Nagar, Delhi",
+microservices-middleware/server/config/products/crpCityAddresses.js:28:hardcoded string:	        state:"New Delhi",
+microservices-middleware/server/config/products/crpCityAddresses.js:29:hardcoded string:	        centreGst:"07AAECT0931A1ZX",
+microservices-middleware/server/config/products/crpCityAddresses.js:30:hardcoded string:	        centrePinCode:"110009"
+microservices-middleware/server/config/products/crpCityAddresses.js:33:hardcoded string:	        centreAddress:"BYJU's Classes,High Point,2nd & 3rd Floor,2/4, Opp Bharti Vidyapeeth",
+microservices-middleware/server/config/products/crpCityAddresses.js:34:hardcoded string:	        state:"Maharashtra",
+microservices-middleware/server/config/products/crpCityAddresses.js:35:hardcoded string:	        centreGst:"27AAECT0931A7ZP",
+microservices-middleware/server/config/products/crpCityAddresses.js:36:hardcoded string:	        centrePinCode:"411045"
+microservices-middleware/server/config/products/crpCityAddresses.js:39:hardcoded string:	        centreAddress:"BYJU's Classes,Saket Building,3rd Floor, 44,Park Street",
+microservices-middleware/server/config/products/crpCityAddresses.js:40:hardcoded string:	        state:"West Bengal",
+microservices-middleware/server/config/products/crpCityAddresses.js:41:hardcoded string:	        centreGst:"19AAECT0931A1ZS",
+microservices-middleware/server/config/products/crpCityAddresses.js:42:hardcoded string:	        centrePinCode:"700016"
+microservices-middleware/server/config/products/crpCityAddresses.js:45:hardcoded string:	        centreAddress:"BYJU's Classes,Premises No:301-304 & 401 - 404,3rd & 4th Floor,Urbanac,business Park,A-1,Vibhuti Khand,Gomti Nagar",
+microservices-middleware/server/config/products/crpCityAddresses.js:46:hardcoded string:	        state:"Uttar Pradesh",
+microservices-middleware/server/config/products/crpCityAddresses.js:47:hardcoded string:	        centreGst:"09AAECT0931A6ZO",
+microservices-middleware/server/config/products/crpCityAddresses.js:48:hardcoded string:	        centrePinCode:"226010"
+microservices-middleware/server/config/products/crpCityAddresses.js:51:hardcoded string:	        centreAddress: "BYJU'S Classes, 1st Floor, Above Zudio Showroom,Opp Sanghi Motors, Kailashpuri, Tonk Rd, Jaipur, Rajasthan 302018",
+microservices-middleware/server/config/products/crpCityAddresses.js:52:hardcoded string:	        state: "Rajasthan",
+microservices-middleware/server/config/products/crpCityAddresses.js:53:hardcoded string:	        centreGst: "08AAECT0931A1",
+microservices-middleware/server/config/products/crpCityAddresses.js:54:hardcoded string:	        centrePinCode: "302018"
+microservices-middleware/server/config/products/crpCityAddresses.js:57:hardcoded string:	        centreAddress: "Byjus Classes, Ground Floor and Basement SCO 91-92-93, Sector 34A Chandigarh-160022",
+microservices-middleware/server/config/products/crpCityAddresses.js:58:hardcoded string:	        state: "Punjab",
+microservices-middleware/server/config/products/crpCityAddresses.js:59:hardcoded string:	        centreGst: "04AAECT0931A1Z3",
+microservices-middleware/server/config/products/crpCityAddresses.js:60:hardcoded string:	        centrePinCode: "160022"
+microservices-middleware/server/config/products/AakashLive.js:5:hardcoded string:	    productCombination: "byjus_aakash",
+microservices-middleware/server/config/products/AakashLive.js:6:hardcoded string:	    jeeSubcourse: "JEE",
+microservices-middleware/server/config/products/AakashLive.js:7:hardcoded string:	    productSelectionType: "byjus_aakash",
+microservices-middleware/server/config/products/AakashLive.js:8:hardcoded string:	    initialGPC_live : "AAKASH_LIVE",
+microservices-middleware/server/config/products/AakashLive.js:9:hardcoded string:	    initialGPC_btlp : "byjus_tlp",
+microservices-middleware/server/config/products/AakashLive.js:11:hardcoded string:	        subType:"live",
+microservices-middleware/server/config/products/AakashLive.js:12:hardcoded string:	        category : "aakash_live",
+microservices-middleware/server/config/products/AakashLive.js:13:hardcoded string:	        productLearningType: "AAKASH_LIVE",
+microservices-middleware/server/config/products/AakashLive.js:14:hardcoded string:	        type: "AAKASH_LIVE",
+microservices-middleware/server/config/products/AakashLive.js:15:hardcoded string:	        orderPunchingType: "AAKASH_SD_CARD_PLUS_LIVE",
+microservices-middleware/server/config/products/AakashLive.js:16:hardcoded string:	        orgFormattedName: "aakash",
+microservices-middleware/server/config/products/AakashLive.js:17:hardcoded string:	        orderPunchingCategory : "aakash_live"
+microservices-middleware/server/config/products/AakashLive.js:20:hardcoded string:	        subType:"sd_card",
+microservices-middleware/server/config/products/AakashLive.js:21:hardcoded string:	        category:"aakash",
+microservices-middleware/server/config/products/AakashLive.js:22:hardcoded string:	        productLearningType: "AAKASH_SD_CARD",
+microservices-middleware/server/config/products/AakashLive.js:23:hardcoded string:	        type: "AAKASH_SD_CARD",
+microservices-middleware/server/config/products/AakashLive.js:24:hardcoded string:	        orderPunchingType: "AAKASH_SD_CARD",
+microservices-middleware/server/config/products/AakashLive.js:25:hardcoded string:	        orgFormattedName: "byjus",
+microservices-middleware/server/config/products/AakashLive.js:26:hardcoded string:	        orderPunchingCategory:"aakash_sd_card"
+microservices-middleware/server/config/products/AakashLive.js:29:hardcoded string:	        productLearningType: "AAKASH_LIVE",
+microservices-middleware/server/config/products/AakashLive.js:30:hardcoded string:	        orderPunchingType: "AAKASH_SD_CARD_PLUS_LIVE",
+microservices-middleware/server/config/products/AakashLive.js:31:hardcoded string:	        orgFormattedName: "aakash",
+microservices-middleware/server/config/products/AakashLive.js:32:hardcoded string:	        orderPunchingCategory : "aakash_live",
+microservices-middleware/server/config/products/AakashLive.js:33:hardcoded string:	        category : "aakash_achiever"
+microservices-middleware/server/config/products/AakashLive.js:37:hardcoded string:	        orderPunchingType: "advance_order",
+microservices-middleware/server/config/products/AakashLive.js:40:hardcoded string:	        orderPunchingType: "discounted_order",
+microservices-middleware/server/config/products/AakashLive.js:43:hardcoded string:	        productLearningType: "AAKASH_LIVE",
+microservices-middleware/server/config/products/AakashLive.js:44:hardcoded string:	        orderPunchingType: "AAKASH_SD_CARD_PLUS_LIVE",
+microservices-middleware/server/config/products/AakashLive.js:45:hardcoded string:	        orgFormattedName: "aakash",
+microservices-middleware/server/config/products/AakashLive.js:46:hardcoded string:	        orderPunchingCategory : "aakash_live",
+microservices-middleware/server/config/products/AakashLive.js:47:hardcoded string:	        category : "aakash_scholar"
+microservices-middleware/server/config/products/AakashLive.js:51:hardcoded string:	        productLearningType: "AAKASH_LIVE",
+microservices-middleware/server/config/products/AakashLive.js:52:hardcoded string:	        orderPunchingType: "AAKASH_SD_CARD_PLUS_LIVE",
+microservices-middleware/server/config/products/AakashLive.js:53:hardcoded string:	        orgFormattedName: "aakash",
+microservices-middleware/server/config/products/AakashLive.js:54:hardcoded string:	        orderPunchingCategory: "aakash_live",
+microservices-middleware/server/config/products/AakashLive.js:55:hardcoded string:	        neetCategory: "aakash_neet_crash_course",
+microservices-middleware/server/config/products/AakashLive.js:56:hardcoded string:	        jeeCategory:"aakash_jee_crash_course"
+microservices-middleware/server/config/products/ByjusExamPrep.js:6:hardcoded string:	        orderPunchingType: "bep"
+microservices-middleware/server/config/products/ByjusExamPrep.js:9:hardcoded string:	        orderPunchingType: "bep_mts"
+microservices-middleware/server/config/products/ByjusExamPrep.js:11:hardcoded string:	    bepMts_productType: "bep_mts",
+microservices-middleware/server/config/products/ByjusExamPrep.js:12:hardcoded number:	    bepMts_minDp: 3000,

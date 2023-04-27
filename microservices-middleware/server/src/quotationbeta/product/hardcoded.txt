@@ -1,0 +1,316 @@
+microservices-middleware/server/src/quotationbeta/product/service.js:3:hardcoded variable:	const getVoucherDiscountedPrice = async (details) => {
+microservices-middleware/server/src/quotationbeta/product/service.js:4:hardcoded object:	    const { productDetails={}, voucherDetails={}, tabletTotalPrice } = details;
+microservices-middleware/server/src/quotationbeta/product/service.js:5:hardcoded object:	    const { maxPrice, initialClass } = productDetails;
+microservices-middleware/server/src/quotationbeta/product/service.js:6:hardcoded string:	    let { value, type, discountType, productType = "", voucherCode, orderAmount } = voucherDetails || {};
+microservices-middleware/server/src/quotationbeta/product/service.js:8:hardcoded number:	    let discountedPrice = 0;
+microservices-middleware/server/src/quotationbeta/product/service.js:9:hardcoded variable:	    const discountablePrice = parseInt(maxPrice) - parseInt(tabletTotalPrice);
+microservices-middleware/server/src/quotationbeta/product/service.js:11:hardcoded string:	    if (discountType == 'absolute' && type == 'INTERMILES' && !['13', '14'].includes(initialClass)) {
+microservices-middleware/server/src/quotationbeta/product/service.js:21:hardcoded string:	    else if (!['13', '14'].includes(initialClass) && discountType == 'absolute' && !['INTERMILES', 'SchoolRank'].includes(type)) {
+microservices-middleware/server/src/quotationbeta/product/service.js:26:hardcoded string:	    else if (discountType == 'percent' && !['INTERMILES', 'SchoolRank'].includes(type) && !['13', '14'].includes(initialClass)) {
+microservices-middleware/server/src/quotationbeta/product/service.js:28:hardcoded string:	        const val = value.slice(-1) == '%' ? value.slice(0, -1) : value
+microservices-middleware/server/src/quotationbeta/product/service.js:29:hardcoded number:	        discountedPrice = (Number(val) == 100) ? 1 : Number(discountablePrice) * (100 - Number(val)) / 100;
+microservices-middleware/server/src/quotationbeta/product/service.js:35:hardcoded variable:	const getOfferDiscountDetails = (details) => {
+microservices-middleware/server/src/quotationbeta/product/service.js:36:hardcoded number:	    let { maxPrice, minPrice, batchDetails, tabletTotalPrice = 0 } = details
+microservices-middleware/server/src/quotationbeta/product/service.js:37:hardcoded string:	    const offerDetails = get(batchDetails, 'batchOffers[0]', []);
+microservices-middleware/server/src/quotationbeta/product/service.js:38:hardcoded variable:	    let tabletExclusiveMaxPrice = parseInt(maxPrice) - parseInt(tabletTotalPrice);
+microservices-middleware/server/src/quotationbeta/product/service.js:39:hardcoded object:	    let discountDetails = {};
+microservices-middleware/server/src/quotationbeta/product/service.js:49:hardcoded variable:	const getOfferDiscountedPrice = (data) => {
+microservices-middleware/server/src/quotationbeta/product/service.js:50:hardcoded number:	    let { offerDetails, minimumPrice, tabletExclusiveMaxPrice, tabletTotalPrice = 0 } = data;
+microservices-middleware/server/src/quotationbeta/product/service.js:51:hardcoded number:	    let totalDiscountedPrice = 0, offerCalValue = 0, discountedPrice = 0;
+microservices-middleware/server/src/quotationbeta/product/service.js:53:hardcoded object:	    const { offerId, offers } = offerDetails;
+microservices-middleware/server/src/quotationbeta/product/service.js:54:hardcoded object:	    const { offerValue, offerCalculationType } = offers;
+microservices-middleware/server/src/quotationbeta/product/service.js:57:hardcoded string:	    if ((offerCalculationType === "percentage")) {
+microservices-middleware/server/src/quotationbeta/product/service.js:58:hardcoded number:	        offerCalValue = Number(tabletExclusiveMaxPrice) * (Number(totalDiscountedPrice)) / 100;
+microservices-middleware/server/src/quotationbeta/product/service.js:67:hardcoded object:	    return { offerDetails, discountedPrice, offerId, minimumPrice, totalDiscountedPrice }
+microservices-middleware/server/src/quotationbeta/product/controller.js:3:hardcoded string:	const { StudentOrderBatchCentreDetail } = require('@byjus-orders/nexemplum/stms')
+microservices-middleware/server/src/quotationbeta/product/controller.js:4:hardcoded string:	const { DraftOrder, LeadoOrder } = require('@byjus-orders/nexemplum/oms')
+microservices-middleware/server/src/quotationbeta/product/controller.js:5:hardcoded string:	const { SalesProgramRecipe, BoardMaster, GradeMaster, ValidityMaster, QuotationStudentMapping, Quotation, DoLineItem } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/quotationbeta/product/controller.js:21:hardcoded variable:	const getBoards = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/controller.js:22:hardcoded object:	  const { spId } = req.body;
+microservices-middleware/server/src/quotationbeta/product/controller.js:23:hardcoded variable:	  const boardIds = await SalesProgramRecipe.findAll({
+microservices-middleware/server/src/quotationbeta/product/controller.js:24:hardcoded string:	    attributes: ['boardId'],
+microservices-middleware/server/src/quotationbeta/product/controller.js:30:hardcoded array:	    let boardIdArray = [];
+microservices-middleware/server/src/quotationbeta/product/controller.js:32:hardcoded object:	      const { dataValues } = obj;
+microservices-middleware/server/src/quotationbeta/product/controller.js:33:hardcoded string:	      boardIdArray.push(get(dataValues, 'boardId', ''));
+microservices-middleware/server/src/quotationbeta/product/controller.js:35:hardcoded variable:	    const boards = await BoardMaster.findAll({
+microservices-middleware/server/src/quotationbeta/product/controller.js:36:hardcoded string:	      attributes: ['board', 'boardId', 'type'],
+microservices-middleware/server/src/quotationbeta/product/controller.js:42:hardcoded object:	      const { dataValues } = obj;
+microservices-middleware/server/src/quotationbeta/product/controller.js:46:hardcoded number:	      res.json({ boards, status: 200 });
+microservices-middleware/server/src/quotationbeta/product/controller.js:49:hardcoded string:	    console.log(er || 'Failed to get boards from board master');
+microservices-middleware/server/src/quotationbeta/product/controller.js:53:hardcoded variable:	const getBtcUpgradeInitialGrades = async (orderId) => {
+microservices-middleware/server/src/quotationbeta/product/controller.js:54:hardcoded string:	  const draftOrderData = await DraftOrder.findOne({ 'orderId': orderId }).lean();
+microservices-middleware/server/src/quotationbeta/product/controller.js:55:hardcoded object:	  const { productDetails = {} } = draftOrderData || {};
+microservices-middleware/server/src/quotationbeta/product/controller.js:56:hardcoded array:	  const { students = [] } = productDetails;
+microservices-middleware/server/src/quotationbeta/product/controller.js:57:hardcoded string:	  const { initialClass = '', validity = '', finalClass = '' } = students[0] || {};
+microservices-middleware/server/src/quotationbeta/product/controller.js:60:hardcoded variable:	  const currDate = new Date();
+microservices-middleware/server/src/quotationbeta/product/controller.js:61:hardcoded variable:	  const currYear = currDate.getFullYear();
+microservices-middleware/server/src/quotationbeta/product/controller.js:62:hardcoded variable:	  const currMonth = currDate.getMonth()
+microservices-middleware/server/src/quotationbeta/product/controller.js:64:hardcoded array:	  let initialGradeOptions = []
+microservices-middleware/server/src/quotationbeta/product/controller.js:66:hardcoded variable:	  let currentInitialClass = parseInt(initialClass)
+microservices-middleware/server/src/quotationbeta/product/controller.js:69:hardcoded number:	  if (currMonth >= 1) { // month value start from 0 (jan-0)
+microservices-middleware/server/src/quotationbeta/product/controller.js:70:hardcoded number:	    initialGradeOptions.push((currentInitialClass + 1).toString())
+microservices-middleware/server/src/quotationbeta/product/controller.js:88:hardcoded variable:	const getGrades = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/controller.js:89:hardcoded object:	  const { spId, boardId, type, existingOrderId } = req.body;
+microservices-middleware/server/src/quotationbeta/product/controller.js:93:hardcoded variable:	    const gradeIds = await SalesProgramRecipe.findAll({
+microservices-middleware/server/src/quotationbeta/product/controller.js:94:hardcoded string:	      attributes: ['gradeId'],
+microservices-middleware/server/src/quotationbeta/product/controller.js:101:hardcoded array:	      let gradeIdArray = [];
+microservices-middleware/server/src/quotationbeta/product/controller.js:103:hardcoded object:	        const { dataValues } = obj;
+microservices-middleware/server/src/quotationbeta/product/controller.js:104:hardcoded string:	        gradeIdArray.push(get(dataValues, 'gradeId', ''));
+microservices-middleware/server/src/quotationbeta/product/controller.js:107:hardcoded string:	        attributes: ['grade', 'gradeId'],
+microservices-middleware/server/src/quotationbeta/product/controller.js:113:hardcoded string:	      if (type == 'upgrade' && existingOrderId) {
+microservices-middleware/server/src/quotationbeta/product/controller.js:114:hardcoded variable:	        const btcGrades = await getBtcUpgradeInitialGrades(existingOrderId);
+microservices-middleware/server/src/quotationbeta/product/controller.js:116:hardcoded object:	          const { dataValues } = ele;
+microservices-middleware/server/src/quotationbeta/product/controller.js:117:hardcoded string:	          const { grade = '' } = dataValues || {}
+microservices-middleware/server/src/quotationbeta/product/controller.js:122:hardcoded object:	        const { dataValues } = obj;
+microservices-middleware/server/src/quotationbeta/product/controller.js:126:hardcoded number:	        res.json({ grades, status: 200 });
+microservices-middleware/server/src/quotationbeta/product/controller.js:129:hardcoded number:	          status: 404,
+microservices-middleware/server/src/quotationbeta/product/controller.js:130:hardcoded string:	          message: 'Failed to fetch grades for BTC product'
+microservices-middleware/server/src/quotationbeta/product/controller.js:140:hardcoded variable:	const getTablet = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/controller.js:142:hardcoded string:	  const { baseOrderId = '' } = req.body
+microservices-middleware/server/src/quotationbeta/product/controller.js:144:hardcoded string:	    const orderData = await LeadoOrder.findOne({ 'orderId': baseOrderId }).lean()
+microservices-middleware/server/src/quotationbeta/product/controller.js:145:hardcoded array:	    const { customerDetails = [] } = orderData || {}
+microservices-middleware/server/src/quotationbeta/product/controller.js:146:hardcoded number:	    const { productInfo = [] } = customerDetails[0]
+microservices-middleware/server/src/quotationbeta/product/controller.js:147:hardcoded string:	    const { tablet = '' } = productInfo[0];
+microservices-middleware/server/src/quotationbeta/product/controller.js:148:hardcoded variable:	    const isTablet = !isEmpty(tablet) ? true : false
+microservices-middleware/server/src/quotationbeta/product/controller.js:149:hardcoded number:	    res.json({ isTablet, status: 200 });
+microservices-middleware/server/src/quotationbeta/product/controller.js:155:hardcoded variable:	const getValidity = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/controller.js:156:hardcoded object:	  const { spId, boardId, gradeId } = req.body;
+microservices-middleware/server/src/quotationbeta/product/controller.js:158:hardcoded variable:	    const validityIds = await SalesProgramRecipe.findAll({
+microservices-middleware/server/src/quotationbeta/product/controller.js:159:hardcoded string:	      attributes: ['validityId'],
+microservices-middleware/server/src/quotationbeta/product/controller.js:168:hardcoded array:	      let validityIdArray = [];
+microservices-middleware/server/src/quotationbeta/product/controller.js:171:hardcoded object:	        const { dataValues } = obj;
+microservices-middleware/server/src/quotationbeta/product/controller.js:172:hardcoded string:	        validityIdArray.push(get(dataValues, 'validityId', ''));
+microservices-middleware/server/src/quotationbeta/product/controller.js:175:hardcoded variable:	      const validities = await ValidityMaster.findAll({
+microservices-middleware/server/src/quotationbeta/product/controller.js:176:hardcoded string:	        attributes: ['validity', 'validityId'],
+microservices-middleware/server/src/quotationbeta/product/controller.js:183:hardcoded object:	        const { dataValues } = obj;
+microservices-middleware/server/src/quotationbeta/product/controller.js:188:hardcoded number:	        res.json({ validities, status: 200 });
+microservices-middleware/server/src/quotationbeta/product/controller.js:190:hardcoded string:	        res.json({ status: 404, message: 'Failed to validity for BTC' });
+microservices-middleware/server/src/quotationbeta/product/controller.js:194:hardcoded string:	    console.log(er || 'Error in fetching validity for BTC');
+microservices-middleware/server/src/quotationbeta/product/controller.js:195:hardcoded object:	    res.json({ er });
+microservices-middleware/server/src/quotationbeta/product/controller.js:199:hardcoded variable:	const saveQuotationStudentDetails = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/controller.js:200:hardcoded string:	  let { product = {}, quotationId, studentId, voucherDetails, salesEmail, upgradeDetails, spName = '' } = req.body
+microservices-middleware/server/src/quotationbeta/product/controller.js:201:hardcoded array:	  let { payload, products = [], finalPrice, maxPrice, minPrice, discountedPrice } = product
+microservices-middleware/server/src/quotationbeta/product/controller.js:202:hardcoded string:	  let studentMapping = {}, message = '', productArray = [], skuBasePrices = [];
+microservices-middleware/server/src/quotationbeta/product/controller.js:208:hardcoded string:	    if (!spName) throw new NotFoundError('Sales Program name is missing!');
+microservices-middleware/server/src/quotationbeta/product/controller.js:210:hardcoded string:	      throw new NotFoundError("QuotationId or StudentId is missing.")
+microservices-middleware/server/src/quotationbeta/product/controller.js:212:hardcoded variable:	      const quotationDetails = await Quotation.findOne({
+microservices-middleware/server/src/quotationbeta/product/controller.js:213:hardcoded object:	        where: { quotationId: quotationId },
+microservices-middleware/server/src/quotationbeta/product/controller.js:218:hardcoded string:	        payload['slotDetails'] = await getSlotDetailsObj(payload);
+microservices-middleware/server/src/quotationbeta/product/controller.js:220:hardcoded variable:	      let studentMapObject = await getStudentMappingObject(payload)
+microservices-middleware/server/src/quotationbeta/product/controller.js:224:hardcoded object:	        studentMapObject = { ...studentMapObject, upgradeDetails }
+microservices-middleware/server/src/quotationbeta/product/controller.js:228:hardcoded object:	      const isExistingStudent = await QuotationStudentMapping.findOne({ where: { quotationId, studentId } })
+microservices-middleware/server/src/quotationbeta/product/controller.js:231:hardcoded string:	        message = 'Student mapping created successfully!'
+microservices-middleware/server/src/quotationbeta/product/controller.js:233:hardcoded object:	        studentMapping = await QuotationStudentMapping.update(studentMapObject, { where: { quotationId, studentId } })
+microservices-middleware/server/src/quotationbeta/product/controller.js:234:hardcoded string:	        message = 'Student mapping updated successfully!'
+microservices-middleware/server/src/quotationbeta/product/controller.js:239:hardcoded object:	        const { discountedValue, voucherCode, voucherType, discountType, orderAmount, productType, userEmail } = voucherDetails
+microservices-middleware/server/src/quotationbeta/product/controller.js:240:hardcoded variable:	        const quotationStudent = {
+microservices-middleware/server/src/quotationbeta/product/controller.js:245:hardcoded variable:	        const result = await updateQuotationStudent({
+microservices-middleware/server/src/quotationbeta/product/controller.js:257:hardcoded variable:	        const VoucherResult = await updateVoucher({
+microservices-middleware/server/src/quotationbeta/product/controller.js:259:hardcoded string:	          mobileNo: `${get(req.body, "customerDetails.countryCode", "+91")}-${get(req.body, "customerDetails.phone", "")}`,
+microservices-middleware/server/src/quotationbeta/product/controller.js:260:hardcoded string:	          status: "redeemed",
+microservices-middleware/server/src/quotationbeta/product/controller.js:267:hardcoded variable:	        const batchMapObject = await getBatchMappingObject(payload)
+microservices-middleware/server/src/quotationbeta/product/controller.js:268:hardcoded variable:	        const batchMapping = await StudentOrderBatchCentreDetail.create(batchMapObject)
+microservices-middleware/server/src/quotationbeta/product/controller.js:270:hardcoded string:	          logger.info({ message: 'student batch created in database!', batchMapping });
+microservices-middleware/server/src/quotationbeta/product/controller.js:272:hardcoded string:	          throw new Error('Failed to create batchMapping record!');
+microservices-middleware/server/src/quotationbeta/product/controller.js:277:hardcoded variable:	      let status = quotationDetails.status;
+microservices-middleware/server/src/quotationbeta/product/controller.js:278:hardcoded number:	      if (STAGE[2].includes(status)) {
+microservices-middleware/server/src/quotationbeta/product/controller.js:281:hardcoded variable:	      const quotationUpdate = await Quotation.update({
+microservices-middleware/server/src/quotationbeta/product/controller.js:283:hardcoded string:	        type: !isEmpty(upgradeDetails) ? 'upgrade' : quotationDetails.type
+microservices-middleware/server/src/quotationbeta/product/controller.js:284:hardcoded object:	      }, { where: { quotationId: quotationId } })
+microservices-middleware/server/src/quotationbeta/product/controller.js:287:hardcoded object:	        message = `${message} \n Quotation status updated for quotation id: ${quotationId}`
+microservices-middleware/server/src/quotationbeta/product/controller.js:292:hardcoded object:	        const { updatedProducts, basePrices } = await computeSkuPrice({ products, finalPrice, maxPrice });
+microservices-middleware/server/src/quotationbeta/product/controller.js:300:hardcoded object:	      const { skuList, errorMsg } = await getLineItems({ products: productArray, basePrices: skuBasePrices, errorMsg: message, quotationId, studentId, spName });
+microservices-middleware/server/src/quotationbeta/product/controller.js:303:hardcoded string:	        res.json({ message: errorMsg, status: 'success' })
+microservices-middleware/server/src/quotationbeta/product/controller.js:306:hardcoded number:	        res.json({ status: 404, message: errorMsg });
+microservices-middleware/server/src/quotationbeta/product/controller.js:310:hardcoded string:	    console.log('error', error);
+microservices-middleware/server/src/quotationbeta/product/controller.js:311:hardcoded string:	    throw new NotFoundError(error || "Error in while batch mapping")
+microservices-middleware/server/src/quotationbeta/product/controller.js:315:hardcoded object:	const getLineItems = async ({ products, basePrices, errorMsg, quotationId, studentId, spName }) => {
+microservices-middleware/server/src/quotationbeta/product/controller.js:316:hardcoded array:	  let skuList = [], lineItemObject = {};
+microservices-middleware/server/src/quotationbeta/product/controller.js:322:hardcoded number:	    for (let i = 0; i < products.length; i++) {
+microservices-middleware/server/src/quotationbeta/product/controller.js:324:hardcoded array:	        lineItemObject = await getLineItemsObject({ sku: products[i], quotationId, studentId, basePrice: basePrices[i] })
+microservices-middleware/server/src/quotationbeta/product/controller.js:326:hardcoded array:	        lineItemObject = await getCommonLineItemsObject({ sku: products[i], quotationId, studentId })
+microservices-middleware/server/src/quotationbeta/product/controller.js:328:hardcoded variable:	      const createdItem = await DoLineItem.create(lineItemObject)
+microservices-middleware/server/src/quotationbeta/product/controller.js:330:hardcoded object:	        errorMsg = `${errorMsg} \n Error in while creating line item of index : ${index}`
+microservices-middleware/server/src/quotationbeta/product/controller.js:335:hardcoded object:	    return { skuList, errorMsg: `${errorMsg} \n Line items created` }
+microservices-middleware/server/src/quotationbeta/product/controller.js:337:hardcoded string:	    throw new NotFoundError("Error in while creating line items")
+microservices-middleware/server/src/quotationbeta/product/controller.js:341:hardcoded variable:	const getBhtValidity = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/controller.js:342:hardcoded object:	  const { spId } = req.body;
+microservices-middleware/server/src/quotationbeta/product/controller.js:344:hardcoded variable:	    const validityIds = await SalesProgramRecipe.findAll({
+microservices-middleware/server/src/quotationbeta/product/controller.js:345:hardcoded string:	      attributes: ['validityId'],
+microservices-middleware/server/src/quotationbeta/product/controller.js:352:hardcoded array:	      let validityIdArray = [];
+microservices-middleware/server/src/quotationbeta/product/controller.js:355:hardcoded object:	        const { dataValues } = obj;
+microservices-middleware/server/src/quotationbeta/product/controller.js:356:hardcoded string:	        validityIdArray.push(get(dataValues, 'validityId', ''));
+microservices-middleware/server/src/quotationbeta/product/controller.js:359:hardcoded variable:	      const validities = await ValidityMaster.findAll({
+microservices-middleware/server/src/quotationbeta/product/controller.js:360:hardcoded string:	        attributes: ['validityType', 'validityId'],
+microservices-middleware/server/src/quotationbeta/product/controller.js:367:hardcoded object:	        const { dataValues } = obj;
+microservices-middleware/server/src/quotationbeta/product/controller.js:372:hardcoded number:	      //   res.json({ validities, status: 200 });
+microservices-middleware/server/src/quotationbeta/product/controller.js:374:hardcoded string:	      //   res.json({ status: 404, message: 'Failed to validity for BHT' });
+microservices-middleware/server/src/quotationbeta/product/controller.js:377:hardcoded number:	      res.json({ validities: validityData, status: 200 });
+microservices-middleware/server/src/quotationbeta/product/controller.js:381:hardcoded string:	    console.log(er || 'Error in fetching validity for BHT');
+microservices-middleware/server/src/quotationbeta/product/controller.js:382:hardcoded object:	    res.json({ er });
+microservices-middleware/server/src/quotationbeta/product/controller.js:386:hardcoded variable:	const deleteLineItems = async (quotationId, studentId) => {
+microservices-middleware/server/src/quotationbeta/product/controller.js:388:hardcoded variable:	  const previousLineItems = await DoLineItem.findAll({
+microservices-middleware/server/src/quotationbeta/product/controller.js:389:hardcoded object:	    where: { quotationId: quotationId, studentId: studentId },
+microservices-middleware/server/src/quotationbeta/product/controller.js:393:hardcoded object:	    await DoLineItem.destroy({ where: { quotationId: quotationId, studentId: studentId } });
+microservices-middleware/server/src/quotationbeta/product/controller.js:407:hardcoded variable:	const reserveAndSaveSlotDetails = async (req, res) => {
+microservices-middleware/server/src/quotationbeta/product/controller.js:408:hardcoded string:	  logger.info({ method: reserveAndSaveSlotDetails, reqBody: req.body, message: "saving slot details" });
+microservices-middleware/server/src/quotationbeta/product/controller.js:410:hardcoded object:	    const { quotationId } = req.body;
+microservices-middleware/server/src/quotationbeta/product/controller.js:412:hardcoded variable:	    const slotsErrorMsg = `The selected slots are not available, please select the slots again before proceeding...`;
+microservices-middleware/server/src/quotationbeta/product/controller.js:415:hardcoded object:	    const quotationStudents = await fetchStudentMapping({ quotationId });
+microservices-middleware/server/src/quotationbeta/product/controller.js:416:hardcoded object:	    if (!quotationStudents.length) throw new Error(`No students mapped to quotationId -> ${quotationId}`);
+microservices-middleware/server/src/quotationbeta/product/controller.js:417:hardcoded number:	    let studentCount = 0;
+microservices-middleware/server/src/quotationbeta/product/controller.js:419:hardcoded number:	    for (let i = 0; i < quotationStudents.length; i++) {
+microservices-middleware/server/src/quotationbeta/product/controller.js:420:hardcoded string:	      const { slotDetails = {}, studentId = '' } = quotationStudents[i];
+microservices-middleware/server/src/quotationbeta/product/controller.js:421:hardcoded array:	      let reserveSlotDetails = [];
+microservices-middleware/server/src/quotationbeta/product/controller.js:422:hardcoded object:	      if (!studentId) throw new Error(`studentId is missing for quotation id-> ${quotationId}`);
+microservices-middleware/server/src/quotationbeta/product/controller.js:425:hardcoded array:	        let { tutorAvailable = false, subject = [], sameTutor = true } = slotDetails
+microservices-middleware/server/src/quotationbeta/product/controller.js:428:hardcoded object:	            const { expiry={} } = await getExpiryFromConfig(SALES_PROGRAMS.BHT);
+microservices-middleware/server/src/quotationbeta/product/controller.js:429:hardcoded object:	            let response = await reserveSlot({...slotDetails, expiry, quotationId});
+microservices-middleware/server/src/quotationbeta/product/controller.js:433:hardcoded object:	            reserveSlotDetails = await reserveSlotPerSubject({ slotDetails, reserveSlotDetails, quotationId, slotsErrorMsg})
+microservices-middleware/server/src/quotationbeta/product/controller.js:439:hardcoded variable:	        const isTutorReserved = (subject.length === reserveSlotDetails.length) || !tutorAvailable ? true : false;
+microservices-middleware/server/src/quotationbeta/product/controller.js:442:hardcoded variable:	          const slotDetailsObj = await getReserveSlotDetailsObj({ slotDetails, reserveSlotDetails, 
+microservices-middleware/server/src/quotationbeta/product/controller.js:443:hardcoded number:	            status: bhtConstants.slotStatus.STAGE_2, sameTutor, tutorAvailable });
+microservices-middleware/server/src/quotationbeta/product/controller.js:444:hardcoded object:	          const updatedSlotDetails = await QuotationStudentMapping.update({ slotDetails: slotDetailsObj },
+microservices-middleware/server/src/quotationbeta/product/controller.js:445:hardcoded object:	            { where: { quotationId, studentId } });
+microservices-middleware/server/src/quotationbeta/product/controller.js:450:hardcoded object:	        throw new Error(`Slot details missing for QuotationId-> ${quotationId} and StudentId-> ${studentId}`);
+microservices-middleware/server/src/quotationbeta/product/controller.js:455:hardcoded object:	      let errMsg = `Failed to reserve slot for student with quotationId:->${quotationId}. Please try again!`;
+microservices-middleware/server/src/quotationbeta/product/controller.js:456:hardcoded object:	      logger.error({ message: errMsg });
+microservices-middleware/server/src/quotationbeta/product/controller.js:457:hardcoded number:	      res.json({ status: 400, message: errMsg });
+microservices-middleware/server/src/quotationbeta/product/controller.js:459:hardcoded number:	      res.json({ status: 200, message: `Successfully reserved slot for quotationId: ${quotationId}` });
+microservices-middleware/server/src/quotationbeta/product/controller.js:462:hardcoded object:	    logger.error({ method: reserveAndSaveSlotDetails, error });
+microservices-middleware/server/src/quotationbeta/product/controller.js:467:hardcoded variable:	const reserveSlotPerSubject = async (details) => {
+microservices-middleware/server/src/quotationbeta/product/controller.js:468:hardcoded string:	  logger.info({ method: "reserveSlotPerSubject", details });
+microservices-middleware/server/src/quotationbeta/product/controller.js:469:hardcoded string:	  let { slotDetails={}, reserveSlotDetails=[], quotationId='', slotsErrorMsg='' } = details;
+microservices-middleware/server/src/quotationbeta/product/controller.js:470:hardcoded string:	  const subjects = get(slotDetails, 'subject', []);
+microservices-middleware/server/src/quotationbeta/product/controller.js:472:hardcoded number:	  for (let i = 0; i < subjects.length; i++) {
+microservices-middleware/server/src/quotationbeta/product/controller.js:473:hardcoded array:	    slotDetails = {...slotDetails, subject: [subjects[i]]}
+microservices-middleware/server/src/quotationbeta/product/controller.js:474:hardcoded variable:	    let response = await reserveSlot(slotDetails);
+microservices-middleware/server/src/quotationbeta/product/controller.js:477:hardcoded string:	        let cancelledReservation = await reserveFailed({ reserveSlotDetails, quotationId, slotType: get(slotDetails, 'slotType', '') })
+microservices-middleware/server/src/quotationbeta/product/controller.js:478:hardcoded string:	        logger.info({ cancelledReservation, message: "cancelled reservation..." });
+microservices-middleware/server/src/quotationbeta/product/controller.js:483:hardcoded string:	      reserveSlotDetails.push({ ...response, name: get(subjects[i], 'name', '') })
+microservices-middleware/server/src/quotationbeta/product/controller.js:486:hardcoded object:	  logger.info({ reserveSlotDetails });
+microservices-middleware/server/src/quotationbeta/product/controller.js:490:hardcoded variable:	const reserveFailed = async (details) => {
+microservices-middleware/server/src/quotationbeta/product/controller.js:491:hardcoded string:	  const { reserveSlotDetails = [], quotationId = '', slotType = '' } = details;
+microservices-middleware/server/src/quotationbeta/product/controller.js:492:hardcoded object:	  let response = {};
+microservices-middleware/server/src/quotationbeta/product/controller.js:493:hardcoded number:	  for (let i = 0; i < reserveSlotDetails.length; i++) {
+microservices-middleware/server/src/quotationbeta/product/controller.js:494:hardcoded string:	    const { tutorId = '', id = '' } = reserveSlotDetails[i];
+microservices-middleware/server/src/quotationbeta/product/controller.js:496:hardcoded object:	      response = await cancelReservation({ reservationId: id, tutorId, slotType });
+microservices-middleware/server/src/quotationbeta/product/controller.js:497:hardcoded object:	      logger.info({ response });
+microservices-middleware/server/src/quotationbeta/product/controller.js:498:hardcoded object:	      logger.error({ message: `cancelled reserved slots... for quotationId: ${quotationId}` })
+microservices-middleware/server/src/quotationbeta/product/dto.js:4:hardcoded string:	const { QuotationStudentMapping } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/quotationbeta/product/dto.js:7:hardcoded object:	const updateQuotationStudent = async ({ discountedValue, voucherCode, voucherType, discountType, orderAmount, productType, discountedAmount, quotationStudent, userEmail }) => {
+microservices-middleware/server/src/quotationbeta/product/dto.js:8:hardcoded object:	    const { quotationId, studentId, salesProgramId } = quotationStudent;
+microservices-middleware/server/src/quotationbeta/product/dto.js:11:hardcoded object:	        const isExistingStudent = await QuotationStudentMapping.findOne({ where: { quotationId, studentId } })
+microservices-middleware/server/src/quotationbeta/product/dto.js:26:hardcoded string:	                status: 'active',
+microservices-middleware/server/src/quotationbeta/product/dto.js:28:hardcoded string:	                course: 'K10',
+microservices-middleware/server/src/quotationbeta/product/dto.js:29:hardcoded string:	                initialGrade: "",
+microservices-middleware/server/src/quotationbeta/product/dto.js:30:hardcoded string:	                finalGrade: "",
+microservices-middleware/server/src/quotationbeta/product/dto.js:31:hardcoded string:	                courseValidity: "",
+microservices-middleware/server/src/quotationbeta/product/dto.js:32:hardcoded string:	                board: "",
+microservices-middleware/server/src/quotationbeta/product/dto.js:33:hardcoded number:	                minPrice: 0,
+microservices-middleware/server/src/quotationbeta/product/dto.js:34:hardcoded number:	                maxPrice: 0,
+microservices-middleware/server/src/quotationbeta/product/dto.js:35:hardcoded number:	                finalPrice: 0,
+microservices-middleware/server/src/quotationbeta/product/dto.js:36:hardcoded string:	                centerId: "",
+microservices-middleware/server/src/quotationbeta/product/dto.js:37:hardcoded string:	                batchId: "",
+microservices-middleware/server/src/quotationbeta/product/dto.js:68:hardcoded object:	const updateVoucher = async ({ salesEmail, mobileNo, voucherCode }) => {
+microservices-middleware/server/src/quotationbeta/product/dto.js:70:hardcoded object:	        await VoucherTransaction.findOneAndUpdate({ mobileNo, voucherCode }, {
+microservices-middleware/server/src/quotationbeta/product/dto.js:72:hardcoded string:	                status: "redeemed",
+microservices-middleware/server/src/quotationbeta/product/dto.js:74:hardcoded string:	                "timestamps.redeemedAt": new Date()
+microservices-middleware/server/src/quotationbeta/product/dto.js:82:hardcoded object:	const RemoveVoucher = async ({ salesEmail, mobileNo, productType, voucherCode }) => {
+microservices-middleware/server/src/quotationbeta/product/dto.js:84:hardcoded string:	        const filter = productType === 'blc' ? { mobileNo, productType, voucherCode } : { mobileNo,voucherCode }
+microservices-middleware/server/src/quotationbeta/product/dto.js:88:hardcoded string:	                status: "unutilized",
+microservices-middleware/server/src/quotationbeta/product/dto.js:90:hardcoded string:	                "timestamps.removedAt": new Date()
+microservices-middleware/server/src/quotationbeta/product/dto.js:98:hardcoded variable:	const checkVoucherApplied = async (quotationId) => {
+microservices-middleware/server/src/quotationbeta/product/dto.js:100:hardcoded variable:	        const quotation = await QuotationStudentMapping.findOne({
+microservices-middleware/server/src/quotationbeta/product/dto.js:104:hardcoded array:	                    [Op.ne]: null
+microservices-middleware/server/src/quotationbeta/product/helper.js:3:hardcoded variable:	const getStudentMappingObject = async (payload) => {
+microservices-middleware/server/src/quotationbeta/product/helper.js:5:hardcoded object:	            salesProgramId, minPrice, maxPrice, finalPrice, slotDetails={} } = payload;
+microservices-middleware/server/src/quotationbeta/product/helper.js:7:hardcoded variable:	    const studentMappingObject = {
+microservices-middleware/server/src/quotationbeta/product/helper.js:8:hardcoded string:	        status: 'active',
+microservices-middleware/server/src/quotationbeta/product/helper.js:12:hardcoded string:	        course: 'K10',
+microservices-middleware/server/src/quotationbeta/product/helper.js:21:hardcoded string:	        centerId: get(batchDetails, 'centreId', ''),
+microservices-middleware/server/src/quotationbeta/product/helper.js:22:hardcoded string:	        batchId: get(batchDetails, 'batchId', ''),
+microservices-middleware/server/src/quotationbeta/product/helper.js:28:hardcoded string:	        createdBy: "xyz@byjus.com",
+microservices-middleware/server/src/quotationbeta/product/helper.js:29:hardcoded string:	        updatedBy: "xyz@byjus.com"
+microservices-middleware/server/src/quotationbeta/product/helper.js:34:hardcoded variable:	const getBatchMappingObject = async (payload) => {
+microservices-middleware/server/src/quotationbeta/product/helper.js:35:hardcoded string:	    const { studentId='', quotationId='', draftOrderId='', orderId='', batchDetails } = payload;
+microservices-middleware/server/src/quotationbeta/product/helper.js:36:hardcoded object:	    const centreDetails = await getCentreDetails({...payload})
+microservices-middleware/server/src/quotationbeta/product/helper.js:37:hardcoded variable:	    const batchMappingObject = {
+microservices-middleware/server/src/quotationbeta/product/helper.js:43:hardcoded array:	        electiveDetails: [],
+microservices-middleware/server/src/quotationbeta/product/helper.js:44:hardcoded array:	        doubtClassDetails: [],
+microservices-middleware/server/src/quotationbeta/product/helper.js:47:hardcoded string:	        createdBy: "xyz@byjus.com",
+microservices-middleware/server/src/quotationbeta/product/helper.js:49:hardcoded string:	        updatedBy: "xyz@byjus.com"
+microservices-middleware/server/src/quotationbeta/product/helper.js:55:hardcoded variable:	const getRegSkuPrice = (details) => {
+microservices-middleware/server/src/quotationbeta/product/helper.js:56:hardcoded object:	    let {products, finalPrice, tabletPrice} = details || {};
+microservices-middleware/server/src/quotationbeta/product/helper.js:57:hardcoded string:	    const reqistrationSkus = products.filter(ele => ele.category == 'btc_registration') || null;
+microservices-middleware/server/src/quotationbeta/product/helper.js:59:hardcoded number:	    let regSkuPrice = 0;
+microservices-middleware/server/src/quotationbeta/product/helper.js:61:hardcoded variable:	    const totalRegSkuPrice = reqistrationSkus.reduce((acc, sku) => {
+microservices-middleware/server/src/quotationbeta/product/helper.js:63:hardcoded number:	    }, 0);
+microservices-middleware/server/src/quotationbeta/product/helper.js:71:hardcoded number:	    if (products.length > 0) {
+microservices-middleware/server/src/quotationbeta/product/helper.js:73:hardcoded string:	            if (sku.category == 'btc_registration') {
+microservices-middleware/server/src/quotationbeta/product/helper.js:80:hardcoded variable:	    const totalRegSkuPriceAfterSplit = regSkuPrice * reqistrationSkus.length;
+microservices-middleware/server/src/quotationbeta/product/helper.js:81:hardcoded string:	    console.log("Reg sku", totalRegSkuPriceAfterSplit)
+microservices-middleware/server/src/quotationbeta/product/helper.js:83:hardcoded object:	    return { totalRegSkuPriceAfterSplit, updatedProducts: products };
+microservices-middleware/server/src/quotationbeta/product/helper.js:86:hardcoded object:	const computeSkuPrice = async ({products, finalPrice, maxPrice}) => {
+microservices-middleware/server/src/quotationbeta/product/helper.js:87:hardcoded number:	    let tabletPrice = 0, regSkuPrice = 0;
+microservices-middleware/server/src/quotationbeta/product/helper.js:89:hardcoded string:	    const tabletSku = products.filter(ele => ele.category == 'tablet') || null;
+microservices-middleware/server/src/quotationbeta/product/helper.js:94:hardcoded string:	    const productSkus = products.filter(ele => !['btc_registration', 'tablet'].includes(ele.category)) || null;
+microservices-middleware/server/src/quotationbeta/product/helper.js:95:hardcoded object:	    let { totalRegSkuPriceAfterSplit, updatedProducts } = await getRegSkuPrice({products, finalPrice, tabletPrice});
+microservices-middleware/server/src/quotationbeta/product/helper.js:97:hardcoded variable:	    let priceToBeExcluded = tabletPrice + totalRegSkuPriceAfterSplit;
+microservices-middleware/server/src/quotationbeta/product/helper.js:98:hardcoded variable:	    let maxCourseSkuPrice = parseInt(maxPrice) - parseInt(priceToBeExcluded);
+microservices-middleware/server/src/quotationbeta/product/helper.js:99:hardcoded variable:	    let priceToBeDivided = parseInt(finalPrice) - parseInt(priceToBeExcluded);
+microservices-middleware/server/src/quotationbeta/product/helper.js:100:hardcoded number:	    maxCourseSkuPrice = maxCourseSkuPrice > 0 ? maxCourseSkuPrice : 0;
+microservices-middleware/server/src/quotationbeta/product/helper.js:101:hardcoded number:	    priceToBeDivided = priceToBeDivided > 0 ? priceToBeDivided : 0;
+microservices-middleware/server/src/quotationbeta/product/helper.js:103:hardcoded variable:	    const btcShare = await getComponentPriceShare(productSkus, maxCourseSkuPrice);
+microservices-middleware/server/src/quotationbeta/product/helper.js:104:hardcoded variable:	    const basePrices = await getBasePrices(products)
+microservices-middleware/server/src/quotationbeta/product/helper.js:105:hardcoded variable:	    const finalProducts = await getUpdatedProducts(products, btcShare, priceToBeDivided);
+microservices-middleware/server/src/quotationbeta/product/helper.js:113:hardcoded variable:	const getBasePrices = (products) => {
+microservices-middleware/server/src/quotationbeta/product/helper.js:114:hardcoded array:	    let basePrices = [];
+microservices-middleware/server/src/quotationbeta/product/helper.js:116:hardcoded object:	        const { price } = sku
+microservices-middleware/server/src/quotationbeta/product/helper.js:122:hardcoded variable:	const getComponentPriceShare = (productSkus, maxCourseSkuPrice) => {
+microservices-middleware/server/src/quotationbeta/product/helper.js:123:hardcoded number:	    let btcShare = 0;
+microservices-middleware/server/src/quotationbeta/product/helper.js:125:hardcoded string:	        if (['byjus_learning_center', 'tlp_blc_upgrade', 'bocp_blc_upgrade'].includes(sku.category)) {
+microservices-middleware/server/src/quotationbeta/product/helper.js:126:hardcoded string:	            btcShare += get(sku, "price");
+microservices-middleware/server/src/quotationbeta/product/helper.js:129:hardcoded number:	    btcShare = btcShare ? Math.ceil((btcShare * 100) / maxCourseSkuPrice) : 0;
+microservices-middleware/server/src/quotationbeta/product/helper.js:133:hardcoded variable:	const getUpdatedProducts = (products, btcShare, priceToBeDivided) => {
+microservices-middleware/server/src/quotationbeta/product/helper.js:135:hardcoded string:	    const btcSkus = products.filter(ele => ['byjus_learning_center', 'tlp_blc_upgrade', 'bocp_blc_upgrade'].includes(ele.category)) || null;
+microservices-middleware/server/src/quotationbeta/product/helper.js:136:hardcoded string:	    const tlpSkus = products.filter(ele => !['byjus_learning_center', 'tlp_blc_upgrade', 'bocp_blc_upgrade', 'tablet', 'btc_registration'].includes(ele.category));
+microservices-middleware/server/src/quotationbeta/product/helper.js:137:hardcoded variable:	    const totalBtcGrades = btcSkus.length;
+microservices-middleware/server/src/quotationbeta/product/helper.js:138:hardcoded variable:	    const totalTlpGrades = tlpSkus.length;
+microservices-middleware/server/src/quotationbeta/product/helper.js:139:hardcoded number:	    const btcPrice = Math.round((priceToBeDivided * btcShare) / (100 * totalBtcGrades) * 100) / 100;
+microservices-middleware/server/src/quotationbeta/product/helper.js:140:hardcoded number:	    const btlpPrice = Math.round((priceToBeDivided * (100 - btcShare)) / (100 * totalTlpGrades) * 100) / 100;
+microservices-middleware/server/src/quotationbeta/product/helper.js:143:hardcoded string:	        if (['byjus_learning_center', 'tlp_blc_upgrade', 'bocp_blc_upgrade'].includes(sku.category)) {
+microservices-middleware/server/src/quotationbeta/product/helper.js:146:hardcoded string:	        if (!['byjus_learning_center', 'tlp_blc_upgrade', 'bocp_blc_upgrade', 'tablet', 'btc_registration'].includes(sku.category)) {
+microservices-middleware/server/src/quotationbeta/product/helper.js:150:hardcoded variable:	    const updatedProducts = products;
+microservices-middleware/server/src/quotationbeta/product/helper.js:155:hardcoded object:	const getLineItemsObject = async ({sku, quotationId, studentId, basePrice}) => {
+microservices-middleware/server/src/quotationbeta/product/helper.js:156:hardcoded object:	    const { skuId, skuName, type, grade, hsnCode, price, itemId, subType, category } = sku;
+microservices-middleware/server/src/quotationbeta/product/helper.js:157:hardcoded variable:	    const lineItemObject = {
+microservices-middleware/server/src/quotationbeta/product/helper.js:160:hardcoded string:	        status: 'active',
+microservices-middleware/server/src/quotationbeta/product/helper.js:169:hardcoded number:	        invoicePrice: 9999,
+microservices-middleware/server/src/quotationbeta/product/helper.js:170:hardcoded number:	        remainingAmount: 789654,
+microservices-middleware/server/src/quotationbeta/product/helper.js:172:hardcoded string:	        draftOrderId: '',
+microservices-middleware/server/src/quotationbeta/product/helper.js:174:hardcoded string:	        createdBy: 'xyz@byjus.com',
+microservices-middleware/server/src/quotationbeta/product/helper.js:175:hardcoded string:	        updatedBy: 'xyz@byjus.com',
+microservices-middleware/server/src/quotationbeta/product/helper.js:182:hardcoded variable:	const getCentreDetails = (details) => {
+microservices-middleware/server/src/quotationbeta/product/helper.js:183:hardcoded object:	    const { stateId,stateName, cityId, cityName, centreId, centreName, requestedBatchId, cohortId, batchDetails } = details;
+microservices-middleware/server/src/quotationbeta/product/helper.js:184:hardcoded string:	    const { blcCourse=[], batchType='' } = batchDetails;
+microservices-middleware/server/src/quotationbeta/product/helper.js:185:hardcoded variable:	    const centreDetails = {
+microservices-middleware/server/src/quotationbeta/product/helper.js:186:hardcoded string:	        "stateId": stateId,
+microservices-middleware/server/src/quotationbeta/product/helper.js:187:hardcoded string:	        "state": stateName,
+microservices-middleware/server/src/quotationbeta/product/helper.js:188:hardcoded string:	        "cityId": cityId,
+microservices-middleware/server/src/quotationbeta/product/helper.js:189:hardcoded string:	        "city": cityName,
+microservices-middleware/server/src/quotationbeta/product/helper.js:190:hardcoded string:	        "centreId": centreId,
+microservices-middleware/server/src/quotationbeta/product/helper.js:191:hardcoded string:	        "centre": centreName,
+microservices-middleware/server/src/quotationbeta/product/helper.js:192:hardcoded string:	        "requestedBatchId": requestedBatchId,
+microservices-middleware/server/src/quotationbeta/product/helper.js:193:hardcoded string:	        "requestId": null,
+microservices-middleware/server/src/quotationbeta/product/helper.js:194:hardcoded string:	        "batchType": batchType,
+microservices-middleware/server/src/quotationbeta/product/helper.js:195:hardcoded string:	        "courseAliasId": get(blcCourse,'courseAliasId', ''),
+microservices-middleware/server/src/quotationbeta/product/helper.js:196:hardcoded string:	        "cohortId": cohortId
+microservices-middleware/server/src/quotationbeta/product/helper.js:201:hardcoded variable:	const getCommonLineItemsObject = async (details) => {
+microservices-middleware/server/src/quotationbeta/product/helper.js:202:hardcoded object:	    const { sku, quotationId, studentId } = details;
+microservices-middleware/server/src/quotationbeta/product/helper.js:203:hardcoded object:	    const { skuId, skuName, type, grade, hsnCode, price, itemId, subType, category } = sku;
+microservices-middleware/server/src/quotationbeta/product/helper.js:204:hardcoded variable:	    const lineItemObject = {
+microservices-middleware/server/src/quotationbeta/product/helper.js:207:hardcoded string:	        status: 'active',
+microservices-middleware/server/src/quotationbeta/product/helper.js:219:hardcoded string:	        draftOrderId: '',
+microservices-middleware/server/src/quotationbeta/product/helper.js:221:hardcoded string:	        createdBy: 'system',
+microservices-middleware/server/src/quotationbeta/product/helper.js:222:hardcoded string:	        updatedBy: 'system',

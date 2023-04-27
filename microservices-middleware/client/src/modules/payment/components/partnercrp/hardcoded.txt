@@ -1,0 +1,197 @@
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:14:hardcoded variable:	const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:24:hardcoded array:	      nonEmiPayments: [],
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:25:hardcoded object:	      initialValue: {},
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:26:hardcoded array:	      formFields: [],
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:27:hardcoded array:	      requiredDocuments: [],
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:28:hardcoded array:	      additionalDetails: [],
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:29:hardcoded string:	      helpText: "",
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:34:hardcoded variable:	    let result = {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:36:hardcoded number:	      maxAllowedAmount: 0,
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:37:hardcoded string:	      selectedMode: get(currentPayment, "formattedName", "")
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:40:hardcoded object:	    const { finalPrice, paymentType } = this.props;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:42:hardcoded string:	    if (paymentType === "NON_EMI") {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:43:hardcoded string:	      const isPartial = get(currentPayment, "isPartial", false);
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:44:hardcoded string:	      const maxAmountPercent = get(currentPayment, "maxAmountPercent");
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:46:hardcoded number:	      result.maxAllowedAmount = isPartial ? (finalPrice * maxAmountPercent) / 100 : undefined
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:52:hardcoded object:	    const { initialValue, nonEmiPayments } = this.state;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:53:hardcoded object:	    const { onChangePaymentDetails, identifier } = this.props;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:54:hardcoded variable:	    const formFields = this.getProviderFormField();
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:55:hardcoded string:	    let formInitialValue = {}, requiredDocuments = [], helpText = "", paymentDetails = {};
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:58:hardcoded variable:	      const currentPayment = nonEmiPayments.find(nep => nep.formattedName === initialValue.provider);
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:59:hardcoded string:	      requiredDocuments = get(currentPayment, "requiredDocuments", []);
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:60:hardcoded string:	      helpText = get(currentPayment, "otherConfigurations.helpText", "");
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:65:hardcoded string:	        const text = `In case of partial ${get(currentPayment, "name")}, maximum allowed amount is ${paymentDetails.maxAllowedAmount}`;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:66:hardcoded object:	        helpText = helpText ? `${helpText}. ${text}` : text;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:68:hardcoded object:	      const { initialValue: formValues, fields: remainingFields } = this.getRemainingFormFields(currentPayment, paymentDetails);
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:82:hardcoded string:	    const isRandomReferenceId = get(nonEmiPayment, "otherConfigurations.isRandomReferenceId", false);
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:83:hardcoded string:	    const additionalDetails = get(nonEmiPayment, "additionalDetails", []);
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:84:hardcoded string:	    const isAppendRandomDigitToReferenceId = get(nonEmiPayment, "otherConfigurations.isAppendRandomDigitToReferenceId", false);
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:91:hardcoded variable:	    const fields = [{
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:92:hardcoded string:	      name: "referenceId",
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:93:hardcoded string:	      type: isRandomReferenceId ? "hidden" : "text",
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:94:hardcoded string:	      label: get(nonEmiPayment, "otherConfigurations.referenceIdLabel", "Reference ID"),
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:96:hardcoded string:	      placeholder: "Enter Ref Id.",
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:98:hardcoded number:	        pattern: new RegExp(/^[a-zA-Z0-9-]+$/), message: `Not a valid Ref Id`
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:101:hardcoded string:	      name: "amount",
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:102:hardcoded string:	      type: 'number',
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:103:hardcoded string:	      label: 'Amount',
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:105:hardcoded number:	      min: 1,
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:113:hardcoded string:	        referenceId: "",
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:114:hardcoded string:	        amount: ""
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:123:hardcoded string:	    else if (paymentDetails.selectedMode === "FOC") {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:124:hardcoded number:	      maxAmount = 1;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:131:hardcoded object:	    const { nonEmiPayments } = this.state;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:132:hardcoded array:	    const { appliedPaymentForms = [], seqNo, isDownPayment, downPaymentSeqNo } = this.props;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:133:hardcoded array:	    const fileds = [];
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:134:hardcoded number:	    if (nonEmiPayments.length > 0) {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:135:hardcoded variable:	      const providerOptions = nonEmiPayments.map(nep => {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:136:hardcoded string:	        const formattedName = get(nep, "formattedName", '');
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:138:hardcoded string:	          label: get(nep, "name", nep.formattedName),
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:140:hardcoded number:	          /** Only 1 partial payment is allowed. Don't disable the one on which partail was used. */
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:141:hardcoded number:	          disabled: appliedPaymentForms.length === 0 ? false : (appliedPaymentForms.includes(formattedName) ? true : false)
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:143:hardcoded number:	      }).sort((a, b) => a.label < b.label ? -1 : 1);
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:147:hardcoded string:	          type: 'checkbox',
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:148:hardcoded string:	          name: 'isDownPayment',
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:149:hardcoded string:	          checkBoxLabel: 'Add this as Down Payment',
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:156:hardcoded string:	          name: "provider",
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:157:hardcoded string:	          type: 'select',
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:158:hardcoded string:	          label: 'Payment Provider',
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:162:hardcoded string:	          message: "Please Select Payment Provider"
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:169:hardcoded object:	    const { handleDonwPayment, seqNo } = this.props;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:175:hardcoded string:	      const initialValue = { provider, amount: "", referenceId: "" };
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:183:hardcoded object:	    const { addPayment } = this.props;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:184:hardcoded object:	    const { nonEmiForm } = this;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:187:hardcoded variable:	    const formInitialValues = nonEmiForm && nonEmiForm.getFieldsValue();
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:195:hardcoded object:	    const { removePayment, identifier } = this.props;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:200:hardcoded array:	    const { additionalDetails = [] } = this.state;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:201:hardcoded object:	    const result = {};
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:202:hardcoded number:	    if (additionalDetails.length > 0) {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:204:hardcoded variable:	        const name = ele.name;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:205:hardcoded array:	        result[name] = formValues[name];
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:206:hardcoded array:	        delete formValues[name];
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:214:hardcoded array:	    const { requiredDocuments = [], isRandomReferenceId, isAppendRandomDigitToReferenceId } = this.state;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:215:hardcoded variable:	    const result = {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:216:hardcoded object:	      formValues: {},
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:219:hardcoded variable:	    const formValues = await this.nonEmiForm.getFormValues();
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:222:hardcoded string:	      const { provider = '', referenceId = '' } = formValues
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:229:hardcoded number:	    if (requiredDocuments.length > 0) {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:230:hardcoded array:	      result.formValues.attachments = [];
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:231:hardcoded object:	      const refs = this.refs || {};
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:233:hardcoded array:	        const files = refs[ref].getUploadedFiles();
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:234:hardcoded number:	        if (files.length > 0) {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:237:hardcoded string:	          this.setError("Please Upload All Required Documents");
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:253:hardcoded number:	        ref={`uploadFrom${uuidv4()}`}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:254:hardcoded object:	        key={index}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:255:hardcoded object:	        documentDetails={docDetails}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:276:hardcoded object:	    const { nonEmiPayments, initialValue } = this.props;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:284:hardcoded object:	    const { formFields, initialValue, requiredDocuments, helpText } = this.state;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:285:hardcoded object:	    const { seqNo, totalCount, paymentType } = this.props;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:286:hardcoded string:	    const heading = paymentType === "EMI" ? `Down Payment #${seqNo}` : `Payment #${seqNo}`;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:287:hardcoded variable:	    const formItemLayout = {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:289:hardcoded number:	        xs: { span: 4 },
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:290:hardcoded number:	        sm: { span: 4 },
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:293:hardcoded number:	        xs: { span: 12 },
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:294:hardcoded number:	        sm: { span: 12 },
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:301:hardcoded object:	          fields={formFields}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:302:hardcoded number:	          cols={3}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:303:hardcoded object:	          formItemLayout={formItemLayout}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:304:hardcoded object:	          heading={heading}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:305:hardcoded string:	          className="border-0"
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:306:hardcoded string:	          headerClasses="bg-default"
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:307:hardcoded object:	          wrappedComponentRef={(inst) => this.nonEmiForm = inst}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:308:hardcoded object:	          initialValues={initialValue} />
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:310:hardcoded object:	        {helpText && <InfoWrapper description={helpText} />}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:312:hardcoded object:	        {requiredDocuments.map((docDetails, index) => this.renderUploadDoc(docDetails, index))}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:315:hardcoded string:	          formFields.length > 0 && seqNo === totalCount && !["FOC", "FOC_SWAP", "FOC_DISPATCH"].includes(initialValue.provider) && <>
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:316:hardcoded string:	            <Button color="success" onClick={this.addNonEmiPayment}>+</Button>{" "}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:317:hardcoded string:	            <Button color="danger" onClick={this.removeNonEmiPayment}>-</Button>
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentCard.js:325:hardcoded object:	export default connect(null, mapDispatchToProps, null, { forwardRef: true })(PartnerCRPPaymentCard);
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:14:hardcoded array:	      nonEmiPayments: [],
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:15:hardcoded array:	      initialPayments: [],
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:17:hardcoded array:	      nonEmiForms: [],
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:18:hardcoded array:	      appliedPaymentForms: [],
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:25:hardcoded object:	    const { initialPayments, nonEmiPayments } = this.state;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:26:hardcoded number:	    if (nonEmiPayments.length > 0) {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:28:hardcoded array:	        nonEmiForms: []
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:41:hardcoded object:	    const { nonEmiForms, maxAllowedDownPayments } = this.state;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:46:hardcoded number:	          nonEmiForms: [...nonEmiForms, { initialValue: {}, identifier: uuidv4() }]
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:50:hardcoded number:	      const forms = initialPayments.map(ele => ({ initialValue: ele, identifier: uuidv4() }));
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:52:hardcoded array:	        nonEmiForms: [...nonEmiForms, ...forms]
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:58:hardcoded object:	    const { nonEmiForms } = this.state;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:60:hardcoded number:	    if (nonEmiForms.length > 1) {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:68:hardcoded variable:	    const result = {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:69:hardcoded array:	      nonEmiDetails: [],
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:72:hardcoded object:	    const refs = this.refs || {};
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:74:hardcoded array:	      const nonEmiDetails = await refs[ref].validateFormAndGetValues();
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:85:hardcoded object:	  onChangePaymentDetails = (identifier, paymentDetails = {}) => {
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:86:hardcoded string:	    const paymentModesAllowedOnce = ['CASH_ON_DELIVERY', 'SCR'];
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:87:hardcoded object:	    const { appliedPaymentForms } = this.state;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:88:hardcoded variable:	    const currentPartial = appliedPaymentForms.find(ele => ele === identifier);
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:90:hardcoded array:	      this.setState({ appliedPaymentForms: [...appliedPaymentForms, identifier, paymentDetails.selectedMode] });
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:92:hardcoded object:	      this.setState({ appliedPaymentForms: appliedPaymentForms.filter(ele => ele !== identifier) });
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:97:hardcoded object:	    const { nonEmiForms, nonEmiPayments, appliedPaymentForms, isDownPayment, downPaymentSeqNo } = this.state;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:98:hardcoded object:	    const { paymentType, finalPrice } = this.props;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:102:hardcoded object:	          ref={`nonEmiPayment-${formItem.identifier}`}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:103:hardcoded object:	          key={index}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:104:hardcoded number:	          seqNo={index + 1}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:105:hardcoded object:	          totalCount={nonEmiForms.length}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:106:hardcoded object:	          initialValue={formItem.initialValue}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:107:hardcoded object:	          identifier={formItem.identifier}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:108:hardcoded object:	          nonEmiPayments={nonEmiPayments}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:109:hardcoded object:	          addPayment={this.addPayment}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:110:hardcoded object:	          removePayment={this.removePayment}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:111:hardcoded object:	          finalPrice={finalPrice}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:112:hardcoded object:	          onChangePaymentDetails={this.onChangePaymentDetails}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:113:hardcoded object:	          appliedPaymentForms={appliedPaymentForms}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:114:hardcoded object:	          paymentType={paymentType}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:115:hardcoded object:	          isDownPayment={isDownPayment}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:116:hardcoded object:	          downPaymentSeqNo={downPaymentSeqNo}
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:117:hardcoded object:	          handleDonwPayment={this.handleDonwPayment}/>
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:123:hardcoded object:	    const { nonEmiPayments, initialPayments, maxAllowedDownPayments, paymentType } = this.props;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:144:hardcoded object:	    const { nonEmiForms } = this.state;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:145:hardcoded object:	    const { finalPrice } = this.props;
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:148:hardcoded object:	        <InstallmentSchedule finalPrice={finalPrice} />
+microservices-middleware/client/src/modules/payment/components/partnercrp/PartnerCRPPaymentContainer.js:149:hardcoded object:	        {nonEmiForms.map((ele, index) => this.getNonEmiForm(ele, index))}
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:7:hardcoded variable:	const InstallmentSchedule = (props) => {
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:9:hardcoded object:	    const { finalPrice } = props
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:10:hardcoded variable:	    const installmentObject = [
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:11:hardcoded string:	        {name: "Downpayment",value: 20, days: 0},
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:12:hardcoded string:	        {name: "First", value: 15, days: 90},
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:13:hardcoded string:	        {name: "Second", value: 15, days: 180},
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:14:hardcoded string:	        {name: "Third", value: 15, days: 270},
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:15:hardcoded string:	        {name: "Fourth", value: 15, days: 360},
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:16:hardcoded string:	        {name: "Fifth", value: 10, days: 390},
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:17:hardcoded string:	        {name: "Sixth", value: 10, days: 420}
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:19:hardcoded number:	    const floatValues =  installmentObject.flatMap(ele => (finalPrice*ele.value)/100)
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:21:hardcoded variable:	    const roundToIntegerSum = (floatValues, finalPrice) => {
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:22:hardcoded number:	        const floorSum = floatValues.reduce((sum, number) => sum + Math.floor(number), 0);
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:23:hardcoded variable:	        const delta = finalPrice - floorSum;
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:25:hardcoded number:	        for (let i = 0; i < delta; i++) {
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:26:hardcoded array:	            floatValues[i]++;
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:30:hardcoded variable:	    const roundedAmount = roundToIntegerSum(floatValues, finalPrice)
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:31:hardcoded array:	    const dataSource = installmentObject.map((ele, idx) => ({...ele, amount: roundedAmount[idx]}))
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:33:hardcoded string:	    const heading = "Installment Schedule"
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:34:hardcoded variable:	    const columns = [
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:36:hardcoded string:	          title: 'Installment Type',
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:37:hardcoded string:	          dataIndex: 'name',
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:38:hardcoded string:	          key: 'name',
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:40:hardcoded object:	              const { name } = record
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:41:hardcoded string:	              const displayName = name !== "Downpayment" ? name + " Installment" : "Down Payment"
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:46:hardcoded string:	          title: 'Percentage Value',
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:47:hardcoded string:	          dataIndex: 'value',
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:48:hardcoded string:	          key: 'value',
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:50:hardcoded string:	              return record.value + "%"
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:54:hardcoded string:	          title: 'Amount',
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:55:hardcoded string:	          dataIndex: 'amount',
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:56:hardcoded string:	          key: 'amount',
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:59:hardcoded string:	          title: 'Date',
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:60:hardcoded string:	          dataIndex: 'days',
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:61:hardcoded string:	          key: 'days',
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:63:hardcoded string:	            return moment().add(record.days, 'days').format("DD/MM/YYYY")
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:70:hardcoded string:	        <div className='border-0' style={{ margin: 10 }}>
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:71:hardcoded string:	            <div className="card-header bg-default">{heading}</div>
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:72:hardcoded string:	            <div className="card-body">
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:74:hardcoded object:	                dataSource={dataSource}
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:75:hardcoded object:	                columns={columns}
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:76:hardcoded object:	                pagination={false}
+microservices-middleware/client/src/modules/payment/components/partnercrp/InstallmentSchedule.js:77:hardcoded string:	                size="small"/>

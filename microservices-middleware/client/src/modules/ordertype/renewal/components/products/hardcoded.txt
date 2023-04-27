@@ -1,0 +1,576 @@
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:13:hardcoded number:	    isK12Class, getClasses,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:14:hardcoded number:	    isK3orPreKClass, getK3orPreKTablets, getTablets, getProfileDetails,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:16:hardcoded string:	} from 'modules/product/components/productHelper';
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:26:hardcoded number:	    ELIGIBLE_COMBINATIONS_FOR_BATCH, ELIGIBLE_COMBINATIONS_FOR_TLP_PLUS_BYJUS_CLASSES, D4_TABLET_LIST
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:27:hardcoded string:	} from 'modules/product/utils/productConstant';
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:33:hardcoded string:	import './style.scss';
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:37:hardcoded variable:	const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:38:hardcoded string:	    authDetails: get(state, 'auth.details'),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:39:hardcoded string:	    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:40:hardcoded string:	    tlpOrderData: get(state, 'auth.tlpOrderData'),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:41:hardcoded string:	    productDetails: get(state, 'product.details'),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:42:hardcoded string:	    productConfig: get(state, 'product.config'),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:43:hardcoded string:	    existingProfiles: get(state, 'product.existingProfiles'),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:44:hardcoded string:	    loading: get(state, 'product.loading'),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:45:hardcoded string:	    error: get(state, 'product.error'),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:46:hardcoded string:	    leadDetails: get(state, 'auth.leadDetails', {}),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:47:hardcoded string:	    authDetails: get(state, 'auth.details', {}),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:48:hardcoded string:	    orderPunchingType: get(state, 'auth.orderPunchingType')
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:51:hardcoded variable:	const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:82:hardcoded array:	            eligibleCustomers: [],
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:84:hardcoded object:	            productConfig: {},
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:85:hardcoded array:	            fields: [],
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:87:hardcoded string:	            productCombination: 'byjus_tlp',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:91:hardcoded number:	            isD4Available: false,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:92:hardcoded array:	            tabletMappingList: [],
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:93:hardcoded string:	            classType: "neo"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:98:hardcoded object:	        let { env, productDetails, studentMarksDetails, byjusClassesFormValue, schoolAndProficiencyDetails } = details
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:104:hardcoded string:	            doubtClassDetails: get(byjusClassesFormValue, "formValue.selectedDoubtClass", null),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:105:hardcoded string:	            electiveDetails: get(byjusClassesFormValue, "formValue.electivesDetails", null),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:106:hardcoded string:	            languageOfInstruction: get(byjusClassesFormValue, "formValue.languageOfInstruction", null),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:107:hardcoded string:	            languageOfInstructionId: get(byjusClassesFormValue, "formValue.languageOfInstructionId", null)
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:114:hardcoded object:	        const { leadDetails = {}, authDetails = {}, identifier, productConfig } = this.props;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:115:hardcoded array:	        const { Boards = [] } = productConfig || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:116:hardcoded object:	        const { env } = authDetails
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:117:hardcoded object:	        const { formCountArray, productCombination, classType, course } = this.state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:118:hardcoded object:	        let { productType } = this.state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:119:hardcoded array:	        let updatedStudentDetails = [];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:120:hardcoded array:	        let bhlpCourseDetails = [], byjusClassesMentoringDetails = [];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:122:hardcoded number:	        const tabletInfo = this.getAvailableD4ForSharing();
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:123:hardcoded number:	        const { tabletMappingList = [], isD4Available } = tabletInfo || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:124:hardcoded number:	        this.setState({ isD4Available, tabletMappingList });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:126:hardcoded number:	        for (var i = 0; i < formCountArray.length; i++) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:127:hardcoded array:	            const form = this.refs[`productDetailsForm-${formCountArray[i]}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:128:hardcoded array:	            const byjusClassesMentoringForm = this.refs[`byjusClassesDetailsForm-${formCountArray[i]}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:129:hardcoded array:	            const proficiencyForm = this.refs[`proficiencyForm-${formCountArray[i]}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:130:hardcoded array:	            const schoolForm = this.refs[`schoolForm-${formCountArray[i]}`]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:132:hardcoded object:	            const details = await form.getProductDetails() || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:133:hardcoded string:	            let productDetails = get(details, 'productDetails') || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:134:hardcoded object:	            if (isEmpty(productDetails)) { return }
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:136:hardcoded string:	                productDetails['course'] = course;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:137:hardcoded string:	                productDetails['sharedD4tablet'] = this.state[`sharedD4tablet-${formCountArray[i]}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:138:hardcoded string:	                productDetails['tabletId'] = this.state[`tabletId-${formCountArray[i]}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:140:hardcoded variable:	            const byjusClassesFormValue = byjusClassesMentoringForm && await byjusClassesMentoringForm.getMentoringValues();
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:141:hardcoded variable:	            const studentMarksDetails = proficiencyForm && await proficiencyForm.getStudentAcademicDetails();
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:142:hardcoded variable:	            const schoolAndProficiencyDetails = schoolForm && await schoolForm.getSchoolDetails()
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:145:hardcoded variable:	                const response = validateByjusClassesMentoringDetails(byjusClassesFormValue, productDetails);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:146:hardcoded string:	                byjusClassesMentoringDetails = get(response, "byjusClassesMentoringDetails", []);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:147:hardcoded string:	                bhlpCourseDetails = get(response, "bhlpCourseDetails", []);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:152:hardcoded string:	            if (productCombination !== "byjus_tlp") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:153:hardcoded string:	                productDetails["productLearningType"] = productCombination
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:156:hardcoded string:	            if (classType == "neo" && productCombination == "byjus_classes") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:157:hardcoded object:	                productDetails = this.getUpdatedProductDetails({ env, productDetails, studentMarksDetails, byjusClassesFormValue, schoolAndProficiencyDetails })
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:159:hardcoded number:	            /**If any sibling data is empty , make siblingCount as 0 and student Array empty to collect data first */
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:165:hardcoded string:	        leadDetails["orderPunchedByRole"] = get(authDetails.user, 'role', "");
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:166:hardcoded number:	        if (updatedStudentDetails.length > 1) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:168:hardcoded string:	            productType = "sibling"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:170:hardcoded number:	            const { initialClass, finalClass } = updatedStudentDetails[0]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:171:hardcoded string:	            productType = initialClass == finalClass ? "single" : "combo"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:175:hardcoded variable:	            const payload = {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:185:hardcoded string:	            if (classType == "neo") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:188:hardcoded object:	                    url: `/api/neo/product/${productType}`
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:193:hardcoded object:	                    url: `/api/product/${productType}`
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:200:hardcoded object:	        const { authDetails, tlpOrderData, identifier } = this.props;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:201:hardcoded object:	        const { user, env } = authDetails || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:202:hardcoded string:	        const userPermissions = get(user, 'permissions', []);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:203:hardcoded variable:	        const isPriviledgedUser = userPermissions.includes(leadquaredRelatedPermissions.allownMultipleOrderOnSameProspectId);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:205:hardcoded object:	        const { initialClass } = this.state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:206:hardcoded string:	        let orderPunchingType = (initialClass === '0') ? "advance_order" : "NORMAL_ORDER";
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:208:hardcoded variable:	        const payload = {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:219:hardcoded string:	                url: '/api/product/storeProductDetails',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:220:hardcoded string:	                method: 'POST',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:223:hardcoded string:	                const { productDetails, identifier, salesDetails, customerDetails } = get(response, 'data', {});
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:229:hardcoded object:	                this.setState({ error: null });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:231:hardcoded string:	                this.navigateToScreen('address');
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:233:hardcoded object:	                this.setState({ error });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:240:hardcoded object:	        const { history } = this.props;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:241:hardcoded string:	        const url = `/${path}${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:246:hardcoded object:	        const { fetchComp } = this.refs;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:249:hardcoded object:	            const { status, productDetails } = fetchComp.getProductsAndFinalPrice();
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:251:hardcoded string:	                if (status && productDetails && (get(productDetails, 'finalPrice') >= 0)) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:255:hardcoded string:	                    this.setState({ error: 'Product Details Missing' });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:258:hardcoded string:	                const errMsg = get(error, 'message', 'Error') || error;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:259:hardcoded object:	                this.setState({ error: errMsg });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:266:hardcoded string:	            { label: 'Byjus-TLP', value: 'byjus_tlp' },
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:267:hardcoded string:	            { label: 'Byjus Classes(New)', value: 'byjus_classes' },
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:268:hardcoded string:	            { label: 'Byjus-Classes + Byjus TLP', value: 'byjus_classes_plus_byjus_tlp' }
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:273:hardcoded array:	        let options = [];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:276:hardcoded number:	        return options.splice(0, 2);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:280:hardcoded variable:	        const fields = [{
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:281:hardcoded string:	            type: 'select',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:282:hardcoded string:	            name: 'productCombination',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:284:hardcoded string:	            label: 'Select Product Combination',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:290:hardcoded string:	                ref="productSelectionForm"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:291:hardcoded object:	                fields={fields}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:293:hardcoded string:	                    productCombination: 'byjus_tlp'
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:300:hardcoded string:	        this.setState({ productCombination: value, selectedProduct: ELIGIBLE_COMBINATIONS_FOR_TLP_PLUS_BYJUS_CLASSES.includes(value) ? 'combo' : "single" });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:305:hardcoded object:	        this.setState({ error });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:309:hardcoded object:	        const { tlpOrderData } = this.props;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:310:hardcoded array:	        const { eligibleCustomers = [] } = this.state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:311:hardcoded array:	        const { customerDetails = [] } = tlpOrderData;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:312:hardcoded variable:	        const gradeMap = {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:313:hardcoded string:	            "-1": "LKG",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:314:hardcoded string:	            "0": "UKG",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:315:hardcoded string:	            "13": "12th Crash Course",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:316:hardcoded string:	            "14": "12th Retarget Crash Course"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:318:hardcoded variable:	        const columns = [
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:320:hardcoded string:	                title: 'Student Name',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:321:hardcoded string:	                dataIndex: 'name',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:322:hardcoded string:	                key: 'name',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:326:hardcoded object:	                            style: { background: record.color },
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:328:hardcoded object:	                        children: <div>{text}</div>,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:331:hardcoded number:	                width: 100,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:334:hardcoded string:	                title: 'Class Info',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:335:hardcoded string:	                dataIndex: 'classInfo',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:336:hardcoded string:	                key: 'classInfo',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:337:hardcoded number:	                width: 100,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:341:hardcoded object:	                            style: { background: record.color },
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:343:hardcoded object:	                        children: <div>{text}</div>,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:348:hardcoded string:	                title: 'Validity',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:349:hardcoded string:	                dataIndex: 'validity',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:350:hardcoded string:	                key: 'validity',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:351:hardcoded number:	                width: 100,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:356:hardcoded object:	                            style: { background: record.color },
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:358:hardcoded object:	                        children: <div>{text}</div>,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:363:hardcoded array:	        let data = [];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:364:hardcoded number:	        for (var i = 0; i < customerDetails.length; i++) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:365:hardcoded string:	            const { studentName = "", productInfo = [] } = customerDetails[i] || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:366:hardcoded string:	            const { board = "", initialClass = "", finalClass = "", validity = "" } = productInfo[0] || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:367:hardcoded variable:	            const isEligible = eligibleCustomers.filter(ele => ele.studentName == studentName);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:368:hardcoded string:	            const color = (isEmpty(isEligible)) ? '' : '#D6FCF8'
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:369:hardcoded variable:	            const detail = {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:370:hardcoded number:	                key: i + 1,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:372:hardcoded array:	                classInfo: `${board}: ${gradeMap[initialClass] || initialClass}-${gradeMap[finalClass] || finalClass}`,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:380:hardcoded object:	            <Table pagination={false} columns={columns} dataSource={data} bordered={true}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:388:hardcoded variable:	        const currDate = new Date();
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:389:hardcoded variable:	        const currYear = currDate.getFullYear();
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:390:hardcoded variable:	        const currMonth = currDate.getMonth()
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:392:hardcoded number:	            if (currMonth > 4) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:393:hardcoded string:	                if (initialClass == '12') {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:394:hardcoded number:	                    initialClass = 12;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:396:hardcoded number:	                else initialClass = ((initialClass < finalClass)) ? (initialClass + 1) : initialClass;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:401:hardcoded number:	            initialClass = (currMonth > 4 && initialClass < finalClass) ? initialClass + 1 : initialClass;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:407:hardcoded number:	    //fetch options to get available D4 tablets for sharing
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:408:hardcoded number:	    getD4TabletOptions = () => {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:409:hardcoded object:	        const { formCountArray, productConfig = {}, productType } = this.state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:410:hardcoded array:	        let { Products = [] } = productConfig;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:411:hardcoded object:	        const productConfiguration = find(Products, { formattedName: productType }) || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:412:hardcoded object:	        const { tablets } = productConfiguration || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:413:hardcoded array:	        const tabletSelected = [];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:414:hardcoded number:	        for (var i = 0; i < formCountArray.length; i++) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:415:hardcoded number:	            if (this.state[`sharedD4tablet-${formCountArray[i]}`]) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:416:hardcoded number:	                tabletSelected.push(this.state[`sharedD4tablet-${formCountArray[i]}`]);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:419:hardcoded array:	        const res = [];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:420:hardcoded number:	        for (var i = 0; i < tabletSelected.length; i++) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:421:hardcoded string:	            const val = tabletSelected[i].split("-")[0];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:422:hardcoded string:	            const siblingName = tabletSelected[i].split("-")[1];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:423:hardcoded variable:	            const result = tablets.filter(f => val.includes(f.value));
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:424:hardcoded number:	            const label = `${result[0].label}-${siblingName}`;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:425:hardcoded variable:	            const option = {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:426:hardcoded array:	                label, value: tabletSelected[i]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:434:hardcoded object:	        const { selectedProfile = {} } = this.state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:435:hardcoded array:	        let { existingProfiles = [] } = this.props;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:436:hardcoded string:	        existingProfiles = existingProfiles.filter(ele => ele.value != 'newProfile');
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:437:hardcoded number:	        for (var i = 0; i < existingProfiles.length; i++) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:438:hardcoded string:	            if (Object.values(selectedProfile).flat().includes(existingProfiles[i].value) && existingProfiles[i].value !== "newProfile") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:439:hardcoded array:	                existingProfiles[i].disabled = true;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:441:hardcoded array:	            else { existingProfiles[i].disabled = false; }
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:447:hardcoded array:	        const { tlpOrderData, existingProfiles = [], authDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:449:hardcoded array:	        let { customerDetails = [] } = tlpOrderData;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:450:hardcoded array:	        customerDetails = isArray(customerDetails) ? customerDetails : [customerDetails];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:451:hardcoded variable:	        const customerDetail = customerDetails.filter(ele => ele.studentId === studentId);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:452:hardcoded number:	        const { productInfo = [], type } = customerDetail[0] || {}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:453:hardcoded number:	        let { initialClass, finalClass, board, validity, subCourse, state } = productInfo[0];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:455:hardcoded number:	        let maxFinalClassValue = (Number(finalClass) <= ((initialClass) + 2)) ? Number(finalClass) : ((initialClass) + 2);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:458:hardcoded object:	        const isUpgradeRequired = get(this.state, `isRenewed-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:461:hardcoded object:	        const { productConfig, productCombination, productType, classType } = this.state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:462:hardcoded object:	        const { showProfileSelectionOption } = this.props;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:464:hardcoded string:	        const selectedCourse = get(this.state, `course-${formNumber}`, 'K10/K12');
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:465:hardcoded object:	        const selectedBoard = get(this.state, `board-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:466:hardcoded object:	        const selectedInitialClass = get(this.state, `initialClass-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:467:hardcoded object:	        const selectedFinalClass = get(this.state, `finalClass-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:468:hardcoded object:	        const selectedTlpFinalClass = get(this.state, `tlpFinalGrade-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:469:hardcoded object:	        const selectedTablet = get(this.state, `tablet-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:470:hardcoded number:	        const selectedD4Tablet = get(this.state, `d4tablet-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:471:hardcoded object:	        const selectedSubCourse = get(this.state, `subCourse-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:472:hardcoded object:	        //const selectedTlpFinalGrade = get(state, `tlpFinalGrade-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:473:hardcoded object:	        //const selectedByjusClassFinalGrade = get(state, `byjusClassFinalGrade-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:474:hardcoded string:	        //!selectedCourse && this.handleChanges('K10/K12', 'course', this.props, formNumber);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:476:hardcoded object:	        const { user, leadDetails = {} } = this.props;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:477:hardcoded array:	        const { Products = [], Courses = [], Boards = [], Tablets = [] } = productConfig || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:478:hardcoded object:	        const productConfiguration = find(Products, { formattedName: productType }) || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:479:hardcoded array:	        const { validity: Validity = [], tablets = [] } = productConfiguration || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:480:hardcoded object:	        const selectedCourseConfig = find(Courses, { formattedName: selectedCourse }) || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:481:hardcoded object:	        const selectedBoardConfig = find(Boards, { formattedName: selectedBoard }) || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:482:hardcoded object:	        const selectedClassConfig = find(selectedBoardConfig.classes, { class: selectedFinalClass }) || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:483:hardcoded object:	        const selectedTlpClassConfig = find(selectedBoardConfig.classes, { class: selectedTlpFinalClass }) || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:485:hardcoded variable:	        const classesConfig = selectedBoardConfig.classes;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:486:hardcoded variable:	        const byjusClassesMap = getByjusClassesMap(selectedBoardConfig.classes);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:488:hardcoded string:	        const classes = getClasses(selectedBoardConfig, user, '', productCombination);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:489:hardcoded string:	        const subCourses = ["11", "12", 11, 12].includes(selectedTlpFinalClass) ? get(selectedTlpClassConfig, 'subCourses') : get(selectedClassConfig, 'subCourses');
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:490:hardcoded variable:	        const subCourseOptions = subCourses && fetchSubCourseOptions(productCombination, subCourses)
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:492:hardcoded object:	        const { env } = authDetails
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:493:hardcoded variable:	        const isPrivilegedUser = checkIsPrivilegedUser(user);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:494:hardcoded variable:	        const isTlpBocp = ELIGIBLE_COMBINATIONS_FOR_TLP_PLUS_BYJUS_CLASSES.includes(productCombination);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:495:hardcoded variable:	        const fields = [{
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:496:hardcoded string:	            type: 'hidden',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:498:hardcoded string:	            name: 'studentName'
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:500:hardcoded string:	            type: 'checkbox',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:501:hardcoded string:	            name: 'isRenewed',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:502:hardcoded number:	            onChange: (...params) => this.onCheckboxChange(...params, formNumber, productInfo[0], initialClass, selectedInitialClass),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:503:hardcoded string:	            checkBoxLabel: 'Do you want to renew?'
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:505:hardcoded string:	            type: (!isUpgradeRequired) ? 'hidden' : 'select',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:506:hardcoded string:	            name: 'board',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:507:hardcoded string:	            label: 'Select Board',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:509:hardcoded string:	            options: filterBoards({ boards: get(selectedCourseConfig, 'boards') }),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:511:hardcoded string:	            message: "Please select Board"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:513:hardcoded string:	            type: selectedBoard === "STATE" ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:514:hardcoded string:	            name: 'state',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:515:hardcoded string:	            label: 'Select State',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:516:hardcoded string:	            required: selectedBoard === "STATE" && isUpgradeRequired,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:517:hardcoded string:	            options: filterStateBoards({ state: get(selectedBoardConfig, 'states') }),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:519:hardcoded string:	            message: "Please select State"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:521:hardcoded string:	            type: (selectedBoard && isUpgradeRequired) ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:522:hardcoded string:	            name: 'initialClass',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:523:hardcoded string:	            label: isTlpBocp ? 'Select Byjus Classes - Initial Grade' : "Select Initial Grade",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:525:hardcoded object:	            options: filterInitialClass({ classes, productType, productCombination, customerDetail, formNumber, classType, authDetails, isPrivilegedUser }),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:527:hardcoded string:	            message: isTlpBocp ? 'Please Select Byjus Classes - Initial Grade' : "Please Select Initial Grade"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:529:hardcoded string:	            type: (selectedBoard && isUpgradeRequired) ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:530:hardcoded string:	            name: 'finalClass',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:531:hardcoded string:	            label: isTlpBocp ? 'Select Byjus Classes - Final Grade ' : "Select Final Grade",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:533:hardcoded object:	            options: filterFinalClass({ classes, selectedInitialClass, productType, productCombination, classesConfig }),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:536:hardcoded string:	            message: isTlpBocp ? 'Please Select Byjus Classes - Final Grade' : "Please Select Final Grade"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:538:hardcoded string:	            type: (isTlpBocp && isUpgradeRequired) ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:539:hardcoded string:	            name: 'tlpFinalClass',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:540:hardcoded string:	            label: "Select TLP Final Grade",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:542:hardcoded object:	            options: filterTLPFinalClass({ classes, selectedInitialClass, selectedFinalClass, productLearningType: productCombination, classesConfig }),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:544:hardcoded string:	            message: "Please Select TLP Final Grade"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:546:hardcoded string:	            type: isK12Class(selectedFinalClass, selectedTlpFinalClass) && isUpgradeRequired ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:547:hardcoded string:	            name: 'subCourse',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:548:hardcoded string:	            label: 'Select Sub Course',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:549:hardcoded number:	            required: isK12Class(selectedFinalClass, selectedTlpFinalClass) && isUpgradeRequired,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:553:hardcoded string:	            message: "Please select Sub Course"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:556:hardcoded string:	            type: (!isUpgradeRequired) ? 'hidden' : 'select',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:557:hardcoded object:	            options: selectedInitialClass && getFormattedValidity({ validity: Validity, productValidity: validity, user, initialClass: selectedInitialClass, productCombination, finalClass: selectedFinalClass, authDetails }),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:558:hardcoded string:	            name: 'validity',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:559:hardcoded string:	            label: 'Select Initial Validity',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:562:hardcoded string:	            message: "Please Select Initial Validity"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:564:hardcoded string:	            type: (!isUpgradeRequired) ? 'hidden' : (selectedTablet || isEmpty(this.getD4TabletOptions()) || selectedSubCourse == "Commerce") ? 'hidden' : 'select',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:565:hardcoded number:	            options: this.getD4TabletOptions(),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:566:hardcoded string:	            name: 'd4tablet',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:567:hardcoded string:	            label: 'Share existing D4 Tablet',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:569:hardcoded string:	            message: "Please select D4 Tablet",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:571:hardcoded string:	            type: (!isUpgradeRequired) || selectedD4Tablet ? 'hidden' : 'select',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:572:hardcoded number:	            options: checkPrivTabletAccess(leadDetails, user) ? (getAllAvailableTablets()) : (isK3orPreKClass(selectedInitialClass) ? getK3orPreKTablets({ Tablets, user, selectedClass: selectedInitialClass }) : getTablets({ tablets, user, selectedSubCourse })),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:573:hardcoded string:	            name: 'tablet',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:574:hardcoded string:	            label: 'Select Tablet',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:576:hardcoded string:	            message: "Please select Tablet",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:577:hardcoded number:	            required: isK3orPreKClass(selectedInitialClass) && isUpgradeRequired && !selectedD4Tablet ? true : false
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:579:hardcoded string:	            type: ((existingProfiles.length > 0 && isUpgradeRequired) ? 'radio' : 'hidden'),
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:581:hardcoded string:	            name: 'userProfile',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:582:hardcoded string:	            label: 'Choose Profile Type',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:583:hardcoded string:	            helpText: "Please make sure the premium account chosen has the classes for which BHLP is required.",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:585:hardcoded string:	            message: "Please Choose Profile Type",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:586:hardcoded number:	            required: (existingProfiles.length > 0 && isUpgradeRequired) ? true : false,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:588:hardcoded string:	                display: 'block',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:589:hardcoded string:	                height: '30px',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:590:hardcoded string:	                lineHeight: '30px',
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:601:hardcoded array:	                [`${formNumber}`]: [`${ele.target.value}`]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:607:hardcoded object:	        const { authDetails } = this.props
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:608:hardcoded object:	        const { env } = authDetails
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:610:hardcoded array:	            [`isRenewed-${formNumber}`]: value,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:611:hardcoded array:	            [`initialClass-${formNumber}`]: selectedInitialClass,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:612:hardcoded string:	            [`state-${formNumber}`]: productInfo["state"],
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:613:hardcoded string:	            [`board-${formNumber}`]: productInfo["board"],
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:614:hardcoded string:	            [`subCourse-${formNumber}`]: productInfo["subCourse"]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:618:hardcoded string:	                [`d4tablet-${formNumber}`]: "",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:619:hardcoded string:	                [`tabletId-${formNumber}`]: "",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:625:hardcoded array:	        const productDetailsForm = this.refs[`productDetailsForm-${formNumber}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:626:hardcoded array:	        const schoolForm = this.refs[`schoolForm-${formNumber}`]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:627:hardcoded variable:	        const detailsForm = productDetailsForm && productDetailsForm.getProductForm();
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:629:hardcoded string:	        if (name == "initialClass") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:631:hardcoded string:	                finalClass: "", subCourse: "", tablet: "", validity: "", tlpFinalClass: "",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:632:hardcoded string:	                mathPercent: "", sciencePercent: "", languageOfInstruction: ""
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:636:hardcoded string:	                [`subCourse-${formNumber}`]: "",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:641:hardcoded string:	        if (name == "finalClass") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:642:hardcoded string:	            detailsForm && detailsForm.setFieldsValue({ tlpFinalClass: "", subCourse: "" })
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:644:hardcoded string:	                [`subCourse-${formNumber}`]: "",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:649:hardcoded number:	        /**Reset shared D4 tablet if board or state changes*/
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:650:hardcoded string:	        if (name === "subCourse") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:651:hardcoded string:	            detailsForm && detailsForm.setFieldsValue({ d4tablet: "" });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:653:hardcoded string:	                [`d4tablet-${formNumber}`]: "",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:654:hardcoded string:	                [`tabletId-${formNumber}`]: "",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:660:hardcoded string:	        if (name === "board" || name === "state") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:661:hardcoded string:	            detailsForm && detailsForm.setFieldsValue({ initialClass: "", mathPercent: "", sciencePercent: "", languageOfInstruction: "" });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:665:hardcoded string:	        if (name === "courseType") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:666:hardcoded string:	            detailsForm && detailsForm.setFieldsValue({ initialClass: "", subCourse: "", tablet: "", validity: "", board: "", tlpFinalGrade: "", byjusClassFinalGrade: "" });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:670:hardcoded string:	        if (name === "tablet") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:671:hardcoded string:	            const { label = "" } = props || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:672:hardcoded object:	            const { formCountArray } = this.state
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:673:hardcoded number:	            detailsForm && detailsForm.setFieldsValue({ selectD4SDCard: false });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:675:hardcoded array:	            const siblingName = this.state[`siblingName-${formNumber}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:676:hardcoded number:	            /*Reset Shared D4 tablet if primary sibling tablet was changed */
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:678:hardcoded string:	                let sharedD4Tablet = this.state[`d4tablet-${formCount}`] || ""
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:679:hardcoded string:	                let sharedSiblingName = sharedD4Tablet.split("-")[1]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:680:hardcoded number:	                if (formCount != formNumber && siblingName === sharedSiblingName && sharedD4Tablet !== `${value}-${siblingName}`) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:681:hardcoded array:	                    const productDetailsForm = this.refs[`productDetailsForm-${formCount}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:682:hardcoded variable:	                    const detailsForm = productDetailsForm && productDetailsForm.getProductForm();
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:683:hardcoded string:	                    this.setState({ [`d4tablet-${formCount}`]: "" })
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:684:hardcoded string:	                    this.setState({ [`tabletId-${formCount}`]: "" })
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:685:hardcoded string:	                    detailsForm && detailsForm.setFieldsValue({ d4tablet: "" })
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:689:hardcoded string:	                [`tabletId-${formNumber}`]: value ? `T-${value}-${siblingName}` : "",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:690:hardcoded array:	                [`tabletName-${formNumber}`]: `${label}`,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:691:hardcoded number:	                [`selectD4SDCard-${formNumber}`]: false,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:694:hardcoded number:	            if (D4_TABLET_LIST.includes(value)) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:696:hardcoded string:	                    [`sharedD4tablet-${formNumber}`]: value ? `${value}-${siblingName}` : "",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:702:hardcoded string:	                    [`sharedD4tablet-${formNumber}`]: "",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:703:hardcoded array:	                    [`${name}-${formNumber}`]: value,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:710:hardcoded string:	        if (name === "d4tablet") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:711:hardcoded string:	            const { label = "" } = props || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:713:hardcoded array:	                [`${name}-${formNumber}`]: value,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:714:hardcoded array:	                [`tabletId-${formNumber}`]: `T-${value}`,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:715:hardcoded array:	                [`tabletName-${formNumber}`]: `${label}`,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:721:hardcoded array:	            [`${name}-${formNumber}`]: value,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:727:hardcoded string:	        const productLearningType = "byjus_classes"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:728:hardcoded string:	        const isByjusClassForm = ["byjus_classes"].includes(productLearningType);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:730:hardcoded variable:	        let isByjusClassesApplicable = false;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:732:hardcoded object:	        const { formCountArray } = this.state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:735:hardcoded variable:	        const currentForm = formCountArray.find(formCount => formCount === formNo);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:736:hardcoded array:	        this.setState({ [`isByjusClasses-${currentForm}`]: false })
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:737:hardcoded array:	        const initialClass = this.state[`initialClass-${currentForm}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:739:hardcoded array:	        isByjusClassesApplicable = byjusClassesMap[selectedInitialClass] || false;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:744:hardcoded array:	                [`isByjusClasses-${currentForm}`]: (isByjusClassesApplicable) ? true : false
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:751:hardcoded string:	        this.setState({ classType: value ? "neo" : "oneToMega" });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:753:hardcoded object:	        const { formCountArray } = this.state
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:755:hardcoded array:	            this.setState({ [`isByjusClasses-${formNo}`]: false })
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:756:hardcoded array:	            const productDetailsForm = this.refs[`productDetailsForm-${formNo}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:757:hardcoded variable:	            const detailsForm = productDetailsForm && productDetailsForm.getProductForm();
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:760:hardcoded string:	                productLearningType: "", initialClass: "", finalClass: "",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:761:hardcoded string:	                byjusClassFinalGrade: "", validity: "", tlpFinalGrade: "", courseType: "", tablet: "",
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:762:hardcoded string:	                mathPercent: "", sciencePercent: "", languageOfInstruction: "", flowOfTopic: value ? "default" : ""
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:768:hardcoded object:	        const { eligibleCustomers } = this.state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:769:hardcoded array:	        const studentName = eligibleCustomers[index].studentName;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:770:hardcoded array:	        const studentId = eligibleCustomers[index].studentId;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:771:hardcoded variable:	        const fields = this.getFormFields(formNumber, formSerialNum, studentName, studentId, index);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:772:hardcoded array:	        let { existingProfiles = [] } = this.props;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:773:hardcoded string:	        const currentProfile = get(existingProfiles.find(({ label }) => label.indexOf(studentName) >= 0), 'value');
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:777:hardcoded object:	                    heading={`Student #${studentName}`}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:778:hardcoded string:	                    initialValues={{ userProfile: currentProfile, flowOfTopic: "default" }}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:779:hardcoded object:	                    fields={fields}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:780:hardcoded object:	                    ref={`productDetailsForm-${formNumber}`}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:781:hardcoded object:	                    key={studentName}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:789:hardcoded array:	        const { existingProfiles = [] } = this.props;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:790:hardcoded object:	        const { eligibleCustomers, formCountArray } = this.state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:792:hardcoded object:	        const selectedProfile = {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:793:hardcoded number:	        for (var i = 0; i < formCountArray.length; i++) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:794:hardcoded array:	            const studentName = eligibleCustomers[i].studentName;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:795:hardcoded string:	            const currentProfile = get(existingProfiles.find(({ label }) => label.indexOf(studentName) >= 0), 'value');
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:796:hardcoded array:	            selectedProfile[formCountArray[i]] = currentProfile;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:797:hardcoded object:	            this.setState({ selectedProfile });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:803:hardcoded object:	            this.setState({ productConfig: nextProps.productConfig });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:808:hardcoded object:	        let { productDetails, customerDetails, orderPunchingType, identifier, tlpOrderData, authDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:809:hardcoded array:	        let options = [];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:810:hardcoded variable:	        let showProfileSelectionOption = false;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:811:hardcoded array:	        let existingProfiles = [];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:812:hardcoded object:	        this.setState({ loading: true });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:813:hardcoded object:	        let tlpCustomerProfileDetail = {}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:815:hardcoded string:	            const tlpCustomerDetails = get(tlpOrderData, "customerDetails", []);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:816:hardcoded string:	            const orderId = get(tlpOrderData, "orderId", "");
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:817:hardcoded number:	            if (tlpCustomerDetails.length > 0) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:819:hardcoded number:	                    studentMobileNo: tlpCustomerDetails[0].studentMobile, orderId
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:834:hardcoded string:	            selectedProduct: get(productDetails, 'productType', 'single')
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:841:hardcoded array:	        let formCountArray = [];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:842:hardcoded object:	        const { tlpOrderData, productConfig, authDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:843:hardcoded array:	        let { customerDetails = [] } = tlpOrderData;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:844:hardcoded array:	        customerDetails = isArray(customerDetails) ? customerDetails : [customerDetails];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:845:hardcoded array:	        let { existingProfiles = [] } = this.props;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:846:hardcoded variable:	        const eligibleCustomers = customerDetails.filter(ele => {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:847:hardcoded array:	            const { productInfo = [] } = ele;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:848:hardcoded number:	            const { initialClass, finalClass, validity } = productInfo[0];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:849:hardcoded string:	            return (!["14", "13", "12+", "11+12", 12, "12"].includes(finalClass))
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:851:hardcoded string:	        const { type = "" } = eligibleCustomers[0] || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:853:hardcoded object:	        const selectedProfile = {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:854:hardcoded variable:	        let currentTime = (new Date()).getTime();
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:855:hardcoded number:	        for (var i = 0; i < eligibleCustomers.length; i++) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:858:hardcoded string:	            const currentProfile = get(existingProfiles.find(({ label }) => label.indexOf(eligibleCustomers[i].studentName) >= 0), 'value');
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:861:hardcoded string:	        this.setState({ eligibleCustomers, course: 'K10/K12', formCountArray, selectedProfile, productType: type });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:864:hardcoded number:	    getAvailableD4ForSharing = () => {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:865:hardcoded number:	        let isD4Available = false;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:866:hardcoded array:	        const { formCountArray = [] } = this.state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:867:hardcoded array:	        let tabletMappingList = [];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:868:hardcoded number:	        for (var i = 0; i < formCountArray.length; i++) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:869:hardcoded array:	            const siblingName = this.state[`siblingName-${formCountArray[i]}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:870:hardcoded number:	            const d4Tablet = this.state[`d4tablet-${formCountArray[i]}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:871:hardcoded array:	            let tabletName = this.state[`tabletName-${formCountArray[i]}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:872:hardcoded number:	            let tablet = (d4Tablet) ? d4Tablet : this.state[`tablet-${formCountArray[i]}`];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:873:hardcoded string:	            tabletName = (tabletName) ? tabletName : "No tablet selected";
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:874:hardcoded variable:	            const tabletMapping = {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:881:hardcoded number:	        const d4List = tabletMappingList.filter(ele => (D4_TABLET_LIST.includes(ele.tablet)));
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:882:hardcoded string:	        const emptyTabletList = tabletMappingList.filter(ele => (["No tablet selected", undefined, 'undefined', ""].includes(ele.tablet)));
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:884:hardcoded number:	        if (!isEmpty(d4List) && !isEmpty(emptyTabletList)) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:885:hardcoded number:	            isD4Available = true;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:887:hardcoded number:	        return { tabletMappingList, isD4Available };
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:890:hardcoded number:	    closeD4WarningMessage = (e) => {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:891:hardcoded number:	        this.setState({ isD4Available: false });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:895:hardcoded object:	        const { productCombination, classType } = this.state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:896:hardcoded string:	        if (classType != "neo") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:897:hardcoded string:	            return this.state[`isByjusClasses-${formNo}`] && this.state[`initialClass-${formNo}`] && this.state[`validity-${formNo}`] && this.state[`isRenewed-${formNo}`] && !["12"].includes(`initialClass-${formNo}`) && productCombination === "byjus_classes" && ELIGIBLE_COMBINATIONS_FOR_BATCH.includes(productCombination)
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:898:hardcoded string:	        } else if (this.state[`isRenewed-${formNo}`] && !["12"].includes(`initialClass-${formNo}`) &&
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:899:hardcoded string:	            productCombination === "byjus_classes" && ELIGIBLE_COMBINATIONS_FOR_BATCH.includes(productCombination)) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:900:hardcoded variable:	            const isEligible = getBatchesEligibility(this.state, formNo)
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:907:hardcoded object:	        const { changeNextBtnMode, productType, identifier, user, authDetails } = this.props; //To render some specific component after the main product details form
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:908:hardcoded number:	        const { error, formCountArray, isD4Available, tabletMappingList, classType, productCombination } = this.state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:909:hardcoded variable:	        const isPrivilegedUser = checkIsPrivilegedUser(user)
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:910:hardcoded object:	        const { env } = authDetails
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:914:hardcoded string:	                <div className="card m-2">
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:915:hardcoded string:	                    <div style={{ paddingBottom: '12px' }}>
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:916:hardcoded object:	                        <ErrorWrapper error={error} />
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:918:hardcoded string:	                        <Row style={{ overflow: 'auto', height: '160px', padding: '1%' }}>  {this.showOrderDetails()} </Row>
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:919:hardcoded object:	                        {this.buildProductTypeSelectionComponent()}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:920:hardcoded string:	                        {isPrivilegedUser && productCombination === "byjus_classes" && <ClassTypeForm
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:921:hardcoded string:	                            ref="classTypeForm"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:922:hardcoded object:	                            classType={classType}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:923:hardcoded object:	                            changeClassType={this.changeClassType}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:926:hardcoded number:	                            const formSerialNum = index + 1;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:927:hardcoded string:	                            const isProficiencyAndFot = isProficiencyAndFotAvailable({ state: this.state, props: this.props, handleChanges: this.handleChanges, formNumber: formNo, type: productCombination == "byjus_classes" ? "renewal" : null });
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:928:hardcoded variable:	                            const isBatchesEligible = this.checkBatchesEligibility(formNo, env)
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:930:hardcoded object:	                                <Fragment key={index}>
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:931:hardcoded object:	                                    {this.buildSiblingProductForm(formSerialNum, formNo, index)}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:934:hardcoded object:	                                            ref={`schoolForm-${formNo}`}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:935:hardcoded array:	                                            board={this.state[`board-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:936:hardcoded array:	                                            grade={this.state[`initialClass-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:937:hardcoded array:	                                            premiumId={this.state[`premiumId-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:938:hardcoded object:	                                            formNumber={formNo}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:939:hardcoded object:	                                            handleSiblingChanges={this.handleChanges}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:940:hardcoded object:	                                            handleClassBlurEvent={this.handleClassBlurEvent}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:941:hardcoded array:	                                            state={this.state[`state-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:942:hardcoded object:	                                            props={this.props}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:947:hardcoded object:	                                    {/* Batch Details */}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:949:hardcoded object:	                                        ref={`byjusClassesDetailsForm-${formNo}`}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:950:hardcoded object:	                                        identifier={identifier}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:951:hardcoded object:	                                        classType={classType}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:952:hardcoded array:	                                        initialClass={this.state[`initialClass-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:953:hardcoded array:	                                        board={this.state[`board-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:954:hardcoded array:	                                        state={this.state[`state-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:955:hardcoded object:	                                        productType={productType}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:956:hardcoded array:	                                        validity={this.state[`validity-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:957:hardcoded array:	                                        subCourse={this.state[`subCourse-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:958:hardcoded string:	                                        productCombination="byjus_classes" 
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:959:hardcoded array:	                                        proficiency={this.state[`proficiency-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:960:hardcoded array:	                                        trackId={this.state[`trackId-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:967:hardcoded string:	                            ref='fetchComp'
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:968:hardcoded object:	                            onClickFetchPrices={this.onClickFetchPrices}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:969:hardcoded object:	                            getProductDetails={this.getProductDetails}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:970:hardcoded object:	                            changeNextBtnMode={changeNextBtnMode}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:971:hardcoded object:	                            setError={this.setError}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:973:hardcoded number:	                        {isD4Available && <Alert
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:974:hardcoded number:	                            description={<div>There is D4 tablet selected which can be shared with other siblings.<p></p>{tabletMappingList && tabletMappingList.map((tabletList, index) => {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:976:hardcoded number:	                                    Sibling {index + 1} ({tabletList.siblingName}) : {tabletList.tabletName}<br></br>
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:979:hardcoded string:	                            type="warning"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:980:hardcoded object:	                            closable={true}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:981:hardcoded number:	                            afterClose={this.closeD4WarningMessage} />}
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductPage.js:991:hardcoded object:	export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(RenewalProductPage);microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:6:hardcoded string:	/**Filter previous order initial class, board and state if board is "STATE" only where the formNumber: 1 (Sibling case)
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:10:hardcoded variable:	export const filterInitialClass = (productDetail) => {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:11:hardcoded object:	    let { classes, customerDetail, tlpOrderData, formNumber, productCombination, productType, classType, isPrivilegedUser } = productDetail;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:12:hardcoded number:	    customerDetail = customerDetail[0]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:13:hardcoded variable:	    let filteredClass = classes;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:14:hardcoded string:	    const grade = customerDetail && get(customerDetail, "productInfo", [])[0].initialClass;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:16:hardcoded string:	    if (["single"].includes(get(customerDetail, "type", ""))) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:17:hardcoded string:	        filteredClass = filteredClass.filter(ele => parseInt(get(ele, "value", 0), 10) > parseInt(grade, 10));
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:19:hardcoded string:	        const grade = customerDetail && get(customerDetail, "productInfo", [])[0].finalClass;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:20:hardcoded string:	        filteredClass = filteredClass.filter(ele => parseInt(get(ele, "value", ""), 0) > parseInt(grade, 10));
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:23:hardcoded string:	    if (productCombination != "byjus_classes" || (!["streaming", "single"].includes(productType))) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:24:hardcoded string:	        filteredClass = filteredClass.filter(initialClass => !["14", "13", "12+","11+12", "13+"].includes(initialClass.value))
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:26:hardcoded string:	    if (productCombination != "byjus_tlp") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:27:hardcoded string:	        filteredClass = filteredClass.filter(initialClass => !["-1", "0", "12+"].includes(initialClass.value))
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:30:hardcoded string:	    if (isPrivilegedUser && classType == "neo" && ["byjus_classes"].includes(productCombination)){
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:31:hardcoded string:	        filteredClass = filteredClass.filter(initialClass => !["11", 11, "11+12", "12", 12, "12+","13","13+", "14"].includes(initialClass.value))
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:37:hardcoded number:	/**13- 12 Crash Course 14- 12 Repeat Crash course */
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:38:hardcoded variable:	export const filterFinalClass = (productDetails) => {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:39:hardcoded object:	    let { classes, selectedInitialClass, productType, classesConfig, productCombination } = productDetails
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:40:hardcoded variable:	    let filteredClass = classes;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:42:hardcoded object:	    const classObjConfig = find(classesConfig, { class: selectedInitialClass }) || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:43:hardcoded string:	    let maxClass = get(classObjConfig, 'maxClass', '');
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:46:hardcoded number:	        /**Incase of byjus classes max of 3 classes are allowed for order punching */
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:47:hardcoded string:	        maxClass = selectedInitialClass === "11" ? "12" : (parseInt(selectedInitialClass, 10) + 2).toString();
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:50:hardcoded string:	    if (productCombination === "byjus_tlp" && productType != "streaming") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:51:hardcoded number:	        /**Incase of byjus classes max of 3 classes are allowed for order punching */
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:52:hardcoded number:	        if (selectedInitialClass == 4) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:53:hardcoded string:	            maxClass = "8"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:54:hardcoded number:	        } else if (selectedInitialClass == 6) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:55:hardcoded string:	            maxClass = "10";
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:59:hardcoded string:	    if (["-1"].includes(selectedInitialClass)) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:60:hardcoded string:	        maxClass = "3";
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:62:hardcoded string:	    if (["0"].includes(selectedInitialClass)) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:63:hardcoded string:	        maxClass = "4";
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:67:hardcoded string:	        const classValue = get(classObj, 'value', '');
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:68:hardcoded number:	        /**For combo product and advance admission+tlp initial and final class should have minimum difference of 1 */
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:69:hardcoded string:	        const isClassAllowed = ((((["combo"].includes(productType) && selectedInitialClass !== "10") && ![...ELIGIBLE_COMBINATIONS_FOR_TLP_PLUS_BYJUS_CLASSES, "byjus_aakash"].includes(productCombination))) ?
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:73:hardcoded string:	        return (["11+12"].indexOf(classValue) < 0 && isClassAllowed);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:75:hardcoded string:	    if (selectedInitialClass == "10" && productCombination == "byjus_classes") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:76:hardcoded string:	        filteredClass = filteredClass.filter(grade => grade.value != "11")
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:77:hardcoded string:	    } else if (selectedInitialClass === "12") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:78:hardcoded string:	        filteredClass = [{ label: "12", value: "12" }]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:79:hardcoded string:	    } else if (selectedInitialClass === "13") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:80:hardcoded string:	        filteredClass = [{ label: "12th Crash Course", value: "13" }]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:81:hardcoded string:	    } else if (selectedInitialClass === "13+") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:82:hardcoded string:	        filteredClass = [{ label: "12th Pass", value: "13+" }]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:83:hardcoded string:	    } else if (selectedInitialClass === "14") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:84:hardcoded string:	        filteredClass = [{ label: "12th Retarget Crash Course", value: "14" }]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:92:hardcoded object:	export const filterTLPFinalClass = ({classes, selectedInitialClass, selectedFinalClass, productLearningType, classesConfig}) => {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:94:hardcoded object:	    const classObjConfig = find(classesConfig, { class: selectedInitialClass }) || {};
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:96:hardcoded variable:	    let filteredClasses = classes.filter(ele => parseInt(ele.value) >= selectedInitialClass)
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:98:hardcoded string:	    let maxClass = get(classObjConfig, 'maxClass', '');
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:99:hardcoded number:	    if (selectedInitialClass == 4) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:100:hardcoded string:	        maxClass = "8"
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:101:hardcoded number:	    } else if (selectedInitialClass == 6) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:102:hardcoded string:	        maxClass = "10";
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:106:hardcoded string:	        const classValue = get(classObj, 'value', '');
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:108:hardcoded variable:	        const isClassAllowed = (
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:112:hardcoded string:	        return (["11+12"].indexOf(classValue) < 0 && isClassAllowed);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:115:hardcoded number:	    filteredClasses = filteredClasses.filter(dt => parseInt(dt.value, 10) > parseInt(selectedFinalClass, 10));
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:118:hardcoded string:	    if (productLearningType === "byjus_tlp_plus_byjus_classes") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:119:hardcoded string:	        if (selectedInitialClass === "12") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:120:hardcoded string:	            filteredClasses = [{ label: "12+", value: "12+" }]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:121:hardcoded string:	        } else if (!["12", "+12"].includes(selectedFinalClass) && selectedFinalClass) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:122:hardcoded array:	            filteredClasses = [{ label: selectedFinalClass.toString(), value: selectedFinalClass.toString() }]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:124:hardcoded string:	            filteredClasses = [{ label: "12", value: "12" }]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:128:hardcoded string:	    if (productLearningType === "jumpstart_admission") {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:129:hardcoded string:	        filteredClasses = [{ label: "12", value: "12" }]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:134:hardcoded variable:	export const filterBoards = (productDetail) => {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:135:hardcoded object:	    let { boards, tlpOrderData, formNumber } = productDetail
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:136:hardcoded number:	    if (parseInt(formNumber, 10) === 1) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:137:hardcoded string:	        let board = get(tlpOrderData, "customerDetails", [])[0].productInfo[0].board;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:138:hardcoded string:	        boards = boards.filter(ele => get(ele, "value", "") === board);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:143:hardcoded variable:	export const filterStateBoards = (productDetail) => {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:144:hardcoded array:	    let { state = [], tlpOrderData, formNumber } = productDetail;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:145:hardcoded number:	    if (parseInt(formNumber, 10) === 1) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:146:hardcoded string:	        let selectedState = get(tlpOrderData, "customerDetails", [])[0].productInfo[0].state;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:147:hardcoded string:	        state = state.filter(ele => get(ele, "value", "") === selectedState);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:152:hardcoded variable:	const getPriviledUserValidity = (allowedCurrentYearValidity) => {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:153:hardcoded variable:	    let currentYear = getCurrentAcademicYear();
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:154:hardcoded number:	    let updatedYear = allowedCurrentYearValidity ? currentYear + 2 : currentYear + 1;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:155:hardcoded number:	    const validityUpto = updatedYear + 10; // Validity upto 2030 for priviled user
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:156:hardcoded array:	    const validity = []
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:168:hardcoded variable:	export const getFormattedValidity = (productDetails) => {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:169:hardcoded object:	    let { validity, user, productCombination, initialClass, finalClass, authDetails = {} } = productDetails;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:170:hardcoded array:	    let formattedValidity = [];
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:171:hardcoded string:	    const permissions = get(user, "permissions", []);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:172:hardcoded variable:	    let currentAcademicYr = getCurrentAcademicYear();
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:174:hardcoded object:	    const { env } = authDetails;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:175:hardcoded string:	    const isDevEnv = ['development','local'].includes(env);
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:176:hardcoded string:	    const allowedCurrentYearValidity = initialClass == finalClass || finalClass == "" ? true : false;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:178:hardcoded number:	    if (permissions.indexOf(productPermissions.ignoreValidityCheck) >= 0) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:183:hardcoded object:	            let { label, value } = entry;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:184:hardcoded variable:	            let currentYear = currentAcademicYr;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:185:hardcoded number:	            let updatedYear = currentYear + 2;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:186:hardcoded string:	            label = label.includes('x') ? eval(label.replace('x', updatedYear)) : label;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:187:hardcoded string:	            value = value.includes('x') ? eval(value.replace('x', updatedYear)) : value;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:196:hardcoded string:	    if (productCombination && productCombination.indexOf("byjus_classes") >= 0) {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:199:hardcoded number:	                label: currentAcademicYr + 2,
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:200:hardcoded number:	                value: currentAcademicYr + 2 }]
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:204:hardcoded string:	    formattedValidity = formattedValidity.filter(validity => validity.value != "TRIAL_PACK");
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:208:hardcoded object:	export const validateProfileSelection = (productDetails = {}) => {
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:209:hardcoded variable:	    let result = true
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:210:hardcoded string:	    const { userProfile = "" } = productDetails;
+microservices-middleware/client/src/modules/ordertype/renewal/components/products/RenewalProductHelper.js:211:hardcoded object:	    if (!userProfile) { result = false };

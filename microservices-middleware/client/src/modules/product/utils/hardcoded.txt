@@ -1,0 +1,477 @@
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:4:hardcoded object:	export const getSamplerTlpProductOptions = ({productOptions, env}) => {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:11:hardcoded object:	export const getSamplerTlpTabletOptions = ({options, env, isEpicSamplerEnabled, productCombination}) => {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:12:hardcoded string:	    if (productCombination === "byjus_tlp" && isEpicSamplerEnabled) {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:13:hardcoded number:	        options = options.filter(ele =>D4_1_1_TABLET_LIST.includes(ele.value))
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:20:hardcoded object:	export const getSamplerTlpInitialClass = ({filteredClass, env, isEpicSamplerEnabled, productCombination}) => {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:21:hardcoded string:	    if (productCombination === "byjus_tlp" && isEpicSamplerEnabled) {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:22:hardcoded number:	        filteredClass = filteredClass.filter(initialClass => K3_GRADES.includes(initialClass.value)) 
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:29:hardcoded object:	export const getSamplerTlpFinalClass = ({ filteredClass, env, isEpicSamplerEnabled, productCombination, selectedInitialClass, productType }) => {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:31:hardcoded string:	    if (env !== 'production') {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:32:hardcoded string:	        if ( productCombination === "byjus_tlp" && productType === 'combo' && isEpicSamplerEnabled) {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:33:hardcoded number:	            filteredClass = filteredClass.filter(ele => parseInt(ele.value) < parseInt(selectedInitialClass) + 5)
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:36:hardcoded string:	        if (productCombination === "byjus_tlp" && productType === "combo" && isEpicSamplerEnabled) {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:37:hardcoded string:	            if(!['3'].includes(selectedInitialClass)) {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:38:hardcoded number:	                filteredClass = filteredClass.filter(ele => parseInt(ele.value) < parseInt(selectedInitialClass) + 3 && parseInt(ele.value) <= 3) 
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:41:hardcoded string:	                filteredClass = [{ label: "3", value: "3" }]
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:50:hardcoded object:	export const getSamplerByjusMathFinalClass = ({ env, filteredClass, isEpicSamplerEnabled, productCombination, selectedInitialClass, productType}) => {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:52:hardcoded string:	    let mathClasses = [{ label: "1", value: "1"},{ label: "2", value: "2" },{ label: "3", value: "3" },
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:53:hardcoded string:	    { label: "4", value: "4" },{ label: "5", value: "5" }]
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:54:hardcoded string:	    if (productCombination === "byjus_math" && productType === 'combo' && isEpicSamplerEnabled) {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:56:hardcoded number:	         parseInt(ele.value) < parseInt(selectedInitialClass) + 3)
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:63:hardcoded object:	// export const getSamplerByjusMathProductOptions = ({formField, env}) => {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:65:hardcoded string:	//         'label': "DBEL+BYJU'S Math 24 Sessions", 'value': '24'
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:72:hardcoded object:	export const getSamplerByjusMathBatchOptions = ({formField, env, isEpicSamplerEnabled}) => {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:74:hardcoded string:	        formField = [{'label': '1:4', 'value': '1:4'}]
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:81:hardcoded object:	export const getSamplerByjusMathInitialClass = ({filteredClass, env, isEpicSamplerEnabled, productType}) => {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:82:hardcoded string:	    if (isEpicSamplerEnabled && productType === 'combo') {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:83:hardcoded string:	        filteredClass = filteredClass.filter(initialClass => !["0"].includes(initialClass.value))
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:90:hardcoded variable:	export const getSamplerByjusMathValidityOptions = () => {
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:91:hardcoded variable:	   let options = [
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:93:hardcoded number:	            label:  new Date ().getFullYear() + 1 ,
+microservices-middleware/client/src/modules/product/utils/epicSampler.js:94:hardcoded number:	            value:  new Date ().getFullYear() + 1
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:5:hardcoded number:	    getClasses, filterInitialClass, filterFinalClass, filterFinalClassV2, getMentoringClassMap,
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:8:hardcoded string:	} from '../components/productHelper';
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:10:hardcoded variable:	const getInitialClassOptions = (details) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:11:hardcoded number:	    const { productLearningType, selectedBoard, classes, productType, productCombination, isPrivilegedUser, authDetails, salesDetails, PreK3EligibleManagers, leadDetails, classType, initialGradeProductCategory } = details
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:12:hardcoded array:	    let options = []
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:14:hardcoded number:	        options = filterInitialClass({ classes, productType, productCombination, isPrivilegedUser, authDetails, salesDetails, PreK3EligibleManagers, leadDetails, classType, initialGradeProductCategory })
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:19:hardcoded variable:	const getFinalClassOptions = (details) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:20:hardcoded object:	    const { productLearningType, selectedBoard, classes, selectedInitialClass, productType, classesConfig, isFinalGradeRestriction, initialGradeProductCategory, isDevEnv, isPrivilegedUser, classType, leadDetails, authDetails, selectedState } = details
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:21:hardcoded array:	    let options = []
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:24:hardcoded string:	        if (["byjus_tlp", "byjus_classes"].includes(productLearningType)) {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:25:hardcoded number:	            options = filterFinalClassV2({ classes, selectedInitialClass, productType, classesConfig, productCombination: productLearningType, isFinalGradeRestriction, initialGradeProductCategory, isDevEnv, isPrivilegedUser, classType, authDetails, selectedState })
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:27:hardcoded object:	            options = filterFinalClass({ classes, selectedInitialClass, productType, classesConfig, productCombination: productLearningType, isFinalGradeRestriction, initialGradeProductCategory, isDevEnv, isPrivilegedUser, classType, authDetails })
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:33:hardcoded variable:	export const getComboFormFields = (details) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:34:hardcoded object:	    const { state, props, handleChanges, handleClassBlurEvent, addTLPCourses, isInsideSalesEnabled } = details;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:35:hardcoded object:	    const { productConfig, initialClass: selectedInitialClass, finalClass: selectedFinalClass, byjusClassFinalGrade, classType, initialGradeProductCategory, addTlpCourses } = state;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:36:hardcoded object:	    const { productType, user, productCombination, authDetails, salesDetails, leadDetails } = props;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:37:hardcoded object:	    const { env, featureEnableList } = authDetails
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:38:hardcoded string:	    const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:39:hardcoded string:	    const isByjusAakash = productCombination === "byjus_aakash"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:40:hardcoded string:	    let productLearningType = get(state, "productLearningType", "");
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:41:hardcoded string:	    let selectedState = get(state, 'state', "");
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:42:hardcoded string:	    let selectedBoard = get(state, "board", isByjusAakash ? "CBSE" : "");
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:43:hardcoded variable:	    const isPrivilegedUser = checkIsPrivilegedUser(user)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:44:hardcoded variable:	    const isFinalGradeRestriction = checkFinalGradeRestriction(user);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:45:hardcoded number:	    const { Boards = [], PreK3EligibleManagers = [] } = productConfig || {};
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:46:hardcoded object:	    const selectedBoardConfig = find(Boards, { formattedName: selectedBoard }) || {};
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:47:hardcoded string:	    const classes = getClasses(selectedBoardConfig, user, '', productLearningType, leadDetails, salesDetails, PreK3EligibleManagers);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:48:hardcoded variable:	    const classesConfig = selectedBoardConfig.classes;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:49:hardcoded string:	    if (_.isEqual(productCombination, "byjus_tlp") && !isEmpty(classes)) {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:50:hardcoded string:	        let indexOf11 = classes.findIndex(name => _.isEqual(name.label, "11"))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:51:hardcoded string:	        classes[indexOf11].label = "11"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:52:hardcoded string:	        let indexOf12 = classes.findIndex(name => _.isEqual(name.label, "12"))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:53:hardcoded string:	        classes[indexOf12].label = "12"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:54:hardcoded string:	        let indexOf12Plus = classes.findIndex(name => _.isEqual(name.label, "12+"))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:55:hardcoded string:	        classes[indexOf12Plus].label = "12+(Aakash Byju's TLP)"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:57:hardcoded string:	    if (_.isEqual(productCombination, "byjus_classes") && !isEmpty(classes)) {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:58:hardcoded string:	        let indexOf11 = classes.findIndex(name => _.isEqual(name.label, "11"))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:59:hardcoded number:	        classes.splice(indexOf11, 1);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:60:hardcoded string:	        let indexOf12 = classes.findIndex(name => _.isEqual(name.label, "12"))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:61:hardcoded string:	        classes[indexOf12].label = "12(Aakash Byju's)"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:62:hardcoded string:	        let indexOf12Plus = classes.findIndex(name => _.isEqual(name.label, "12+"))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:63:hardcoded string:	        classes[indexOf12Plus].label = "12+(Aakash Byju's)"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:65:hardcoded variable:	    const mentoringClassMap = getMentoringClassMap(selectedBoardConfig.classes);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:66:hardcoded variable:	    const oneToManyMentoringClassMap = getOneToManyMentoringClassMap(selectedBoardConfig.classes);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:67:hardcoded variable:	    const byjusClassesMap = getByjusClassesMap(selectedBoardConfig.classes);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:69:hardcoded variable:	    const isTlpBocp = ELIGIBLE_COMBINATIONS_FOR_TLP_PLUS_BYJUS_CLASSES.includes(productLearningType)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:70:hardcoded string:	    const isBfs = (productCombination == 'byjus_math') ? true : false;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:71:hardcoded string:	    const isCheckBoxIsChecked = isDevEnv && productCombination == "byjus_classes" && !isEmpty(selectedInitialClass) && _.isEqual(selectedInitialClass, selectedFinalClass)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:73:hardcoded string:	        productLearningType = 'byjus_classes_plus_byjus_tlp'
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:75:hardcoded string:	    if (["byjus_tlp", "byjus_aakash", "byjus_math"].includes(productCombination)) {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:81:hardcoded string:	            type: productLearningType && selectedBoard ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:82:hardcoded string:	            name: 'initialClass',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:83:hardcoded string:	            label: getInitialFinalGradeLabel(productLearningType, "Initial"),
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:85:hardcoded number:	            options: getInitialClassOptions({ productLearningType, selectedBoard, classes, productType, productCombination: productLearningType, isPrivilegedUser, authDetails, salesDetails, PreK3EligibleManagers, leadDetails, classType, initialGradeProductCategory }),
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:87:hardcoded string:	            message: (isTlpBocp || isByjusAakash) ? 'Please Select Byjus Classes - Initial Grade' : "Please Select Initial Grade"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:89:hardcoded string:	            type: (productLearningType && selectedBoard && !isBfs) ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:90:hardcoded string:	            name: 'finalClass',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:91:hardcoded string:	            label: getInitialFinalGradeLabel(productLearningType, "Final"),
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:93:hardcoded object:	            options: getFinalClassOptions({ productLearningType, selectedBoard, classes, selectedInitialClass, productType, classesConfig, isFinalGradeRestriction, initialGradeProductCategory, isDevEnv, isPrivilegedUser, classType, authDetails, selectedState }),
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:96:hardcoded string:	            message: (isTlpBocp || isByjusAakash) ? 'Please Select Byjus Classes - Final Grade' : "Please Select Final Grade"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:99:hardcoded string:	            type: isPrivilegedUser && user?.email !== 'mohnishsales@byjus.com' && !isInsideSalesEnabled && productLearningType && selectedBoard && productCombination === "byjus_classes" ? 'checkbox' : 'hidden',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:100:hardcoded string:	            name: 'addTlpCourses',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:101:hardcoded string:	            checkBoxLabel: "Extend the course by adding BYJU'S Tablet Learning Program",
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:105:hardcoded string:	            type: (isTlpBocp && !isByjusAakash) || addTlpCourses  ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:106:hardcoded string:	            name: getLabelAndValueField(productLearningType)["value"],
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:107:hardcoded string:	            label: getLabelAndValueField(productLearningType)["label"],
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:109:hardcoded array:	            options: isTlpBocp || addTlpCourses ? filterTLPFinalClass(classes, selectedInitialClass, selectedFinalClass, productLearningType, classesConfig) : [{}],
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:111:hardcoded string:	            message: "Please Select TLP Final Grade"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:116:hardcoded variable:	export const getSiblingFormFields = (details) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:117:hardcoded object:	    const { state, props, handleChanges, handleClassBlurEvent, productLearningType, formNumber } = details;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:118:hardcoded object:	    const { productConfig, byjusClassFinalGrade, classType } = state;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:120:hardcoded object:	    const selectedBoard = get(state, `board-${formNumber}`);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:121:hardcoded object:	    const selectedInitialClass = get(state, `initialClass-${formNumber}`);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:122:hardcoded object:	    const selectedFinalClass = get(state, `finalClass-${formNumber}`);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:123:hardcoded object:	    const selectedTlpFinalGrade = get(state, `tlpFinalGrade-${formNumber}`);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:124:hardcoded object:	    const selectedByjusClassFinalGrade = get(state, `byjusClassFinalGrade-${formNumber}`);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:125:hardcoded object:	    const selectedStreamingCheck = get(state, `isStreaming-${formNumber}`);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:126:hardcoded string:	    const selectedState = get(state, `state-${formNumber}`, "")
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:128:hardcoded object:	    const { productType, user, productCombination, authDetails, salesDetails, leadDetails } = props;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:129:hardcoded object:	    const { env } = authDetails
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:130:hardcoded string:	    const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:131:hardcoded variable:	    const isPrivilegedUser = checkIsPrivilegedUser(user)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:133:hardcoded number:	    const { Boards = [], PreK3EligibleManagers = [] } = productConfig || {};
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:134:hardcoded object:	    const selectedBoardConfig = find(Boards, { formattedName: selectedBoard }) || {};
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:136:hardcoded string:	    const classes = getClasses(selectedBoardConfig, user, '', productLearningType, leadDetails, salesDetails, PreK3EligibleManagers);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:137:hardcoded variable:	    const classesConfig = selectedBoardConfig.classes;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:138:hardcoded string:	    if ((_.isEqual(productCombination, "byjus_classes") || _.isEqual(productCombination, "byjus_tlp")) && !isEmpty(classes)) {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:139:hardcoded string:	        let indexOf11 = classes.findIndex(name => _.isEqual(name.label, "11"))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:140:hardcoded number:	        classes.splice(indexOf11, 1);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:141:hardcoded string:	        let indexOf12 = classes.findIndex(name => _.isEqual(name.label, "12"))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:142:hardcoded number:	        classes.splice(indexOf12, 1);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:143:hardcoded string:	        let indexOf12Plus = classes.findIndex(name => _.isEqual(name.label, "12+"))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:144:hardcoded number:	        classes.splice(indexOf12Plus, 1);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:146:hardcoded variable:	    const mentoringClassMap = getMentoringClassMap(selectedBoardConfig.classes);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:147:hardcoded variable:	    const oneToManyMentoringClassMap = getOneToManyMentoringClassMap(selectedBoardConfig.classes);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:148:hardcoded variable:	    const byjusClassesMap = getByjusClassesMap(selectedBoardConfig.classes);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:150:hardcoded variable:	    const isTlpBocp = ELIGIBLE_COMBINATIONS_FOR_TLP_PLUS_BYJUS_CLASSES.includes(productLearningType);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:151:hardcoded variable:	    const isAdvancePlusTlp = ELIGIBLE_COMBINATIONS_FOR_TLP_PLUS_BYJUS_CLASSES_PLUS_TLP.includes(productLearningType)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:153:hardcoded number:	    let classOption = getInitialClassOptions({ productLearningType, selectedBoard, classes, productType, productCombination: productLearningType, isPrivilegedUser, authDetails, salesDetails, PreK3EligibleManagers, leadDetails, classType });
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:154:hardcoded variable:	    let grade = selectedTlpFinalGrade || selectedByjusClassFinalGrade;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:155:hardcoded string:	    const siblingStreamingGrades = ["4", "5", "6", "7", "8", "9", "10"];
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:159:hardcoded string:	            type: productLearningType && selectedBoard ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:160:hardcoded string:	            name: 'initialClass',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:161:hardcoded string:	            label: getInitialFinalGradeLabel(productLearningType, "Initial"),
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:165:hardcoded string:	            message: isTlpBocp ? "Please Select BYJU's CLASSES - Initial Grade" : "Please Select Initial Grade"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:167:hardcoded string:	            type: productLearningType && selectedBoard ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:168:hardcoded string:	            name: 'finalClass',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:169:hardcoded string:	            label: getInitialFinalGradeLabel(productLearningType, "Final"),
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:171:hardcoded object:	            options: getFinalClassOptions({ isPrivilegedUser, productLearningType, selectedBoard, isDevEnv, classes, selectedInitialClass, productType, classesConfig, selectedState }),
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:174:hardcoded string:	            message: isTlpBocp ? "Please Select BYJU's CLASSES - Final Grade" : "Please Select Final Grade"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:176:hardcoded string:	            type: (selectedBoard === "CBSE" && ["byjus_classes", "byjus_tlp"].includes(productCombination) && siblingStreamingGrades.includes(selectedInitialClass)) ? 'checkbox' : 'hidden',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:177:hardcoded string:	            name: 'isStreaming',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:178:hardcoded string:	            checkBoxLabel: "Streaming",
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:180:hardcoded object:	            onChange: (...params) => handleChanges(...params, {}, formNumber)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:182:hardcoded string:	            type: (isTlpBocp || isAdvancePlusTlp) ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:183:hardcoded string:	            name: getLabelAndValueField(productLearningType)["value"],
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:184:hardcoded string:	            label: getLabelAndValueField(productLearningType)["label"],
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:186:hardcoded array:	            options: (isTlpBocp || isAdvancePlusTlp) ? filterTLPFinalClass(classes, selectedInitialClass, selectedFinalClass, productLearningType, classesConfig) : [{}],
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:189:hardcoded string:	            message: "Please Select TLP Final Grade"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:193:hardcoded variable:	export const getStreamingFormFields = (details) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:194:hardcoded object:	    const { state, props, handleChanges, handleClassBlurEvent, getStreamingClassConfig } = details;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:195:hardcoded object:	    const { productConfig, initialClass: selectedInitialClass, finalClass: selectedFinalClass, byjusClassFinalGrade, classType } = state;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:197:hardcoded string:	    let productLearningType = get(state, "productLearningType", "");
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:199:hardcoded object:	    const { productType, user, productCombination, authDetails, salesDetails } = props;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:200:hardcoded object:	    const { env } = authDetails
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:201:hardcoded string:	    const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:202:hardcoded variable:	    const isPrivilegedUser = checkIsPrivilegedUser(user)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:204:hardcoded number:	    const { PreK3EligibleManagers = [] } = productConfig || {};
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:206:hardcoded variable:	    const classConfig = getStreamingClassConfig();
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:207:hardcoded string:	    const classes = getClasses(classConfig, user, '', productLearningType);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:208:hardcoded variable:	    const classesConfig = classConfig.classes;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:210:hardcoded string:	    if (!isPrivilegedUser && ((productCombination === "byjus_classes") || (productCombination === "byjus_tlp")) && !isEmpty(classes)) {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:211:hardcoded string:	        let indexOf11 = classes.findIndex(name => _.isEqual(name.label, "11"))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:212:hardcoded number:	        classes.splice(indexOf11, 1);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:213:hardcoded string:	        let indexOf12Plus = classes.findIndex(name => _.isEqual(name.label, "12+"))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:214:hardcoded number:	        classes.splice(indexOf12Plus, 1);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:217:hardcoded string:	    console.log('classes', classes, classesConfig)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:219:hardcoded variable:	    const mentoringClassMap = getMentoringClassMap(classesConfig);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:220:hardcoded variable:	    const oneToManyMentoringClassMap = getOneToManyMentoringClassMap(classesConfig);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:221:hardcoded variable:	    const byjusClassesMap = getByjusClassesMap(classesConfig);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:223:hardcoded variable:	    const isTlpBocp = ELIGIBLE_COMBINATIONS_FOR_TLP_PLUS_BYJUS_CLASSES.includes(productLearningType);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:224:hardcoded variable:	    const isAdvancePlusTlp = ELIGIBLE_COMBINATIONS_FOR_TLP_PLUS_BYJUS_CLASSES_PLUS_TLP.includes(productLearningType)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:226:hardcoded string:	    if (productCombination === "byjus_tlp") {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:232:hardcoded string:	            type: productLearningType ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:233:hardcoded string:	            name: 'initialClass',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:234:hardcoded string:	            label: getInitialFinalGradeLabel(productLearningType, "Initial"),
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:236:hardcoded number:	            options: productLearningType ? filterInitialClass({ classes, productType, productCombination: productLearningType, isPrivilegedUser, authDetails, salesDetails, PreK3EligibleManagers, classType }) : [{}],
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:238:hardcoded string:	            message: isTlpBocp ? 'Please Select Byjus Classes - Initial Grade' : "Please Select Initial Grade"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:240:hardcoded string:	            type: productLearningType ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:241:hardcoded string:	            name: 'finalClass',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:242:hardcoded string:	            label: getInitialFinalGradeLabel(productLearningType, "Final"),
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:244:hardcoded array:	            options: productLearningType ? getFinalClassOptions({ isPrivilegedUser, classes, selectedInitialClass, productType, isDevEnv, classesConfig, productLearningType }) : [{}],
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:247:hardcoded string:	            message: isTlpBocp ? 'Please Select Byjus Classes - Final Grade' : "Please Select Final Grade"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:249:hardcoded string:	            type: (isTlpBocp || isAdvancePlusTlp) ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:250:hardcoded string:	            name: getLabelAndValueField(productLearningType)["value"],
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:251:hardcoded string:	            label: getLabelAndValueField(productLearningType)["label"],
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:253:hardcoded array:	            options: (isTlpBocp || isAdvancePlusTlp) ? filterTLPFinalClass(classes, selectedInitialClass, selectedFinalClass, productLearningType, classesConfig, productType) : [{}],
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:255:hardcoded string:	            message: "Please Select TLP Final Grade"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:259:hardcoded variable:	export const getTodAndDocFields = (details) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:260:hardcoded object:	    const { props, formNumber, handleChanges, state } = details;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:261:hardcoded object:	    const { user, productCombination, authDetails, productType } = props;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:262:hardcoded object:	    const { initialClass: selectedInitialClass } = state
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:263:hardcoded object:	    const { env } = authDetails
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:264:hardcoded string:	    const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:265:hardcoded variable:	    const isPrivilegedUser = checkIsPrivilegedUser(user)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:266:hardcoded object:	    const selectedTod = get(state, `tod-${formNumber}`, true);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:267:hardcoded object:	    const selectedDoc = get(state, `doc-${formNumber}`, true);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:268:hardcoded object:	    const siblingInitialClass = get(state, `initialClass-${formNumber}`);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:269:hardcoded string:	    const todDocGrades = ["4", "5", "6", "7", "8", "9", "10"];
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:273:hardcoded string:	            type: (isPrivilegedUser && productCombination === 'byjus_tlp' && (todDocGrades.includes(selectedInitialClass) || todDocGrades.includes(siblingInitialClass))) ? "checkbox" : "hidden",
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:274:hardcoded string:	            name: "tod",
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:275:hardcoded string:	            label: "TOD",
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:276:hardcoded string:	            checked: productType === 'sibling' ? selectedTod : state.tod,
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:277:hardcoded string:	            onChange: productType === 'sibling' ? (...params) => handleChanges(...params, "", formNumber) : handleChanges,
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:279:hardcoded string:	                float: "left",
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:280:hardcoded string:	                margin: "0px 70px 0px 70px"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:283:hardcoded string:	            type: (isPrivilegedUser && productCombination === 'byjus_tlp' && (todDocGrades.includes(selectedInitialClass) || todDocGrades.includes(siblingInitialClass))) ? "checkbox" : "hidden",
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:284:hardcoded string:	            name: "doc",
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:285:hardcoded string:	            label: "DOC",
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:286:hardcoded string:	            checked: productType === 'sibling' ? selectedDoc : state.doc,
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:287:hardcoded string:	            onChange: productType === 'sibling' ? (...params) => handleChanges(...params, "", formNumber) : handleChanges,
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:289:hardcoded string:	                float: "left",
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:290:hardcoded string:	                margin: "0px 0px 0px 70px"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:295:hardcoded variable:	export const getInitialFinalGradeLabel = (productLearningType, text) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:296:hardcoded string:	    let label = '';
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:297:hardcoded string:	    if (productLearningType === "byjus_classes") {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:298:hardcoded object:	        label = `Select BYJU's CLASSES - ${text} Grade`
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:299:hardcoded string:	    } else if (productLearningType === "byjus_classes_plus_byjus_tlp") {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:300:hardcoded object:	        label = `Select BYJU's CLASSES - ${text} Grade`
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:302:hardcoded string:	    else if (productLearningType === 'advance_admission_plus_byjus_classes') {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:303:hardcoded string:	        if (text == 'Initial') {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:304:hardcoded object:	            label = `Select TLP - ${text} Grade`
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:307:hardcoded object:	            label = `Select BYJU's CLASSES - ${text} Grade`
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:309:hardcoded string:	    } else if (productLearningType = "byjus_aakash") {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:310:hardcoded object:	        label = `Select ${text} Grade`
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:312:hardcoded object:	        label = `Select TLP - ${text} Grade`
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:317:hardcoded variable:	export const getLabelAndValueField = (productLearningType) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:318:hardcoded object:	    let formmField = {}
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:320:hardcoded string:	    if (["byjus_classes_plus_byjus_tlp", "advance_admission_plus_byjus_classes"].includes(productLearningType)) {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:321:hardcoded string:	        formmField["label"] = 'Select TLP - Final Grade'
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:322:hardcoded string:	        formmField["value"] = "tlpFinalGrade"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:324:hardcoded string:	        formmField["label"] = "Select BYJU's CLASSES - Final Grade"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:325:hardcoded string:	        formmField["value"] = "byjusClassFinalGrade"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:330:hardcoded variable:	export const getCourseTypeFormFieldType = (productCombination) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:331:hardcoded string:	    let formField = { type: "hidden", required: false }
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:332:hardcoded string:	    if (productCombination.indexOf("byjus_classes") >= 0) {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:333:hardcoded string:	        formField["type"] = "text";
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:334:hardcoded string:	        formField["required"] = true
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:339:hardcoded object:	export const getProductLearningType = ({ productType, isPrivilegedUser, productCombination, props = {},isDevEnv=false }) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:340:hardcoded array:	    let productLearningType = [];
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:341:hardcoded variable:	    let availableProductLearningType = [
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:342:hardcoded string:	        { label: "BYJU's CLASSES", value: "byjus_classes" },        
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:343:hardcoded string:	        // { label: "Advance Admission + TLP", value: "advance_admission_plus_byjus_classes" }
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:346:hardcoded string:	        availableProductLearningType.push({ label: "BYJU's CLASSES+BTLP", value: "byjus_classes_plus_byjus_tlp" });
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:350:hardcoded string:	    // if (productType === "combo" || productType === "streaming") {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:352:hardcoded string:	    //         { label: "BTLP+BYJU's CLASSES(Advance Admission)", value: "byjus_tlp_plus_byjus_classes" },
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:353:hardcoded string:	    //         { label: "BTLP+BYJU's CLASSES(Jumpstart Admission)", value: "jumpstart_admission" }
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:356:hardcoded string:	    if (productType === "sibling") {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:358:hardcoded string:	            { label: "BYJU's-TLP", value: "byjus_tlp" },
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:359:hardcoded string:	            // { label: "BTLP+BYJU's CLASSES(Advance Admission)", value: "byjus_tlp_plus_byjus_classes" },
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:360:hardcoded string:	            // { label: "BTLP+BYJU's CLASSES(Jumpstart Admission)", value: "jumpstart_admission" }
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:363:hardcoded string:	    if (productCombination == "byjus_aakash") {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:364:hardcoded object:	        const { authDetails } = props;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:367:hardcoded string:	                { label: "Aakash Byju’s Live", value: "AAKASH_LIVE" },
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:368:hardcoded string:	                { label: "Byjus's Aakash SD Card", value: "AAKASH_SD_CARD" }
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:372:hardcoded string:	            { label: "Aakash Byju’s Live", value: "AAKASH_LIVE" }
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:375:hardcoded array:	        return [...availableProductLearningType, ...productLearningType];
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:380:hardcoded object:	export const getInitialGradeProductCategory = ({ productType, productCombination }) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:381:hardcoded array:	    let initialGradeProductCateory = [];
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:383:hardcoded string:	    if (productCombination == "byjus_aakash" && productType === "combo") {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:385:hardcoded string:	            { label: "Live Classes", value: "AAKASH_LIVE" },
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:386:hardcoded string:	            { label: "BYJU's-TLP", value: "byjus_tlp" }
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:389:hardcoded array:	    return [...initialGradeProductCateory];
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:393:hardcoded variable:	export const getInfoBlockForAdvanceCourses = (field) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:395:hardcoded string:	        case "board":
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:396:hardcoded string:	            return "Board is only available for Classes 4-10"
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:398:hardcoded string:	            return "";
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:402:hardcoded variable:	export const isProficiencyAndFotAvailable = (details) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:403:hardcoded object:	    const { initialClass, state, props, handleChanges, formNumber, productLearningType, type } = details;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:404:hardcoded object:	    const { classType, validity } = state
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:405:hardcoded object:	    let { authDetails, productCombination } = props
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:406:hardcoded object:	    const { env } = authDetails
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:407:hardcoded string:	    const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:408:hardcoded object:	    const isUpgradeToByjusClasses = get(state, `isUpgradeToByjusClasses-${formNumber}`)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:412:hardcoded object:	        selectedInitialClass = get(state, `initialClass-${formNumber}`)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:417:hardcoded string:	    if (type == 'tlpToByjusClassUpgrade' && !isUpgradeToByjusClasses) return false
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:419:hardcoded string:	    if (type === 'aakashNeoUpgrade' && ["8", "9", "10"].includes(initialClass)) return true
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:421:hardcoded string:	    if (['mini_learning_program', 'TRIAL_PACK'].includes(validity)) {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:424:hardcoded string:	        return ((["byjus_classes_plus_byjus_tlp", "byjus_classes"].includes(productCombination)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:425:hardcoded string:	            || ["renewal", "tlpToByjusClassUpgrade"].includes(type))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:426:hardcoded string:	            && classType == "neo" && ["4", "5", "6", "7", "8", "9", "10"].includes(selectedInitialClass)
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:432:hardcoded variable:	export const getBatchesEligibility = (state, formNo) => {
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:433:hardcoded string:	    let keys = ['isByjusClass', 'validity', "proficiency"]
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:434:hardcoded string:	    const schoolKeys = ['schoolAddress', 'newSchool']
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:435:hardcoded array:	    let validValues = []
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:436:hardcoded array:	    let validSchoolValues = []
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:437:hardcoded object:	    let {subCourse}=state;
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:439:hardcoded string:	        keys[0] = 'isByjusClasses';
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:440:hardcoded array:	        validValues = keys.filter(key => state[`${key}-${formNo}`] || !isEmpty(state[`${key}-${formNo}`]))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:441:hardcoded array:	        validSchoolValues = schoolKeys.filter(key => !isEmpty(state[`${key}-${formNo}`]))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:443:hardcoded array:	        validValues = keys.filter(key => state[`${key}`] || !isEmpty(state[`${key}`]))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:444:hardcoded array:	        validSchoolValues = schoolKeys.filter(key => !isEmpty(state[`${key}`]))
+microservices-middleware/client/src/modules/product/utils/ByjusClassesHelper.js:447:hardcoded string:	    if ((keys.length === validValues.length || (keys.length===validValues.length+1 && subCourse==="1:6")) && validSchoolValues.length >= 1) {
+microservices-middleware/client/src/modules/product/utils/productConstant.js:3:hardcoded number:	export const PRIVILEDGED_USERS_SIBLING_COUNT = 100;
+microservices-middleware/client/src/modules/product/utils/productConstant.js:5:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_TLP = ["single", "combo", "sibling", "streaming", "competitive"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:6:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_HLP = ["single", "combo", "sibling", "streaming", "competitive"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:7:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_BYJUS_CLASSES = ["single", "combo", "sibling", "streaming", "competitive", "crpCompetitive"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:8:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_ME_COUNTRIES = ["single", "combo", "sibling", "streaming"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:9:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_BYJUS_AAKASH = ["combo"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:10:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_HOME_TUITION = ["single"]
+microservices-middleware/client/src/modules/product/utils/productConstant.js:11:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_MATH_STREAMING = ["single"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:12:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_BFS = ["single", "combo"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:13:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_BDLC = ["single", "combo"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:14:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_BELP_MATH = ["single", "combo"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:15:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_BELP = ["single", "combo"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:16:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_AAKASH_NEO_LIVE = ["combo"]
+microservices-middleware/client/src/modules/product/utils/productConstant.js:17:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_BYJUS_EXAM_PREP = ["byjus_exam_prep_competitive"]
+microservices-middleware/client/src/modules/product/utils/productConstant.js:18:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_BYJUS_EXAM_PREP_MTS = ["bep_mts"]
+microservices-middleware/client/src/modules/product/utils/productConstant.js:19:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_EPIC_SAMPLER = ["single", "combo"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:20:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_DBEL_STREAMING = ["single", "combo", "sibling"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:21:hardcoded number:	export const BEP_MTS_ENABLE_EMI_AMOUNT = 12000
+microservices-middleware/client/src/modules/product/utils/productConstant.js:22:hardcoded string:	export const ELIGIBLE_BYJUS_MATH_TEAM_ACCOUNT = ["50476", 50476]
+microservices-middleware/client/src/modules/product/utils/productConstant.js:23:hardcoded string:	export const AAKASH_BCOP_PROGRAM_ID = 'ACOPKXSY0003'
+microservices-middleware/client/src/modules/product/utils/productConstant.js:24:hardcoded string:	export const ELIGIBLE_PRODUCTS_FOR_TABLET_MAPPING = ["byjus_aakash_neo"]
+microservices-middleware/client/src/modules/product/utils/productConstant.js:25:hardcoded variable:	export const productCombinationType = {
+microservices-middleware/client/src/modules/product/utils/productConstant.js:26:hardcoded string:	    byjusClasses: "byjus_classes",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:27:hardcoded string:	    byjusTlp: "byjus_tlp",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:28:hardcoded string:	    byjusHomeLearningProgram: "home_learning_program"
+microservices-middleware/client/src/modules/product/utils/productConstant.js:30:hardcoded string:	export const ELIGIBLE_COMBINATIONS_FOR_ONE_ON_ONE = ["byjus_tlp"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:31:hardcoded string:	export const ELIGIBLE_COMBINATIONS_FOR_ONE_TO_MANY = ["home_learning_program"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:32:hardcoded string:	export const ELIGIBLE_COMBINATIONS_FOR_BATCH = ["byjus_classes_plus_byjus_tlp", "byjus_classes", "byjus_tlp_plus_byjus_classes", "jumpstart_admission "];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:33:hardcoded string:	export const ELIGIBLE_COMBINATIONS_FOR_TLP_PLUS_BYJUS_CLASSES = ["byjus_classes_plus_byjus_tlp", "byjus_tlp_plus_byjus_classes", "jumpstart_admission"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:34:hardcoded string:	export const ELIGIBLE_COMBINATIONS_FOR_TLP_PLUS_BYJUS_CLASSES_PLUS_TLP = ["advance_admission_plus_byjus_classes"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:35:hardcoded string:	export const ELIGIBLE_COMBINATIONS_FOR_SIBLING_PRODUCT_TYPE_SELECTION = ["home_learning_program", "byjus_classes", "byjus_classes_plus_byjus_tlp"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:36:hardcoded string:	export const ELIGIBLE_COMBINATIONS_FOR_VOUCHERS = ["byjus_classes_plus_byjus_tlp", "byjus_classes"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:37:hardcoded string:	export const ELIGIBLE_COMBINATIONS_FOR_RENEWAL = ["byjus_tlp", "btlp", "tlp", "byjus_classes", "belp", "dbel_streaming" ];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:38:hardcoded string:	export const AAKASH_BYJUS_PRGM = ["byjus_aakash"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:39:hardcoded string:	export const UPLOAD_FILE_FORMATS = ["jpg", "jpeg", "png", "pdf"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:40:hardcoded string:	export const BEP_UGC_VALIDITY_OPTIONS = ["4 Months", "6 Months", "12 Months", "24 Months"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:41:hardcoded string:	export const PAPER2SUBJECT_ENG_HIN = ["commerce", "management", "education", "political_science", "geography", "history"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:42:hardcoded string:	export const PAPER2SUBJECT_ENG = ["economics", "computer", "english_lit", "sociology"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:43:hardcoded string:	export const PAPER2SUBJECT_HIN = ["hindi_lit"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:44:hardcoded string:	export const BYJUS_MATH_DEVICE = ["tablet"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:45:hardcoded string:	export const M8_TABLET_LIST = ["TL8MZ2", "TL8MZ1"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:46:hardcoded string:	export const D4_1_1_TABLET_LIST = ["SBXMGZ", "SCXMGJ"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:47:hardcoded string:	export const M8_TABLET = ["TL8MZ2"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:48:hardcoded string:	export const MOL_K3_GRADES = ["-1", "0", "1", "2", "3"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:49:hardcoded string:	export const MOL_K10_GRADES = ["4", "5", "6", "7", "8", "9", "10"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:50:hardcoded string:	export const MOL_K12_GRADES = ["11", "12"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:51:hardcoded string:	export const AAKASH_CRP_ORDER_PUNCHING_ALLOWED = ["jee_neet", "k_9"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:52:hardcoded string:	export const AAKASH_CRP_ORDER_PUNCHING_ALLOWED_VERTICALS = ["upgrades", "livechat_calling", "inbound_leads", "inbound_mlp_leads", "inbound_premium_leads", "inbound_facebook_leads"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:53:hardcoded string:	export const AAKASH_CRP_ORDER_PUNCHING_ALLOWED_K10ELIGIBLEGRADES_VERTICALS = ["inbound_leads", "livechat_calling"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:54:hardcoded string:	export const JEE_NEET_VERTICAL_ACCESS_ON_46867 = ["upgrades", "jee_neet_weekend_aakash", "qualified_lead_local"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:55:hardcoded string:	export const K9_VERTICAL_ACCESS_ON_46867 = ["inbound_leads"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:56:hardcoded string:	export const K9_VERTICAL_ACCESS_ON_24692 = ["upgrades", "aakash_foundation"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:57:hardcoded string:	export const LS_K10 = ["24692"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:58:hardcoded string:	export const K12_UNIT = ["jee_neet"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:59:hardcoded string:	export const K10_UNIT = ["k_9"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:60:hardcoded string:	export const K3_GRADES = ["-1", "0", "1", "2", "3"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:61:hardcoded string:	export const BELP_K3_GRADES = ["1", "2", "3", 1, 2, 3];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:62:hardcoded string:	export const K9_GRADES = ["4", "5", "6", "7", "8", "9"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:63:hardcoded string:	export const K10_GRADES = ["4", "5", "6", "7", "8", "9", "10"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:64:hardcoded string:	export const INSIDE_SALES_K9_GRADES = ["4", "5", "6", "7", "8", "9"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:65:hardcoded string:	export const FOUNDATION_GRADES = ["8", "9", "10"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:66:hardcoded string:	export const K12_GRADES = ["11", "12", "11+12", "13+"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:67:hardcoded string:	export const K10_STREAMING_GRADES = ['Streaming 4', 'Streaming 5', 'Streaming 6', 'Streaming 7', 'Streaming 8', 'Streaming 9', 'Streaming 10'];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:68:hardcoded string:	export const SIBLING_STREAMING_GRADES = ["4", "5", "6", "7", "8", "9", "10", "11", "12"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:69:hardcoded string:	//export const preKTabList = ['Lenovo 10 inch Tablet (Mobile Data) (Rs 13000)', "BYJU'S Learn Pad 10inch Wifi Tablet (Rs 15000)"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:71:hardcoded string:	export const preKTabList = ["Lenovo 10 inch Tablet Mobile Data (2GB/ 16GB) - (Rs 13000)"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:73:hardcoded string:	//export const K3TabList = ['Lenovo 10 inch Tablet (Mobile Data) (Rs 13000)', "BYJU'S Learn Pad 10inch Wifi Tablet (Rs 15000)",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:74:hardcoded string:	//  "BYJU'S Learn Station 10inch Wifi White Tablet (Rs 15000)"]
+microservices-middleware/client/src/modules/product/utils/productConstant.js:75:hardcoded variable:	export const DURATIONS={
+microservices-middleware/client/src/modules/product/utils/productConstant.js:76:hardcoded number:	    byjusTlp:3,
+microservices-middleware/client/src/modules/product/utils/productConstant.js:77:hardcoded number:	    byjusClasses:3
+microservices-middleware/client/src/modules/product/utils/productConstant.js:79:hardcoded number:	export const K3TabList = [
+microservices-middleware/client/src/modules/product/utils/productConstant.js:80:hardcoded string:	    //"Lenovo 10 inch Tablet Mobile Data (2GB/ 16GB) - (Rs 13000)", 
+microservices-middleware/client/src/modules/product/utils/productConstant.js:81:hardcoded string:	    //"Lenovo 10 inch Tablet Mobile Data (4GB/ 64GB) - (Rs 16000)"
+microservices-middleware/client/src/modules/product/utils/productConstant.js:84:hardcoded string:	export const D4_TABLET_LIST = ["SBXWWZ", "SBXMGZ", "SCXMGJ"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:86:hardcoded string:	export const isAdvanceAdmission = ["byjus_tlp_plus_byjus_classes", "jumpstart_admission"]
+microservices-middleware/client/src/modules/product/utils/productConstant.js:88:hardcoded string:	export const isMeCountry = ["uae", "UAE"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:90:hardcoded string:	export const D4EligibleLSAccounts = ["50476"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:92:hardcoded string:	export const BepMtsEligibleAccounts = ["24693"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:94:hardcoded string:	export const streamingProduct = ["streaming"]
+microservices-middleware/client/src/modules/product/utils/productConstant.js:96:hardcoded string:	export const deviceTypeEligibleGrades = ["4", "5", "6", "7", "8", "9", "10"]
+microservices-middleware/client/src/modules/product/utils/productConstant.js:98:hardcoded string:	export const MASKED_ELIGIBLE_VERTICAL_USERS = ["Outsourced BDLC", "Outsourced Monthly Trial"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:100:hardcoded string:	export const WB_ELIGIBLE_GRADES = ["4", "5", "6", "7", "8", "9", "10"]
+microservices-middleware/client/src/modules/product/utils/productConstant.js:102:hardcoded variable:	export const BOARD_ELIGIBLE_GRADES = [
+microservices-middleware/client/src/modules/product/utils/productConstant.js:103:hardcoded string:	    { board: "CBSE", date: new Date('2023, 3, 15'), grade: deviceTypeEligibleGrades },
+microservices-middleware/client/src/modules/product/utils/productConstant.js:104:hardcoded string:	    { board: "ICSE", date: new Date('2023, 3, 15'), grade: WB_ELIGIBLE_GRADES },
+microservices-middleware/client/src/modules/product/utils/productConstant.js:107:hardcoded variable:	export const ELIGIBLE_GRADES = [
+microservices-middleware/client/src/modules/product/utils/productConstant.js:108:hardcoded string:	    { states: "WestBengal", date: new Date('2022, 12, 14') },
+microservices-middleware/client/src/modules/product/utils/productConstant.js:109:hardcoded string:	    { states: "Punjab", date: new Date('2023, 3, 15') },
+microservices-middleware/client/src/modules/product/utils/productConstant.js:110:hardcoded string:	    { states: "TamilNadu", date: new Date('2023, 3, 29') },
+microservices-middleware/client/src/modules/product/utils/productConstant.js:111:hardcoded string:	    { states: "Kerala", date: new Date('2023, 3, 29') },
+microservices-middleware/client/src/modules/product/utils/productConstant.js:112:hardcoded string:	    { states: "Maharashtra", date: new Date('2023, 3, 29') },
+microservices-middleware/client/src/modules/product/utils/productConstant.js:113:hardcoded string:	    { states: "Gujarat", date: new Date('2023, 3, 29') },
+microservices-middleware/client/src/modules/product/utils/productConstant.js:114:hardcoded string:	    { states: "Telangana", date: new Date('2023, 3, 29') },
+microservices-middleware/client/src/modules/product/utils/productConstant.js:115:hardcoded string:	    { states: "AndhraPradesh", date: new Date('2023, 3, 29') },
+microservices-middleware/client/src/modules/product/utils/productConstant.js:116:hardcoded string:	    { states: "Karnataka", date: new Date('2023, 3, 29') }
+microservices-middleware/client/src/modules/product/utils/productConstant.js:119:hardcoded number:	export const allTabletsEligibleAccounts = [24692, 46867, 24693, 5989]
+microservices-middleware/client/src/modules/product/utils/productConstant.js:121:hardcoded variable:	export const ELIGIBLE_BOCP_SUBSCRIPTION_MANAGERS = [
+microservices-middleware/client/src/modules/product/utils/productConstant.js:122:hardcoded string:	    "narasimhan.sl@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:123:hardcoded string:	    "abhishek.jain@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:124:hardcoded string:	    "shubham.jain2@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:125:hardcoded string:	    "vignesh.v1@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:126:hardcoded string:	    "zeeshanali.khan@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:127:hardcoded string:	    "sai.srinivas@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:128:hardcoded string:	    "raunaq.singh@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:129:hardcoded string:	    "abhishek.sharma6@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:130:hardcoded string:	    "priyadarshan.bhatt@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:131:hardcoded string:	    "anand.ankit@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:132:hardcoded string:	    "syed.sirajudeen@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:133:hardcoded string:	    "anshul.joshi@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:134:hardcoded string:	    "kumar.sanket@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:135:hardcoded string:	    "priyanka.sharma1@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:136:hardcoded string:	    "vishal.singh5@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:137:hardcoded string:	    "mani.vannan@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:138:hardcoded string:	    "ayyaz.shaikh@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:139:hardcoded string:	    "himanshu.nishchal@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:140:hardcoded string:	    "abhishek.kumar14@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:141:hardcoded string:	    "abhishek.gupta6@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:142:hardcoded string:	    "dhruv.gautam1@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:143:hardcoded string:	    "akilesh.i@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:144:hardcoded string:	    "gulshan.kumar@byjus.com",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:145:hardcoded string:	    "qubaib.rashad@byjus.com"
+microservices-middleware/client/src/modules/product/utils/productConstant.js:148:hardcoded variable:	export const ELIGIBLE_MANAGERS_CONFIGS = [
+microservices-middleware/client/src/modules/product/utils/productConstant.js:149:hardcoded string:	    "BEP_MANAGER_ELIGIBLE_LIST",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:150:hardcoded string:	    "BYJU'S_MATH_ELIGIBLE_LIST",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:151:hardcoded string:	    "BLC_MANAGER_ELIGIBLE_LIST",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:152:hardcoded string:	    "ELIGIBLE_D4_BYJUS_MATH_MANAGERS",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:153:hardcoded string:	    "BYJUS_MATH_NATIVE_BDA_LIST"
+microservices-middleware/client/src/modules/product/utils/productConstant.js:156:hardcoded variable:	export const ELIGIBLE_UPGRADE_LIST = [
+microservices-middleware/client/src/modules/product/utils/productConstant.js:157:hardcoded string:	    "RENEWAL", // BTLP and BYJUS_CLASSES renewal during the last year of subscription
+microservices-middleware/client/src/modules/product/utils/productConstant.js:158:hardcoded string:	    "RENEWAL_ORDER",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:159:hardcoded string:	    "TRIAL_PACK_TO_BYJUS_CLASSES",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:160:hardcoded string:	    "TLP_TO_BYJUS_MATH_ORDER",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:161:hardcoded string:	    "TLP_TO_HLP_ORDER",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:162:hardcoded string:	    "TLP_TO_BLC_ORDER",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:163:hardcoded string:	    "AAKASH_LIVE_UPGRADE",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:164:hardcoded string:	    "AAKASH_NEO_UPGRADE",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:165:hardcoded string:	    "BYJUS_CLASSES_TO_BLC_ORDER",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:166:hardcoded string:	    "AAKASH_CRP_HYBRID_UPGRADE",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:167:hardcoded string:	    "AAKASH_NEO_ME_UPGRADE",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:168:hardcoded string:	    "AAKASH_TEST_SERIES_UPGRADE",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:169:hardcoded string:	    "AAKASH_NEO_LIVE_CLASSES_UPGRADE",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:170:hardcoded string:	    "GATE_ESE_EXTENSION",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:171:hardcoded string:	    "GATE_EXTENSION",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:172:hardcoded string:	    "GATE_UPGRADE"
+microservices-middleware/client/src/modules/product/utils/productConstant.js:175:hardcoded variable:	export const UPGRADE_ORDER_PUNCHING_TYPE = [
+microservices-middleware/client/src/modules/product/utils/productConstant.js:177:hardcoded string:	    "MIDDLEEAST_ORDER",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:178:hardcoded string:	    "AAKASH_CRP_ORDER",
+microservices-middleware/client/src/modules/product/utils/productConstant.js:181:hardcoded string:	export const CSIR_NET_SUBJECT_ENG_HIN = ["chemical_science", "life_science"]
+microservices-middleware/client/src/modules/product/utils/productConstant.js:183:hardcoded string:	export const VERTICAL_SPECFIC_ACCESS_TEAMS = ['Upgrades', 'Livechat Calling', 'Inbound Leads', 'Inbound MLP Leads', 'Inbound Premium Leads', 'Inbound Facebook Leads']
+microservices-middleware/client/src/modules/product/utils/productConstant.js:184:hardcoded string:	export const VERTICAL_SPECFIC_ACCESS_PRODUCTS = ['byjus_learning_centre', 'byjus_tlp', 'byjus_classes', 'byjus_aakash', 'byjus_aakash_neo', 'byjus_math']
+microservices-middleware/client/src/modules/product/utils/productConstant.js:185:hardcoded string:	export const VERTICAL_ACCESS_TEAM_FOR_WITHOUT_TABLET = ['Upgrades']
+microservices-middleware/client/src/modules/product/utils/productConstant.js:186:hardcoded string:	export const GANESH_CHATURTHI_DISCOUNT_TEAMS = ["arunesh.kumar@byjus.com", "pranav.jajodia@byjus.com"];
+microservices-middleware/client/src/modules/product/utils/productConstant.js:188:hardcoded string:	export const IS_UPGRADE_VERTICAL = (vertical) => snakeCase(vertical)?.includes("upgrade");
+microservices-middleware/client/src/modules/product/utils/productConstant.js:189:hardcoded number:	export const BLC_RENEWAL_YR = 2024;
+microservices-middleware/client/src/modules/product/utils/productConstant.js:204:hardcoded number:	    AAKASH_CRP_ORDER_PUNCHING_ALLOWED_K10ELIGIBLEGRADES_VERTICALS,
+microservices-middleware/client/src/modules/product/utils/productConstant.js:207:hardcoded number:	    K3TabList,
+microservices-middleware/client/src/modules/product/utils/productConstant.js:208:hardcoded number:	    D4_TABLET_LIST,
+microservices-middleware/client/src/modules/product/utils/productConstant.js:211:hardcoded number:	    D4EligibleLSAccounts,
+microservices-middleware/client/src/modules/product/utils/productConstant.js:223:hardcoded number:	    LS_K10,
+microservices-middleware/client/src/modules/product/utils/blcConstants.js:1:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_BYJUS_LEARNING_CENTRE = ["single", "combo", "sibling"];
+microservices-middleware/client/src/modules/product/utils/blcConstants.js:7:hardcoded number:	export const PRIVILEDGED_USERS_SIBLING_COUNT = 100;
+microservices-middleware/client/src/modules/product/utils/blcConstants.js:8:hardcoded number:	export const BLC_DISABLED_YR = 2022;microservices-middleware/client/src/modules/product/utils/AdvanceOrderPunchingConstant.js:3:hardcoded string:	 export const START_DATE = moment("2021-10-01",'YYYY-MM-DD');
+microservices-middleware/client/src/modules/product/utils/AdvanceOrderPunchingConstant.js:4:hardcoded string:	 export const CURRENT_DATE = moment().format('YYYY-MM-DD');
+microservices-middleware/client/src/modules/product/utils/AdvanceOrderPunchingConstant.js:5:hardcoded string:	 export const END_DATE = moment("2022-10-18", 'YYYY-MM-DD');
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:1:hardcoded variable:	export const getBooksOptedValue = (details) => {
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:2:hardcoded string:	    const { productDetails = {} , isDevEnv = '' } = details
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:3:hardcoded object:	    const { students = {} } = productDetails;
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:4:hardcoded string:	    const { validity = '', productSelectionType } = students[0];
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:5:hardcoded object:	    const isBooksOpted = window.isDevEnv ? checkBooksOptedValue({validity, productSelectionType}) :
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:6:hardcoded string:	    !["quarterly_pack","mini_learning_program","TRIAL_PACK", "1_month_pack"].includes(validity) || 
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:7:hardcoded string:	    !['doubts_on_chat', 'btlp_tod'].includes(productSelectionType) ? true : false
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:11:hardcoded variable:	export const getBooksOptedDisabledValue = (productDetails) => {
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:12:hardcoded array:	    const { students = [] } = productDetails;
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:13:hardcoded string:	    const { validity = '', productSelectionType } = students[0];
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:14:hardcoded object:	    const isBooksOptedDisabled = window.isDevEnv ? !checkBooksOptedValue({validity, productSelectionType}) :
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:15:hardcoded string:	    ['quarterly_pack','mini_learning_program','TRIAL_PACK', '1_month_pack'].includes(validity) || 
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:16:hardcoded string:	    ['doubts_on_chat', 'btlp_tod'].includes(productSelectionType) ? true : false;
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:20:hardcoded variable:	export const checkBooksOptedValue = (details) => {
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:21:hardcoded object:	    const { validity, productSelectionType } = details;
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:22:hardcoded string:	    const restrictedValidities = ['quarterly_pack','mini_learning_program','TRIAL_PACK', '1_month_pack'];
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:23:hardcoded string:	    const restrictedProductSelectionTypes = ['doubts_on_chat', 'btlp_tod', 'math_streaming','byjus_math_upgrade', 'neo_lite_value_product'];
+microservices-middleware/client/src/modules/product/utils/booksUtil.js:24:hardcoded variable:	    let value = true;

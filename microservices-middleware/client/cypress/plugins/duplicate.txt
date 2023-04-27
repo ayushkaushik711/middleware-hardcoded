@@ -1,2 +1,0 @@
-microservices-middleware/client/cypress/plugins/index.js:5:hardcoded string:// the plugins file with the 'pluginsFile' configuration option.
-microservices-middleware/client/cypress/plugins/index.js:8:hardcoded URL:// https://on.cypress.io/plugins-guide

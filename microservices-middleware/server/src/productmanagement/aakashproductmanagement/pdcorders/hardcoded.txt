@@ -1,0 +1,25 @@
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:4:hardcoded string:	const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:5:hardcoded string:	const { CrpOrder } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:7:hardcoded object:	const updateCrpDo = async ({ quotationId, draftOrderId, category }) => {
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:9:hardcoded string:	        const baseOrderId = draftOrderId.split('-') || [];
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:15:hardcoded string:	                status: "order_created",
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:16:hardcoded string:	                childStatus: "order_created",
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:17:hardcoded number:	                orderId: `CRP-${baseOrderId[1]}`
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:19:hardcoded object:	        }, { multi: true })
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:22:hardcoded string:	        logger.error({ method: "updateOrderPunchingCategory", error });
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:27:hardcoded variable:	const updateOrderPunchingCategory = async (quotationId, category) => {
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:36:hardcoded object:	        }, { multi: true })
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:39:hardcoded string:	        logger.error({ method: "updateOrderPunchingCategory", error });
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:44:hardcoded variable:	const createCrpOrder = async (doId) => {
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:46:hardcoded string:	        let doDetails = await DraftOrder.findOne({ "draftOrderId": doId }).lean();
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:47:hardcoded object:	        let { draftOrderId, salesDetails, customerDetails, productDetails } = doDetails;
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:48:hardcoded number:	        let prodDet = productDetails.students[0].formValues || {};
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:49:hardcoded string:	        let splitValues = split(draftOrderId, "-");
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:50:hardcoded string:	        let crpDo = "CRP-" + splitValues[1];
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:51:hardcoded variable:	        let crpDet = await CrpOrder.findOne({
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:59:hardcoded string:	                status: "order_created",
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:71:hardcoded string:	                orgId: "aakash",
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:74:hardcoded string:	                orderPunchingCategory: "aakash_crp_pdc",
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:75:hardcoded string:	                orderPunchingType: "aakash_crp_order",
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:76:hardcoded string:	                createdBy: "kart",
+microservices-middleware/server/src/productmanagement/aakashproductmanagement/pdcorders/dto.js:82:hardcoded string:	        logger.error({ method: "createCrpOrder", error });

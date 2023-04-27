@@ -1,0 +1,84 @@
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:3:hardcoded string:	const { TabletProgramMapping, SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:5:hardcoded variable:	const getProgramTablets = async (req, res) => {
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:6:hardcoded object:	    const { tabletProgramId } = req.body;
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:7:hardcoded array:	    const tabletSkuIds = [];
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:10:hardcoded variable:	        const tabletIdList = await TabletProgramMapping.findAll({
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:11:hardcoded string:	            attributes: ['tabletId'],
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:14:hardcoded string:	                    status: 'enabled'
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:25:hardcoded variable:	        const tabletsList = await SalesSkuMaster.findAll({
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:26:hardcoded string:	            attributes: ['skuName','skuId'],
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:29:hardcoded string:	                    status: 'active'
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:35:hardcoded object:	            tablets=tabletsList.map(tablet=>{return {value:tablet.skuId,label:tablet.skuName}})
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:38:hardcoded number:	        return res.status(200).json({ tablets:tablets });
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:40:hardcoded string:	        logger.error({ method: 'getTabletsConfig', error });
+microservices-middleware/server/src/configmanagement/tabletConfigController.js:41:hardcoded string:	        return res.status(500).json({ message: error.message || "Unable to Fetch Tablets. Please try again later" });
+microservices-middleware/server/src/configmanagement/configController.js:3:hardcoded string:	const { DraftOrder, OrderPunchingConfig } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/configmanagement/configController.js:4:hardcoded string:	const { AakashBranch } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/configmanagement/configController.js:13:hardcoded variable:	const getProductConfig = async (req, res) => {
+microservices-middleware/server/src/configmanagement/configController.js:15:hardcoded object:	        const { identifier } = req.body;
+microservices-middleware/server/src/configmanagement/configController.js:27:hardcoded string:	        const productConfig = await ByjusConfig.findOne({ formattedAppName: "MIDDLEWARE", formattedModuleName: "ORDER_PUNCHING_PRODUCT_CONFIG" }).lean();
+microservices-middleware/server/src/configmanagement/configController.js:28:hardcoded object:	        let { configs } = productConfig;
+microservices-middleware/server/src/configmanagement/configController.js:29:hardcoded string:	        configs = configs.filter(ele => ele.type === "productConfig");
+microservices-middleware/server/src/configmanagement/configController.js:30:hardcoded number:	        return res.json(configs[0]);
+microservices-middleware/server/src/configmanagement/configController.js:32:hardcoded string:	        logger.error({ method: 'getProductConfig', error });
+microservices-middleware/server/src/configmanagement/configController.js:33:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/configmanagement/configController.js:37:hardcoded variable:	const getPaymentConfig = async (req, res) => {
+microservices-middleware/server/src/configmanagement/configController.js:39:hardcoded object:	        const { identifier } = req.body;
+microservices-middleware/server/src/configmanagement/configController.js:40:hardcoded string:	        const userPermissions = get(req, "user.permissions", []);
+microservices-middleware/server/src/configmanagement/configController.js:41:hardcoded string:	        const userCampaign = get(req, "user.campaign", "");
+microservices-middleware/server/src/configmanagement/configController.js:46:hardcoded string:	            draftOrder = await DraftOrder.findById(identifier).select("cashbackDetails productDetails.students").lean();
+microservices-middleware/server/src/configmanagement/configController.js:53:hardcoded variable:	        const paymentConfig = await getPaymentConfigHelper(draftOrder, userPermissions, userCampaign);
+microservices-middleware/server/src/configmanagement/configController.js:56:hardcoded string:	        logger.error({ method: 'getPaymentConfig', error });
+microservices-middleware/server/src/configmanagement/configController.js:57:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/configmanagement/configController.js:61:hardcoded variable:	const getRepunchConfig = async (req, res) => {
+microservices-middleware/server/src/configmanagement/configController.js:63:hardcoded object:	        const { identifier } = req.body;
+microservices-middleware/server/src/configmanagement/configController.js:75:hardcoded string:	        const repunchConfig = await ByjusConfig.findOne({ formattedAppName: "MIDDLEWARE", formattedModuleName: "REPUNCH_ORDER" }).select("configs").lean();
+microservices-middleware/server/src/configmanagement/configController.js:76:hardcoded string:	        let config = get(repunchConfig, "configs", []);
+microservices-middleware/server/src/configmanagement/configController.js:77:hardcoded number:	        return res.json({ config: config.configs[0].applicableRepunchReasons });
+microservices-middleware/server/src/configmanagement/configController.js:79:hardcoded string:	        logger.error({ method: 'getPaymentConfig', error });
+microservices-middleware/server/src/configmanagement/configController.js:80:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/configmanagement/configController.js:84:hardcoded variable:	const getCRPBranchesConfig = async (req, res) => {
+microservices-middleware/server/src/configmanagement/configController.js:86:hardcoded object:	        const { identifier } = req.body;
+microservices-middleware/server/src/configmanagement/configController.js:98:hardcoded variable:	        const crpBranchesConfig = await AakashBranch.findAll({
+microservices-middleware/server/src/configmanagement/configController.js:99:hardcoded string:	            attributes: ['state', 'city', 'branch'],
+microservices-middleware/server/src/configmanagement/configController.js:101:hardcoded string:	                status: 'active'
+microservices-middleware/server/src/configmanagement/configController.js:104:hardcoded string:	                ['state', 'ASC'],
+microservices-middleware/server/src/configmanagement/configController.js:105:hardcoded string:	                ['city', 'ASC'],
+microservices-middleware/server/src/configmanagement/configController.js:106:hardcoded string:	                ['branch', 'ASC']
+microservices-middleware/server/src/configmanagement/configController.js:109:hardcoded object:	        return res.json({ branches: crpBranchesConfig });
+microservices-middleware/server/src/configmanagement/configController.js:111:hardcoded string:	        logger.error({ method: 'getCRPBranchesConfig', error });
+microservices-middleware/server/src/configmanagement/configController.js:112:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/configmanagement/configController.js:116:hardcoded variable:	const getEligibleTeamManagers = async (req, res) => {
+microservices-middleware/server/src/configmanagement/configController.js:118:hardcoded array:	        const { eligibleLists = [] } = req.body
+microservices-middleware/server/src/configmanagement/configController.js:119:hardcoded object:	        let eligibleManagerList = {}
+microservices-middleware/server/src/configmanagement/configController.js:120:hardcoded object:	        const featureLaunchConfigs = await OrderPunchingConfig.find({ formattedModuleName: { $in: eligibleLists } }).lean()
+microservices-middleware/server/src/configmanagement/configController.js:122:hardcoded object:	            const { formattedModuleName, configs } = item
+microservices-middleware/server/src/configmanagement/configController.js:123:hardcoded array:	            eligibleManagerList[formattedModuleName] = configs
+microservices-middleware/server/src/configmanagement/configController.js:125:hardcoded object:	        return res.json({ eligibleManagerList })
+microservices-middleware/server/src/configmanagement/configController.js:127:hardcoded string:	        logger.error({ method: 'getEligibleBfsManagers', error })
+microservices-middleware/server/src/configmanagement/configController.js:128:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" })
+microservices-middleware/server/src/configmanagement/configController.js:132:hardcoded variable:	const getCohortId = async (grade, board) => {
+microservices-middleware/server/src/configmanagement/configController.js:134:hardcoded string:	        const { configs } = await OrderPunchingConfig.findOne({ formattedModuleName: "COHORT_ID_CONFIG" })
+microservices-middleware/server/src/configmanagement/configController.js:135:hardcoded object:	        const { cohortIds } = configs || {}
+microservices-middleware/server/src/configmanagement/configController.js:136:hardcoded object:	        const { cohort_id } = find(cohortIds, { grade: grade, board: board }) || {};
+microservices-middleware/server/src/configmanagement/configController.js:139:hardcoded string:	        logger.error({ method: 'getCohortId', error })
+microservices-middleware/server/src/configmanagement/configController.js:140:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" })
+microservices-middleware/server/src/configmanagement/configController.js:144:hardcoded variable:	const getEnumOptions = async (req, res) => {
+microservices-middleware/server/src/configmanagement/configController.js:145:hardcoded object:	    const { enumId } = req.params;
+microservices-middleware/server/src/configmanagement/configController.js:146:hardcoded string:	    if (!enumId) throw new Error('enumId is missing');
+microservices-middleware/server/src/configmanagement/configController.js:149:hardcoded variable:	        const config = await externalApiUtility.getEnumConfiguration(enumId);
+microservices-middleware/server/src/configmanagement/configController.js:154:hardcoded array:	            enums: [],
+microservices-middleware/server/src/configmanagement/configController.js:155:hardcoded object:	            error: `enum config  ${enumId} is not found`
+microservices-middleware/server/src/configmanagement/configController.js:160:hardcoded variable:	const getRcnBadgeDetails = async(req,res) => {
+microservices-middleware/server/src/configmanagement/configController.js:162:hardcoded object:	        const {userEmail} = req.body;
+microservices-middleware/server/src/configmanagement/configController.js:163:hardcoded object:	        const {result} = await callSosToGetRcnBadgeDetails({email:userEmail});
+microservices-middleware/server/src/configmanagement/configRoutes.js:5:hardcoded object:	const router = Router({ mergeParams: true });
+microservices-middleware/server/src/configmanagement/configRoutes.js:9:hardcoded string:	    const baseRoute = '/config';
+microservices-middleware/server/src/configmanagement/configRoutes.js:11:hardcoded object:	    router.route(`${baseRoute}/getEligibleTeamManagers`)
+microservices-middleware/server/src/configmanagement/configRoutes.js:17:hardcoded object:	    router.route(`${baseRoute}/getProductConfig`)
+microservices-middleware/server/src/configmanagement/configRoutes.js:23:hardcoded object:	    router.route(`${baseRoute}/getPaymentConfig`)
+microservices-middleware/server/src/configmanagement/configRoutes.js:29:hardcoded object:	    router.route(`${baseRoute}/getRepunchConfig`)
+microservices-middleware/server/src/configmanagement/configRoutes.js:35:hardcoded object:	    router.route(`${baseRoute}/getCRPBranchesConfig`)
+microservices-middleware/server/src/configmanagement/configRoutes.js:40:hardcoded object:	    router.route(`${baseRoute}/getEnumOptions/:enumId`)
+microservices-middleware/server/src/configmanagement/configRoutes.js:45:hardcoded object:	    router.route(`${baseRoute}/getProgramTablets`)
+microservices-middleware/server/src/configmanagement/configRoutes.js:51:hardcoded object:	    router.route(`${baseRoute}/getRcnConfig`)

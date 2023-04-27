@@ -1,0 +1,2 @@
+microservices-middleware/client/src/modules/product/components/assembler/mlpSession.js:1:hardcoded variable:	export const getMlpSessions = () => {
+microservices-middleware/client/src/modules/product/components/assembler/mlpSession.js:2:hardcoded string:	    const sessionList = [{label: '1', value: '1'},{label: '2', value: '2'},{label: '3', value: '3'}]

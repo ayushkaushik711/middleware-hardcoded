@@ -1,0 +1,184 @@
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:18:hardcoded variable:	const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:19:hardcoded string:	    omsConfig: get(state, 'auth.details.omsConfig'),
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:20:hardcoded string:	    authDetails: get(state, 'auth.details'),
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:21:hardcoded string:	    tlpOrderData: get(state, 'auth.tlpOrderData'),
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:22:hardcoded string:	    orderPunchingType: get(state, 'auth.orderPunchingType'),
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:23:hardcoded string:	    leadDetails: get(state, 'auth.leadDetails', {}),
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:24:hardcoded string:	    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:25:hardcoded string:	    addressDetails: get(state, 'address.details', {}),
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:26:hardcoded string:	    attachments: get(state, 'address.attachments'),
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:27:hardcoded string:	    loading: get(state, 'address.loading'),
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:28:hardcoded string:	    error: get(state, 'address.error')
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:31:hardcoded variable:	const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:42:hardcoded string:	            zipcode: "",
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:43:hardcoded object:	            updatedFieldValue: {}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:48:hardcoded object:	        const { country } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:49:hardcoded array:	        let rule = []
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:51:hardcoded string:	        if (country != 'India') {
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:53:hardcoded number:	                pattern: new RegExp(/^[a-zA-Z1-9][a-zA-Z0-9]*$/), message: `Not a valid Zipcode`
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:57:hardcoded number:	                pattern: new RegExp(/^[1-9][0-9]{5}$/), message: `Not a valid Zipcode`
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:64:hardcoded variable:	        let rule = [{
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:65:hardcoded number:	            pattern: new RegExp(/^[a-zA-Z0-9! :&()\-`.+,/\"]*$/), message: `Invalid Address.Only hyphen(-),colon(:),slash(\),comma(,) are allowed as a special Character`
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:69:hardcoded string:	                type: "string",
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:70:hardcoded string:	                "max": 30,
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:72:hardcoded string:	                    return value ? value.trim() : '';
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:80:hardcoded object:	        const { updatedFieldValue, zipcode } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:81:hardcoded string:	        updatedFieldValue["zipcode"] = zipcode;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:82:hardcoded object:	        this.setState({ updatedFieldValue });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:83:hardcoded object:	        const { identifier } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:84:hardcoded object:	        this.setState({ loading: true, error: null });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:85:hardcoded variable:	        const payload = {
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:90:hardcoded string:	            url: '/api/address/getPincodeInfo',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:91:hardcoded string:	            method: 'POST',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:94:hardcoded string:	            const data = get(response, 'data');
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:95:hardcoded string:	            let { city = "", state = "" } = data;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:97:hardcoded string:	            updatedFieldValue["city"] = city || ""
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:99:hardcoded string:	            state = state && stateList.find(ele => ele.label.includes(state) || ele.label.split(" ")[0].includes(state.split(" ")[0]));
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:101:hardcoded string:	            updatedFieldValue["state"] = state.value || undefined;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:103:hardcoded object:	            this.setState({ loading: false, updatedFieldValue });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:105:hardcoded object:	            this.setState({ loading: false });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:106:hardcoded object:	            // this.setState({ error }, () => {
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:107:hardcoded object:	            //     this.setState({ loading: false });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:113:hardcoded object:	        const {authDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:114:hardcoded object:	        const { user } = authDetails || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:115:hardcoded variable:	        const isPrivilegedUser = checkIsPrivilegedUser(user)
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:116:hardcoded string:	        if(!isPrivilegedUser && orderPunchingType=="AAKASH_NEO_UPGRADE"){
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:123:hardcoded object:	        const { country, updatedFieldValue } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:124:hardcoded string:	        const { state = "", city = ""} = updatedFieldValue;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:125:hardcoded string:	        const { orderPunchingType = "", authDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:126:hardcoded object:	        const { env } = authDetails;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:128:hardcoded array:	        const cityList = [];
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:130:hardcoded string:	        if(['local', 'development'].includes(env) &&  typeof city !== "string") {
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:132:hardcoded object:	                cityList.push({label: res, value: res})
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:136:hardcoded variable:	        const fields = [{
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:137:hardcoded string:	            type: 'text',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:138:hardcoded string:	            name: 'addressLine1',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:139:hardcoded string:	            label: 'Address 1(Apartment or House Number/Building Name)',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:140:hardcoded string:	            placeholder: 'Address 1(Apartment or House Number/Building Name)',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:147:hardcoded string:	            type: 'text',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:148:hardcoded string:	            name: 'addressLine2',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:149:hardcoded string:	            label: 'Address 2(Street Name/locality)',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:150:hardcoded string:	            placeholder: 'Address 2(Street Name/locality)',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:157:hardcoded string:	            type: 'textarea',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:158:hardcoded string:	            name: 'addressLine3',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:159:hardcoded string:	            label: 'Address 3(PO/Area Number/Landmark)',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:160:hardcoded string:	            placeholder: 'Address 3(PO/Area Number/Landmark)',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:166:hardcoded string:	            type: 'select',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:167:hardcoded string:	            name: 'country',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:168:hardcoded string:	            label: 'Country',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:170:hardcoded string:	            value: "India",
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:171:hardcoded string:	            placeholder: 'Select Country',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:176:hardcoded string:	            type: country === "India" ? 'number' : 'text',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:177:hardcoded string:	            name: 'zipcode',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:178:hardcoded string:	            label: 'Zip Code',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:179:hardcoded string:	            placeholder: 'Enter Zip Code',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:180:hardcoded string:	            required: country === "India" ? true : false,
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:186:hardcoded string:	            type: country === "India" ? 'select' : 'text',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:187:hardcoded string:	            name: 'state',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:188:hardcoded string:	            label: 'State',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:190:hardcoded string:	            placeholder: country === "India" ? 'Select State' : 'Enter State',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:192:hardcoded string:	            disabled: this.isDisabled(orderPunchingType) || ((state) && country === "India" ? true : false)
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:194:hardcoded string:	            type: cityList.length > 1 ? 'select' : 'text',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:195:hardcoded string:	            name: 'city',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:196:hardcoded string:	            label: 'City',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:197:hardcoded string:	            placeholder: 'Enter City',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:199:hardcoded string:	            disabled: ['local', 'development'].includes(env) && (city !== "" && typeof city === 'string') ? true : false,
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:202:hardcoded array:	                pattern: new RegExp(/^[a-zA-Z\s\.]+$/), message: `Enter valid city`
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:205:hardcoded string:	            type: ['development', 'local'].includes(env) ? 'hidden' : 'checkbox',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:206:hardcoded string:	            name: 'isDirectSales',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:207:hardcoded string:	            checkBoxLabel: 'This is a Direct Sale',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:216:hardcoded object:	        const { updatedFieldValue } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:218:hardcoded array:	        updatedFieldValue[name] = value;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:220:hardcoded object:	        this.setState({ updatedFieldValue })
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:224:hardcoded object:	        const { updatedFieldValue } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:225:hardcoded array:	        updatedFieldValue[name] = value;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:226:hardcoded string:	        updatedFieldValue["city"] = "";
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:227:hardcoded string:	        updatedFieldValue["state"] = undefined;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:228:hardcoded string:	        updatedFieldValue["zipcode"] = "";
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:231:hardcoded array:	            [name]: value,
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:237:hardcoded array:	        this.setState({ [name]: value });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:241:hardcoded array:	        this.setState({ [name]: checked });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:245:hardcoded object:	        const { identifier, omsConfig } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:246:hardcoded object:	        this.setState({ loading: true, error: null });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:249:hardcoded string:	                url: '/api/address/saveAddressDetails',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:250:hardcoded string:	                method: 'POST',
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:259:hardcoded string:	                const data = get(response, 'data');
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:261:hardcoded object:	                this.setState({ loading: false });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:262:hardcoded string:	                this.navigateToScreen('/payment');
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:264:hardcoded object:	                this.setState({ error }, () => {
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:265:hardcoded object:	                    this.setState({ loading: false, error: JSON.stringify(error) });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:272:hardcoded object:	        const { history } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:273:hardcoded string:	        const url = `${path}${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:278:hardcoded string:	        this.navigateToScreen('/product');
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:282:hardcoded object:	        const { isDirectSales, addressDetails } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:284:hardcoded object:	        this.setState({ error: null, applicationFormError: null });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:285:hardcoded variable:	        const updatedAddressDetails = await this.addressForm.getFormValues();
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:289:hardcoded string:	            const { addressLine1 = "", addressLine2 = "", addressLine3 = "" } = updatedAddressDetails;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:290:hardcoded string:	            let address = '';
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:291:hardcoded string:	            address = !isEmpty(updatedAddressDetails["addressLine3"]) ? `${addressLine1}, ${addressLine2}, ${addressLine3}` : `${addressLine1}, ${addressLine2}`;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:292:hardcoded string:	            updatedAddressDetails["address"] = address;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:293:hardcoded array:	            attachments = isDirectSales ? this.getAttachments() : [];
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:297:hardcoded variable:	            const isAddressModified = !isEqual(addressDetails, updatedAddressDetails);
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:303:hardcoded object:	        const { applicationFrontSide, applicationBackSide } = this.refs;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:305:hardcoded variable:	        const frontSideFormValues = applicationFrontSide && applicationFrontSide.getUploadedFiles();
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:306:hardcoded variable:	        const backSideFormValues = applicationBackSide && applicationBackSide.getUploadedFiles();
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:309:hardcoded variable:	            const attachments = concat(frontSideFormValues, backSideFormValues);
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:314:hardcoded object:	            this.setState({ applicationFormError: `Please upload both Front side and Back side of Application Form.` });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:323:hardcoded string:	            country: addressDetails["country"],
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:324:hardcoded string:	            zipcode: addressDetails["zipcode"]
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:329:hardcoded object:	        let { addressDetails, attachments, loading, error, tlpOrderData } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:331:hardcoded variable:	        const data = getAddressDetails(tlpOrderData);
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:332:hardcoded string:	        let billingAddress = get(addressDetails, 'billing', addressDetails);
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:333:hardcoded object:	        addressDetails = Object.keys(billingAddress).length ? { ...billingAddress } : { ...data }
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:337:hardcoded string:	        if (!addressDetails["country"]) {
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:338:hardcoded string:	            this.setState({ country: 'India' })
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:346:hardcoded object:	        this.setState({ updatedFieldValue: addressDetails, addressDetails, attachments, loading, error });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:350:hardcoded object:	        const { loading, error } = nextProps;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:352:hardcoded object:	        (!isEqual(loading, this.props.loading)) && this.setState({ loading });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:353:hardcoded object:	        (!isEqual(error, this.props.error)) && this.setState({ error });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:357:hardcoded object:	        this.setState({ savedAddressCount: count });
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:363:hardcoded object:	        const { identifier, authDetails, orderPunchingType } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:364:hardcoded object:	        const { omsConfig } = authDetails;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:365:hardcoded variable:	        const fields = this.getFormFields();
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:366:hardcoded object:	        const { env } = authDetails;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:368:hardcoded string:	        const cardHeaderStyle = { margin: 10, height: 425, overflow: 'scroll' };
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:370:hardcoded string:	        if(['local', 'development'].includes(env)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:371:hardcoded string:	            const {city = ''} = updatedFieldValue;
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:372:hardcoded string:	            if( typeof city !== 'string' ) {
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:373:hardcoded string:	                updatedFieldValue['city'] = updatedFieldValue['city'][0];
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:379:hardcoded string:	                step="address"
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:380:hardcoded object:	                onClickPrevBtn={this.onClickPrevBtn}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:381:hardcoded object:	                onClickNextBtn={this.onClickNextBtn}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:382:hardcoded object:	                loading={loading}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:383:hardcoded object:	                error={error}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:384:hardcoded object:	                orderPunchingType={orderPunchingType}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:387:hardcoded number:	                    <Col md={!isEmpty(omsConfig) ? 20 : 24}>
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:389:hardcoded string:	                            ref="addressDetailForm"
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:390:hardcoded object:	                            fields={fields}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:391:hardcoded string:	                            heading=" Address Details"
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:392:hardcoded object:	                            wrappedComponentRef={(inst) => this.addressForm = inst}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:393:hardcoded object:	                            initialValues={{ ...addressDetails, ...updatedFieldValue }}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:394:hardcoded object:	                            style={cardHeaderStyle}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:398:hardcoded number:	                        <Col md={4}>
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:399:hardcoded number:	                            <div className={`card border-0`} style={cardHeaderStyle}>
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:400:hardcoded object:	                                <div className={`card-header bg-primary text-white`}>Saved Address(s)</div>
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:402:hardcoded object:	                                    selectSavedAddress={this.selectSavedAddress}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:403:hardcoded object:	                                    updateSavedAddressCount={this.updateSavedAddressCount}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:406:hardcoded string:	                            {savedAddressCount && savedAddressCount != 0 && <p style={{ position: 'relative', left: '5%' }}>{`${savedAddressCount || 0} saved address`}</p>}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:411:hardcoded number:	                    <div className={`card border-0`} style={{ margin: 10 }} >
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:412:hardcoded object:	                        <div className={`card-header bg-primary text-white`}>Upload Application Form</div>
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:413:hardcoded string:	                        {applicationFormError && <div style={{ color: 'red', margin: '2%' }}>{applicationFormError}</div>}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:416:hardcoded string:	                                name: "applicationFrontSide",
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:417:hardcoded string:	                                label: "Front Side",
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:418:hardcoded number:	                                count: 1,
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:419:hardcoded string:	                                accept: ".jpeg,.jpg,.png,.pdf"
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:421:hardcoded object:	                            identifier={identifier}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:422:hardcoded string:	                            ref="applicationFrontSide"
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:423:hardcoded string:	                            initialValues={find(attachments, { name: 'applicationFrontSide' })}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:427:hardcoded string:	                                name: "applicationBackSide",
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:428:hardcoded string:	                                label: "Back Side",
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:429:hardcoded number:	                                count: 1,
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:430:hardcoded string:	                                accept: ".jpeg,.jpg,.png,.pdf"
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:432:hardcoded object:	                            identifier={identifier}
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:433:hardcoded string:	                            ref="applicationBackSide"
+microservices-middleware/client/src/modules/ordertype/upgrade/UpgradeAddressPage.js:434:hardcoded string:	                            initialValues={find(attachments, { name: 'applicationBackSide' })}

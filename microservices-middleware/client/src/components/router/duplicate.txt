@@ -1,7 +1,0 @@
-microservices-middleware/client/src/components/router/SwitchNotFound.jsx:1:hardcoded file path:import React from 'react'
-microservices-middleware/client/src/components/router/SwitchNotFound.jsx:2:hardcoded object:import {Switch, Route} from 'react-router'
-microservices-middleware/client/src/components/router/SwitchNotFound.jsx:4:hardcoded file path:import NotFound from '../errors/NotFound'
-microservices-middleware/client/src/components/router/SwitchNotFound.jsx:6:hardcoded object:const SwitchWithNotFound = ({children, ...props}) =>
-microservices-middleware/client/src/components/router/SwitchNotFound.jsx:7:hardcoded object:  <Switch {...props}>
-microservices-middleware/client/src/components/router/SwitchNotFound.jsx:8:hardcoded object:    {children}
-microservices-middleware/client/src/components/router/SwitchNotFound.jsx:9:hardcoded object:    <Route component={NotFound} />

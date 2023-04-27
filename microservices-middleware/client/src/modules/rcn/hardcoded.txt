@@ -1,0 +1,59 @@
+microservices-middleware/client/src/modules/rcn/ProceedWithLoanModal.js:7:hardcoded variable:	const ProceedWithLoanModal = (props) => {
+microservices-middleware/client/src/modules/rcn/ProceedWithLoanModal.js:8:hardcoded object:	    const { showProceedWithLoanModal,createLoan,dpAmount,handleClick,provider,onClickProceed } = props;
+microservices-middleware/client/src/modules/rcn/ProceedWithLoanModal.js:9:hardcoded array:	    const [modal, setModal] = useState(false);
+microservices-middleware/client/src/modules/rcn/ProceedWithLoanModal.js:10:hardcoded variable:	    // const toggle = () => setModal(!modal);
+microservices-middleware/client/src/modules/rcn/ProceedWithLoanModal.js:13:hardcoded object:	        if (props) { setModal(showProceedWithLoanModal) }
+microservices-middleware/client/src/modules/rcn/ProceedWithLoanModal.js:14:hardcoded array:	    }, [props]);
+microservices-middleware/client/src/modules/rcn/ProceedWithLoanModal.js:17:hardcoded string:	        <Modal centered size="md" isOpen={modal} className='rounded-0 border-1'>
+microservices-middleware/client/src/modules/rcn/ProceedWithLoanModal.js:19:hardcoded string:	                <p className='text-center pt-4 pb-2' style={{fontSize:"2.5vh"}}>Please accept a down payment of {currencyFormatter(dpAmount,"INR")} to proceed order punching with {startCase(provider)}.</p>
+microservices-middleware/client/src/modules/rcn/ProceedWithLoanModal.js:20:hardcoded string:	                <div className='d-flex justify-content-around'>
+microservices-middleware/client/src/modules/rcn/ProceedWithLoanModal.js:21:hardcoded string:	                    <Button className='btn-info' onClick={onClickProceed}><a style={{color:"#ffffff"}} href={createLoan} target="blank">Proceed</a></Button>
+microservices-middleware/client/src/modules/rcn/ProceedWithLoanModal.js:22:hardcoded string:	                    <Button className='btn-warning' onClick={handleClick} >Cancel</Button>
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:3:hardcoded string:	import kart_go_getter from '@byjus-orders/nicons/assets/byjus kart/kart-icons/kart-go-getter.svg';
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:4:hardcoded string:	import champion from '@byjus-orders/nicons/assets/byjus kart/rcn-icons/kart-rcn-champion.svg';
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:5:hardcoded string:	import achiever from '@byjus-orders/nicons/assets/byjus kart/rcn-icons/kart-rcn-achiever.svg';
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:6:hardcoded string:	import go_getter from '@byjus-orders/nicons/assets/byjus kart/rcn-icons/kart-rcn-go-getter.svg';
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:10:hardcoded variable:	export const minDpMessage = (authDetails,paymentAssociatedWithLead,rcnConfig)=>{
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:11:hardcoded string:	    const userName = get(authDetails, 'user.name', "");
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:12:hardcoded object:	    const {badgeDetails,badgeDpDetails} = rcnConfig || {};
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:13:hardcoded string:	    const {name} = badgeDetails || {name:"champion"};
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:14:hardcoded string:	    const loan =  get(paymentAssociatedWithLead,"loans") || get(authDetails,"leadLoans") || [];
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:15:hardcoded string:	    const loanVendor = loan?.length>0 ? loan[0]?.loanVendor : "default";
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:16:hardcoded string:	    const getDpForLoanVendor = badgeDpDetails?.find(ele=>ele.ppName.split("_").join("") === loanVendor);
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:17:hardcoded variable:	    const dpAmount = getDpForLoanVendor?.dpAmount;
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:20:hardcoded string:	       dpAmount ? <div className='d-flex my-4'>
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:21:hardcoded string:	            <img src={kart_go_getter} style={{width:75,height:75}} alt="dpPayment" />
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:22:hardcoded string:	            <div className="ml-3 align-self-center">
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:23:hardcoded string:	                <p className='m-0'>Hi <span style={{fontWeight:"bold"}}>{startCase(userName)}</span>,</p>
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:24:hardcoded string:	                You are an <span className="text-primary font-weight-bold" >{startCase(name)}! </span>
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:25:hardcoded string:	                Please accept a <span style={{color:"#ED9B3B"}}>minimum</span> down payment of <span style={{color:"#27BB23",fontWeight:"bold"}}>{currencyFormatter(dpAmount,"INR")}</span> to proceed with order punching.
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:27:hardcoded string:	        </div> : ""                     
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:31:hardcoded variable:	export const getRemainingDpAmount = (loan,dp,badgeDpDetails)=>{
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:32:hardcoded number:	    const isDpRequired = loan?.length > 0 ? true : false;
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:33:hardcoded string:	    const loanVendor = loan?.length > 0 ? loan[0]?.loanVendor : "default";
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:34:hardcoded string:	    const getDpForLoanVendor = badgeDpDetails?.find(ele=>ele.ppName.split("_").join("") === loanVendor);
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:35:hardcoded variable:	    const dpAmount = getDpForLoanVendor?.dpAmount;
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:36:hardcoded string:	    const totalLeadPayment = dp?.reduce((acc, curr) => acc + (["success","reconciled","paid"].includes(curr.status) ? curr.amount : 0), 0);
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:37:hardcoded string:	    const remainingDpAmount = dpAmount > totalLeadPayment ? (dpAmount - totalLeadPayment) : "";
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:38:hardcoded object:	    return { remainingDpAmount, dpAmount, isDpRequired };
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:41:hardcoded number:	export const getDpAmount = (loan,badgeDpDetails)=> badgeDpDetails?.find(ele=> ele?.ppName === lowerCase(loan[0]?.loanVendor))?.dpAmount || 0;
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:43:hardcoded variable:	const getPayments = (badgePaymentDetails,paymentType)=>{
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:44:hardcoded string:	    return badgePaymentDetails?.filter(ele=>ele.status === "active" && ele.ppType === paymentType && ele.ppName !== "default").map(ele=>ele.ppName) || [];
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:47:hardcoded object:	export const getDpRelatedPayments = ({loan,badgeDpDetails,badgePaymentDetails,dp}) => {    
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:48:hardcoded object:	    const {remainingDpAmount,dpAmount} = getRemainingDpAmount(loan,dp,badgeDpDetails);
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:50:hardcoded string:	    let rcnBasedGateWayPayments = getPayments(badgePaymentDetails,"gp");
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:51:hardcoded string:	    let rcnBasedNonGateWayPayments = getPayments(badgePaymentDetails,"ngp");
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:52:hardcoded array:	    let rcnBasedDownPayments = [...rcnBasedGateWayPayments, ...rcnBasedNonGateWayPayments];
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:53:hardcoded string:	    let rcnBasedLoanPayments = getPayments(badgePaymentDetails,"emi");
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:63:hardcoded variable:	export const showRcnBadgeImage = (badgeName) => {
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:64:hardcoded string:	    // const badgeImage = badgeName === "achiever" ? achiever : badgeName === "go_getter" ? go_getter : badgeName === "champion" ? champion : "";
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:65:hardcoded variable:	    const badgeImage = {
+microservices-middleware/client/src/modules/rcn/rcnHelper.js:72:hardcoded string:	           <img src={badgeImage[badgeName] || champion} style={{float:"right", height:"2.5rem"}} alt="rcn badge" />
+microservices-middleware/client/src/modules/rcn/NoteAndProceedModal.js:5:hardcoded variable:	const NoteAndProceedModal = (props) => {
+microservices-middleware/client/src/modules/rcn/NoteAndProceedModal.js:6:hardcoded string:	    const { onClickShowNoteAndProceedModal,isOpen,onClickCancel,badgeName = "champion", env } = props;
+microservices-middleware/client/src/modules/rcn/NoteAndProceedModal.js:9:hardcoded string:	        <Modal centered size="md" toggle={isOpen} isOpen={isOpen} className='rounded-0 border-1'>
+microservices-middleware/client/src/modules/rcn/NoteAndProceedModal.js:11:hardcoded string:	                <p className='text-center pt-4 pb-2 text-danger'>Please note that for all {startCase(badgeName)}, orders will require Manager approval for creation of Order Id
+microservices-middleware/client/src/modules/rcn/NoteAndProceedModal.js:12:hardcoded string:	                    Please check <a style={{ cursor: 'pointer' }} target="_blank" href={`https://${(env !== "production") ? 'dev-' : ''}achieve.byjusorders.com/`}>Achieve </a> 
+microservices-middleware/client/src/modules/rcn/NoteAndProceedModal.js:14:hardcoded string:	                <div className='d-flex justify-content-around'>
+microservices-middleware/client/src/modules/rcn/NoteAndProceedModal.js:15:hardcoded string:	                    <Button className='btn-info' onClick={()=>onClickShowNoteAndProceedModal()} >Note & Proceed</Button>
+microservices-middleware/client/src/modules/rcn/NoteAndProceedModal.js:16:hardcoded string:	                    <Button className='btn-warning' onClick={onClickCancel}>Cancel</Button>

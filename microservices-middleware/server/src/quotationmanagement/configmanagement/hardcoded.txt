@@ -1,0 +1,102 @@
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:5:hardcoded string:	const { Quotation } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:6:hardcoded string:	const { AakashCourseId, AakashBranch, AakashCourseIdMapping, AakashPrice, TabletProgramMapping, SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:13:hardcoded variable:	const getAakashCRPConfig = async () => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:14:hardcoded string:	    const aakashConfig = await ByjusConfig.findOne({ formattedAppName: "MIDDLEWARE", formattedModuleName: "AAKASH_ORDER_PUNCHING_CONFIG" }).lean();
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:16:hardcoded object:	    const { configs } = aakashConfig;
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:17:hardcoded string:	    const productConfig = configs.find(ele => ele.type === "productConfig");
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:18:hardcoded string:	    let scholarshipConfig = configs.find(ele => ele.type === "scholarshipConfig");
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:19:hardcoded object:	    const { scholarshipConfigs } = scholarshipConfig
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:21:hardcoded string:	    scholarshipConfig['scholarshipConfigs'] = scholarshipConfigs.map((config) => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:22:hardcoded string:	        if (config.category == 'C') {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:23:hardcoded array:	            const { category, label, scholarships = [] } = config
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:24:hardcoded variable:	            const updatedScholarships = scholarships.filter(sch => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:25:hardcoded string:	                return !["PARENT_MARTYR"].includes(sch.formattedLabel)
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:35:hardcoded object:	    return { productConfig, scholarshipConfig }
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:37:hardcoded variable:	const getTabletsConfig = async () => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:39:hardcoded variable:	    const tabletsConfig = await TabletProgramMapping.findAll({
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:40:hardcoded string:	        attributes: ["tabletId"],
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:42:hardcoded string:	            { programId: "ACRPKXSY0001", status : "enabled" }
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:44:hardcoded variable:	    const skuId = tabletsConfig.map(tablet => tablet.tabletId)
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:45:hardcoded object:	    //   const tablets= await SalesSkuMaster .findAll({skuId})
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:46:hardcoded string:	    const tablets = await SalesSkuMaster.findAll({ attributes: ["skuName", "skuId"], where: { skuId: skuId, status: "active" } })
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:47:hardcoded object:	    const tablet = tablets.map(tablet => { return { value: tablet.skuId, label: tablet.skuName } })
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:53:hardcoded variable:	const getCourseDetails = async () => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:55:hardcoded array:	    let gradeList = [];
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:56:hardcoded object:	    let gradeDurationMap = {};
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:57:hardcoded object:	    let courseData = {};
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:58:hardcoded variable:	    const grades = await AakashCourseId.findAll({
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:59:hardcoded string:	        attributes: [[Sequelize.fn('DISTINCT', Sequelize.col('grade')), 'grade']],
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:67:hardcoded number:	    for (var j = 0; j < gradeList.length; j++) {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:68:hardcoded array:	        gradeDurationMap[gradeList[j]] = await AakashCourseId.findAll({
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:69:hardcoded string:	            // attributes: [[Sequelize.fn('DISTINCT', Sequelize.col('duration')), 'duration']],
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:70:hardcoded string:	            attributes: ['duration', 'subCourse', 'board', 'isJct'],
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:71:hardcoded string:	            group: ['duration', 'subCourse', 'board', 'isJct'],
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:73:hardcoded array:	            where: { grade: gradeList[j] }
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:76:hardcoded array:	    Object.entries(gradeDurationMap).map(([key, value]) => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:77:hardcoded array:	        return courseData[key] = optimize(value);
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:86:hardcoded number:	    const keys = Object.keys(values[0]);
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:87:hardcoded variable:	    const optimisedData = {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:90:hardcoded array:	        optimisedData[key] = [];
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:92:hardcoded array:	            optimisedData[key].push(value[key]);
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:98:hardcoded variable:	const getProductConfig = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:100:hardcoded object:	        const { identifier } = req.body;
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:114:hardcoded variable:	        const courseData = await getCourseDetails()
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:115:hardcoded variable:	        const branches = await AakashBranch.findAll({
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:116:hardcoded string:	            attributes: ['state', 'city', 'branch', 'hasJct', 'hasStateBoard', 'businessUnit'],
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:118:hardcoded string:	                status: 'active'
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:121:hardcoded string:	                ['state', 'ASC'],
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:122:hardcoded string:	                ['city', 'ASC'],
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:123:hardcoded string:	                ['branch', 'ASC']
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:127:hardcoded variable:	        const akashCRPConfig = await getAakashCRPConfig()
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:128:hardcoded variable:	        const supplementaryTablets = await getTabletsConfig()
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:136:hardcoded string:	        logger.error({ method: 'getProductConfig', error });
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:137:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:141:hardcoded variable:	const getAakashSpecialScholarshipConfig = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:144:hardcoded string:	        const specialScholarshipConigs = await ByjusConfig.findOne({ formattedAppName: "MIDDLEWARE", formattedModuleName: "AAKASH_SPECIAL_CAMPAIGN_SCHOLARSHIP_CONFIGS" }).lean();
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:145:hardcoded array:	        let { configs = [] } = specialScholarshipConigs;
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:146:hardcoded number:	        let { scholarshipConfig = [] } = configs[0]
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:148:hardcoded number:	        configs[0].scholarshipConfig = scholarshipConfig.map((config) => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:149:hardcoded string:	            if (config.category == "A" || config.category == 'C') {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:150:hardcoded array:	                const { category, label, scholarships = [] } = config
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:151:hardcoded variable:	                const updatedScholarships = scholarships.filter(sch => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:152:hardcoded string:	                        return !["JEE_ADVANCE_SCORE", "JEE_MAIN_SCORE", "NEET_MARKS", "PARENT_MARTYR"].includes(sch.formattedLabel)
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:163:hardcoded number:	            return res.json(configs[0]);
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:165:hardcoded string:	        return res.status(500).json({ message: "Config not found" });
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:168:hardcoded string:	        logger.error({ method: "getAakashSpecialScholarshipConfig", error });
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:169:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:174:hardcoded variable:	const getCourseNameInfo = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:175:hardcoded string:	    logger.info({ method: 'getCourseNameInfo' }, { message: "Fetching Aakash Product Courses" });
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:177:hardcoded object:	    let { state, city, branch, initialClass, board, subCourse, batch, selectedTypeOfClass, courseDuration, isJct } = req.body;
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:178:hardcoded array:	    const courseIds = [];
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:179:hardcoded array:	    let courseIdList = [];
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:182:hardcoded variable:	        const branches = await AakashBranch.findOne({
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:183:hardcoded string:	            attributes: ['businessUnit'],
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:187:hardcoded string:	                status: "active"
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:190:hardcoded object:	        if (isEmpty(branches)) { throw new Error(`Branch details  are missing for the selected Combination ${subCourse}, ${selectedTypeOfClass}, ${initialClass} `) }
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:191:hardcoded variable:	        const bsUnit = branches.businessUnit;
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:192:hardcoded variable:	        const courseList = await AakashCourseId.findAll({
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:193:hardcoded string:	            attributes: ['courseId', 'skuName', 'tablet'],
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:204:hardcoded object:	        if (isEmpty(courseList)) { throw new Error(`Course does not exist for the selected combination  ${subCourse}, ${selectedTypeOfClass}, ${initialClass} `) }
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:210:hardcoded variable:	        const finalCourseId = await AakashCourseIdMapping.findAll({
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:211:hardcoded string:	            attributes: ['courseId'],
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:219:hardcoded object:	        if (isEmpty(finalCourseId)) { throw new Error(`No active course for ${subCourse}, ${selectedTypeOfClass}, ${initialClass} exist on this branch `) }
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:224:hardcoded string:	                    courseIdObj = { "label": `${cL.courseId + " - " + cL.skuName}`, "value": cL.courseId }
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:241:hardcoded variable:	const getCoursesForAutofill = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:242:hardcoded object:	    const { businessUnit } = req.body
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:245:hardcoded variable:	        const courses = await AakashPrice.findAll({
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:246:hardcoded string:	            attributes: ['courseId'],
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:252:hardcoded variable:	        const courseIds = courses.map(bu => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:264:hardcoded string:	        logger.error({ method: 'getCoursesForAutofill', error });
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:265:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:269:hardcoded variable:	const getCourseDeatilsForAutofill = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:270:hardcoded object:	    const { courseId } = req.body
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:273:hardcoded variable:	        const course = await AakashCourseId.findOne({
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:286:hardcoded string:	        logger.error({ method: 'getCourseDeatilsForAutofill', error });
+microservices-middleware/server/src/quotationmanagement/configmanagement/configController.js:287:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/quotationmanagement/configmanagement/configRoutes.js:4:hardcoded object:	const router = Router({ mergeParams: true });
+microservices-middleware/server/src/quotationmanagement/configmanagement/configRoutes.js:7:hardcoded string:	    const baseRoute = '/quotation/config';
+microservices-middleware/server/src/quotationmanagement/configmanagement/configRoutes.js:9:hardcoded object:	    router.route(`${baseRoute}/getProductConfig`)
+microservices-middleware/server/src/quotationmanagement/configmanagement/configRoutes.js:14:hardcoded object:	    router.route(`${baseRoute}/getCourseNameInfo`)
+microservices-middleware/server/src/quotationmanagement/configmanagement/configRoutes.js:19:hardcoded object:	    router.route(`${baseRoute}/getAakashSpecialScholarshipConfig`)
+microservices-middleware/server/src/quotationmanagement/configmanagement/configRoutes.js:22:hardcoded object:	    router.route(`${baseRoute}/getCoursesForAutofill`)
+microservices-middleware/server/src/quotationmanagement/configmanagement/configRoutes.js:27:hardcoded object:	    router.route(`${baseRoute}/getCourseDeatilsForAutofill`)

@@ -1,0 +1,73 @@
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:15:hardcoded variable:	const StudentProfile = (props) => {
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:16:hardcoded object:	    const { draftOrderId, onClickSelectProfile } = props;
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:17:hardcoded variable:	    const profileForm = useRef();
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:18:hardcoded array:	    const [error, setError] = useState();
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:19:hardcoded array:	    const [info, setInfo] = useState();
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:20:hardcoded array:	    const [loading, setLoading] = useState(false);
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:21:hardcoded array:	    const [formValues, setFormValues] = useState({
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:22:hardcoded string:	        profile: '',
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:24:hardcoded array:	    const [profileList, setProfileList] = useState([]);
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:26:hardcoded variable:	    const search = window.location.search;
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:27:hardcoded variable:	    const params = new URLSearchParams(search);
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:28:hardcoded string:	    let primaryNumber = params.get('studentMobile');
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:31:hardcoded object:	        fetchStudentProfile({});
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:32:hardcoded array:	    }, []);
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:34:hardcoded variable:	    const fetchStudentProfile = async(studentDetails) => {
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:36:hardcoded object:	            const {notification} = studentDetails;
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:37:hardcoded string:	            setInfo("");
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:40:hardcoded variable:	            const response = await CallApi({
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:41:hardcoded string:	                url: '/api/kart-beta/studentByPhone',
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:42:hardcoded string:	                method: 'POST',
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:43:hardcoded object:	                body: { primaryNumber, draftOrderId }
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:45:hardcoded string:	            const details = get(response, 'data', {});
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:46:hardcoded string:	            const studentProfiles = get(details, 'students', []);
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:47:hardcoded variable:	            const profileOptions = studentProfiles.map(item=>{
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:48:hardcoded object:	                return { label: item.studentName, value: item.premium_account_id, data: item}
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:59:hardcoded variable:	    const handleChanges = (value, name) => {
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:65:hardcoded variable:	    const profileFormDetails = () => {
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:66:hardcoded variable:	        const initialValues = formValues;
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:67:hardcoded variable:	        const formItemLayout = {
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:69:hardcoded number:	              xs: { span: 6 },
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:70:hardcoded number:	              sm: { span: 6 },
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:73:hardcoded number:	              xs: { span: 16 },
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:74:hardcoded number:	              sm: { span: 16 },
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:77:hardcoded variable:	        const formFields = [
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:79:hardcoded string:	                type: 'select',
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:80:hardcoded string:	                name: 'profile',
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:81:hardcoded string:	                label: 'Profiles',
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:85:hardcoded string:	                message: 'Please select student profile',
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:92:hardcoded number:	                <Col xs={4}>
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:94:hardcoded object:	                        ref={profileForm}
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:95:hardcoded object:	                        fields={formFields}
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:96:hardcoded object:	                        initialValues={initialValues}
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:97:hardcoded object:	                        formItemLayout={formItemLayout}
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:100:hardcoded string:	                <Col style={{"paddingTop": "1rem"}}>
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:101:hardcoded string:	                    <Button color="success" onClick={onClick} 
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:103:hardcoded string:	                        background: "linear-gradient(90deg, #7644D4 0%, #A444E6 100%)",
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:104:hardcoded string:	                        borderRadius: "4px"
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:107:hardcoded string:	                            fontFamily: 'unset',
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:108:hardcoded string:	                            fontStyle: "normal",
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:109:hardcoded string:	                            fontWeight: "400",
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:110:hardcoded string:	                            fontSize: "16px",
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:111:hardcoded string:	                            lineHeight: "24px",
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:112:hardcoded string:	                            color: "#FFFFFF"
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:122:hardcoded variable:	    const onClick = () => {
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:123:hardcoded string:	        const profileId = get(formValues, 'profile');
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:124:hardcoded string:	        const profileDetails = profileList.find((item)=>get(item, 'value')===profileId)
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:129:hardcoded string:	        <LoadingWrapper loading={loading} message={"loading"}>
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:131:hardcoded object:	            <StudentForm addStudent={fetchStudentProfile} studentProfiles={profileList}/>
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:132:hardcoded string:	            {info && <InfoWrapper type="info" descriptionBody={info} />}
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:133:hardcoded object:	            {error && <ErrorWrapper error={error} />}
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:134:hardcoded object:	            {profileFormDetails()}
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:136:hardcoded string:	                        type="info"
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:140:hardcoded string:	                                        fontFamily: "unset",
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:141:hardcoded string:	                                        fontStyle: "normal",
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:142:hardcoded string:	                                        fontWeight: "400",
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:143:hardcoded string:	                                        fontSize: "14px",
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:144:hardcoded string:	                                        lineHeight: "20px",
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:145:hardcoded string:	                                        color: "#000000",
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/index.js:148:hardcoded number:	                                    Add Student Button is disabled if profile count is equal to or more than 3
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/Styles.js:1:hardcoded string:	import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/Styles.js:3:hardcoded variable:	export const ProfileContainer = styled.div`
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/Styles.js:4:hardcoded number:	    box-shadow: 0rem 0.2rem 0.5rem #c6c6c6;
+microservices-middleware/client/src/modules/kartbeta/student/StudentProfile/Styles.js:6:hardcoded number:	    padding: 0.8rem;

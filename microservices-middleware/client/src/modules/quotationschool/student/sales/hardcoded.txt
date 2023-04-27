@@ -1,0 +1,56 @@
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:14:hardcoded variable:	const SalesForm = (props) => {
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:15:hardcoded variable:	  const salesFormRef = useRef();
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:16:hardcoded object:	  const { quotationId, leadId } = props;
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:17:hardcoded array:	  const [salesFormValues, setSalesFormValues] = useState({
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:18:hardcoded string:	    salesEmail: "",
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:20:hardcoded array:	  const [error, setError] = useState();
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:21:hardcoded array:	  const [loading, setLoading] = useState(false);
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:22:hardcoded array:	  const [salesEmailList, setSalesEmailList] = useState([])
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:23:hardcoded array:	  const [quotationStudent, setQuotationStudent] = useRecoilState(quotationStudentDetails);
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:25:hardcoded variable:	  const handleChanges = (value, name, params) => {
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:26:hardcoded object:	    const { data } = params;
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:30:hardcoded string:	      [name]: typeof params === "object" ? (data ? data : value) : value,
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:32:hardcoded string:	    props.setSalesEmail(typeof params === "object" ? (data ? data : value) : value)
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:37:hardcoded array:	}, []);
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:39:hardcoded string:	  const fetchSalesEmail = async(searchText = "") => {
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:42:hardcoded variable:	        const response = await CallApi({
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:43:hardcoded string:	            url: '/api/details/getSalesPersonDetails',
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:44:hardcoded string:	            method: 'POST',
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:45:hardcoded string:	            body: { accountNumber:"17139", filter: {username: { "$regex": searchText, "$options": 'i' }}}
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:47:hardcoded string:	        const details = get(response, 'data', {});
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:48:hardcoded string:	        const agentDetails = get(details, 'docs', []);
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:49:hardcoded variable:	        const emailOptions = agentDetails.map(item=>{
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:50:hardcoded object:	            return { label: item.userId, value: item.username, details: item}
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:60:hardcoded variable:	const updateSalesEmail = async() => {
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:63:hardcoded object:	      const {salesEmail} = salesFormValues || {};
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:64:hardcoded object:	      const {details} = salesEmail || {};
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:65:hardcoded object:	      const {userId, employee_code} = details || {};
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:66:hardcoded variable:	      const currentStage = getStage(quotationStudent.quotationStatus);
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:67:hardcoded variable:	      const newStage = getStage(STATUS.AGENT);
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:68:hardcoded variable:	      let status = STATUS.AGENT;
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:72:hardcoded variable:	      const response = await CallApi({
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:73:hardcoded string:	          url: '/api/quotation-school/updateSalesPersonDetails',
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:74:hardcoded string:	          method: 'POST',
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:94:hardcoded variable:	const onClick = async() => {
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:95:hardcoded variable:	  const salesFormValues = salesFormRef.current.validateFormAndGetValues();
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:102:hardcoded variable:	  const getFormDetails = () => {
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:103:hardcoded variable:	    const initialValues = salesFormValues;
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:104:hardcoded variable:	    const formFields = [
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:106:hardcoded string:	        type: "select",
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:107:hardcoded string:	        name: "salesEmail",
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:108:hardcoded string:	        label: "Sales Email",
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:110:hardcoded number:	        onInputChange: debounce((searchText) => fetchSalesEmail(searchText), 1000),
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:113:hardcoded string:	        message: 'Please select sales email',
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:119:hardcoded number:	          <Col xs={4}>
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:121:hardcoded object:	                  ref={salesFormRef}
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:122:hardcoded object:	                  fields={formFields}
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:123:hardcoded object:	                  initialValues={initialValues}
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:124:hardcoded number:	                  cols={1}
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:127:hardcoded string:	          <Col xs={8} style={{"paddingTop": "2rem"}}>
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:128:hardcoded string:	              <Button color="success" onClick={onClick} disabled={isEmpty(get(salesFormValues,"salesEmail.value"))}>Select Sales Email</Button>
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:135:hardcoded string:	  <LoadingWrapper loading={loading} message={"loading"}>
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:136:hardcoded object:	    <ErrorWrapper message={error} />
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:138:hardcoded object:	      {getFormDetails()}
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:139:hardcoded string:	      <Alert style={{ marginTop: "2rem", width: "100%" }} color="info">
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:140:hardcoded object:	        Lead Details: {leadId}<br />
+microservices-middleware/client/src/modules/quotationschool/student/sales/index.js:143:hardcoded object:	        Lead Created By: { }<br />

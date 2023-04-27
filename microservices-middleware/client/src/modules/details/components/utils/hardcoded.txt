@@ -1,0 +1,21 @@
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:1:hardcoded variable:	export const accountMap = {
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:2:hardcoded string:	    "conduction": ["directSalesBy", "salesAppointmentBy"],
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:3:hardcoded string:	    "calling": ["directSalesBy"],
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:4:hardcoded string:	    "retention": ["directSalesBy"],
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:5:hardcoded string:	    "jee": ["directSalesBy"],
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:6:hardcoded string:	    "k3": ["directSalesBy"],
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:7:hardcoded string:	    "salesforce": ["directSalesBy"],
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:8:hardcoded string:	    "middle-east":["directSalesBy", "salesAppointmentBy"]
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:10:hardcoded variable:	export const retentionDefaultUser = {
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:11:hardcoded string:	    user: "mohnish@thinkandlearn.in",
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:12:hardcoded string:	    userId: "901"
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:15:hardcoded variable:	export const eligibleAvpEmailIdsForSCN = [
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:16:hardcoded string:	    "pranav.jajodia@byjus.com",
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:17:hardcoded string:	    "ajay@byjus.com",
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:18:hardcoded string:	    "atulkumar.singh@byjus",
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:19:hardcoded string:	    "adesh@byjus.com",
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:20:hardcoded string:	    "arunesh.kumar@byjus.com",
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:21:hardcoded string:	    "rishi.mehra@byjus.com", "shilpi.kulshrestha@byjus.com",
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:22:hardcoded string:	    "vikram.sakhuja@byjus.com", "manik.madan@byjus.com",
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:23:hardcoded string:	    "soham@byjus.com"
+microservices-middleware/client/src/modules/details/components/utils/detailConfig.js:26:hardcoded string:	export const USER_ROLES_TO_FREEZE_SALESDONEBY = ["bda", "bdt"];

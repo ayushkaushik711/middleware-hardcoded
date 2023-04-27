@@ -1,0 +1,778 @@
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:18:hardcoded variable:	const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:19:hardcoded string:	    authDetails: get(state, 'auth.details', {}),
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:20:hardcoded string:	    user: get(state, 'auth.details.user'),
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:21:hardcoded string:	    identifier: get(state, 'details.identifier')
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:22:hardcoded string:	    //orderReferenceId: get(state, 'order.orderReferenceId')
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:25:hardcoded variable:	const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:38:hardcoded string:	            identifier: "",
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:47:hardcoded object:	        const { user, authDetails } = this.props;
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:48:hardcoded object:	        const { env } = authDetails;
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:49:hardcoded object:	        const { orderDetails } = this.state;
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:50:hardcoded string:	        const { orderType, orderId = "", status, statusMessage,
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:51:hardcoded string:	            childStatus, childOrderId, childOrderStatusMessage, isOmsOrder = false, salesOrderId = "", draftOrderId = "", isRepunchedCase = false } = orderDetails || {};
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:52:hardcoded variable:	        const orderObj = {
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:54:hardcoded string:	            parentStatus: "",
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:59:hardcoded variable:	        const parentObject = this.getFormattedStatusAndInfoType(orderObj);
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:60:hardcoded object:	        const childObject = this.getFormattedStatusAndInfoType({ ...orderObj, status: childStatus, parentStatus: status });
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:62:hardcoded array:	        const { permissions = [] } = user || {};
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:63:hardcoded variable:	        const isPriviledgedUser = permissions.includes(leadquaredRelatedPermissions.allownMultipleOrderOnSameProspectId);
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:68:hardcoded string:	                    type={get(parentObject, 'infoType')}
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:69:hardcoded string:	                    message=""
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:72:hardcoded string:	                            <div><strong>Order Type = </strong>{orderType === "SINGLE" ? " Single Order" : " Parent Order"}</div>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:73:hardcoded object:	                            <div><strong>Status =  </strong>{status}</div>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:74:hardcoded object:	                            <div><strong>Draft Order Id = </strong>{draftOrderId}</div>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:75:hardcoded string:	                            <div><strong>Order Id = </strong>{(isOmsOrder ? salesOrderId : orderId) || '-'}</div>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:76:hardcoded string:	                            <div><strong>Message =  </strong>{get(parentObject, 'status')}</div>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:80:hardcoded string:	                {(orderType === "SPLIT" && !isOmsOrder) ?
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:82:hardcoded string:	                        type={get(childObject, 'infoType')}
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:83:hardcoded string:	                        message=""
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:88:hardcoded string:	                                <div><strong>Order Type = </strong>{" Child Order"}</div>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:89:hardcoded string:	                                <div><strong>Status =  </strong>{get(childObject, 'status')}</div>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:90:hardcoded object:	                                <div><strong>Draft Order Id = </strong>{draftOrderId}</div>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:91:hardcoded string:	                                <div><strong>Order Id = </strong>{childOrderId || '-'}</div>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:92:hardcoded string:	                                <div><strong>Message =  </strong>{childOrderStatusMessage || '-'}</div>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:99:hardcoded string:	                    (isPriviledgedUser && (status === "errored" || childStatus === "errored")) &&
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:101:hardcoded string:	                        color="success"
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:102:hardcoded object:	                        onClick={this.onClickPunchNewOrder}
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:112:hardcoded object:	        const { authDetails } = this.props;
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:123:hardcoded object:	        const { history } = this.props;
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:125:hardcoded string:	        const url = `/${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:130:hardcoded string:	        isRepunchedCase = isRepunchedCase && !["local", "development"].includes(env)
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:134:hardcoded string:	                    <span style={{ color: 'Red' }}>Order is in <strong>Approval Pending</strong> state. 
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:136:hardcoded string:	                        Please track the status in <a style={{ cursor: 'pointer' }} target="_blank" href={`https://${(env !== "production") ? 'dev-' : ''}achieve.byjusorders.com/orders/`}>Achieve</a> .</span>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:140:hardcoded string:	                    <span style={{ color: '#9C3597' }}>Order is in <strong>Approval Pending</strong> state. 
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:142:hardcoded string:	                        Please track the status in <a style={{ cursor: 'pointer' }} target="_blank" href={`https://${(env !== "production") ? 'dev-' : ''}achieve.byjusorders.com/orders/`}>Achieve</a> .</span>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:150:hardcoded object:	        const { status, parentStatus, isOmsOrder, salesOrderId, isRepunchedCase } = props;
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:151:hardcoded object:	        const { authDetails } = this.props;
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:152:hardcoded object:	        const { env } = authDetails || {};
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:154:hardcoded variable:	        const approvalPendingStatus = this.getApprovalPendingStatus(env, isRepunchedCase);
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:156:hardcoded variable:	        const statusMap = {
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:157:hardcoded string:	            "approval_pending": approvalPendingStatus,
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:158:hardcoded string:	            "soft_approved": <span style={{ color: '#e800ff' }}>Order is in queue. Please check the status in sometime.
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:160:hardcoded string:	            "order_processing": <span style={{ color: '#0062ff' }}>Order is getting processed. Please track the status in Achieve under Draft Orders.</span>,
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:161:hardcoded string:	            "order_created": <>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:162:hardcoded string:	                <span style={{ color: '#16ad55' }}>{`Order created successfully. Please track in ${isOmsOrder ? "Achieve" : "OH"}.`}</span>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:164:hardcoded string:	                    <a style={{ cursor: 'pointer' }} target="_blank" href={`https://${(env !== "production") ? 'dev-' : ''}achieve.byjusorders.com/orders/${salesOrderId}`}>Click to Track</a>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:167:hardcoded string:	            "errored": <span style={{ color: 'red' }}>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:173:hardcoded variable:	        const infoMap = {
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:174:hardcoded string:	            "soft_approved": 'warning',
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:175:hardcoded string:	            "order_processing": 'info',
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:176:hardcoded string:	            "order_created": 'success',
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:177:hardcoded string:	            "errored": 'error',
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:178:hardcoded string:	            'approval_pending': "info"
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:181:hardcoded string:	        if (parentStatus && parentStatus === "order_created") {
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:183:hardcoded string:	                status: statusMap[status] || '',
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:184:hardcoded string:	                infoType: infoMap[status] || ''
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:187:hardcoded string:	        else if (parentStatus && parentStatus === "errored") {
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:189:hardcoded string:	                status: <span style={{ color: 'red' }}>Parent Order got errored, so child order can not be created.</span>,
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:190:hardcoded string:	                infoType: 'error'
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:195:hardcoded string:	                status: statusMap[status] || '',
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:196:hardcoded string:	                infoType: infoMap[status] || ''
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:204:hardcoded object:	        const { identifier } = this.state;
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:207:hardcoded object:	            this.setState({ loading: true, error: null });
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:209:hardcoded string:	            message.success('Fetching Order status');
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:211:hardcoded object:	                url: `/api/order/getDraftOrderDetails/?id=${identifier}`,
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:212:hardcoded string:	                method: "GET"
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:214:hardcoded object:	                this.setState({ orderDetails: response.data, loading: false });
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:216:hardcoded string:	                message.error('Error in  fetching order status.');
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:217:hardcoded object:	                this.setState({ loading: false, error: error });
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:221:hardcoded string:	            message.error('Order Reference Id is missing.');
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:226:hardcoded object:	        let { identifier, authDetails } = this.props;
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:227:hardcoded object:	        const { draftOrder, status } = authDetails;
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:230:hardcoded string:	            identifier = get(draftOrder, '_id', '');
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:232:hardcoded object:	        this.setState({ identifier }, () => {
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:238:hardcoded object:	        const { orderDetails } = this.state;
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:239:hardcoded array:	        const order = []
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:243:hardcoded object:	                createdOrders={order} />
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:248:hardcoded object:	        const { loading, error, orderDetails } = this.state;
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:253:hardcoded string:	                    step="done"
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:254:hardcoded object:	                    loading={loading}
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:255:hardcoded object:	                    error={error}
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:257:hardcoded object:	                    <Skeleton loading={loading} active>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:258:hardcoded string:	                        <div className="card m-2" style={{ margin: '2%' }}>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:259:hardcoded string:	                            <div className='card-header bg-primary text-white'> Order Details </div>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:260:hardcoded string:	                            <div className="card-body">
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:262:hardcoded string:	                                    <Button type="primary" className="order-status-btn" onClick={this.fetchOrderStatus}>Fetch Status</Button>
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:264:hardcoded object:	                                {orderDetails && this.buildOrderDetails()}
+microservices-middleware/client/src/modules/order/OrderStatusPage.js:265:hardcoded object:	                                {orderDetails != null && this.getQRCodeDom()}
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:12:hardcoded variable:	const isByjusClassOrder = (customerDetails) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:13:hardcoded array:	    customerDetails = isArray(customerDetails) ? customerDetails : [customerDetails];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:15:hardcoded object:	    let result = {}
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:16:hardcoded variable:	    const trialPackOrderDetails = isTrialPackOrder(customerDetails);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:18:hardcoded string:	        result["type"] = orderPunchingType["trialPackToByjusClassOrderType"];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:19:hardcoded string:	        result["isByjusClass"] = false;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:22:hardcoded string:	    let isByjusClass = customerDetails.filter(ele => nonEligibleProductSelectionTypeForUpgrade.includes(get(ele, "productSelectionType", "")));
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:23:hardcoded number:	    for (var i = 0; i < customerDetails.length; i++) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:24:hardcoded array:	        let { products = [] } = customerDetails[i];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:25:hardcoded string:	        products = products.filter(ele => ["HLP"].includes(get(ele, "sku", "")));
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:27:hardcoded string:	            result["type"] = orderPunchingType["tlpToHlpOrderType"];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:28:hardcoded string:	            result["isByjusClass"] = true;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:33:hardcoded string:	        result["type"] = orderPunchingType["tlpToHlpOrderType"];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:34:hardcoded string:	        result["isByjusClass"] = true;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:38:hardcoded string:	        result["type"] = orderPunchingType["tlpToHlpOrderType"];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:39:hardcoded string:	        result["isByjusClass"] = false;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:44:hardcoded variable:	const isStreamingOrder = (customerDetails) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:45:hardcoded string:	    const { type = "" } = customerDetails[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:46:hardcoded string:	    return (type === 'streaming') ? true : false;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:50:hardcoded variable:	const getInitialClassValue = (initialClass, finalClass, validity) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:53:hardcoded variable:	    const currDate = new Date();
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:54:hardcoded variable:	    const currYear = currDate.getFullYear();
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:55:hardcoded variable:	    const currMonth = currDate.getMonth()
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:57:hardcoded number:	        if (currMonth > 1) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:58:hardcoded string:	            if (initialClass == '12') {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:59:hardcoded number:	                initialClass = 12;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:61:hardcoded number:	            else initialClass += 1;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:66:hardcoded number:	        initialClass = (currMonth > 1) ? initialClass + 1 : initialClass;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:68:hardcoded string:	     return (initialClass <= finalClass) ? parseInt(initialClass).toString() : "";
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:72:hardcoded number:	//for K3 and K12 byjus class upgrade is not allowed
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:73:hardcoded number:	const isK3OrK12Order = (customerDetails) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:74:hardcoded array:	    customerDetails = isArray(customerDetails) ? customerDetails : [customerDetails];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:75:hardcoded variable:	    let result = false;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:76:hardcoded array:	    let resultArray = []
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:77:hardcoded string:	    const siblingOrder = customerDetails.filter(ele => get(ele, "type", "") === 'sibling');
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:79:hardcoded number:	        const isK12 = customerDetails.filter(ele => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:80:hardcoded array:	            const { productInfo = [] } = ele;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:81:hardcoded number:	            const { initialClass, finalClass, validity } = productInfo[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:82:hardcoded variable:	            const currentInitialClass = getInitialClassValue(initialClass, finalClass, validity);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:83:hardcoded string:	            return ['12', '11', '1', '2', '3', '0', 0, '-1', -1, 1, 2, 3, 12, 11,""].includes(currentInitialClass);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:85:hardcoded number:	        result = (!isEmpty(isK12)) ? true : false;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:88:hardcoded number:	        for (var i = 0; i < siblingOrder.length; i++) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:90:hardcoded array:	            const { productInfo = [] } = siblingOrder[i];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:91:hardcoded number:	            const { initialClass, finalClass, validity } = productInfo[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:92:hardcoded variable:	            const currentInitialClass = getInitialClassValue(initialClass, finalClass, validity);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:93:hardcoded string:	            if (!['12', '11', '-1', '0', '1', '2', '3', 0, -1, 1, 2, 3, 12, 11].includes(currentInitialClass)) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:102:hardcoded number:	    for (let j = 0; j < resultArray.length; j++) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:103:hardcoded array:	        if (resultArray[j]) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:112:hardcoded variable:	const isFocOrder = (paymentDetails) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:113:hardcoded string:	    const isFoc = paymentDetails.filter(ele => ["FOC", "FOC_SWAP", "FOC_DISPATCH"].includes(get(ele, "paymentType", "")))
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:118:hardcoded variable:	const isTabletOrder = (customerDetails) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:119:hardcoded array:	    customerDetails = isArray(customerDetails) ? customerDetails : [customerDetails];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:120:hardcoded variable:	    const isTablet = customerDetails.filter(ele => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:121:hardcoded array:	        const { productInfo = [] } = ele;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:122:hardcoded string:	        const { initialClass = "" } = productInfo[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:123:hardcoded string:	        return (initialClass === undefined || initialClass == "")
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:128:hardcoded variable:	export const getValidOrders = (orderDoc) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:129:hardcoded variable:	    let validOrders = orderDoc;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:130:hardcoded string:	    validOrders = orderDoc.filter(ele => (!['returned', 'canceled', 'cancelled', 'return_initiated'].includes(get(ele, "orderhiveOrderStatus", "")) && ['SINGLE', 'SPLIT_PARENT'].includes(get(ele, "orderType", ""))));
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:133:hardcoded string:	const prevUpgradeProduct= (category ="") =>{
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:134:hardcoded string:	    return !["gate_ese_extension","gate_extension","gate_upgrade"].includes(category);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:137:hardcoded variable:	export const checkEligibleForGateEseExtension = (orderData) =>{
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:138:hardcoded object:	    const {productDetails={},orderPunchingType,orderPunchingCategory}=orderData;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:139:hardcoded string:	    const {subject="",validity="2023",productType="", category=""}=productDetails;    
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:140:hardcoded string:	    const isGateValidForUpgrade = prevUpgradeProduct(category) && (validity=="2023") && isGateOrder(orderPunchingType,orderPunchingCategory,productType) && (subject !=="computer_science") && (!category.includes("ese")) && category.includes("gate"); 
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:145:hardcoded variable:	export const checkEligibleForGateExtension = (orderData) =>{
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:146:hardcoded object:	    const {productDetails={},orderPunchingType,orderPunchingCategory}=orderData;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:147:hardcoded string:	    const {subject="",validity="2023",productType="", category=""}=productDetails;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:148:hardcoded string:	    const isGateValidForUpgrade = prevUpgradeProduct(category) && (validity=="2023") && isGateOrder(orderPunchingType,orderPunchingCategory,productType) && (subject ==="computer_science") ;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:154:hardcoded variable:	export const checkEligibleForGateUpgrade = (orderData) =>{
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:155:hardcoded object:	    const {productDetails={},orderPunchingType,orderPunchingCategory}=orderData;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:156:hardcoded string:	    const {subject="",validity="2023",productType="", category=""}=productDetails;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:157:hardcoded string:	    const isValidYear=["2024","2025"].includes(validity);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:158:hardcoded string:	    const isGateValidForUpgrade = prevUpgradeProduct(category) && isValidYear && isGateOrder(orderPunchingType,orderPunchingCategory,productType) && (subject !=="computer_science") && (!category.includes("ese")) && category.includes("gate");
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:163:hardcoded variable:	const isGateOrder= (orderPunchingType,orderPunchingCategory, productType)=>{
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:164:hardcoded string:	    return orderPunchingType==="bep" && orderPunchingCategory.toLowerCase().includes("gate") && productType==="byjus_exam_prep_competitive";
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:167:hardcoded variable:	export const checkEligibiltyForUpgrade = (orderData) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:168:hardcoded object:	    let isEligibleDetails = {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:169:hardcoded string:	    const { customerDetails = [], paymentDetails, orderType = "", extraOrder = false, isUpgradedToByjusClasses = false, upgradeDetails = {}, upgradedOrders = {}, upgradeOrderDetails = {} } = orderData;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:170:hardcoded string:	    let { orderhiveOrderStatus = "", orderPunchingType, orderPunchingCategory = "" } = orderData;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:172:hardcoded string:	    orderhiveOrderStatus = (toLower(startCase(orderhiveOrderStatus ? orderhiveOrderStatus.replace("_", " ") : "")));
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:173:hardcoded variable:	    const isByjusClasses = isByjusClassOrder(customerDetails);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:174:hardcoded number:	    //const isK3 = isK3Order(customerDetails);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:175:hardcoded number:	    const isGrade12 = isK3OrK12Order(customerDetails);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:176:hardcoded variable:	    const isFoc = isFocOrder(paymentDetails);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:177:hardcoded variable:	    const isOnlyTablet = isTabletOrder(customerDetails);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:178:hardcoded variable:	    const isStreaming = isStreamingOrder(customerDetails);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:179:hardcoded variable:	    const isAlreadyUpgradedByjusClass = (isUpgradedToByjusClasses) ? true : false;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:180:hardcoded variable:	    const isValidStatus = eligibleStatusForUpgrade.includes(orderhiveOrderStatus);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:181:hardcoded string:	    const isAakashLiveUpgradeOrder = upgradeOrderDetails['newCourse'] === "aakash_live"
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:183:hardcoded number:	    const { productInfo = []} = customerDetails[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:184:hardcoded number:	    let { initialClass, finalClass, validity: initialValidity } = productInfo[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:185:hardcoded variable:	    const currentGrade = getCurrentGrade(initialClass, finalClass, initialValidity)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:186:hardcoded object:	    const { isDevEnv } = window;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:188:hardcoded string:	    if (["aakash_test_series"].includes(orderPunchingCategory)) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:189:hardcoded string:	        isEligibleDetails["isEligible"] = false;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:193:hardcoded string:	    if (!isByjusClasses["isByjusClass"] && !isFoc && !isOnlyTablet && !isAlreadyUpgradedByjusClass && !isAakashLiveUpgradeOrder &&
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:194:hardcoded string:	        isEmpty(upgradeDetails) && isEmpty(upgradedOrders) && isValidStatus && !isStreaming && !(isGrade12) && !(isDevEnv && ['11','12','12+'].includes(currentGrade)) && (orderType !== "SPLIT_CHILD" || !extraOrder)) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:195:hardcoded string:	        isEligibleDetails = { isEligible: true, type: isByjusClasses["type"] };
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:198:hardcoded variable:	    const renewalOrderOrderDetails = isRenewalOrder(customerDetails);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:200:hardcoded string:	        isEligibleDetails["isRenewalAllowed"] = true;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:201:hardcoded string:	        isEligibleDetails["isEligible"] = true;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:203:hardcoded string:	    if (["MIDDLEEAST_ORDER"].includes(orderPunchingType)) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:204:hardcoded string:	        isEligibleDetails["isEligible"] = false;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:207:hardcoded string:	    if (["AAKASH_CRP_ORDER"].includes(orderPunchingType)) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:208:hardcoded string:	        isEligibleDetails["isEligible"] = false;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:209:hardcoded string:	        isEligibleDetails["type"] = "AAKASH_CRP_ORDER";
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:212:hardcoded string:	    if (["blc", "mlp", "aakash_neo_classes", "aakash_neo_upgrade", "home_tuition", "byjus_digital_learning", 'neo_lite_streaming', "aakash_achiever", "aakash_scholar"].includes(orderPunchingCategory)) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:213:hardcoded string:	        isEligibleDetails["isEligible"] = false;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:220:hardcoded number:	export const getK12InitialClassValue = (initialClass, finalClass, validity) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:221:hardcoded number:	    const validityUptill = 2025
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:225:hardcoded variable:	    const diff = parseInt(finalClass) - parseInt(initialClass)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:231:hardcoded variable:	export const checkEligibleForAakashLiveUpgrade = (orderData) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:232:hardcoded string:	    const { customerDetails = [], paymentDetails, orderType = "", extraOrder = false, upgradedOrders, upgradeDetails = {}, orderhiveOrderStatus, orderPunchingType } = orderData;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:233:hardcoded string:	    const { productSelectionType = "", productInfo = [], type } = customerDetails[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:234:hardcoded number:	    let { initialClass, finalClass, validity: initialValidity, board } = productInfo[0] || {}; //validity here is the initial validity of the first grade
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:239:hardcoded string:	    const currAcadYear = getCurrentAcademicYear('k12')
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:240:hardcoded variable:	    const finalClassValdity = (parseInt(finalClass) - parseInt(initialClass)) + parseInt(initialValidity)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:242:hardcoded number:	    if (currAcadYear + 1 < initialValidity) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:245:hardcoded number:	    if (currAcadYear + 1 > finalClassValdity) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:248:hardcoded string:	    if (initialClass != "13+" && finalClass == "13+") {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:249:hardcoded number:	        return false //only single 12th pass live classe upgrade is allowed, combo is not allowed
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:251:hardcoded string:	    if (initialClass == "11" && finalClass == "11") {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:252:hardcoded number:	        return false //single 11th grade live classes are disabled
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:255:hardcoded variable:	    const isValidStatus = eligibleStatusForUpgrade.includes(orderhiveOrderStatus);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:256:hardcoded string:	    const isAlreadyUpgraded = upgradeDetails['isAakashLiveUpgrade']
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:257:hardcoded string:	    const isK12Order = ["11", "12", "13+"].includes(initialClass) || ["11", "12", "13+"].includes(finalClass)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:258:hardcoded string:	    const isSDCardOrder = productSelectionType == 'byjus_tlp' || orderPunchingType === "AAKASH_SD_CARD"
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:260:hardcoded number:	    if (isK12Order && isSDCardOrder && !isAlreadyUpgraded && isValidStatus) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:261:hardcoded number:	        const validityUptill = 2025 //K12 sku's with validity above 2025 should not be considered for live upgrade.
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:268:hardcoded variable:	export const checkEligibleForAakashNeoUpgrade = (orderData) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:269:hardcoded object:	    let isEligibleDetails = {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:270:hardcoded string:	    const { lineOrderItems = [], orderPunchingCategory, customerDetails = [], paymentDetails, orderType = "", extraOrder = false, upgradedOrders, upgradeDetails = {}, orderhiveOrderStatus, orderPunchingType } = orderData;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:271:hardcoded number:	    const { productInfo = [] } = customerDetails[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:272:hardcoded object:	    const { isDevEnv } = window;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:273:hardcoded string:	    let { initialClass, finalClass, validity: initialValidity, subCourse = "", formValues = {} } = productInfo[0] || {}; //validity here is the initial validity of the first grade
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:274:hardcoded string:	    let { productLearningType = "" } = formValues
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:275:hardcoded object:	    const { parentOrderItems, childOrderItems } = lineOrderItems;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:276:hardcoded string:	    const eligibleSdCards = ["aakash_sd_card", "tlp", "aakash", "btlp"];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:277:hardcoded string:	    const elegibleOrderPunchingTypes = ["aakash_sd_card", "advance_order", "discounted_order"];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:278:hardcoded string:	    let nonEligibleCatgeories = ["byjus_classes", "aakash_tlp", "aakash_live", "aakash_neo_classes", "aakash_achiever", "aakash_scholar"];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:280:hardcoded string:	        nonEligibleCatgeories = nonEligibleCatgeories.filter((val) => val !== "aakash_tlp")
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:282:hardcoded variable:	    const currentGrade = getCurrentGrade(initialClass, finalClass, initialValidity)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:283:hardcoded string:	    const isByjusClassesTlpOrder = orderPunchingCategory === "byjus_classes" && productLearningType === "byjus_classes_plus_byjus_tlp" && !["8", "9", "10"].includes(currentGrade.toString())
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:288:hardcoded array:	    let typeOfSdCard = [];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:289:hardcoded array:	    let grades = [];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:290:hardcoded array:	    let allLineItems = [...parentOrderItems, ...childOrderItems]
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:292:hardcoded object:	        let { type, grade } = result;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:296:hardcoded object:	        let { grade } = result;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:299:hardcoded array:	    grades = [...new Set(grades)];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:301:hardcoded string:	    const currAcadYear = getCurrentAcademicYear('k12')
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:303:hardcoded string:	    if ([12].includes(parseInt(currentGrade)) && grades.includes("11+12")) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:307:hardcoded string:	    if (isDevEnv && orderPunchingCategory === "aakash_tlp" && !parseInt(currentGrade) === 11) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:311:hardcoded string:	    if (parseInt(initialValidity) != (currAcadYear + 1) && ["11", "12"].includes(initialClass) && finalClass === "12") {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:315:hardcoded string:	    if (initialClass == "13+" && finalClass == "13+") {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:316:hardcoded string:	        if ((subCourse == "JEE/NEET") || (parseInt(initialValidity) < (currAcadYear + 1))) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:320:hardcoded string:	    if (subCourse == "Commerce") {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:324:hardcoded number:	    if (currAcadYear + 1 < parseInt(initialValidity)) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:327:hardcoded string:	    if (isDevEnv && !['11','12','13+'].includes(currentGrade)  && ['12'].includes(finalClass)){
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:331:hardcoded variable:	    const isValidStatus = eligibleStatusForUpgrade.includes(orderhiveOrderStatus);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:332:hardcoded string:	    const isEligibleOrder = ((["8", "9", "10", "11", "12"].includes(initialClass) && ["12"].includes(finalClass)) || (["13+"].includes(initialClass) && ["13+"].includes(finalClass))) && (!nonEligibleCatgeories.includes(orderPunchingCategory) || isByjusClassesTlpOrder)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:333:hardcoded variable:	    const isSDCardOrder = eligibleSdCards.some(cardType => typeOfSdCard.includes(cardType)) || elegibleOrderPunchingTypes.includes(toLower(orderPunchingType))
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:336:hardcoded object:	        isEligibleDetails = { isEligible: true };
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:337:hardcoded string:	        isEligibleDetails["type"] = "AAKASH_NEO_UPGRADE";
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:345:hardcoded variable:	export const checkEligibleForAakashNeoMeUpgrade = (orderData) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:346:hardcoded string:	    const { lineOrderItems = [], orderPunchingCategory, customerDetails = [], paymentDetails, orderType = "", extraOrder = false, upgradedOrders, upgradeDetails = {}, orderhiveOrderStatus, orderPunchingType, leadsquaredAccountNumber
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:348:hardcoded number:	    const { productInfo = [] } = customerDetails[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:349:hardcoded string:	    let { initialClass, finalClass, validity: initialValidity, subCourse = "", formValues = {} } = productInfo[0] || {}; //validity here is the initial validity of the first grade
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:350:hardcoded string:	    let { productLearningType = "" } = formValues
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:351:hardcoded object:	    const { parentOrderItems, childOrderItems } = lineOrderItems;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:352:hardcoded string:	    const isMeOrder = ["MIDDLEEAST_ORDER"].includes(orderPunchingType) || [24694].includes(parseInt(leadsquaredAccountNumber))
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:354:hardcoded number:	    const eligibleCurrentGrade = [11, 12, 13]
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:355:hardcoded string:	    const eligibleCatgeories = ["byjus_classes", "aakash_tlp", "byjus_tlp"];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:362:hardcoded variable:	    const currentGrade = getCurrentGrade(initialClass, finalClass, initialValidity)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:363:hardcoded variable:	    const isValidCategory = eligibleCatgeories.includes(orderPunchingCategory)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:364:hardcoded variable:	    const isValidStatus = eligibleStatusForUpgrade.includes(orderhiveOrderStatus);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:365:hardcoded variable:	    const isValidGrade = eligibleCurrentGrade.includes(currentGrade)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:366:hardcoded string:	    const currAcadYear = getCurrentAcademicYear('k12')
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:368:hardcoded string:	    if ((initialClass == "13+" && finalClass == "13+") || currentGrade === 13) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:369:hardcoded string:	        if ((subCourse == "JEE/NEET") || (parseInt(initialValidity) != (currAcadYear + 1))) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:374:hardcoded number:	    if (currAcadYear + 1 < parseInt(initialValidity)) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:386:hardcoded variable:	export const checkEligibiltyForByjusMathUpgrade = (orderData, isMathUpgradeEnabled) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:387:hardcoded object:	    let isEligibleDetails = {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:388:hardcoded string:	    const { customerDetails = [], paymentDetails, orderType = "", extraOrder = false, upgradedOrders, upgradeDetails = {} } = orderData;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:389:hardcoded string:	    let { orderhiveOrderStatus = "", orderPunchingType, orderPunchingCategory } = orderData;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:390:hardcoded string:	    const { productSelectionType = "", productInfo = [], type } = customerDetails[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:391:hardcoded number:	    const { initialClass, finalClass, validity, board, bfsProductType } = productInfo[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:392:hardcoded variable:	    const currentInitialClass = getInitialClassValue(initialClass, finalClass, validity);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:393:hardcoded string:	    orderhiveOrderStatus = (toLower(startCase(orderhiveOrderStatus ? orderhiveOrderStatus.replace("_", " ") : "")));
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:394:hardcoded variable:	    // const isFoc = isFocOrder(paymentDetails);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:395:hardcoded variable:	    const isOnlyTablet = isTabletOrder(customerDetails);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:396:hardcoded string:	    const isAlreadyUpgraded = (upgradeDetails['isByjusMathUpgrade'] == true || !isEmpty(upgradedOrders)) ? true : false;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:397:hardcoded variable:	    const isValidStatus = eligibleStatusForUpgrade.includes(orderhiveOrderStatus);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:398:hardcoded string:	    if (isMathUpgradeEnabled && ['NORMAL_ORDER', ''].includes(orderPunchingType) && (["belp"].includes(orderPunchingCategory)) && !isOnlyTablet
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:399:hardcoded string:	        && !isAlreadyUpgraded && isValidStatus && [1, 2, 3, '1', '2', '3'].includes(currentInitialClass)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:400:hardcoded string:	        && (orderType !== "SPLIT_CHILD" || !extraOrder) && type !== "sibling" ) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:401:hardcoded object:	        isEligibleDetails = { isEligible: true, isDbelToByjusMathUpgrade: true };
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:404:hardcoded string:	    if (["mlp"].includes(orderPunchingCategory)) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:405:hardcoded string:	        isEligibleDetails["isEligible"] = false;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:411:hardcoded variable:	export const checkEligibiltyForBlcUpgrade = (orderData, env, userPermissions) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:412:hardcoded object:	    let isEligibleDetails = {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:413:hardcoded string:	    const { customerDetails = [], paymentDetails, orderType = "", extraOrder = false, upgradedOrders, upgradeOrderDetails = {}, upgradeDetails = {} } = orderData;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:414:hardcoded string:	    let { orderhiveOrderStatus = "", orderPunchingType = "", orderPunchingCategory } = orderData;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:415:hardcoded string:	    const { productSelectionType = "", productInfo = [], type, products } = customerDetails[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:416:hardcoded number:	    const { initialClass, finalClass, validity, board } = productInfo[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:417:hardcoded variable:	    const currentInitialClass = getInitialClassValue(initialClass, finalClass, validity);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:418:hardcoded variable:	    /* const currentYearValidity = getCurrentYearValidity()
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:419:hardcoded number:	    An order with validity 2022 should NOT be eligible for upgrade until June 2022
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:421:hardcoded variable:	    const isPriviledgedUser = userPermissions.includes(leadquaredRelatedPermissions.allownMultipleOrderOnSameProspectId);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:422:hardcoded string:	    orderhiveOrderStatus = (toLower(startCase(orderhiveOrderStatus ? orderhiveOrderStatus.replace("_", " ") : "")));
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:423:hardcoded variable:	    const isFoc = isFocOrder(paymentDetails);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:424:hardcoded string:	    const isK10 = ['4', '5', '6', '7', '8', '9'].includes(currentInitialClass.toString())
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:425:hardcoded string:	    const isAlreadyUpgraded = (upgradeDetails['isBlcUpgrade'] == true || !isEmpty(upgradedOrders)) ? true : false;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:426:hardcoded variable:	    const isValidStatus = eligibleStatusForUpgrade.includes(orderhiveOrderStatus);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:427:hardcoded string:	    const isDevEnv = (["development", "local"].includes(env))
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:428:hardcoded variable:	    const isProductTypeEligible = getProductTypeEligibility(productSelectionType, products, isDevEnv)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:429:hardcoded string:	    if ((['NORMAL_ORDER', ''].includes(orderPunchingType) || productSelectionType == "byjus_classes_upgrade") && !isFoc && isProductTypeEligible && isValidStatus && isK10
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:430:hardcoded string:	        && (!isAlreadyUpgraded || productSelectionType == "byjus_classes" && productSelectionType == "byjus_classes_upgrade") && type !== "sibling" && validity != 'subscription' && !['mlp'].includes(orderPunchingCategory)) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:431:hardcoded object:	        isEligibleDetails = { isEligible: true, isTlpToBlcUpgrade: true };
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:432:hardcoded number:	        //disable sinlge grade upgrade btc price change jan 2023 
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:435:hardcoded object:	            isEligibleDetails = { isEligible: false, isTlpToBlcUpgrade: false };
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:442:hardcoded variable:	export const checkEligibleForAakashCrpHybridUpgrade = (orderData) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:443:hardcoded string:	    const { customerDetails = [], paymentDetails, orderType = "", extraOrder = false, upgradedOrders, upgradeOrderDetails = {}, upgradeDetails = {}, orderPunchingCategory, orderhiveOrderStatus } = orderData;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:444:hardcoded string:	    const { productInfo } = get(customerDetails, "0", {})
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:445:hardcoded string:	    const { formValues } = get(productInfo, "0", {})
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:446:hardcoded string:	    const { productLearningType = "", subCourse = "", initialClass, finalClass } = formValues || {}
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:448:hardcoded string:	    if (["aakash_neo_classes"].includes(orderPunchingCategory) &&
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:449:hardcoded string:	        ["aakash_byjus_live"].includes(productLearningType) &&
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:450:hardcoded string:	        ["JEE", "NEET"].includes(subCourse) &&
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:452:hardcoded string:	        if (initialClass == "11" && finalClass == "12") {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:455:hardcoded string:	        if (initialClass == "12" && finalClass == "12") {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:464:hardcoded variable:	const getProductTypeEligibility = (productSelectionType, products) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:468:hardcoded string:	        if (products && products.length && (get(products[0], "sku") || get(products[0], "name"))) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:469:hardcoded string:	            let skuName = get(products[0], "sku") || get(products[0], "name");
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:472:hardcoded string:	            return !(skuName.includes("hlp")) && skuName.includes("sd card-byjus")
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:477:hardcoded string:	    else return ['byjus_tlp', 'byjus_classes', 'byjus_classes_upgrade'].includes(productSelectionType)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:480:hardcoded variable:	const getCurrentYearValidity = () => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:481:hardcoded variable:	    const currDate = new Date();
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:482:hardcoded variable:	    const currYear = currDate.getFullYear();
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:483:hardcoded variable:	    const currMonth = currDate.getMonth()
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:484:hardcoded number:	    const currentYearValidity = currMonth < 1 ? currYear : currYear + 1
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:488:hardcoded variable:	const getCurrentGrade = (initialClass, finalClass, validity) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:491:hardcoded variable:	    const currDate = new Date();
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:492:hardcoded variable:	    const currYear = currDate.getFullYear();
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:493:hardcoded variable:	    const currMonth = currDate.getMonth()
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:495:hardcoded number:	        if (currMonth > 1) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:496:hardcoded number:	            if ([12, 13].includes(initialClass)) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:499:hardcoded number:	                initialClass = ((initialClass < finalClass)) ? (initialClass + 1) : initialClass;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:505:hardcoded number:	        initialClass = (currMonth > 1 && initialClass < finalClass) ? initialClass + 1 : initialClass;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:510:hardcoded variable:	export const checkEligibleForTestSeriesUpgrade = (orderData) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:511:hardcoded object:	    let isEligibleDetails = {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:512:hardcoded object:	    const { orderPunchingCategory, customerDetails, orderhiveOrderStatus, orderPunchingType, upgradeOrderDetails = {}, upgradeDetails = {} } = orderData;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:513:hardcoded number:	    const { productInfo = [] } = customerDetails[0] || {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:514:hardcoded number:	    let { initialClass, finalClass, validity: initialValidity } = productInfo[0] || {}; //validity here is the initial validity of the first grade
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:515:hardcoded variable:	    const currentGrade = getCurrentGrade(initialClass, finalClass, initialValidity)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:517:hardcoded string:	    if ([12].includes(parseInt(currentGrade)) && initialClass === "11" && finalClass === "12") {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:521:hardcoded variable:	    const isValidStatus = eligibleStatusForUpgrade.includes(orderhiveOrderStatus);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:522:hardcoded string:	    if (isValidStatus && ['aakash_test_series'].includes(orderPunchingCategory) && isEmpty(upgradeDetails) && isEmpty(upgradeOrderDetails)) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:523:hardcoded object:	        isEligibleDetails = { isEligible: true, isTestSeriesUpgrade: true, isAakashNeoLiveUpgrade: true };
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:524:hardcoded string:	        isEligibleDetails["type1"] = "AAKASH_TEST_SERIES_UPGRADE";
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:525:hardcoded string:	        isEligibleDetails["type2"] = "AAKASH_NEO_LIVE_CLASSES_UPGRADE";
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:532:hardcoded string:	export const getRenewalEligibilityDetails = (orderData, vertical = "") => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:533:hardcoded object:	    let isEligibleDetails = {};
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:535:hardcoded string:	    const orderPunchingCategory = get(orderData, 'orderPunchingCategory', null);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:536:hardcoded string:	    const orderPunchingType = get(orderData, 'orderPunchingType', null);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:537:hardcoded string:	    const students = get(orderData, 'customerDetails', []);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:538:hardcoded string:	    const renewedOrderDetails = get(orderData, 'renewedOrders', []);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:539:hardcoded variable:	    const existingRenewedPids = getRenewedPids(renewedOrderDetails)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:541:hardcoded variable:	    const isEligible = students.length && students.some(student => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:542:hardcoded string:	        const productInfo = get(student, 'productInfo', []);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:543:hardcoded string:	        const premiumAccount = get(student, 'premiumAccount', null)
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:544:hardcoded string:	        const { initialClass = '', finalClass = '', validity = ''} = productInfo[0] || {}
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:545:hardcoded object:	        return checkEligibilityforRenewal({initialClass, finalClass, validity, orderPunchingCategory, premiumAccount, existingRenewedPids});      
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:551:hardcoded number:	     *          initial && final grades should be in K9 grades i.e: 4-9
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:554:hardcoded string:	     *          accessiblity: all priv users || vertical === "upgrade" users
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:557:hardcoded string:	        isEligible: isEligible && ['normal_order'].includes(snakeCase(orderPunchingType)),
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:558:hardcoded string:	        isUpgradeVertical: vertical && (vertical.toLowerCase()).includes("upgrade") ? true : false
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:563:hardcoded variable:	export const checkEligibilityforRenewal = (data) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:564:hardcoded string:	    let { initialClass, finalClass, validity, orderPunchingCategory, premiumAccount = '', existingRenewedPids = [] } = data;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:566:hardcoded number:	    const eligibleGrades = [ ...K9_GRADES, ...MOL_K3_GRADES];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:568:hardcoded string:	    if(finalClass === "10"){
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:569:hardcoded string:	        const ELIGIBLE_COMBINATIONS_FOR_RENEWAL_GRADE10 = ['btlp', 'byjus_digital_learning', 'byjus_classes']
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:570:hardcoded number:	        if(!ELIGIBLE_COMBINATIONS_FOR_RENEWAL_GRADE10.includes(snakeCase(orderPunchingCategory))){
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:574:hardcoded string:	    else if(finalClass === "12"){
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:575:hardcoded string:	        const ELIGIBLE_COMBINATIONS_FOR_RENEWAL_GRADE12 = ['aakash_neo_classes', 'aakash_tlp']
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:576:hardcoded number:	        if(!ELIGIBLE_COMBINATIONS_FOR_RENEWAL_GRADE12.includes(snakeCase(orderPunchingCategory))){
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:588:hardcoded variable:	    let updatedValidity = Number(validity);
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:589:hardcoded number:	    const courseDuration = finalClass ? Number(finalClass) - Number(initialClass) : 0;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:591:hardcoded number:	    if (courseDuration > 0) {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:597:hardcoded variable:	export const getRenewedPids = (renewedOrderDetails) => {
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:598:hardcoded array:	    let renewedPids = [];
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:600:hardcoded array:	        const { renewedOrderId = null, renewedPremiumIds = [] } = ele;
+microservices-middleware/client/src/modules/order/orderSummaryHelper.js:614:hardcoded number:	    getK12InitialClassValue,
+microservices-middleware/client/src/modules/order/orderSummary.js:13:hardcoded string:	} from './orderSummaryHelper'
+microservices-middleware/client/src/modules/order/orderSummary.js:19:hardcoded variable:	const GetActionButtons = (props) => {
+microservices-middleware/client/src/modules/order/orderSummary.js:22:hardcoded string:	        isEligibleForTestSeriesUpgrade, isEligibleForRenewal, isEligibleForGateEseExtension, isEligibleForGateExtension, isEligibleForGateUpgrade} = props["details"]
+microservices-middleware/client/src/modules/order/orderSummary.js:23:hardcoded object:	    const { accountNumber } = props
+microservices-middleware/client/src/modules/order/orderSummary.js:24:hardcoded array:	    const [dropdownOpen, setOpen] = useState(false);
+microservices-middleware/client/src/modules/order/orderSummary.js:25:hardcoded string:	    const [buttonText, setButtonText] = useState({ label: "Select Upgrade Type", value: null });
+microservices-middleware/client/src/modules/order/orderSummary.js:26:hardcoded string:	    const isRprOrderPunchingAllowed = useSelector(state => get(state, 'auth.rprDetailsData.isOrderPunchingAllowed'));
+microservices-middleware/client/src/modules/order/orderSummary.js:28:hardcoded variable:	    const toggle = () => setOpen(!dropdownOpen);
+microservices-middleware/client/src/modules/order/orderSummary.js:30:hardcoded variable:	    const isTrialPackUpgradePermissionAvailable = userPermissions.includes(leadquaredRelatedPermissions.allownTrialPackUpgrade);
+microservices-middleware/client/src/modules/order/orderSummary.js:32:hardcoded variable:	    const isRenewalPermissionAvailable = userPermissions.includes(leadquaredRelatedPermissions.allowRenewalOrder)
+microservices-middleware/client/src/modules/order/orderSummary.js:33:hardcoded variable:	    const isPriviledgedUser = userPermissions.includes(leadquaredRelatedPermissions.allownMultipleOrderOnSameProspectId);
+microservices-middleware/client/src/modules/order/orderSummary.js:34:hardcoded string:	    const upgradedOrderId = get(row, 'upgradedOrderId', [])
+microservices-middleware/client/src/modules/order/orderSummary.js:35:hardcoded string:	    const orderId = get(row, 'orderId', "")
+microservices-middleware/client/src/modules/order/orderSummary.js:36:hardcoded string:	    const customerDetails = get(row, 'customerDetails', [])
+microservices-middleware/client/src/modules/order/orderSummary.js:37:hardcoded string:	    const productSelectionType = get(customerDetails[0], 'productSelectionType', '')
+microservices-middleware/client/src/modules/order/orderSummary.js:38:hardcoded string:	    const blcUpgradeOrder = productSelectionType == 'byjus_classes' ? "BYJUS_CLASSES_TO_BLC_ORDER" : "TLP_TO_BLC_ORDER"
+microservices-middleware/client/src/modules/order/orderSummary.js:40:hardcoded number:	    let upgradeOptions = [24694].includes(parseInt(accountNumber)) ?
+microservices-middleware/client/src/modules/order/orderSummary.js:43:hardcoded string:	                label: "Aakash Neo Me Upgrade", value: "AAKASH_NEO_ME_UPGRADE",
+microservices-middleware/client/src/modules/order/orderSummary.js:44:hardcoded string:	                isEligible: isEligibleForNeoMe["type"] === "AAKASH_NEO_ME_UPGRADE"
+microservices-middleware/client/src/modules/order/orderSummary.js:49:hardcoded string:	                label: "Trial Pack Upgrade", value: "TRIAL_PACK_TO_BYJUS_CLASSES",
+microservices-middleware/client/src/modules/order/orderSummary.js:50:hardcoded string:	                isEligible: isTrialPackUpgradePermissionAvailable && isEligibleDetails["type"] === "TRIAL_PACK_TO_BYJUS_CLASSES"
+microservices-middleware/client/src/modules/order/orderSummary.js:52:hardcoded number:	            { //disabled on business confirmation. (20-02-2023)
+microservices-middleware/client/src/modules/order/orderSummary.js:53:hardcoded string:	                label: "Renew Existing Order", value: "RENEWAL_ORDER",
+microservices-middleware/client/src/modules/order/orderSummary.js:54:hardcoded string:	                isEligible: false //["student_success_specialist", "senior_student_success_specialist"].includes(role) && get(isEligibleDetails, "isRenewalAllowed", false)
+microservices-middleware/client/src/modules/order/orderSummary.js:57:hardcoded string:	                label: "Renew", value: "RENEWAL",
+microservices-middleware/client/src/modules/order/orderSummary.js:58:hardcoded string:	                isEligible: (isPriviledgedUser || isEligibleForRenewal["isUpgradeVertical"]) &&
+microservices-middleware/client/src/modules/order/orderSummary.js:59:hardcoded string:	                    isEligibleForRenewal["isEligible"]
+microservices-middleware/client/src/modules/order/orderSummary.js:62:hardcoded string:	                label: "BYJU'S Classes Upgrade", value: "TLP_TO_HLP_ORDER",
+microservices-middleware/client/src/modules/order/orderSummary.js:63:hardcoded string:	                isEligible: isEligibleDetails["type"] === "TLP_TO_HLP_ORDER"
+microservices-middleware/client/src/modules/order/orderSummary.js:66:hardcoded string:	                label: "BYJU'S Math Upgrade", value: "TLP_TO_BYJUS_MATH_ORDER",
+microservices-middleware/client/src/modules/order/orderSummary.js:67:hardcoded string:	                isEligible: isByjusMathUpgradeDetails['isDbelToByjusMathUpgrade'] && upgradedOrderId.length == 0
+microservices-middleware/client/src/modules/order/orderSummary.js:70:hardcoded string:	                label: ['development', 'local'].includes(env) ? "BYJU'S Tuition Center Upgrade" : "BYJU'S Learning Center Upgrade", value: blcUpgradeOrder,
+microservices-middleware/client/src/modules/order/orderSummary.js:71:hardcoded string:	                isEligible: isBlcUpgradeDetails['isTlpToBlcUpgrade']
+microservices-middleware/client/src/modules/order/orderSummary.js:75:hardcoded string:	            //     label: "Aakash Live Upgrade", value: "AAKASH_LIVE_UPGRADE",
+microservices-middleware/client/src/modules/order/orderSummary.js:76:hardcoded string:	            //     isEligible: env != 'production' && checkEligibleForAakashLiveUpgrade(row)
+microservices-middleware/client/src/modules/order/orderSummary.js:79:hardcoded string:	                label: "Aakash Neo Upgrade", value: "AAKASH_NEO_UPGRADE",
+microservices-middleware/client/src/modules/order/orderSummary.js:80:hardcoded string:	                isEligible: isEligibleForNeo["type"] === "AAKASH_NEO_UPGRADE"
+microservices-middleware/client/src/modules/order/orderSummary.js:83:hardcoded string:	                label: "Aakash Crp Hybrid Upgrade", value: "AAKASH_CRP_HYBRID_UPGRADE",
+microservices-middleware/client/src/modules/order/orderSummary.js:84:hardcoded string:	                isEligible: isEligibleForCrpHybrid["type"] === "AAKASH_CRP_HYBRID_UPGRADE"
+microservices-middleware/client/src/modules/order/orderSummary.js:87:hardcoded string:	                label: "Aakash Test Series Upgrade", value: "AAKASH_TEST_SERIES_UPGRADE",
+microservices-middleware/client/src/modules/order/orderSummary.js:88:hardcoded string:	                isEligible: env != 'production' && isEligibleForTestSeriesUpgrade['isTestSeriesUpgrade']
+microservices-middleware/client/src/modules/order/orderSummary.js:91:hardcoded string:	                label: "Aakash Neo Live Classes Upgrade", value: "AAKASH_NEO_LIVE_CLASSES_UPGRADE",
+microservices-middleware/client/src/modules/order/orderSummary.js:92:hardcoded string:	                isEligible: env != 'production' && isEligibleForTestSeriesUpgrade['isAakashNeoLiveUpgrade']
+microservices-middleware/client/src/modules/order/orderSummary.js:95:hardcoded string:	                label:"Course for ESE and Gate", value:"GATE_ESE_EXTENSION",
+microservices-middleware/client/src/modules/order/orderSummary.js:96:hardcoded string:	                isEligible: env!=="production" && isEligibleForGateEseExtension
+microservices-middleware/client/src/modules/order/orderSummary.js:99:hardcoded string:	                label:"Gate Validity Extension", value:"GATE_EXTENSION",
+microservices-middleware/client/src/modules/order/orderSummary.js:100:hardcoded string:	                isEligible:env!=="production" && isEligibleForGateExtension
+microservices-middleware/client/src/modules/order/orderSummary.js:103:hardcoded string:	                label:"Course for ESE and Gate", value:"GATE_UPGRADE",
+microservices-middleware/client/src/modules/order/orderSummary.js:104:hardcoded string:	                isEligible:env!=="production" && isEligibleForGateUpgrade
+microservices-middleware/client/src/modules/order/orderSummary.js:108:hardcoded variable:	    const eligibleCount = upgradeOptions.filter(ele => ele.isEligible).length;
+microservices-middleware/client/src/modules/order/orderSummary.js:115:hardcoded string:	                {isTrialPackUpgradePermissionAvailable && isEligibleDetails["type"] === "TRIAL_PACK_TO_BYJUS_CLASSES" &&
+microservices-middleware/client/src/modules/order/orderSummary.js:116:hardcoded string:	                    <Button outline color="info" style={{ width: '160px' }} onClick={() => convertOrder(row, "TRIAL_PACK_TO_BYJUS_CLASSES")}>Trial Pack Upgrade</Button>}{" "}
+microservices-middleware/client/src/modules/order/orderSummary.js:117:hardcoded string:	                {["student_success_specialist", "senior_student_success_specialist"].includes(role) && get(isEligibleDetails, "isRenewalAllowed", false) &&
+microservices-middleware/client/src/modules/order/orderSummary.js:118:hardcoded string:	                    <Button outline color="info" style={{ width: '160px', marginRight: '5px' }} onClick={() => convertOrder(row, "RENEWAL_ORDER")}>Renew Existing Order</Button>}
+microservices-middleware/client/src/modules/order/orderSummary.js:119:hardcoded string:	                {isEligibleDetails["type"] === "TLP_TO_HLP_ORDER" && <Button outline color="info" style={{ width: '160px' }} onClick={() => convertOrder(row, "TLP_TO_HLP_ORDER")}>BYJU'S Classes Upgrade</Button>}
+microservices-middleware/client/src/modules/order/orderSummary.js:120:hardcoded string:	                {isByjusMathUpgradeDetails['isDbelToByjusMathUpgrade'] && upgradedOrderId.length == 0 &&
+microservices-middleware/client/src/modules/order/orderSummary.js:121:hardcoded string:	                    <Button outline color="info" style={{ width: '160px' }} onClick={() => convertOrder(row, "TLP_TO_BYJUS_MATH_ORDER")}>BYJU'S Math Upgrade</Button>}
+microservices-middleware/client/src/modules/order/orderSummary.js:122:hardcoded string:	                {env != 'production' && isBlcUpgradeDetails['isTlpToBlcUpgrade'] &&
+microservices-middleware/client/src/modules/order/orderSummary.js:123:hardcoded string:	                    <Button outline color="info" style={{ width: '160px' }} onClick={() => convertOrder(row, "TLP_TO_BLC_ORDER")}>BYJU'S Learning Center Upgrade</Button>}
+microservices-middleware/client/src/modules/order/orderSummary.js:125:hardcoded number:	            {eligibleCount > 0 && <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+microservices-middleware/client/src/modules/order/orderSummary.js:127:hardcoded string:	                    <Button id={`upgrade-${orderId}`} disabled={!isRprOrderPunchingAllowed} color={buttonText["value"] ? "info" : "secondary"} onClick={() => convertOrder(row, buttonText["value"])}>{buttonText["label"]}</Button>
+microservices-middleware/client/src/modules/order/orderSummary.js:128:hardcoded string:	                    {!isRprOrderPunchingAllowed ? <UncontrolledTooltip placement="top" target={`upgrade-${orderId}`}>Please fill RPR</UncontrolledTooltip> : null}
+microservices-middleware/client/src/modules/order/orderSummary.js:133:hardcoded object:	                        const { label, value, isEligible } = option
+microservices-middleware/client/src/modules/order/orderSummary.js:134:hardcoded object:	                        return isEligible && <DropdownItem onClick={() => setButtonText({ label, value })}>{label}</DropdownItem>
+microservices-middleware/client/src/modules/order/orderSummary.js:143:hardcoded variable:	const OrderSummary = (props) => {
+microservices-middleware/client/src/modules/order/orderSummary.js:144:hardcoded array:	    let { orderDoc = [], userPermissions, leadDetails, authDetails } = props;
+microservices-middleware/client/src/modules/order/orderSummary.js:145:hardcoded object:	    const { env, user, featureEnableList } = authDetails
+microservices-middleware/client/src/modules/order/orderSummary.js:146:hardcoded string:	    const { role = "" } = user
+microservices-middleware/client/src/modules/order/orderSummary.js:147:hardcoded string:	    const vertical = get(user, 'vertical', "") || "";
+microservices-middleware/client/src/modules/order/orderSummary.js:149:hardcoded object:	    const { accountNumber } = leadDetails
+microservices-middleware/client/src/modules/order/orderSummary.js:151:hardcoded variable:	    const isPriviledgedUser = checkIsPrivilegedUser(user)
+microservices-middleware/client/src/modules/order/orderSummary.js:152:hardcoded string:	    const isMathUpgradeEnabled = get(featureEnableList, "math_upgrade", false) || isPriviledgedUser
+microservices-middleware/client/src/modules/order/orderSummary.js:154:hardcoded variable:	    const convertOrder = (orderData, orderPunchingType) => {
+microservices-middleware/client/src/modules/order/orderSummary.js:159:hardcoded variable:	    const isEligibleForUpgrade = (orderData) => {
+microservices-middleware/client/src/modules/order/orderSummary.js:160:hardcoded variable:	        const isEligible = checkEligibiltyForUpgrade(orderData);
+microservices-middleware/client/src/modules/order/orderSummary.js:166:hardcoded variable:	    const isEligibleForByjusMathUpgrade = (orderData, isMathUpgradeEnabled) => {
+microservices-middleware/client/src/modules/order/orderSummary.js:167:hardcoded variable:	        const isEligible = checkEligibiltyForByjusMathUpgrade(orderData, isMathUpgradeEnabled);
+microservices-middleware/client/src/modules/order/orderSummary.js:172:hardcoded variable:	    const isEligibleForBlcUpgrade = (orderData) => {
+microservices-middleware/client/src/modules/order/orderSummary.js:173:hardcoded variable:	        const isEligible = checkEligibiltyForBlcUpgrade(orderData, env, userPermissions);
+microservices-middleware/client/src/modules/order/orderSummary.js:178:hardcoded variable:	    const isEligibleForNeoUpgrade = (orderData) => {
+microservices-middleware/client/src/modules/order/orderSummary.js:179:hardcoded variable:	        const isEligible = checkEligibleForAakashNeoUpgrade(orderData);
+microservices-middleware/client/src/modules/order/orderSummary.js:184:hardcoded variable:	    const isEligibleForCrpHybridUpgrade = (orderData) => {
+microservices-middleware/client/src/modules/order/orderSummary.js:185:hardcoded object:	        const { isDevEnv } = window
+microservices-middleware/client/src/modules/order/orderSummary.js:186:hardcoded variable:	        const isEligible = checkEligibleForAakashCrpHybridUpgrade(orderData)
+microservices-middleware/client/src/modules/order/orderSummary.js:190:hardcoded string:	                type: "AAKASH_CRP_HYBRID_UPGRADE"
+microservices-middleware/client/src/modules/order/orderSummary.js:197:hardcoded variable:	    const isEligibleForNeoMeUpgrade = (orderData) => {
+microservices-middleware/client/src/modules/order/orderSummary.js:198:hardcoded object:	        const { isDevEnv } = window
+microservices-middleware/client/src/modules/order/orderSummary.js:199:hardcoded variable:	        const isEligible = checkEligibleForAakashNeoMeUpgrade(orderData)
+microservices-middleware/client/src/modules/order/orderSummary.js:203:hardcoded string:	                type: "AAKASH_NEO_ME_UPGRADE"
+microservices-middleware/client/src/modules/order/orderSummary.js:210:hardcoded variable:	    const isEligibleForTestSeriesUpgradeFlow = (orderData) => {
+microservices-middleware/client/src/modules/order/orderSummary.js:211:hardcoded variable:	        const isEligible = checkEligibleForTestSeriesUpgrade(orderData);
+microservices-middleware/client/src/modules/order/orderSummary.js:215:hardcoded variable:	    const eligibleForGateEseExtension = (orderData) =>{
+microservices-middleware/client/src/modules/order/orderSummary.js:216:hardcoded variable:	        const isEligible = checkEligibleForGateEseExtension(orderData);
+microservices-middleware/client/src/modules/order/orderSummary.js:220:hardcoded variable:	    const eligibleForGateExtension = (orderData) =>{
+microservices-middleware/client/src/modules/order/orderSummary.js:221:hardcoded variable:	        const isEligible = checkEligibleForGateExtension(orderData);
+microservices-middleware/client/src/modules/order/orderSummary.js:225:hardcoded variable:	    const eligibleForGateUpgrade = (orderData) =>{
+microservices-middleware/client/src/modules/order/orderSummary.js:226:hardcoded variable:	        const isEligible = checkEligibleForGateUpgrade(orderData);
+microservices-middleware/client/src/modules/order/orderSummary.js:231:hardcoded variable:	    const isEligibleForRenewalOrder = (orderData) => {
+microservices-middleware/client/src/modules/order/orderSummary.js:232:hardcoded variable:	        const isEligible = getRenewalEligibilityDetails(orderData, vertical);
+microservices-middleware/client/src/modules/order/orderSummary.js:236:hardcoded variable:	    const gradeMap = {
+microservices-middleware/client/src/modules/order/orderSummary.js:237:hardcoded string:	        "-1": "LKG",
+microservices-middleware/client/src/modules/order/orderSummary.js:238:hardcoded string:	        "0": "UKG",
+microservices-middleware/client/src/modules/order/orderSummary.js:239:hardcoded string:	        "13": "12th Crash Course",
+microservices-middleware/client/src/modules/order/orderSummary.js:240:hardcoded string:	        "14": "12th Retarget Crash Course"
+microservices-middleware/client/src/modules/order/orderSummary.js:243:hardcoded variable:	    const columns = [{
+microservices-middleware/client/src/modules/order/orderSummary.js:244:hardcoded string:	        title: 'OrderId',
+microservices-middleware/client/src/modules/order/orderSummary.js:245:hardcoded string:	        dataIndex: 'orderId',
+microservices-middleware/client/src/modules/order/orderSummary.js:246:hardcoded string:	        key: 'orderId'
+microservices-middleware/client/src/modules/order/orderSummary.js:248:hardcoded string:	        title: 'Created At',
+microservices-middleware/client/src/modules/order/orderSummary.js:249:hardcoded string:	        key: 'createdAt',
+microservices-middleware/client/src/modules/order/orderSummary.js:250:hardcoded string:	        dataIndex: 'createdAt',
+microservices-middleware/client/src/modules/order/orderSummary.js:252:hardcoded string:	            return <div>{moment(cell).format('LLL')}</div>;
+microservices-middleware/client/src/modules/order/orderSummary.js:255:hardcoded string:	        title: 'Order Type',
+microservices-middleware/client/src/modules/order/orderSummary.js:256:hardcoded string:	        dataIndex: 'orderType',
+microservices-middleware/client/src/modules/order/orderSummary.js:257:hardcoded string:	        key: 'orderType'
+microservices-middleware/client/src/modules/order/orderSummary.js:259:hardcoded string:	        title: 'Status',
+microservices-middleware/client/src/modules/order/orderSummary.js:260:hardcoded string:	        key: 'orderhiveOrderStatus',
+microservices-middleware/client/src/modules/order/orderSummary.js:262:hardcoded object:	            const { orderhiveOrderStatus } = cell;
+microservices-middleware/client/src/modules/order/orderSummary.js:263:hardcoded string:	            return <>{startCase(toLower(orderhiveOrderStatus ? orderhiveOrderStatus.replace("_", " ") : ""))}</>
+microservices-middleware/client/src/modules/order/orderSummary.js:266:hardcoded string:	        title: 'Product Info',
+microservices-middleware/client/src/modules/order/orderSummary.js:267:hardcoded string:	        key: 'paymentDetails',
+microservices-middleware/client/src/modules/order/orderSummary.js:269:hardcoded array:	            const { customerDetails = [] } = cell;
+microservices-middleware/client/src/modules/order/orderSummary.js:270:hardcoded string:	            const { board, initialClass, finalClass, course, formValues = {} } = get(customerDetails, '0.productInfo.0', {});
+microservices-middleware/client/src/modules/order/orderSummary.js:271:hardcoded string:	            const { productLearningType = "", duration = "" } = formValues;
+microservices-middleware/client/src/modules/order/orderSummary.js:272:hardcoded string:	            const renderedDurationValue = duration === "1" ? " month" : " months";
+microservices-middleware/client/src/modules/order/orderSummary.js:273:hardcoded string:	            const type = get(customerDetails, '0.type');
+microservices-middleware/client/src/modules/order/orderSummary.js:274:hardcoded string:	            const info = (type === 'single') ? `${board}: ${gradeMap[initialClass] || initialClass}`
+microservices-middleware/client/src/modules/order/orderSummary.js:275:hardcoded string:	                : (type === "competitive" || type === "byjus_exam_prep_competitive" || type === "bep_mts" || type === "crpcompetitive") ? `${course}`
+microservices-middleware/client/src/modules/order/orderSummary.js:276:hardcoded string:	                    : (productLearningType == "aakash_doubts_on_chat" && duration) ? `${"DOC " + duration + renderedDurationValue}`
+microservices-middleware/client/src/modules/order/orderSummary.js:277:hardcoded array:	                        : `${board}: ${gradeMap[initialClass] || initialClass}-${gradeMap[finalClass] || finalClass}`
+microservices-middleware/client/src/modules/order/orderSummary.js:278:hardcoded object:	            return <div>{info}</div>;
+microservices-middleware/client/src/modules/order/orderSummary.js:281:hardcoded string:	        title: [24694].includes(parseInt(accountNumber)) ? 'Sub Total (AED)' : 'Sub Total (INR)',
+microservices-middleware/client/src/modules/order/orderSummary.js:282:hardcoded string:	        // title: 'Sub Total (INR)',
+microservices-middleware/client/src/modules/order/orderSummary.js:283:hardcoded string:	        key: 'subTotal',
+microservices-middleware/client/src/modules/order/orderSummary.js:284:hardcoded object:	        render: (cell = {}) => {
+microservices-middleware/client/src/modules/order/orderSummary.js:285:hardcoded array:	            const paymentDetails = cell && cell.paymentDetails || [];
+microservices-middleware/client/src/modules/order/orderSummary.js:286:hardcoded number:	            const totalAmount = paymentDetails.reduce((oldVal, ele) => oldVal + parseFloat(ele.amount), 0);
+microservices-middleware/client/src/modules/order/orderSummary.js:287:hardcoded object:	            return <div>{totalAmount}</div>;
+microservices-middleware/client/src/modules/order/orderSummary.js:290:hardcoded string:	        title: "Order category",
+microservices-middleware/client/src/modules/order/orderSummary.js:291:hardcoded string:	        key: 'orderCatgeory',
+microservices-middleware/client/src/modules/order/orderSummary.js:293:hardcoded object:	            const { orderPunchingCategory } = cell;
+microservices-middleware/client/src/modules/order/orderSummary.js:294:hardcoded string:	            return <>{startCase(toLower(orderPunchingCategory ? orderPunchingCategory.replace("_", " ") : ""))}</>
+microservices-middleware/client/src/modules/order/orderSummary.js:298:hardcoded string:	        title: 'Actions',
+microservices-middleware/client/src/modules/order/orderSummary.js:299:hardcoded string:	        key: 'action',
+microservices-middleware/client/src/modules/order/orderSummary.js:300:hardcoded string:	        dataIndex: '',
+microservices-middleware/client/src/modules/order/orderSummary.js:302:hardcoded variable:	            const isEligibleDetails = isEligibleForUpgrade(row);
+microservices-middleware/client/src/modules/order/orderSummary.js:303:hardcoded variable:	            const isEligibleForNeo = isEligibleForNeoUpgrade(row);
+microservices-middleware/client/src/modules/order/orderSummary.js:304:hardcoded variable:	            const isEligibleForCrpHybrid = isEligibleForCrpHybridUpgrade(row);
+microservices-middleware/client/src/modules/order/orderSummary.js:305:hardcoded variable:	            const isEligibleForNeoMe = isEligibleForNeoMeUpgrade(row)
+microservices-middleware/client/src/modules/order/orderSummary.js:306:hardcoded variable:	            const isEligibleForRenewal = isEligibleForRenewalOrder(row)
+microservices-middleware/client/src/modules/order/orderSummary.js:307:hardcoded variable:	            const isEligibleForGateEseExtension = eligibleForGateEseExtension(row);
+microservices-middleware/client/src/modules/order/orderSummary.js:308:hardcoded variable:	            const isEligibleForGateExtension = eligibleForGateExtension(row);
+microservices-middleware/client/src/modules/order/orderSummary.js:309:hardcoded variable:	            const isEligibleForGateUpgrade = eligibleForGateUpgrade(row);
+microservices-middleware/client/src/modules/order/orderSummary.js:311:hardcoded object:	            let isByjusMathUpgradeDetails = {}
+microservices-middleware/client/src/modules/order/orderSummary.js:312:hardcoded object:	            let isBlcUpgradeDetails = {}
+microservices-middleware/client/src/modules/order/orderSummary.js:315:hardcoded variable:	            const isEligibleForTestSeriesUpgrade = isEligibleForTestSeriesUpgradeFlow(row)
+microservices-middleware/client/src/modules/order/orderSummary.js:316:hardcoded string:	            if (isEligibleDetails["isEligible"] ||
+microservices-middleware/client/src/modules/order/orderSummary.js:317:hardcoded string:	                isEligibleForNeo["isEligible"] ||
+microservices-middleware/client/src/modules/order/orderSummary.js:318:hardcoded string:	                isByjusMathUpgradeDetails["isDbelToByjusMathUpgrade"] ||
+microservices-middleware/client/src/modules/order/orderSummary.js:319:hardcoded string:	                isBlcUpgradeDetails["isTlpToBlcUpgrade"] ||
+microservices-middleware/client/src/modules/order/orderSummary.js:320:hardcoded string:	                isEligibleForCrpHybrid["isEligible"] ||
+microservices-middleware/client/src/modules/order/orderSummary.js:321:hardcoded string:	                isEligibleForNeoMe["isEligible"] || isEligibleForTestSeriesUpgrade["isAakashNeoLiveUpgrade"] ||
+microservices-middleware/client/src/modules/order/orderSummary.js:322:hardcoded string:	                isEligibleForTestSeriesUpgrade["isTestSeriesUpgrade"] || isEligibleForRenewal["isEligible"] || isEligibleForGateEseExtension || 
+microservices-middleware/client/src/modules/order/orderSummary.js:324:hardcoded variable:	                const details = {
+microservices-middleware/client/src/modules/order/orderSummary.js:330:hardcoded object:	                const actionButton = <GetActionButtons details={details} accountNumber={accountNumber} />
+microservices-middleware/client/src/modules/order/orderSummary.js:339:hardcoded object:	                pagination={false}
+microservices-middleware/client/src/modules/order/orderSummary.js:340:hardcoded object:	                columns={columns}
+microservices-middleware/client/src/modules/order/orderSummary.js:341:hardcoded string:	                size="small"
+microservices-middleware/client/src/modules/order/orderSummary.js:342:hardcoded object:	                bordered={true}
+microservices-middleware/client/src/modules/order/orderSummary.js:343:hardcoded object:	                dataSource={orderDoc}
+microservices-middleware/client/src/modules/order/orderSummary.js:344:hardcoded string:	                style={{ padding: '3%', overflowY: 'auto', height: '450px' }}
+microservices-middleware/client/src/modules/order/orderSummaryConstants.js:1:hardcoded string:	export const eligibleStatusForUpgrade = ["confirmed", "delivered", "shipped", "partial shipped", "to be delivered", "packed", "manifested", "setup_done", "partial_manifested", "activation_done", "partial_delivered", "partial_packed", "partial_setup_done"]
+microservices-middleware/client/src/modules/order/orderSummaryConstants.js:2:hardcoded string:	export const nonEligibleProductSelectionTypeForUpgrade = ["byjus_classes", "byjus_classes_upgrade", "byjus_classes_plus_byjus_tlp", "home_learning_program", "byjus_trial_pack_upgrade"];
+microservices-middleware/client/src/modules/order/orderSummaryConstants.js:3:hardcoded string:	export const BLC_DISCOUNT_YR = "2023"
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:17:hardcoded variable:	const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:18:hardcoded string:	    authDetails: get(state, 'auth.details', {}),
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:19:hardcoded string:	    user: get(state, 'auth.details.user'),
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:20:hardcoded string:	    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:21:hardcoded string:	    addressDetail: get(state, 'address.details', {}),
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:22:hardcoded string:	    productDetails: get(state, 'product.details'),
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:23:hardcoded string:	    salesDetails: get(state, 'details.salesDetails', {}),
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:24:hardcoded string:	    orderPunchingType: get(state, 'auth.orderPunchingType'),
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:25:hardcoded string:	    //orderReferenceId: get(state, 'order.orderReferenceId')
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:28:hardcoded variable:	const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:41:hardcoded string:	            identifier: "",
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:44:hardcoded array:	            ohOpTeam: [],
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:45:hardcoded array:	            ohOpReason: [],
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:46:hardcoded array:	            fields: [],
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:51:hardcoded array:	            payments: [],
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:58:hardcoded object:	        const { history } = this.props;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:60:hardcoded string:	        const url = `/${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:65:hardcoded array:	        const { students = [] } = productDetails;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:66:hardcoded string:	        const { formValues = {}, productSelectionType = "" } = students[0] || {};
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:67:hardcoded string:	        const { initialClass = "", tablet = "" } = formValues
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:69:hardcoded string:	        return [0, 1, 2, 3, 4, 5, 6, 7].includes(parseInt(initialClass)) && tablet == "TL8MZ1" && productSelectionType == "byjus_tlp";
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:73:hardcoded object:	        const { country, payments } = this.state;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:74:hardcoded variable:	        const formValues = this.orderPlatformDecisionForm && await this.orderPlatformDecisionForm.getFormValues();
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:75:hardcoded string:	        const isCOD = payments.filter(payment => payment.provider == "CASH_ON_DELIVERY")
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:76:hardcoded object:	        const { productDetails, orderPunchingType, authDetails } = this.props;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:77:hardcoded object:	        const { env, user } = authDetails;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:78:hardcoded string:	        const { productType = "", students = [] } = productDetails;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:79:hardcoded string:	        const { validity = "" } = students[0] || {};
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:80:hardcoded variable:	        const isByjusMathsOrder = this.isByjusMathsSkuExists(productDetails, env);
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:81:hardcoded variable:	        const isPrivilegedUser = checkIsPrivilegedUser(user);
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:82:hardcoded string:	        const isDevEnv = ['local', 'development'].includes(env);
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:84:hardcoded string:	        if (["AAKASH_CRP_ORDER"].includes(orderPunchingType) && formValues.orderPlatform === "oh") {
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:85:hardcoded string:	            message.error('Aakash CRP order can not be placed in OH');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:89:hardcoded string:	        if (validity == "TRIAL_SUBSCRIPTION" && formValues.orderPlatform === "oms") {
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:90:hardcoded string:	            message.error('Trial subscription order can not be placed in OMS');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:94:hardcoded string:	        if (["MIDDLEEAST_ORDER"].includes(orderPunchingType) && formValues.orderPlatform === "oms" && ["production"].includes(env)) {
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:95:hardcoded string:	            message.error('International order can not be placed in OMS');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:99:hardcoded string:	        if (["crp"].includes(productType) && formValues.orderPlatform === "oms" ) {
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:100:hardcoded string:	            message.error('Classroom program order can not be placed in OMS');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:104:hardcoded string:	        if (country && country.toLowerCase() != "india" && formValues.orderPlatform === "oms" && ["production"].includes(env)) {
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:105:hardcoded string:	            message.error('International order can not be placed in OMS');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:108:hardcoded string:	        if (!isEmpty(isCOD) && formValues.orderPlatform === "oms") {
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:109:hardcoded string:	            message.error('Cash on delivery orders can be punched on OrderHive only');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:112:hardcoded string:	        if (isByjusMathsOrder && formValues.orderPlatform === "oms") {
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:113:hardcoded string:	            message.error('TLP + M8 orders can be punched on OrderHive only');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:120:hardcoded object:	        const { identifier, isCVPRequired } = this.state;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:121:hardcoded variable:	        const formValues = this.orderPlatformDecisionForm && await this.orderPlatformDecisionForm.getFormValues();
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:125:hardcoded variable:	            const isValidated = await this.getErrorMessage();
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:129:hardcoded object:	            this.setState({ loading: true, error: null });
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:133:hardcoded string:	                method: "POST",
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:140:hardcoded object:	                this.setState({ orderDetails: response.data, loading: false });
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:142:hardcoded string:	                    this.navigateToScreen('/otp')
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:144:hardcoded string:	                    this.navigateToScreen('/orderStatus');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:147:hardcoded string:	                message.error('Error in  updating order source.');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:148:hardcoded string:	                console.log('Logged error: ', JSON.stringify(error))
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:149:hardcoded object:	                this.setState({ loading: false, error: error });
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:153:hardcoded string:	            message.error('Order Reference Id or Form Values are missing.');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:158:hardcoded object:	        const { history } = this.props;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:159:hardcoded string:	        const url = `${path}${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:164:hardcoded string:	        if (enumId === "kart_oh_op_teams") {
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:165:hardcoded object:	            this.setState({ loading: true });
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:166:hardcoded string:	            const ohOpTeam = await getEnumOptions('kart_oh_op_teams');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:173:hardcoded string:	        else if (enumId === "kart_oh_op_reasons") {
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:174:hardcoded object:	            this.setState({ loading: true });
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:175:hardcoded string:	            const ohOpReason = await getEnumOptions('kart_oh_op_reasons');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:185:hardcoded string:	        await this.mapEnums('kart_oh_op_reasons');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:186:hardcoded string:	        await this.mapEnums('kart_oh_op_teams');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:188:hardcoded variable:	        const fields = this.getFormFields();
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:190:hardcoded object:	        this.setState({ fields });
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:194:hardcoded object:	        const { authDetails, productDetails = {} } = this.props
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:195:hardcoded object:	        const { country } = this.state
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:196:hardcoded object:	        const { user, env } = authDetails || {}
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:197:hardcoded array:	        const { miscellaneousRole = [] } = user
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:198:hardcoded variable:	        const isPrivilegedUser = checkIsPrivilegedUser(user)
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:199:hardcoded string:	        const isDevEnv = ['local', 'development'].includes(env);
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:200:hardcoded variable:	        const prevField = [{
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:201:hardcoded string:	            type: 'radio',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:202:hardcoded string:	            name: 'orderPlatform',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:203:hardcoded string:	            label: 'Please Choose the order platform for the order',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:206:hardcoded string:	                { label: 'OMS', value: 'oms' },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:207:hardcoded string:	                { label: 'Orderhive (OH)', value: 'oh' }
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:211:hardcoded string:	            type: 'radio',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:212:hardcoded string:	            name: 'bookDispatch',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:213:hardcoded string:	            label: "Books to be dispatched:",
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:215:hardcoded string:	                { label: 'Yes', value: true },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:216:hardcoded string:	                { label: 'No', value: false }
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:223:hardcoded string:	            type: miscellaneousRole.includes("om_exception_order_punching") &&
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:225:hardcoded string:	                (country && country.toLowerCase() == "india") ?
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:226:hardcoded string:	                'radio' :
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:227:hardcoded string:	                "hidden",
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:228:hardcoded string:	            name: 'isCVPRequired',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:229:hardcoded string:	            label: 'Please Choose whether customer needs OTP Verification',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:231:hardcoded string:	                { label: 'Yes', value: true },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:232:hardcoded string:	                { label: 'No', value: false }
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:235:hardcoded string:	            required: miscellaneousRole.includes("om_exception_order_punching") &&
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:237:hardcoded string:	                (country && country.toLowerCase() == "india") ? true : false
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:239:hardcoded variable:	        const newField = [{
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:240:hardcoded string:	            type: 'radio',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:241:hardcoded string:	            name: 'orderPlatform',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:242:hardcoded string:	            label: 'Please Choose the order platform for the order',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:245:hardcoded string:	                { label: 'OMS', value: 'oms' },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:246:hardcoded string:	                { label: 'Orderhive (OH)', value: 'oh' }
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:250:hardcoded string:	            type: 'radio',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:251:hardcoded string:	            name: 'bookDispatch',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:252:hardcoded string:	            label: "Books to be dispatched:",
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:254:hardcoded string:	                { label: 'Yes', value: true },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:255:hardcoded string:	                { label: 'No', value: false }
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:262:hardcoded string:	            type: 'select',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:264:hardcoded string:	                { label: 'India', value: 'india' },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:265:hardcoded string:	                { label: 'Middle East', value: 'middle_east' },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:266:hardcoded string:	                { label: 'North America', value: 'north_america' },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:267:hardcoded string:	                { label: 'International - Others', value: 'international_others' }
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:269:hardcoded string:	            name: 'regionForCustomer',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:270:hardcoded string:	            label: 'Choose the region for the customer',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:272:hardcoded string:	            message: "Please choose the region for the customer"
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:274:hardcoded string:	            type: 'readonly',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:275:hardcoded string:	            name: 'Warning',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:276:hardcoded string:	            readOnlyText: 'Note: The region will be used for mentor allocation, please select the option from where customer is operating the product',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:277:hardcoded string:	            style: { background: '#98FB98', fontSize: 'medium', width: '1260px', height: '30px'}
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:279:hardcoded string:	            type: 'select',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:281:hardcoded string:	                { label: 'Hindi', value: 'hindi' },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:282:hardcoded string:	                { label: 'Marathi', value: 'marathi' },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:283:hardcoded string:	                { label: 'Bengali', value: 'bengali' },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:284:hardcoded string:	                { label: 'Malayalam', value: 'malayalam' },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:285:hardcoded string:	                { label: 'Kannada', value: 'kannada' },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:286:hardcoded string:	                { label: 'Tamil', value: 'tamil' },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:287:hardcoded string:	                { label: 'Telugu', value: 'telugu' },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:288:hardcoded string:	                { label: 'Others', value: 'others' }
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:290:hardcoded string:	            name: 'languageForCustomer',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:291:hardcoded string:	            label: 'Choose the language for the customer',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:293:hardcoded string:	            message: "Please choose the language for the customer"
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:295:hardcoded string:	            type: miscellaneousRole.includes("om_exception_order_punching") &&
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:297:hardcoded string:	                (country && country.toLowerCase() == "india") ?
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:298:hardcoded string:	                'radio' :
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:299:hardcoded string:	                "hidden",
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:300:hardcoded string:	            name: 'isCVPRequired',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:301:hardcoded string:	            label: 'Please Choose whether customer needs OTP Verification',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:303:hardcoded string:	                { label: 'Yes', value: true },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:304:hardcoded string:	                { label: 'No', value: false }
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:307:hardcoded string:	            required: miscellaneousRole.includes("om_exception_order_punching") &&
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:309:hardcoded string:	                (country && country.toLowerCase() == "india") ? true : false
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:316:hardcoded object:	        const { ohOpTeam, ohOpReason } = this.state
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:318:hardcoded variable:	        const fields = [{
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:319:hardcoded string:	            type: 'readonly',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:320:hardcoded string:	            name: 'OhForm',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:321:hardcoded string:	            label: 'OH Form',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:322:hardcoded string:	            readOnlyText: 'Please fill up the below form for choosing Orderhive (OH)',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:323:hardcoded string:	            style: { color: 'purple', textDecoration: 'underline', fontSize: 'medium' }
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:325:hardcoded string:	            type: 'radio',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:326:hardcoded string:	            name: 'isSmsNotificationRequired',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:327:hardcoded string:	            label: 'SMS notification required for customer?',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:329:hardcoded string:	                { label: 'Yes', value: true },
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:330:hardcoded string:	                { label: 'No', value: false }
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:336:hardcoded string:	            type: 'select',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:337:hardcoded string:	            name: 'ohOpReason',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:338:hardcoded string:	            label: 'Choose Reason for moving order to OH',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:343:hardcoded string:	            type: 'select',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:344:hardcoded string:	            name: 'ohOpTeam',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:345:hardcoded string:	            label: 'Choose Team Name for this order',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:350:hardcoded string:	            type: 'textarea',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:351:hardcoded string:	            name: 'remark',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:352:hardcoded string:	            label: 'Remark',
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:360:hardcoded array:	        let ohFields = []
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:361:hardcoded string:	        if (e.target.value === "oh") {
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:386:hardcoded object:	        const { fields, ohRelatedFields } = this.state
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:387:hardcoded string:	        const { productDetails = {}, authDetails = {}, orderPunchingType = '' } = this.props;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:388:hardcoded object:	        const { env } = authDetails;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:389:hardcoded string:	        const isDevEnv = ["local", "development"].includes(env)
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:391:hardcoded string:	        if(orderPunchingType !== "MIDDLEEAST_ORDER") {
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:392:hardcoded object:	            isBooksOpted = isBooksDisabled({productDetails})
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:394:hardcoded object:	            isBooksOpted = getBooksOptedValue({productDetails, isDevEnv})
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:401:hardcoded object:	                        wrappedComponentRef={(inst) => this.orderPlatformDecisionForm = inst}
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:402:hardcoded object:	                        fields={concat(fields, ohRelatedFields)}
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:404:hardcoded string:	                            "isCVPRequired": false,
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:405:hardcoded string:	                            "bookDispatch": isBooksOpted,
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:406:hardcoded string:	                            "isSmsNotificationRequired": true
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:415:hardcoded object:	        let { identifier, authDetails, addressDetail } = this.props;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:416:hardcoded object:	        const { draftOrder, status, env, user } = authDetails;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:417:hardcoded array:	        const { miscellaneousRole = [] } = user
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:421:hardcoded string:	        this.setState({ country: get(addressDetail, "country", "") });
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:424:hardcoded string:	            identifier = get(draftOrder, '_id', '');
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:427:hardcoded object:	            const { addressDetails = {}, paymentDetails = {} } = draftOrder;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:428:hardcoded string:	            const billing = get(addressDetails, "billing", {});
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:429:hardcoded string:	            const payments = get(paymentDetails, "payments", []);
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:430:hardcoded string:	            this.setState({ country: get(billing, "country", ""), payments });
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:432:hardcoded object:	        this.setState({ identifier });
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:434:hardcoded variable:	        const isPrivilegedUser = checkIsPrivilegedUser(user)
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:435:hardcoded string:	        if (miscellaneousRole.includes("om_exception_order_punching") && isPrivilegedUser && !["production"].includes(env)) {
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:436:hardcoded object:	            this.setState({ isCVPRequired: false });
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:441:hardcoded object:	        let { authDetails,addressDetail } = this.props;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:442:hardcoded object:	        const { draftOrder } = authDetails;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:444:hardcoded string:	        this.setState({ country: get(addressDetail, "country", "") });
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:447:hardcoded object:	            const { addressDetails = {}} = draftOrder;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:448:hardcoded string:	            const billing = get(addressDetails, "billing", {});
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:449:hardcoded string:	            this.setState({ country: get(billing, "country", "") });
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:454:hardcoded object:	        const { loading, error } = this.state;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:455:hardcoded object:	        const { orderPunchingType } = this.props;
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:456:hardcoded string:	        const isAakashCRP = orderPunchingType === "AAKASH_CRP_ORDER";
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:460:hardcoded string:	                    step="order_decision"
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:461:hardcoded object:	                    loading={loading}
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:462:hardcoded object:	                    error={error}
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:464:hardcoded object:	                    <Skeleton loading={loading} active>
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:465:hardcoded string:	                        <div className="card m-2" style={{ margin: '2%' }}>
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:467:hardcoded object:	                                className={`card-header bg-${isAakashCRP ? `aakash` : `primary`} text-white`}
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:470:hardcoded string:	                            <div className="card-body">
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:472:hardcoded object:	                                    {this.buildOrderPlatformDecisionForm()}
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:473:hardcoded string:	                                    <Button type="primary"
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:474:hardcoded string:	                                        className="order-status-btn float-right"
+microservices-middleware/client/src/modules/order/OrderPlatformDecisionPage.js:475:hardcoded object:	                                        onClick={this.onClickProceed}
+microservices-middleware/client/src/modules/order/orderReducer.js:2:hardcoded string:	export const SAVE_ORDER_REFERENCE_ID_SUCCESS = '/order/SAVE_ORDER_REFERENCE_ID_SUCCESS';
+microservices-middleware/client/src/modules/order/orderReducer.js:5:hardcoded object:	const saveOrderReferenceIdSuccess = (response) => ({ type: SAVE_ORDER_REFERENCE_ID_SUCCESS, response });
+microservices-middleware/client/src/modules/order/orderReducer.js:8:hardcoded variable:	export const saveOrderReferenceId = (orderReferenceId) => dispatch => {
+microservices-middleware/client/src/modules/order/orderReducer.js:9:hardcoded object:	    dispatch(saveOrderReferenceIdSuccess({ orderReferenceId }));
+microservices-middleware/client/src/modules/order/orderReducer.js:13:hardcoded object:	export default (state = {}, action) => {

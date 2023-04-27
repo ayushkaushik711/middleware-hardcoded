@@ -1,0 +1,224 @@
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:6:hardcoded string:	} from "modules/product/components/productHelper";
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:12:hardcoded number:	const allowedMinClass = 4;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:13:hardcoded number:	let allowedMaxClass = 10;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:14:hardcoded variable:	export const getStates = async () => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:15:hardcoded array:	  let stateList = [];
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:16:hardcoded array:	  let stateListOptions = [];
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:18:hardcoded string:	    url: "/api/blc/states",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:19:hardcoded string:	    method: "GET",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:22:hardcoded object:	      const { data } = response;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:27:hardcoded variable:	    let options = {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:36:hardcoded variable:	export const getCities = async (stateId, stateName) => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:37:hardcoded object:	  const options = { error: null };
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:38:hardcoded array:	  let cityList = [];
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:39:hardcoded array:	  let cityListOptions = [];
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:42:hardcoded string:	    method: "POST",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:49:hardcoded object:	      const { data } = response;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:54:hardcoded string:	      options["error"] = error;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:57:hardcoded variable:	    let options = {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:63:hardcoded string:	  options["cityList"] = cityListOptions;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:67:hardcoded variable:	export const getCentres = async (cityId, cityName) => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:68:hardcoded object:	  const options = { error: null };
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:69:hardcoded array:	  let centreList = [];
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:70:hardcoded array:	  let centreListOptions = [];
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:73:hardcoded string:	    method: "POST",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:80:hardcoded object:	      const { data } = response;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:85:hardcoded string:	      options["error"] = error;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:88:hardcoded variable:	    let options = {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:95:hardcoded string:	  options["centreList"] = centreListOptions;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:99:hardcoded variable:	export const getPincode = (details) => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:100:hardcoded object:	  const { centreList, centre, centreName } = details;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:101:hardcoded object:	  const { pincode } = centreList.find(
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:107:hardcoded variable:	export const filterInitialClass = (productDetails) => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:108:hardcoded object:	  const { classes, isPrivilegedUser, isDevEnv, productType } = productDetails;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:109:hardcoded number:	  //removing class 11, 12 from byjus learning centre
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:110:hardcoded array:	  let filteredClass = [];
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:111:hardcoded string:	  if (["single", "sibling"].includes(productType)) {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:124:hardcoded variable:	const filterFinalClass = (options) => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:125:hardcoded object:	    const { classes, selectedInitialClass, productType, addTlpCourse, productLearningType, isPrivilegedUser, isDevEnv } = options;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:126:hardcoded variable:	    let selectFinalClass = parseInt(selectedInitialClass);
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:127:hardcoded number:	    const classUpto= !isPrivilegedUser ? 3 : 4;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:128:hardcoded string:	    if (productLearningType === "byjus_learning_centre") {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:132:hardcoded number:	        selectFinalClass = parseInt(selectedInitialClass) + 1;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:137:hardcoded string:	    if (['sibling', 'combo'].includes(productType)) {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:140:hardcoded variable:	    let filteredClass = classes.filter(name => (name.label < parseInt(selectedInitialClass) + classUpto) &&
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:145:hardcoded variable:	const getInitialClassOptions = (details) => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:156:hardcoded number:	    allowedMaxClass = 10;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:158:hardcoded array:	  let options = [];
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:160:hardcoded object:	    options = filterInitialClass({ classes, isDevEnv, productType });
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:162:hardcoded number:	  if (Number(selectedTlpFinalGrade) === 12) {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:168:hardcoded variable:	const getFinalClassOptions = (details) => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:180:hardcoded array:	  let options = [];
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:197:hardcoded variable:	const filterTLPFinalClass = (
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:203:hardcoded number:	  /**Show classes upto 10th which are greater than blc final class */
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:204:hardcoded object:	  //const { classes, selectedInitialClass, selectedFinalClass} = details
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:207:hardcoded number:	    allowedMaxClass = 12;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:210:hardcoded number:	  const maxClass = parseInt(selectedInitialClass) + 4;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:211:hardcoded variable:	  let filteredClasses = classes.filter((classObj) => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:212:hardcoded string:	    const classValue = get(classObj, "value", "");
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:219:hardcoded number:	  if (Number(selectedFinalClass) <= 10) {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:220:hardcoded string:	    filteredClasses = filteredClasses.filter((grade) => grade.value != "11");
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:225:hardcoded variable:	export const getComboFormFields = (details) => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:226:hardcoded object:	    const { state, props, handleChanges, handleClassBlurEvent, isDevEnv } = details;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:227:hardcoded object:	    const { initialClass: selectedInitialClass, finalClass: selectedFinalClass, tlpFinalGrade: selectedTlpFinalGrade, batchType, addTlpCourse, subCourse } = state;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:228:hardcoded object:	    const { user, productCombination: productLearningType, salesDetails, leadDetails, productConfig, authDetails, productType } = props;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:229:hardcoded string:	    let selectedBoard = get(state, "board");
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:230:hardcoded array:	    const { Boards = [] } = productConfig || {};
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:231:hardcoded object:	    const selectedBoardConfig = find(Boards, { formattedName: selectedBoard }) || {};
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:232:hardcoded string:	    const classes = getClasses(selectedBoardConfig, user, '', productLearningType, leadDetails, salesDetails);
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:233:hardcoded variable:	    const classesConfig = selectedBoardConfig.classes;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:234:hardcoded variable:	    const isCheckBoxIsChecked = isDevEnv && _.isEqual(selectedInitialClass, selectedFinalClass)
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:235:hardcoded variable:	    const isPrivilegedUser = checkIsPrivilegedUser(user);
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:239:hardcoded string:	            type: productLearningType && selectedBoard ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:240:hardcoded string:	            name: 'initialClass',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:241:hardcoded string:	            label: 'Select HTP at BTC Initial Grade',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:243:hardcoded object:	            options: getInitialClassOptions({ productLearningType, selectedBoard, selectedTlpFinalGrade, classes, isDevEnv, isTLP: true }),
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:245:hardcoded string:	            message: "Please Select Initial Grade",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:249:hardcoded string:	            type: (productLearningType && selectedBoard) ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:250:hardcoded string:	            name: 'finalClass',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:251:hardcoded string:	            label: 'Select HTP at BTC Final Grade',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:253:hardcoded object:	            options: getFinalClassOptions({ productLearningType, selectedBoard, classes, selectedInitialClass, addTlpCourse, isDevEnv, productType, isPrivilegedUser }),
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:255:hardcoded string:	            message: "Please Select Final Grade"
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:258:hardcoded string:	            type: (isPrivilegedUser && user?.email !== 'mohnishsales@byjus.com' && selectedFinalClass <= 10) ? 'checkbox' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:259:hardcoded string:	            name: 'addTlpCourse',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:260:hardcoded string:	            checkBoxLabel: "Extend the course by adding BYJU'S Tablet Learning Program",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:264:hardcoded string:	            type: addTlpCourse  ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:265:hardcoded string:	            name: 'tlpFinalGrade',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:266:hardcoded string:	            label: 'Select TLP - Final Grade',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:268:hardcoded array:	            options: addTlpCourse  ? filterTLPFinalClass(classes, selectedInitialClass, selectedFinalClass, true) : [{}],
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:270:hardcoded string:	            message: "Please Select TLP Final Grade"
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:273:hardcoded string:	            type: selectedTlpFinalGrade == 12 ? 'select' : 'hidden',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:274:hardcoded string:	            name: 'subCourse',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:275:hardcoded string:	            label: 'Select subCourse',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:276:hardcoded string:	            options: [{ label: "JEE", value: "JEE" },
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:277:hardcoded string:	            { label: "NEET", value: "NEET" },
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:278:hardcoded string:	            { label: "JEE+NEET", value: "JEE/NEET" }],
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:280:hardcoded number:	            required: selectedTlpFinalGrade == 12 ? true : false,
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:286:hardcoded variable:	export const getSiblingFormFields = (details) => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:296:hardcoded object:	  const { productConfig, classType } = state;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:297:hardcoded object:	  const { productType, user, authDetails, salesDetails, leadDetails } = props;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:299:hardcoded object:	  const selectedBoard = get(state, `board-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:300:hardcoded object:	  const selectedInitialClass = get(state, `initialClass-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:301:hardcoded object:	  const selectedFinalClass = get(state, `finalClass-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:302:hardcoded object:	  const selectedTlpCourse = get(state, `addTlpCourse-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:303:hardcoded object:	  const batchType = get(state, `batchType-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:304:hardcoded variable:	  const isPrivilegedUser = checkIsPrivilegedUser(user);
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:306:hardcoded number:	  const { Boards = [], PreK3EligibleManagers = [] } = productConfig || {};
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:308:hardcoded object:	    find(Boards, { formattedName: selectedBoard }) || {};
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:309:hardcoded variable:	  const classes = getClasses(
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:312:hardcoded string:	    "",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:316:hardcoded number:	    PreK3EligibleManagers
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:318:hardcoded variable:	  const classesConfig = selectedBoardConfig.classes;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:319:hardcoded variable:	  let classOption = getInitialClassOptions({
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:328:hardcoded number:	    PreK3EligibleManagers,
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:333:hardcoded object:	  const { env } = authDetails;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:334:hardcoded string:	  const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:338:hardcoded string:	      type: selectedBoard ? "select" : "hidden",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:339:hardcoded string:	      name: "initialClass",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:340:hardcoded string:	      label: "Select HTP at BTC Initial Grade",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:345:hardcoded string:	      message: "Please Select Initial Grade",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:348:hardcoded string:	      type: selectedBoard ? "select" : "hidden",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:349:hardcoded string:	      name: "finalClass",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:350:hardcoded string:	      label: "Select HTP at BTC Final Grade",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:364:hardcoded string:	      message: "Please Select Final Grade",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:367:hardcoded string:	      type: isPrivilegedUser && selectedFinalClass < 10 ? "checkbox" : "hidden",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:368:hardcoded string:	      name: "addTlpCourse",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:370:hardcoded string:	        "Extend the course by adding BYJU'S Tablet Learning Program",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:371:hardcoded object:	      onChange: (...params) => handleChanges(...params, {}, formNumber),
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:375:hardcoded string:	      type: selectedTlpCourse ? "select" : "hidden",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:376:hardcoded string:	      name: "tlpFinalGrade",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:377:hardcoded string:	      label: "Select TLP - Final Grade",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:381:hardcoded array:	        : [{}],
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:383:hardcoded string:	      message: "Please Select TLP Final Grade",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:388:hardcoded variable:	export const getTabletOptions = (details) => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:395:hardcoded string:	    productCombination = "",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:398:hardcoded object:	  const { featureEnableList, env } = authDetails;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:399:hardcoded string:	  const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:400:hardcoded number:	  const isD4TabletEnabled = get(
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:402:hardcoded string:	    "d41.1_tablet_access_for_bda"
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:404:hardcoded variable:	  const blcManagerEligibleList = isDevEnv
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:405:hardcoded string:	    ? get(featureEnableList, "blc_manager_eligible_list")
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:406:hardcoded string:	    : get(featureEnableList, "quotation_beta_access", false);
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:408:hardcoded variable:	  let tabletOptions = tablets.filter((obj) =>
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:410:hardcoded string:	      // 'Lenovo 8 inch Tablet (Wifi) (Rs 8000)',
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:411:hardcoded string:	      "Lenovo 8 inch Tablet (Mobile Data) (Rs 11000)",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:412:hardcoded string:	      "Lenovo 10 inch Tablet Mobile Data (2GB/ 16GB) - (Rs 13000)",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:413:hardcoded string:	      "Lenovo 10 inch Tablet Mobile Data (4GB/ 64GB) - (Rs 16000)",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:414:hardcoded string:	      "Samsung 10 inch Tablet (Mobile Data) (Rs 18000)",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:418:hardcoded number:	  // as per requirement on Dec 26, 2022 , learnstation 10 inch only made available for BDAs to sell
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:420:hardcoded number:	    !K12_GRADES.includes(selectedTlpFinalGrade) &&
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:421:hardcoded string:	    !["home_tuition"].includes(productCombination)
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:425:hardcoded string:	        label: "BYJU'S LearnStation 10inch Mobile Data Grey Tablet (Rs 10000)",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:426:hardcoded string:	        value: "SBXMGZ",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:432:hardcoded number:	    K12_GRADES.includes(selectedTlpFinalGrade) ||
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:433:hardcoded string:	    ["home_tuition"].includes(productCombination)
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:435:hardcoded string:	    tabletOptions = tabletOptions.filter((tablet) => tablet.value != "TLXMZ2");
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:437:hardcoded string:	      label: "Lenovo 10 inch Tablet Mobile Data (3GB/ 32GB) - (Rs 16000)",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:438:hardcoded string:	      value: "TLXMZZ",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:442:hardcoded number:	  if (K12_GRADES.includes(selectedTlpFinalGrade)) {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:444:hardcoded string:	      { label: "Lenovo Tablet (Add-on-BYJUS) (8 inch)(Rs.8000)", value: "TL8MZZ" });
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:447:hardcoded number:	  // Requested to commented - for feature config d41.1_tablet_access_for_bda
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:448:hardcoded number:	  // else if (isD4TabletEnabled && K10_GRADES.includes(selectedClass)) {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:449:hardcoded string:	  //         tabletOptions.push({ label: "BYJU'S LearnStation 10inch Mobile Data Grey Tablet (Rs 10000)", value: 'SBXMGZ' })
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:452:hardcoded string:	    label: "SAMSUNG Tablet (Add-on-BYJUS) (8 inch-4G)",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:453:hardcoded string:	    value: "TS8MZZ",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:459:hardcoded string:	        tablet.label !== "Samsung 10 inch Tablet (Mobile Data) (Rs 18000)"
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:461:hardcoded string:	    if(["11","12","13+"].includes(selectedClass)|| ["11","12","13+"].includes(selectedTlpFinalGrade)||["11","12","13+"].includes(selectedFinalClass)){
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:464:hardcoded string:	          tablet.value !== "TS8MZZ"
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:467:hardcoded string:	        { label: "Lenovo Tablet (Add-on-BYJUS) (8 inch)(Rs.8000)", value: "TL8MZZ" });
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:475:hardcoded variable:	export const getProfileOptions = (existingProfiles, isPrivilegedUser) => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:476:hardcoded number:	  if (existingProfiles && existingProfiles.length > 0) {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:477:hardcoded variable:	    let newExistingProfile = existingProfiles;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:479:hardcoded string:	      (profile) => profile.value === "newProfile"
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:482:hardcoded string:	      existingProfiles.push({ label: "New Profile", value: "newProfile" });
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:488:hardcoded variable:	const orderPunchingStartDates = {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:489:hardcoded string:	  WestBengal: "2023-03-22",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:490:hardcoded string:	  CBSE: "2023-03-20",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:491:hardcoded string:	  ICSE: "2023-03-22",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:492:hardcoded string:	  Kerala: "2023-03-24",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:493:hardcoded string:	  Maharashtra: "2023-03-31",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:494:hardcoded string:	  AndhraPradesh: "2023-04-07",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:495:hardcoded string:	  Gujarat: "2023-04-07",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:496:hardcoded string:	  Karnataka: "2023-04-07",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:497:hardcoded string:	  TamilNadu: "2023-04-07",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:498:hardcoded string:	  Telangana: "2023-04-07",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:501:hardcoded variable:	export const getValidityOptions = ({
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:511:hardcoded number:	  // For now (28/09/2021), BLC orders will be punch for 2022 only but from december onwards(01or31/12/2021), we need to enable 2023.
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:514:hardcoded array:	  let validityOptions = [];
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:517:hardcoded string:	    selectedBoard === "STATE"
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:518:hardcoded array:	      ? orderPunchingStartDates[stateBoard]
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:519:hardcoded array:	      : orderPunchingStartDates[selectedBoard];
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:520:hardcoded variable:	  const currentYear = new Date().getFullYear();
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:527:hardcoded number:	    validityOptions.push({ label: currentYear + 1, value: currentYear + 1 });
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:529:hardcoded object:	    validityOptions.push({ label: currentYear, value: currentYear });
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:535:hardcoded variable:	const upgradeOrderPunchingStartDates = {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:536:hardcoded string:	  WestBengal: "2023-03-22",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:537:hardcoded string:	  CBSE: "2023-03-20",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:538:hardcoded string:	  ICSE: "2023-03-22",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:539:hardcoded string:	  Kerala: "2023-03-22",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:540:hardcoded string:	  Maharashtra: "2023-03-22",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:541:hardcoded string:	  AndhraPradesh: "2023-03-22",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:542:hardcoded string:	  Gujarat: "2023-03-22",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:543:hardcoded string:	  Karnataka: "2023-03-22",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:544:hardcoded string:	  TamilNadu: "2023-03-22",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:545:hardcoded string:	  Telangana: "2023-03-22",
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:548:hardcoded variable:	export const getUpgradeValidityOptions = ({
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:558:hardcoded number:	  // For now (28/09/2021), BLC orders will be punch for 2022 only but from december onwards(01or31/12/2021), we need to enable 2023.
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:561:hardcoded array:	  let validityOptions = [];
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:564:hardcoded string:	    selectedBoard === "STATE"
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:565:hardcoded array:	      ? upgradeOrderPunchingStartDates[stateBoard]
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:566:hardcoded array:	      : upgradeOrderPunchingStartDates[selectedBoard];
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:567:hardcoded variable:	  const currentYear = new Date().getFullYear();
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:573:hardcoded number:	    validityOptions.push({ label: currentYear + 1, value: currentYear + 1 });
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:575:hardcoded object:	    validityOptions.push({ label: currentYear, value: currentYear });
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:582:hardcoded variable:	export const validateBlcBatchAndSessionDetails = (
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:586:hardcoded array:	  let blcSessionDetails = [],
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:587:hardcoded array:	    blcBatchDetails = [],
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:588:hardcoded object:	    validatedResponse = { status: true };
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:589:hardcoded object:	  const { mentoring, courseInfo } = blcBatchCardDetails;
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:591:hardcoded number:	  if (productDetails && mentoring.length > 0 && !isEmpty(courseInfo)) {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:596:hardcoded number:	  } else if (blcSessionDetails.length === 0 || isEmpty(courseInfo)) {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:606:hardcoded variable:	export const getBatchEligibility = (validity) => {
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:607:hardcoded string:	  // Changing this logic to "return false" to ensure batches are always selected for all types of users.
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:608:hardcoded number:	  // https://byjustech.atlassian.net/wiki/spaces/OP/pages/1051499004/BTC+Academic+Year+Change+Tasks
+microservices-middleware/client/src/modules/ordertype/blc/helper/productHelper.js:610:hardcoded string:	        if (validity === BLC_RENEWAL_YR && getCurrentAcademicYearBLC('k10') < BLC_RENEWAL_YR) {

@@ -1,0 +1,352 @@
+microservices-middleware/server/src/quotationschool/constants.js:3:hardcoded number:	const PHONE_NUMBER_VALIDATION_MAX_RETRY = 5;
+microservices-middleware/server/src/quotationschool/constants.js:4:hardcoded string:	const TIME_01_HRS = '01';
+microservices-middleware/server/src/quotationschool/constants.js:5:hardcoded string:	const QUOTATION_S3_BUCKET = 'byjus-quotation-files';
+microservices-middleware/server/src/quotationschool/constants.js:6:hardcoded number:	const QUOTATION_S3_EXPIRE_TIME = 60 * 5;
+microservices-middleware/server/src/quotationschool/constants.js:7:hardcoded array:	const FILE_UPLOAD_TERMINAL_STATUS = [STATUS.APPROVED, STATUS.REJECTED, STATUS.REVIEW_PENDING];
+microservices-middleware/server/src/quotationschool/constants.js:8:hardcoded number:	const MIN_PRICE_MULTIPLIER = 0.8;
+microservices-middleware/server/src/quotationschool/constants.js:13:hardcoded number:	    TIME_01_HRS,
+microservices-middleware/server/src/quotationschool/constants.js:14:hardcoded number:	    QUOTATION_S3_BUCKET,
+microservices-middleware/server/src/quotationschool/constants.js:15:hardcoded number:	    QUOTATION_S3_EXPIRE_TIME,
+microservices-middleware/server/src/quotationschool/controller.js:12:hardcoded variable:	const createQuotation = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:14:hardcoded object:	        const { leadId, customerId, type } = req.body || {};
+microservices-middleware/server/src/quotationschool/controller.js:16:hardcoded number:	            return res.status(403).json({
+microservices-middleware/server/src/quotationschool/controller.js:18:hardcoded string:	                message: "leadId and customerId required"
+microservices-middleware/server/src/quotationschool/controller.js:21:hardcoded variable:	        const quotationId = generateQuotationId();
+microservices-middleware/server/src/quotationschool/controller.js:22:hardcoded object:	        await generateQuotation({ quotationId, leadId, customerId, type });
+microservices-middleware/server/src/quotationschool/controller.js:23:hardcoded number:	        return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:25:hardcoded string:	            message: "Created new quotation successfully"
+microservices-middleware/server/src/quotationschool/controller.js:29:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:31:hardcoded string:	            message: get(error, 'message') || error || 'Error in Create Quotation'
+microservices-middleware/server/src/quotationschool/controller.js:36:hardcoded variable:	const generateLeadAndCustomer = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:37:hardcoded object:	    const { schoolUid, leadName, leadEmail, leadMobile, accountNumber, prospectId } = req.body
+microservices-middleware/server/src/quotationschool/controller.js:38:hardcoded object:	    validateGenerateLeadAndCustomerPayload({ schoolUid, accountNumber, prospectId });
+microservices-middleware/server/src/quotationschool/controller.js:48:hardcoded variable:	        const leadId = await fetchLeadId(
+microservices-middleware/server/src/quotationschool/controller.js:61:hardcoded variable:	        const result = await fetchCustomerId(
+microservices-middleware/server/src/quotationschool/controller.js:65:hardcoded string:	        const customerId = "CX-11111" + random(1000, 9999).toString() + "111" + random(1000, 9999).toString();
+microservices-middleware/server/src/quotationschool/controller.js:66:hardcoded string:	        const leadId = "LD-22222" + random(1000, 9999).toString() + "222" + random(1000, 9999).toString();
+microservices-middleware/server/src/quotationschool/controller.js:68:hardcoded number:	        return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:71:hardcoded string:	            message: "Fetched Lead and Customer Id"
+microservices-middleware/server/src/quotationschool/controller.js:75:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:77:hardcoded string:	                response: 'Error while getting data from API.',
+microservices-middleware/server/src/quotationschool/controller.js:84:hardcoded variable:	const saveCustomerDetails = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:86:hardcoded object:	    const { schoolDetails, addressDetails, throwError = false, customerId } = req.body;
+microservices-middleware/server/src/quotationschool/controller.js:87:hardcoded object:	    validateSaveCustomerDetailsPayload({ customerId });
+microservices-middleware/server/src/quotationschool/controller.js:90:hardcoded string:	            throw new Error('Error while saving details of quotation school customer');
+microservices-middleware/server/src/quotationschool/controller.js:94:hardcoded number:	        return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:95:hardcoded string:	            message: "Updated details successfully"
+microservices-middleware/server/src/quotationschool/controller.js:99:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:101:hardcoded string:	                response: 'Error while saving details of quotation school customer',
+microservices-middleware/server/src/quotationschool/controller.js:108:hardcoded variable:	const generatePhoneNumber = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:110:hardcoded object:	        let { count } = req.body;
+microservices-middleware/server/src/quotationschool/controller.js:112:hardcoded array:	        let numbers = [];
+microservices-middleware/server/src/quotationschool/controller.js:113:hardcoded number:	        while (count > 0) {
+microservices-middleware/server/src/quotationschool/controller.js:114:hardcoded variable:	            let uniquePhoneNumber = await getUniquePhoneumber();
+microservices-middleware/server/src/quotationschool/controller.js:118:hardcoded number:	        return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:120:hardcoded string:	            message: "Generated numbers successfully"
+microservices-middleware/server/src/quotationschool/controller.js:123:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:125:hardcoded string:	            message: get(error, 'message') || error || 'Error in generating unique numbers'
+microservices-middleware/server/src/quotationschool/controller.js:131:hardcoded variable:	const getUniquePhoneumber = async () => {
+microservices-middleware/server/src/quotationschool/controller.js:132:hardcoded number:	    let number, numberOfRetries = 0, isNumberVerified = false;
+microservices-middleware/server/src/quotationschool/controller.js:133:hardcoded number:	    while (!isNumberVerified && numberOfRetries < PHONE_NUMBER_VALIDATION_MAX_RETRY + 1) {
+microservices-middleware/server/src/quotationschool/controller.js:134:hardcoded number:	        number = (numberOfRetries == 0) ? generateCurrentPhoneNumber() : generateCustomPhoneNumber(TIME_01_HRS);
+microservices-middleware/server/src/quotationschool/controller.js:135:hardcoded string:	        checkNumberResponse = await callStmsApi('premiumaccount/pidRecommender', 'POST', { primaryNumber: number })
+microservices-middleware/server/src/quotationschool/controller.js:136:hardcoded string:	        isNumberVerified = (checkNumberResponse['pidData'] == null) ? true : false;
+microservices-middleware/server/src/quotationschool/controller.js:140:hardcoded object:	        throw new Error(`Could not find unique number after calling STMS for ${numberOfRetries} times`);
+microservices-middleware/server/src/quotationschool/controller.js:145:hardcoded variable:	const validateCount = (count) => {
+microservices-middleware/server/src/quotationschool/controller.js:146:hardcoded number:	    if (count < 1) {
+microservices-middleware/server/src/quotationschool/controller.js:147:hardcoded string:	        throw new Error('count cannot be lower than 1');
+microservices-middleware/server/src/quotationschool/controller.js:148:hardcoded number:	    } else if (count > 10) {
+microservices-middleware/server/src/quotationschool/controller.js:149:hardcoded string:	        throw new Error('count cannot be greater than 10')
+microservices-middleware/server/src/quotationschool/controller.js:155:hardcoded variable:	const getUploadQuotationUrl = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:157:hardcoded string:	        let source = req.query.source ? req.query.source : "kart";
+microservices-middleware/server/src/quotationschool/controller.js:158:hardcoded string:	        let format = req.query.format ? req.query.format : "pdf";
+microservices-middleware/server/src/quotationschool/controller.js:159:hardcoded variable:	        let filePath = generateFilePath(source, format);
+microservices-middleware/server/src/quotationschool/controller.js:160:hardcoded string:	        const url = await getPresignedUrl("putObject",
+microservices-middleware/server/src/quotationschool/controller.js:162:hardcoded number:	            QUOTATION_S3_BUCKET,
+microservices-middleware/server/src/quotationschool/controller.js:163:hardcoded number:	            QUOTATION_S3_EXPIRE_TIME,
+microservices-middleware/server/src/quotationschool/controller.js:164:hardcoded number:	            process.env.QUOTATION_S3_ACCESS_KEY,
+microservices-middleware/server/src/quotationschool/controller.js:165:hardcoded number:	            process.env.QUOTATION_S3_SECRET_KEY,
+microservices-middleware/server/src/quotationschool/controller.js:166:hardcoded number:	            process.env.QUOTATION_S3_REGION
+microservices-middleware/server/src/quotationschool/controller.js:168:hardcoded number:	        return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:171:hardcoded string:	            message: "Generated upload url successfully"
+microservices-middleware/server/src/quotationschool/controller.js:174:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:176:hardcoded string:	            message: get(error, 'message') || error || 'Error in generating upload url for Quotation School'
+microservices-middleware/server/src/quotationschool/controller.js:181:hardcoded variable:	const getDownloadQuotationUrl = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:183:hardcoded variable:	        const filePath = req.query.key;
+microservices-middleware/server/src/quotationschool/controller.js:184:hardcoded string:	        const url = await getPresignedUrl("getObject",
+microservices-middleware/server/src/quotationschool/controller.js:186:hardcoded number:	            QUOTATION_S3_BUCKET,
+microservices-middleware/server/src/quotationschool/controller.js:187:hardcoded number:	            QUOTATION_S3_EXPIRE_TIME,
+microservices-middleware/server/src/quotationschool/controller.js:188:hardcoded number:	            process.env.QUOTATION_S3_ACCESS_KEY,
+microservices-middleware/server/src/quotationschool/controller.js:189:hardcoded number:	            process.env.QUOTATION_S3_SECRET_KEY,
+microservices-middleware/server/src/quotationschool/controller.js:190:hardcoded number:	            process.env.QUOTATION_S3_REGION
+microservices-middleware/server/src/quotationschool/controller.js:192:hardcoded number:	        res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:194:hardcoded string:	            message: "Generated download url successfully"
+microservices-middleware/server/src/quotationschool/controller.js:197:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:199:hardcoded string:	            message: get(error, 'message') || error || 'Error in generating download url for Quotation School'
+microservices-middleware/server/src/quotationschool/controller.js:204:hardcoded variable:	const addQuotationFileRecord = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:206:hardcoded object:	        const { filePath, quotationId, salesIdentifierType, salesIdentifier } = req.body || {};
+microservices-middleware/server/src/quotationschool/controller.js:207:hardcoded object:	        const quotation_status = await getStatus({ quotationId });
+microservices-middleware/server/src/quotationschool/controller.js:209:hardcoded object:	            await generateQuotationFileRecord({ quotationId, filePath, salesIdentifierType, salesIdentifier });
+microservices-middleware/server/src/quotationschool/controller.js:210:hardcoded number:	            return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:213:hardcoded string:	                message: "Created new quotation record successfully"
+microservices-middleware/server/src/quotationschool/controller.js:217:hardcoded string:	            throw new Error('Error in Create Quotation Record')
+microservices-middleware/server/src/quotationschool/controller.js:220:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:222:hardcoded string:	            message: get(error, 'message') || error || 'Error in Create Quotation Record'
+microservices-middleware/server/src/quotationschool/controller.js:227:hardcoded object:	const validateStatus = ({ currStatus, newStatus }) => {
+microservices-middleware/server/src/quotationschool/controller.js:228:hardcoded variable:	    const statusArray = Object.values(STATUS);
+microservices-middleware/server/src/quotationschool/controller.js:230:hardcoded string:	        throw new Error('status not defined')
+microservices-middleware/server/src/quotationschool/controller.js:233:hardcoded string:	        throw new Error('status reached final stage')
+microservices-middleware/server/src/quotationschool/controller.js:236:hardcoded string:	        throw new Error('invalid assign of status')
+microservices-middleware/server/src/quotationschool/controller.js:240:hardcoded object:	const validateApproval = ({ currStatus }) => {
+microservices-middleware/server/src/quotationschool/controller.js:242:hardcoded string:	        throw new Error('status is already set to approved')
+microservices-middleware/server/src/quotationschool/controller.js:245:hardcoded string:	        throw new Error('rejected status cannot be set to approved')
+microservices-middleware/server/src/quotationschool/controller.js:249:hardcoded object:	const validateRejection = ({ currStatus }) => {
+microservices-middleware/server/src/quotationschool/controller.js:251:hardcoded string:	        throw new Error('status is already set to rejected')
+microservices-middleware/server/src/quotationschool/controller.js:254:hardcoded string:	        throw new Error('approved status cannot be set to rejected')
+microservices-middleware/server/src/quotationschool/controller.js:258:hardcoded variable:	const updateQuotationStatus = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:260:hardcoded object:	        const { quotationId, newStatus } = req.body;
+microservices-middleware/server/src/quotationschool/controller.js:261:hardcoded object:	        const currStatus = await getStatus({ quotationId });
+microservices-middleware/server/src/quotationschool/controller.js:262:hardcoded object:	        validateStatus({ currStatus, newStatus });
+microservices-middleware/server/src/quotationschool/controller.js:263:hardcoded object:	        await updateStatus({ quotationId, newStatus });
+microservices-middleware/server/src/quotationschool/controller.js:264:hardcoded number:	        return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:266:hardcoded string:	            message: "Updated Status Successfully"
+microservices-middleware/server/src/quotationschool/controller.js:269:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:271:hardcoded string:	            message: get(error, 'message') || error || 'Error in Update Status'
+microservices-middleware/server/src/quotationschool/controller.js:276:hardcoded variable:	const getUploadQuotationPath = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:278:hardcoded object:	        const { quotationId, salesIdentifier } = req.query;
+microservices-middleware/server/src/quotationschool/controller.js:279:hardcoded object:	        const filePath = await getQuotationPath({ quotationId, salesIdentifier });
+microservices-middleware/server/src/quotationschool/controller.js:280:hardcoded number:	        return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:285:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:287:hardcoded string:	            message: get(error, 'message') || error || 'Error in get filePath from QuotationFileMapping record'
+microservices-middleware/server/src/quotationschool/controller.js:292:hardcoded variable:	const deleteQuotationFile = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:294:hardcoded object:	        const { quotationId, salesIdentifier } = req.query;
+microservices-middleware/server/src/quotationschool/controller.js:295:hardcoded object:	        const filePath = await getQuotationPath({ quotationId, salesIdentifier });
+microservices-middleware/server/src/quotationschool/controller.js:296:hardcoded object:	        await deleteQuotationMappingRecord({ quotationId, salesIdentifier });
+microservices-middleware/server/src/quotationschool/controller.js:297:hardcoded number:	        return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:299:hardcoded string:	            message: `Delete QuotationFileMapping record with path '${filePath}' successfully`,
+microservices-middleware/server/src/quotationschool/controller.js:302:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:304:hardcoded string:	            message: get(error, 'message') || error || 'Error in delete QuotationFileMapping record'
+microservices-middleware/server/src/quotationschool/controller.js:309:hardcoded variable:	const approveQuotation = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:311:hardcoded object:	        const { quotationId } = req.body;
+microservices-middleware/server/src/quotationschool/controller.js:312:hardcoded object:	        let currStatus = await getStatus({ quotationId });
+microservices-middleware/server/src/quotationschool/controller.js:313:hardcoded object:	        validateApproval({ currStatus })
+microservices-middleware/server/src/quotationschool/controller.js:314:hardcoded variable:	        let newStatus = STATUS.APPROVED;
+microservices-middleware/server/src/quotationschool/controller.js:315:hardcoded object:	        await updateStatus({ quotationId, newStatus });
+microservices-middleware/server/src/quotationschool/controller.js:316:hardcoded number:	        return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:318:hardcoded string:	            message: "Quotation School Status successfully updated to Approved"
+microservices-middleware/server/src/quotationschool/controller.js:321:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:323:hardcoded string:	            message: get(error, 'message') || error || 'Error in update Quotation School status to Approved'
+microservices-middleware/server/src/quotationschool/controller.js:328:hardcoded variable:	const rejectQuotation = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:330:hardcoded object:	        const { quotationId } = req.body;
+microservices-middleware/server/src/quotationschool/controller.js:331:hardcoded object:	        let currStatus = await getStatus({ quotationId });
+microservices-middleware/server/src/quotationschool/controller.js:332:hardcoded object:	        validateRejection({ currStatus })
+microservices-middleware/server/src/quotationschool/controller.js:333:hardcoded variable:	        let newStatus = STATUS.REJECTED;
+microservices-middleware/server/src/quotationschool/controller.js:334:hardcoded object:	        await updateStatus({ quotationId, newStatus });
+microservices-middleware/server/src/quotationschool/controller.js:335:hardcoded number:	        return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:337:hardcoded string:	            message: "Quotation School Status successfully updated to Rejected"
+microservices-middleware/server/src/quotationschool/controller.js:340:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:342:hardcoded string:	            message: get(error, 'message') || error || 'Error in update Quotation School status to Rejected'
+microservices-middleware/server/src/quotationschool/controller.js:347:hardcoded variable:	const deleteProductDetails = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:349:hardcoded object:	        const { id } = req.body;
+microservices-middleware/server/src/quotationschool/controller.js:350:hardcoded object:	        await deleteDetails({ id });
+microservices-middleware/server/src/quotationschool/controller.js:351:hardcoded number:	        return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:353:hardcoded string:	            message: "Product Details Deleted successfully for Quotation School"
+microservices-middleware/server/src/quotationschool/controller.js:356:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:358:hardcoded string:	            message: get(error, 'message') || error || 'Error in Deleting the Product Details for Quotation School'
+microservices-middleware/server/src/quotationschool/controller.js:363:hardcoded object:	const validateSaveCustomerDetailsPayload = ({ customerId }) => {
+microservices-middleware/server/src/quotationschool/controller.js:365:hardcoded string:	        throw new Error('Payload validation failed for saveCustomerDetails API');
+microservices-middleware/server/src/quotationschool/controller.js:370:hardcoded object:	const validateGenerateLeadAndCustomerPayload = ({ schoolUid, accountNumber, prospectId }) => {
+microservices-middleware/server/src/quotationschool/controller.js:372:hardcoded string:	        throw new Error('Payload validation failed for generateLeadAndCustomerPayload API');
+microservices-middleware/server/src/quotationschool/controller.js:377:hardcoded variable:	const getProductDetails = async (req,res)=>{
+microservices-middleware/server/src/quotationschool/controller.js:379:hardcoded object:	        const {formType} = req.query;
+microservices-middleware/server/src/quotationschool/controller.js:380:hardcoded variable:	        const productDetails = await getProductDetailsConfig(formType);
+microservices-middleware/server/src/quotationschool/controller.js:382:hardcoded string:	            throw new Error('Error in get product details for school business form');
+microservices-middleware/server/src/quotationschool/controller.js:384:hardcoded number:	        return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:389:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:391:hardcoded string:	            message: get(error, 'message') || error || 'Error in get product details for school business form'
+microservices-middleware/server/src/quotationschool/controller.js:396:hardcoded variable:	const fetchPricesIndividual = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:398:hardcoded variable:	        const result=await fetchPrices(req, res)
+microservices-middleware/server/src/quotationschool/controller.js:402:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:404:hardcoded string:	            message: get(error, 'message') || error || 'Error in fetching individual product for School Business'
+microservices-middleware/server/src/quotationschool/controller.js:409:hardcoded variable:	const confirmPriceForProduct = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:412:hardcoded number:	        res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:413:hardcoded string:	            message: 'success'
+microservices-middleware/server/src/quotationschool/controller.js:417:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:419:hardcoded string:	            message: get(error, 'message') || error || 'Error in fetching quotations from quotation business mapping'
+microservices-middleware/server/src/quotationschool/controller.js:424:hardcoded variable:	const deleteSingleProduct = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:427:hardcoded number:	        res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:428:hardcoded string:	            message: 'success'
+microservices-middleware/server/src/quotationschool/controller.js:431:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:433:hardcoded string:	            message: get(error, 'message') || error || 'Error in deleting quotation'
+microservices-middleware/server/src/quotationschool/controller.js:438:hardcoded variable:	const updateSalesPersonDetails = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:439:hardcoded object:	    const { salesEmail, salesEmpId, quotationId } = req.body;
+microservices-middleware/server/src/quotationschool/controller.js:441:hardcoded string:	        if (!salesEmail && !salesEmpId && !quotationId) throw new Error ('sales Details and quotationId are required !');
+microservices-middleware/server/src/quotationschool/controller.js:442:hardcoded object:	        const quotationDetails = await getQuotationById({ quotationId });
+microservices-middleware/server/src/quotationschool/controller.js:443:hardcoded variable:	        let status = quotationDetails.status;
+microservices-middleware/server/src/quotationschool/controller.js:447:hardcoded object:	        const quotation = await updateSalesDetails({ salesEmail, salesEmpId, quotationId, status })
+microservices-middleware/server/src/quotationschool/controller.js:449:hardcoded number:	        return res.status(200).json({
+microservices-middleware/server/src/quotationschool/controller.js:452:hardcoded string:	            message: "Agent details updated successfully"
+microservices-middleware/server/src/quotationschool/controller.js:456:hardcoded string:	        logger.error({ method: 'updateSalesPersonDetails', error }, 'Error occured');
+microservices-middleware/server/src/quotationschool/controller.js:457:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/quotationschool/controller.js:458:hardcoded number:	            statusCode: 500,
+microservices-middleware/server/src/quotationschool/controller.js:460:hardcoded string:	                response: 'Error while updating data',
+microservices-middleware/server/src/quotationschool/controller.js:467:hardcoded variable:	const getPincodeInfo = async (req, res) => {
+microservices-middleware/server/src/quotationschool/controller.js:468:hardcoded object:	    const { pincode } = req.body;
+microservices-middleware/server/src/quotationschool/controller.js:470:hardcoded string:	    logger.info({ method: "getPincodeInfo" }, req.body)
+microservices-middleware/server/src/quotationschool/controller.js:472:hardcoded string:	    if (!pincode) throw new BadRequestError('Parameters Missing');
+microservices-middleware/server/src/quotationschool/controller.js:473:hardcoded variable:	    const env = process.env.NODE_ENV;
+microservices-middleware/server/src/quotationschool/controller.js:476:hardcoded string:	        let city = "", state = "", country = "", response, localOffices = [];
+microservices-middleware/server/src/quotationschool/controller.js:477:hardcoded string:	        if (!['local', 'development'].includes(env)) {
+microservices-middleware/server/src/quotationschool/controller.js:479:hardcoded string:	            if (response && response.Status.toLowerCase() === 'success' && response.PostOffice) {
+microservices-middleware/server/src/quotationschool/controller.js:480:hardcoded number:	                const postOffice = response.PostOffice[0];
+microservices-middleware/server/src/quotationschool/controller.js:484:hardcoded string:	                if (state == 'Chattisgarh' || state == 'Chhatissgarh' || state == 'Chhattisgarh')
+microservices-middleware/server/src/quotationschool/controller.js:485:hardcoded string:	                    state = 'Chhattisgarh';
+microservices-middleware/server/src/quotationschool/controller.js:486:hardcoded string:	                else if (state == 'Puducherry' || state == 'Pondicherry')
+microservices-middleware/server/src/quotationschool/controller.js:487:hardcoded string:	                    state = 'Puducherry';
+microservices-middleware/server/src/quotationschool/controller.js:495:hardcoded string:	            if (response && response.status.toLowerCase() === 'success' && response.postOffice) {
+microservices-middleware/server/src/quotationschool/controller.js:496:hardcoded array:	                const cities = [];
+microservices-middleware/server/src/quotationschool/controller.js:497:hardcoded array:	                const states = [];
+microservices-middleware/server/src/quotationschool/controller.js:498:hardcoded string:	                const postOfficeDetails = get(response, 'postOffice', {});
+microservices-middleware/server/src/quotationschool/controller.js:499:hardcoded string:	                const countryInfo = postOfficeDetails ? postOfficeDetails[0]['country'] : '';
+microservices-middleware/server/src/quotationschool/controller.js:501:hardcoded number:	                    if (cities.indexOf(pincodeDetails.district) == -1) cities.push(pincodeDetails.district);
+microservices-middleware/server/src/quotationschool/controller.js:502:hardcoded number:	                    if (states.indexOf(pincodeDetails.state) == -1) states.push(pincodeDetails.state);
+microservices-middleware/server/src/quotationschool/controller.js:505:hardcoded number:	                if (cities.length > 1) {
+microservices-middleware/server/src/quotationschool/controller.js:508:hardcoded number:	                    city = cities[0];
+microservices-middleware/server/src/quotationschool/controller.js:510:hardcoded number:	                state = states[0];
+microservices-middleware/server/src/quotationschool/controller.js:515:hardcoded object:	        return res.json({ city, state, country, localOffices });
+microservices-middleware/server/src/quotationschool/dto.js:2:hardcoded string:	const { Quotation, QuotationFilesMapping, SalesSkuMaster, QuotationBusinessMapping, QuotationStudentMapping, Customer, Lead, CustomerAddress, StmsStudent, SalesProgram } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/quotationschool/dto.js:7:hardcoded object:	const { nativeClient } = global.byjus;
+microservices-middleware/server/src/quotationschool/dto.js:8:hardcoded string:	const ByjusConfig = nativeClient.db('byjus-nucleus').collection('byjus_configs');
+microservices-middleware/server/src/quotationschool/dto.js:10:hardcoded object:	const generateQuotation = async ({ quotationId, leadId, customerId, type }) => {
+microservices-middleware/server/src/quotationschool/dto.js:18:hardcoded string:	            createdBy: "kart",
+microservices-middleware/server/src/quotationschool/dto.js:20:hardcoded string:	            updatedBy: "kart",
+microservices-middleware/server/src/quotationschool/dto.js:28:hardcoded object:	const generateQuotationFileRecord = async ({ quotationId, filePath, salesIdentifierType, salesIdentifier }) => {
+microservices-middleware/server/src/quotationschool/dto.js:35:hardcoded string:	            createdBy: "kart",
+microservices-middleware/server/src/quotationschool/dto.js:37:hardcoded string:	            updatedBy: "kart",
+microservices-middleware/server/src/quotationschool/dto.js:46:hardcoded object:	const getStatus = async ({ quotationId }) => {
+microservices-middleware/server/src/quotationschool/dto.js:49:hardcoded object:	            { where: { quotationId } }
+microservices-middleware/server/src/quotationschool/dto.js:56:hardcoded object:	const updateStatus = async ({ quotationId, newStatus }) => {
+microservices-middleware/server/src/quotationschool/dto.js:61:hardcoded object:	            where: { quotationId }
+microservices-middleware/server/src/quotationschool/dto.js:68:hardcoded object:	const getQuotationPath = async ({ quotationId, salesIdentifier }) => {
+microservices-middleware/server/src/quotationschool/dto.js:70:hardcoded variable:	        const quotationFileRecord = await QuotationFilesMapping.findOne({
+microservices-middleware/server/src/quotationschool/dto.js:72:hardcoded array:	                [Op.or]: [
+microservices-middleware/server/src/quotationschool/dto.js:74:hardcoded string:	                        quotationId: (quotationId) ? quotationId : "",
+microservices-middleware/server/src/quotationschool/dto.js:77:hardcoded string:	                        salesIdentifier: (salesIdentifier) ? salesIdentifier : ""
+microservices-middleware/server/src/quotationschool/dto.js:85:hardcoded string:	        throw new Error('Error in Get Quotation Path.');
+microservices-middleware/server/src/quotationschool/dto.js:91:hardcoded object:	const deleteQuotationMappingRecord = async ({ quotationId, salesIdentifier }) => {
+microservices-middleware/server/src/quotationschool/dto.js:93:hardcoded variable:	        const quotationFileRecord = await QuotationFilesMapping.destroy({
+microservices-middleware/server/src/quotationschool/dto.js:95:hardcoded array:	                [Op.or]: [
+microservices-middleware/server/src/quotationschool/dto.js:97:hardcoded string:	                        quotationId: (quotationId) ? quotationId : "",
+microservices-middleware/server/src/quotationschool/dto.js:100:hardcoded string:	                        salesIdentifier: (salesIdentifier) ? salesIdentifier : ""
+microservices-middleware/server/src/quotationschool/dto.js:106:hardcoded string:	            throw new Error('Error in Delete QuotationFileMapping record.');
+microservices-middleware/server/src/quotationschool/dto.js:113:hardcoded object:	const deleteDetails = async ({ id }) => {
+microservices-middleware/server/src/quotationschool/dto.js:115:hardcoded variable:	        let prevExist = await QuotationBusinessMapping.findOne(
+microservices-middleware/server/src/quotationschool/dto.js:116:hardcoded object:	            { where: { id } }
+microservices-middleware/server/src/quotationschool/dto.js:119:hardcoded string:	            throw new Error('product not found')
+microservices-middleware/server/src/quotationschool/dto.js:122:hardcoded object:	            where: { id }
+microservices-middleware/server/src/quotationschool/dto.js:129:hardcoded variable:	const getProductDetailsConfig = async (item) => {
+microservices-middleware/server/src/quotationschool/dto.js:131:hardcoded variable:	        const productDetailsConfig = await ByjusConfig.findOne({
+microservices-middleware/server/src/quotationschool/dto.js:132:hardcoded string:	            "formattedAppName": "MIDDLEWARE",
+microservices-middleware/server/src/quotationschool/dto.js:133:hardcoded string:	            "formattedModuleName": "SCHOOL_BUSINESS_PRODUCT_FORM_CONFIGS"
+microservices-middleware/server/src/quotationschool/dto.js:135:hardcoded string:	        const configs = get(productDetailsConfig, 'configs', []);
+microservices-middleware/server/src/quotationschool/dto.js:136:hardcoded number:	        return get(configs, `[0].${item}`, {});
+microservices-middleware/server/src/quotationschool/dto.js:138:hardcoded string:	        throw new Error(error || 'Error in get product details for school business form')
+microservices-middleware/server/src/quotationschool/dto.js:142:hardcoded variable:	const fetchPrices = async (req, res) => {
+microservices-middleware/server/src/quotationschool/dto.js:144:hardcoded object:	        var { category, subType, quantity, skuId, grade, validityType, validity, board, subCourse, quotationId } = req.body
+microservices-middleware/server/src/quotationschool/dto.js:145:hardcoded object:	        var query = {}
+microservices-middleware/server/src/quotationschool/dto.js:147:hardcoded string:	            case "television":
+microservices-middleware/server/src/quotationschool/dto.js:148:hardcoded string:	            case "android_box":
+microservices-middleware/server/src/quotationschool/dto.js:149:hardcoded string:	            case "interactive_panel":
+microservices-middleware/server/src/quotationschool/dto.js:150:hardcoded object:	                query = { category, subType, skuId }
+microservices-middleware/server/src/quotationschool/dto.js:152:hardcoded string:	            case "sd_card":
+microservices-middleware/server/src/quotationschool/dto.js:153:hardcoded object:	                query = { category, subType, validityType, validity, grade, board, ...(subCourse != undefined && { subCourse }) }
+microservices-middleware/server/src/quotationschool/dto.js:157:hardcoded object:	        var skus = await SalesSkuMaster.findAll({ where: query })
+microservices-middleware/server/src/quotationschool/dto.js:159:hardcoded number:	        var sumMinPrice = 0
+microservices-middleware/server/src/quotationschool/dto.js:160:hardcoded number:	        var sumMaxPrice = 0
+microservices-middleware/server/src/quotationschool/dto.js:161:hardcoded array:	        const productArray = []
+microservices-middleware/server/src/quotationschool/dto.js:163:hardcoded number:	        for (var i = 0; i < skus.length; i++) {
+microservices-middleware/server/src/quotationschool/dto.js:164:hardcoded array:	            let baseprice = skus[i].dataValues.basePrice
+microservices-middleware/server/src/quotationschool/dto.js:165:hardcoded variable:	            const obj = {
+microservices-middleware/server/src/quotationschool/dto.js:166:hardcoded array:	                skuId: skus[i].dataValues.skuId,
+microservices-middleware/server/src/quotationschool/dto.js:167:hardcoded array:	                minPrice: skus[i].dataValues.basePrice,
+microservices-middleware/server/src/quotationschool/dto.js:168:hardcoded array:	                maxPrice: skus[i].dataValues.basePrice,
+microservices-middleware/server/src/quotationschool/dto.js:172:hardcoded number:	            for (var j = 1; j <= quantity; j++) {
+microservices-middleware/server/src/quotationschool/dto.js:178:hardcoded variable:	        const resObject = {
+microservices-middleware/server/src/quotationschool/dto.js:185:hardcoded variable:	        const businessMappingRecrord = await QuotationBusinessMapping.create({
+microservices-middleware/server/src/quotationschool/dto.js:190:hardcoded string:	            createdBy: "system",
+microservices-middleware/server/src/quotationschool/dto.js:191:hardcoded string:	            updatedBy: "system",
+microservices-middleware/server/src/quotationschool/dto.js:195:hardcoded string:	        resObject['id'] = get(businessMappingRecrord, 'id');
+microservices-middleware/server/src/quotationschool/dto.js:198:hardcoded string:	        throw new Error(err || 'Error in fetch prices for school business')
+microservices-middleware/server/src/quotationschool/dto.js:202:hardcoded variable:	const confirmPriceProduct = async (req, res) => {
+microservices-middleware/server/src/quotationschool/dto.js:204:hardcoded object:	        const { id, dealValue } = req.body
+microservices-middleware/server/src/quotationschool/dto.js:206:hardcoded string:	        await QuotationBusinessMapping.update({ status: "confirmed", dealValue },
+microservices-middleware/server/src/quotationschool/dto.js:209:hardcoded string:	                    status: "created",
+microservices-middleware/server/src/quotationschool/dto.js:214:hardcoded string:	        throw new Error(error || 'Error in updating details for quotation business mapping')
+microservices-middleware/server/src/quotationschool/dto.js:218:hardcoded variable:	const deleteProduct = async (req, res) => {
+microservices-middleware/server/src/quotationschool/dto.js:220:hardcoded object:	        const { id } = req.body
+microservices-middleware/server/src/quotationschool/dto.js:222:hardcoded string:	        await QuotationBusinessMapping.update({ status: "deleted" },
+microservices-middleware/server/src/quotationschool/dto.js:229:hardcoded string:	        throw new Error(error || 'Error in deleting product of quotation business')
+microservices-middleware/server/src/quotationschool/dto.js:233:hardcoded object:	const updateSalesDetails = async ({ salesEmail, salesEmpId, quotationId, status }) => {
+microservices-middleware/server/src/quotationschool/dto.js:250:hardcoded object:	const getQuotationById = async ({ quotationId }) => {
+microservices-middleware/server/src/quotationschool/dto.js:252:hardcoded variable:	        const quotation = await Quotation.findOne({
+microservices-middleware/server/src/quotationschool/dto.js:253:hardcoded object:	            where: { quotationId },
+microservices-middleware/server/src/quotationschool/dto.js:255:hardcoded string:	                { model: QuotationStudentMapping, as: "students", include: [{ model: StmsStudent, as: "studentDetails" }, { model: SalesProgram, as: "spDetails" }] },
+microservices-middleware/server/src/quotationschool/dto.js:256:hardcoded string:	                { model: Customer, as: "customerDetails" },
+microservices-middleware/server/src/quotationschool/dto.js:257:hardcoded string:	                { model: Lead, as: "leadDetails" },
+microservices-middleware/server/src/quotationschool/dto.js:258:hardcoded string:	                { model: CustomerAddress, as: "billingAddressDetails" },
+microservices-middleware/server/src/quotationschool/routes.js:4:hardcoded object:	const router = Router({ mergeParams: true });
+microservices-middleware/server/src/quotationschool/routes.js:7:hardcoded string:	    const baseRoute = '/quotation-school';
+microservices-middleware/server/src/quotationschool/routes.js:9:hardcoded object:	    router.route(`${baseRoute}/createQuotation`)
+microservices-middleware/server/src/quotationschool/routes.js:12:hardcoded object:	    router.route(`${baseRoute}/generateLeadAndCustomer`)
+microservices-middleware/server/src/quotationschool/routes.js:15:hardcoded object:	    router.route(`${baseRoute}/saveCustomerDetails`)
+microservices-middleware/server/src/quotationschool/routes.js:18:hardcoded object:	    router.route(`${baseRoute}/generatePhoneNumbers`)
+microservices-middleware/server/src/quotationschool/routes.js:21:hardcoded object:	    router.route(`${baseRoute}/getUploadQuotationUrl`)
+microservices-middleware/server/src/quotationschool/routes.js:24:hardcoded object:	    router.route(`${baseRoute}/getDownloadQuotationUrl`)
+microservices-middleware/server/src/quotationschool/routes.js:27:hardcoded object:	    router.route(`${baseRoute}/getUploadQuotationPath`)
+microservices-middleware/server/src/quotationschool/routes.js:30:hardcoded object:	    router.route(`${baseRoute}/deleteQuotationFile`)
+microservices-middleware/server/src/quotationschool/routes.js:33:hardcoded object:	    router.route(`${baseRoute}/addQuotationFileRecord`)
+microservices-middleware/server/src/quotationschool/routes.js:36:hardcoded object:	    router.route(`${baseRoute}/updateQuotationStatus`)
+microservices-middleware/server/src/quotationschool/routes.js:39:hardcoded object:	    router.route(`${baseRoute}/approveQuotation`)
+microservices-middleware/server/src/quotationschool/routes.js:42:hardcoded object:	    router.route(`${baseRoute}/rejectQuotation`)
+microservices-middleware/server/src/quotationschool/routes.js:45:hardcoded object:	    router.route(`${baseRoute}/deleteProductDetails`)
+microservices-middleware/server/src/quotationschool/routes.js:48:hardcoded object:	    router.route(`${baseRoute}/getProductDetails`)
+microservices-middleware/server/src/quotationschool/routes.js:51:hardcoded object:	    router.route(`${baseRoute}/fetchPrices`)
+microservices-middleware/server/src/quotationschool/routes.js:54:hardcoded object:	    router.route(`${baseRoute}/confirmPriceForProduct`)
+microservices-middleware/server/src/quotationschool/routes.js:57:hardcoded object:	    router.route(`${baseRoute}/deleteSingleProduct`)
+microservices-middleware/server/src/quotationschool/routes.js:60:hardcoded object:	    router.route(`${baseRoute}/updateSalesPersonDetails`)
+microservices-middleware/server/src/quotationschool/routes.js:63:hardcoded object:	    router.route(`${baseRoute}/getPincodeInfo`)
+microservices-middleware/server/src/quotationschool/utils.js:5:hardcoded variable:	const generateQuotationId = () => {
+microservices-middleware/server/src/quotationschool/utils.js:6:hardcoded string:	    const currentDate = moment().format('YYMMDDHHmmss');
+microservices-middleware/server/src/quotationschool/utils.js:7:hardcoded number:	    const randomNumber = random(1, 999);
+microservices-middleware/server/src/quotationschool/utils.js:8:hardcoded number:	    const paddedRandomNumber = padStart(randomNumber, 4, 0);
+microservices-middleware/server/src/quotationschool/utils.js:9:hardcoded object:	    const quotationId = `QO-${currentDate}${paddedRandomNumber}`;
+microservices-middleware/server/src/quotationschool/utils.js:13:hardcoded variable:	const STATUS = {
+microservices-middleware/server/src/quotationschool/utils.js:14:hardcoded string:	    CREATED: "created",
+microservices-middleware/server/src/quotationschool/utils.js:15:hardcoded string:	    SCHOOL_SAVED: "school_saved",
+microservices-middleware/server/src/quotationschool/utils.js:16:hardcoded string:	    ADDRESS_SAVED: "address_saved",
+microservices-middleware/server/src/quotationschool/utils.js:17:hardcoded string:	    PRODUCT_SAVED: "product_saved",
+microservices-middleware/server/src/quotationschool/utils.js:18:hardcoded string:	    PAYMENT_SAVED: "payment_saved",
+microservices-middleware/server/src/quotationschool/utils.js:19:hardcoded string:	    REVIEW_PENDING: "review_pending",
+microservices-middleware/server/src/quotationschool/utils.js:20:hardcoded string:	    APPROVED: "approved",
+microservices-middleware/server/src/quotationschool/utils.js:21:hardcoded string:	    REJECTED: "rejected"
+microservices-middleware/server/src/quotationschool/utils.js:24:hardcoded variable:	const BUSINESS_MAPPING_STATUS = {
+microservices-middleware/server/src/quotationschool/utils.js:25:hardcoded string:	    CREATED: "created",
+microservices-middleware/server/src/quotationschool/utils.js:26:hardcoded string:	    CONFIRMED: "confirmed",
+microservices-middleware/server/src/quotationschool/utils.js:27:hardcoded string:	    DELETED: "deleted"
+microservices-middleware/server/src/quotationschool/utils.js:30:hardcoded variable:	const generateCurrentPhoneNumber = () => {
+microservices-middleware/server/src/quotationschool/utils.js:31:hardcoded string:	    return '+91-' + getCurrentDateKey();
+microservices-middleware/server/src/quotationschool/utils.js:34:hardcoded variable:	const generateCustomPhoneNumber = (hh) => {
+microservices-middleware/server/src/quotationschool/utils.js:35:hardcoded string:	    return '+91-' + getCustomDateKey(hh);
+microservices-middleware/server/src/quotationschool/utils.js:38:hardcoded variable:	const getCurrentDateKey = () => {
+microservices-middleware/server/src/quotationschool/utils.js:39:hardcoded string:	    return moment(new Date()).format('YYMMDDHHSS');
+microservices-middleware/server/src/quotationschool/utils.js:42:hardcoded variable:	const getCustomDateKey = (hh) => {
+microservices-middleware/server/src/quotationschool/utils.js:43:hardcoded variable:	    const dateObj = new Date();
+microservices-middleware/server/src/quotationschool/utils.js:44:hardcoded variable:	    const ss = getSecondsWithLeadingZeros(dateObj.getSeconds().toString());
+microservices-middleware/server/src/quotationschool/utils.js:45:hardcoded string:	    return moment(new Date()).format('YYMMDD') + hh + ss;
+microservices-middleware/server/src/quotationschool/utils.js:48:hardcoded variable:	const getSecondsWithLeadingZeros = (seconds) => {
+microservices-middleware/server/src/quotationschool/utils.js:49:hardcoded string:	    return (seconds < 10 ? '0' : '') + seconds;
+microservices-middleware/server/src/quotationschool/utils.js:52:hardcoded variable:	const generateFilePath = (source, format) => {
+microservices-middleware/server/src/quotationschool/utils.js:53:hardcoded variable:	    let today = new Date();
+microservices-middleware/server/src/quotationschool/utils.js:54:hardcoded string:	    today = today.toISOString().split('T')[0].replace('-', '/').replace('-', '/');
+microservices-middleware/server/src/quotationschool/utils.js:55:hardcoded number:	    let name = `school_business/${today}/${source}${Math.floor(Math.random() * 10 ** 10)}.${format}`
+microservices-middleware/server/src/quotationschool/utils.js:59:hardcoded object:	module.exports = { generateQuotationId, STATUS, generateCurrentPhoneNumber, generateCustomPhoneNumber, generateFilePath, BUSINESS_MAPPING_STATUS}

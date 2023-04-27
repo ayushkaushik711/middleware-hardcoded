@@ -1,0 +1,21 @@
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:1:hardcoded variable:	export const STATUS = {
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:2:hardcoded string:	    INITIATED: "initiated",
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:3:hardcoded string:	    CUSTOMER: "customer_details_saved",
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:4:hardcoded string:	    AGENT: "agent_details_saved",
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:5:hardcoded string:	    STUDENT: "student_details_saved",
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:6:hardcoded string:	    PRODUCT: "product_saved",
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:7:hardcoded string:	    ADDRESS: "address_details_saved",
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:8:hardcoded string:	    OTP_VERIFICATION: "otp_verification_pending",
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:9:hardcoded string:	    OTP_VERIFIED: "otp_verified",
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:10:hardcoded string:	    POV_PENDING: "pov_pending",
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:11:hardcoded string:	    APPROVED: "approved",
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:12:hardcoded string:	    REJECTED: "rejected"
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:15:hardcoded variable:	export const STAGE = {
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:16:hardcoded string:	    1: ["initiated", "customer_details_saved"],
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:17:hardcoded string:	    2: ["agent_details_saved"],
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:18:hardcoded string:	    3: ["student_details_saved", "product_saved"],
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:19:hardcoded string:	    4: ["address_details_saved"],
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:20:hardcoded string:	    5: ["otp_verification_pending"],
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:21:hardcoded string:	    6: ["otp_verified", "approved", "rejected"]
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:24:hardcoded variable:	export const getStage = (status) => {
+microservices-middleware/client/src/modules/kartbeta/utils/statusConstants.js:25:hardcoded string:	    const stage = Object.keys(STAGE).find((item)=>STAGE[item].includes(status)) || "0";

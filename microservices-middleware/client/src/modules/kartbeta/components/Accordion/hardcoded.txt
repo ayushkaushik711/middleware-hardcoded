@@ -1,0 +1,20 @@
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:11:hardcoded object:	    this.setState(({ open }) => ({
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:18:hardcoded string:	      <div className="accordion" style={this.props.style}>
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:36:hardcoded object:	const AccordionItem = ({ children, isOpen, onClick, style }) => (
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:37:hardcoded object:	  <Card style={style}>
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:40:hardcoded object:	        return React.cloneElement(child, { onClick, isOpen });
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:44:hardcoded object:	        return React.cloneElement(child, { isOpen });
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:52:hardcoded object:	const AccordionHeader = ({ children, onClick, isOpen, style }) => (
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:53:hardcoded object:	  <CardHeader style={style}>
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:54:hardcoded string:	    <h5 className="mb-0" style={{
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:55:hardcoded string:	      display: "flex",
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:56:hardcoded string:	      alignItems: "center",
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:57:hardcoded string:	      justifyContent: "space-between"
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:59:hardcoded string:	      <Button color="link" onClick={onClick}>
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:60:hardcoded object:	        {children}
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:63:hardcoded string:	      {!isOpen && <i class="fa fa-angle-down fa-lg" aria-hidden="true" style={{color: "#4D3F99"}}></i>}
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:64:hardcoded string:	      {isOpen && <i class="fa fa-angle-up fa-lg" aria-hidden="true" style={{color: "#4D3F99"}}></i>}
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:65:hardcoded number:	    </h5>
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:69:hardcoded object:	const AccordionBody = ({ children, isOpen }) => (
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:70:hardcoded object:	  <Collapse isOpen={isOpen}>
+microservices-middleware/client/src/modules/kartbeta/components/Accordion/index.js:71:hardcoded object:	    <CardBody>{children}</CardBody>

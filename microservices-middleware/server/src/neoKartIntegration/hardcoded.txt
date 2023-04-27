@@ -1,0 +1,139 @@
+microservices-middleware/server/src/neoKartIntegration/controller.js:10:hardcoded variable:	const getRecipes = async (req, res) => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:11:hardcoded object:	    const { spId } = req.body;
+microservices-middleware/server/src/neoKartIntegration/controller.js:13:hardcoded variable:	      const payload = payloadBuilder(spId);
+microservices-middleware/server/src/neoKartIntegration/controller.js:15:hardcoded string:	      const response = await callNucleusApi('ordermanagement/kms/salesProgramRecipe/list', 'POST', payload, true);
+microservices-middleware/server/src/neoKartIntegration/controller.js:16:hardcoded number:	      return res.status(200).json(response);
+microservices-middleware/server/src/neoKartIntegration/controller.js:18:hardcoded string:	      console.log(er || 'Failed to get records from SalesProgramRecipe');
+microservices-middleware/server/src/neoKartIntegration/controller.js:22:hardcoded variable:	const getBelpMathSingleProduct = async (req, res) => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:23:hardcoded object:	    const { salesProgramId } = req.body;
+microservices-middleware/server/src/neoKartIntegration/controller.js:24:hardcoded string:	    const payload = { "salesProgramId": salesProgramId};
+microservices-middleware/server/src/neoKartIntegration/controller.js:25:hardcoded string:	    let { identifier, paymentType = "EMI", productType, productCombination, isEpicEnabled } = req.body;
+microservices-middleware/server/src/neoKartIntegration/controller.js:26:hardcoded object:	    let { student } = req.body
+microservices-middleware/server/src/neoKartIntegration/controller.js:27:hardcoded variable:	    const user  = req.user;
+microservices-middleware/server/src/neoKartIntegration/controller.js:28:hardcoded string:	    if (!paymentType || !productType || isEmpty(student) || !productCombination) throw new BadRequestError("Did not get proper request!");
+microservices-middleware/server/src/neoKartIntegration/controller.js:30:hardcoded number:	      student = isArray(student) ? student[0] : student;
+microservices-middleware/server/src/neoKartIntegration/controller.js:31:hardcoded object:	      let { tablet, initialClass, validity, bfsBatch, bfsProductType, board } = student;
+microservices-middleware/server/src/neoKartIntegration/controller.js:32:hardcoded string:	      const response = await callNucleusApi('ordermanagement/kms/salesProgram/skuByProgram/list', 'POST', payload, true);
+microservices-middleware/server/src/neoKartIntegration/controller.js:33:hardcoded variable:	      const skuData = response.skuData;
+microservices-middleware/server/src/neoKartIntegration/controller.js:34:hardcoded object:	      const courseSku = getBelpMathCourseSku({initialClass, board, bfsBatch, bfsProductType, validity, productType, student, skuData});
+microservices-middleware/server/src/neoKartIntegration/controller.js:35:hardcoded object:	      const tabletSku = tablet ? getTabletSku({ tablet, skuData}) : null;
+microservices-middleware/server/src/neoKartIntegration/controller.js:36:hardcoded object:	      const bfsSdCardSku = getBelpMathSdCardSku({ initialClass, bfsProductType, student, validity,tablet, skuData });
+microservices-middleware/server/src/neoKartIntegration/controller.js:37:hardcoded object:	      const epicSku = await getEpicCourseSku({ validity, tablet, initialClass, finalClass: initialClass, skuData });
+microservices-middleware/server/src/neoKartIntegration/controller.js:38:hardcoded object:	      const tynkerSku =  await getTynkerCourseSku({validity, tablet, initialClass, finalClass: initialClass, skuData});
+microservices-middleware/server/src/neoKartIntegration/controller.js:39:hardcoded object:	      const byjusMathPrice = getUpdatedBfsPrice({ tabletSku, bfSkuPrice, bfsProductType, bfsSdCardSku, productCombination, user });
+microservices-middleware/server/src/neoKartIntegration/controller.js:41:hardcoded object:	      const { maxByjusMathPrice, minByjusMathPrice } = byjusMathPrice || {};
+microservices-middleware/server/src/neoKartIntegration/controller.js:42:hardcoded variable:	      let maxPrice = maxByjusMathPrice;
+microservices-middleware/server/src/neoKartIntegration/controller.js:43:hardcoded variable:	      let minPrice =  minByjusMathPrice;
+microservices-middleware/server/src/neoKartIntegration/controller.js:45:hardcoded array:	      const products = [bfsSdCardSku, courseSku, tabletSku, epicSku, tynkerSku];
+microservices-middleware/server/src/neoKartIntegration/controller.js:46:hardcoded variable:	      const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/neoKartIntegration/controller.js:48:hardcoded string:	      student["formValues"] = { ...student };
+microservices-middleware/server/src/neoKartIntegration/controller.js:49:hardcoded string:	      student["items"] = formattedProducts;
+microservices-middleware/server/src/neoKartIntegration/controller.js:50:hardcoded string:	      student["bfsProductType"] = bfsProductType;
+microservices-middleware/server/src/neoKartIntegration/controller.js:51:hardcoded string:	      student["bfsBatch"] = bfsBatch;
+microservices-middleware/server/src/neoKartIntegration/controller.js:53:hardcoded object:	      const skuProductDetails = { initialClass, tabletSku, maxPrice, minPrice, productCombination }
+microservices-middleware/server/src/neoKartIntegration/controller.js:54:hardcoded object:	      const discountDetails = await getDiscountDetails({identifier, productDetails : skuProductDetails});
+microservices-middleware/server/src/neoKartIntegration/controller.js:55:hardcoded string:	      const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/neoKartIntegration/controller.js:64:hardcoded array:	        students: [student],
+microservices-middleware/server/src/neoKartIntegration/controller.js:67:hardcoded number:	            count: 0,
+microservices-middleware/server/src/neoKartIntegration/controller.js:68:hardcoded array:	            items: []
+microservices-middleware/server/src/neoKartIntegration/controller.js:70:hardcoded array:	        mentoringDetails: [],
+microservices-middleware/server/src/neoKartIntegration/controller.js:72:hardcoded array:	        bhlpCourseDetails: [],
+microservices-middleware/server/src/neoKartIntegration/controller.js:77:hardcoded string:	      console.log(er || 'Failed to get SKU records for Sales Program');
+microservices-middleware/server/src/neoKartIntegration/controller.js:81:hardcoded variable:	  const getBelpMathComboProduct = async (req, res) => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:82:hardcoded string:	    logger.info({ method: 'getBelpMathComboProduct' }, { message: "Fetching Combo Product using KMS APIs" });
+microservices-middleware/server/src/neoKartIntegration/controller.js:84:hardcoded object:	    const { salesProgramId } = req.body;
+microservices-middleware/server/src/neoKartIntegration/controller.js:85:hardcoded string:	    const payload = { "salesProgramId": salesProgramId};
+microservices-middleware/server/src/neoKartIntegration/controller.js:87:hardcoded string:	    logger.info({ method: 'getComboProduct' }, { message: "Fetching Combo Product" });
+microservices-middleware/server/src/neoKartIntegration/controller.js:89:hardcoded array:	    let bfsSdCardSku, bfsCourseSku, tabletSku, booksSku = [], epicSku = [], tynkerSku = [];
+microservices-middleware/server/src/neoKartIntegration/controller.js:90:hardcoded number:	    let skuPrice = 0;
+microservices-middleware/server/src/neoKartIntegration/controller.js:91:hardcoded array:	    let skuArray = [];
+microservices-middleware/server/src/neoKartIntegration/controller.js:93:hardcoded string:	    let { identifier, paymentType = "EMI", productType, productCombination, isEpicEnabled } = req.body;
+microservices-middleware/server/src/neoKartIntegration/controller.js:94:hardcoded object:	    let { student } = req.body
+microservices-middleware/server/src/neoKartIntegration/controller.js:95:hardcoded variable:	    const user  = req.user;
+microservices-middleware/server/src/neoKartIntegration/controller.js:96:hardcoded string:	    if (!paymentType || !productType || isEmpty(student) || !productCombination) throw new BadRequestError("Did not get proper request!");
+microservices-middleware/server/src/neoKartIntegration/controller.js:98:hardcoded number:	      student = isArray(student) ? student[0] : student;
+microservices-middleware/server/src/neoKartIntegration/controller.js:99:hardcoded object:	      let { tablet, initialClass, finalClass, validity, bfsBatch, bfsProductType, board } = student;
+microservices-middleware/server/src/neoKartIntegration/controller.js:103:hardcoded variable:	      let grade = initialClass;
+microservices-middleware/server/src/neoKartIntegration/controller.js:104:hardcoded variable:	      let initialValidity = validity;
+microservices-middleware/server/src/neoKartIntegration/controller.js:105:hardcoded number:	      let price = 0;
+microservices-middleware/server/src/neoKartIntegration/controller.js:106:hardcoded string:	      const response = await callNucleusApi('ordermanagement/kms/salesProgram/skuByProgram/list', 'POST', payload, true);
+microservices-middleware/server/src/neoKartIntegration/controller.js:107:hardcoded variable:	      const skuData = response.skuData;
+microservices-middleware/server/src/neoKartIntegration/controller.js:108:hardcoded variable:	      let updatedBfsProductType = bfsProductType;
+microservices-middleware/server/src/neoKartIntegration/controller.js:110:hardcoded object:	        bfsSdCardSku = getBelpMathSdCardSku({ initialClass:grade, bfsProductType, student, validity,tablet, skuData });
+microservices-middleware/server/src/neoKartIntegration/controller.js:113:hardcoded object:	        bfsCourseSku = getBelpMathCourseSku({ initialClass: grade, board, bfsBatch, bfsProductType, validity, productType, student, skuData });
+microservices-middleware/server/src/neoKartIntegration/controller.js:117:hardcoded object:	        tynkerSku = getTynkerCourseSku({validity, tablet, initialClass, finalClass, skuData});
+microservices-middleware/server/src/neoKartIntegration/controller.js:120:hardcoded number:	        grade += 1;
+microservices-middleware/server/src/neoKartIntegration/controller.js:124:hardcoded object:	      epicSku = getEpicCourseSku({ validity, tablet, initialClass, finalClass: initialClass, skuData });
+microservices-middleware/server/src/neoKartIntegration/controller.js:127:hardcoded object:	      tabletSku = tablet ? getTabletSku({ tablet, skuData}) : null;
+microservices-middleware/server/src/neoKartIntegration/controller.js:135:hardcoded string:	                sku["price"] = sku.basePrice
+microservices-middleware/server/src/neoKartIntegration/controller.js:138:hardcoded string:	                sku["price"] = sku.continuousPrice
+microservices-middleware/server/src/neoKartIntegration/controller.js:143:hardcoded number:	      let minByjusMathPrice = 0, minPrice = 0,maxPrice =0;
+microservices-middleware/server/src/neoKartIntegration/controller.js:145:hardcoded number:	      const tabPrice = (tabletSku) ? parseInt(tabletSku.basePrice) : 0;
+microservices-middleware/server/src/neoKartIntegration/controller.js:146:hardcoded object:	      maxPrice = getTotalPrice({ finalPrice: price, tabletSku });
+microservices-middleware/server/src/neoKartIntegration/controller.js:148:hardcoded number:	      minPrice = ((Math.floor((minByjusMathPrice )*BYJUS_MATH_MIN_PRICE/ 1000)) * 1000) + tabPrice
+microservices-middleware/server/src/neoKartIntegration/controller.js:150:hardcoded array:	      const products = [skuArray, tabletSku];
+microservices-middleware/server/src/neoKartIntegration/controller.js:151:hardcoded variable:	      const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/neoKartIntegration/controller.js:153:hardcoded string:	      student["formValues"] = { ...student };
+microservices-middleware/server/src/neoKartIntegration/controller.js:154:hardcoded string:	      student["items"] = formattedProducts;
+microservices-middleware/server/src/neoKartIntegration/controller.js:155:hardcoded string:	      student["bfsProductType"] = updatedBfsProductType;
+microservices-middleware/server/src/neoKartIntegration/controller.js:157:hardcoded object:	      const skuProductDetails = { initialClass, tabletSku, maxPrice, minPrice, productCombination }
+microservices-middleware/server/src/neoKartIntegration/controller.js:158:hardcoded object:	      const discountDetails = await getDiscountDetails({identifier, productDetails : skuProductDetails});
+microservices-middleware/server/src/neoKartIntegration/controller.js:159:hardcoded string:	      const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/neoKartIntegration/controller.js:168:hardcoded array:	        students: [student],
+microservices-middleware/server/src/neoKartIntegration/controller.js:171:hardcoded number:	            count: 0,
+microservices-middleware/server/src/neoKartIntegration/controller.js:172:hardcoded array:	            items: []
+microservices-middleware/server/src/neoKartIntegration/controller.js:174:hardcoded array:	        mentoringDetails: [],
+microservices-middleware/server/src/neoKartIntegration/controller.js:176:hardcoded array:	        bhlpCourseDetails: [],
+microservices-middleware/server/src/neoKartIntegration/controller.js:181:hardcoded string:	      console.log(er || 'Failed to get SKU records for Sales Program');
+microservices-middleware/server/src/neoKartIntegration/controller.js:185:hardcoded variable:	  const getTotalPrice = (details) => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:186:hardcoded object:	  let { finalPrice, tabletSku } = details
+microservices-middleware/server/src/neoKartIntegration/controller.js:188:hardcoded variable:	  let totalPrice = parseInt(finalPrice);
+microservices-middleware/server/src/neoKartIntegration/controller.js:189:hardcoded array:	  tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/neoKartIntegration/controller.js:192:hardcoded number:	          const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/neoKartIntegration/controller.js:199:hardcoded variable:	  const getBelpMathCourseSku = (req) =>{
+microservices-middleware/server/src/neoKartIntegration/controller.js:200:hardcoded object:	    const { initialClass, board,  bfsProductType, student, validity,tablet, grade, skuData } = req || {}
+microservices-middleware/server/src/neoKartIntegration/controller.js:201:hardcoded variable:	    const filteredSku = skuData.filter(sku => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:202:hardcoded string:	      return sku.grade==initialClass && sku.validity==validity && sku.board == board && sku.category=="byjus_math";
+microservices-middleware/server/src/neoKartIntegration/controller.js:205:hardcoded number:	    filteredCourseSku = filteredSku[0];
+microservices-middleware/server/src/neoKartIntegration/controller.js:208:hardcoded string:	    filteredCourseSku["combinationType"] = get(filteredCourseSku, "type", "").toLowerCase();
+microservices-middleware/server/src/neoKartIntegration/controller.js:209:hardcoded string:	    filteredCourseSku["itemId"] = getSkuItemId(filteredCourseSku);
+microservices-middleware/server/src/neoKartIntegration/controller.js:210:hardcoded string:	    filteredCourseSku['price'] = bfSkuPrice;
+microservices-middleware/server/src/neoKartIntegration/controller.js:215:hardcoded variable:	  const getTabletSku = (req) => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:216:hardcoded object:	    const { tablet, skuData } = req || {}
+microservices-middleware/server/src/neoKartIntegration/controller.js:217:hardcoded variable:	    const filteredSku = skuData.filter(sku => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:218:hardcoded string:	      return sku.category=="tablet";
+microservices-middleware/server/src/neoKartIntegration/controller.js:220:hardcoded number:	    filteredTabletSku = filteredSku[0];
+microservices-middleware/server/src/neoKartIntegration/controller.js:224:hardcoded variable:	  const getBelpMathSdCardSku = (req) => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:225:hardcoded object:	    const { initialClass, validity, skuData } = req || {}
+microservices-middleware/server/src/neoKartIntegration/controller.js:226:hardcoded variable:	    const filteredBelpMathSdCardSku = skuData.filter(sku => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:227:hardcoded string:	      return sku.category=="btlp" && sku.subTypr=="sd_card" && sku.validity == validity && sku.grade==initialClass;
+microservices-middleware/server/src/neoKartIntegration/controller.js:232:hardcoded variable:	  const getTynkerCourseSku = (req) => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:233:hardcoded object:	    const { initialClass, finalClass, validity, skuData } = req || {}
+microservices-middleware/server/src/neoKartIntegration/controller.js:234:hardcoded object:	    const tynkerValidity = getValidity({ initialClass, finalClass, validity })
+microservices-middleware/server/src/neoKartIntegration/controller.js:235:hardcoded variable:	    const filteredTynkerCourseSku = skuData.filter(sku => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:236:hardcoded string:	      return sku.category=="tynker_jr" && sku.validity == tynkerValidity;
+microservices-middleware/server/src/neoKartIntegration/controller.js:241:hardcoded variable:	  const getEpicCourseSku = (req) => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:242:hardcoded object:	    const { initialClass, finalClass, validity, skuData } = req || {}
+microservices-middleware/server/src/neoKartIntegration/controller.js:243:hardcoded object:	    const scheme = getScheme({ initialClass, finalClass })
+microservices-middleware/server/src/neoKartIntegration/controller.js:244:hardcoded object:	    const epicValidity = getValidity({ initialClass, finalClass, validity })
+microservices-middleware/server/src/neoKartIntegration/controller.js:245:hardcoded variable:	    const filteredEpicCourseSku = skuData.filter(sku => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:246:hardcoded string:	      return sku.category=="epic" && sku.validity == epicValidity && sku.scheme==scheme;
+microservices-middleware/server/src/neoKartIntegration/controller.js:251:hardcoded object:	  const getValidity = ({ initialClass, finalClass, validity }) => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:257:hardcoded object:	  const getScheme = ({ initialClass, finalClass }) => {
+microservices-middleware/server/src/neoKartIntegration/controller.js:258:hardcoded number:	    let scheme = (parseInt(finalClass) - parseInt(initialClass)) + 1
+microservices-middleware/server/src/neoKartIntegration/controller.js:259:hardcoded number:	    scheme = `${scheme}y0m0d`
+microservices-middleware/server/src/neoKartIntegration/controller.js:264:hardcoded variable:	  const payloadBuilder = (spId) => { 
+microservices-middleware/server/src/neoKartIntegration/controller.js:265:hardcoded variable:	    var payload = {
+microservices-middleware/server/src/neoKartIntegration/controller.js:266:hardcoded string:	        "searchCriterias": {
+microservices-middleware/server/src/neoKartIntegration/controller.js:267:hardcoded string:	        "conditionType": "$and",
+microservices-middleware/server/src/neoKartIntegration/controller.js:268:hardcoded string:	        "searchBuilder": [
+microservices-middleware/server/src/neoKartIntegration/controller.js:270:hardcoded string:	                "selectedColumn": "spId",
+microservices-middleware/server/src/neoKartIntegration/controller.js:271:hardcoded string:	                "selectedOperator": "equal",
+microservices-middleware/server/src/neoKartIntegration/controller.js:272:hardcoded string:	                "selectedValue": spId
+microservices-middleware/server/src/neoKartIntegration/controller.js:276:hardcoded string:	    "sort": {
+microservices-middleware/server/src/neoKartIntegration/controller.js:277:hardcoded string:	        "createdAt": "desc"
+microservices-middleware/server/src/neoKartIntegration/routes.js:4:hardcoded object:	const router = Router({ mergeParams: true });
+microservices-middleware/server/src/neoKartIntegration/routes.js:7:hardcoded string:	    const baseRoute = '/neoKartIntegration';
+microservices-middleware/server/src/neoKartIntegration/routes.js:9:hardcoded object:	    router.route(`${baseRoute}/getRecipes`)
+microservices-middleware/server/src/neoKartIntegration/routes.js:12:hardcoded object:	    router.route(`${baseRoute}/belpMath/product/single`)
+microservices-middleware/server/src/neoKartIntegration/routes.js:15:hardcoded object:	    router.route(`${baseRoute}/belpMath/product/combo`)

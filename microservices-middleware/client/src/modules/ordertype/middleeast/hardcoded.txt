@@ -1,0 +1,243 @@
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:16:hardcoded variable:	const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:17:hardcoded string:	    omsConfig: get(state, 'auth.details.omsConfig'),
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:18:hardcoded string:	    authDetails: get(state, 'auth.details'),
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:19:hardcoded string:	    orderPunchingType: get(state, 'auth.orderPunchingType'),
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:20:hardcoded string:	    leadDetails: get(state, 'auth.leadDetails', {}),
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:21:hardcoded string:	    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:22:hardcoded string:	    addressDetails: get(state, 'address.details', {}),
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:23:hardcoded string:	    attachments: get(state, 'address.attachments'),
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:24:hardcoded string:	    loading: get(state, 'address.loading'),
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:25:hardcoded string:	    error: get(state, 'address.error')
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:28:hardcoded variable:	const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:39:hardcoded object:	            updatedFieldValue: {}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:44:hardcoded variable:	        const rule = [{
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:45:hardcoded number:	            pattern: new RegExp(/^[a-zA-Z1-9][a-zA-Z0-9]*$/), message: `Not a valid Zipcode`
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:52:hardcoded variable:	        let rule = [{
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:53:hardcoded number:	            pattern: new RegExp(/^[a-zA-Z0-9! :&()\-`.+,/\"]*$/), message: `Invalid Address.Only hyphen(-),colon(:),slash(\),comma(,) are allowed as a special Character`
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:57:hardcoded string:	                type: "string",
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:58:hardcoded string:	                "max": 30,
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:60:hardcoded string:	                    return value ? value.trim() : '';
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:68:hardcoded object:	        const { country, updatedFieldValue } = this.state;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:69:hardcoded string:	        const { state = "" } = updatedFieldValue;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:70:hardcoded object:	        const { authDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:71:hardcoded object:	        const { env } = authDetails;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:73:hardcoded variable:	        const fields = [{
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:74:hardcoded string:	            type: 'text',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:75:hardcoded string:	            name: 'addressLine1',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:76:hardcoded string:	            label: 'Address 1(Apartment or House Number/Building Name)',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:77:hardcoded string:	            placeholder: 'Address 1(Apartment or House Number/Building Name)',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:83:hardcoded string:	            type: 'text',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:84:hardcoded string:	            name: 'addressLine2',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:85:hardcoded string:	            label: 'Address 2(Street Name/locality)',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:86:hardcoded string:	            placeholder: 'Address 2(Street Name/locality)',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:92:hardcoded string:	            type: 'textarea',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:93:hardcoded string:	            name: 'addressLine3',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:94:hardcoded string:	            label: 'Address 3(PO/Area Number/Landmark)',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:95:hardcoded string:	            placeholder: 'Address 3(PO/Area Number/Landmark)',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:100:hardcoded string:	            type: 'select',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:101:hardcoded string:	            name: 'country',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:102:hardcoded string:	            label: 'Country',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:104:hardcoded string:	            placeholder: 'Select Country',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:109:hardcoded string:	            type: 'text',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:110:hardcoded string:	            name: 'zipcode',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:111:hardcoded string:	            label: 'Zip Code',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:112:hardcoded string:	            placeholder: 'Enter Zip Code',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:116:hardcoded string:	            type: 'text',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:117:hardcoded string:	            name: 'state',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:118:hardcoded string:	            label: 'State/Region',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:120:hardcoded string:	            placeholder: 'Select State',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:123:hardcoded string:	            type: 'text',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:124:hardcoded string:	            name: 'city',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:125:hardcoded string:	            label: 'City',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:126:hardcoded string:	            placeholder: 'Enter City',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:129:hardcoded array:	                pattern: new RegExp(/^[a-zA-Z\s\.]+$/), message: `Enter valid city`
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:132:hardcoded string:	            type: ['development', 'local'].includes(env) ? 'hidden' : 'checkbox',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:133:hardcoded string:	            name: 'isDirectSales',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:134:hardcoded string:	            checkBoxLabel: 'This is a Direct Sale',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:142:hardcoded object:	        const { updatedFieldValue } = this.state;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:144:hardcoded array:	        updatedFieldValue[name] = value;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:146:hardcoded object:	        this.setState({ updatedFieldValue })
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:150:hardcoded object:	        const { updatedFieldValue } = this.state;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:151:hardcoded array:	        updatedFieldValue[name] = value;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:152:hardcoded string:	        updatedFieldValue["city"] = "";
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:153:hardcoded string:	        updatedFieldValue["state"] = "";
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:154:hardcoded string:	        updatedFieldValue["zipcode"] = "";
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:157:hardcoded array:	            [name]: value,
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:163:hardcoded array:	        this.setState({ [name]: checked });
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:167:hardcoded object:	        const { identifier, omsConfig } = this.props;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:168:hardcoded object:	        this.setState({ loading: true, error: null });
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:171:hardcoded string:	                url: '/api/address/saveAddressDetails',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:172:hardcoded string:	                method: 'POST',
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:181:hardcoded string:	                const data = get(response, 'data');
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:183:hardcoded object:	                this.setState({ loading: false });
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:184:hardcoded string:	                this.navigateToScreen('/payment');
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:186:hardcoded object:	                this.setState({ error }, () => {
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:187:hardcoded object:	                    this.setState({ loading: false, error: JSON.stringify(error) });
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:194:hardcoded object:	        const { history } = this.props;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:195:hardcoded string:	        const url = `${path}${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:200:hardcoded string:	        this.navigateToScreen('/product');
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:204:hardcoded object:	        const { isDirectSales, addressDetails } = this.state;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:206:hardcoded object:	        this.setState({ error: null, applicationFormError: null });
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:207:hardcoded variable:	        const updatedAddressDetails = await this.addressForm.getFormValues();
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:211:hardcoded string:	            const { addressLine1 = "", addressLine2 = "", addressLine3 = "" } = updatedAddressDetails;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:212:hardcoded string:	            let address = '';
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:213:hardcoded string:	            address = !isEmpty(updatedAddressDetails["addressLine3"]) ? `${addressLine1}, ${addressLine2}, ${addressLine3}` : `${addressLine1}, ${addressLine2}`;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:214:hardcoded string:	            updatedAddressDetails["address"] = address;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:215:hardcoded array:	            attachments = isDirectSales ? this.getAttachments() : [];
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:219:hardcoded variable:	            const isAddressModified = !isEqual(addressDetails, updatedAddressDetails);
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:225:hardcoded object:	        const { applicationFrontSide, applicationBackSide } = this.refs;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:227:hardcoded variable:	        const frontSideFormValues = applicationFrontSide && applicationFrontSide.getUploadedFiles();
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:228:hardcoded variable:	        const backSideFormValues = applicationBackSide && applicationBackSide.getUploadedFiles();
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:231:hardcoded variable:	            const attachments = concat(frontSideFormValues, backSideFormValues);
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:236:hardcoded object:	            this.setState({ applicationFormError: `Please upload both Front side and Back side of Application Form.` });
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:245:hardcoded string:	            country: addressDetails["country"],
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:250:hardcoded object:	        let { addressDetails, attachments, loading, error, leadDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:252:hardcoded string:	        let billingAddress = get(addressDetails, 'billing', addressDetails);
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:254:hardcoded string:	            address: (get(leadDetails, 'homeAddress', "")),
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:257:hardcoded string:	        if (addressDetails["country"]) {
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:258:hardcoded object:	            this.setState({ country: addressDetails.country })
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:260:hardcoded object:	        this.setState({ updatedFieldValue: addressDetails, addressDetails, attachments, loading, error });
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:264:hardcoded object:	        const { loading, error } = nextProps;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:266:hardcoded object:	        (!isEqual(loading, this.props.loading)) && this.setState({ loading });
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:267:hardcoded object:	        (!isEqual(error, this.props.error)) && this.setState({ error });
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:271:hardcoded object:	        this.setState({ savedAddressCount: count });
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:277:hardcoded object:	        const { identifier, authDetails, orderPunchingType } = this.props;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:278:hardcoded object:	        const { omsConfig } = authDetails;
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:279:hardcoded variable:	        const fields = this.getFormFields();
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:280:hardcoded string:	        const cardHeaderStyle = { margin: 10, height: 425, overflow: 'scroll' };
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:284:hardcoded string:	                step="address"
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:285:hardcoded object:	                onClickPrevBtn={this.onClickPrevBtn}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:286:hardcoded object:	                onClickNextBtn={this.onClickNextBtn}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:287:hardcoded object:	                loading={loading}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:288:hardcoded object:	                error={error}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:289:hardcoded object:	                orderPunchingType={orderPunchingType}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:292:hardcoded number:	                    <Col md={!isEmpty(omsConfig) ? 20 : 24}>
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:294:hardcoded string:	                            ref="addressDetailForm"
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:295:hardcoded object:	                            fields={fields}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:296:hardcoded string:	                            heading=" Address Details"
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:297:hardcoded object:	                            wrappedComponentRef={(inst) => this.addressForm = inst}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:298:hardcoded object:	                            initialValues={{ ...addressDetails, ...updatedFieldValue }}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:299:hardcoded object:	                            style={cardHeaderStyle}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:303:hardcoded number:	                        <Col md={4}>
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:304:hardcoded number:	                            <div className={`card border-0`} style={cardHeaderStyle}>
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:305:hardcoded object:	                                <div className={`card-header bg-primary text-white`}>Saved Address(s)</div>
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:307:hardcoded object:	                                    selectSavedAddress={this.selectSavedAddress}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:308:hardcoded object:	                                    updateSavedAddressCount={this.updateSavedAddressCount}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:311:hardcoded string:	                            {savedAddressCount && savedAddressCount != 0 && <p style={{ position: 'relative', left: '5%' }}>{`${savedAddressCount || 0} saved address`}</p>}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:316:hardcoded number:	                    <div className={`card border-0`} style={{ margin: 10 }} >
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:317:hardcoded object:	                        <div className={`card-header bg-primary text-white`}>Upload Application Form</div>
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:318:hardcoded string:	                        {applicationFormError && <div style={{ color: 'red', margin: '2%' }}>{applicationFormError}</div>}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:321:hardcoded string:	                                name: "applicationFrontSide",
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:322:hardcoded string:	                                label: "Front Side",
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:323:hardcoded number:	                                count: 1,
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:324:hardcoded string:	                                accept: ".jpeg,.jpg,.png,.pdf"
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:326:hardcoded object:	                            identifier={identifier}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:327:hardcoded string:	                            ref="applicationFrontSide"
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:328:hardcoded string:	                            initialValues={find(attachments, { name: 'applicationFrontSide' })}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:332:hardcoded string:	                                name: "applicationBackSide",
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:333:hardcoded string:	                                label: "Back Side",
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:334:hardcoded number:	                                count: 1,
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:335:hardcoded string:	                                accept: ".jpeg,.jpg,.png,.pdf"
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:337:hardcoded object:	                            identifier={identifier}
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:338:hardcoded string:	                            ref="applicationBackSide"
+microservices-middleware/client/src/modules/ordertype/middleeast/AddressPage.js:339:hardcoded string:	                            initialValues={find(attachments, { name: 'applicationBackSide' })}
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:19:hardcoded string:	import 'modules/product/style.scss';
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:23:hardcoded variable:	const RadioButton = Radio.Button;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:24:hardcoded variable:	const RadioGroup = Radio.Group;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:26:hardcoded variable:	const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:27:hardcoded string:	    authDetails: get(state, 'auth.details'),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:28:hardcoded string:	    appConfig: get(state, 'auth.details.config'),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:29:hardcoded string:	    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:30:hardcoded string:	    orderPunchingType: get(state, 'auth.orderPunchingType'),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:31:hardcoded string:	    tlpOrderData: get(state, 'auth.tlpOrderData'),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:32:hardcoded string:	    customerDetails: get(state, 'details.customerDetails'),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:33:hardcoded string:	    productConfig: get(state, 'product.config'),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:34:hardcoded string:	    existingProfiles: get(state, 'product.existingProfiles'),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:35:hardcoded string:	    showProfileSelectionOption: get(state, 'product.showProfileSelectionOption'),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:36:hardcoded string:	    reviewProductDetails: get(state, 'product.reviewDetails'),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:37:hardcoded string:	    loading: get(state, 'product.loading'),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:38:hardcoded string:	    error: get(state, 'product.error'),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:39:hardcoded string:	    user: get(state, "auth.details.user", {}),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:40:hardcoded string:	    cashbackDetails: get(state, "product.cashbackDetails", {}),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:41:hardcoded string:	    finalPrice: get(state, "product.finalPrice", 0),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:42:hardcoded string:	    leadDetails: get(state, 'auth.leadDetails'),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:43:hardcoded string:	    salesDetails: get(state, 'details.salesDetails', {}),
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:46:hardcoded variable:	const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:65:hardcoded string:	            selectedProduct: 'single',
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:67:hardcoded string:	            productCombination: 'byjus_tlp',
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:75:hardcoded array:	        const { Products = [] } = this.props.productConfig || {};
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:76:hardcoded variable:	        const products = Products.map((product) => {
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:77:hardcoded object:	            const { name, formattedName } = product;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:79:hardcoded object:	                label: `${name}`,
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:88:hardcoded object:	        const { authDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:89:hardcoded object:	        const { env } = authDetails;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:90:hardcoded object:	        const { selectedProduct, productCombination } = this.state;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:91:hardcoded array:	        let productOptions = this.getProductOptions() || [];
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:93:hardcoded string:	        productCombination === "byjus_aakash_neo" ?
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:94:hardcoded string:	        productOptions = productOptions.filter(ele => ele.value === "combo"):
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:97:hardcoded variable:	        const radioBtnStyle = {
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:98:hardcoded string:	            fontWeight: '500',
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:99:hardcoded string:	            fontSize: 'medium',
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:100:hardcoded string:	            background: '#fcf5ff'
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:103:hardcoded string:	            <RadioGroup onChange={this.onChangeProduct} value={selectedProduct} buttonStyle="solid">
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:104:hardcoded object:	                {productOptions.map(({ label, value }, idx) => (
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:105:hardcoded object:	                    <RadioButton style={radioBtnStyle} value={value} key={idx}>{label}</RadioButton>
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:112:hardcoded string:	        const { value } = get(e, 'target');
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:114:hardcoded object:	        this.setState({ selectedProduct: null }, () => {
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:115:hardcoded object:	            this.setState({ selectedProduct: value, });
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:122:hardcoded object:	        const { isBooksOpted } = this.props;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:123:hardcoded object:	        const { country } = this.state;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:124:hardcoded object:	        // const { ref: productRef } = this.props
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:125:hardcoded variable:	        const compProps = {
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:126:hardcoded string:	            ref: "middleeastProductComponent",
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:132:hardcoded string:	            case 'single': return <SingleProduct productType={selectedProduct} {...compProps} productCombination={productCombination} isBooksOpted={isBooksOpted} country={country}/>;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:133:hardcoded string:	            case 'combo': return productCombination === "byjus_aakash_neo" ?
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:134:hardcoded object:	            <AakashNeo productType={selectedProduct} {...compProps} productCombination={productCombination} isBooksOpted={isBooksOpted} country={country}/>
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:135:hardcoded object:	            : <ComboProduct productType={selectedProduct} {...compProps} productCombination={productCombination} isBooksOpted={isBooksOpted} country={country}/>;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:136:hardcoded string:	            case 'sibling': return <SiblingProduct productType={selectedProduct} {...compProps} productCombination={productCombination} isBooksOpted={isBooksOpted} country={country}/>;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:137:hardcoded string:	            case 'streaming': return <StreamingProduct productType={selectedProduct} {...compProps} productCombination={productCombination} isBooksOpted={isBooksOpted} country={country}/>;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:143:hardcoded object:	        const { authDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:144:hardcoded array:	        const { enabledPrograms = [] } = this.state;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:145:hardcoded object:	        const { isDevEnv } = window; 
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:147:hardcoded array:	        let programList = [];
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:154:hardcoded array:	        let options = [];
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:161:hardcoded variable:	        const fields = [{
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:162:hardcoded string:	            type: 'select',
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:163:hardcoded string:	            name: 'productCombination',
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:164:hardcoded array:	            options: this.getProductCombinationList() || [],
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:165:hardcoded string:	            label: 'Select Product Category',
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:171:hardcoded string:	                ref="productSelectionForm"
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:172:hardcoded object:	                fields={fields}
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:174:hardcoded string:	                    productCombination: 'byjus_tlp'
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:181:hardcoded string:	        value === "byjus_aakash_neo" ?
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:184:hardcoded string:	            selectedProduct: 'combo',
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:189:hardcoded string:	            selectedProduct: ELIGIBLE_COMBINATIONS_FOR_TLP_PLUS_BYJUS_CLASSES.includes(value) ? 'combo' : "single" ,
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:196:hardcoded object:	        const { selectedProduct } = this.state;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:197:hardcoded object:	        const { loading, error, productDetails } = nextProps;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:198:hardcoded string:	        const productType = get(productDetails, 'productType');
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:208:hardcoded object:	            this.setState({ selectedProduct: productType });
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:217:hardcoded object:	        let { productDetails, customerDetails, identifier, tlpOrderData, salesDetails, authDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:218:hardcoded array:	        let options = [];
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:219:hardcoded variable:	        let showProfileSelectionOption = false;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:220:hardcoded array:	        let existingProfiles = [];
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:222:hardcoded string:	        const enabledPrograms = await getEnumOptions('kart_program_category');
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:223:hardcoded object:	        this.setState({ loading: true, enabledPrograms });        
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:224:hardcoded object:	        let tlpCustomerProfileDetail = {}
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:227:hardcoded string:	            const tlpCustomerDetails = get(tlpOrderData, "customerDetails", []);
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:228:hardcoded string:	            const orderId = get(tlpOrderData, "orderId", "");
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:229:hardcoded number:	            if (tlpCustomerDetails.length > 0) {
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:230:hardcoded string:	                let studentMobileNo = (get(tlpCustomerDetails[0], "studentMobile")) ? get(tlpCustomerDetails[0], "studentMobile") : get(tlpCustomerDetails[0], "parentMobile");
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:247:hardcoded string:	            selectedProduct: get(productDetails, 'productType', 'single')
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:252:hardcoded string:	        const country = get(salesDetails, "directSalesByCountry", "");
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:259:hardcoded object:	        const { selectedProduct, productCombination } = this.state;
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:260:hardcoded string:	        const {env} = get(this.props, 'authDetails');
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:261:hardcoded variable:	        const compProps = {
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:262:hardcoded string:	            ref: "middleeastProductComponent",
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:269:hardcoded string:	                <div className="card-body">
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:270:hardcoded object:	                    {/**Show product combination selection component only if permission is present */}
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:271:hardcoded object:	                    {this.buildProductTypeSelectionComponent()}
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:272:hardcoded string:	                    {["byjus_classes", "byjus_tlp","byjus_aakash_neo"].includes(productCombination) ?
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:274:hardcoded object:	                        {this.buildProductOptions()}
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:275:hardcoded object:	                        {selectedProduct ? this.buildProductComponent(selectedProduct, productCombination) : <Fragment />}
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:278:hardcoded string:	                    {productCombination === "tablet" && <MeProductTablet  {...compProps} productCombination={productCombination} />}
+microservices-middleware/client/src/modules/ordertype/middleeast/ProductPage.js:285:hardcoded object:	export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(MiddleEastProductPage);

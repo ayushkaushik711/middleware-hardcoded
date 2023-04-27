@@ -1,0 +1,111 @@
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:6:hardcoded variable:	const formattedDbelStreamingLineItems = async (orderDetails, identifier) => {
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:7:hardcoded string:	    logger.info({ method: 'formattedDBELStreamingLineItems' }, 'Checking if Order is eligible to be splitted');
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:8:hardcoded object:	    const { productDetails, orderPunchingCategory, orderPunchingType } = orderDetails;
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:9:hardcoded array:	    const { students = [], paymentType, productType } = productDetails;
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:10:hardcoded string:	    const { initialClass, validity } = students.length ? students[0] : '';
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:11:hardcoded object:	    let lineItems = {};
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:14:hardcoded string:	        const items = flattenDeep(map(students, 'items'));
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:16:hardcoded string:	        logger.info("DBEL STREAMING : orderPunchingCategory : " + orderPunchingCategory);
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:17:hardcoded object:	        const splittedLineItems = await getLineItems({items, initialClass, paymentType, orderPunchingType, validity, productType})
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:18:hardcoded string:	        logger.info("DBEL STREAMING : splittedLineItems : " + splittedLineItems);
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:20:hardcoded object:	        const { parentLineItems, childLineItems } = splittedLineItems || {};
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:21:hardcoded number:	        if (parentLineItems?.length === 0) {
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:22:hardcoded string:	            throw new NotFoundError("ParentLineItems are missing!");
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:25:hardcoded string:	        const orderType = childLineItems.length ? 'split_order' : 'single_order';
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:26:hardcoded string:	        logger.info("%j", { method: 'formatLineItems' }, { orderType, lineItems: JSON.stringify(splittedLineItems) });
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:33:hardcoded string:	        logger.info("%j", { method: 'formatLineItems', message: "Error in splitting line Items" });
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:34:hardcoded string:	        throw new Error(error || "Error in splitting line Items");
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:40:hardcoded variable:	const getLineItems = async (details) => {
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:41:hardcoded object:	    const { items, initialClass, paymentType, productType, validity} = details;
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:44:hardcoded string:	    childLineItems = items.filter(course => course.type === "service"); 
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:46:hardcoded string:	        const childItemIds = map(childLineItems, 'skuId');
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:47:hardcoded string:	        if (!childItemIds.includes(get(item, 'skuId', ''))) {
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:53:hardcoded string:	        if (paymentType === 'EMI' && productType === "single") {
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:54:hardcoded variable:	            const extensionSku = await getExtensionSku(initialClass)
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:57:hardcoded string:	        } else if(paymentType === 'EMI' && productType === "combo") { 
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:60:hardcoded string:	        } else if(paymentType === 'EMI' && productType === "sibling") { 
+microservices-middleware/server/src/productmanagement/dbel/orderSplit.js:65:hardcoded array:	            childLineItems = [];
+microservices-middleware/server/src/productmanagement/dbel/assembler.js:1:hardcoded variable:	const getUpdatedStudentDetails = async (student, formattedProducts) => {
+microservices-middleware/server/src/productmanagement/dbel/assembler.js:4:hardcoded object:	        formValues: {...student},
+microservices-middleware/server/src/productmanagement/dbel/controller.js:5:hardcoded string:	const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/dbel/controller.js:14:hardcoded variable:	const getSingleProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/dbel/controller.js:15:hardcoded string:	    logger.info({ method: 'getSingleProduct' }, { message: "Fetching DBEL-Streaming single product" });
+microservices-middleware/server/src/productmanagement/dbel/controller.js:17:hardcoded string:	    let { paymentType = "EMI", productType, productCombination, student, identifier } = req.body;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:20:hardcoded variable:	        const courseSku = await getCourseSku(student, productCombination)
+microservices-middleware/server/src/productmanagement/dbel/controller.js:21:hardcoded object:	        const { formattedProducts, totalPrice } = getTotalSkuAndPrice({ courseSku })
+microservices-middleware/server/src/productmanagement/dbel/controller.js:24:hardcoded variable:	        let maxPrice = totalPrice;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:25:hardcoded number:	        let minPrice = (Math.floor(maxPrice * 0.8 / 1000)) * 1000;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:26:hardcoded variable:	        const skuProductDetails = { 
+microservices-middleware/server/src/productmanagement/dbel/controller.js:30:hardcoded object:	        const discountDetails = await getDiscountDetails({identifier, productDetails : skuProductDetails});
+microservices-middleware/server/src/productmanagement/dbel/controller.js:31:hardcoded string:	        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:40:hardcoded array:	            students: [student],
+microservices-middleware/server/src/productmanagement/dbel/controller.js:52:hardcoded variable:	const getComboProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/dbel/controller.js:53:hardcoded string:	    logger.info({ method: 'getComboProduct' }, { message: "Fetching DBEL-Sreaming combo product" });
+microservices-middleware/server/src/productmanagement/dbel/controller.js:55:hardcoded string:	    let { paymentType = "EMI", productType, productCombination, student, identifier } = req.body;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:58:hardcoded variable:	        const courseSku = await getCourseSku(student, productCombination)
+microservices-middleware/server/src/productmanagement/dbel/controller.js:59:hardcoded object:	        const { formattedProducts, totalPrice } = getTotalSkuAndPrice({ courseSku })
+microservices-middleware/server/src/productmanagement/dbel/controller.js:62:hardcoded variable:	        let maxPrice = totalPrice;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:63:hardcoded number:	        let minPrice = (Math.floor(maxPrice * 0.8 / 1000)) * 1000;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:64:hardcoded variable:	        const skuProductDetails = { 
+microservices-middleware/server/src/productmanagement/dbel/controller.js:68:hardcoded object:	        const discountDetails = await getDiscountDetails({identifier, productDetails : skuProductDetails});
+microservices-middleware/server/src/productmanagement/dbel/controller.js:69:hardcoded string:	        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:78:hardcoded array:	            students: [student],
+microservices-middleware/server/src/productmanagement/dbel/controller.js:90:hardcoded variable:	const getSiblingProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/dbel/controller.js:91:hardcoded string:	    logger.info({ method: 'getSiblingProduct' }, { message: "Fetching DBEL-Sreaming sibling product" });
+microservices-middleware/server/src/productmanagement/dbel/controller.js:93:hardcoded number:	    let siblingPrice = 0;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:94:hardcoded array:	    let siblingArray = [];
+microservices-middleware/server/src/productmanagement/dbel/controller.js:96:hardcoded string:	    let { paymentType = "EMI", productType, productCombination, student: studentArray, identifier } = req.body;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:98:hardcoded variable:	    let siblingCount = studentArray.length;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:100:hardcoded number:	        for (var i = 0; i < siblingCount; i++) {
+microservices-middleware/server/src/productmanagement/dbel/controller.js:101:hardcoded array:	            const courseSku = await getCourseSku(studentArray[i], productCombination)
+microservices-middleware/server/src/productmanagement/dbel/controller.js:102:hardcoded object:	            const { formattedProducts, totalPrice } = getTotalSkuAndPrice({ courseSku })
+microservices-middleware/server/src/productmanagement/dbel/controller.js:103:hardcoded string:	            studentArray[i]["formValues"] = { ...studentArray[i] };
+microservices-middleware/server/src/productmanagement/dbel/controller.js:104:hardcoded string:	            studentArray[i]["items"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:109:hardcoded variable:	        let maxPrice = siblingPrice;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:110:hardcoded number:	        let minPrice = (Math.floor(maxPrice * 0.8 / 1000)) * 1000;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:111:hardcoded variable:	        const skuProductDetails = { 
+microservices-middleware/server/src/productmanagement/dbel/controller.js:115:hardcoded object:	        const discountDetails = await getDiscountDetails({identifier, productDetails : skuProductDetails});
+microservices-middleware/server/src/productmanagement/dbel/controller.js:116:hardcoded string:	        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:137:hardcoded variable:	const storeProductDetails = async (req, res) => {
+microservices-middleware/server/src/productmanagement/dbel/controller.js:138:hardcoded object:	    let { identifier, productDetails, studentDetails, isPrivilegedUser } = req.body;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:140:hardcoded string:	    const { email } = get(req, 'user', {});
+microservices-middleware/server/src/productmanagement/dbel/controller.js:141:hardcoded string:	    logger.info({ method: 'storeProductDetails', msg: `Storing Product Details for _id:${identifier}` });
+microservices-middleware/server/src/productmanagement/dbel/controller.js:145:hardcoded string:	            throw new BadRequestError(`Parameters - ${identifier ? '' : 'identifier'} ${productDetails ? '' : 'productDetails'} Missing`);
+microservices-middleware/server/src/productmanagement/dbel/controller.js:146:hardcoded variable:	        const draftOrder = await checkIfDraftOrderExists(identifier);
+microservices-middleware/server/src/productmanagement/dbel/controller.js:149:hardcoded string:	            const { isOmsOrder, orgFormattedName, orderPunchingType = "NORMAL_ORDER" } = draftOrder;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:150:hardcoded object:	            const { productType, student = {}, productCombination } = productDetails;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:154:hardcoded string:	            if (get(config, 'isStudentProfileAvailable') === "true" && productDetails.students && productDetails.students.length) {
+microservices-middleware/server/src/productmanagement/dbel/controller.js:159:hardcoded array:	            const { formattedProducts = [], formattedStudents = [] } = await attachSiblingDetails(productDetails, productType, draftOrder, studentDetails, isPrivilegedUser);
+microservices-middleware/server/src/productmanagement/dbel/controller.js:160:hardcoded string:	            productDetails["students"] = formattedStudents;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:161:hardcoded string:	            productDetails["products"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/dbel/controller.js:163:hardcoded variable:	            const updateObj = {
+microservices-middleware/server/src/productmanagement/dbel/controller.js:169:hardcoded string:	                finalPrice: get(productDetails, 'finalPrice', 0),
+microservices-middleware/server/src/productmanagement/dbel/controller.js:170:hardcoded string:	                status: "product_saved",
+microservices-middleware/server/src/productmanagement/dbel/controller.js:171:hardcoded array:	                [`actionDetails.productSavedAt`]: new Date(),
+microservices-middleware/server/src/productmanagement/dbel/controller.js:172:hardcoded array:	                [`actionDetails.productSavedBy`]: email
+microservices-middleware/server/src/productmanagement/dbel/controller.js:175:hardcoded string:	            await DraftOrder.findOneAndUpdate({ '_id': identifier }, {
+microservices-middleware/server/src/productmanagement/dbel/controller.js:178:hardcoded object:	            return res.json({ productDetails });
+microservices-middleware/server/src/productmanagement/dbel/dto.js:4:hardcoded string:	const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/dbel/dto.js:8:hardcoded variable:	const getCourseSku = async (student, productCombination) => {
+microservices-middleware/server/src/productmanagement/dbel/dto.js:9:hardcoded object:	    const { initialClass, finalClass, validity } = student
+microservices-middleware/server/src/productmanagement/dbel/dto.js:10:hardcoded variable:	    const finalGrade = finalClass ? parseInt(finalClass) : parseInt(initialClass);
+microservices-middleware/server/src/productmanagement/dbel/dto.js:12:hardcoded array:	    let courseSku = [], skuArray=[], query={};
+microservices-middleware/server/src/productmanagement/dbel/dto.js:13:hardcoded variable:	    let grade = parseInt(initialClass);
+microservices-middleware/server/src/productmanagement/dbel/dto.js:14:hardcoded variable:	    let selectedValidity = parseInt(validity);
+microservices-middleware/server/src/productmanagement/dbel/dto.js:19:hardcoded string:	            category: "dbel_streaming",
+microservices-middleware/server/src/productmanagement/dbel/dto.js:23:hardcoded string:	        courseSku['price'] = grade.toString() === initialClass ? 
+microservices-middleware/server/src/productmanagement/dbel/dto.js:24:hardcoded string:	            get(courseSku, 'basePrice', 0) : get(courseSku, 'continuousPrice', 0);
+microservices-middleware/server/src/productmanagement/dbel/dto.js:29:hardcoded object:	    const regSku = await getRegSku({initialClass, productCombination});
+microservices-middleware/server/src/productmanagement/dbel/dto.js:35:hardcoded variable:	const getExtensionSku = async (grade) => {
+microservices-middleware/server/src/productmanagement/dbel/dto.js:36:hardcoded string:	    logger.info({ method: 'getExtensionSku' }, 'Fetching Extension SKU');
+microservices-middleware/server/src/productmanagement/dbel/dto.js:39:hardcoded variable:	    let query = {
+microservices-middleware/server/src/productmanagement/dbel/dto.js:40:hardcoded string:	        status: "active",
+microservices-middleware/server/src/productmanagement/dbel/dto.js:41:hardcoded string:	        category: "extension",
+microservices-middleware/server/src/productmanagement/dbel/dto.js:51:hardcoded string:	        logger.info({ method: 'getExtensionSku' }, 'Error while fetching Extension SKU');
+microservices-middleware/server/src/productmanagement/dbel/dto.js:56:hardcoded string:	        throw new NotFoundError("Extension SKU not found!")
+microservices-middleware/server/src/productmanagement/dbel/routes.js:4:hardcoded object:	const router = Router({ mergeParams: true });
+microservices-middleware/server/src/productmanagement/dbel/routes.js:7:hardcoded string:	    const baseRoute = '/dbel'
+microservices-middleware/server/src/productmanagement/dbel/routes.js:9:hardcoded object:	    router.route(`${baseRoute}/single`)
+microservices-middleware/server/src/productmanagement/dbel/routes.js:14:hardcoded object:	    router.route(`${baseRoute}/combo`)
+microservices-middleware/server/src/productmanagement/dbel/routes.js:19:hardcoded object:	    router.route(`${baseRoute}/sibling`)
+microservices-middleware/server/src/productmanagement/dbel/routes.js:24:hardcoded object:	    router.route(`${baseRoute}/storeProductDetails`)

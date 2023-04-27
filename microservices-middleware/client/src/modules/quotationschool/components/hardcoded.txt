@@ -1,0 +1,40 @@
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:1:hardcoded string:	import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:4:hardcoded variable:	export const Quotation = styled.div`
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:6:hardcoded number:	    height: 100%;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:7:hardcoded number:	    border-radius: 1rem;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:9:hardcoded number:	    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 16%);
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:12:hardcoded number:	    padding: 1.5rem;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:15:hardcoded variable:	export const QuotationDescription = styled.div`
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:19:hardcoded number:	export const QuotationTitle = styled.h3`
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:21:hardcoded number:	    margin-bottom: .5rem;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:22:hardcoded number:	    line-height: 1.2;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:23:hardcoded number:	    font-size: 1.2rem;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:24:hardcoded number:	    font-weight: 700;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:25:hardcoded number:	    margin-top: 0;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:28:hardcoded variable:	export const QuotationDetail = styled.p`
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:30:hardcoded number:	    margin-bottom: 1rem;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:31:hardcoded number:	    font-size: 1rem;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:32:hardcoded number:	    margin-top: 0;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:33:hardcoded number:	    color: #505050;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:36:hardcoded variable:	export const QuotationCardContainer = styled.div`
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:41:hardcoded number:	    width: 80%;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:44:hardcoded variable:	export const QContainer = styled.div`
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:50:hardcoded number:	    padding: 1.5rem;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:52:hardcoded number:	    flex: 0 0 auto;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:54:hardcoded variable:	export const QuotationImage = styled.img`
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:55:hardcoded number:	    aspect-ratio: auto 98 / 98;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:56:hardcoded number:	    width: 98px;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:59:hardcoded number:	    margin-right: 1.5rem;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:62:hardcoded variable:	export const ProceedButton = styled(Button)`
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:63:hardcoded number:	    width: 270px;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:65:hardcoded number:	    height: 38px;
+microservices-middleware/client/src/modules/quotationschool/components/Styles.js:66:hardcoded number:	    margin: 0px 10px 0px 10px;
+microservices-middleware/client/src/modules/quotationschool/components/QuotationSection.js:6:hardcoded variable:	const QuotationSection = (props) =>{
+microservices-middleware/client/src/modules/quotationschool/components/QuotationSection.js:7:hardcoded object:	    const { quotations, history, onClickDeleteQuotation, onClickResumeQuotation, authDetails, draftOrder, spId } = props;
+microservices-middleware/client/src/modules/quotationschool/components/QuotationSection.js:14:hardcoded object:	                        quotation={item} 
+microservices-middleware/client/src/modules/quotationschool/components/QuotationSection.js:15:hardcoded object:	                        spId={spId}
+microservices-middleware/client/src/modules/quotationschool/components/QuotationSection.js:16:hardcoded object:	                        draftOrder={draftOrder}
+microservices-middleware/client/src/modules/quotationschool/components/QuotationSection.js:17:hardcoded object:	                        onClickResumeQuotation={onClickResumeQuotation}
+microservices-middleware/client/src/modules/quotationschool/components/QuotationSection.js:18:hardcoded object:	                        onClickDeleteQuotation={onClickDeleteQuotation}
+microservices-middleware/client/src/modules/quotationschool/components/QuotationSection.js:19:hardcoded object:	                        history={history}
+microservices-middleware/client/src/modules/quotationschool/components/QuotationSection.js:20:hardcoded object:	                        authDetails={authDetails}

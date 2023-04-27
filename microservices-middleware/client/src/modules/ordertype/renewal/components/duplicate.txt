@@ -1,6 +1,0 @@
-microservices-middleware/client/src/modules/ordertype/renewal/components/renewalHelper.js:1:hardcoded object:import { isEmpty, get, isArray } from 'lodash';
-microservices-middleware/client/src/modules/ordertype/renewal/components/renewalHelper.js:3:hardcoded variable:export const isRenewalOrder = (customerDetails) => {
-microservices-middleware/client/src/modules/ordertype/renewal/components/renewalHelper.js:4:hardcoded array:    customerDetails = isArray(customerDetails) ? customerDetails : [customerDetails];
-microservices-middleware/client/src/modules/ordertype/renewal/components/renewalHelper.js:5:hardcoded variable:    const details = customerDetails.filter(ele => {
-microservices-middleware/client/src/modules/ordertype/renewal/components/renewalHelper.js:6:hardcoded string:        const productType = get(ele, "type", "");
-microservices-middleware/client/src/modules/ordertype/renewal/components/renewalHelper.js:7:hardcoded string:        if (["single", "combo","sibling"].includes(productType.toLowerCase())) {

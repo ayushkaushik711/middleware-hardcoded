@@ -1,0 +1,451 @@
+microservices-middleware/server/models/Order.js:4:hardcoded variable:	const Schema = new mongoose.Schema({
+microservices-middleware/server/models/Order.js:5:hardcoded object:	    orderPunchedBy: { type: String },
+microservices-middleware/server/models/Order.js:6:hardcoded object:	    orderPunchedByRole: { type: String },
+microservices-middleware/server/models/Order.js:7:hardcoded object:	    orderPunchedForRole: { type: String },
+microservices-middleware/server/models/Order.js:8:hardcoded array:	    paymentDetails: [],
+microservices-middleware/server/models/Order.js:9:hardcoded object:	    sales_person_id: { type: String },
+microservices-middleware/server/models/Order.js:10:hardcoded object:	    sales_closed_by_user_id: { type: String },
+microservices-middleware/server/models/Order.js:11:hardcoded object:	    type_of_sales: { type: String },
+microservices-middleware/server/models/Order.js:12:hardcoded object:	    direct_sales_appointment_by_id: { type: String },
+microservices-middleware/server/models/Order.js:13:hardcoded object:	    payment: {},
+microservices-middleware/server/models/Order.js:14:hardcoded object:	    leadsquaredAccountNumber: { type: String },
+microservices-middleware/server/models/Order.js:15:hardcoded object:	    leadsquaredProspectId: { type: String },
+microservices-middleware/server/models/Order.js:16:hardcoded object:	    orderStatus: { type: String },
+microservices-middleware/server/models/Order.js:17:hardcoded object:	    orderId: { type: String },
+microservices-middleware/server/models/Order.js:18:hardcoded object:	    coupon: { coupon_applied: Boolean, coupon_val: Number, coupon_Id: String },
+microservices-middleware/server/models/Order.js:19:hardcoded object:	    campaignDetails: {},
+microservices-middleware/server/models/Order.js:20:hardcoded object:	    capitalFloatDetails: {},
+microservices-middleware/server/models/Order.js:21:hardcoded object:	    nachDetails: {},
+microservices-middleware/server/models/Order.js:22:hardcoded array:	    customerDetails: [],
+microservices-middleware/server/models/Order.js:24:hardcoded object:	        source: { type: String, trim: true },
+microservices-middleware/server/models/Order.js:25:hardcoded array:	        contacts: [{ type: String, trim: true }]
+microservices-middleware/server/models/Order.js:27:hardcoded object:	    mqMessage: {},
+microservices-middleware/server/models/Order.js:28:hardcoded object:	    otp: { type: String },
+microservices-middleware/server/models/Order.js:32:hardcoded array:	    inventory: [String],
+microservices-middleware/server/models/Order.js:43:hardcoded string:	    orderType: { type: String, enum: ["SINGLE", "SPLIT_PARENT", "SPLIT_CHILD"] },//To track the order type
+microservices-middleware/server/models/Order.js:46:hardcoded array:	    SalesOrderItem: [],
+microservices-middleware/server/models/Order.js:49:hardcoded object:	        cashbackCode: { type: String },
+microservices-middleware/server/models/Order.js:50:hardcoded object:	        amountToCustomer: { type: Number },
+microservices-middleware/server/models/Order.js:51:hardcoded object:	        amountToSalesPerson: { type: Number },
+microservices-middleware/server/models/Order.js:53:hardcoded object:	            cashbackCode: { type: String },
+microservices-middleware/server/models/Order.js:54:hardcoded object:	            status: { type: String },
+microservices-middleware/server/models/Order.js:55:hardcoded object:	            newStatus: { type: String }
+microservices-middleware/server/models/Order.js:65:hardcoded object:	    leadDetails: {},
+microservices-middleware/server/models/Order.js:74:hardcoded object:	    isUpgradedToByjusClasses: { type: Boolean, default: false },
+microservices-middleware/server/models/Order.js:75:hardcoded object:	    upgradeDetails: {},
+microservices-middleware/server/models/Order.js:77:hardcoded object:	}, { timestamps: true });
+microservices-middleware/server/models/Order.js:81:hardcoded string:	module.exports = mongoose.leado.model("Order", Schema);microservices-middleware/server/models/Coupon.js:5:hardcoded variable:	const couponSchema = mongoose.Schema({
+microservices-middleware/server/models/Coupon.js:17:hardcoded string:	        collection: 'coupons',
+microservices-middleware/server/models/Coupon.js:18:hardcoded string:	        timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+microservices-middleware/server/models/Coupon.js:23:hardcoded string:	module.exports = mongoose.achieveConn.model('Coupon', couponSchema);
+microservices-middleware/server/models/WeeklyRevenueCycle.js:4:hardcoded variable:	const weeklyRevenueCycleSchema = mongoose.Schema({
+microservices-middleware/server/models/WeeklyRevenueCycle.js:10:hardcoded string:	}, { collection: 'weekly_revenue_cycles' });
+microservices-middleware/server/models/WeeklyRevenueCycle.js:14:hardcoded string:	module.exports = mongoose.achieveConn.model('WeeklyRevenueCycle', weeklyRevenueCycleSchema); microservices-middleware/server/models/VoucherTransaction.js:5:hardcoded variable:	const schema = new mongoose.Schema({
+microservices-middleware/server/models/VoucherTransaction.js:6:hardcoded object:	    voucherCode: { type: String, required: true, trim: true, unique: true },
+microservices-middleware/server/models/VoucherTransaction.js:7:hardcoded object:	    mobileNo: { type: String, required: true, trim: true },
+microservices-middleware/server/models/VoucherTransaction.js:8:hardcoded object:	    smsContent: { type: String, required: true, trim: true },
+microservices-middleware/server/models/VoucherTransaction.js:9:hardcoded object:	    customerName: { type: String, trim: true, required: true },
+microservices-middleware/server/models/VoucherTransaction.js:14:hardcoded string:	        enum: ["link_generated", "unutilized", "redeemed", "soft_deleted", "expired"],
+microservices-middleware/server/models/VoucherTransaction.js:15:hardcoded string:	        default: "link_generated"
+microservices-middleware/server/models/VoucherTransaction.js:17:hardcoded object:	    createdBy: { type: String, required: true, trim: true },
+microservices-middleware/server/models/VoucherTransaction.js:18:hardcoded object:	    updatedBy: { type: String, trim: true },
+microservices-middleware/server/models/VoucherTransaction.js:19:hardcoded object:	    salesEmail: { type: String, required: true, trim: true },
+microservices-middleware/server/models/VoucherTransaction.js:21:hardcoded object:	        draftOrderId: { type: mongoose.Types.ObjectId },
+microservices-middleware/server/models/VoucherTransaction.js:22:hardcoded object:	        totalOrderAmount: { type: Number },
+microservices-middleware/server/models/VoucherTransaction.js:23:hardcoded object:	        paymentTypeInOrder: { type: String, trim: true },
+microservices-middleware/server/models/VoucherTransaction.js:24:hardcoded object:	        voucherValue: { type: Number }
+microservices-middleware/server/models/VoucherTransaction.js:27:hardcoded object:	        orderId: { type: String },
+microservices-middleware/server/models/VoucherTransaction.js:28:hardcoded object:	        orderStatus: { type: String },
+microservices-middleware/server/models/VoucherTransaction.js:29:hardcoded object:	        orderType: { type: String },
+microservices-middleware/server/models/VoucherTransaction.js:30:hardcoded object:	        orderCreatedAt: { type: Date },
+microservices-middleware/server/models/VoucherTransaction.js:31:hardcoded object:	        orderStatusUpdatedAt: { type: Date }
+microservices-middleware/server/models/VoucherTransaction.js:33:hardcoded object:	    timestamps: {},
+microservices-middleware/server/models/VoucherTransaction.js:35:hardcoded object:	        otp: { type: String },
+microservices-middleware/server/models/VoucherTransaction.js:36:hardcoded object:	        createdAt: { type: Date },
+microservices-middleware/server/models/VoucherTransaction.js:37:hardcoded object:	        message: { type: String },
+microservices-middleware/server/models/VoucherTransaction.js:38:hardcoded object:	        isVerified: { type: Boolean, default: false },
+microservices-middleware/server/models/VoucherTransaction.js:39:hardcoded object:	        verifiedAt: { type: Date }
+microservices-middleware/server/models/VoucherTransaction.js:45:hardcoded string:	        enum: ["BNAT"]
+microservices-middleware/server/models/VoucherTransaction.js:47:hardcoded object:	    productType: { type: String, trim: true },
+microservices-middleware/server/models/VoucherTransaction.js:48:hardcoded object:	    discountDetails: {},
+microservices-middleware/server/models/VoucherTransaction.js:49:hardcoded object:	    expiryDate: { type: Date }
+microservices-middleware/server/models/VoucherTransaction.js:51:hardcoded string:	    collection: 'transactions_vouchers',
+microservices-middleware/server/models/VoucherTransaction.js:60:hardcoded string:	module.exports = mongoose.nucleusConn.model('VoucherTransaction', schema);microservices-middleware/server/models/ParentDetail.js:4:hardcoded variable:	const parentDetail = new mongoose.Schema(
+microservices-middleware/server/models/ParentDetail.js:6:hardcoded string:	        'contact': {
+microservices-middleware/server/models/ParentDetail.js:7:hardcoded string:	            'type': String,
+microservices-middleware/server/models/ParentDetail.js:8:hardcoded string:	            'required': true
+microservices-middleware/server/models/ParentDetail.js:10:hardcoded string:	        'email': {
+microservices-middleware/server/models/ParentDetail.js:11:hardcoded string:	            'type': String,
+microservices-middleware/server/models/ParentDetail.js:12:hardcoded string:	            'required': true
+microservices-middleware/server/models/ParentDetail.js:22:hardcoded string:	module.exports = mongoose.leado.model('ParentDetail', parentDetail);microservices-middleware/server/models/ByjusConfig.js:4:hardcoded variable:	const Schema = new mongoose.Schema({
+microservices-middleware/server/models/ByjusConfig.js:5:hardcoded object:	    appName: { type: String, trim: true, required: true },
+microservices-middleware/server/models/ByjusConfig.js:6:hardcoded object:	    formattedAppName: { type: String, trim: true, required: true, uppercase: true }, // Always in CAPS with underscore sperated
+microservices-middleware/server/models/ByjusConfig.js:7:hardcoded object:	    moduleName: { type: String, trim: true, required: true },
+microservices-middleware/server/models/ByjusConfig.js:8:hardcoded object:	    formattedModuleName: { type: String, trim: true, required: true, uppercase: true },  // Always in CAPS with underscore sperated
+microservices-middleware/server/models/ByjusConfig.js:9:hardcoded object:	    description: { type: String, trim: true, required: true },
+microservices-middleware/server/models/ByjusConfig.js:10:hardcoded object:	    configs: { type: Array, required: true },
+microservices-middleware/server/models/ByjusConfig.js:11:hardcoded object:	    updatedBy: { type: String, trim: true, required: true },
+microservices-middleware/server/models/ByjusConfig.js:12:hardcoded array:	    logs: []
+microservices-middleware/server/models/ByjusConfig.js:15:hardcoded string:	        collection: "byjus_configs"
+microservices-middleware/server/models/ByjusConfig.js:19:hardcoded number:	    { formattedAppName: 1, formattedModuleName: 1 },
+microservices-middleware/server/models/ByjusConfig.js:20:hardcoded object:	    { unique: true }
+microservices-middleware/server/models/ByjusConfig.js:23:hardcoded number:	Schema.index({ formattedAppName: 1 });
+microservices-middleware/server/models/ByjusConfig.js:25:hardcoded number:	Schema.index({ formattedModuleName: 1 });
+microservices-middleware/server/models/ByjusConfig.js:29:hardcoded string:	module.exports = mongoose.nucleusConn.model('ByjusConfig', Schema);
+microservices-middleware/server/models/UsedEmail.js:4:hardcoded variable:	const usedEmail = new mongoose.Schema({
+microservices-middleware/server/models/UsedEmail.js:5:hardcoded object:	    email: { type: String, required: true, trim: true }
+microservices-middleware/server/models/UsedEmail.js:13:hardcoded string:	module.exports = mongoose.leado.model('UsedEmail', usedEmail);
+microservices-middleware/server/models/CashbackTransaction.js:4:hardcoded variable:	const schema = new mongoose.Schema({
+microservices-middleware/server/models/CashbackTransaction.js:5:hardcoded object:	    cashbackCode: { type: String, required: true, trim: true, unique: true },
+microservices-middleware/server/models/CashbackTransaction.js:6:hardcoded object:	    mobileNo: { type: String, required: true, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:7:hardcoded object:	    smsContent: { type: String, required: true, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:9:hardcoded object:	        otp: { type: String },
+microservices-middleware/server/models/CashbackTransaction.js:10:hardcoded object:	        createdAt: { type: Date },
+microservices-middleware/server/models/CashbackTransaction.js:11:hardcoded object:	        message: { type: String },
+microservices-middleware/server/models/CashbackTransaction.js:12:hardcoded object:	        isVerified: { type: Boolean, default: false },
+microservices-middleware/server/models/CashbackTransaction.js:14:hardcoded object:	    customerName: { type: String, trim: true, required: true },
+microservices-middleware/server/models/CashbackTransaction.js:16:hardcoded object:	        name: { type: String, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:17:hardcoded object:	        bankName: { type: String },
+microservices-middleware/server/models/CashbackTransaction.js:18:hardcoded object:	        accountNo: { type: String, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:19:hardcoded object:	        ifsc: { type: String, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:20:hardcoded object:	        isPennyDropSuccess: { type: Boolean, default: false }
+microservices-middleware/server/models/CashbackTransaction.js:35:hardcoded string:	        enum: ["link_generated", "unutilized", "customer_details_saved", "approved", "processing", "rejected", "redeemed", "soft_deleted", "hard_deleted", "errored"],
+microservices-middleware/server/models/CashbackTransaction.js:36:hardcoded string:	        default: "link_generated"
+microservices-middleware/server/models/CashbackTransaction.js:39:hardcoded object:	    createdBy: { type: String, required: true, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:40:hardcoded object:	    updatedBy: { type: String, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:41:hardcoded object:	    salesEmail: { type: String, required: true, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:42:hardcoded object:	    approvedBy: { type: String, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:43:hardcoded object:	    isInitiatedByPIC: { type: Boolean, default: false },
+microservices-middleware/server/models/CashbackTransaction.js:46:hardcoded object:	        draftOrderId: { type: mongoose.Types.ObjectId },
+microservices-middleware/server/models/CashbackTransaction.js:47:hardcoded object:	        totalOrderAmount: { type: Number },
+microservices-middleware/server/models/CashbackTransaction.js:48:hardcoded object:	        paymentTypeInOrder: { type: String, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:49:hardcoded object:	        amountToCustomer: { type: Number },
+microservices-middleware/server/models/CashbackTransaction.js:50:hardcoded object:	        isCreditedToCustomer: { type: Boolean, default: false },
+microservices-middleware/server/models/CashbackTransaction.js:51:hardcoded object:	        amountToSalesPerson: { type: Number },
+microservices-middleware/server/models/CashbackTransaction.js:52:hardcoded object:	        isCreditedToSalesPerson: { type: Boolean, default: false },
+microservices-middleware/server/models/CashbackTransaction.js:53:hardcoded object:	        percentageToCustomer: { type: Number },
+microservices-middleware/server/models/CashbackTransaction.js:54:hardcoded object:	        percentageToSalesPerson: { type: Number }
+microservices-middleware/server/models/CashbackTransaction.js:56:hardcoded object:	    campaign: { type: String },
+microservices-middleware/server/models/CashbackTransaction.js:57:hardcoded object:	    location: { type: String },
+microservices-middleware/server/models/CashbackTransaction.js:60:hardcoded object:	        orderId: { type: String },
+microservices-middleware/server/models/CashbackTransaction.js:61:hardcoded object:	        orderStatus: { type: String }
+microservices-middleware/server/models/CashbackTransaction.js:73:hardcoded object:	        comment: { type: String, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:74:hardcoded object:	        commentedBy: { type: String, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:75:hardcoded object:	        commentedAt: { type: Date }
+microservices-middleware/server/models/CashbackTransaction.js:78:hardcoded object:	        remark: { type: String, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:79:hardcoded object:	        remarkForCustomer: { type: String, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:80:hardcoded object:	        statusForCustomer: { type: String, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:81:hardcoded object:	        remarkForSalesPerson: { type: String, trim: true },
+microservices-middleware/server/models/CashbackTransaction.js:82:hardcoded object:	        statusForSalesPerson: { type: String, trim: true }
+microservices-middleware/server/models/CashbackTransaction.js:85:hardcoded string:	    collection: 'transactions_cashbacks',
+microservices-middleware/server/models/CashbackTransaction.js:91:hardcoded number:	schema.index({ salesEmail: 1 });
+microservices-middleware/server/models/CashbackTransaction.js:93:hardcoded string:	module.exports = mongoose.nucleusConn.model('CashbackTransaction', schema);microservices-middleware/server/models/AuthenticationDetail.js:4:hardcoded variable:	const authenticationDetailsSchema = new mongoose.Schema({
+microservices-middleware/server/models/AuthenticationDetail.js:5:hardcoded string:	    'leadsquaredUserId': { 'type': String, trim: true, 'required': true },
+microservices-middleware/server/models/AuthenticationDetail.js:6:hardcoded string:	    'emailId': { 'type': String, trim: true, 'required': true },
+microservices-middleware/server/models/AuthenticationDetail.js:7:hardcoded string:	    'loginValidity': { 'type': Number, trim: true },
+microservices-middleware/server/models/AuthenticationDetail.js:8:hardcoded string:	    'accessKey': { 'type': String, trim: true },
+microservices-middleware/server/models/AuthenticationDetail.js:9:hardcoded string:	    'secretKey': { 'type': String, trim: true },
+microservices-middleware/server/models/AuthenticationDetail.js:10:hardcoded string:	    'accountNumber': { 'type': Number, trim: true }
+microservices-middleware/server/models/AuthenticationDetail.js:13:hardcoded string:	    collection: 'authenticationdetails',
+microservices-middleware/server/models/AuthenticationDetail.js:18:hardcoded string:	module.exports = mongoose.leado.model('AuthenticationDetail', authenticationDetailsSchema);
+microservices-middleware/server/models/PreProcessedOrder.js:4:hardcoded variable:	const itemSchema = new mongoose.Schema({
+microservices-middleware/server/models/PreProcessedOrder.js:8:hardcoded array:	        downPayments: [],
+microservices-middleware/server/models/PreProcessedOrder.js:23:hardcoded array:	        downPayments: [],
+microservices-middleware/server/models/PreProcessedOrder.js:29:hardcoded array:	        products: []
+microservices-middleware/server/models/PreProcessedOrder.js:43:hardcoded string:	    collection: 'preprocessedordersforanalytics'
+microservices-middleware/server/models/PreProcessedOrder.js:48:hardcoded string:	module.exports = mongoose.model('PreProcessedOrder', itemSchema);microservices-middleware/server/models/SdCard.js:4:hardcoded variable:	const sdCardSchema = mongoose.Schema(
+microservices-middleware/server/models/SdCard.js:17:hardcoded string:	    collection: 'sd_card_types',
+microservices-middleware/server/models/SdCard.js:24:hardcoded string:	module.exports = mongoose.achieveConn.model('SdCard', sdCardSchema);microservices-middleware/server/models/LsPrivilegeUser.js:4:hardcoded variable:	var schema = new mongoose.Schema({
+microservices-middleware/server/models/LsPrivilegeUser.js:5:hardcoded string:	    'email': { 'type': String, 'required': true },
+microservices-middleware/server/models/LsPrivilegeUser.js:6:hardcoded string:	    'userId': { 'type': String, 'required': true }
+microservices-middleware/server/models/LsPrivilegeUser.js:8:hardcoded string:	    collection: 'lsprivilegeusers'
+microservices-middleware/server/models/LsPrivilegeUser.js:12:hardcoded string:	module.exports = mongoose.leado.model('LsPrivilegeUser', schema);
+microservices-middleware/server/models/IcrPic.js:4:hardcoded variable:	const icrPICSchema = mongoose.Schema({
+microservices-middleware/server/models/IcrPic.js:13:hardcoded string:	    collection: 'pic',
+microservices-middleware/server/models/IcrPic.js:14:hardcoded string:	    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+microservices-middleware/server/models/IcrPic.js:18:hardcoded string:	module.exports = mongoose.achieveConn.model('Pic', icrPICSchema);microservices-middleware/server/models/WhiteListedUser.js:4:hardcoded variable:	const whiteListedUsersSchema = new mongoose.Schema(
+microservices-middleware/server/models/WhiteListedUser.js:6:hardcoded string:	        'emailId': {
+microservices-middleware/server/models/WhiteListedUser.js:7:hardcoded string:	            'type': String,
+microservices-middleware/server/models/WhiteListedUser.js:8:hardcoded string:	            'required': true
+microservices-middleware/server/models/WhiteListedUser.js:10:hardcoded string:	        'whitelisted': {
+microservices-middleware/server/models/WhiteListedUser.js:11:hardcoded string:	            'type': Boolean,
+microservices-middleware/server/models/WhiteListedUser.js:12:hardcoded string:	            'default': false
+microservices-middleware/server/models/WhiteListedUser.js:22:hardcoded string:	module.exports = mongoose.model('WhitelistedUser', whiteListedUsersSchema);microservices-middleware/server/models/BimonthlyRevenueCycle.js:5:hardcoded variable:	const bimonthlySchema = mongoose.Schema(
+microservices-middleware/server/models/BimonthlyRevenueCycle.js:14:hardcoded array:	        comments: [],
+microservices-middleware/server/models/BimonthlyRevenueCycle.js:17:hardcoded string:	        collection: 'bimonthly_revenue_cycles',
+microservices-middleware/server/models/BimonthlyRevenueCycle.js:22:hardcoded string:	module.exports = mongoose.model('BimonthlyRevenueCycle', bimonthlySchema);microservices-middleware/server/models/CloneOrder.js:4:hardcoded variable:	const Schema = new mongoose.Schema({
+microservices-middleware/server/models/CloneOrder.js:5:hardcoded object:	    source: { type: String },
+microservices-middleware/server/models/CloneOrder.js:6:hardcoded array:	    paymentDetails: [],
+microservices-middleware/server/models/CloneOrder.js:7:hardcoded object:	    salesPersonId: { type: String },
+microservices-middleware/server/models/CloneOrder.js:8:hardcoded object:	    salesClosedByUserId: { type: String },
+microservices-middleware/server/models/CloneOrder.js:9:hardcoded object:	    orderStatus: { type: String },
+microservices-middleware/server/models/CloneOrder.js:10:hardcoded object:	    originalOrderId: { type: String },
+microservices-middleware/server/models/CloneOrder.js:11:hardcoded array:	    salesOrderItem: [],
+microservices-middleware/server/models/CloneOrder.js:15:hardcoded string:	    status: { type: String, enum: ["scheduled", "cloned", "processing", "errored"] }
+microservices-middleware/server/models/CloneOrder.js:18:hardcoded string:	    collection: "clone_orders"
+microservices-middleware/server/models/CloneOrder.js:23:hardcoded string:	module.exports = mongoose.model("CloneOrder", Schema);microservices-middleware/server/models/order_temp.js:4:hardcoded variable:	const Schema = new mongoose.Schema({
+microservices-middleware/server/models/order_temp.js:10:hardcoded array:	    paymentDetails: [],
+microservices-middleware/server/models/order_temp.js:28:hardcoded object:	    payment: {},
+microservices-middleware/server/models/order_temp.js:52:hardcoded object:	    campaignDetails: {},
+microservices-middleware/server/models/order_temp.js:54:hardcoded object:	    capitalFloatDetails: {},
+microservices-middleware/server/models/order_temp.js:56:hardcoded object:	    nachDetails: {},
+microservices-middleware/server/models/order_temp.js:58:hardcoded object:	    customerDetails: {},
+microservices-middleware/server/models/order_temp.js:60:hardcoded object:	    mqMessage: {},
+microservices-middleware/server/models/order_temp.js:70:hardcoded array:	    inventory: [String],
+microservices-middleware/server/models/order_temp.js:95:hardcoded string:	module.exports = mongoose.model("Order", Schema);
+microservices-middleware/server/models/Lead.js:4:hardcoded variable:	const leadSchema = new mongoose.Schema({
+microservices-middleware/server/models/Lead.js:53:hardcoded object:	  responseObject: {},
+microservices-middleware/server/models/Lead.js:54:hardcoded object:	  mqMessage: {},
+microservices-middleware/server/models/Lead.js:59:hardcoded object:	}, { timestamps: true });
+microservices-middleware/server/models/Lead.js:62:hardcoded string:	module.exports = mongoose.leado.model('Lead', leadSchema);
+microservices-middleware/server/models/OrderhiveWebhookPing.js:4:hardcoded variable:	const itemSchema = new mongoose.Schema({
+microservices-middleware/server/models/OrderhiveWebhookPing.js:6:hardcoded array:	  ohPing: []
+microservices-middleware/server/models/OrderhiveWebhookPing.js:10:hardcoded string:	module.exports = mongoose.leado.model('OrderhiveWebhookPing', itemSchema);
+microservices-middleware/server/models/Employee.js:1:hardcoded string:	'use strict';
+microservices-middleware/server/models/Employee.js:9:hardcoded variable:	const employeeSchema = mongoose.Schema({
+microservices-middleware/server/models/Employee.js:10:hardcoded object:	    name: { type: String, required: true },
+microservices-middleware/server/models/Employee.js:16:hardcoded string:	            partialFilterExpression: { "tnlId": { "$exists": true, "$gt": "", "$type": 2 } },
+microservices-middleware/server/models/Employee.js:18:hardcoded string:	        default: ""
+microservices-middleware/server/models/Employee.js:20:hardcoded object:	    department: { type: String },
+microservices-middleware/server/models/Employee.js:21:hardcoded object:	    subDepartment: { type: String },
+microservices-middleware/server/models/Employee.js:22:hardcoded object:	    role: { type: String },
+microservices-middleware/server/models/Employee.js:24:hardcoded object:	    unit: { type: String },
+microservices-middleware/server/models/Employee.js:25:hardcoded object:	    vertical: { type: String },
+microservices-middleware/server/models/Employee.js:26:hardcoded object:	    campaign: { type: String },
+microservices-middleware/server/models/Employee.js:27:hardcoded object:	    email: { type: String, unique: true, lowercase: true, required: true },
+microservices-middleware/server/models/Employee.js:28:hardcoded object:	    contact: { type: Array },
+microservices-middleware/server/models/Employee.js:37:hardcoded object:	    location: { type: String },
+microservices-middleware/server/models/Employee.js:38:hardcoded object:	    country: { type: String },
+microservices-middleware/server/models/Employee.js:39:hardcoded object:	    status: { type: String },
+microservices-middleware/server/models/Employee.js:40:hardcoded object:	    employmentType: { type: String },
+microservices-middleware/server/models/Employee.js:41:hardcoded object:	    gender: { type: String },
+microservices-middleware/server/models/Employee.js:43:hardcoded object:	    doj: { type: Date },
+microservices-middleware/server/models/Employee.js:44:hardcoded object:	    activationDate: { type: Date },
+microservices-middleware/server/models/Employee.js:45:hardcoded object:	    lastWorkingDate: { type: Date },
+microservices-middleware/server/models/Employee.js:47:hardcoded object:	        filledByEmail: { type: String, trim: true },
+microservices-middleware/server/models/Employee.js:48:hardcoded object:	        relievingFormFilledDate: { type: Date },
+microservices-middleware/server/models/Employee.js:49:hardcoded object:	        typeOfSeperation: { type: String },
+microservices-middleware/server/models/Employee.js:50:hardcoded object:	        reasonForSeperation: { type: String },
+microservices-middleware/server/models/Employee.js:51:hardcoded object:	        primarySeperationReason: { type: String },
+microservices-middleware/server/models/Employee.js:52:hardcoded object:	        dependentSeperationReason: { type: String },
+microservices-middleware/server/models/Employee.js:53:hardcoded object:	        escalationPriority: { type: String },
+microservices-middleware/server/models/Employee.js:54:hardcoded object:	        remarkSection: { type: String },
+microservices-middleware/server/models/Employee.js:55:hardcoded object:	        summarySection: { type: String },
+microservices-middleware/server/models/Employee.js:56:hardcoded object:	        reportingManager: { type: String },
+microservices-middleware/server/models/Employee.js:57:hardcoded object:	        reportingManagerRating: { type: Number },
+microservices-middleware/server/models/Employee.js:58:hardcoded object:	        seniorManagerRating: { type: Number },
+microservices-middleware/server/models/Employee.js:59:hardcoded object:	        avpRating: { type: Number },
+microservices-middleware/server/models/Employee.js:60:hardcoded object:	        lessThanDRPS: { type: String },
+microservices-middleware/server/models/Employee.js:61:hardcoded object:	        exitStatus: { type: String },
+microservices-middleware/server/models/Employee.js:63:hardcoded object:	            isDone: { type: Boolean }
+microservices-middleware/server/models/Employee.js:66:hardcoded object:	            ohDeactivated: { type: Boolean },
+microservices-middleware/server/models/Employee.js:67:hardcoded object:	            lsDeactivated: { type: Boolean }
+microservices-middleware/server/models/Employee.js:71:hardcoded object:	    updateCounter: { type: Number },
+microservices-middleware/server/models/Employee.js:73:hardcoded object:	        status: { type: String },
+microservices-middleware/server/models/Employee.js:74:hardcoded object:	        reason: { type: String },
+microservices-middleware/server/models/Employee.js:75:hardcoded object:	        reconciledAt: { type: Date }
+microservices-middleware/server/models/Employee.js:84:hardcoded object:	    additionalDetails: {},
+microservices-middleware/server/models/Employee.js:88:hardcoded object:	            user: { type: String }
+microservices-middleware/server/models/Employee.js:100:hardcoded array:	        default: []
+microservices-middleware/server/models/Employee.js:103:hardcoded object:	        campaignTrainingStartDate: { type: Date },
+microservices-middleware/server/models/Employee.js:104:hardcoded object:	        campaignTrainingEndDate: { type: Date },
+microservices-middleware/server/models/Employee.js:105:hardcoded object:	        longLeaveStartDate: { type: Date },
+microservices-middleware/server/models/Employee.js:106:hardcoded object:	        longLeaveEndDate: { type: Date },
+microservices-middleware/server/models/Employee.js:107:hardcoded object:	        maternityStartDate: { type: Date },
+microservices-middleware/server/models/Employee.js:108:hardcoded object:	        maternityEndDate: { type: Date },
+microservices-middleware/server/models/Employee.js:109:hardcoded object:	        noticePeriodStartDate: { type: Date },
+microservices-middleware/server/models/Employee.js:110:hardcoded object:	        noticePeriodEndDate: { type: Date },
+microservices-middleware/server/models/Employee.js:111:hardcoded object:	        trainingStartDate: { type: Date },
+microservices-middleware/server/models/Employee.js:112:hardcoded object:	        trainingEndDate: { type: Date },
+microservices-middleware/server/models/Employee.js:113:hardcoded object:	        transitionDate: { type: Date }
+microservices-middleware/server/models/Employee.js:118:hardcoded object:	        name: { type: String, trim: true },
+microservices-middleware/server/models/Employee.js:119:hardcoded object:	        bankName: { type: String },
+microservices-middleware/server/models/Employee.js:120:hardcoded object:	        accountNo: { type: String, trim: true },
+microservices-middleware/server/models/Employee.js:121:hardcoded object:	        ifsc: { type: String, trim: true },
+microservices-middleware/server/models/Employee.js:122:hardcoded object:	        isPennyDropSuccess: { type: Boolean, default: false },
+microservices-middleware/server/models/Employee.js:123:hardcoded object:	        updatedBy: { type: String, trim: true },
+microservices-middleware/server/models/Employee.js:124:hardcoded object:	        updatedAt: { type: Date }
+microservices-middleware/server/models/Employee.js:126:hardcoded array:	    bankDetailsLogs: [],
+microservices-middleware/server/models/Employee.js:134:hardcoded array:	        default: []
+microservices-middleware/server/models/Employee.js:139:hardcoded string:	    collection: 'employees'
+microservices-middleware/server/models/Employee.js:144:hardcoded string:	    select: "_id name formatted_name"
+microservices-middleware/server/models/Employee.js:147:hardcoded string:	module.exports = mongoose.nucleusConn.model('Employee', employeeSchema)
+microservices-middleware/server/models/DraftOrder.js:4:hardcoded variable:	const addressSchema = {
+microservices-middleware/server/models/DraftOrder.js:5:hardcoded object:	    addressId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:6:hardcoded object:	    address: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:7:hardcoded number:	    addressLine1: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:8:hardcoded number:	    addressLine2: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:9:hardcoded number:	    addressLine3: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:10:hardcoded object:	    city: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:11:hardcoded object:	    state: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:12:hardcoded object:	    country: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:13:hardcoded object:	    countryCode: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:14:hardcoded object:	    zipcode: { type: String, trim: true }
+microservices-middleware/server/models/DraftOrder.js:17:hardcoded variable:	const lineItemSchema = {
+microservices-middleware/server/models/DraftOrder.js:18:hardcoded object:	    productId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:19:hardcoded object:	    name: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:20:hardcoded object:	    sku: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:30:hardcoded variable:	const Schema = new mongoose.Schema({
+microservices-middleware/server/models/DraftOrder.js:33:hardcoded object:	        directSalesBy: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:34:hardcoded object:	        appointmentBookedBy: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:35:hardcoded object:	        studentName: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:36:hardcoded object:	        studentEmail: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:37:hardcoded object:	        accessKey: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:38:hardcoded object:	        secretKey: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:39:hardcoded object:	        accountNumber: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:40:hardcoded object:	        prospectId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:41:hardcoded object:	        typeOfSales: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:42:hardcoded object:	        v: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:43:hardcoded object:	        studentMobile: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:44:hardcoded object:	        SourceCampaign: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:45:hardcoded object:	        SourceOfLead: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:46:hardcoded object:	        LeadSource: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:47:hardcoded object:	        SourceMedium: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:48:hardcoded object:	        SourceCampaignId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:49:hardcoded object:	        UTMSource: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:50:hardcoded object:	        CampaignName: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:51:hardcoded object:	        userId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:52:hardcoded object:	        homeAddress: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:53:hardcoded object:	        userEmail: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:54:hardcoded object:	        createdById: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:55:hardcoded object:	        loggedInEmailId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:56:hardcoded object:	        loggedInRole: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:57:hardcoded object:	        createdByEmailId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:58:hardcoded object:	        isLeadMobileUsed: { type: Boolean },
+microservices-middleware/server/models/DraftOrder.js:59:hardcoded object:	        isEligibleForEvalution: { type: Boolean },
+microservices-middleware/server/models/DraftOrder.js:60:hardcoded object:	        leadCreatedAt: { type: Date }
+microservices-middleware/server/models/DraftOrder.js:63:hardcoded object:	        typeOfSales: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:64:hardcoded object:	        directSalesBy: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:65:hardcoded object:	        directSalesByCampaign: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:66:hardcoded object:	        directSalesByTeamManager: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:67:hardcoded object:	        directSalesById: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:68:hardcoded object:	        salesAppointmentByCampaign: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:69:hardcoded object:	        salesAppointmentBy: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:70:hardcoded object:	        salesAppointmentById: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:71:hardcoded object:	        salesClosedBy: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:72:hardcoded object:	        salesClosedById: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:76:hardcoded object:	        contactId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:77:hardcoded object:	        studentName: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:78:hardcoded object:	        parentName: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:79:hardcoded object:	        studentMobileNo: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:80:hardcoded object:	        parentMobileNo: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:81:hardcoded object:	        email: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:82:hardcoded object:	        duplicateReason: { type: String, trim: true, default: null },
+microservices-middleware/server/models/DraftOrder.js:83:hardcoded object:	        alternateEmail: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:85:hardcoded object:	            relation: { type: Object }, // Relation of student like father/mother/cousion etc
+microservices-middleware/server/models/DraftOrder.js:86:hardcoded object:	            mobileNo: { type: String }
+microservices-middleware/server/models/DraftOrder.js:88:hardcoded object:	        isBooksOpted: { type: Boolean, default: false },
+microservices-middleware/server/models/DraftOrder.js:89:hardcoded object:	        customerId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:90:hardcoded object:	        gstIn: { type: String, trim: true }
+microservices-middleware/server/models/DraftOrder.js:92:hardcoded object:	    repunchOrderDetails: {},
+microservices-middleware/server/models/DraftOrder.js:94:hardcoded object:	         isExistingProfile: { type: Boolean, default: false },
+microservices-middleware/server/models/DraftOrder.js:95:hardcoded object:	         existingPremiumId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:96:hardcoded object:	         existingFamilyId: { type: String, trim: true }
+microservices-middleware/server/models/DraftOrder.js:99:hardcoded object:	        source: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:100:hardcoded array:	        contacts: [{ type: String, trim: true }]
+microservices-middleware/server/models/DraftOrder.js:112:hardcoded object:	        productType: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:113:hardcoded object:	        paymentType: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:114:hardcoded object:	        maxPrice: { type: Number },
+microservices-middleware/server/models/DraftOrder.js:115:hardcoded object:	        minPrice: { type: Number },
+microservices-middleware/server/models/DraftOrder.js:116:hardcoded object:	        finalPrice: { type: Number },
+microservices-middleware/server/models/DraftOrder.js:117:hardcoded object:	        discountedPrice: { type: Number },
+microservices-middleware/server/models/DraftOrder.js:119:hardcoded object:	            count: { type: Number }, // With Default validity
+microservices-middleware/server/models/DraftOrder.js:126:hardcoded array:	        mentoringDetails: [{}],
+microservices-middleware/server/models/DraftOrder.js:127:hardcoded array:	        bhlpCourseDetails: [],
+microservices-middleware/server/models/DraftOrder.js:132:hardcoded object:	            couponCode: { type: String, trim: true }
+microservices-middleware/server/models/DraftOrder.js:135:hardcoded object:	            siblingName: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:136:hardcoded object:	            siblingMobileNo: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:137:hardcoded object:	            studentName: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:138:hardcoded object:	            studentId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:139:hardcoded object:	            course: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:140:hardcoded object:	            courseType: { type: Array },
+microservices-middleware/server/models/DraftOrder.js:141:hardcoded object:	            board: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:142:hardcoded object:	            validity: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:143:hardcoded object:	            tablet: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:144:hardcoded object:	            initialClass: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:145:hardcoded object:	            finalClass: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:147:hardcoded array:	                type: [String], trim: true,
+microservices-middleware/server/models/DraftOrder.js:148:hardcoded string:	                // enum: ["11_WEEKDAY", "11_WEEKEND", "12_WEEKDAY", "12_WEEKEND"]
+microservices-middleware/server/models/DraftOrder.js:153:hardcoded array:	            mentoringDetails: [{}],
+microservices-middleware/server/models/DraftOrder.js:154:hardcoded array:	            bhlpCourseDetails: [],
+microservices-middleware/server/models/DraftOrder.js:156:hardcoded object:	                isExistingProfile: { type: Boolean, default: false },
+microservices-middleware/server/models/DraftOrder.js:157:hardcoded object:	                existingPremiumId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:158:hardcoded object:	                existingFamilyId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:159:hardcoded object:	                accountId: { type: String, trim: true }
+microservices-middleware/server/models/DraftOrder.js:163:hardcoded object:	                    type: { type: String }, // One to many / One to mega
+microservices-middleware/server/models/DraftOrder.js:164:hardcoded object:	                    sessions: { type: Array }
+microservices-middleware/server/models/DraftOrder.js:166:hardcoded object:	                courseDetails: { type: Array },
+microservices-middleware/server/models/DraftOrder.js:167:hardcoded object:	                batchCode: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:168:hardcoded object:	                initialClass: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:169:hardcoded object:	                initialValidity: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:170:hardcoded object:	                gradeCombinationDetails: {}
+microservices-middleware/server/models/DraftOrder.js:172:hardcoded object:	            productSelectionType: { type: String } // tabletLearningProgram/MentorginProgram/HomeLearningProgram
+microservices-middleware/server/models/DraftOrder.js:174:hardcoded array:	        products: [{}],
+microservices-middleware/server/models/DraftOrder.js:178:hardcoded string:	        type: { type: String, trim: true, enum: ["EMI", "NON_EMI"] },
+microservices-middleware/server/models/DraftOrder.js:180:hardcoded number:	        totalEmiAmount: { type: Number, default: 0 },
+microservices-middleware/server/models/DraftOrder.js:181:hardcoded number:	        totalPrepaidAmount: { type: Number, default: 0 },
+microservices-middleware/server/models/DraftOrder.js:182:hardcoded number:	        totalPostpaidAmount: { type: Number, default: 0 },
+microservices-middleware/server/models/DraftOrder.js:184:hardcoded object:	        minDownPaymentDetails: {},
+microservices-middleware/server/models/DraftOrder.js:186:hardcoded string:	            type: { type: String, trim: true, enum: ["EMI", "DOWN_PAYMENT"] },
+microservices-middleware/server/models/DraftOrder.js:187:hardcoded object:	            referenceId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:188:hardcoded object:	            provider: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:189:hardcoded object:	            mobileNo: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:192:hardcoded object:	            isPrepaid: { type: Boolean, default: false },
+microservices-middleware/server/models/DraftOrder.js:194:hardcoded object:	                name: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:195:hardcoded object:	                url: { type: String, trim: true }
+microservices-middleware/server/models/DraftOrder.js:197:hardcoded object:	            additionalDetails: {}
+microservices-middleware/server/models/DraftOrder.js:201:hardcoded object:	    userComment: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:203:hardcoded object:	        name: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:204:hardcoded object:	        url: { type: String, trim: true }
+microservices-middleware/server/models/DraftOrder.js:207:hardcoded object:	        otp: { type: String },
+microservices-middleware/server/models/DraftOrder.js:208:hardcoded object:	        createdAt: { type: Date },
+microservices-middleware/server/models/DraftOrder.js:209:hardcoded object:	        message: {},
+microservices-middleware/server/models/DraftOrder.js:210:hardcoded object:	        otpVerified: { type: Boolean },
+microservices-middleware/server/models/DraftOrder.js:211:hardcoded object:	        otpVerifiedAt: { type: Date },
+microservices-middleware/server/models/DraftOrder.js:212:hardcoded object:	        linkResendAt: { type: Date },
+microservices-middleware/server/models/DraftOrder.js:213:hardcoded object:	        isCustomerVerification: { type: Boolean }
+microservices-middleware/server/models/DraftOrder.js:216:hardcoded object:	        category: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:217:hardcoded object:	        type: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:218:hardcoded object:	        comment: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:224:hardcoded object:	        code: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:227:hardcoded array:	    inventoryDetails: [],
+microservices-middleware/server/models/DraftOrder.js:228:hardcoded object:	    isImmediateDelivery: { type: Boolean, default: false },
+microservices-middleware/server/models/DraftOrder.js:231:hardcoded object:	        sourceCampaign: { type: String },
+microservices-middleware/server/models/DraftOrder.js:232:hardcoded object:	        sourceOfLead: { type: String },
+microservices-middleware/server/models/DraftOrder.js:233:hardcoded object:	        leadSource: { type: String },
+microservices-middleware/server/models/DraftOrder.js:234:hardcoded object:	        sourceMedium: { type: String },
+microservices-middleware/server/models/DraftOrder.js:235:hardcoded object:	        sourceCampaignId: { type: String },
+microservices-middleware/server/models/DraftOrder.js:236:hardcoded object:	        uTMSource: { type: String },
+microservices-middleware/server/models/DraftOrder.js:237:hardcoded object:	        campaignName: { type: String }
+microservices-middleware/server/models/DraftOrder.js:239:hardcoded string:	    orderType: { type: String, enum: ["SINGLE", "SPLIT"] },//To track the order type
+microservices-middleware/server/models/DraftOrder.js:242:hardcoded string:	        // enum: ["TV_ORDER", "NORMAL_ORDER"],
+microservices-middleware/server/models/DraftOrder.js:243:hardcoded string:	        // default: "NORMAL_ORDER"
+microservices-middleware/server/models/DraftOrder.js:247:hardcoded object:	    orderReferenceId: { type: String, trim: true }, //To track Final order created for this draft order
+microservices-middleware/server/models/DraftOrder.js:248:hardcoded object:	    draftOrderId: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:252:hardcoded string:	        enum: ["details_saved", "address_saved", "product_saved", "payment_saved", "otp_saved", "soft_approved", "order_processing", "order_created", "errored"]
+microservices-middleware/server/models/DraftOrder.js:254:hardcoded object:	    orderStatus: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:255:hardcoded object:	    statusMessage: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:260:hardcoded object:	    childOrderReferenceId: { type: String, trim: true }, //To track Final order created for the child order
+microservices-middleware/server/models/DraftOrder.js:264:hardcoded string:	        enum: ["soft_approved", "order_processing", "order_created", "errored"],
+microservices-middleware/server/models/DraftOrder.js:265:hardcoded string:	        default: "soft_approved"
+microservices-middleware/server/models/DraftOrder.js:267:hardcoded object:	    childOrderStatus: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:268:hardcoded object:	    childOrderStatusMessage: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:282:hardcoded object:	        cashbackCode: { type: String },
+microservices-middleware/server/models/DraftOrder.js:283:hardcoded object:	        amountToCustomer: { type: Number },
+microservices-middleware/server/models/DraftOrder.js:284:hardcoded object:	        amountToSalesPerson: { type: Number },
+microservices-middleware/server/models/DraftOrder.js:286:hardcoded object:	            cashbackCode: { type: String },
+microservices-middleware/server/models/DraftOrder.js:287:hardcoded object:	            status: { type: String },
+microservices-middleware/server/models/DraftOrder.js:288:hardcoded object:	            newStatus: { type: String }
+microservices-middleware/server/models/DraftOrder.js:295:hardcoded object:	    isFOCOrder: { type: Boolean, default: false },
+microservices-middleware/server/models/DraftOrder.js:300:hardcoded object:	    timestamps: { type: Object },
+microservices-middleware/server/models/DraftOrder.js:322:hardcoded object:	        assignedTo: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:323:hardcoded object:	        presentOwner: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:324:hardcoded object:	        presentOwnerType: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:325:hardcoded object:	        status: { type: String, trim: true },
+microservices-middleware/server/models/DraftOrder.js:326:hardcoded object:	        assignedAt: { type: Date, trim: true },
+microservices-middleware/server/models/DraftOrder.js:327:hardcoded object:	        updatedBy: { type: String, trim: true }
+microservices-middleware/server/models/DraftOrder.js:329:hardcoded object:	    actionDetails: {},
+microservices-middleware/server/models/DraftOrder.js:330:hardcoded object:	    orderPlatformDetails: {}
+microservices-middleware/server/models/DraftOrder.js:333:hardcoded string:	    collection: "draft_orders"
+microservices-middleware/server/models/DraftOrder.js:337:hardcoded number:	    salesOrderId: 1
+microservices-middleware/server/models/DraftOrder.js:344:hardcoded string:	module.exports = mongoose.leado.model('DraftOrder_1', Schema);

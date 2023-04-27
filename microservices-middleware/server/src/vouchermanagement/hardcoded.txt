@@ -1,0 +1,121 @@
+microservices-middleware/server/src/vouchermanagement/voucherRoutes.js:5:hardcoded object:	    const router = Router({ mergeParams: true });
+microservices-middleware/server/src/vouchermanagement/voucherRoutes.js:7:hardcoded string:	    router.route('/voucher/applyVoucher')
+microservices-middleware/server/src/vouchermanagement/voucherRoutes.js:12:hardcoded string:	    router.route('/voucher/removeVoucher')
+microservices-middleware/server/src/vouchermanagement/voucherRoutes.js:17:hardcoded string:	    router.route('/voucher/getVoucherDetails')
+microservices-middleware/server/src/vouchermanagement/voucherRoutes.js:22:hardcoded string:	    router.route('/voucher/getBnatVoucherDetails')
+microservices-middleware/server/src/vouchermanagement/voucherController.js:7:hardcoded string:	const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/vouchermanagement/voucherController.js:8:hardcoded string:	const isDevEnv = ['local', 'development'].includes(process.env.NODE_ENV);
+microservices-middleware/server/src/vouchermanagement/voucherController.js:12:hardcoded variable:	const applyVoucher = async (req, res) => {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:13:hardcoded string:	    logger.info({ method: "applyVoucher" }, "Applying Voucher");
+microservices-middleware/server/src/vouchermanagement/voucherController.js:14:hardcoded string:	    const { mobileNo: customerMobileNo, voucherCode, identifier, salesEmail, productCombination, productType: productCombinationType, selectedCourse = '', stateExams = '', courseType = '', productLearningType = '' } = req.body;
+microservices-middleware/server/src/vouchermanagement/voucherController.js:15:hardcoded string:	    if (!customerMobileNo || !voucherCode) throw new BadRequestError('Parameters Missing');
+microservices-middleware/server/src/vouchermanagement/voucherController.js:18:hardcoded object:	        const voucherDetails = await VoucherTransaction.findOne({ voucherCode }).lean();
+microservices-middleware/server/src/vouchermanagement/voucherController.js:21:hardcoded array:	            let { voucherCode, mobileNo, status, discountDetail = {}, type: voucherType, productType, expiryDate, salesEmail: salesPerson, auditLogs = [] } = voucherDetails;
+microservices-middleware/server/src/vouchermanagement/voucherController.js:22:hardcoded string:	            const { value = "", type: discountType, orderAmount } = discountDetail;
+microservices-middleware/server/src/vouchermanagement/voucherController.js:23:hardcoded array:	            const orders = [];
+microservices-middleware/server/src/vouchermanagement/voucherController.js:25:hardcoded variable:	            const curDate = new Date();
+microservices-middleware/server/src/vouchermanagement/voucherController.js:26:hardcoded object:	            const { voucherApplicable, productDisplayName } = getVoucherApplicable({ type: voucherType, productCombination })
+microservices-middleware/server/src/vouchermanagement/voucherController.js:27:hardcoded variable:	            const isEligibleForVoucher = await checkVoucherEligibility(customerMobileNo);
+microservices-middleware/server/src/vouchermanagement/voucherController.js:29:hardcoded object:	                res.json({ status: false, message: `Voucher is already redeemed by ${salesEmail} on ${customerMobileNo} ` });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:33:hardcoded string:	            if (status !== "unutilized") {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:34:hardcoded string:	                if (status === 'redeemed') {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:35:hardcoded object:	                    res.json({ status: false, message: `Voucher is already redeemed by ${salesPerson}` });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:38:hardcoded string:	                    res.json({ status: false, message: "Voucher code has invalid status" });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:42:hardcoded object:	                res.json({ status: false, message: `${voucherType} voucher is not applicable for ${productDisplayName} orders` });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:44:hardcoded string:	            else if (productType === 'bnat_bhlp' && !(courseType === 'IAS_BHLP' && selectedCourse == 'IAS' && productCombination === 'byjus_exam_prep')) {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:45:hardcoded string:	                res.json({ status: false, message: "This voucher is applicable only for IAS BHLP course." })
+microservices-middleware/server/src/vouchermanagement/voucherController.js:47:hardcoded string:	            else if(productType==="bep_clat" && !(productCombination === 'byjus_exam_prep' && ["CLAT"].includes(selectedCourse)))
+microservices-middleware/server/src/vouchermanagement/voucherController.js:49:hardcoded object:	                res.json({ status: false, message: `This voucher is applicable only for CLAT courses` });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:51:hardcoded string:	            else if (productType === 'bep_gate' && !(productCombination === 'byjus_exam_prep' && ["GATE", "ESE_AND_GATE"].includes(selectedCourse))) {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:52:hardcoded object:	                res.json({ status: false, message: `This voucher is applicable only for GATE and ESE_ AND_GATE courses.` })
+microservices-middleware/server/src/vouchermanagement/voucherController.js:54:hardcoded string:	            else if (productType == 'bep_cat' && !(productCombination === 'byjus_exam_prep' && selectedCourse == 'CAT')) {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:55:hardcoded object:	                res.json({ status: false, message: `This voucher is applicable only for CAT course.` })
+microservices-middleware/server/src/vouchermanagement/voucherController.js:57:hardcoded string:	            else if (productType === 'bep_nda' && !(productCombination === 'bep_mts' && selectedCourse == 'NDA')) {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:58:hardcoded object:	                res.json({ status: false, message: `This voucher is applicable only for NDA course.` })
+microservices-middleware/server/src/vouchermanagement/voucherController.js:60:hardcoded string:	            else if (productType === 'bep_csir' && !(productCombination === 'bep_mts' && selectedCourse == 'CSIR_NET')) {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:61:hardcoded object:	                res.json({ status: false, message: `This voucher is applicable only for CSIR course.` })
+microservices-middleware/server/src/vouchermanagement/voucherController.js:63:hardcoded string:	            else if (productType === 'bep_cds' && !(productCombination === 'bep_mts' && selectedCourse == 'CDS')) {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:64:hardcoded object:	                res.json({ status: false, message: `This voucher is applicable only for CDS course.` })
+microservices-middleware/server/src/vouchermanagement/voucherController.js:66:hardcoded string:	            else if (productType === 'bep_ugc' && !(productCombination === 'bep_mts' && selectedCourse == 'UGCNET')) {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:67:hardcoded object:	                res.json({ status: false, message: `This voucher is applicable only for UGCNET course.` })
+microservices-middleware/server/src/vouchermanagement/voucherController.js:69:hardcoded string:	            else if (productType === 'bep_uppsc' && !(productCombination === 'byjus_exam_prep' && stateExams == 'UPPSC')) {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:70:hardcoded object:	                res.json({ status: false, message: `This voucher is applicable only for STATE_PSC UPPSC course.` })
+microservices-middleware/server/src/vouchermanagement/voucherController.js:72:hardcoded string:	            else if (productType === 'bep_bpsc' && !(productCombination === 'byjus_exam_prep' && stateExams == 'BPSC')) {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:73:hardcoded object:	                res.json({ status: false, message: `This voucher is applicable only for STATE_PSC BPSC course.` })
+microservices-middleware/server/src/vouchermanagement/voucherController.js:75:hardcoded string:	            else if (productType === 'blc' && productCombination !== 'byjus_learning_centre') {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:76:hardcoded string:	                res.json({ status: false, message: "This voucher is applicable for BTC orders only." })
+microservices-middleware/server/src/vouchermanagement/voucherController.js:78:hardcoded string:	            else if (productCombination === 'byjus_learning_centre' && !["all", "blc"].includes(productType)) {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:79:hardcoded string:	                res.json({ status: false, message: "This voucher is not applicable for BTC orders." })
+microservices-middleware/server/src/vouchermanagement/voucherController.js:81:hardcoded string:	            else if (productType == 'aakash_live' && productLearningType !== 'aakash_byjus_live') {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:82:hardcoded string:	                res.json({ status: false, message: "BNAT K12 is only applicable for Aakash BYJU’s Live Classes" })
+microservices-middleware/server/src/vouchermanagement/voucherController.js:85:hardcoded object:	                res.json({ status: false, message: `This voucher code is not linked to the lead's primary mobile number :${customerMobileNo}` });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:88:hardcoded string:	                res.json({ status: false, message: "Voucher code has expired" });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:91:hardcoded object:	                orders.push({ orderId: identifier });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:92:hardcoded variable:	                const updateData = {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:102:hardcoded object:	                await DraftOrder.findOneAndUpdate({ _id: identifier }, {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:105:hardcoded string:	                        "timestamps.redeemedAt": new Date()
+microservices-middleware/server/src/vouchermanagement/voucherController.js:108:hardcoded string:	                logger.info({ method: "applyVoucher", message: `Adding ${voucherCode} linked to ${identifier} at ${new Date()} by sales person ${salesEmail}` });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:109:hardcoded object:	                await VoucherTransaction.findOneAndUpdate({ mobileNo, voucherCode }, {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:111:hardcoded string:	                        status: "redeemed",
+microservices-middleware/server/src/vouchermanagement/voucherController.js:114:hardcoded string:	                        "timestamps.redeemedAt": new Date()
+microservices-middleware/server/src/vouchermanagement/voucherController.js:117:hardcoded string:	                res.json({ status: true, auditLogs, expiryDate, message: "Successfully added voucher." });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:120:hardcoded string:	        else res.json({ status: false, message: "Voucher code does not exists." });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:124:hardcoded string:	        throw new Error(error || "Error in fetching voucher status");
+microservices-middleware/server/src/vouchermanagement/voucherController.js:128:hardcoded variable:	const removeVoucher = async (req, res) => {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:129:hardcoded string:	    logger.info({ method: "removeVoucher" }, "Removing voucher");
+microservices-middleware/server/src/vouchermanagement/voucherController.js:130:hardcoded object:	    const { mobileNo, voucherCode, identifier, salesEmail } = req.body;
+microservices-middleware/server/src/vouchermanagement/voucherController.js:131:hardcoded string:	    if (!salesEmail || !voucherCode) throw new BadRequestError('Parameters Missing');
+microservices-middleware/server/src/vouchermanagement/voucherController.js:134:hardcoded object:	        const voucherDetails = await VoucherTransaction.findOne({ mobileNo, voucherCode }).lean();
+microservices-middleware/server/src/vouchermanagement/voucherController.js:135:hardcoded string:	        const productType = get(voucherDetails, 'productType')
+microservices-middleware/server/src/vouchermanagement/voucherController.js:136:hardcoded array:	        let activeVouchersList = [];
+microservices-middleware/server/src/vouchermanagement/voucherController.js:138:hardcoded object:	            await DraftOrder.findOneAndUpdate({ _id: identifier }, {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:140:hardcoded string:	                    voucherDetails: ""
+microservices-middleware/server/src/vouchermanagement/voucherController.js:144:hardcoded string:	            const filter = productType === 'blc' ? { mobileNo, productType, voucherCode } : { mobileNo, voucherCode }
+microservices-middleware/server/src/vouchermanagement/voucherController.js:145:hardcoded string:	            logger.info({ method: "removeVoucher", message: `Removing ${voucherCode} linked to ${identifier} at ${new Date()}by sales person ${salesEmail} ` });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:148:hardcoded string:	                    status: "unutilized",
+microservices-middleware/server/src/vouchermanagement/voucherController.js:150:hardcoded string:	                    "timestamps.removedAt": new Date()
+microservices-middleware/server/src/vouchermanagement/voucherController.js:154:hardcoded string:	            res.json({ message: "Successfully removed voucher.", voucherList: activeVouchersList });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:157:hardcoded object:	            throw new Error(`Voucher ${voucherCode} not found`);
+microservices-middleware/server/src/vouchermanagement/voucherController.js:160:hardcoded string:	        throw new Error(error || "Error in removing voucher");
+microservices-middleware/server/src/vouchermanagement/voucherController.js:164:hardcoded variable:	const checkVoucherEligibility = async (studentMobileNo) => {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:166:hardcoded string:	    let vouchers = await VoucherTransaction.find({ mobileNo: studentMobileNo, status: "redeemed" }).lean();
+microservices-middleware/server/src/vouchermanagement/voucherController.js:171:hardcoded variable:	const getAvailableVouchers = async (studentMobileNo) => {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:172:hardcoded array:	    let activeVouchersList = [];
+microservices-middleware/server/src/vouchermanagement/voucherController.js:173:hardcoded variable:	    let isEligibleForVoucher = await checkVoucherEligibility(studentMobileNo);
+microservices-middleware/server/src/vouchermanagement/voucherController.js:177:hardcoded object:	        let vouchers = await VoucherTransaction.find({ mobileNo: studentMobileNo, expiryDate: { $gte: new Date() } }).lean();
+microservices-middleware/server/src/vouchermanagement/voucherController.js:179:hardcoded object:	            let { voucherCode, discountDetail, productType, expiryDate, type } = voucher;
+microservices-middleware/server/src/vouchermanagement/voucherController.js:181:hardcoded string:	                label: voucherCode + "-" + discountDetail?.value + "-" + type + "-" + moment(expiryDate).format('DD-MM-YYYY'),
+microservices-middleware/server/src/vouchermanagement/voucherController.js:190:hardcoded variable:	const getVoucherDetails = async (req, res) => {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:191:hardcoded string:	    logger.info({ method: "getVoucherDetails" }, "Fetching voucher details");
+microservices-middleware/server/src/vouchermanagement/voucherController.js:192:hardcoded object:	    const { identifier, studentMobileNo } = req.body;
+microservices-middleware/server/src/vouchermanagement/voucherController.js:194:hardcoded string:	        const vouherData = await DraftOrder.findOne({ _id: identifier }).select("voucherDetails").lean();
+microservices-middleware/server/src/vouchermanagement/voucherController.js:195:hardcoded object:	        const { voucherDetails = {} } = vouherData || {};
+microservices-middleware/server/src/vouchermanagement/voucherController.js:196:hardcoded array:	        let activeVoucherList = [];
+microservices-middleware/server/src/vouchermanagement/voucherController.js:199:hardcoded string:	            const { voucherCode = "" } = voucherDetails || {};
+microservices-middleware/server/src/vouchermanagement/voucherController.js:200:hardcoded string:	            const logs = await VoucherTransaction.findOne({ voucherCode }).select("auditLogs expiryDate").lean();
+microservices-middleware/server/src/vouchermanagement/voucherController.js:201:hardcoded array:	            const { auditLogs = [], expiryDate } = logs;
+microservices-middleware/server/src/vouchermanagement/voucherController.js:202:hardcoded object:	            res.json({ status: true, voucherCode: voucherDetails.voucherCode, auditLogs, expiryDate, voucherList: activeVoucherList });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:205:hardcoded string:	            !isEmpty(activeVoucherList) ? res.json({ voucherList: activeVoucherList }) : res.json({ message: "No Voucher available" });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:208:hardcoded string:	        throw new Error(error || "Error in removing voucher");
+microservices-middleware/server/src/vouchermanagement/voucherController.js:213:hardcoded variable:	const getBnatVoucherDetails = async (req, res) => {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:214:hardcoded string:	    logger.info({ method: "getBnatVoucherDetails" }, "Fetching voucher details");
+microservices-middleware/server/src/vouchermanagement/voucherController.js:215:hardcoded string:	    const { mobileNo = "" } = req.body;
+microservices-middleware/server/src/vouchermanagement/voucherController.js:217:hardcoded variable:	        const voucherDetails = await VoucherTransaction.findOne({
+microservices-middleware/server/src/vouchermanagement/voucherController.js:218:hardcoded string:	            "$and": [
+microservices-middleware/server/src/vouchermanagement/voucherController.js:220:hardcoded string:	                    "type": { "$regex": ".*BNAT.*" }
+microservices-middleware/server/src/vouchermanagement/voucherController.js:223:hardcoded string:	                    "mobileNo": mobileNo
+microservices-middleware/server/src/vouchermanagement/voucherController.js:226:hardcoded object:	        }).lean() || {};
+microservices-middleware/server/src/vouchermanagement/voucherController.js:227:hardcoded variable:	        const bnatVoucherExist = (!isEmpty(voucherDetails)) ? true : false;
+microservices-middleware/server/src/vouchermanagement/voucherController.js:228:hardcoded object:	        res.json({ status: true, bnatVoucherExist, voucherDetails });
+microservices-middleware/server/src/vouchermanagement/voucherController.js:230:hardcoded string:	        throw new Error(error || "Error in getting voucher details");
+microservices-middleware/server/src/vouchermanagement/voucherController.js:234:hardcoded variable:	const getVoucherApplicable = (details) => {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:235:hardcoded object:	    const { type, productCombination } = details;
+microservices-middleware/server/src/vouchermanagement/voucherController.js:236:hardcoded variable:	    let applicableDetails = {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:239:hardcoded variable:	    const voucherApplicableMap = [{
+microservices-middleware/server/src/vouchermanagement/voucherController.js:240:hardcoded string:	        "productCombination": "byjus_learning_centre",
+microservices-middleware/server/src/vouchermanagement/voucherController.js:241:hardcoded string:	        "voucherType": {
+microservices-middleware/server/src/vouchermanagement/voucherController.js:242:hardcoded string:	            "BST": false
+microservices-middleware/server/src/vouchermanagement/voucherController.js:244:hardcoded string:	        "productDisplayName": "BTC"
+microservices-middleware/server/src/vouchermanagement/voucherController.js:246:hardcoded string:	    const { voucherType, productDisplayName } = voucherApplicableMap.find((ele) => ele.productCombination === productCombination && !get(ele['voucherType'], type, true)) || {};
+microservices-middleware/server/src/vouchermanagement/voucherController.js:248:hardcoded string:	        applicableDetails['voucherApplicable'] = voucherType[type];
+microservices-middleware/server/src/vouchermanagement/voucherController.js:249:hardcoded string:	        applicableDetails['productDisplayName'] = productDisplayName;

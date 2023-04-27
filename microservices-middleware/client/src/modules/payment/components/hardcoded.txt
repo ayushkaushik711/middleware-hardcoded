@@ -1,0 +1,134 @@
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:5:hardcoded object:	const SubscriptionPaymentComponent = ({ selectedProduct, selectedQuotation, env, leadDetails, leadSubPayments }) => {
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:6:hardcoded array:	    const [collapseSubscription, setCollapseSubscription] = useState(false);
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:7:hardcoded array:	    const [subscriptionNach, setSubscriptionNach] = useState(null);
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:8:hardcoded string:	    let orgId = selectedProduct === "Aakash" ? "aakash" : "byjus"
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:10:hardcoded variable:	    const urlParam = window.location;
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:11:hardcoded object:	    const { origin } = urlParam;
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:12:hardcoded string:	    const paymentUrl = ["https://dev-middleware.byjusorders.com", "http://localhost"].includes(origin) ? "https://dev-pay.byjusorders.com" : "https://payment.byjusorders.com"
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:14:hardcoded string:	    const subPaymentsType = "subscription/NachMandate";
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:15:hardcoded string:	    const { prospectId = "" } = leadDetails;
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:17:hardcoded variable:	    const onChange = (e) => {
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:22:hardcoded variable:	    const SubscriptionPaymentTable = () => {
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:24:hardcoded string:	            <Table striped size="md">
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:36:hardcoded object:	                        <tr key={idx}>
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:37:hardcoded string:	                            <th scope="row">1</th>
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:38:hardcoded object:	                            <td>{subPayments.subscriptionId}</td>
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:39:hardcoded object:	                            <td>{subPayments.amount}</td>
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:40:hardcoded object:	                            <td>{startCase(subPayments.status)}</td>
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:41:hardcoded string:	                            <td><p><a href={`${paymentUrl}/${subPaymentsType}?subscriptionId=${subPayments.subscriptionId}`} target="_blank">  View Subscription</a></p></td>
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:50:hardcoded string:	            {["development", "local", "uat"].includes(env)
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:53:hardcoded string:	                        <CardHeader className='card-header bg-summary text-white' onClick={() => setCollapseSubscription(!collapseSubscription)}>Subscription Payments
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:54:hardcoded string:	                            <div style={{ float: 'right' }}>
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:55:hardcoded string:	                                <span> Subscription Count: <Badge color="success">{leadSubPayments.length}</Badge></span> {" "}
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:57:hardcoded string:	                                    <i style={{ color: `${collapseSubscription ? "green" : "Chocolate"}` }} className={`fa fa-arrow-circle-${collapseSubscription ? "up" : "down"}`}></i>
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:61:hardcoded object:	                        <Collapse isOpen={collapseSubscription}>
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:63:hardcoded string:	                                <div className="row justify-content-center">
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:64:hardcoded string:	                                    <Col md="12">
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:66:hardcoded number:	                                            {leadSubPayments.length === 0 && <p>No Subscription generated against this lead yet.</p>}
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:67:hardcoded number:	                                            {leadSubPayments.length > 0 && SubscriptionPaymentTable()}
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:68:hardcoded number:	                                            {leadSubPayments.length === 0 &&
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:70:hardcoded number:	                                                    <Col md={4}>
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:72:hardcoded string:	                                                        {selectedProduct !== "Aakash" && <Input name="subscriptionNach" type="select" onChange={e => onChange(e)}>
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:75:hardcoded string:	                                                            <option value="subscription/NachMandate">Subscription Nach</option>
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:79:hardcoded string:	                                                        {!get(selectedQuotation, "quotationId", "") && <p><Button color="info"><a href={`${paymentUrl}/${subscriptionNach}?leadId=${prospectId}&orgId=${orgId}`} target="_blank">  Create Subscription</a></Button></p>}
+microservices-middleware/client/src/modules/payment/components/SubscriptionPaymentComponent.js:80:hardcoded string:	                                                        {get(selectedQuotation, "quotationId", "") && <p><Button color="info"><a href={`${paymentUrl}/${subscriptionNach}?leadId=${prospectId}&quotationId=${get(selectedQuotation, "quotationId", null)}&orgId=${orgId}`} target="_blank">  Create Subscription</a></Button></p>}
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:8:hardcoded variable:	export const processValidatePaymentsApiResponse = (apiResponse, salesDetails) => {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:9:hardcoded array:	    const { isSuccess, isTotalPriceMatched, minDownPaymentDetails = {}, notFoundRefs = [], amountMismatchedRefs = [],
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:10:hardcoded array:	        usedRefs = [], improperStatusRefs = [], unauthorizedRefs = [], paymentDetails, lockingErrors = [],
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:11:hardcoded array:	        lockedErrors = [], improperPaymentModeRefs = [], improperPaymentRefs = [], repunchRefIdOrderDetails = {}, isDifferentBatch = [], isCustomerIdExist = true, leadIdMismatchedRefs = [], leadPhoneNoMismatchedRefs = [] } = apiResponse || {};
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:13:hardcoded variable:	    const result = {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:15:hardcoded string:	        errorMessage: "",
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:21:hardcoded string:	            result.errorMessage = "Total payment amount should be equal to final product price.\n"
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:24:hardcoded string:	            result.errorMessage = `Please add a minimum Down Payment of ${currencyFormatter(minDownPaymentDetails?.minDownPaymentAmount, "INR")} to proceed`;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:26:hardcoded number:	        else if (lockedErrors.length > 0) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:29:hardcoded number:	        else if (unauthorizedRefs.length > 0) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:30:hardcoded object:	            const refIds = unauthorizedRefs.map(ele => ele.referenceId).reduce((oldMsg, ele) => `${oldMsg}, ${ele}`);
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:31:hardcoded string:	            const uniqueOwners = uniq([get(salesDetails, "directSalesBy")]);
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:32:hardcoded string:	            result.errorMessage += `Reference ID(s): ${refIds} does not belong to: ${uniqueOwners.join(" or ")}.\n`;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:34:hardcoded number:	        else if (improperPaymentRefs.length > 0) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:35:hardcoded number:	            result.errorMessage += `${improperPaymentRefs[0]}\n`;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:37:hardcoded number:	        else if (improperPaymentModeRefs.length > 0) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:39:hardcoded string:	                const type = ele.type === "DOWN_PAYMENT" ? "NON-EMI" : ele.type;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:40:hardcoded string:	                result.errorMessage += `Reference ID: ${ele.referenceId} is ${ele.provider.replace(/_/g, " ")} ${ele.mode} but selected mode is ${type} on previous page.\n`;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:42:hardcoded URL:	            result.errorMessage += `To verify, please check at https://payment.byjusorders.com \n`
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:48:hardcoded number:	            if (notFoundRefs.length > 0) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:49:hardcoded object:	                const refIds = notFoundRefs.map(ele => ele.referenceId).reduce((acc, ele) => `${acc}, ${ele}`);
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:50:hardcoded object:	                result.errorMessage += `Reference ID(s): ${refIds} is incorrect.\n`;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:52:hardcoded number:	            if (amountMismatchedRefs.length > 0) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:53:hardcoded object:	                const refIds = amountMismatchedRefs.map(ele => ele.referenceId).reduce((acc, ele) => `${acc}, ${ele}`);
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:54:hardcoded object:	                result.errorMessage += `Amount provided for Reference ID(s): ${refIds} is not equal to loan/payment value.\n`;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:56:hardcoded number:	            if (usedRefs.length > 0) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:58:hardcoded object:	                    result.errorMessage += `Reference ID: ${ele.referenceId} is already used for order: ${ele.orderId}.\n`;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:61:hardcoded number:	            if (improperStatusRefs.length > 0) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:63:hardcoded string:	                    result.errorMessage += `Reference ID: ${ele.referenceId} is currently in ${ele.status} stage. ${ele.provider.replace(/_/g, " ")} allows you to punch order in ${ele.punchableStatus.join(",")} stage.\n`
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:65:hardcoded URL:	                result.errorMessage += `To verify, please check at https://payment.byjusorders.com \n`
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:67:hardcoded number:	            if (lockingErrors.length > 0) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:68:hardcoded string:	                const refIds = lockingErrors.reduce((acc, ele) => `${acc}, Reference ID: ${ele.referenceId} - ${ele.errorMessage}`, "");
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:69:hardcoded object:	                result.errorMessage += `Unable to lock all payments. ${refIds}.\n`;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:71:hardcoded number:	            if (isDifferentBatch.length > 0) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:73:hardcoded object:	                    result.errorMessage += `Reference ID: ${ele.referenceId} is for ${ele.batch} batch. Product is currently being punched for ${ele.bfsBatch} batch.\n`
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:76:hardcoded number:	            if ( leadIdMismatchedRefs.length > 0 ) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:77:hardcoded object:	                const refIds = leadIdMismatchedRefs.map(ele => ele.referenceId).reduce((acc, ele) => `${acc}, ${ele}`);
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:78:hardcoded object:	                result.errorMessage += `Reference ID(s): ${refIds} is not associated with current lead.\n`;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:80:hardcoded number:	            if (leadPhoneNoMismatchedRefs.length > 0) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:81:hardcoded object:	                const refIds = leadPhoneNoMismatchedRefs.map(ele => ele.referenceId).reduce((acc, ele) => `${acc}, ${ele}`);
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:82:hardcoded object:	                result.errorMessage += `Reference ID(s): ${refIds} is not associated with current lead mobile number.\n`;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:88:hardcoded string:	        if (result.errorMessage.substring(result.errorMessage.length - 1) === "\n") {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:89:hardcoded number:	            result.errorMessage = result.errorMessage.slice(0, result.errorMessage.length - 1);
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:95:hardcoded variable:	const randomNumber = length => Math.floor(
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:96:hardcoded number:	    Math.pow(10, length - 1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length - 1) - 1)
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:99:hardcoded variable:	export const getRandomNumber = () => {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:100:hardcoded variable:	    let now = Date.now().toString();
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:103:hardcoded number:	    if (now.length < 14) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:104:hardcoded number:	        const pad = 14 - now.length;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:110:hardcoded variable:	export const getReferenceId = (referenceId, isRandomReferenceId, isAppendRandomDigitToReferenceId, provider) => {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:111:hardcoded string:	    if (isRandomReferenceId && !["SCR", "CASH_ON_DELIVERY"].includes(provider)) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:113:hardcoded string:	    } else if (isAppendRandomDigitToReferenceId && !["SCR", "CASH_ON_DELIVERY"].includes(provider)) {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:114:hardcoded object:	        referenceId = `${getRandomNumber()}-${referenceId}`
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:115:hardcoded string:	    } else if (provider === 'CASH_ON_DELIVERY') {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:116:hardcoded object:	        referenceId = `COD${getRandomNumber()}`
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:123:hardcoded variable:	export const checkIsPrivilegedUser = (user) => {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:125:hardcoded string:	    const userPermissions = get(user, 'permissions', []);
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:126:hardcoded variable:	    const isPrivilegedUser = userPermissions.includes(productPermissions.ignorePriceRangeCheck)
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:130:hardcoded variable:	export const getPdcComponentProps = (details) => {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:131:hardcoded object:	    const { currentSchedules, leadDetails, user, authDetails ,onSuccess ,onError} = details;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:132:hardcoded array:	    const { schedules = [], totalPdcAmount } = currentSchedules
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:133:hardcoded object:	    const { env } = authDetails;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:135:hardcoded variable:	    const disableAndMandatoryInputs = {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:139:hardcoded variable:	    const enableAndMandatoryInputs = {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:143:hardcoded variable:	    const customerDetailsInputs = {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:151:hardcoded variable:	    const CCRComponentProps = {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:153:hardcoded string:	            'chequeAmount': disableAndMandatoryInputs,
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:154:hardcoded string:	            'chequeDate': disableAndMandatoryInputs,
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:155:hardcoded string:	            'IFSCCode': { isRequired: true },
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:156:hardcoded string:	            'bankName': { isRequired: true },
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:157:hardcoded string:	            'accountHolderName': { isRequired: true },
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:158:hardcoded string:	            'chequeNumber': { isRequired: true },
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:159:hardcoded string:	            'RechequeNumber': { isRequired: true },
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:163:hardcoded variable:	    const formattedLeadDetails = {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:164:hardcoded string:	        leadPhoneNo: leadDetails?.studentMobile?.split("-")?.[1],
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:169:hardcoded variable:	    const customerDetails = {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:171:hardcoded string:	        phone: leadDetails?.studentMobile?.split("-")?.[1],
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:176:hardcoded variable:	    const pdcDetails = schedules.map(sch => (
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:178:hardcoded string:	            chequeDate: moment(sch.selectedDate).format("YYYY-MM-DD"),
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:182:hardcoded variable:	    const pdccrProps = {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:188:hardcoded variable:	    const pdccrPaymentProps = {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:193:hardcoded string:	        source: "kart",
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:194:hardcoded string:	        orgName: "byjus",
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:196:hardcoded string:	        description: "Payment Created from Kart",
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:197:hardcoded string:	        currency: "INR",
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:198:hardcoded object:	        metaData: {}
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:201:hardcoded variable:	    const stageMap ={
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:202:hardcoded string:	        development :"dev",
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:203:hardcoded string:	        production : "prod",
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:206:hardcoded variable:	    const environmentProps = {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:207:hardcoded number:	        accessKey: config?.ptmsV2?.accessKeyId,              
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:208:hardcoded number:	        secretKey: config?.ptmsV2?.secretAccessKey,             
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:209:hardcoded string:	        stage: stageMap[env] ? stageMap[env] : "dev",
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:227:hardcoded variable:	export const updateTotalSaleValue = async (leadDetails, formValues, data) => {
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:228:hardcoded string:	    const prospectId = get(leadDetails, "prospectId","");
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:229:hardcoded string:	    const userEmail =  get(leadDetails, "userEmail","");
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:230:hardcoded object:	    const { totalSaleValue } = formValues;
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:231:hardcoded string:	    const { referenceId = '' } = data
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:235:hardcoded string:	        method: 'POST',
+microservices-middleware/client/src/modules/payment/components/paymentHelper.js:236:hardcoded object:	        body: { prospectId, totalSaleValue, referenceId, userEmail }

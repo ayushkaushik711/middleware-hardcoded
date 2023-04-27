@@ -1,0 +1,45 @@
+microservices-middleware/client/src/api/callApi.js:5:hardcoded variable:	const urlMap = {
+microservices-middleware/client/src/api/callApi.js:6:hardcoded string:	    "localhost": "http://localhost:7000",
+microservices-middleware/client/src/api/callApi.js:7:hardcoded string:	    "dev-middleware.byjusorders.com": "https://dev-middleware-nucleus.byjusorders.com",
+microservices-middleware/client/src/api/callApi.js:8:hardcoded string:	    "uat-middleware.byjusorders.com": "https://uat-middleware-nucleus.byjusorders.com",
+microservices-middleware/client/src/api/callApi.js:9:hardcoded string:	    "staging-middleware.byjusorders.com": "https://staging-middleware-nucleus.byjusorders.com",
+microservices-middleware/client/src/api/callApi.js:10:hardcoded string:	    "middleware.byjusorders.com": "https://middleware-nucleus.byjusorders.com"
+microservices-middleware/client/src/api/callApi.js:13:hardcoded variable:	const appConfigMap = {
+microservices-middleware/client/src/api/callApi.js:14:hardcoded string:	    'localhost': {
+microservices-middleware/client/src/api/callApi.js:15:hardcoded string:	        url: 'https://dev-pay-nucleus.byjusorders.com',
+microservices-middleware/client/src/api/callApi.js:16:hardcoded string:	        env: 'local'
+microservices-middleware/client/src/api/callApi.js:18:hardcoded string:	    'dev-middleware.byjusorders.com': {
+microservices-middleware/client/src/api/callApi.js:19:hardcoded string:	        url: 'https://dev-pay-nucleus.byjusorders.com',
+microservices-middleware/client/src/api/callApi.js:20:hardcoded string:	        env: 'development'
+microservices-middleware/client/src/api/callApi.js:22:hardcoded string:	    'uat-middleware.byjusorders.com': {
+microservices-middleware/client/src/api/callApi.js:23:hardcoded string:	        url: 'https://uat-payment-nucleus.byjusorders.com',
+microservices-middleware/client/src/api/callApi.js:24:hardcoded string:	        env: 'uat'
+microservices-middleware/client/src/api/callApi.js:26:hardcoded string:	    "middleware.byjusorders.com": {
+microservices-middleware/client/src/api/callApi.js:27:hardcoded string:	        url: 'https://payment-nucleus.byjusorders.com',
+microservices-middleware/client/src/api/callApi.js:28:hardcoded string:	        env: 'production'
+microservices-middleware/client/src/api/callApi.js:32:hardcoded variable:	const makeApiCall = (options) => {
+microservices-middleware/client/src/api/callApi.js:33:hardcoded variable:	    const hostName = window.location.host;
+microservices-middleware/client/src/api/callApi.js:34:hardcoded string:	    const currentAppConfig = hostName ? appConfigMap[hostName] : appConfigMap['localhost'];
+microservices-middleware/client/src/api/callApi.js:36:hardcoded string:	    let authToken = "";
+microservices-middleware/client/src/api/callApi.js:37:hardcoded string:	    //let authToken = localStorage.getItem('auth_token');
+microservices-middleware/client/src/api/callApi.js:40:hardcoded variable:	    const store = getStore();
+microservices-middleware/client/src/api/callApi.js:42:hardcoded object:	        const states = store.getState() || {};
+microservices-middleware/client/src/api/callApi.js:43:hardcoded string:	        authToken = get(states, 'auth.details.token');
+microservices-middleware/client/src/api/callApi.js:48:hardcoded object:	        params, onlyResponseDatas = false, isPaymentAPI = false, isFormData = false } = options || {};
+microservices-middleware/client/src/api/callApi.js:50:hardcoded object:	    let { url } = options || {}
+microservices-middleware/client/src/api/callApi.js:52:hardcoded object:	        url = `${window.NAPI_URL}${url}`
+microservices-middleware/client/src/api/callApi.js:54:hardcoded array:	        url = `${urlMap[hostName]}${url}`
+microservices-middleware/client/src/api/callApi.js:57:hardcoded string:	        method: method ? method.toLowerCase() : 'get',
+microservices-middleware/client/src/api/callApi.js:59:hardcoded string:	        responseType: responseType || 'json',
+microservices-middleware/client/src/api/callApi.js:62:hardcoded string:	            "Content-Type": 'multipart/form-data',
+microservices-middleware/client/src/api/callApi.js:63:hardcoded string:	            "authToken": authToken
+microservices-middleware/client/src/api/callApi.js:65:hardcoded string:	            "Content-Type": "application/json",
+microservices-middleware/client/src/api/callApi.js:66:hardcoded string:	            "authToken": authToken
+microservices-middleware/client/src/api/callApi.js:72:hardcoded object:	            const { data, status, statusText } = response;
+microservices-middleware/client/src/api/callApi.js:76:hardcoded string:	            let err = '';
+microservices-middleware/client/src/api/callApi.js:77:hardcoded string:	            const errorstatusCode = get(error, 'response.status');
+microservices-middleware/client/src/api/callApi.js:79:hardcoded number:	            if ([501, 502, 503, 504].indexOf(errorstatusCode) >= 0) {
+microservices-middleware/client/src/api/callApi.js:80:hardcoded object:	                err = `${errorstatusCode} - We are facing some technical issue. Please try again after sometime.`;
+microservices-middleware/client/src/api/callApi.js:87:hardcoded string:	                        get(error, 'response.data.message.message', '')
+microservices-middleware/client/src/api/callApi.js:88:hardcoded string:	                        || get(error, 'response.data.message', '')
+microservices-middleware/client/src/api/callApi.js:89:hardcoded string:	                        || get(error, 'response.data')

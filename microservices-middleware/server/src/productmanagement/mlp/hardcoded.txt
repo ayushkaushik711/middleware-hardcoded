@@ -1,0 +1,102 @@
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:4:hardcoded variable:	const formatMlpLineItems = async (orderDetails) => {
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:5:hardcoded string:	    logger.info({ method: 'formatLineItems' }, 'Checking if Order is eligible to be splitted');
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:6:hardcoded object:	    const { productDetails, orderPunchingCategory } = orderDetails;
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:7:hardcoded array:	    const { students = [] } = productDetails;
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:8:hardcoded object:	    let lineItems = {};
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:11:hardcoded string:	        const items = flattenDeep(map(students, 'items'));
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:13:hardcoded string:	        logger.info("BLC LOGGER : EMI : "+ orderPunchingCategory);
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:14:hardcoded variable:	        const splittedLineItems = await getLineItems(items)
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:15:hardcoded string:	        logger.info("BLC LOGGER : splittedLineItems : "+ splittedLineItems);
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:17:hardcoded object:	        const { parentLineItems, childLineItems } = splittedLineItems || {};
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:18:hardcoded string:	        const orderType = childLineItems.length ? 'split_order' : 'single_order';
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:19:hardcoded string:	        logger.info("%j", { method: 'formatLineItems' }, { orderType, lineItems: JSON.stringify(splittedLineItems) });
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:26:hardcoded string:	        logger.info("%j", { method: 'formatLineItems', message: "Error in splitting line Items" });
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:27:hardcoded string:	        throw new Error(error || "Error in splitting line Items");
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:33:hardcoded variable:	const getLineItems = (items) => {
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:35:hardcoded string:	    let childLineItems = items.filter(course => course.type == "service"); 
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:36:hardcoded string:	    let parentLineItems = items.filter(course => course.type == "product");
+microservices-middleware/server/src/productmanagement/mlp/orderSplit.js:40:hardcoded array:	        childLineItems = []
+microservices-middleware/server/src/productmanagement/mlp/controller.js:6:hardcoded string:	const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/mlp/controller.js:12:hardcoded variable:	const storeProductDetails = async (req, res) => {
+microservices-middleware/server/src/productmanagement/mlp/controller.js:13:hardcoded array:	    let { identifier, productDetails, productCombination, existingProfiles = [] , studentDetails, isPrivilegedUser } = req.body;
+microservices-middleware/server/src/productmanagement/mlp/controller.js:15:hardcoded string:	    const { email } = get(req, 'user', {});
+microservices-middleware/server/src/productmanagement/mlp/controller.js:16:hardcoded string:	    logger.info({ method: 'storeProductDetails', msg: `Storing Product Details for _id:${identifier}` });
+microservices-middleware/server/src/productmanagement/mlp/controller.js:20:hardcoded string:	            throw new BadRequestError(`Parameters - ${identifier ? '' : 'identifier'} ${productDetails ? '' : 'productDetails'} Missing`);
+microservices-middleware/server/src/productmanagement/mlp/controller.js:21:hardcoded variable:	        const draftOrder = await checkIfDraftOrderExists(identifier);
+microservices-middleware/server/src/productmanagement/mlp/controller.js:24:hardcoded object:	            const { isOmsOrder, customerDetails } = draftOrder;
+microservices-middleware/server/src/productmanagement/mlp/controller.js:25:hardcoded object:	            const { productType, student = {} } = productDetails;
+microservices-middleware/server/src/productmanagement/mlp/controller.js:26:hardcoded string:	            const { validity = "" } = student;
+microservices-middleware/server/src/productmanagement/mlp/controller.js:29:hardcoded string:	            if (get(config, 'isStudentProfileAvailable') === "true" && productDetails.students && productDetails.students.length) {
+microservices-middleware/server/src/productmanagement/mlp/controller.js:36:hardcoded array:	            const { formattedProducts = [], formattedStudents = [] } = await attachSiblingDetails(productDetails, productType, draftOrder, studentDetails, isPrivilegedUser);
+microservices-middleware/server/src/productmanagement/mlp/controller.js:37:hardcoded string:	            productDetails["students"] = formattedStudents;
+microservices-middleware/server/src/productmanagement/mlp/controller.js:38:hardcoded string:	            productDetails["products"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/mlp/controller.js:43:hardcoded variable:	            const updateObj = {
+microservices-middleware/server/src/productmanagement/mlp/controller.js:47:hardcoded string:	                orderPunchingCategory: "mlp",
+microservices-middleware/server/src/productmanagement/mlp/controller.js:48:hardcoded string:	                finalPrice: get(productDetails, 'finalPrice', 0),
+microservices-middleware/server/src/productmanagement/mlp/controller.js:49:hardcoded string:	                status: "product_saved",
+microservices-middleware/server/src/productmanagement/mlp/controller.js:50:hardcoded array:	                [`actionDetails.productSavedAt`]: new Date(),
+microservices-middleware/server/src/productmanagement/mlp/controller.js:51:hardcoded array:	                [`actionDetails.productSavedBy`]: email
+microservices-middleware/server/src/productmanagement/mlp/controller.js:54:hardcoded string:	            await DraftOrder.findOneAndUpdate({ '_id': identifier }, {
+microservices-middleware/server/src/productmanagement/mlp/controller.js:57:hardcoded object:	            return res.json({ productDetails });
+microservices-middleware/server/src/productmanagement/mlp/routes.js:6:hardcoded object:	const router = Router({ mergeParams: true });
+microservices-middleware/server/src/productmanagement/mlp/routes.js:9:hardcoded string:	    const baseRoute = '/mlp';
+microservices-middleware/server/src/productmanagement/mlp/routes.js:11:hardcoded object:	    router.route(`${baseRoute}/single`)
+microservices-middleware/server/src/productmanagement/mlp/routes.js:18:hardcoded object:	    router.route(`${baseRoute}/storeProductDetails`)
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:8:hardcoded variable:	const getSingleProduct = async(req, res) => {
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:10:hardcoded string:	    logger.info({ method: 'getSingleProduct' }, { message: "Fetching Single Product for MLP" });
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:12:hardcoded array:	    let skuArray = []
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:13:hardcoded number:	    let skuPrice = 0;
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:15:hardcoded string:	    let { identifier, paymentType = "EMI", productType, productCombination, student, mentoringDetails = [], bhlpCourseDetails = [], } = req.body;
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:19:hardcoded number:	        student = isArray(student) ? student[0] : student
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:20:hardcoded object:	        let { initialClass, board, session, productType } = student;
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:22:hardcoded object:	        let streamingSku = await getStreamingSku ({ initialClass, board })
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:24:hardcoded string:	        skuPrice += parseInt(get(streamingSku, "price"));
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:26:hardcoded object:	        let liveSku = await getLiveSku ({ initialClass, board, session })
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:28:hardcoded string:	        skuPrice += parseInt(get(liveSku, "price"));
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:30:hardcoded array:	        const products = [skuArray];
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:31:hardcoded variable:	        const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:32:hardcoded string:	        student["formValues"] = { ...student };
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:33:hardcoded string:	        student["items"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:35:hardcoded object:	        const skuProductDetails  = { initialClass, maxPrice:skuPrice, minPrice:skuPrice, productCombination }
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:36:hardcoded object:	        const discountDetails = await getDiscountDetails({identifier, productDetails : skuProductDetails});
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:37:hardcoded string:	        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:45:hardcoded string:	            productCombination: 'mini_learning_program',
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:46:hardcoded array:	            students: [student],
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:49:hardcoded number:	                count: 0,
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:50:hardcoded array:	                items: []
+microservices-middleware/server/src/productmanagement/mlp/explorer.js:52:hardcoded array:	            mentoringDetails: [],
+microservices-middleware/server/src/productmanagement/mlp/helper.js:4:hardcoded string:	const { SalesSkuMaster } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/productmanagement/mlp/helper.js:5:hardcoded string:	const { SalesSkuAttribute } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/productmanagement/mlp/helper.js:8:hardcoded object:	const getStreamingSku  = async ({initialClass, board}) => {
+microservices-middleware/server/src/productmanagement/mlp/helper.js:9:hardcoded variable:	    let query = {
+microservices-middleware/server/src/productmanagement/mlp/helper.js:10:hardcoded string:	        status: 'active',
+microservices-middleware/server/src/productmanagement/mlp/helper.js:11:hardcoded string:	        category: "mlp",
+microservices-middleware/server/src/productmanagement/mlp/helper.js:12:hardcoded string:	        validity: '12',
+microservices-middleware/server/src/productmanagement/mlp/helper.js:13:hardcoded string:	        validityType: 'day',
+microservices-middleware/server/src/productmanagement/mlp/helper.js:14:hardcoded string:	        subType: "streaming",
+microservices-middleware/server/src/productmanagement/mlp/helper.js:17:hardcoded string:	    if (["6", "7", "8", "9", "10"].includes(initialClass)) {
+microservices-middleware/server/src/productmanagement/mlp/helper.js:18:hardcoded string:	        query["board"] = board
+microservices-middleware/server/src/productmanagement/mlp/helper.js:20:hardcoded variable:	    const product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/productmanagement/mlp/helper.js:21:hardcoded object:	        where: { ...query },
+microservices-middleware/server/src/productmanagement/mlp/helper.js:28:hardcoded string:	            itemType: 'course',
+microservices-middleware/server/src/productmanagement/mlp/helper.js:29:hardcoded string:	            combinationType: get(product, "category"),
+microservices-middleware/server/src/productmanagement/mlp/helper.js:31:hardcoded string:	            price:  get(product, "basePrice")
+microservices-middleware/server/src/productmanagement/mlp/helper.js:34:hardcoded string:	        const errorMsg = getErrorMsg({ grade: initialClass, board, type: "streaming" });
+microservices-middleware/server/src/productmanagement/mlp/helper.js:39:hardcoded object:	const getLiveSku  = async ({initialClass, board, session}) => {
+microservices-middleware/server/src/productmanagement/mlp/helper.js:40:hardcoded variable:	    let query = {
+microservices-middleware/server/src/productmanagement/mlp/helper.js:41:hardcoded string:	        status: 'active',
+microservices-middleware/server/src/productmanagement/mlp/helper.js:42:hardcoded string:	        category: "mlp",
+microservices-middleware/server/src/productmanagement/mlp/helper.js:43:hardcoded string:	        validity: '12',
+microservices-middleware/server/src/productmanagement/mlp/helper.js:44:hardcoded string:	        validityType: 'day',
+microservices-middleware/server/src/productmanagement/mlp/helper.js:45:hardcoded string:	        subType: "live",
+microservices-middleware/server/src/productmanagement/mlp/helper.js:48:hardcoded string:	    if (["6", "7", "8", "9", "10"].includes(initialClass)) {
+microservices-middleware/server/src/productmanagement/mlp/helper.js:49:hardcoded string:	        query["board"] = board
+microservices-middleware/server/src/productmanagement/mlp/helper.js:52:hardcoded variable:	    const product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/productmanagement/mlp/helper.js:53:hardcoded object:	        where: {...query },
+microservices-middleware/server/src/productmanagement/mlp/helper.js:56:hardcoded object:	            where: { frequency : `${session}` },
+microservices-middleware/server/src/productmanagement/mlp/helper.js:57:hardcoded string:	            as: 'attributes',
+microservices-middleware/server/src/productmanagement/mlp/helper.js:58:hardcoded array:	            attributes: [],
+microservices-middleware/server/src/productmanagement/mlp/helper.js:67:hardcoded string:	            itemType: 'course',
+microservices-middleware/server/src/productmanagement/mlp/helper.js:68:hardcoded string:	            combinationType: get(product, "category"),
+microservices-middleware/server/src/productmanagement/mlp/helper.js:70:hardcoded string:	            price:  get(product, "basePrice")
+microservices-middleware/server/src/productmanagement/mlp/helper.js:73:hardcoded string:	        const errorMsg = getErrorMsg({ grade: initialClass, board, type: "live" });

@@ -1,0 +1,57 @@
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:19:hardcoded object:	                label: `${branch.businessUnit} - ${branch.branch}`
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:26:hardcoded string:	            url: '/api/quotation/config/getCoursesForAutofill',
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:27:hardcoded string:	            method: 'POST',
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:28:hardcoded object:	            body: { businessUnit }
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:30:hardcoded object:	            this.setState({ courses: response.data.courses })
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:32:hardcoded object:	            this.setState({ error });
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:38:hardcoded string:	            url: '/api/quotation/config/getCourseDeatilsForAutofill',
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:39:hardcoded string:	            method: 'POST',
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:40:hardcoded object:	            body: { courseId }
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:42:hardcoded object:	            this.setState({ course: response.data.course })
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:45:hardcoded object:	            this.setState({ error });
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:53:hardcoded object:	        const { productConfig, setAutoFillJson } = this.props
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:54:hardcoded array:	        const { branches = [] } = productConfig
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:55:hardcoded object:	        const { branch: businessUnit, selectedCourseId, course } = this.state
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:56:hardcoded object:	        const branchDetail = find(branches, { businessUnit })
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:73:hardcoded variable:	        const autoFillObj = {
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:74:hardcoded string:	            "academicCarrier": "RCC",
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:75:hardcoded string:	            "batch": "Weekday",
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:76:hardcoded string:	            "board": board === 'CBSE' ? board : 'STB',
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:77:hardcoded string:	            "boardValue": board === 'CBSE' ? "" : board,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:78:hardcoded string:	            "branch": branch,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:79:hardcoded string:	            "businessUnit": businessUnit,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:80:hardcoded string:	            "city": city,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:81:hardcoded string:	            "courseDuration": duration,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:82:hardcoded string:	            "courseId": courseId,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:83:hardcoded string:	            "initialClass": grade,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:84:hardcoded string:	            "integratedBatch": "",
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:85:hardcoded string:	            "isJct": isJct,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:86:hardcoded string:	            "isTablet": tablet,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:87:hardcoded string:	            "selectedCourseId": courseId,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:88:hardcoded string:	            "state": state,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:89:hardcoded string:	            "subCourse": subCourse,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:90:hardcoded string:	            "term": validity,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:91:hardcoded string:	            "typeOfClass": startCase(programType),
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:92:hardcoded string:	            "validity": validity,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:93:hardcoded string:	            "finalClass": "",
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:94:hardcoded string:	            "hasStateBoard": hasStateBoard,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:95:hardcoded string:	            "hasStateBoardDropdown": board === 'CBSE' ? false : true,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:96:hardcoded string:	            "hasJct": hasJct,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:97:hardcoded string:	            "isBranchSelected": true
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:99:hardcoded object:	        this.setState({ autoFillObj: autoFillObj })
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:103:hardcoded string:	        if (name === 'branch') {
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:106:hardcoded string:	        if (name === 'selectedCourseId') {
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:110:hardcoded array:	            [name]: value,
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:115:hardcoded object:	        const { productConfig, setAutoFillJson } = this.props
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:116:hardcoded array:	        const { branches = [] } = productConfig
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:117:hardcoded array:	        const { businessUnits = [], courses = [] } = this.state
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:119:hardcoded variable:	        const fields = [
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:121:hardcoded string:	                type: 'select',
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:122:hardcoded string:	                name: 'branch',
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:123:hardcoded string:	                label: 'Select Branch',
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:127:hardcoded string:	                message: "Please select Branch",
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:130:hardcoded string:	                type: 'select',
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:131:hardcoded string:	                name: 'selectedCourseId',
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:132:hardcoded string:	                label: "Select Course",
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:136:hardcoded string:	                message: "Please Select Course",
+microservices-middleware/client/src/modules/quotation/product/util/AutoFillForm.js:143:hardcoded object:	                    fields={fields}

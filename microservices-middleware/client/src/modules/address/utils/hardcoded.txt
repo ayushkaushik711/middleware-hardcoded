@@ -1,0 +1,520 @@
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:1:hardcoded variable:	const countryArray = [
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:3:hardcoded string:	    "code": "+7840",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:4:hardcoded string:	    "name": "Abkhazia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:7:hardcoded string:	    "code": "+93",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:8:hardcoded string:	    "name": "Afghanistan"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:11:hardcoded string:	    "code": "+355",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:12:hardcoded string:	    "name": "Albania"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:15:hardcoded string:	    "code": "+213",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:16:hardcoded string:	    "name": "Algeria"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:19:hardcoded string:	    "code": "+1684",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:20:hardcoded string:	    "name": "American Samoa"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:23:hardcoded string:	    "code": "+376",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:24:hardcoded string:	    "name": "Andorra"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:27:hardcoded string:	    "code": "+244",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:28:hardcoded string:	    "name": "Angola"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:31:hardcoded string:	    "code": "+1264",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:32:hardcoded string:	    "name": "Anguilla"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:35:hardcoded string:	    "code": "+54",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:36:hardcoded string:	    "name": "Argentina"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:39:hardcoded string:	    "code": "+374",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:40:hardcoded string:	    "name": "Armenia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:43:hardcoded string:	    "code": "+297",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:44:hardcoded string:	    "name": "Aruba"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:47:hardcoded string:	    "code": "+247",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:48:hardcoded string:	    "name": "Ascension"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:51:hardcoded string:	    "code": "+43",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:52:hardcoded string:	    "name": "Austria"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:55:hardcoded string:	    "code": "+61",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:56:hardcoded string:	    "name": "Australia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:59:hardcoded string:	    "code": "+994",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:60:hardcoded string:	    "name": "Azerbaijan"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:63:hardcoded string:	    "code": "+1242",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:64:hardcoded string:	    "name": "Bahamas"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:67:hardcoded string:	    "code": "+973",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:68:hardcoded string:	    "name": "Bahrain"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:71:hardcoded string:	    "code": "+880",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:72:hardcoded string:	    "name": "Bangladesh"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:75:hardcoded string:	    "code": "+1246",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:76:hardcoded string:	    "name": "Barbados"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:79:hardcoded string:	    "code": "+1268",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:80:hardcoded string:	    "name": "Barbuda"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:83:hardcoded string:	    "code": "+375",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:84:hardcoded string:	    "name": "Belarus"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:87:hardcoded string:	    "code": "+32",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:88:hardcoded string:	    "name": "Belgium"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:91:hardcoded string:	    "code": "+501",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:92:hardcoded string:	    "name": "Belize"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:95:hardcoded string:	    "code": "+229",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:96:hardcoded string:	    "name": "Benin"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:99:hardcoded string:	    "code": "+1441",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:100:hardcoded string:	    "name": "Bermuda"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:103:hardcoded string:	    "code": "+975",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:104:hardcoded string:	    "name": "Bhutan"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:107:hardcoded string:	    "code": "+591",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:108:hardcoded string:	    "name": "Bolivia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:111:hardcoded string:	    "code": "+387",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:112:hardcoded string:	    "name": "Bosnia and Herzegovina"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:115:hardcoded string:	    "code": "+267",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:116:hardcoded string:	    "name": "Botswana"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:119:hardcoded string:	    "code": "+55",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:120:hardcoded string:	    "name": "Brazil"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:123:hardcoded string:	    "code": "+246",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:124:hardcoded string:	    "name": "British Indian Ocean Territory"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:127:hardcoded string:	    "code": "+1284",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:128:hardcoded string:	    "name": "British Virgin Islands"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:131:hardcoded string:	    "code": "+673",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:132:hardcoded string:	    "name": "Brunei"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:135:hardcoded string:	    "code": "+359",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:136:hardcoded string:	    "name": "Bulgaria"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:139:hardcoded string:	    "code": "+226",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:140:hardcoded string:	    "name": "Burkina Faso"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:143:hardcoded string:	    "code": "+257",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:144:hardcoded string:	    "name": "Burundi"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:147:hardcoded string:	    "code": "+855",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:148:hardcoded string:	    "name": "Cambodia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:151:hardcoded string:	    "code": "+237",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:152:hardcoded string:	    "name": "Cameroon"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:155:hardcoded string:	    "code": "+238",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:156:hardcoded string:	    "name": "Cape Verde"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:159:hardcoded string:	    "code": "+345",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:160:hardcoded string:	    "name": "Cayman Islands"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:163:hardcoded string:	    "code": "+236",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:164:hardcoded string:	    "name": "Central African Republic"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:167:hardcoded string:	    "code": "+235",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:168:hardcoded string:	    "name": "Chad"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:171:hardcoded string:	    "code": "+86",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:172:hardcoded string:	    "name": "China"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:175:hardcoded string:	    "code": "+57",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:176:hardcoded string:	    "name": "Colombia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:179:hardcoded string:	    "code": "+269",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:180:hardcoded string:	    "name": "Comoros"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:183:hardcoded string:	    "code": "+242",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:184:hardcoded string:	    "name": "Congo"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:187:hardcoded string:	    "code": "+243",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:188:hardcoded string:	    "name": "Congo, Dem. Rep. of (Zaire)"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:191:hardcoded string:	    "code": "+682",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:192:hardcoded string:	    "name": "Cook Islands"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:195:hardcoded string:	    "code": "+506",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:196:hardcoded string:	    "name": "Costa Rica"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:199:hardcoded string:	    "code": "+385",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:200:hardcoded string:	    "name": "Croatia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:203:hardcoded string:	    "code": "+53",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:204:hardcoded string:	    "name": "Cuba"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:207:hardcoded string:	    "code": "+537",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:208:hardcoded string:	    "name": "Cyprus"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:211:hardcoded string:	    "code": "+420",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:212:hardcoded string:	    "name": "Czech Republic"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:215:hardcoded string:	    "code": "+45",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:216:hardcoded string:	    "name": "Denmark"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:219:hardcoded string:	    "code": "+253",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:220:hardcoded string:	    "name": "Djibouti"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:223:hardcoded string:	    "code": "+1767",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:224:hardcoded string:	    "name": "Dominica"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:227:hardcoded string:	    "code": "+1809",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:228:hardcoded string:	    "name": "Dominican Republic"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:231:hardcoded string:	    "code": "+56",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:232:hardcoded string:	    "name": "Easter Island"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:235:hardcoded string:	    "code": "+593",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:236:hardcoded string:	    "name": "Ecuador"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:239:hardcoded string:	    "code": "+20",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:240:hardcoded string:	    "name": "Egypt"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:243:hardcoded string:	    "code": "+503",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:244:hardcoded string:	    "name": "El Salvador"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:247:hardcoded string:	    "code": "+240",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:248:hardcoded string:	    "name": "Equatorial Guinea"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:251:hardcoded string:	    "code": "+291",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:252:hardcoded string:	    "name": "Eritrea"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:255:hardcoded string:	    "code": "+372",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:256:hardcoded string:	    "name": "Estonia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:259:hardcoded string:	    "code": "+251",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:260:hardcoded string:	    "name": "Ethiopia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:263:hardcoded string:	    "code": "+298",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:264:hardcoded string:	    "name": "Faroe Islands"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:267:hardcoded string:	    "code": "+679",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:268:hardcoded string:	    "name": "Fiji"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:271:hardcoded string:	    "code": "+358",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:272:hardcoded string:	    "name": "Finland"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:275:hardcoded string:	    "code": "+33",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:276:hardcoded string:	    "name": "France"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:279:hardcoded string:	    "code": "+594",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:280:hardcoded string:	    "name": "French Guiana"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:283:hardcoded string:	    "code": "+689",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:284:hardcoded string:	    "name": "French Polynesia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:287:hardcoded string:	    "code": "+241",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:288:hardcoded string:	    "name": "Gabon"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:291:hardcoded string:	    "code": "+220",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:292:hardcoded string:	    "name": "Gambia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:295:hardcoded string:	    "code": "+995",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:296:hardcoded string:	    "name": "Georgia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:299:hardcoded string:	    "code": "+49",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:300:hardcoded string:	    "name": "Germany"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:303:hardcoded string:	    "code": "+233",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:304:hardcoded string:	    "name": "Ghana"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:307:hardcoded string:	    "code": "+350",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:308:hardcoded string:	    "name": "Gibraltar"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:311:hardcoded string:	    "code": "+30",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:312:hardcoded string:	    "name": "Greece"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:315:hardcoded string:	    "code": "+299",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:316:hardcoded string:	    "name": "Greenland"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:319:hardcoded string:	    "code": "+1473",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:320:hardcoded string:	    "name": "Grenada"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:323:hardcoded string:	    "code": "+590",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:324:hardcoded string:	    "name": "Guadeloupe"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:327:hardcoded string:	    "code": "+1671",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:328:hardcoded string:	    "name": "Guam"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:331:hardcoded string:	    "code": "+502",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:332:hardcoded string:	    "name": "Guatemala"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:335:hardcoded string:	    "code": "+224",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:336:hardcoded string:	    "name": "Guinea"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:339:hardcoded string:	    "code": "+245",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:340:hardcoded string:	    "name": "Guinea-Bissau"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:343:hardcoded string:	    "code": "+595",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:344:hardcoded string:	    "name": "Guyana"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:347:hardcoded string:	    "code": "+509",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:348:hardcoded string:	    "name": "Haiti"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:351:hardcoded string:	    "code": "+504",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:352:hardcoded string:	    "name": "Honduras"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:355:hardcoded string:	    "code": "+852",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:356:hardcoded string:	    "name": "Hong Kong SAR China"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:359:hardcoded string:	    "code": "+36",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:360:hardcoded string:	    "name": "Hungary"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:363:hardcoded string:	    "code": "+354",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:364:hardcoded string:	    "name": "Iceland"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:367:hardcoded string:	    "code": "+91",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:368:hardcoded string:	    "name": "India"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:371:hardcoded string:	    "code": "+62",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:372:hardcoded string:	    "name": "Indonesia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:375:hardcoded string:	    "code": "+98",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:376:hardcoded string:	    "name": "Iran"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:379:hardcoded string:	    "code": "+964",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:380:hardcoded string:	    "name": "Iraq"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:383:hardcoded string:	    "code": "+353",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:384:hardcoded string:	    "name": "Ireland"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:387:hardcoded string:	    "code": "+972",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:388:hardcoded string:	    "name": "Israel"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:391:hardcoded string:	    "code": "+39",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:392:hardcoded string:	    "name": "Italy"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:395:hardcoded string:	    "code": "+225",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:396:hardcoded string:	    "name": "Ivory Coast"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:399:hardcoded string:	    "code": "+1876",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:400:hardcoded string:	    "name": "Jamaica"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:403:hardcoded string:	    "code": "+81",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:404:hardcoded string:	    "name": "Japan"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:407:hardcoded string:	    "code": "+962",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:408:hardcoded string:	    "name": "Jordan"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:411:hardcoded string:	    "code": "+77",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:412:hardcoded string:	    "name": "Kazakhstan"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:415:hardcoded string:	    "code": "+254",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:416:hardcoded string:	    "name": "Kenya"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:419:hardcoded string:	    "code": "+686",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:420:hardcoded string:	    "name": "Kiribati"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:423:hardcoded string:	    "code": "+965",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:424:hardcoded string:	    "name": "Kuwait"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:427:hardcoded string:	    "code": "+996",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:428:hardcoded string:	    "name": "Kyrgyzstan"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:431:hardcoded string:	    "code": "+856",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:432:hardcoded string:	    "name": "Laos"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:435:hardcoded string:	    "code": "+371",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:436:hardcoded string:	    "name": "Latvia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:439:hardcoded string:	    "code": "+961",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:440:hardcoded string:	    "name": "Lebanon"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:443:hardcoded string:	    "code": "+266",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:444:hardcoded string:	    "name": "Lesotho"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:447:hardcoded string:	    "code": "+231",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:448:hardcoded string:	    "name": "Liberia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:451:hardcoded string:	    "code": "+218",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:452:hardcoded string:	    "name": "Libya"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:455:hardcoded string:	    "code": "+423",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:456:hardcoded string:	    "name": "Liechtenstein"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:459:hardcoded string:	    "code": "+370",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:460:hardcoded string:	    "name": "Lithuania"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:463:hardcoded string:	    "code": "+352",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:464:hardcoded string:	    "name": "Luxembourg"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:467:hardcoded string:	    "code": "+853",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:468:hardcoded string:	    "name": "Macau SAR China"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:471:hardcoded string:	    "code": "+389",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:472:hardcoded string:	    "name": "Macedonia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:475:hardcoded string:	    "code": "+261",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:476:hardcoded string:	    "name": "Madagascar"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:479:hardcoded string:	    "code": "+265",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:480:hardcoded string:	    "name": "Malawi"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:483:hardcoded string:	    "code": "+60",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:484:hardcoded string:	    "name": "Malaysia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:487:hardcoded string:	    "code": "+960",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:488:hardcoded string:	    "name": "Maldives"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:491:hardcoded string:	    "code": "+223",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:492:hardcoded string:	    "name": "Mali"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:495:hardcoded string:	    "code": "+356",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:496:hardcoded string:	    "name": "Malta"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:499:hardcoded string:	    "code": "+692",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:500:hardcoded string:	    "name": "Marshall Islands"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:503:hardcoded string:	    "code": "+596",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:504:hardcoded string:	    "name": "Martinique"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:507:hardcoded string:	    "code": "+222",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:508:hardcoded string:	    "name": "Mauritania"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:511:hardcoded string:	    "code": "+230",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:512:hardcoded string:	    "name": "Mauritius"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:515:hardcoded string:	    "code": "+52",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:516:hardcoded string:	    "name": "Mexico"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:519:hardcoded string:	    "code": "+691",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:520:hardcoded string:	    "name": "Micronesia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:523:hardcoded string:	    "code": "+1808",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:524:hardcoded string:	    "name": "Midway Island"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:527:hardcoded string:	    "code": "+373",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:528:hardcoded string:	    "name": "Moldova"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:531:hardcoded string:	    "code": "+377",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:532:hardcoded string:	    "name": "Monaco"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:535:hardcoded string:	    "code": "+976",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:536:hardcoded string:	    "name": "Mongolia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:539:hardcoded string:	    "code": "+382",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:540:hardcoded string:	    "name": "Montenegro"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:543:hardcoded string:	    "code": "+1664",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:544:hardcoded string:	    "name": "Montserrat"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:547:hardcoded string:	    "code": "+212",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:548:hardcoded string:	    "name": "Morocco"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:551:hardcoded string:	    "code": "+95",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:552:hardcoded string:	    "name": "Myanmar"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:555:hardcoded string:	    "code": "+264",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:556:hardcoded string:	    "name": "Namibia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:559:hardcoded string:	    "code": "+674",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:560:hardcoded string:	    "name": "Nauru"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:563:hardcoded string:	    "code": "+977",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:564:hardcoded string:	    "name": "Nepal"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:567:hardcoded string:	    "code": "+31",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:568:hardcoded string:	    "name": "Netherlands"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:571:hardcoded string:	    "code": "+599",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:572:hardcoded string:	    "name": "Netherlands Antilles"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:575:hardcoded string:	    "code": "+1869",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:576:hardcoded string:	    "name": "Nevis"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:579:hardcoded string:	    "code": "+687",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:580:hardcoded string:	    "name": "New Caledonia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:583:hardcoded string:	    "code": "+64",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:584:hardcoded string:	    "name": "New Zealand"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:587:hardcoded string:	    "code": "+505",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:588:hardcoded string:	    "name": "Nicaragua"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:591:hardcoded string:	    "code": "+227",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:592:hardcoded string:	    "name": "Niger"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:595:hardcoded string:	    "code": "+234",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:596:hardcoded string:	    "name": "Nigeria"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:599:hardcoded string:	    "code": "+683",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:600:hardcoded string:	    "name": "Niue"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:603:hardcoded string:	    "code": "+672",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:604:hardcoded string:	    "name": "Norfolk Island"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:607:hardcoded string:	    "code": "+850",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:608:hardcoded string:	    "name": "North Korea"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:611:hardcoded string:	    "code": "+1670",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:612:hardcoded string:	    "name": "Northern Mariana Islands"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:615:hardcoded string:	    "code": "+47",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:616:hardcoded string:	    "name": "Norway"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:619:hardcoded string:	    "code": "+968",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:620:hardcoded string:	    "name": "Oman"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:623:hardcoded string:	    "code": "+92",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:624:hardcoded string:	    "name": "Pakistan"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:627:hardcoded string:	    "code": "+680",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:628:hardcoded string:	    "name": "Palau"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:631:hardcoded string:	    "code": "+970",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:632:hardcoded string:	    "name": "Palestinian Territory"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:635:hardcoded string:	    "code": "+507",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:636:hardcoded string:	    "name": "Panama"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:639:hardcoded string:	    "code": "+675",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:640:hardcoded string:	    "name": "Papua New Guinea"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:643:hardcoded string:	    "code": "+51",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:644:hardcoded string:	    "name": "Peru"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:647:hardcoded string:	    "code": "+63",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:648:hardcoded string:	    "name": "Philippines"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:651:hardcoded string:	    "code": "+48",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:652:hardcoded string:	    "name": "Poland"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:655:hardcoded string:	    "code": "+351",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:656:hardcoded string:	    "name": "Portugal"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:659:hardcoded string:	    "code": "+1787",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:660:hardcoded string:	    "name": "Puerto Rico"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:663:hardcoded string:	    "code": "+974",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:664:hardcoded string:	    "name": "Qatar"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:667:hardcoded string:	    "code": "+262",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:668:hardcoded string:	    "name": "Reunion"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:671:hardcoded string:	    "code": "+40",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:672:hardcoded string:	    "name": "Romania"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:675:hardcoded string:	    "code": "+7",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:676:hardcoded string:	    "name": "Russia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:679:hardcoded string:	    "code": "+250",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:680:hardcoded string:	    "name": "Rwanda"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:683:hardcoded string:	    "code": "+685",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:684:hardcoded string:	    "name": "Samoa"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:687:hardcoded string:	    "code": "+378",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:688:hardcoded string:	    "name": "San Marino"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:691:hardcoded string:	    "code": "+966",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:692:hardcoded string:	    "name": "Saudi Arabia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:695:hardcoded string:	    "code": "+221",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:696:hardcoded string:	    "name": "Senegal"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:699:hardcoded string:	    "code": "+381",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:700:hardcoded string:	    "name": "Serbia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:703:hardcoded string:	    "code": "+248",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:704:hardcoded string:	    "name": "Seychelles"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:707:hardcoded string:	    "code": "+232",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:708:hardcoded string:	    "name": "Sierra Leone"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:711:hardcoded string:	    "code": "+65",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:712:hardcoded string:	    "name": "Singapore"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:715:hardcoded string:	    "code": "+421",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:716:hardcoded string:	    "name": "Slovakia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:719:hardcoded string:	    "code": "+386",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:720:hardcoded string:	    "name": "Slovenia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:723:hardcoded string:	    "code": "+677",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:724:hardcoded string:	    "name": "Solomon Islands"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:727:hardcoded string:	    "code": "+27",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:728:hardcoded string:	    "name": "South Africa"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:731:hardcoded string:	    "code": "+500",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:732:hardcoded string:	    "name": "South Georgia and the South Sandwich Islands"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:735:hardcoded string:	    "code": "+82",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:736:hardcoded string:	    "name": "South Korea"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:739:hardcoded string:	    "code": "+34",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:740:hardcoded string:	    "name": "Spain"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:743:hardcoded string:	    "code": "+94",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:744:hardcoded string:	    "name": "Sri Lanka"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:747:hardcoded string:	    "code": "+249",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:748:hardcoded string:	    "name": "Sudan"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:751:hardcoded string:	    "code": "+597",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:752:hardcoded string:	    "name": "Suriname"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:755:hardcoded string:	    "code": "+268",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:756:hardcoded string:	    "name": "Swaziland"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:759:hardcoded string:	    "code": "+46",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:760:hardcoded string:	    "name": "Sweden"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:763:hardcoded string:	    "code": "+41",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:764:hardcoded string:	    "name": "Switzerland"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:767:hardcoded string:	    "code": "+963",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:768:hardcoded string:	    "name": "Syria"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:771:hardcoded string:	    "code": "+886",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:772:hardcoded string:	    "name": "Taiwan"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:775:hardcoded string:	    "code": "+992",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:776:hardcoded string:	    "name": "Tajikistan"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:779:hardcoded string:	    "code": "+66",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:780:hardcoded string:	    "name": "Thailand"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:783:hardcoded string:	    "code": "+670",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:784:hardcoded string:	    "name": "Timor Leste"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:787:hardcoded string:	    "code": "+228",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:788:hardcoded string:	    "name": "Togo"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:791:hardcoded string:	    "code": "+690",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:792:hardcoded string:	    "name": "Tokelau"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:795:hardcoded string:	    "code": "+676",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:796:hardcoded string:	    "name": "Tonga"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:799:hardcoded string:	    "code": "+1868",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:800:hardcoded string:	    "name": "Trinidad and Tobago"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:803:hardcoded string:	    "code": "+216",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:804:hardcoded string:	    "name": "Tunisia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:807:hardcoded string:	    "code": "+90",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:808:hardcoded string:	    "name": "Turkey"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:811:hardcoded string:	    "code": "+993",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:812:hardcoded string:	    "name": "Turkmenistan"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:815:hardcoded string:	    "code": "+1649",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:816:hardcoded string:	    "name": "Turks and Caicos Islands"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:819:hardcoded string:	    "code": "+688",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:820:hardcoded string:	    "name": "Tuvalu"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:823:hardcoded string:	    "code": "+1340",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:824:hardcoded string:	    "name": "U.S. Virgin Islands"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:827:hardcoded string:	    "code": "+256",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:828:hardcoded string:	    "name": "Uganda"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:831:hardcoded string:	    "code": "+380",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:832:hardcoded string:	    "name": "Ukraine"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:835:hardcoded string:	    "code": "+971",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:836:hardcoded string:	    "name": "United Arab Emirates"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:839:hardcoded string:	    "code": "+44",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:840:hardcoded string:	    "name": "United Kingdom"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:843:hardcoded string:	    "code": "+1",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:844:hardcoded string:	    "name": "United States"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:847:hardcoded string:	    "code": "+598",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:848:hardcoded string:	    "name": "Uruguay"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:851:hardcoded string:	    "code": "+998",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:852:hardcoded string:	    "name": "Uzbekistan"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:855:hardcoded string:	    "code": "+678",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:856:hardcoded string:	    "name": "Vanuatu"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:859:hardcoded string:	    "code": "+58",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:860:hardcoded string:	    "name": "Venezuela"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:863:hardcoded string:	    "code": "+84",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:864:hardcoded string:	    "name": "Vietnam"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:867:hardcoded string:	    "code": "+681",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:868:hardcoded string:	    "name": "Wallis and Futuna"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:871:hardcoded string:	    "code": "+967",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:872:hardcoded string:	    "name": "Yemen"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:875:hardcoded string:	    "code": "+260",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:876:hardcoded string:	    "name": "Zambia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:879:hardcoded string:	    "code": "+255",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:880:hardcoded string:	    "name": "Zanzibar"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:883:hardcoded string:	    "code": "+263",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:884:hardcoded string:	    "name": "Zimbabwe"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:887:hardcoded string:	    "code": "",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:888:hardcoded string:	    "name": "Canada"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:892:hardcoded variable:	const middleEastCountryArray = [
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:894:hardcoded string:	    "code": "+971",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:895:hardcoded string:	    "name": "United Arab Emirates"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:898:hardcoded string:	    "code": "+965",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:899:hardcoded string:	    "name": "Kuwait"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:902:hardcoded string:	    "code": "+968",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:903:hardcoded string:	    "name": "Oman"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:906:hardcoded string:	    "code": "+966",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:907:hardcoded string:	    "name": "Saudi Arabia"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:910:hardcoded string:	    "code": "+974",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:911:hardcoded string:	    "name": "Qatar"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:914:hardcoded string:	    "code": "+973",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:915:hardcoded string:	    "name": "Bahrain"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:919:hardcoded variable:	const stateArray = [
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:920:hardcoded string:	  { "label": "Andaman and Nicobar Islands", "value": "Andaman and Nicobar Islands" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:921:hardcoded string:	  { "label": "Andhra Pradesh", "value": "Andhra Pradesh" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:922:hardcoded string:	  { "label": "Arunachal Pradesh", "value": "Arunachal Pradesh" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:923:hardcoded string:	  { "label": "Assam", "value": "Assam" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:924:hardcoded string:	  { "label": "Bihar", "value": "Bihar" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:925:hardcoded string:	  { "label": "Chandigarh", "value": "Chandigarh" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:926:hardcoded string:	  { "label": "Chhattisgarh", "value": "Chhattisgarh" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:927:hardcoded string:	  { "label": "Dadra and Nagar Haveli", "value": "Dadra and Nagar Haveli" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:928:hardcoded string:	  { "label": "Daman and Diu", "value": "Daman and Diu" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:929:hardcoded string:	  { "label": "Delhi", "value": "Delhi (DL)" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:930:hardcoded string:	  { "label": "Goa", "value": "Goa" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:931:hardcoded string:	  { "label": "Gujarat", "value": "Gujarat" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:932:hardcoded string:	  { "label": "Haryana", "value": "Haryana" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:933:hardcoded string:	  { "label": "Himachal Pradesh", "value": "Himachal Pradesh" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:934:hardcoded string:	  { "label": "Jammu and Kashmir", "value": "Jammu and Kashmir" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:935:hardcoded string:	  { "label": "Jharkhand", "value": "Jharkhand" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:936:hardcoded string:	  { "label": "Karnataka", "value": "Karnataka (KA)" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:937:hardcoded string:	  { "label": "Kerala", "value": "Kerala (KL)" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:938:hardcoded string:	  { "label": "Lakshadweep", "value": "Lakshadweep" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:939:hardcoded string:	  { "label": "Madhya Pradesh", "value": "Madhya Pradesh" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:940:hardcoded string:	  { "label": "Maharashtra", "value": "Maharashtra (MH)" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:941:hardcoded string:	  { "label": "Manipur", "value": "Manipur" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:942:hardcoded string:	  { "label": "Meghalaya", "value": "Meghalaya" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:943:hardcoded string:	  { "label": "Mizoram", "value": "Mizoram" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:944:hardcoded string:	  { "label": "Nagaland", "value": "Nagaland" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:945:hardcoded string:	  { "label": "Odisha", "value": "Odisha" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:946:hardcoded string:	  { "label": "Puducherry", "value": "Puducherry" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:947:hardcoded string:	  { "label": "Punjab", "value": "Punjab" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:948:hardcoded string:	  { "label": "Rajasthan", "value": "Rajasthan" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:949:hardcoded string:	  { "label": "Sikkim", "value": "Sikkim" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:950:hardcoded string:	  { "label": "Tamil Nadu", "value": "Tamil Nadu (TN)" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:951:hardcoded string:	  { "label": "Telangana", "value": "Telangana (TS)" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:952:hardcoded string:	  { "label": "Tripura", "value": "Tripura" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:953:hardcoded string:	  { "label": "Uttar Pradesh", "value": "Uttar Pradesh (UP)" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:954:hardcoded string:	  { "label": "Uttarakhand", "value": "Uttarakhand" },
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:955:hardcoded string:	  { "label": "West Bengal", "value": "West Bengal (WB)" }
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:959:hardcoded array:	const getOptions = (array = []) => {
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:960:hardcoded variable:	  const optionsArray = array.map((opt) => {
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:969:hardcoded array:	const getStateOptions = (array = []) => {
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:970:hardcoded variable:	  const optionsArray = array.map((opt) => {
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:979:hardcoded array:	const getCodeOptions = (array = []) => {
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:980:hardcoded variable:	  const optionsArray = array.map((opt) => {
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:989:hardcoded variable:	export const REPUNCH_ORDER_TYPE = [
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:990:hardcoded string:	  "REPUNCH_ORDER_TYPE"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:993:hardcoded variable:	export const AAKASH_CRP_ORDER = [
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:994:hardcoded string:	  "AAKASH_CRP_ORDER"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:997:hardcoded variable:	export const ELIGIBLE_UPGRADE_LIST = [
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:998:hardcoded string:	  "RENEWAL",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:999:hardcoded string:	  "RENEWAL_ORDER",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:1000:hardcoded string:	  "TRIAL_PACK_TO_BYJUS_CLASSES",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:1001:hardcoded string:	  "TLP_TO_BYJUS_MATH_ORDER",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:1002:hardcoded string:	  "TLP_TO_HLP_ORDER",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:1003:hardcoded string:	  "TLP_TO_BLC_ORDER",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:1004:hardcoded string:	  "AAKASH_LIVE_UPGRADE",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:1005:hardcoded string:	  "AAKASH_NEO_UPGRADE",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:1006:hardcoded string:	  "BYJUS_CLASSES_TO_BLC_ORDER",
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:1007:hardcoded string:	  "AAKASH_CRP_HYBRID_UPGRADE"
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:1010:hardcoded variable:	export const middleEastCountryList = getOptions(middleEastCountryArray);
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:1011:hardcoded variable:	export const countryList = getOptions(countryArray);
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:1012:hardcoded variable:	export const stateList = stateArray;
+microservices-middleware/client/src/modules/address/utils/addressConfig.js:1013:hardcoded variable:	export const countryCodeList = getCodeOptions(countryArray)

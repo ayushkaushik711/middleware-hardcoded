@@ -1,0 +1,16 @@
+microservices-middleware/server/src/usermanagement/userRoutes.js:4:hardcoded object:	const router = Router({ mergeParams: true });
+microservices-middleware/server/src/usermanagement/userRoutes.js:7:hardcoded string:	    const baseRoute = '/user';
+microservices-middleware/server/src/usermanagement/userRoutes.js:9:hardcoded object:	    router.route(`${baseRoute}/getReportees`)
+microservices-middleware/server/src/usermanagement/userController.js:3:hardcoded variable:	const getReporters = async (req, res) => {
+microservices-middleware/server/src/usermanagement/userController.js:4:hardcoded object:	    const { email } = req.user;
+microservices-middleware/server/src/usermanagement/userController.js:6:hardcoded variable:	        const reporteeList = await getReporteesList(email);
+microservices-middleware/server/src/usermanagement/userController.js:7:hardcoded number:	        res.status(200).json(reporteeList);
+microservices-middleware/server/src/usermanagement/userController.js:9:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" })
+microservices-middleware/server/src/usermanagement/userController.js:13:hardcoded variable:	const getReporteesList = async (email) => {
+microservices-middleware/server/src/usermanagement/userController.js:14:hardcoded variable:	    const uri = `usermanagement/employee/getReporters`;
+microservices-middleware/server/src/usermanagement/userController.js:16:hardcoded variable:	        const payload = {
+microservices-middleware/server/src/usermanagement/userController.js:18:hardcoded number:	            page: 1,
+microservices-middleware/server/src/usermanagement/userController.js:19:hardcoded number:	            limit: 10000,
+microservices-middleware/server/src/usermanagement/userController.js:20:hardcoded object:	            filter: {}
+microservices-middleware/server/src/usermanagement/userController.js:22:hardcoded string:	        const list = await callNucleusApi(uri, "POST", payload, true);
+microservices-middleware/server/src/usermanagement/userController.js:25:hardcoded string:	        throw new Error ({ message: error.message || "Something went wrong. Please try again later" })

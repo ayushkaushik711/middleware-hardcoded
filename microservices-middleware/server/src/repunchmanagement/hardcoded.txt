@@ -1,0 +1,50 @@
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:3:hardcoded string:	const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:5:hardcoded variable:	const saveRepunchDetails = async (req, res) => {
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:7:hardcoded object:	        const { identifier, details } = req.body;
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:8:hardcoded string:	        if (!identifier || !details) throw new BadRequestError("Parameter missing");
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:9:hardcoded string:	        logger.info({ method: "saveRepunchDetails", identifier }, req.body);
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:11:hardcoded variable:	        const draftOrder = await DraftOrder.findById(identifier).lean();
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:12:hardcoded string:	        if (!draftOrder) throw new BadRequestError("No such Identifier exists in the system");
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:14:hardcoded variable:	        const updatedDoc = await DraftOrder.findByIdAndUpdate(identifier,
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:17:hardcoded string:	                    "repunchOrderDetails.primaryReason": details.repunchDetails.primaryReason,
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:18:hardcoded string:	                    "repunchOrderDetails.secondaryReason": details.repunchDetails.secondaryReason,
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:19:hardcoded string:	                    "repunchOrderDetails.duplicateReason": details.repunchDetails.duplicateReason,
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:20:hardcoded string:	                    status: "repunch_saved"
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:23:hardcoded object:	            { new: true }
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:25:hardcoded number:	        return res.status(200).json(updatedDoc);
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:27:hardcoded string:	        logger.error({ method: 'saveRepunchDetails', error }, 'Error occured');
+microservices-middleware/server/src/repunchmanagement/repunchContoller.js:28:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:4:hardcoded string:	const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:16:hardcoded variable:	const saveSalesAndCustomerDetails = async (req, res) => {
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:18:hardcoded string:	        let { originalOrderId, salesDetails, customerDetails, leadDetails, identifier, orderPunchingType = "REPUNCH_ORDER_TYPE", omsConfig = {}, loggedInUserDetails = {} } = req.body;
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:19:hardcoded string:	        const { email } = get(req, 'user', {});
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:21:hardcoded string:	            throw new BadRequestError("Parameter missing");
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:25:hardcoded variable:	        const salesDetailsValidation = await validateSalesDetails(salesDetails, orderPunchingType, leadDetails);
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:27:hardcoded number:	            return res.status(400).json(salesDetailsValidation);
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:30:hardcoded variable:	        const lockedErrors = await checkIfCashbackLockedWithDiffDraftOrder(customerDetails);
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:32:hardcoded number:	            return res.status(400).json({ lockedErrors });
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:35:hardcoded string:	        const orderApproval = isDevEnv && await getOrderApprovalStatus(salesDetails) || "not_applicable";
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:37:hardcoded object:	        let draftOrder = {};
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:38:hardcoded string:	        let orgFormattedName = "byjus"
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:40:hardcoded variable:	        const updatedSalesDetails = await getUpdatedSalesDetails(salesDetails, omsConfig, loggedInUserDetails);
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:42:hardcoded string:	        if (get(updatedSalesDetails, 'isOmsOrderEligible')) {
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:46:hardcoded string:	        leadDetails["isLeadMobileUsed"] = get(leadDetails, "studentMobile", "").split(",")[0] === get(customerDetails, "parentMobileNo", "");
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:47:hardcoded string:	        const isEligibleForEvalution = await getLeadEvaluationDetails(leadDetails, get(salesDetails, "directSalesBy", ""));
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:48:hardcoded string:	        leadDetails["isEligibleForEvalution"] = isEligibleForEvalution;
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:49:hardcoded string:	        leadDetails["loggedInRole"] = get(leadDetails, "orderPunchedByRole", "");
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:51:hardcoded object:	        const {customerId, customerType} = await getDraftCustomerId(customerDetails, leadDetails);
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:58:hardcoded variable:	        const comments = getSalesComments(email,updatedSalesDetails?.directSalesBy,updatedSalesDetails?.salesAppointmentBy);
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:60:hardcoded variable:	        const updateData = {
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:61:hardcoded string:	            isOmsOrder: get(updatedSalesDetails, 'isOmsOrderEligible', false),//to track oms orders in Draft order worker
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:65:hardcoded string:	            status: "details_saved",
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:67:hardcoded array:	            [`actionDetails.detailsSavedAt`]: new Date(),
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:68:hardcoded array:	            [`actionDetails.detailsSavedBy`]: email,
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:70:hardcoded string:	            orgFormattedName: "byjus",
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:74:hardcoded string:	            source: 'kart',
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:80:hardcoded object:	            await DraftOrder.findOneAndUpdate({ _id: identifier }, {
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:87:hardcoded variable:	            const newOrder = new DraftOrder({
+microservices-middleware/server/src/repunchmanagement/repunchSaleAndCustomerDetailsController.js:102:hardcoded string:	        logger.error({ method: 'getSalesPersonDetails', error }, 'Error occured');
+microservices-middleware/server/src/repunchmanagement/repunchRoutes.js:5:hardcoded object:	const router = Router({ mergeParams: true });
+microservices-middleware/server/src/repunchmanagement/repunchRoutes.js:8:hardcoded string:	    const baseRoute = '/repunch';
+microservices-middleware/server/src/repunchmanagement/repunchRoutes.js:10:hardcoded object:	    router.route(`${baseRoute}/saveRepunchDetails`)
+microservices-middleware/server/src/repunchmanagement/repunchRoutes.js:15:hardcoded object:	    router.route(`${baseRoute}/saveSalesAndCustomerDetails`)

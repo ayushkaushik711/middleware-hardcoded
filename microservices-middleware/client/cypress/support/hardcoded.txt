@@ -1,0 +1,10 @@
+microservices-middleware/client/cypress/support/index.js:10:hardcoded string:	// 'supportFile' configuration option.
+microservices-middleware/client/cypress/support/index.js:13:hardcoded URL:	// https://on.cypress.io/configuration
+microservices-middleware/client/cypress/support/index.js:16:hardcoded number:	// Import commands.js using ES2015 syntax:
+microservices-middleware/client/cypress/support/index.js:17:hardcoded string:	import './commands'
+microservices-middleware/client/cypress/support/index.js:22:hardcoded string:	Cypress.on('window:before:load', win => {
+microservices-middleware/client/cypress/support/commands.js:8:hardcoded URL:	// https://on.cypress.io/custom-commands
+microservices-middleware/client/cypress/support/commands.js:13:hardcoded string:	// Cypress.Commands.add("login", (email, password) => { ... })
+microservices-middleware/client/cypress/support/commands.js:17:hardcoded string:	// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
+microservices-middleware/client/cypress/support/commands.js:21:hardcoded string:	// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
+microservices-middleware/client/cypress/support/commands.js:25:hardcoded string:	// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })

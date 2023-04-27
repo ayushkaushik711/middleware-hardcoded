@@ -1,0 +1,29 @@
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:8:hardcoded variable:	const InfoWrapper = (props) => {
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:10:hardcoded object:	    const { type, message, description, descriptionBody, children, showIcon } = props;
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:11:hardcoded string:	    let formattedDesc = description ? ((typeof description === 'string') ? description : '') : "";
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:12:hardcoded string:	        formattedDesc = formattedDesc ? formattedDesc.split('\n') : [];
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:14:hardcoded variable:	    const iconMap = {
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:15:hardcoded string:	        info: {header: <p style={{marginInline:"0.6rem"}}>{"Important Note"}</p>, icon: <i class="fa fa-info-circle" aria-hidden="true"/>},
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:16:hardcoded string:	        error: {header: <p style={{marginInline:"0.6rem"}}>{"Important Note"}</p>, icon: <i className="fa fa-warning text-red"  aria-hidden="true"/>},
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:17:hardcoded string:	        warning: {header: <p style={{marginInline:"0.6rem"}}>{"Important Note"}</p>, icon: <i className="fa fa-warning"  aria-hidden="true"/>} 
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:23:hardcoded string:	                {get(iconMap, `${type}.icon`, "Info")}
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:24:hardcoded string:	                {get(iconMap, `${type}.header`, "Info")}
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:27:hardcoded object:	                message={message}
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:30:hardcoded string:	                        return <div style={{ overflowWrap: 'break-word' }} key={index}>{msg}</div>
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:33:hardcoded string:	                type={type || 'info'}
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:34:hardcoded object:	                showIcon={showIcon}
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:35:hardcoded string:	                style={{ width: "100%", background: "#FFFFFF"}}
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/index.js:37:hardcoded object:	                {children}
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/Styles.js:1:hardcoded string:	import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/Styles.js:3:hardcoded variable:	export const Header = styled.div`
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/Styles.js:4:hardcoded number:	    width: 100%;
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/Styles.js:5:hardcoded number:	    height: 40px;
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/Styles.js:6:hardcoded number:	    background: #F5F3FF;
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/Styles.js:7:hardcoded number:	    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/Styles.js:8:hardcoded number:	    border-radius: 4px 4px 0px 0px;
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/Styles.js:11:hardcoded number:	    font-weight: 500;
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/Styles.js:12:hardcoded number:	    font-size: 16px;
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/Styles.js:13:hardcoded number:	    line-height: 21px;
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/Styles.js:14:hardcoded number:	    color: #6A44CF;
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/Styles.js:21:hardcoded number:	    padding: 0.5rem;
+microservices-middleware/client/src/modules/kartbeta/components/InfoWrapper/Styles.js:22:hardcoded number:	    padding-inline: 1rem;

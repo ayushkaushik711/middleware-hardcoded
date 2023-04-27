@@ -1,0 +1,38 @@
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:6:hardcoded string:	const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:11:hardcoded variable:	const getTynkerCourseSku = async (details) => {
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:12:hardcoded object:	    let { initialClass, finalClass, validity } = details
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:14:hardcoded number:	    finalClass = (ELIGIBLE_TYNKER_GRADES.includes(finalClass)) ? finalClass : K3_MAX_GRADE;
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:15:hardcoded object:	    const tynkerValidity = getValidity({ initialClass, finalClass, validity })
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:16:hardcoded variable:	    let grade = initialClass ;
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:20:hardcoded string:	        status: 'active',
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:21:hardcoded string:	        category: 'tynker_jr',
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:22:hardcoded string:	        orgId : 'ORG-1',
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:26:hardcoded variable:	    const product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:35:hardcoded string:	            itemType: get(product, "subType", null),
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:40:hardcoded object:	        const errorMsg = getErrorMsg({ initialClass, finalClass, validity, type });
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:45:hardcoded variable:	const getTynkerUlCourseSku = async (details) => {
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:46:hardcoded object:	    let { validity, initialClass, finalClass, grade } = details
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:48:hardcoded number:	    finalClass = (ELIGIBLE_TYNKER_UL_GRADES.includes(finalClass)) ? finalClass : K3_MAX_GRADE;
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:49:hardcoded object:	    const tynkerValidity = getValidity({ initialClass, finalClass, validity })
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:54:hardcoded string:	        status: 'active',
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:55:hardcoded string:	        category: 'tynker_ul',
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:56:hardcoded string:	        orgId : 'ORG-1',
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:58:hardcoded string:	        programId: 'TYULUCAS0001'
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:61:hardcoded variable:	    let product = await getSalesSku(query)
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:66:hardcoded string:	            itemType: get(product, "subType", null),
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:71:hardcoded object:	        const errorMsg = getErrorMsg({ initialClass, finalClass, validity, type });
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:76:hardcoded object:	const getValidity = ({ initialClass, finalClass, validity }) => {
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:82:hardcoded variable:	const getErrorMsg = function (queryDetails) {
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:83:hardcoded object:	    const { initialClass, finalClass, validity, type, course, state } = queryDetails || {};
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:86:hardcoded string:	    ${course ? `Course: ${course}` : ''}
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:87:hardcoded string:	    ${initialClass ? `initialClass: ${initialClass}` : ''}
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:88:hardcoded string:	    ${finalClass ? `finalClass: ${finalClass}` : ''}
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:89:hardcoded string:	    ${state ? `State: ${state}` : ''}
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:90:hardcoded string:	    ${type ? `Type: ${type}` : ''}
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:91:hardcoded string:	    ${validity ? `Validity: ${validity}` : ''}
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:95:hardcoded variable:	const getTynkerSku = async (details) => {
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:96:hardcoded object:	    let { validity, tablet, initialClass, finalClass } = details;
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:97:hardcoded variable:	    let tynkerSku = null;
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:98:hardcoded variable:	    const currentYear = new Date().getFullYear();
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:99:hardcoded number:	    if (D4_1_1_TABLET.includes(tablet) && ELIGIBLE_TYNKER_GRADES.includes(initialClass) && ![currentYear].includes(validity)) {
+microservices-middleware/server/src/productmanagement/tynkerManagement/tynkerHelper.js:100:hardcoded object:	        tynkerSku = await getTynkerCourseSku({ validity, initialClass, finalClass });

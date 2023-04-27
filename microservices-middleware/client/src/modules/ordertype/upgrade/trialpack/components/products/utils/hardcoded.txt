@@ -1,0 +1,2 @@
+microservices-middleware/client/src/modules/ordertype/upgrade/trialpack/components/products/utils/TrialPackUpgradeProductConstant.js:1:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_TRIAL_PACK_BYJUS_CLASSES = ["single", "combo"];
+microservices-middleware/client/src/modules/ordertype/upgrade/trialpack/components/products/utils/TrialPackUpgradeProductConstant.js:2:hardcoded string:	export const ELIGIBLE_PRODUCT_COMBINATION_FOR_TRIAL_PACK_BYJUS_CLASSES_PLUS_TLP = ["combo"];

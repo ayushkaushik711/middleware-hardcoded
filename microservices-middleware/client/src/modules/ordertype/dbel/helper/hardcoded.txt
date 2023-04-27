@@ -1,0 +1,16 @@
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:5:hardcoded variable:	export const getGradeOptions = (selectedBoardConfig) => {
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:6:hardcoded array:	    const { classes = [] } = selectedBoardConfig;
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:8:hardcoded string:	    let classOptions = cloneDeep(classes.map((opt) => get(opt, 'value')));
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:9:hardcoded number:	    classOptions = classOptions.filter(ele => parseInt(ele.value) >= -1 && parseInt(ele.value) <= 3)
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:14:hardcoded variable:	export const filterFinalClass = (productDetails) => {
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:15:hardcoded object:	    const { classes, selectedInitialClass } = productDetails
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:16:hardcoded number:	    let allowedMaxClass = parseInt(selectedInitialClass) + 3;
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:17:hardcoded variable:	    let filteredClass = classes.filter(finalClass => (finalClass.value >= parseInt(selectedInitialClass) && finalClass.value <= allowedMaxClass));
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:18:hardcoded number:	    filteredClass = filteredClass.filter(finalClass => (finalClass.value <= 3));
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:22:hardcoded variable:	export const getProfileOptions = (existingProfiles) => {
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:23:hardcoded number:	    if (existingProfiles && existingProfiles.length > 0) {
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:24:hardcoded variable:	        let newExistingProfile = existingProfiles;
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:25:hardcoded string:	        newExistingProfile = newExistingProfile.find(profile => profile.value === "newProfile");
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:27:hardcoded string:	            existingProfiles.push({ "label": "New Profile", value: "newProfile" })
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:34:hardcoded variable:	export const getValidityOptions = () => {
+microservices-middleware/client/src/modules/ordertype/dbel/helper/productHelper.js:35:hardcoded number:	    let validityOption = [{ label: getCurrentAcademicYear() + 2, value: getCurrentAcademicYear() + 2 }]

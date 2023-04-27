@@ -1,0 +1,165 @@
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:19:hardcoded variable:	const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:20:hardcoded string:	    authDetails: get(state, 'auth.details', {}),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:21:hardcoded string:	    leadDetails: get(state, 'auth.leadDetails', {}),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:22:hardcoded string:	    directSalesBy: get(state, 'details.directSalesBy', ""),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:23:hardcoded string:	    customerDetails: get(state, 'details.customerDetails', {}),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:24:hardcoded string:	    identifier: get(state, 'details.identifier', null),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:25:hardcoded string:	    loading: get(state, 'details.loading'),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:26:hardcoded string:	    error: get(state, 'details.error'),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:27:hardcoded string:	    selectedPriceAndScholarship: get(state, 'auth.selectedPriceAndScholarship')
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:30:hardcoded variable:	const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:52:hardcoded object:	            customerDetails: {},
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:53:hardcoded object:	            addressDetails: {},
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:54:hardcoded array:	            lockedErrors: [],
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:57:hardcoded array:	            directSalesPersons: [],
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:60:hardcoded string:	            parentCountryCode: "+91",
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:66:hardcoded object:	        let filter = {};
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:69:hardcoded string:	            filter["username"] = { "$regex": searchText.replace(/[+]/g, "\\+"), "$options": 'i' };
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:72:hardcoded object:	        this.setState({ salesPersonLoading: true, error: null });
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:74:hardcoded string:	            url: '/api/quotation/getSalesPersonDetails',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:75:hardcoded string:	            method: 'POST',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:76:hardcoded object:	            body: { filter }
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:78:hardcoded string:	            const docs = get(response, 'data.docs', []);
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:79:hardcoded variable:	            const result = this.getFormattedSalesPersonList(docs);
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:84:hardcoded number:	            if(result.length === 1) {
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:86:hardcoded number:	                    salesDoneByEmail: result[0]?.value,
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:93:hardcoded object:	            this.setState({ salesPersonLoading: false, error: JSON.stringify(error) });
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:99:hardcoded array:	            this.setState({ [field]: result });
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:111:hardcoded string:	                label: get(sp, 'username'),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:112:hardcoded string:	                // value: get(sp, 'userId')
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:113:hardcoded string:	                value: get(sp, 'username')
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:119:hardcoded object:	        let { customerDetails } = this.state;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:120:hardcoded string:	        customerDetails[`${name}`] = get(option, 'label');
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:121:hardcoded string:	        customerDetails[`${name}Id`] = get(option, 'value');
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:123:hardcoded object:	        this.setState({ customerDetails, salesDoneByEmail: value });
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:133:hardcoded array:	        let rule = []
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:134:hardcoded string:	        if (countryCode === '+91') {
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:136:hardcoded number:	                pattern: new RegExp(/^(\+\d{1,3}[- ]?)?\d{10}$/), message: `Enter 10 digit valid Mobile No`
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:143:hardcoded array:	        this.setState({ [name]: value });
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:148:hardcoded string:	        let { primaryMobileNo = "" } = customerDetails;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:149:hardcoded string:	        const parentMobileData = primaryMobileNo.split('-');
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:151:hardcoded string:	            parentCountryCode: primaryMobileNo ? parentMobileData[0] : "+91",
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:152:hardcoded number:	            parentMobileNo: parentMobileData[1]
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:157:hardcoded object:	        const { customerDetails, parentCountryCode, salesPersonLoading,directSalesPersons } = this.state;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:158:hardcoded string:	        let customerMobileNo = get(customerDetails, 'studentMobile') || "";
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:159:hardcoded string:	        customerMobileNo = customerMobileNo.split("-");
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:160:hardcoded number:	        customerMobileNo = customerMobileNo.length === 1 ? customerMobileNo[0] : customerMobileNo[1]
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:161:hardcoded object:	        const { authDetails } = this.props;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:162:hardcoded string:	        const loggedInEmailId = get(authDetails, 'loggedInEmailId', "");
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:163:hardcoded string:	        const role = get(authDetails, 'user.role', "");
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:164:hardcoded variable:	        const isRoleBda = USER_ROLES_TO_FREEZE_SALESDONEBY.includes(role);
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:165:hardcoded string:	        const userPermissions = get(this.props, "authDetails.user.permissions", [])
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:166:hardcoded variable:	        const isPrivilegedUser = userPermissions.includes(leadquaredRelatedPermissions.allownMultipleOrderOnSameProspectId);
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:168:hardcoded variable:	        const fields = [
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:170:hardcoded string:	                type: 'select',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:171:hardcoded string:	                name: 'directSalesBy',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:172:hardcoded string:	                label: 'Sales Done By',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:175:hardcoded string:	                value: isRoleBda ? loggedInEmailId : get(customerDetails, 'directSalesBy'),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:176:hardcoded number:	                onSearch: (debounce(this.onSearchUser, 1000)),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:181:hardcoded string:	                type: 'text',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:182:hardcoded string:	                name: 'parentName',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:183:hardcoded string:	                label: 'Parent Name',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:186:hardcoded array:	                    pattern: new RegExp(/^[a-zA-Z\s\.]+$/), message: `Enter valid name`
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:188:hardcoded string:	                value: get(customerDetails, 'parentName', ''),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:190:hardcoded string:	                type: 'text',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:191:hardcoded string:	                name: 'studentName',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:192:hardcoded string:	                label: 'Student Name',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:195:hardcoded array:	                    pattern: new RegExp(/^[a-zA-Z\s\.]+$/), message: `Enter valid name`
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:197:hardcoded string:	                value: get(customerDetails, 'studentName', '')
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:199:hardcoded string:	                type: 'inputgroup',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:200:hardcoded string:	                name: 'parentMobileGroup',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:201:hardcoded string:	                label: 'Primary Contact No.',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:202:hardcoded number:	                gutter: 1,
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:205:hardcoded string:	                        type: 'select',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:206:hardcoded string:	                        name: 'parentCountryCode',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:208:hardcoded string:	                        message: "Please enter country code",
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:211:hardcoded number:	                        span: 10,
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:212:hardcoded string:	                        value: get(customerDetails, 'parentCountryCode'),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:216:hardcoded string:	                        type: 'maskedMobile',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:217:hardcoded string:	                        name: 'parentMobileNo',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:219:hardcoded string:	                        message: "Please enter Contact No.",
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:220:hardcoded string:	                        value: get(customerDetails, 'parentMobileNo') || customerMobileNo,
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:221:hardcoded number:	                        span: 14,
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:229:hardcoded string:	                type: 'maskedMail',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:230:hardcoded string:	                name: 'email',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:231:hardcoded string:	                label: 'Email ID',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:233:hardcoded string:	                value: get(customerDetails, 'email'),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:235:hardcoded string:	                    type: 'email', message: 'Enter valid Email',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:237:hardcoded number:	                    pattern: new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i), message: `Enter valid email`
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:240:hardcoded string:	                    transform: (value) => value.replace(/\s/g, '')
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:249:hardcoded array:	            [name]: value
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:254:hardcoded string:	        let { directSalesBy = "", customerDetails = {}, addressDetails = {} } = this.props;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:262:hardcoded object:	        // const { loading, error } = nextProps;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:264:hardcoded object:	        // (!isEqual(loading, this.props.loading)) && this.setState({ loading });
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:265:hardcoded object:	        // (!isEqual(error, this.props.error)) && this.setState({ error });
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:269:hardcoded string:	        let { directSalesBy = "", customerDetails = {}, leadDetails = {}, selectedPriceAndScholarship } = this.props;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:272:hardcoded object:	        //     const { customerDetails: priceAndScholarshipCustomerDetails = {} } = selectedPriceAndScholarship
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:278:hardcoded string:	        // let updatedStudentName = "";
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:280:hardcoded object:	        //     const { customerDetails = {} } = selectedPriceAndScholarship
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:281:hardcoded string:	        //     updatedStudentName = !isEmpty(customerDetails) ? get(customerDetails, "studentName") : get(leadDetails, "studentName")
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:283:hardcoded string:	        //     updatedStudentName = get(customerDetails, "studentName") ?  get(customerDetails, "studentName") : get(leadDetails, "studentName")
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:286:hardcoded object:	        let customerContactDetails = {};
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:290:hardcoded string:	            email: get(leadDetails, 'studentEmail', ''),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:298:hardcoded string:	            dob: get(customerDetails, 'dob') ? new Date(get(customerDetails, 'dob')) : new Date(),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:309:hardcoded object:	        const { dobCheck } = this.state
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:310:hardcoded variable:	        const salesAndCustomerDetails = await this.salesAndCustomerDetailsForm.getFormValues();
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:321:hardcoded variable:	        const details = await this.validateForms();
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:324:hardcoded object:	            let { salesAndCustomerDetails } = details
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:325:hardcoded object:	            let { parentMobileNo } = salesAndCustomerDetails
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:326:hardcoded string:	            if (parentMobileNo.includes("-") || parentMobileNo.includes(".")) {
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:328:hardcoded string:	                    error: "Primary Contact No should not contain any special character."
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:332:hardcoded variable:	                const isSuccess = await this.storeDetailsInDb(salesAndCustomerDetails)
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:341:hardcoded variable:	        let isSuccess = false;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:342:hardcoded object:	        const { identifier, leadDetails, selectedPriceAndScholarship } = this.props;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:343:hardcoded object:	        const { parentCountryCode: selectedCountryCode, dob } = this.state;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:345:hardcoded string:	        let parentCountryCode = get(salesAndCustomerDetails, 'parentCountryCode') || selectedCountryCode
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:346:hardcoded string:	        const parentMobileNo = get(salesAndCustomerDetails, 'parentMobileNo', '')
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:347:hardcoded object:	        salesAndCustomerDetails.primaryMobileNo = `${parentCountryCode}-${parentMobileNo}`
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:350:hardcoded variable:	        const payload = {
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:358:hardcoded object:	        this.setState({ loading: true, error: null });
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:360:hardcoded string:	            url: '/api/quotation/saveSalesAndCustomerDetails',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:361:hardcoded string:	            method: 'POST',
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:364:hardcoded string:	            const { identifier, directSalesBy, customerDetails, partnerIdentifierDetails } = get(response, 'data');
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:368:hardcoded object:	            this.setState({ loading: false });
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:371:hardcoded object:	            // this.setState({ error }, () => {
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:372:hardcoded object:	            //     this.setState({ loading: false, error: JSON.stringify(error) });
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:383:hardcoded object:	        const { history } = this.props;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:384:hardcoded string:	        const url = `/quotation/product${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:390:hardcoded string:	            ["dob"]: new Date(value),
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:391:hardcoded string:	            ["dobCheck"]: false,
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:392:hardcoded string:	            ["open"]:false
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:404:hardcoded string:	        return "XXXX/XX/XX";
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:407:hardcoded object:	        let { loading, error, customerDetails, dob, dobCheck, salesDoneByEmail,open } = this.state;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:408:hardcoded variable:	        const salesAndCustomerFormFields = this.getSalesAndCustomerFormFields();
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:409:hardcoded string:	        const parentMob = get(customerDetails, 'parentMobileNo', get(customerDetails, 'studentMobile'))?.split("-")?.pop();
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:410:hardcoded object:	        const { Item } = Form;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:411:hardcoded variable:	        const isDev=window.isDevEnv;
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:413:hardcoded variable:	        const defaultFormItemLayout = {
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:415:hardcoded number:	                xs: { span: 24 },
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:416:hardcoded number:	                sm: { span: 24 },
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:417:hardcoded number:	                lg: { span: 8 },
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:420:hardcoded number:	                xs: { span: 24 },
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:421:hardcoded number:	                sm: { span: 16 },
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:422:hardcoded number:	                lg: { span: 10 },
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:429:hardcoded string:	                    step="sales"
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:430:hardcoded object:	                    onClickNextBtn={this.onClickNextBtn}
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:431:hardcoded object:	                    loading={loading}
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:432:hardcoded object:	                    error={error}
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:436:hardcoded string:	                            <div className="card m-2" style={{ height: "100%" }}>
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:437:hardcoded string:	                                <div className='card-header bg-quotation text-white'>  Sales Person & Customer details</div>
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:439:hardcoded object:	                                    fields={salesAndCustomerFormFields}
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:440:hardcoded object:	                                    wrappedComponentRef={(inst) => this.salesAndCustomerDetailsForm = inst}
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:441:hardcoded object:	                                    initialValues={{...customerDetails,directSalesBy:salesDoneByEmail, parentMobileNo: parentMob}}
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:443:hardcoded string:	                                <div className="cardborder-0" style={{ margin: 10 }}>
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:444:hardcoded string:	                                    <div className="card-body">
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:445:hardcoded string:	                                        <Form layout="vertical" {...defaultFormItemLayout} colon={true}>
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:447:hardcoded string:	                                                label={<div><span style={{ "color": "red" }}> *</span><span> DOB :&nbsp;</span></div>}
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:450:hardcoded object:	                                                open={open}
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:451:hardcoded string:	                                                style={{ visibility: "hidden", width: 0 }}
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:452:hardcoded object:	                                                onOpenChange={open => this.setState({open:open})}
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:453:hardcoded string:	                                                defaultValue={moment(dob, 'YYYY/MM/DD')}
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:454:hardcoded string:	                                                format='YYYY/MM/DD'
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:455:hardcoded object:	                                                onChange={(val) => this.onChangeStudentDOB(val)}
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:457:hardcoded object:	                                            <Button onClick={() => this.setState({open:!open})}>
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:458:hardcoded string:	                                                {dobCheck ?"Enter Date" : this.getMaskedDOB() }
+microservices-middleware/client/src/modules/quotation/details/QuotationSalesAndCustomePage.js:461:hardcoded string:	                                            {dobCheck && <span style={{ "color": "red" }}>Please enter DOB.</span>}

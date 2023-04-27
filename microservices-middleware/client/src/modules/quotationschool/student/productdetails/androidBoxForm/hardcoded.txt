@@ -1,0 +1,51 @@
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:6:hardcoded variable:	const ProductFormAndroidBox = (props) => {
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:8:hardcoded variable:	  const productDetail=props.productDetail;
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:11:hardcoded variable:	  const toggle = () => {
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:15:hardcoded variable:	  const productFormRef = useRef();
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:16:hardcoded array:	  const [productFormValues, setProductFormValues] = useState({
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:17:hardcoded string:	    selectSize: "",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:18:hardcoded string:	    selectQuantity: "",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:19:hardcoded string:	    poNumber: "",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:22:hardcoded variable:	  const handleChanges = (value, name, params) => {
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:23:hardcoded object:	    const { data } = params;
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:26:hardcoded string:	      [name]: typeof params === "object" ? (data ? data : value) : value,
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:30:hardcoded variable:	  const onAddItem = async () => {
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:31:hardcoded number:	    if (!Object.values(productFormValues).some((value) => value.length === 0)) {
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:33:hardcoded variable:	      const skuName=productFormValues.selectSize.label
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:34:hardcoded array:	      const skuId=productDetail[skuName];
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:37:hardcoded variable:	      const payload = {
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:38:hardcoded string:	        category: "android_box",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:39:hardcoded string:	        subType: "android_box",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:47:hardcoded variable:	      const response = await callApi({
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:48:hardcoded string:	        method:"POST",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:57:hardcoded string:	            "0": "Android Box",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:58:hardcoded string:	            "1": productFormValues.selectQuantity,
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:59:hardcoded string:	            "2": " ",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:60:hardcoded string:	            "3": " ",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:61:hardcoded string:	            "4": " ",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:62:hardcoded string:	            "5": response.data.maxPrice,
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:63:hardcoded string:	            "6": response.data.minPrice,
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:68:hardcoded string:	        return [...prev,"android_box"]
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:74:hardcoded variable:	  const getFormDetails = () => {
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:75:hardcoded variable:	    const formDetails = [
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:77:hardcoded string:	        type: "select",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:78:hardcoded string:	        name: "selectSize",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:79:hardcoded string:	        label: "Select Size",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:81:hardcoded string:	          { label: "BYJU'S Learning Android Box", value: "androidbox" },
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:87:hardcoded string:	        type: "number",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:88:hardcoded string:	        name: "selectQuantity",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:89:hardcoded string:	        label: "Quantity",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:91:hardcoded string:	        min: "1",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:92:hardcoded string:	        max: "10",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:96:hardcoded string:	        type: "text",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:97:hardcoded string:	        name: "poNumber",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:98:hardcoded string:	        label: "PO Number",
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:107:hardcoded object:	          ref={productFormRef}
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:108:hardcoded object:	          initialValues={productFormValues}
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:109:hardcoded object:	          fields={formDetails}
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:115:hardcoded object:	    <Modal isOpen={props.modal} toggle={toggle}>
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:116:hardcoded object:	      <ModalHeader toggle={toggle}>Android Box</ModalHeader>
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:117:hardcoded object:	      <ModalBody>{getFormDetails()}</ModalBody>
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:118:hardcoded string:	      <ModalFooter style={{ display: "flex", justifyContent: "space-between" }}>
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:119:hardcoded string:	        <Button color="primary" onClick={toggle}>
+microservices-middleware/client/src/modules/quotationschool/student/productdetails/androidBoxForm/index.js:122:hardcoded string:	        <Button color="primary" onClick={onAddItem}>

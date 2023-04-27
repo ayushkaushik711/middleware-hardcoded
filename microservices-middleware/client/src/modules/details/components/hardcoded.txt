@@ -1,0 +1,30 @@
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:12:hardcoded array:	            cashbacks: [],
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:18:hardcoded object:	        const { cashbacks, isStudentCashback } = this.state;
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:19:hardcoded variable:	        const redeemableCashbacks = cashbacks.filter(ele => ele.isRedeemable);
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:20:hardcoded variable:	        const invalidCashbacks = cashbacks.filter(cb => !cb.isRedeemable);
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:27:hardcoded string:	                            {cb.remark === "details_missing" &&
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:28:hardcoded object:	                                <p key={index}>
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:29:hardcoded string:	                                    {cb.contact}: Cashback available but can't be availed as {" "}
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:33:hardcoded object:	                            {/* else show generic message */}
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:34:hardcoded string:	                            {cb.remark !== "details_missing" &&
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:35:hardcoded object:	                                <p key={index}>{cb.contact}: Cashback available but can't be availed as <b>{cb.reason}</b></p>}
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:43:hardcoded number:	                        <Col md={6}>
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:44:hardcoded string:	                            <img src={cashbackImage} className="" style={{ width: '150%', height: '100%', margin: '-30%' }} alt="wallet cashback" />
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:46:hardcoded number:	                        <Col md={12} >
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:48:hardcoded object:	                                redeemableCashbacks.map((cb, index) => <p key={index}>{cb.contact}: Available cashback code {cb.cashbackCode}</p>)
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:58:hardcoded object:	                        <p key={index}>{cb.contact} has cashback. </p>
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:70:hardcoded array:	        let { cashbacks = [] } = this.props;
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:71:hardcoded variable:	        const parentCashbacks = cashbacks.filter(cb => cb.isParentMobileNo);
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:79:hardcoded string:	            const unauthorizedCashback = cashbacks.find(cb => cb.remark === "unauthorized");
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:80:hardcoded object:	            this.setState({ cashbacks, isAllowed: isEmpty(unauthorizedCashback), isStudentCashback: false });
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:82:hardcoded object:	            this.setState({ cashbacks, isAllowed: true, isStudentCashback: true });
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:87:hardcoded object:	        const { visible, onClickCancel, onClickConfirm } = this.props;
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:88:hardcoded object:	        const { isAllowed } = this.state;
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:92:hardcoded string:	                title="Review Cashback Codes"
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:93:hardcoded object:	                visible={visible}
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:94:hardcoded object:	                onOk={onClickConfirm}
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:95:hardcoded string:	                okText="Accept"
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:96:hardcoded object:	                onCancel={onClickCancel}
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:97:hardcoded number:	                zIndex={0}
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:98:hardcoded object:	                okButtonProps={{ disabled: !isAllowed }}>
+microservices-middleware/client/src/modules/details/components/CashbackConfirmationModal.js:99:hardcoded object:	                {this.getCashbackDetails()}

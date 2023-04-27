@@ -1,0 +1,82 @@
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:8:hardcoded array:	    salesPrograms=[]
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:10:hardcoded object:	  const {course, subCourse} = courseDetails || {};
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:11:hardcoded array:	  const [formValues, setFormValues] = useState({
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:12:hardcoded string:	    "online": "",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:13:hardcoded string:	    "offline": "",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:14:hardcoded string:	    "crp": ""
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:16:hardcoded array:	  const [disabledOnline, setDisabledOnline] = useState(false);
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:17:hardcoded array:	  const [disabledOffline, setDisabledOffline] = useState(false);
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:18:hardcoded array:	  const [onlineList, setOnlineList] = useState([]);
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:19:hardcoded array:	  const [offlineList, setOfflineList] = useState([]);
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:22:hardcoded string:	    const onlineProgram = salesPrograms.filter((item)=>item.mol=='online');
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:23:hardcoded string:	    const offlineProgram = salesPrograms.filter((item)=>item.mol=='offline');
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:26:hardcoded array:	  }, [salesPrograms]);
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:28:hardcoded string:	  const crpProgram = salesPrograms.filter((item)=>item.mol=='crp');
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:29:hardcoded string:	  const attributeLabel = `${get(course, "label", "")} ${get(subCourse, "label", "")}`;
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:31:hardcoded variable:	  const handleOnChange = async (event) => {
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:32:hardcoded variable:	    const name = event.target.name;
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:33:hardcoded variable:	    const value = event.target.value;
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:34:hardcoded string:	    if (name === "online") {
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:35:hardcoded variable:	      const selectedProgram = salesPrograms.find((item)=>item.spId==value);
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:36:hardcoded array:	      const programList = get(selectedProgram, `spBundle`, []);
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:37:hardcoded string:	      const offlineProg = programList.find((item) => get(item, "secondarySalesProgram.mol") === "offline");
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:40:hardcoded string:	        offline: get(offlineProg, "secondarySalesProgram.spId", ""),
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:41:hardcoded array:	        [name]: value
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:44:hardcoded string:	    else if (name === "crp") {
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:45:hardcoded variable:	      const selectedProgram = salesPrograms.find((item)=>item.spId==value);
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:46:hardcoded array:	      const programList = get(selectedProgram, `spBundle`, []);
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:47:hardcoded string:	      const offlineProg = programList.find((item) => get(item, "secondarySalesProgram.mol") === "offline");
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:48:hardcoded string:	      const onlineProg = programList.find((item) => get(item, "secondarySalesProgram.mol") === "online");
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:54:hardcoded string:	        offline: get(offlineProg, "secondarySalesProgram.spId", ""),
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:55:hardcoded string:	        online: get(onlineProg, "secondarySalesProgram.spId", ""),
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:56:hardcoded array:	        [name]: value
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:60:hardcoded array:	        [name]: value
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:66:hardcoded string:	    <tr style={{ background: "#FFFFFF", border: "none"}}>
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:67:hardcoded string:	      <td style={{ border: "none"}}>Course <span style={{color: "#EA7648"}}>{startCase(attributeLabel)} </span></td>
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:68:hardcoded string:	      <td style={{ border: "none"}}>
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:70:hardcoded string:	          type="select"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:71:hardcoded string:	          aria-label="Default select example"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:72:hardcoded object:	          onChange={handleOnChange}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:73:hardcoded string:	          name="offline"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:74:hardcoded string:	          value={get(formValues, "offline")}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:75:hardcoded object:	          disabled={disabledOffline}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:77:hardcoded string:	            background: "#ECE9FC",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:78:hardcoded string:	            fontFamily: "unset",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:79:hardcoded string:	            fontStyle: "normal",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:80:hardcoded string:	            fontWeight: "500",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:81:hardcoded string:	            fontSize: "14px",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:82:hardcoded string:	            lineHeight: "21px",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:83:hardcoded string:	            color: "#7644D4",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:84:hardcoded string:	            width: "90%"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:89:hardcoded object:	            return <option value={item.spId}>{upperCase(item.name)}</option>;
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:93:hardcoded string:	      <td style={{ border: "none"}}>
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:95:hardcoded string:	          type="select"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:96:hardcoded string:	          aria-label="Default select example"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:97:hardcoded object:	          onChange={handleOnChange}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:98:hardcoded string:	          name="online"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:99:hardcoded string:	          value={get(formValues, "online")}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:100:hardcoded object:	          disabled={disabledOnline}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:102:hardcoded string:	            background: "#ECE9FC",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:103:hardcoded string:	            fontFamily: "unset",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:104:hardcoded string:	            fontStyle: "normal",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:105:hardcoded string:	            fontWeight: "500",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:106:hardcoded string:	            fontSize: "14px",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:107:hardcoded string:	            lineHeight: "21px",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:108:hardcoded string:	            color: "#7644D4",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:109:hardcoded string:	            width: "90%"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:114:hardcoded object:	            return <option value={item.spId}>{startCase(item.name)}</option>;
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:118:hardcoded string:	      <td style={{ border: "none"}}>
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:120:hardcoded string:	          type="select"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:121:hardcoded string:	          aria-label="Default select example"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:122:hardcoded object:	          onChange={handleOnChange}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:123:hardcoded string:	          value={get(formValues, "crp")}
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:124:hardcoded string:	          name="crp"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:126:hardcoded string:	            background: "#ECE9FC",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:127:hardcoded string:	            fontFamily: "unset",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:128:hardcoded string:	            fontStyle: "normal",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:129:hardcoded string:	            fontWeight: "500",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:130:hardcoded string:	            fontSize: "14px",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:131:hardcoded string:	            lineHeight: "21px",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:132:hardcoded string:	            color: "#7644D4",
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:133:hardcoded string:	            width: "90%"
+microservices-middleware/client/src/modules/kartbeta/product/Competetive/Row/index.js:138:hardcoded object:	            return <option value={item.spId}>{upperCase(item.name)}</option>;

@@ -1,0 +1,61 @@
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:4:hardcoded string:	const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:12:hardcoded object:	 * @param {*} req 
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:13:hardcoded object:	 * @param {*} res 
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:15:hardcoded variable:	const getUserProfileDetails = async (req, res) => {
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:17:hardcoded string:	        logger.info({ method: 'getUserProfileDetails' }, req.body);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:18:hardcoded string:	        const { primaryNumber, secondaryNumber = "", orderId = "" } = req.body;
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:19:hardcoded string:	        if (!primaryNumber) throw new Error('mobile number is missing. User mobile number is required to get user profile');
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:20:hardcoded object:	        const result = await getStudentProfileFromPremiumAccount({ primaryNumber, orderId });
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:21:hardcoded number:	        return res.status(200).json(result);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:23:hardcoded string:	        logger.error({ method: 'getUserProfileDetails', error }, 'Error occured');
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:24:hardcoded string:	        if (error && error.message.indexOf("No premium account for Mobile number or OrderId") >= 0) {
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:25:hardcoded number:	            return res.status(200).json([]);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:27:hardcoded string:	            return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:32:hardcoded variable:	const getTodProfiles = async (req, res) => {
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:34:hardcoded string:	        logger.info({ method: 'getTodProfiles' }, req.body);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:35:hardcoded string:	        const { primaryNumber, orderId = "", neoInfo } = req.body;
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:36:hardcoded string:	        if (!primaryNumber) throw new Error('mobile number is missing. User mobile number is required to get user profile');
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:37:hardcoded string:	        if(!neoInfo) throw new Error('parameter missing to get tod profiles')
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:38:hardcoded object:	        const result = await getTodStudentProfileFromPremiumAccount({ primaryNumber, orderId, neoInfo });
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:39:hardcoded number:	        return res.status(200).json(result);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:41:hardcoded string:	        logger.error({ method: 'getTodProfiles', error }, 'Error occured');
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:42:hardcoded string:	        if (error && error.message.indexOf("No premium account for Mobile number or OrderId") >= 0) {
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:43:hardcoded number:	            return res.status(200).json([]);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:45:hardcoded string:	            return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:50:hardcoded variable:	const getAllExistingProfiles = async (req, res) => {
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:52:hardcoded string:	        logger.info({ method: 'getAllExistingProfiles' }, req.body);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:53:hardcoded object:	        const { primaryNumber } = req.body;
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:54:hardcoded string:	        if (!primaryNumber) throw new Error('mobile number is missing. User mobile number is required to get user profile');
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:55:hardcoded object:	        let result = await getPremiumAccounts({ primaryNumber });
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:57:hardcoded number:	        return res.status(200).json(result);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:59:hardcoded string:	        logger.error({ method: 'getAllExistingProfiles', error }, 'Error occured');
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:60:hardcoded string:	        if (error && error.message.indexOf("No premium account for Mobile number or OrderId") >= 0) {
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:61:hardcoded number:	            return res.status(200).json([]);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:63:hardcoded string:	            return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:68:hardcoded variable:	const getStudentProfileDetailsTemp = async (req, res) => {
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:70:hardcoded object:	        const { identifier } = req.body;
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:71:hardcoded string:	        if (!identifier) throw new BadRequestError("Parameter missing");
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:72:hardcoded string:	        logger.info({ method: "getStudentProfileDetailsTemp", identifier }, req.body);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:74:hardcoded string:	        const draftOrder = await DraftOrder.findById(identifier).select("customerDetails");
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:78:hardcoded number:	        return res.status(200).json(result);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:80:hardcoded string:	        logger.error({ method: 'getStudentProfileDetailsTemp', error }, 'Error occured');
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:81:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:85:hardcoded variable:	const createStudentProfile = async (req, res) => {
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:87:hardcoded string:	        const { board = "", grade = "", validity = "", studentName = "", phone = "", email = "" } = req.body;
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:88:hardcoded string:	        if (!phone || !studentName) throw new BadRequestError("Phone number and student name are required");
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:89:hardcoded string:	        logger.info({ method: "createStudentProfile" }, req.body);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:90:hardcoded object:	        const resp = await createPremiumAccount({ board, grade, validity, studentName, phone, email });
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:91:hardcoded number:	        return res.status(200).json(resp);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:94:hardcoded string:	        logger.error({ method: 'createStudentProfile', error }, 'Error occured');
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:95:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:99:hardcoded number:	const getStudentProfileDetailsV2 = async (req, res) => {
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:101:hardcoded string:	        logger.info({ method: 'getUserProfileDetailsV2' }, req.body);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:102:hardcoded string:	        const { primaryNumber, secondaryNumber = "" } = req.body;
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:103:hardcoded string:	        if (!primaryNumber) throw new Error('mobile number is missing. User mobile number is required to get user profile');
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:104:hardcoded object:	        let result = await getPremiumAccounts({ primaryNumber, secondaryNumber});
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:106:hardcoded number:	        return res.status(200).json(result);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:108:hardcoded string:	        logger.error({ method: 'getUserProfileDetailsV2', error }, 'Error occured');
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:109:hardcoded number:	        if(error.message.StatusCodeError === 404){
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:110:hardcoded number:	            res.status(200).json([]);
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:112:hardcoded string:	            return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/studentprofilemanagement/studentProfileController.js:120:hardcoded number:	    getStudentProfileDetailsV2,

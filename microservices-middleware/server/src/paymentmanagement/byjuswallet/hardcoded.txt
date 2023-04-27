@@ -1,0 +1,115 @@
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletCash.js:5:hardcoded variable:	const walletCashDetails = async (req, res) => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletCash.js:6:hardcoded string:	    const { phone = "" } = req.body;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletCash.js:8:hardcoded string:	        let customerId = "", getCustomerIdUrl;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletCash.js:9:hardcoded number:	        getCustomerIdUrl = `customer/fetchCustomerId?phone=%2B91-${phone}`;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletCash.js:10:hardcoded string:	        await callCxmsApi(getCustomerIdUrl, 'GET', {}).then(res => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletCash.js:11:hardcoded string:	            customerId = get(res, "customerId", "")
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletCash.js:16:hardcoded object:	        let wallet = {};
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletCash.js:19:hardcoded object:	            walletUrl = `wallet/entities/${customerId}`;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletCash.js:20:hardcoded string:	            await callCxmsApi(walletUrl, 'GET', {}).then(res => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletCash.js:21:hardcoded string:	                wallet = get(res, "wallet", [])
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletCash.js:26:hardcoded number:	        return res.status(200).json({ ...wallet, customerId });
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletCash.js:28:hardcoded string:	        return res.status(500).json({ message: err.message || 'Something went wrong. Please try again later' })
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletRoutes.js:8:hardcoded object:	//const router = Router({ mergeParams: true });
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletRoutes.js:9:hardcoded object:	const router = express.Router({ mergeParams: true });
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletRoutes.js:12:hardcoded string:	    const routeName = "payment/byjuswallet";
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletRoutes.js:14:hardcoded object:	    router.route(`/${routeName}/walletCashDetails`)
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletRoutes.js:18:hardcoded object:	    router.route(`/${routeName}/giftCardDetails`)
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletRoutes.js:22:hardcoded object:	    router.route(`/${routeName}/bonusPointDetails`)
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletRoutes.js:26:hardcoded object:	    router.route(`/${routeName}/useBonusPoints`)
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:2:hardcoded string:	const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:8:hardcoded variable:	const bonusPoints = async (req, res) => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:9:hardcoded string:	    const { phone = "" } = req.body;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:11:hardcoded string:	        let customerId = "", getCustomerIdUrl;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:12:hardcoded number:	        getCustomerIdUrl = `customer/fetchCustomerId?phone=%2B91-${phone}`;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:13:hardcoded string:	        await callCxmsApi(getCustomerIdUrl, 'GET', {}).then(res => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:14:hardcoded string:	            customerId = get(res, "customerId", "")
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:18:hardcoded object:	        let bonusPoints = { customerId };
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:21:hardcoded object:	            walletUrl = `wallet/entities/${customerId}`;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:22:hardcoded string:	            await callCxmsApi(walletUrl, 'GET', {}).then(res => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:23:hardcoded string:	                bonusPoints['amount'] = parseInt(get(res, "wallet.bonusPoints", 0));
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:24:hardcoded string:	                bonusPoints['conversionFactor'] = get(res, "conversionFactor", "")
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:29:hardcoded number:	        return res.status(200).json(bonusPoints);
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:31:hardcoded string:	        return res.status(500).json({ message: err.message || 'Something went wrong. Please try again later' })
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:35:hardcoded variable:	const useBonusPoints = async (req, res) => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:36:hardcoded string:	    const { customerId = "", amount = 0, identifier = "", isSave = false } = req.body;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:38:hardcoded object:	        let bonusPoints = {}, walletUrl;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:39:hardcoded object:	        walletUrl = `wallet/entities/${customerId}`;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:40:hardcoded string:	        await callCxmsApi(walletUrl, 'GET', {}).then(res => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:41:hardcoded string:	            bonusPoints['amount'] = get(res, "wallet.bonusPoints", 0);
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:42:hardcoded string:	            bonusPoints['conversionFactor'] = get(res, "conversionFactor", 0)
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:46:hardcoded string:	        if (bonusPoints['amount'] * bonusPoints['conversionFactor'] != amount) {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:47:hardcoded number:	            res.status(403).json(bonusPoints);
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:50:hardcoded variable:	            const updateObj = {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:51:hardcoded string:	                bonusPoints: bonusPoints['amount'],
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:52:hardcoded string:	                conversionFactor: bonusPoints['conversionFactor'],
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:55:hardcoded object:	            await DraftOrder.updateOne({ _id: identifier }, { $set: { bonusPointsDetails: updateObj } });
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:57:hardcoded object:	            await DraftOrder.updateOne({ _id: identifier }, { $set: { bonusPointsDetails: {} } });
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:59:hardcoded string:	        return res.status(200).json({ message: 'Successfully updated' });
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:61:hardcoded string:	        return new Error({ message: err.message || 'Something went wrong. Please try again later' })
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:65:hardcoded variable:	const getBonusPointsDiscount = async (identifier) => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:67:hardcoded number:	        const draftOrder = await DraftOrder.findOne({ _id: identifier }, { bonusPointsDetails: 1 });
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:69:hardcoded string:	            throw new Error('Draft order not found');
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:71:hardcoded object:	        const { bonusPointsDetails = {} } = draftOrder;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:72:hardcoded number:	        const { amount = 0 } = bonusPointsDetails;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:80:hardcoded variable:	const reserveBonusPoints = async (draftOrder) => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:82:hardcoded string:	        const { bonusPointsDetails = {}, customerDetails = {}, salesDetails = {}, draftOrderId = '' } = draftOrder;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:83:hardcoded number:	        const { amount = 0 } = bonusPointsDetails;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:84:hardcoded string:	        const { customerId = "" } = customerDetails;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:85:hardcoded string:	        const { directSalesBy = "" } = salesDetails;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:86:hardcoded number:	        if (amount > 0) {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:87:hardcoded variable:	            const payload = {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:89:hardcoded string:	                type: 'bonus_points',
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:90:hardcoded string:	                referenceType: "draft_order",
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:94:hardcoded string:	                source: "kart"
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:96:hardcoded string:	            const reserveWalletItems = await callCxmsApi(`wallet/transaction/reserve`, "POST", payload);
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:98:hardcoded string:	                logger.error({ method: "lockAllPayments", error: "Error in reserving wallet items" });
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:99:hardcoded string:	                throw new Error("Error in reserving wallet items");
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:101:hardcoded string:	            const transactionId = get(reserveWalletItems, 'transaction.transactionId', '');
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:104:hardcoded string:	        return '';
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:110:hardcoded variable:	const unlockBonusPoints = async (draftOrder) => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:112:hardcoded string:	        const { bonusPointsDetails = {}, salesDetails = {}, draftOrderId = '' } = draftOrder;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:113:hardcoded string:	        const { directSalesBy = "" } = salesDetails;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:114:hardcoded object:	        const { transactionId = null } = bonusPointsDetails;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:116:hardcoded variable:	            const payload = {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:120:hardcoded string:	                referenceType: "draft_order",
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:121:hardcoded string:	                status: "failed"
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:123:hardcoded string:	            const unlockWalletItems = await callCxmsApi(`wallet/transaction/update-reserved`, "PATCH", payload);
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:125:hardcoded string:	                logger.error({ method: "unlockAllPayments", error: "Error in unlocking Bonus Points" });
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:126:hardcoded string:	                throw new Error("Error in unlocking Bonus Points");
+microservices-middleware/server/src/paymentmanagement/byjuswallet/bonusPoints.js:128:hardcoded string:	            logger.info({ method: "unlockAllPayments", message: "Successfully unlocked Bonus Points" });
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:9:hardcoded variable:	const reserverWalletTransactions = async (nonEmiDetails, draftOrderId, customerId, user) => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:10:hardcoded string:	    const email = get(user, 'email', '');
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:12:hardcoded object:	        const { amount, referenceId, provider } = nonEmiDetail;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:14:hardcoded variable:	            const payload = {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:16:hardcoded string:	                type: provider === `BYJUS_WALLET` ? 'wallet_cash' : 'gift_card',
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:17:hardcoded string:	                referenceType: "draft_order",
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:21:hardcoded string:	                source: "kart"
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:25:hardcoded string:	                payload['giftCardId'] = referenceId;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:26:hardcoded string:	                reserveWalletItems = await callCxmsApi(`gift-card/transaction/reserve`, "POST", payload);
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:28:hardcoded string:	                reserveWalletItems = await callCxmsApi(`wallet/transaction/reserve`, "POST", payload);
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:31:hardcoded string:	                logger.error({ method: "lockAllPayments", error: "Error in reserving wallet items" });
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:32:hardcoded string:	                throw new Error("Error in reserving wallet items");
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:34:hardcoded string:	            const transactionId = get(reserveWalletItems, 'transaction.transactionId', '');
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:43:hardcoded variable:	const unlockWalletTransactions = async (payments, user, draftOrderId) => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:44:hardcoded string:	    const email = get(user, 'email', '');
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:46:hardcoded object:	        const { transactionId, provider } = payment;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:48:hardcoded variable:	            const payload = {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:52:hardcoded string:	                referenceType: "draft_order",
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:53:hardcoded string:	                status: "failed"
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:57:hardcoded string:	                unlockWalletItems = await callCxmsApi(`gift-card/transaction/update-reserved`, "PATCH", payload);
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:59:hardcoded string:	                unlockWalletItems = await callCxmsApi(`wallet/transaction/update-reserved`, "PATCH", payload);
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:62:hardcoded string:	                logger.error({ method: "unlockAllPayments", error: "Error in unlocking wallet items" });
+microservices-middleware/server/src/paymentmanagement/byjuswallet/walletTransactions.js:63:hardcoded string:	                throw new Error("Error in unlocking wallet items");
+microservices-middleware/server/src/paymentmanagement/byjuswallet/giftCards.js:5:hardcoded variable:	const giftCardDetails = async (req, res) => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/giftCards.js:6:hardcoded string:	    const { phone = "" } = req.body;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/giftCards.js:8:hardcoded string:	        let customerId = "", getCustomerIdUrl;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/giftCards.js:9:hardcoded number:	        getCustomerIdUrl = `customer/fetchCustomerId?phone=%2B91-${phone}`;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/giftCards.js:10:hardcoded string:	        await callCxmsApi(getCustomerIdUrl, 'GET', {}).then(res => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/giftCards.js:11:hardcoded string:	            customerId = get(res, "customerId", "")
+microservices-middleware/server/src/paymentmanagement/byjuswallet/giftCards.js:16:hardcoded array:	        let giftCards = []
+microservices-middleware/server/src/paymentmanagement/byjuswallet/giftCards.js:19:hardcoded object:	            walletUrl = `wallet/entities/${customerId}`;
+microservices-middleware/server/src/paymentmanagement/byjuswallet/giftCards.js:20:hardcoded string:	            await callCxmsApi(walletUrl, 'GET', {}).then(res => {
+microservices-middleware/server/src/paymentmanagement/byjuswallet/giftCards.js:21:hardcoded string:	                giftCards = get(res, "giftCards", [])
+microservices-middleware/server/src/paymentmanagement/byjuswallet/giftCards.js:26:hardcoded number:	        return res.status(200).json(giftCards);
+microservices-middleware/server/src/paymentmanagement/byjuswallet/giftCards.js:28:hardcoded string:	        return res.status(500).json({ message: err.message || 'Something went wrong. Please try again later' })

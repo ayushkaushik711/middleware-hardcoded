@@ -1,0 +1,26 @@
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:1:hardcoded string:	export const SAVE_SALES_REQUEST = '/sales/SAVE_SALES_REQUEST';
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:2:hardcoded string:	export const SAVE_SALES_SUCCESS = '/sales/SAVE_SALES_SUCCESS';
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:3:hardcoded string:	export const SAVE_SALES_FAILURE = '/sales/SAVE_SALES_FAILURE';
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:4:hardcoded string:	export const SAVE_IDENTIFIER = '/sales/SAVE_IDENTIFIER';
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:6:hardcoded string:	export const SAVE_SALES_QUOTATION_REQUEST = '/quotation/sales/SAVE_SALES_QUOTATION_REQUEST';
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:7:hardcoded string:	export const SAVE_SALES_QUOTATION_SUCCESS = '/quotation/sales/SAVE_SALES_QUOTATION_SUCCESS';
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:8:hardcoded string:	export const SAVE_SALES_QUOTATION_FAILURE = '/quotation/sales/SAVE_SALES_QUOTATION_FAILURE';
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:9:hardcoded string:	export const SAVE_QUOTATION_IDENTIFIER = '/sales/SAVE_QUOTATION_IDENTIFIER';
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:10:hardcoded string:	export const SAVE_PARTNER_IDENTIFIER_DETAILS = '/sales/SAVE_PARTNER_IDENTIFIER_DETAILS'
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:12:hardcoded object:	const saveSalesRequest = () => ({ type: SAVE_SALES_REQUEST });
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:13:hardcoded object:	const saveSalesSuccess = (response) => ({ type: SAVE_SALES_SUCCESS, response });
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:14:hardcoded object:	const saveSalesFailure = (error) => ({ type: SAVE_SALES_FAILURE, error });
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:15:hardcoded object:	const saveDraftOrderIdentifier = (identifier) => ({ type: SAVE_IDENTIFIER, identifier });
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:17:hardcoded object:	const saveQuotationSalesRequest = () => ({ type: SAVE_SALES_QUOTATION_REQUEST });
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:18:hardcoded object:	const saveQuotationSalesSuccess = (response) => ({ type: SAVE_SALES_QUOTATION_SUCCESS, response });
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:19:hardcoded object:	const saveQuotationSalesFailure = (error) => ({ type: SAVE_SALES_QUOTATION_FAILURE, error });
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:20:hardcoded object:	const saveQuotationIdentifier = (identifier) => ({ type: SAVE_QUOTATION_IDENTIFIER, identifier });
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:21:hardcoded object:	const savePartnerIdentifierDetails = (partnerIdentifierDetails) => ({ type: SAVE_PARTNER_IDENTIFIER_DETAILS, partnerIdentifierDetails });
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:23:hardcoded variable:	export const saveSalesAndCustomerDetails = (salesDetails, customerDetails, orderPunchingType) => dispatch => {
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:25:hardcoded object:	    return dispatch(saveSalesSuccess({ salesDetails, customerDetails, orderPunchingType }));
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:28:hardcoded variable:	export const saveIdentifier = (identifier) => dispatch => {
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:32:hardcoded variable:	export const saveQuotationsaveSalesAndCustomerDetails = (directSalesBy, customerDetails) => dispatch => {
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:34:hardcoded object:	    return dispatch(saveQuotationSalesSuccess({ directSalesBy, customerDetails }));
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:37:hardcoded variable:	export const savedQuotationIdentifier = (identifier) => dispatch => {
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:41:hardcoded variable:	export const savePartnerDetails = (partnerIdentifierDetails) => dispatch => {
+microservices-middleware/client/src/modules/details/salesCustomerReducer.js:45:hardcoded object:	export default (state = {}, action) => {

@@ -1,0 +1,213 @@
+microservices-middleware/server/src/productmanagement/belpMath/service.js:4:hardcoded string:	const { ProductDetail } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/productmanagement/belpMath/service.js:9:hardcoded variable:	const formatBelpMathLineItems = async (orderDetails) => {
+microservices-middleware/server/src/productmanagement/belpMath/service.js:10:hardcoded string:	    logger.info({ method: 'formatLineItems' }, 'Checking if byjus math order is eligible to be splitted');
+microservices-middleware/server/src/productmanagement/belpMath/service.js:11:hardcoded object:	    const { productDetails, paymentDetails, orderPunchingType } = orderDetails;
+microservices-middleware/server/src/productmanagement/belpMath/service.js:12:hardcoded string:	    const { productType = '', students = [], mentoring, tablets: seperateTablets = [], products = [], mentoringDetails } = productDetails;
+microservices-middleware/server/src/productmanagement/belpMath/service.js:13:hardcoded string:	    const { type: paymentType = '', totalAmount, totalPrepaidAmount, totalPostpaidAmount, payments } = paymentDetails;
+microservices-middleware/server/src/productmanagement/belpMath/service.js:14:hardcoded string:	    const { productSelectionType = "", validity } = students[0] || {};
+microservices-middleware/server/src/productmanagement/belpMath/service.js:15:hardcoded object:	    let lineItems = {};
+microservices-middleware/server/src/productmanagement/belpMath/service.js:16:hardcoded variable:	    const actualPaymentType = getPaymentType(paymentDetails);
+microservices-middleware/server/src/productmanagement/belpMath/service.js:18:hardcoded string:	     * and productType = "SINGLE" or "COMBO" or "SIBLING",
+microservices-middleware/server/src/productmanagement/belpMath/service.js:22:hardcoded string:	    logger.info({ method: 'formatLineItems' }, { message: "Checking if eligible for splitting", paymentType, productType });
+microservices-middleware/server/src/productmanagement/belpMath/service.js:24:hardcoded string:	    const isUmrnGenerated = actualPaymentType === "EMI" ? checkUmrnGenerated(payments) : false;
+microservices-middleware/server/src/productmanagement/belpMath/service.js:27:hardcoded string:	    if (productSelectionType == 'belp_math') {
+microservices-middleware/server/src/productmanagement/belpMath/service.js:28:hardcoded string:	        const items = flattenDeep(map(students, 'items'));
+microservices-middleware/server/src/productmanagement/belpMath/service.js:29:hardcoded number:	        let student = students[0] || {};
+microservices-middleware/server/src/productmanagement/belpMath/service.js:30:hardcoded object:	        const splittedLineItems = await getBelpMathLineItems({ student, items, productSelectionType, actualPaymentType, productType });
+microservices-middleware/server/src/productmanagement/belpMath/service.js:31:hardcoded object:	        const { parentLineItems, childLineItems } = splittedLineItems || {};
+microservices-middleware/server/src/productmanagement/belpMath/service.js:32:hardcoded string:	        const orderType = childLineItems.length ? 'split_order' : 'single_order';
+microservices-middleware/server/src/productmanagement/belpMath/service.js:33:hardcoded string:	        logger.info("%j", { method: 'formatLineItems' }, { orderType, lineItems: JSON.stringify(splittedLineItems) });
+microservices-middleware/server/src/productmanagement/belpMath/service.js:38:hardcoded string:	    } else if (orderPunchingType == "UPGRADE") {
+microservices-middleware/server/src/productmanagement/belpMath/service.js:39:hardcoded string:	        const items = flattenDeep(map(students, 'items'));
+microservices-middleware/server/src/productmanagement/belpMath/service.js:41:hardcoded string:	            "parentLineItems": items,
+microservices-middleware/server/src/productmanagement/belpMath/service.js:42:hardcoded string:	            "childLineItems": []
+microservices-middleware/server/src/productmanagement/belpMath/service.js:49:hardcoded variable:	const getBelpMathLineItems = async (orderDetails) => {
+microservices-middleware/server/src/productmanagement/belpMath/service.js:50:hardcoded object:	    const { student = {}, items, productSelectionType, actualPaymentType, productType } = orderDetails;
+microservices-middleware/server/src/productmanagement/belpMath/service.js:51:hardcoded string:	    let studentId = student.studentId || ""
+microservices-middleware/server/src/productmanagement/belpMath/service.js:52:hardcoded array:	    let parentLineItems = [];
+microservices-middleware/server/src/productmanagement/belpMath/service.js:53:hardcoded array:	    let childLineItems = [];
+microservices-middleware/server/src/productmanagement/belpMath/service.js:55:hardcoded string:	    let tablets = items.filter(item => item && item.itemType == "tablet");
+microservices-middleware/server/src/productmanagement/belpMath/service.js:56:hardcoded string:	    let courses = items.filter(item => item && item.itemType == "course"
+microservices-middleware/server/src/productmanagement/belpMath/service.js:57:hardcoded string:	     && item.category != "epic" && item.category != "tynker_jr");
+microservices-middleware/server/src/productmanagement/belpMath/service.js:58:hardcoded string:	    let epicSku = items.filter(item => item && item.category == "epic");
+microservices-middleware/server/src/productmanagement/belpMath/service.js:59:hardcoded string:	    let tynkerSku = items.filter(item => item && item.category == "tynker_jr");
+microservices-middleware/server/src/productmanagement/belpMath/service.js:60:hardcoded string:	    let tykerUlSku = items.filter(item => item && item.category == "tynker_ul");
+microservices-middleware/server/src/productmanagement/belpMath/service.js:63:hardcoded object:	    const splittedLineItems = splitLineItems({ student, courses, tablets, epicSku, tynkerSku, tykerUlSku });
+microservices-middleware/server/src/productmanagement/belpMath/service.js:64:hardcoded string:	    parentLineItems = concat(parentLineItems, get(splittedLineItems, 'parentLineItems'));
+microservices-middleware/server/src/productmanagement/belpMath/service.js:65:hardcoded string:	    childLineItems = concat(childLineItems, get(splittedLineItems, 'childLineItems'));
+microservices-middleware/server/src/productmanagement/belpMath/service.js:66:hardcoded string:	    if (actualPaymentType == 'EMI') {
+microservices-middleware/server/src/productmanagement/belpMath/service.js:67:hardcoded number:	        const { grade, course } = courses[0];
+microservices-middleware/server/src/productmanagement/belpMath/service.js:71:hardcoded object:	    return { parentLineItems, childLineItems }
+microservices-middleware/server/src/productmanagement/belpMath/service.js:74:hardcoded variable:	const checkUmrnGenerated = (payment) => {
+microservices-middleware/server/src/productmanagement/belpMath/service.js:75:hardcoded variable:	    let isUmrn = false;
+microservices-middleware/server/src/productmanagement/belpMath/service.js:76:hardcoded string:	    const emiDetails = payment.find(ele => ele.type === "EMI" && splitOrderConstants.ALLOWED_PAYMENT_PROVIDERS_FOR_UMRN_CHECK.includes(ele.provider));
+microservices-middleware/server/src/productmanagement/belpMath/service.js:78:hardcoded object:	        const { additionalDetails = {} } = emiDetails;
+microservices-middleware/server/src/productmanagement/belpMath/service.js:79:hardcoded string:	        const umrn = get(additionalDetails, "umrn", "");
+microservices-middleware/server/src/productmanagement/belpMath/service.js:80:hardcoded string:	        const registrationStatus = get(additionalDetails, "registrationStatus", "");
+microservices-middleware/server/src/productmanagement/belpMath/service.js:82:hardcoded string:	        if (registrationStatus.includes("dest_register_success")) {
+microservices-middleware/server/src/productmanagement/belpMath/service.js:89:hardcoded variable:	const getPaymentType = (paymentDetails) => {
+microservices-middleware/server/src/productmanagement/belpMath/service.js:90:hardcoded object:	    const { type, payments } = paymentDetails;
+microservices-middleware/server/src/productmanagement/belpMath/service.js:91:hardcoded variable:	    let paymentType = type;
+microservices-middleware/server/src/productmanagement/belpMath/service.js:93:hardcoded object:	        const { type, provider } = payment;
+microservices-middleware/server/src/productmanagement/belpMath/service.js:95:hardcoded string:	        if (["BAJAJ", "PAYU", "PINE_LABS", "BYJUS_SUBSCRIBE", "RAZORPAY"].indexOf(provider) >= 0 && type === "EMI") {
+microservices-middleware/server/src/productmanagement/belpMath/service.js:96:hardcoded string:	            paymentType = "NON_EMI";
+microservices-middleware/server/src/productmanagement/belpMath/service.js:102:hardcoded variable:	const getExtensionSku = async (grade, course, studentId) => {
+microservices-middleware/server/src/productmanagement/belpMath/service.js:103:hardcoded string:	    let query = { type: 'extension', course };
+microservices-middleware/server/src/productmanagement/belpMath/service.js:105:hardcoded string:	        query["grade"] = grade
+microservices-middleware/server/src/productmanagement/belpMath/service.js:107:hardcoded variable:	    const extensionSku = await ProductDetail.findOne(query).lean();
+microservices-middleware/server/src/productmanagement/belpMath/service.js:116:hardcoded array:	        return [];
+microservices-middleware/server/src/productmanagement/belpMath/service.js:120:hardcoded variable:	const splitLineItems = (productDetails) => {
+microservices-middleware/server/src/productmanagement/belpMath/service.js:121:hardcoded array:	    const { student, courses = [], tablets = [], epicSku, orderPunchingType, isNeoClass, tynkerSku, tykerUlSku } = productDetails || {}
+microservices-middleware/server/src/productmanagement/belpMath/service.js:122:hardcoded string:	    logger.info("%j", { method: 'splitLineItems' }, { message: `Slitting line Items by taking 1 tablet and 1 initial course` });
+microservices-middleware/server/src/productmanagement/belpMath/service.js:123:hardcoded object:	    const { initialClass, finalClass, validity, productSelectionType } = student || {};
+microservices-middleware/server/src/productmanagement/belpMath/service.js:124:hardcoded variable:	    const mergedItems = concat(courses, tablets);
+microservices-middleware/server/src/productmanagement/belpMath/service.js:125:hardcoded array:	    let parentLineItems = [];
+microservices-middleware/server/src/productmanagement/belpMath/service.js:126:hardcoded array:	    let childLineItems = [];
+microservices-middleware/server/src/productmanagement/belpMath/service.js:127:hardcoded string:	    const initialCourse = find(courses, { "grade": initialClass }) || courses[0];
+microservices-middleware/server/src/productmanagement/belpMath/service.js:129:hardcoded number:	    /**Create parentLineItems as combination of 1st course and 1st tablet */
+microservices-middleware/server/src/productmanagement/belpMath/service.js:130:hardcoded string:	    childLineItems = mergedItems.filter(course => course.type === "service");
+microservices-middleware/server/src/productmanagement/belpMath/service.js:132:hardcoded string:	        const childItemIds = map(childLineItems, 'skuId');
+microservices-middleware/server/src/productmanagement/belpMath/service.js:134:hardcoded string:	        if (!childItemIds.includes(get(item, 'skuId', ''))) {
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:16:hardcoded variable:	const getTotalPrice = async (details) => {
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:17:hardcoded object:	    let { finalPrice, tabletSku } = details
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:19:hardcoded variable:	    let totalPrice = parseInt(finalPrice);
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:20:hardcoded array:	    tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:23:hardcoded number:	            const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:30:hardcoded variable:	const getSingleProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:31:hardcoded string:	    logger.info({ method: 'getSingleProduct' }, { message: "Fetching Single Product" });
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:35:hardcoded string:	    let { identifier, paymentType = "EMI", productType, productCombination, isEpicEnabled } = req.body;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:36:hardcoded object:	    let { student } = req.body
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:37:hardcoded variable:	    const user  = req.user;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:42:hardcoded number:	        student = isArray(student) ? student[0] : student
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:43:hardcoded object:	        let { tablet, initialClass, validity, bfsBatch, bfsProductType, board } = student;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:45:hardcoded object:	        bfsSdCardSku = await getBelpMathSdCardSku({ initialClass, bfsProductType, student, validity,tablet, board }) 
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:46:hardcoded object:	        bfsCourseSku = await getBelpMathCourseSku({ initialClass, board, bfsBatch, bfsProductType, validity, productType, student }) 
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:48:hardcoded object:	        epicSku = await getEpicCourseSku({ validity, tablet, initialClass, finalClass: initialClass })
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:50:hardcoded number:	        // This condition works for tynker ulimited sku, this sku only picking grade 2 to 7, for other grade will be picked tynker jr sku
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:51:hardcoded object:	        tynkerSku = isDevEnv && ELIGIBLE_TYNKER_UL_GRADES.includes(initialClass) ? await getTynkerUlCourseSku({ validity, initialClass, finalClass: initialClass }) : await getTynkerCourseSku({ validity, initialClass, finalClass: initialClass});
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:53:hardcoded object:	        tabletSku = tablet ? await getBelpMathTabletSku({ tabletId: tablet }) : null;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:55:hardcoded object:	        const byjusMathPrice = getUpdatedBfsPrice({ tabletSku, bfSkuPrice, bfsProductType, bfsSdCardSku, productCombination, user, tynkerSku, epicSku });
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:56:hardcoded object:	        const { maxByjusMathPrice, minByjusMathPrice } = byjusMathPrice || {};
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:57:hardcoded variable:	        let maxPrice = maxByjusMathPrice;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:58:hardcoded variable:	        let minPrice =  minByjusMathPrice;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:60:hardcoded array:	        const products = [bfsSdCardSku, bfsCourseSku, tabletSku, epicSku, tynkerSku];
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:62:hardcoded variable:	        const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:65:hardcoded string:	        student["formValues"] = { ...student };
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:66:hardcoded string:	        student["items"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:67:hardcoded string:	        student["bfsProductType"] = bfsProductType;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:68:hardcoded string:	        student["bfsBatch"] = bfsBatch;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:69:hardcoded object:	        const skuProductDetails = { initialClass, tabletSku, maxPrice, minPrice, productCombination }
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:70:hardcoded object:	        const discountDetails = await getDiscountDetails({identifier, productDetails : skuProductDetails});
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:71:hardcoded string:	        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:80:hardcoded array:	            students: [student],
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:83:hardcoded number:	                count: 0,
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:84:hardcoded array:	                items: []
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:86:hardcoded array:	            mentoringDetails: [],
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:88:hardcoded array:	            bhlpCourseDetails: [],
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:99:hardcoded variable:	const getComboProduct = async (req, res) => {
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:100:hardcoded string:	    logger.info({ method: 'getComboProduct' }, { message: "Fetching Combo Product" });
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:102:hardcoded array:	    let bfsSdCardSku, bfsCourseSku, tabletSku, booksSku = [], epicSku = [], tynkerSku = [];
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:103:hardcoded number:	    let skuPrice = 0;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:104:hardcoded array:	    let skuArray = [];
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:106:hardcoded string:	    let { paymentType = "EMI", productType, student, productCombination, identifier, isPrivilegedUser, isEpicEnabled} = req.body;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:108:hardcoded variable:	    const user  = req.user;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:110:hardcoded number:	    student = isArray(student) ? student[0] : student;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:111:hardcoded object:	    let { initialClass, finalClass, validity, tablet, board, bfsBatch, bfsProductType } = student;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:116:hardcoded variable:	    let grade = initialClass;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:117:hardcoded variable:	    let initialValidity = validity
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:118:hardcoded number:	    let price = 0;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:122:hardcoded variable:	        let updatedBfsProductType = bfsProductType 
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:124:hardcoded object:	                bfsSdCardSku = await getBelpMathSdCardSku({ initialClass:grade, bfsProductType, student, validity,board });
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:127:hardcoded object:	                    bfsCourseSku = await getBelpMathCourseSku({ initialClass: grade, board, bfsBatch, bfsProductType, validity, productType, student }); 
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:131:hardcoded number:	                // This condition works for tynker ulimited sku, this sku only picking grade 2 to 7, for other grade will be picked tynker jr sku
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:134:hardcoded object:	                        tynkerSku = await getTynkerUlCourseSku({ validity, tablet, initialClass, finalClass, grade });
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:137:hardcoded object:	                        tynkerSku = await getTynkerCourseSku({ validity, tablet, initialClass, finalClass, grade });
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:141:hardcoded object:	                    tynkerSku = await getTynkerCourseSku({ validity, tablet, initialClass, finalClass, grade });
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:146:hardcoded number:	                grade += 1;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:150:hardcoded object:	        epicSku =  await getEpicCourseSku({ validity: initialValidity, tablet, initialClass, finalClass });
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:153:hardcoded object:	        tabletSku = tablet ? await getBelpMathTabletSku({ tabletId: tablet }) : null;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:161:hardcoded string:	                    sku["price"] = sku.basePrice
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:164:hardcoded string:	                    sku["price"] = sku.continuousPrice
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:169:hardcoded number:	        let minByjusMathPrice = 0, minPrice = 0,maxPrice =0;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:171:hardcoded number:	        const tabPrice = (tabletSku) ? parseInt(tabletSku.basePrice) : 0;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:172:hardcoded object:	        maxPrice = await getTotalPrice({ finalPrice: price, tabletSku });
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:174:hardcoded number:	        minPrice = ((Math.floor((minByjusMathPrice )*BYJUS_MATH_MIN_PRICE/ 1000)) * 1000) + tabPrice
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:176:hardcoded array:	        const products = [skuArray, tabletSku];
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:177:hardcoded variable:	        const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:179:hardcoded string:	        student["formValues"] = { ...student };
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:180:hardcoded string:	        student["items"] = formattedProducts;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:181:hardcoded string:	        student["bfsProductType"] = updatedBfsProductType;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:182:hardcoded object:	        const skuProductDetails = { initialClass, tabletSku, maxPrice, minPrice, productCombination }
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:183:hardcoded object:	        const discountDetails = await getDiscountDetails({identifier, productDetails : skuProductDetails});
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:184:hardcoded string:	        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:193:hardcoded array:	            students: [student],
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:196:hardcoded number:	                count: 0,
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:197:hardcoded array:	                items: []
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:199:hardcoded array:	            mentoringDetails: [],
+microservices-middleware/server/src/productmanagement/belpMath/controller.js:201:hardcoded array:	            bhlpCourseDetails: [],
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:4:hardcoded string:	const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:9:hardcoded variable:	const getPostgresCourseSKU = async (details) => {
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:10:hardcoded object:	    const { category, grade, validity, scheme, subType, board, subCourse, tablet } = details
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:12:hardcoded variable:	    const query = {
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:13:hardcoded string:	        status: "active",
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:17:hardcoded object:	        grade: `${grade}`,
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:18:hardcoded object:	        validity: `${validity}`
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:21:hardcoded string:	    if (subType !== 'sd_card') {
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:22:hardcoded string:	        query["board"] = board;
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:23:hardcoded string:	        query["scheme"] = scheme;
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:24:hardcoded string:	        query["subCourse"] = subCourse;
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:25:hardcoded string:	        query["type"] = 'service';
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:26:hardcoded string:	        query["course"] = course;
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:28:hardcoded string:	        query["brand"] = 'D4';
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:29:hardcoded string:	        query["board"] = ['1', '2', '3', '4', '5', 1, 2, 3, 4, 5].includes(grade) ? null : board;
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:31:hardcoded variable:	    const product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:39:hardcoded string:	            itemType: 'course'
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:43:hardcoded object:	        const errorMsg = getErrorMsg({ grade, board, validity, type });
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:47:hardcoded variable:	const getBelpMathCourseSku = async (productDetails) => {
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:48:hardcoded object:	    const { initialClass, board, bfsBatch, bfsProductType, productType, student } = productDetails || {};
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:49:hardcoded object:	    let { validity } = productDetails || {};
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:50:hardcoded object:	    const { course } = student;
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:52:hardcoded string:	    let scheme = "";
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:54:hardcoded string:	    if (bfsProductType == '64') {
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:55:hardcoded string:	        scheme = '64'
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:57:hardcoded string:	    else if (bfsProductType == '56') {
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:58:hardcoded string:	        scheme = '56'
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:62:hardcoded string:	        status: "active",
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:63:hardcoded string:	        category: "byjus_math",
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:68:hardcoded string:	        subType: 'live',
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:73:hardcoded string:	    bfsCourseSku["combinationType"] = get(bfsCourseSku, "type", "").toLowerCase();
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:74:hardcoded string:	    bfsCourseSku["itemId"] = getSkuItemId(bfsCourseSku);
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:75:hardcoded string:	    bfsCourseSku['price'] = bfSkuPrice;
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:80:hardcoded variable:	const getBelpMathSdCardSku = async (details) => {
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:81:hardcoded object:	    const { initialClass, bfsProductType, student, validity, tablet, board } = details || {}
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:82:hardcoded variable:	    let grade = initialClass;
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:84:hardcoded string:	        category: "btlp",
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:86:hardcoded string:	        subType: "sd_card",
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:93:hardcoded string:	    courseSku["combinationType"] = get(courseSku, "type", "").toLowerCase();
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:94:hardcoded string:	    courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:95:hardcoded string:	    courseSku['basePrice'] = coursePrice;
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:96:hardcoded string:	    courseSku['price'] = grade == initialClass ? coursePrice : courseSku.continuousPrice
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:99:hardcoded variable:	const getBelpMathTabletSku = async (details) => {
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:100:hardcoded object:	    let { tabletId, studentId, uniqueTabletId } = details
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:101:hardcoded number:	    let price = 0
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:102:hardcoded variable:	    const tabletSku = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:104:hardcoded string:	            [Op.or]: [{ "skuId": tabletId }, { "ohProductId": tabletId }],
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:105:hardcoded string:	            status: 'active'
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:117:hardcoded string:	            itemType: 'tablet',
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:119:hardcoded string:	            skuSource: 'SalesSkuMaster'
+microservices-middleware/server/src/productmanagement/belpMath/dto.js:123:hardcoded object:	        throw new NotFoundError(`Tablet with SKU Id:${tabletId} is not found`);
+microservices-middleware/server/src/productmanagement/belpMath/routes.js:5:hardcoded object:	const router = Router({ mergeParams: true });
+microservices-middleware/server/src/productmanagement/belpMath/routes.js:8:hardcoded string:	    const baseRoute = '/belpMath';
+microservices-middleware/server/src/productmanagement/belpMath/routes.js:10:hardcoded object:	    router.route(`${baseRoute}/product/single`)
+microservices-middleware/server/src/productmanagement/belpMath/routes.js:17:hardcoded object:	    router.route(`${baseRoute}/product/combo`)
+microservices-middleware/server/src/productmanagement/belpMath/helper.js:5:hardcoded variable:	const getUpdatedBfsPrice = (productDetails) => {
+microservices-middleware/server/src/productmanagement/belpMath/helper.js:6:hardcoded object:	    const { tabletSku = {}, bfSkuPrice, bfsProductType, bfsSdCardSku,tynkerSku = {}, epicSku = {}} = productDetails || {};
+microservices-middleware/server/src/productmanagement/belpMath/helper.js:7:hardcoded number:	    let maxByjusMathPrice = 0, minByjusMathPrice = 0;
+microservices-middleware/server/src/productmanagement/belpMath/helper.js:9:hardcoded number:	    maxByjusMathPrice += (tabletSku) ? parseInt(tabletSku.basePrice) : 0;
+microservices-middleware/server/src/productmanagement/belpMath/helper.js:11:hardcoded number:	    const bfsSdCardSkuPrice = (bfsSdCardSku.basePrice) ? parseInt(bfsSdCardSku.basePrice) : 0;
+microservices-middleware/server/src/productmanagement/belpMath/helper.js:12:hardcoded number:	    const tynkerSkuPrice = (tynkerSku.basePrice) ? parseInt(tynkerSku.basePrice) : 0;
+microservices-middleware/server/src/productmanagement/belpMath/helper.js:13:hardcoded number:	    const epicSkuPrice = (epicSku.basePrice) ? parseInt(epicSku.basePrice) : 0;
+microservices-middleware/server/src/productmanagement/belpMath/helper.js:15:hardcoded number:	    const tabPrice = (tabletSku) ? parseInt(tabletSku.basePrice) : 0;
+microservices-middleware/server/src/productmanagement/belpMath/helper.js:16:hardcoded number:	    let minPrice = 0;
+microservices-middleware/server/src/productmanagement/belpMath/helper.js:18:hardcoded number:	    minByjusMathPrice = ((Math.floor((minPrice )*BYJUS_MATH_MIN_PRICE/ 1000)) * 1000) + tabPrice
+microservices-middleware/server/src/productmanagement/belpMath/helper.js:20:hardcoded variable:	    const byjusMathPrice = {

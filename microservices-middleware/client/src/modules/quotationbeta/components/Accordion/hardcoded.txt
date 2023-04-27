@@ -1,0 +1,15 @@
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:11:hardcoded object:	    this.setState(({ open }) => ({
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:18:hardcoded string:	      <div className="accordion" style={this.props.style}>
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:36:hardcoded object:	const AccordionItem = ({ children, isOpen, onClick, style }) => (
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:37:hardcoded object:	  <Card style={style}>
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:40:hardcoded object:	        return React.cloneElement(child, { onClick });
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:44:hardcoded object:	        return React.cloneElement(child, { isOpen });
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:52:hardcoded object:	const AccordionHeader = ({ children, onClick, style }) => (
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:53:hardcoded object:	  <CardHeader style={style}>
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:54:hardcoded string:	    <h5 className="mb-0">
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:55:hardcoded string:	      <Button color="link" onClick={onClick}>
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:56:hardcoded object:	        {children}
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:58:hardcoded number:	    </h5>
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:62:hardcoded object:	const AccordionBody = ({ children, isOpen }) => (
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:63:hardcoded object:	  <Collapse isOpen={isOpen}>
+microservices-middleware/client/src/modules/quotationbeta/components/Accordion/index.js:64:hardcoded object:	    <CardBody>{children}</CardBody>

@@ -1,0 +1,43 @@
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:7:hardcoded string:	const { Quotation } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:10:hardcoded variable:	const saveAddressDetails = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:11:hardcoded string:	    const { email } = get(req, 'user', {});
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:12:hardcoded object:	    const { identifier, addressDetails, verificationRequired } = req.body;
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:14:hardcoded string:	    if (!identifier || !addressDetails) throw new BadRequestError('Parameters Missing');
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:17:hardcoded object:	        let { country, state, city, zipcode } = addressDetails
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:18:hardcoded string:	        if (country == "India") {
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:19:hardcoded variable:	            let stateExist = state && stateList.find(ele => ele.value.includes(state));
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:22:hardcoded number:	                    if (isNaN(zipcode) || size(zipcode.toString()) != 6) { throw new Error(`Please add a 6 digit valid zipcode`) }
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:35:hardcoded variable:	        const quotation = await Quotation.findById(identifier)
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:36:hardcoded object:	        const { customerId } = quotation
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:37:hardcoded string:	        const isDevEnv = process.env.NODE_ENV !== 'production';
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:40:hardcoded object:	            let addressSchema = { ...addressDetails };
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:42:hardcoded string:	            let address = get(addressSchema, 'address');
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:43:hardcoded string:	            address = address.split(',').join('\n');
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:44:hardcoded string:	            addressSchema["address"] = address;
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:47:hardcoded string:	                throw new Error("CustomerId not found!");
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:53:hardcoded string:	                        status: (verificationRequired) ? "approval_pending" : "address_saved",
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:55:hardcoded array:	                        [`actionDetails.addressSavedAt`]: new Date(),
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:56:hardcoded array:	                        [`actionDetails.addressSavedBy`]: email,
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:60:hardcoded object:	            return res.json({ addressDetails: addressSchema });
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:68:hardcoded variable:	const getPincodeInfo = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:69:hardcoded string:	    logger.info({ method: "getPincodeInfo" }, req.body)
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:70:hardcoded object:	    const { identifier, pincode } = req.body;
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:72:hardcoded string:	    if (!pincode) throw new BadRequestError('Parameters Missing');
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:73:hardcoded variable:	    const env = process.env.NODE_ENV;
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:75:hardcoded string:	        let city = "", state = "", response;
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:76:hardcoded string:	        if(!['local', 'development' ].includes(env)){
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:78:hardcoded string:	            if (response && response.Status.toLowerCase() === 'success' && response.PostOffice) {
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:79:hardcoded number:	                const postOffice = response.PostOffice[0];
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:86:hardcoded string:	            if (response && response.status.toLowerCase() === 'success' && response.postOffice) {
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:87:hardcoded array:	                const cities = [];
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:88:hardcoded array:	                const states = [];
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:90:hardcoded number:	                    if(cities.indexOf(pincodeDetails.district) == -1) cities.push(pincodeDetails.district);
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:91:hardcoded number:	                    if(states.indexOf(pincodeDetails.state) == -1) states.push(pincodeDetails.state);
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:93:hardcoded number:	                if(cities.length > 1){
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:96:hardcoded number:	                    city = cities[0];
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:98:hardcoded number:	                state = states[0];
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressController.js:102:hardcoded object:	        return res.json({ city, state });
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressRoutes.js:5:hardcoded object:	  const router = Router({ mergeParams: true });
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressRoutes.js:6:hardcoded string:	  const baseRoute = '/quotation'
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressRoutes.js:8:hardcoded object:	  router.route(`${baseRoute}/saveAddressDetails`)
+microservices-middleware/server/src/quotationmanagement/addressmanagement/addressRoutes.js:13:hardcoded object:	  router.route(`${baseRoute}/getPincodeInfo`)

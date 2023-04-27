@@ -1,0 +1,352 @@
+microservices-middleware/server/datafix/releasePayments.js:8:hardcoded variable:	const logger = bunyan.createLogger({
+microservices-middleware/server/datafix/releasePayments.js:9:hardcoded string:	    name: 'releasePayments',
+microservices-middleware/server/datafix/releasePayments.js:10:hardcoded environment variable:	    env: process.env.NODE_ENV,
+microservices-middleware/server/datafix/releasePayments.js:15:hardcoded string:	process.on('unhandledRejection', err => console.error(err))
+microservices-middleware/server/datafix/releasePayments.js:17:hardcoded variable:	const getDraftOrder = async (payload) => {
+microservices-middleware/server/datafix/releasePayments.js:18:hardcoded variable:	    const options = {
+microservices-middleware/server/datafix/releasePayments.js:19:hardcoded string:	        method: "POST",
+microservices-middleware/server/datafix/releasePayments.js:20:hardcoded URL:	        uri: `https://nucleus.byjusorders.com/nucleusapi/loanmanagement/byjusdirecttransaction/list`,
+microservices-middleware/server/datafix/releasePayments.js:23:hardcoded string:	            "Content-Type": "application/json",
+microservices-middleware/server/datafix/releasePayments.js:24:hardcoded string:	            "debug-token": "Buth8NuRuph4kohChei6Ohtep9mah6eegh2eeTah0eipegho"
+microservices-middleware/server/datafix/releasePayments.js:31:hardcoded variable:	const callNucleusApi = async (payload) => {
+microservices-middleware/server/datafix/releasePayments.js:32:hardcoded variable:	    const options = {
+microservices-middleware/server/datafix/releasePayments.js:33:hardcoded string:	        method: "POST",
+microservices-middleware/server/datafix/releasePayments.js:34:hardcoded URL:	        uri: `https://nucleus.byjusorders.com/nucleusapi/paymentmanagement/payment/unlinkMultiplePaymentsFromOrder`,
+microservices-middleware/server/datafix/releasePayments.js:37:hardcoded string:	            "Content-Type": "application/json",
+microservices-middleware/server/datafix/releasePayments.js:38:hardcoded string:	            "x-api-key": process.env.NUCLEUS_API_TOKEN
+microservices-middleware/server/datafix/releasePayments.js:45:hardcoded variable:	const doChanges = async () => {
+microservices-middleware/server/datafix/releasePayments.js:46:hardcoded variable:	    const records = await getDraftOrder({
+microservices-middleware/server/datafix/releasePayments.js:47:hardcoded string:	        model: "DraftOrder",
+microservices-middleware/server/datafix/releasePayments.js:49:hardcoded string:	            "lineItems.parentLineItems": [],
+microservices-middleware/server/datafix/releasePayments.js:50:hardcoded string:	            "status": "soft_approved"
+microservices-middleware/server/datafix/releasePayments.js:52:hardcoded string:	        "page": 1,
+microservices-middleware/server/datafix/releasePayments.js:53:hardcoded string:	        "limit": 10000000
+microservices-middleware/server/datafix/releasePayments.js:56:hardcoded string:	    console.log('Total records count :', records.docs.length);
+microservices-middleware/server/datafix/releasePayments.js:58:hardcoded number:	    let updatedCount = 0;
+microservices-middleware/server/datafix/releasePayments.js:63:hardcoded object:	                const { paymentDetails } = record;
+microservices-middleware/server/datafix/releasePayments.js:65:hardcoded string:	                    const payments = get(paymentDetails, "payments", []);
+microservices-middleware/server/datafix/releasePayments.js:66:hardcoded object:	                    !isEmpty(payments) && await callNucleusApi({ payments });
+microservices-middleware/server/datafix/releasePayments.js:70:hardcoded object:	                logger.error({ error }, `Error occured`)
+microservices-middleware/server/datafix/releasePayments.js:73:hardcoded number:	        { concurrency: 20 }
+microservices-middleware/server/datafix/releasePayments.js:75:hardcoded object:	    console.log(`UpdatedCount: ${updatedCount}. TotalCount: ${records.docs.length}`)
+microservices-middleware/server/datafix/dataFixController.js:1:hardcoded string:	'use strict';
+microservices-middleware/server/datafix/dataFixController.js:6:hardcoded string:	const { PremiumAccount } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/datafix/dataFixController.js:22:hardcoded variable:	const addDocument = async (req, res) => {
+microservices-middleware/server/datafix/dataFixController.js:24:hardcoded object:	        const { collection, insert } = req.body;
+microservices-middleware/server/datafix/dataFixController.js:25:hardcoded array:	        const doc = await mongoose.models[collection];
+microservices-middleware/server/datafix/dataFixController.js:26:hardcoded variable:	        const documentAdded = await doc.create(insert);
+microservices-middleware/server/datafix/dataFixController.js:28:hardcoded number:	            return res.status(200).json(documentAdded)
+microservices-middleware/server/datafix/dataFixController.js:43:hardcoded variable:	const updateDocument = async (req, res) => {
+microservices-middleware/server/datafix/dataFixController.js:45:hardcoded object:	        const { collection, search, update, options } = req.body;
+microservices-middleware/server/datafix/dataFixController.js:46:hardcoded array:	        const updateDoc = await mongoose.models[collection]
+microservices-middleware/server/datafix/dataFixController.js:48:hardcoded number:	        return res.status(200).json(updateDoc)
+microservices-middleware/server/datafix/dataFixController.js:59:hardcoded variable:	const listData = async (req, res) => {
+microservices-middleware/server/datafix/dataFixController.js:61:hardcoded object:	        const { page, limit, model, sort, select } = req.body;
+microservices-middleware/server/datafix/dataFixController.js:62:hardcoded object:	        const filter = req.body.filter || {};
+microservices-middleware/server/datafix/dataFixController.js:63:hardcoded variable:	        const options = {
+microservices-middleware/server/datafix/dataFixController.js:64:hardcoded number:	            page: page || 1,
+microservices-middleware/server/datafix/dataFixController.js:65:hardcoded number:	            limit: limit || 10,
+microservices-middleware/server/datafix/dataFixController.js:69:hardcoded array:	        const ModelName = mongoose.models[model];
+microservices-middleware/server/datafix/dataFixController.js:70:hardcoded variable:	        const list = await ModelName.paginate(filter, options);
+microservices-middleware/server/datafix/dataFixController.js:71:hardcoded number:	        return res.status(200).json(list)
+microservices-middleware/server/datafix/dataFixController.js:77:hardcoded variable:	const getComment = async (orderDetails) => {
+microservices-middleware/server/datafix/dataFixController.js:78:hardcoded array:	    const Comments = []
+microservices-middleware/server/datafix/dataFixController.js:80:hardcoded string:	        comment: 'This is Child Order. Parent Order ID : ' + orderDetails.orderId
+microservices-middleware/server/datafix/dataFixController.js:85:hardcoded variable:	const getPaymentMethod = async (emiDetails) => {
+microservices-middleware/server/datafix/dataFixController.js:89:hardcoded string:	            const paymentType = get(payment, 'paymentType')
+microservices-middleware/server/datafix/dataFixController.js:90:hardcoded string:	            if (paymentType === "EMI") {
+microservices-middleware/server/datafix/dataFixController.js:91:hardcoded string:	                paymentMethod = `EMI Prepaid ${selectedEmiPayment.replace(/_/g, " ").toUpperCase()}`;
+microservices-middleware/server/datafix/dataFixController.js:94:hardcoded string:	                paymentMethod = 'Non EMI Prepaid';
+microservices-middleware/server/datafix/dataFixController.js:103:hardcoded variable:	const getPaymentDetails = async (emiPayments) => {
+microservices-middleware/server/datafix/dataFixController.js:105:hardcoded variable:	        const payment = emiPayments.map(payment => {
+microservices-middleware/server/datafix/dataFixController.js:107:hardcoded string:	                "amount": payment.amount,
+microservices-middleware/server/datafix/dataFixController.js:108:hardcoded string:	                "method": payment.method,
+microservices-middleware/server/datafix/dataFixController.js:109:hardcoded string:	                "remark": `${payment.method}-${payment.referenceId}`,
+microservices-middleware/server/datafix/dataFixController.js:110:hardcoded string:	                "payment_id": `${payment.referenceId}-CHILD`,
+microservices-middleware/server/datafix/dataFixController.js:111:hardcoded string:	                "lastdigits": ""
+microservices-middleware/server/datafix/dataFixController.js:121:hardcoded variable:	const createOrderInOh = async (orderDetails) => {
+microservices-middleware/server/datafix/dataFixController.js:122:hardcoded variable:	    let responseObj = {
+microservices-middleware/server/datafix/dataFixController.js:123:hardcoded string:	        childOrderId: '',
+microservices-middleware/server/datafix/dataFixController.js:125:hardcoded string:	        responseMessage: ''
+microservices-middleware/server/datafix/dataFixController.js:128:hardcoded variable:	        const body = orderDetails
+microservices-middleware/server/datafix/dataFixController.js:129:hardcoded variable:	        const prospectId = body.prospectId
+microservices-middleware/server/datafix/dataFixController.js:130:hardcoded string:	        const tokenId = get(config, 'orderhive.token')
+microservices-middleware/server/datafix/dataFixController.js:131:hardcoded string:	        const tenantId = get(config, 'orderhive.tenantId')
+microservices-middleware/server/datafix/dataFixController.js:132:hardcoded variable:	        const contactId = body.contactId
+microservices-middleware/server/datafix/dataFixController.js:133:hardcoded variable:	        const billing_address_id = body.billing_address_id
+microservices-middleware/server/datafix/dataFixController.js:134:hardcoded variable:	        const shipping_address_id = body.shipping_address_id
+microservices-middleware/server/datafix/dataFixController.js:135:hardcoded variable:	        const sales_person_id = body.sales_person_id
+microservices-middleware/server/datafix/dataFixController.js:136:hardcoded variable:	        const sales_closed_by_user_id = body.sales_closed_by_user_id
+microservices-middleware/server/datafix/dataFixController.js:137:hardcoded variable:	        const direct_sales_appointment_by_id = body.direct_sales_appointment_by_id
+microservices-middleware/server/datafix/dataFixController.js:138:hardcoded array:	        const childLineItems = body.lineOrderItems.childOrderItems || [];
+microservices-middleware/server/datafix/dataFixController.js:139:hardcoded variable:	        const paymentDetails = body.paymentDetails;
+microservices-middleware/server/datafix/dataFixController.js:141:hardcoded variable:	        const Comments = await getComment(body)
+microservices-middleware/server/datafix/dataFixController.js:142:hardcoded variable:	        const type_of_sales = body.type_of_sales;
+microservices-middleware/server/datafix/dataFixController.js:143:hardcoded string:	        const emiPayments = paymentDetails.filter(payment => get(payment, 'type') == "EMI");
+microservices-middleware/server/datafix/dataFixController.js:145:hardcoded variable:	        const reference_number = emiPayments.map((payment) => {
+microservices-middleware/server/datafix/dataFixController.js:146:hardcoded object:	            return `${payment.referenceId}-CHILD`
+microservices-middleware/server/datafix/dataFixController.js:149:hardcoded string:	        const totalAmount = emiPayments.reduce((total, payment) => total + parseInt(get(payment, 'amount')), 0);
+microservices-middleware/server/datafix/dataFixController.js:152:hardcoded string:	        body.order_id = ""
+microservices-middleware/server/datafix/dataFixController.js:153:hardcoded string:	        const payment_mode = emiPayments.map(payment => get(payment, 'paymentType'))
+microservices-middleware/server/datafix/dataFixController.js:154:hardcoded variable:	        const payment_method = await getPaymentMethod(emiPayments)
+microservices-middleware/server/datafix/dataFixController.js:156:hardcoded number:	        let amount = 0;
+microservices-middleware/server/datafix/dataFixController.js:157:hardcoded variable:	        const payment = await getPaymentDetails(emiPayments)
+microservices-middleware/server/datafix/dataFixController.js:158:hardcoded variable:	        const eachItemPrice = totalAmount / childLineItems.length
+microservices-middleware/server/datafix/dataFixController.js:159:hardcoded variable:	        let SalesOrderItem = childLineItems.map(item => {
+microservices-middleware/server/datafix/dataFixController.js:165:hardcoded number:	        SalesOrderItem.forEach(p => amount += parseInt(p.price, 10));
+microservices-middleware/server/datafix/dataFixController.js:168:hardcoded variable:	        const ohPaylod = {
+microservices-middleware/server/datafix/dataFixController.js:170:hardcoded string:	            "method": "create_order",
+microservices-middleware/server/datafix/dataFixController.js:171:hardcoded string:	            "tenantId": tenantId,
+microservices-middleware/server/datafix/dataFixController.js:172:hardcoded string:	            "tokenId": tokenId,
+microservices-middleware/server/datafix/dataFixController.js:173:hardcoded string:	            "currency": 'INR',
+microservices-middleware/server/datafix/dataFixController.js:174:hardcoded string:	            "tax_type": '1',
+microservices-middleware/server/datafix/dataFixController.js:175:hardcoded string:	            "contactId": contactId,
+microservices-middleware/server/datafix/dataFixController.js:176:hardcoded string:	            "billing_address_id": billing_address_id,
+microservices-middleware/server/datafix/dataFixController.js:177:hardcoded string:	            "shipping_address_id": shipping_address_id,
+microservices-middleware/server/datafix/dataFixController.js:178:hardcoded string:	            "sales_person_id": sales_person_id,
+microservices-middleware/server/datafix/dataFixController.js:179:hardcoded string:	            "sales_closed_by_user_id": sales_closed_by_user_id,
+microservices-middleware/server/datafix/dataFixController.js:180:hardcoded string:	            "direct_sales_appointment_by_id": direct_sales_appointment_by_id,
+microservices-middleware/server/datafix/dataFixController.js:181:hardcoded string:	            "delivery_status": 'Product To Be Delivered',
+microservices-middleware/server/datafix/dataFixController.js:182:hardcoded string:	            "call_reference": '',
+microservices-middleware/server/datafix/dataFixController.js:183:hardcoded string:	            "SalesOrderItem": SalesOrderItem,
+microservices-middleware/server/datafix/dataFixController.js:184:hardcoded string:	            "Comment": Comments,
+microservices-middleware/server/datafix/dataFixController.js:185:hardcoded string:	            "type_of_sales": type_of_sales,
+microservices-middleware/server/datafix/dataFixController.js:186:hardcoded string:	            "reference_number": reference_number,
+microservices-middleware/server/datafix/dataFixController.js:187:hardcoded string:	            "payment_mode": payment_mode,
+microservices-middleware/server/datafix/dataFixController.js:188:hardcoded string:	            "payment_method": payment_method,
+microservices-middleware/server/datafix/dataFixController.js:189:hardcoded string:	            "payment": payment,
+microservices-middleware/server/datafix/dataFixController.js:190:hardcoded string:	            "order_status": '1',
+microservices-middleware/server/datafix/dataFixController.js:191:hardcoded string:	            "sendNotification": 0
+microservices-middleware/server/datafix/dataFixController.js:194:hardcoded variable:	        const orderHiveResponse = await callOrderhiveApi(ohPaylod)
+microservices-middleware/server/datafix/dataFixController.js:210:hardcoded variable:	const updateChildOrderInDB = async (currentOrder, childOrderId) => {
+microservices-middleware/server/datafix/dataFixController.js:212:hardcoded variable:	    const orderId = currentOrder.orderId
+microservices-middleware/server/datafix/dataFixController.js:214:hardcoded string:	    const ohRequestBody = get(currentOrder, 'mqMessage.ohRequestBody', {});
+microservices-middleware/server/datafix/dataFixController.js:215:hardcoded object:	    const { lineOrderItems, orderType } = currentOrder;
+microservices-middleware/server/datafix/dataFixController.js:216:hardcoded object:	    const { parentOrderItems, childOrderItems } = lineOrderItems;
+microservices-middleware/server/datafix/dataFixController.js:221:hardcoded variable:	    const updatedChildOrder = new Order({
+microservices-middleware/server/datafix/dataFixController.js:224:hardcoded string:	            ...get(currentOrder, 'mqMessage', {}),
+microservices-middleware/server/datafix/dataFixController.js:227:hardcoded string:	        orderType: 'SPLIT_CHILD',
+microservices-middleware/server/datafix/dataFixController.js:235:hardcoded variable:	const createChildOrder = async (req, res) => {
+microservices-middleware/server/datafix/dataFixController.js:236:hardcoded variable:	    const orderId = req.body.orderId;
+microservices-middleware/server/datafix/dataFixController.js:237:hardcoded object:	    const currentOrder = await Order.findOne({ orderId }).lean();
+microservices-middleware/server/datafix/dataFixController.js:240:hardcoded object:	            const { orderType } = currentOrder;
+microservices-middleware/server/datafix/dataFixController.js:241:hardcoded string:	            if (orderType === 'SPLIT_PARENT') {
+microservices-middleware/server/datafix/dataFixController.js:242:hardcoded variable:	                const childOrder = await createOrderInOh(currentOrder)
+microservices-middleware/server/datafix/dataFixController.js:243:hardcoded object:	                const { childOrderId, status } = childOrder
+microservices-middleware/server/datafix/dataFixController.js:246:hardcoded number:	                    res.status(200).send(childOrder)
+microservices-middleware/server/datafix/dataFixController.js:248:hardcoded number:	                    res.status(400).send(childOrder)
+microservices-middleware/server/datafix/dataFixController.js:252:hardcoded number:	                res.status(400).send(`Order with order Id-${orderId} can not be splited.`)
+microservices-middleware/server/datafix/dataFixController.js:256:hardcoded number:	            res.status(404).send(`Order with order Id-${orderId} not found.`)
+microservices-middleware/server/datafix/lockPayments.js:8:hardcoded variable:	const logger = bunyan.createLogger({
+microservices-middleware/server/datafix/lockPayments.js:9:hardcoded string:	    name: 'releasePayments',
+microservices-middleware/server/datafix/lockPayments.js:10:hardcoded environment variable:	    env: process.env.NODE_ENV,
+microservices-middleware/server/datafix/lockPayments.js:15:hardcoded string:	process.on('unhandledRejection', err => console.error(err))
+microservices-middleware/server/datafix/lockPayments.js:17:hardcoded variable:	const getDradftOrder = async (payload) => {
+microservices-middleware/server/datafix/lockPayments.js:18:hardcoded variable:	    const options = {
+microservices-middleware/server/datafix/lockPayments.js:19:hardcoded string:	        method: "POST",
+microservices-middleware/server/datafix/lockPayments.js:20:hardcoded URL:	        uri: `https://beta-middleware.byjusorders.com/api/datafix/list`,
+microservices-middleware/server/datafix/lockPayments.js:23:hardcoded string:	            "Content-Type": "application/json",
+microservices-middleware/server/datafix/lockPayments.js:24:hardcoded string:	            "debug-token": "Buth8NuRuph4kohChei6Ohtep9mah6eegh2eeTah0eipegho"
+microservices-middleware/server/datafix/lockPayments.js:31:hardcoded variable:	const callNucleusApi = async (payload) => {
+microservices-middleware/server/datafix/lockPayments.js:32:hardcoded variable:	    const options = {
+microservices-middleware/server/datafix/lockPayments.js:33:hardcoded string:	        method: "POST",
+microservices-middleware/server/datafix/lockPayments.js:34:hardcoded URL:	        uri: `https://nucleus.byjusorders.com/nucleusapi/paymentmanagement/payment/linkMultiplePaymentsToOrder`,
+microservices-middleware/server/datafix/lockPayments.js:37:hardcoded string:	            "Content-Type": "application/json",
+microservices-middleware/server/datafix/lockPayments.js:38:hardcoded string:	            "x-api-key": process.env.NUCLEUS_API_TOKEN
+microservices-middleware/server/datafix/lockPayments.js:45:hardcoded variable:	const getProvider = (provider, referenceId) => {
+microservices-middleware/server/datafix/lockPayments.js:46:hardcoded string:	    if (referenceId.indexOf("BYJUSICR") >= 0) {
+microservices-middleware/server/datafix/lockPayments.js:47:hardcoded string:	        provider = "ICR";
+microservices-middleware/server/datafix/lockPayments.js:48:hardcoded string:	    } else if (referenceId.indexOf("BYJUSSCR") >= 0) {
+microservices-middleware/server/datafix/lockPayments.js:49:hardcoded string:	        provider = "SCR";
+microservices-middleware/server/datafix/lockPayments.js:51:hardcoded variable:	    const providerMap = {
+microservices-middleware/server/datafix/lockPayments.js:52:hardcoded string:	        "Capital Float": "CAPITAL_FLOAT",
+microservices-middleware/server/datafix/lockPayments.js:53:hardcoded string:	        "PayU": "PAYU",
+microservices-middleware/server/datafix/lockPayments.js:54:hardcoded string:	        "Cheque": "CHEQUE",
+microservices-middleware/server/datafix/lockPayments.js:55:hardcoded string:	        "Cash Deposit": "CHALLAN",
+microservices-middleware/server/datafix/lockPayments.js:56:hardcoded string:	        "Paytm": "PAYTM",
+microservices-middleware/server/datafix/lockPayments.js:57:hardcoded string:	        "Cash On Delivery": "CASH_ON_DELIVERY",
+microservices-middleware/server/datafix/lockPayments.js:58:hardcoded string:	        'Bajaj': "BAJAJ"
+microservices-middleware/server/datafix/lockPayments.js:60:hardcoded array:	    return providerMap[provider] ? providerMap[provider] : provider;
+microservices-middleware/server/datafix/lockPayments.js:63:hardcoded variable:	const doChanges = async () => {
+microservices-middleware/server/datafix/lockPayments.js:64:hardcoded variable:	    const records = await getDradftOrder({
+microservices-middleware/server/datafix/lockPayments.js:65:hardcoded string:	        model: "Order",
+microservices-middleware/server/datafix/lockPayments.js:66:hardcoded string:	        "filter": {
+microservices-middleware/server/datafix/lockPayments.js:67:hardcoded string:	            "createdAt": { "$lt": "2019-05-10T00:00:00.000Z", "$gt": "2019-05-09T00:00:00.000Z" },
+microservices-middleware/server/datafix/lockPayments.js:68:hardcoded string:	            "orderId": { "$exists": true },
+microservices-middleware/server/datafix/lockPayments.js:69:hardcoded string:	            "orderhiveOrderStatus": { "$exists": true }
+microservices-middleware/server/datafix/lockPayments.js:71:hardcoded string:	        "select": "orderhiveOrderStatus orderId paymentDetails -_id",
+microservices-middleware/server/datafix/lockPayments.js:72:hardcoded string:	        "page": 1,
+microservices-middleware/server/datafix/lockPayments.js:73:hardcoded string:	        "limit": 10000000
+microservices-middleware/server/datafix/lockPayments.js:76:hardcoded string:	    console.log('Total records count :', records.docs.length);
+microservices-middleware/server/datafix/lockPayments.js:78:hardcoded number:	    let updatedCount = 0;
+microservices-middleware/server/datafix/lockPayments.js:83:hardcoded object:	                const { paymentDetails, orderId, orderhiveOrderStatus } = record;
+microservices-middleware/server/datafix/lockPayments.js:84:hardcoded string:	                if (!['calcelled', 'canceled', 'returned'].includes(orderhiveOrderStatus.toLocaleLowerCase())) {
+microservices-middleware/server/datafix/lockPayments.js:86:hardcoded object:	                        paymentDetails.map(ele => ({ ...ele, provider: getProvider(ele.paymentType, ele.referenceId) }));
+microservices-middleware/server/datafix/lockPayments.js:87:hardcoded object:	                        await callNucleusApi({ payments: paymentDetails, orderId });
+microservices-middleware/server/datafix/lockPayments.js:92:hardcoded object:	                logger.error({ error: error.message }, `Error occured`)
+microservices-middleware/server/datafix/lockPayments.js:95:hardcoded number:	        { concurrency: 50 }
+microservices-middleware/server/datafix/lockPayments.js:97:hardcoded object:	    console.log(`UpdatedCount: ${updatedCount}. TotalCount: ${records.docs.length}`)
+microservices-middleware/server/datafix/updateProductPricing.js:8:hardcoded variable:	const logger = bunyan.createLogger({
+microservices-middleware/server/datafix/updateProductPricing.js:9:hardcoded string:	    name: 'updateProductPricing',
+microservices-middleware/server/datafix/updateProductPricing.js:10:hardcoded environment variable:	    env: process.env.NODE_ENV,
+microservices-middleware/server/datafix/updateProductPricing.js:16:hardcoded variable:	const devMiddlewareUrl = `https://devbeta-middleware.byjusorders.com/api/datafix`;
+microservices-middleware/server/datafix/updateProductPricing.js:17:hardcoded variable:	//const prodMiddlewareUrl = `https://beta-middleware.byjusorders.com/api/datafix`;
+microservices-middleware/server/datafix/updateProductPricing.js:19:hardcoded string:	process.on('unhandledRejection', err => console.error(err))
+microservices-middleware/server/datafix/updateProductPricing.js:23:hardcoded number:	 * First all K10 prices should be changed. - updateK10Prices()
+microservices-middleware/server/datafix/updateProductPricing.js:24:hardcoded number:	 * Then Change K12-1 year prices - updateK12_1yearPrices()
+microservices-middleware/server/datafix/updateProductPricing.js:25:hardcoded number:	 * Followed by K12-2 year prices - updateK12_2yearPrices()
+microservices-middleware/server/datafix/updateProductPricing.js:30:hardcoded variable:	const getProductDetails = async (filterQuery) => {
+microservices-middleware/server/datafix/updateProductPricing.js:32:hardcoded variable:	        const options = {
+microservices-middleware/server/datafix/updateProductPricing.js:33:hardcoded string:	            method: "POST",
+microservices-middleware/server/datafix/updateProductPricing.js:34:hardcoded object:	            uri: `${devMiddlewareUrl}/list`,
+microservices-middleware/server/datafix/updateProductPricing.js:37:hardcoded string:	                "Content-Type": "application/json",
+microservices-middleware/server/datafix/updateProductPricing.js:38:hardcoded string:	                "debug-token": "Buth8NuRuph4kohChei6Ohtep9mah6eegh2eeTah0eipegho"
+microservices-middleware/server/datafix/updateProductPricing.js:41:hardcoded string:	                "model": "ProductDetail",
+microservices-middleware/server/datafix/updateProductPricing.js:42:hardcoded string:	                "filter": filterQuery,
+microservices-middleware/server/datafix/updateProductPricing.js:43:hardcoded string:	                "page": 1,
+microservices-middleware/server/datafix/updateProductPricing.js:44:hardcoded string:	                "limit": 2000
+microservices-middleware/server/datafix/updateProductPricing.js:48:hardcoded variable:	        const result = await request(options);
+microservices-middleware/server/datafix/updateProductPricing.js:56:hardcoded variable:	const updateProductDetails = async (searchQuery, updateQuery) => {
+microservices-middleware/server/datafix/updateProductPricing.js:57:hardcoded variable:	    const options = {
+microservices-middleware/server/datafix/updateProductPricing.js:58:hardcoded string:	        method: "POST",
+microservices-middleware/server/datafix/updateProductPricing.js:59:hardcoded object:	        uri: `${devMiddlewareUrl}/update`,
+microservices-middleware/server/datafix/updateProductPricing.js:62:hardcoded string:	            "Content-Type": "application/json",
+microservices-middleware/server/datafix/updateProductPricing.js:63:hardcoded string:	            "debug-token": "Buth8NuRuph4kohChei6Ohtep9mah6eegh2eeTah0eipegho"
+microservices-middleware/server/datafix/updateProductPricing.js:66:hardcoded string:	            "collection": "ProductDetail",
+microservices-middleware/server/datafix/updateProductPricing.js:67:hardcoded string:	            "search": searchQuery,
+microservices-middleware/server/datafix/updateProductPricing.js:68:hardcoded string:	            "update": updateQuery,
+microservices-middleware/server/datafix/updateProductPricing.js:69:hardcoded string:	            "options": {
+microservices-middleware/server/datafix/updateProductPricing.js:70:hardcoded string:	                "upsert": false
+microservices-middleware/server/datafix/updateProductPricing.js:77:hardcoded number:	const updateK10Prices = async () => {
+microservices-middleware/server/datafix/updateProductPricing.js:78:hardcoded number:	    /**Get all K10 Skus */
+microservices-middleware/server/datafix/updateProductPricing.js:79:hardcoded number:	    let k10Products = await getProductDetails({
+microservices-middleware/server/datafix/updateProductPricing.js:80:hardcoded string:	        "$or": [{
+microservices-middleware/server/datafix/updateProductPricing.js:81:hardcoded string:	            "course": {
+microservices-middleware/server/datafix/updateProductPricing.js:82:hardcoded string:	                "$in": [
+microservices-middleware/server/datafix/updateProductPricing.js:83:hardcoded string:	                    "Maths/Science",
+microservices-middleware/server/datafix/updateProductPricing.js:84:hardcoded string:	                    "Maths",
+microservices-middleware/server/datafix/updateProductPricing.js:88:hardcoded string:	            "board": {
+microservices-middleware/server/datafix/updateProductPricing.js:89:hardcoded string:	                "$in": [
+microservices-middleware/server/datafix/updateProductPricing.js:90:hardcoded string:	                    "CBSE",
+microservices-middleware/server/datafix/updateProductPricing.js:91:hardcoded string:	                    "ICSE",
+microservices-middleware/server/datafix/updateProductPricing.js:92:hardcoded string:	                    "Telangana",
+microservices-middleware/server/datafix/updateProductPricing.js:93:hardcoded string:	                    "AndhraPradesh",
+microservices-middleware/server/datafix/updateProductPricing.js:94:hardcoded string:	                    "TamilNadu",
+microservices-middleware/server/datafix/updateProductPricing.js:95:hardcoded string:	                    "Karnataka",
+microservices-middleware/server/datafix/updateProductPricing.js:96:hardcoded string:	                    "Maharashtra",
+microservices-middleware/server/datafix/updateProductPricing.js:97:hardcoded string:	                    "Kerala",
+microservices-middleware/server/datafix/updateProductPricing.js:98:hardcoded string:	                    "Tamilnadu",
+microservices-middleware/server/datafix/updateProductPricing.js:99:hardcoded string:	                    "STATE",
+microservices-middleware/server/datafix/updateProductPricing.js:100:hardcoded string:	                    "WestBengal",
+microservices-middleware/server/datafix/updateProductPricing.js:101:hardcoded string:	                    "Gujarat",
+microservices-middleware/server/datafix/updateProductPricing.js:102:hardcoded string:	                    "Punjab"
+microservices-middleware/server/datafix/updateProductPricing.js:106:hardcoded string:	            "course": {
+microservices-middleware/server/datafix/updateProductPricing.js:107:hardcoded string:	                "$in": ["Maths/Science", "Maths"]
+microservices-middleware/server/datafix/updateProductPricing.js:109:hardcoded string:	            "board": {
+microservices-middleware/server/datafix/updateProductPricing.js:110:hardcoded string:	                "$in": [null]
+microservices-middleware/server/datafix/updateProductPricing.js:116:hardcoded number:	    k10Products = k10Products.filter((product) => {
+microservices-middleware/server/datafix/updateProductPricing.js:117:hardcoded string:	        const grade = get(product, 'grade', '').toLowerCase();
+microservices-middleware/server/datafix/updateProductPricing.js:118:hardcoded string:	        const sku = get(product, 'sku', '').toLowerCase();
+microservices-middleware/server/datafix/updateProductPricing.js:119:hardcoded string:	        return (!grade.includes('crp') && !grade.includes('streaming') && !(sku.includes("trial")) && !(sku.includes('extension')));
+microservices-middleware/server/datafix/updateProductPricing.js:122:hardcoded string:	    k10Products = k10Products.sort((a, b) => b.validity.replace('MAY ', '') - a.validity.replace('MAY ', ''));
+microservices-middleware/server/datafix/updateProductPricing.js:124:hardcoded string:	    console.log("Total K10 products :", k10Products.length);
+microservices-middleware/server/datafix/updateProductPricing.js:125:hardcoded string:	    logger.info('Total K10 products : ', k10Products.length);
+microservices-middleware/server/datafix/updateProductPricing.js:127:hardcoded number:	    /**Each year add-on price is 15K */
+microservices-middleware/server/datafix/updateProductPricing.js:128:hardcoded variable:	    const basePriceMap = {
+microservices-middleware/server/datafix/updateProductPricing.js:129:hardcoded string:	        "2019": 20000,
+microservices-middleware/server/datafix/updateProductPricing.js:130:hardcoded string:	        "2020": 20000,
+microservices-middleware/server/datafix/updateProductPricing.js:131:hardcoded string:	        "2021": 35000,
+microservices-middleware/server/datafix/updateProductPricing.js:132:hardcoded string:	        "2022": 50000,
+microservices-middleware/server/datafix/updateProductPricing.js:133:hardcoded string:	        "2023": 65000,
+microservices-middleware/server/datafix/updateProductPricing.js:134:hardcoded string:	        "2024": 80000,
+microservices-middleware/server/datafix/updateProductPricing.js:135:hardcoded string:	        "2025": 95000,
+microservices-middleware/server/datafix/updateProductPricing.js:136:hardcoded string:	        "2026": 110000,
+microservices-middleware/server/datafix/updateProductPricing.js:137:hardcoded string:	        "2027": 125000,
+microservices-middleware/server/datafix/updateProductPricing.js:138:hardcoded string:	        "2028": 140000,
+microservices-middleware/server/datafix/updateProductPricing.js:139:hardcoded string:	        "2029": 155000,
+microservices-middleware/server/datafix/updateProductPricing.js:140:hardcoded string:	        "2030": 170000
+microservices-middleware/server/datafix/updateProductPricing.js:143:hardcoded number:	    if (k10Products.length > 0) {
+microservices-middleware/server/datafix/updateProductPricing.js:145:hardcoded number:	            await Promise.map(k10Products, async (k10Product, index) => {
+microservices-middleware/server/datafix/updateProductPricing.js:146:hardcoded number:	                let { _id, sku, grade, basePrice, continousPrice, validity } = k10Product;
+microservices-middleware/server/datafix/updateProductPricing.js:148:hardcoded string:	                const updatedValidity = validity.replace('MAY ', '');
+microservices-middleware/server/datafix/updateProductPricing.js:150:hardcoded number:	                // /**Update Sku's continous price to 15000 */
+microservices-middleware/server/datafix/updateProductPricing.js:151:hardcoded string:	                const result = await updateProductDetails({ "_id": _id }, {
+microservices-middleware/server/datafix/updateProductPricing.js:152:hardcoded string:	                    "continousPrice": 15000,
+microservices-middleware/server/datafix/updateProductPricing.js:153:hardcoded string:	                    "basePrice": basePriceMap[updatedValidity]
+microservices-middleware/server/datafix/updateProductPricing.js:156:hardcoded object:	                console.log(`Processed product- ${_id} ${grade} ${sku} ${validity} ${basePrice} ${continousPrice}`);
+microservices-middleware/server/datafix/updateProductPricing.js:157:hardcoded string:	                console.log('Updated validity', updatedValidity, basePriceMap[updatedValidity]);
+microservices-middleware/server/datafix/updateProductPricing.js:159:hardcoded number:	                concurrency: 200
+microservices-middleware/server/datafix/updateProductPricing.js:163:hardcoded string:	            logger.error({ method: "startJob", error });
+microservices-middleware/server/datafix/updateProductPricing.js:168:hardcoded number:	const updateK12_1yearPrices = async () => {
+microservices-middleware/server/datafix/updateProductPricing.js:169:hardcoded number:	    /**Get all the K12-1year skus */
+microservices-middleware/server/datafix/updateProductPricing.js:170:hardcoded number:	    let k12Products = await getProductDetails({
+microservices-middleware/server/datafix/updateProductPricing.js:171:hardcoded string:	        "grade": { "$in": ["11", "12", 11, 12] }
+microservices-middleware/server/datafix/updateProductPricing.js:175:hardcoded number:	    k12Products = k12Products.filter((product) => {
+microservices-middleware/server/datafix/updateProductPricing.js:176:hardcoded string:	        const grade = get(product, 'grade', '').toLowerCase();
+microservices-middleware/server/datafix/updateProductPricing.js:177:hardcoded string:	        const sku = get(product, 'sku', '').toLowerCase();
+microservices-middleware/server/datafix/updateProductPricing.js:178:hardcoded string:	        return (!grade.includes('crp') && !grade.includes('streaming') && !(sku.includes("trial")) && !(sku.includes('extension')) && !(sku.includes("3 months")));
+microservices-middleware/server/datafix/updateProductPricing.js:181:hardcoded string:	    console.log("Total K12 products :", k12Products.length);
+microservices-middleware/server/datafix/updateProductPricing.js:182:hardcoded string:	    logger.info('Total K12 products : ', k12Products.length);
+microservices-middleware/server/datafix/updateProductPricing.js:184:hardcoded number:	    if (k12Products.length > 0) {
+microservices-middleware/server/datafix/updateProductPricing.js:186:hardcoded number:	            await Promise.map(k12Products, async (k12Product, index) => {
+microservices-middleware/server/datafix/updateProductPricing.js:187:hardcoded number:	                const { _id, sku, grade, basePrice, continousPrice, course, validity } = k12Product;
+microservices-middleware/server/datafix/updateProductPricing.js:192:hardcoded string:	                const updatedPrice = ["jee", "neet", "commerce"].indexOf(course.toLowerCase()) >= 0 ? 55000 : 60000;
+microservices-middleware/server/datafix/updateProductPricing.js:194:hardcoded string:	                const result = await updateProductDetails({ "_id": _id }, {
+microservices-middleware/server/datafix/updateProductPricing.js:195:hardcoded string:	                    "basePrice": updatedPrice,
+microservices-middleware/server/datafix/updateProductPricing.js:196:hardcoded string:	                    "continousPrice": updatedPrice
+microservices-middleware/server/datafix/updateProductPricing.js:199:hardcoded object:	                console.log(`Processed product- ${_id} ${grade} ${sku} ${basePrice} ${continousPrice}`);
+microservices-middleware/server/datafix/updateProductPricing.js:201:hardcoded number:	                concurrency: 200
+microservices-middleware/server/datafix/updateProductPricing.js:205:hardcoded string:	            logger.error({ method: "startJob", error });
+microservices-middleware/server/datafix/updateProductPricing.js:210:hardcoded number:	const updateK12_2yearPrices = async () => {
+microservices-middleware/server/datafix/updateProductPricing.js:211:hardcoded number:	    /**Get all K12-2years Skus */
+microservices-middleware/server/datafix/updateProductPricing.js:212:hardcoded number:	    let k12Products = await getProductDetails({
+microservices-middleware/server/datafix/updateProductPricing.js:213:hardcoded string:	        "grade": { "$in": ["11+12"] }
+microservices-middleware/server/datafix/updateProductPricing.js:217:hardcoded number:	    k12Products = k12Products.filter((product) => {
+microservices-middleware/server/datafix/updateProductPricing.js:218:hardcoded string:	        const grade = get(product, 'grade', '').toLowerCase();
+microservices-middleware/server/datafix/updateProductPricing.js:219:hardcoded string:	        const sku = get(product, 'sku', '').toLowerCase();
+microservices-middleware/server/datafix/updateProductPricing.js:220:hardcoded string:	        return (!grade.includes('crp') && !grade.includes('streaming') && !(sku.includes("trial")) && !(sku.includes('extension')) && !(sku.includes("3 months")));
+microservices-middleware/server/datafix/updateProductPricing.js:223:hardcoded string:	    console.log("Total K12 products :", k12Products.length);
+microservices-middleware/server/datafix/updateProductPricing.js:224:hardcoded string:	    logger.info('Total K12 products : ', k12Products.length);
+microservices-middleware/server/datafix/updateProductPricing.js:226:hardcoded number:	    if (k12Products.length > 0) {
+microservices-middleware/server/datafix/updateProductPricing.js:228:hardcoded number:	            await Promise.map(k12Products, async (k12Product, index) => {
+microservices-middleware/server/datafix/updateProductPricing.js:229:hardcoded number:	                const { _id, sku, grade, basePrice, continousPrice, course, validity } = k12Product;
+microservices-middleware/server/datafix/updateProductPricing.js:234:hardcoded string:	                const updatedPrice = ["jee", "neet", "commerce"].indexOf(course.toLowerCase()) >= 0 ? 75000 : 80000;
+microservices-middleware/server/datafix/updateProductPricing.js:236:hardcoded string:	                const result = await updateProductDetails({ "_id": _id }, {
+microservices-middleware/server/datafix/updateProductPricing.js:237:hardcoded string:	                    "basePrice": updatedPrice,
+microservices-middleware/server/datafix/updateProductPricing.js:238:hardcoded string:	                    "continousPrice": updatedPrice
+microservices-middleware/server/datafix/updateProductPricing.js:241:hardcoded object:	                console.log(`Processed product- ${_id} ${grade} ${sku} ${basePrice} ${continousPrice}`);
+microservices-middleware/server/datafix/updateProductPricing.js:243:hardcoded number:	                concurrency: 200
+microservices-middleware/server/datafix/updateProductPricing.js:247:hardcoded string:	            logger.error({ method: "startJob", error });
+microservices-middleware/server/datafix/updateProductPricing.js:253:hardcoded variable:	const updateStreamingPrices = async () => {
+microservices-middleware/server/datafix/updateProductPricing.js:255:hardcoded variable:	    let StreamingProducts = await getProductDetails({
+microservices-middleware/server/datafix/updateProductPricing.js:256:hardcoded string:	        "grade":
+microservices-middleware/server/datafix/updateProductPricing.js:258:hardcoded string:	            "$regex": new RegExp("Streaming 12")
+microservices-middleware/server/datafix/updateProductPricing.js:262:hardcoded string:	    console.log("Total Streaming products :", StreamingProducts.length);
+microservices-middleware/server/datafix/updateProductPricing.js:263:hardcoded string:	    logger.info('Total Streaming products : ', StreamingProducts.length);
+microservices-middleware/server/datafix/updateProductPricing.js:265:hardcoded number:	    if (StreamingProducts.length > 0) {
+microservices-middleware/server/datafix/updateProductPricing.js:268:hardcoded object:	                let { _id, sku, grade, course, validity, basePrice, continousPrice, cohort_id } = streamingProduct;
+microservices-middleware/server/datafix/updateProductPricing.js:270:hardcoded string:	                if (course === "JEE+NEET") {
+microservices-middleware/server/datafix/updateProductPricing.js:271:hardcoded string:	                    course = "JEE/NEET";
+microservices-middleware/server/datafix/updateProductPricing.js:273:hardcoded string:	                if (validity && validity.replace('MAY ', '') > 2019) {
+microservices-middleware/server/datafix/updateProductPricing.js:274:hardcoded string:	                    const sdGrade = grade.replace('Streaming ', '');
+microservices-middleware/server/datafix/updateProductPricing.js:275:hardcoded string:	                    const sdBoard = ["4", "5", 4, 5, "11", "12", 11, 12, "11+12"].indexOf(sdGrade) >= 0 ? null : "CBSE";
+microservices-middleware/server/datafix/updateProductPricing.js:276:hardcoded string:	                    let correspondingSD = await getProductDetails({ "grade": sdGrade, "board": sdBoard, course, validity });
+microservices-middleware/server/datafix/updateProductPricing.js:277:hardcoded number:	                    correspondingSD = correspondingSD ? correspondingSD[0] : correspondingSD;
+microservices-middleware/server/datafix/updateProductPricing.js:280:hardcoded object:	                        console.log(`Processed Streaming Product- ${_id} ${grade} ${validity} ${sku} ${basePrice} ${continousPrice}`);
+microservices-middleware/server/datafix/updateProductPricing.js:281:hardcoded object:	                        console.log(`Processed SD Product- ${correspondingSD._id} ${correspondingSD.grade} ${correspondingSD.validity} ${correspondingSD.sku} ${correspondingSD.basePrice} ${correspondingSD.continousPrice}`);
+microservices-middleware/server/datafix/updateProductPricing.js:283:hardcoded string:	                        await updateProductDetails({ "_id": _id }, {
+microservices-middleware/server/datafix/updateProductPricing.js:284:hardcoded string:	                            "basePrice": correspondingSD.basePrice,
+microservices-middleware/server/datafix/updateProductPricing.js:285:hardcoded string:	                            "continousPrice": correspondingSD.continousPrice,
+microservices-middleware/server/datafix/updateProductPricing.js:286:hardcoded string:	                            "course": (course === "JEE+NEET") ? "JEE/NEET" : course,
+microservices-middleware/server/datafix/updateProductPricing.js:287:hardcoded string:	                            "cohort_id": cohort_id ? cohort_id : correspondingSD.cohort_id
+microservices-middleware/server/datafix/updateProductPricing.js:292:hardcoded number:	                concurrency: 200
+microservices-middleware/server/datafix/updateProductPricing.js:296:hardcoded string:	            logger.error({ method: "startJob", error });
+microservices-middleware/server/datafix/updateProductPricing.js:302:hardcoded number:	    updateK10Prices,
+microservices-middleware/server/datafix/updateProductPricing.js:303:hardcoded number:	    updateK12_1yearPrices,
+microservices-middleware/server/datafix/updateProductPricing.js:304:hardcoded number:	    updateK12_2yearPrices,
+microservices-middleware/server/datafix/dataFixRoutes.js:4:hardcoded object:	const router = Router({ mergeParams: true })
+microservices-middleware/server/datafix/dataFixRoutes.js:7:hardcoded string:	    const baseRoute = '/datafix';
+microservices-middleware/server/datafix/dataFixRoutes.js:9:hardcoded object:	    router.route(`${baseRoute}/create`)
+microservices-middleware/server/datafix/dataFixRoutes.js:15:hardcoded object:	    router.route(`${baseRoute}/list`)
+microservices-middleware/server/datafix/dataFixRoutes.js:21:hardcoded object:	    router.route(`${baseRoute}/update`)
+microservices-middleware/server/datafix/dataFixRoutes.js:26:hardcoded object:	    router.route(`${baseRoute}/createChildOrder`)

@@ -1,0 +1,150 @@
+microservices-middleware/server/config/setupToken.js:1:hardcoded string:	const Orderhive = require('@byjus-orders/tyrion-plugins/orderhive');
+microservices-middleware/server/config/setupToken.js:2:hardcoded string:	const DsslApi = require('@byjus-orders/tyrion-plugins/kart/dssl');
+microservices-middleware/server/config/setupToken.js:7:hardcoded variable:	const setupOHToken = async () => {
+microservices-middleware/server/config/setupToken.js:8:hardcoded string:	    const OrderHiveConfig = await ByjusConfig.findOne({ "formattedAppName": "ORDERHIVE", "formattedModuleName": "ORDERHIVE_API_CONFIG" });
+microservices-middleware/server/config/setupToken.js:10:hardcoded array:	        const { configs = [] } = OrderHiveConfig;
+microservices-middleware/server/config/setupToken.js:11:hardcoded number:	        const { clientId, clientSecret, url } = configs[0];
+microservices-middleware/server/config/setupToken.js:12:hardcoded object:	        const ohClient = new Orderhive({ clientId, clientSecret, url });
+microservices-middleware/server/config/setupToken.js:21:hardcoded variable:	const setupDsslToken = async (uri) => {
+microservices-middleware/server/config/setupToken.js:22:hardcoded object:	    const tokenUrl = `${config.dssl.baseUrl}/token`
+microservices-middleware/server/config/setupToken.js:23:hardcoded object:	    const clientId = `${config.dssl.clientId}`;
+microservices-middleware/server/config/setupToken.js:24:hardcoded object:	    const clientSecret = `${config.dssl.clientSecret}`;
+microservices-middleware/server/config/setupToken.js:26:hardcoded variable:	    const DsslApiConfig = await ByjusConfig.findOne(
+microservices-middleware/server/config/setupToken.js:28:hardcoded string:	            "formattedAppName": "DSSLAPI",
+microservices-middleware/server/config/setupToken.js:29:hardcoded string:	            "formattedModuleName": "DSSL_API_CONFIG"
+microservices-middleware/server/config/setupToken.js:33:hardcoded array:	        const { configs = [] } = DsslApiConfig;
+microservices-middleware/server/config/setupToken.js:34:hardcoded number:	        const { accessToken, refreshToken } = configs[0];
+microservices-middleware/server/config/setupToken.js:36:hardcoded object:	        const dssl = new DsslApi({ clientId, clientSecret, uri, tokenUrl, accessToken, refreshToken });
+microservices-middleware/server/config/setupToken.js:39:hardcoded string:	        throw new Error('DsslApiConfig missing.');
+microservices-middleware/server/config/smsConfig.js:3:hardcoded string:	        cvpTemplateId: "1107166807252121970",
+microservices-middleware/server/config/smsConfig.js:4:hardcoded string:	        quotationTemplateId: "1107166807248899819",
+microservices-middleware/server/config/smsConfig.js:5:hardcoded string:	        priceQueryTemplateId: "1107162383907669824",
+microservices-middleware/server/config/smsConfig.js:6:hardcoded string:	        btcQuotationTemplateId: "1107166919668501070",
+microservices-middleware/server/config/smsConfig.js:7:hardcoded string:	        bhtQuotationTemplateId: "1107167231502074562"
+microservices-middleware/server/config/rateLimitConfig.js:11:hardcoded string:	        database: 'redis', // accepts 'redis' or 'nodecache'
+microservices-middleware/server/config/environment.js:3:hardcoded variable:	const config = {
+microservices-middleware/server/config/environment.js:4:hardcoded string:	  appName: "kart",
+microservices-middleware/server/config/environment.js:5:hardcoded string:	  host: process.env.HOST_NAME || 'localhost',
+microservices-middleware/server/config/environment.js:6:hardcoded number:	  port: process.env.PORT || 7000,
+microservices-middleware/server/config/environment.js:7:hardcoded environment variable:	  env: process.env.NODE_ENV,
+microservices-middleware/server/config/environment.js:9:hardcoded environment variable:	  leadoDb: process.env.LEADO_DB,
+microservices-middleware/server/config/environment.js:10:hardcoded environment variable:	  nucleusDb: process.env.NUCLEUS_DB,
+microservices-middleware/server/config/environment.js:11:hardcoded environment variable:	  achieveDb: process.env.ACHIEVE_DB,
+microservices-middleware/server/config/environment.js:12:hardcoded environment variable:	  scAchieve: process.env.MONGODB_SCACHIEVE_URI,
+microservices-middleware/server/config/environment.js:13:hardcoded string:	  dbUrl: process.env.MONGO_DB_URI || "MONGO_DB_URI",
+microservices-middleware/server/config/environment.js:15:hardcoded environment variable:	  nucleusBaseUrl: process.env.NUCLEUS_API_URI,
+microservices-middleware/server/config/environment.js:16:hardcoded environment variable:	  nucleusApiToken: process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/config/environment.js:17:hardcoded environment variable:	  achieveBaseUrl: process.env.ACHIEVE_URL,
+microservices-middleware/server/config/environment.js:18:hardcoded environment variable:	  premiumAccountBaseUrl: process.env.PREMIUM_ACCOUNT_API_URL,
+microservices-middleware/server/config/environment.js:19:hardcoded environment variable:	  ptmsBaseUrl: process.env.PTMS_BASE_URL,
+microservices-middleware/server/config/environment.js:20:hardcoded environment variable:	  stmsBaseUrl: process.env.STMS_BASE_URL,
+microservices-middleware/server/config/environment.js:21:hardcoded environment variable:	  uxosBaseUrl: process.env.UXOS_BASE_URL,
+microservices-middleware/server/config/environment.js:22:hardcoded environment variable:	  cxmsBaseUrl: process.env.CXMS_BASE_URL,
+microservices-middleware/server/config/environment.js:24:hardcoded environment variable:	    url: process.env.LMS_DETAILS_URL,
+microservices-middleware/server/config/environment.js:25:hardcoded environment variable:	    key: process.env.LMS_DETAILS_KEY,
+microservices-middleware/server/config/environment.js:26:hardcoded environment variable:	    lmsApiUrl : process.env.LMS_VERIFICATION_BASE_URL
+microservices-middleware/server/config/environment.js:29:hardcoded environment variable:	    isActive: process.env.IS_MENTORING,
+microservices-middleware/server/config/environment.js:30:hardcoded environment variable:	    campaigns: process.env.MENTORING_CAMPAIGNS
+microservices-middleware/server/config/environment.js:33:hardcoded environment variable:	    isActive: process.env.IS_COUPON
+microservices-middleware/server/config/environment.js:36:hardcoded environment variable:	    isActive: process.env.IS_ON_SPOT_DELIVERY
+microservices-middleware/server/config/environment.js:39:hardcoded environment variable:	    isActive: process.env.IS_PAYMENT_OWNERSHIP
+microservices-middleware/server/config/environment.js:42:hardcoded environment variable:	    isActive: process.env.IS_CASHBACK
+microservices-middleware/server/config/environment.js:45:hardcoded environment variable:	    baseUrl: process.env.ORDERHIVE_HOST,
+microservices-middleware/server/config/environment.js:46:hardcoded environment variable:	    username: process.env.ORDERHIVE_USERNAME,
+microservices-middleware/server/config/environment.js:47:hardcoded environment variable:	    password: process.env.ORDERHIVE_PASSWORD,
+microservices-middleware/server/config/environment.js:48:hardcoded environment variable:	    tenantId: process.env.ORDERHIVE_TENANTID,
+microservices-middleware/server/config/environment.js:49:hardcoded environment variable:	    token: process.env.ORDERHIVE_TOKEN
+microservices-middleware/server/config/environment.js:53:hardcoded environment variable:	      name: process.env.OH_ORDERS_QUEUE_NAME,
+microservices-middleware/server/config/environment.js:54:hardcoded environment variable:	      token: process.env.OH_ORDERS_QUEUE_TOKEN,
+microservices-middleware/server/config/environment.js:55:hardcoded environment variable:	      project_id: process.env.OH_ORDERS_PROJECT_ID,
+microservices-middleware/server/config/environment.js:56:hardcoded environment variable:	      host: process.env.OH_ORDERS_HOST
+microservices-middleware/server/config/environment.js:60:hardcoded environment variable:	    key: process.env.SMS_KEY,
+microservices-middleware/server/config/environment.js:61:hardcoded environment variable:	    salt: process.env.SMS_SALT,
+microservices-middleware/server/config/environment.js:62:hardcoded string:	    serviceUrl: process.env.SMS_SERVICE_URL || 'https://byjus-notification-hub.herokuapp.com/api/v1/notification',
+microservices-middleware/server/config/environment.js:63:hardcoded string:	    provider: process.env.SMS_PROVIDER || 'gupsup'
+microservices-middleware/server/config/environment.js:66:hardcoded number:	    s3: {
+microservices-middleware/server/config/environment.js:67:hardcoded number:	      clientId: process.env.AWS_S3_CLIENT_ID,
+microservices-middleware/server/config/environment.js:68:hardcoded number:	      clientSecret: process.env.AWS_S3_CLIENT_SECRET,
+microservices-middleware/server/config/environment.js:69:hardcoded string:	      region: process.env.AWS_S3_REGION || 'ap-southeast-1',
+microservices-middleware/server/config/environment.js:70:hardcoded number:	      bucket: process.env.AWS_S3_BUCKET,
+microservices-middleware/server/config/environment.js:71:hardcoded string:	      acl: process.env.AWS_S3_ACL || 'public-read',
+microservices-middleware/server/config/environment.js:75:hardcoded environment variable:	    isActive: process.env.IS_ON_SPOT_DELIVERY
+microservices-middleware/server/config/environment.js:78:hardcoded environment variable:	    token: process.env.DEBUG_TOKEN
+microservices-middleware/server/config/environment.js:80:hardcoded environment variable:	  isStudentProfileAvailable: process.env.IS_STUDENT_PROFILE_AVAILABLE,
+microservices-middleware/server/config/environment.js:82:hardcoded environment variable:	    baseUrl: process.env.TLLMS_URL,
+microservices-middleware/server/config/environment.js:83:hardcoded number:	    base2Url: process.env.TLLMS2_URL,
+microservices-middleware/server/config/environment.js:84:hardcoded environment variable:	    clientId: process.env.TLLMS_CLIENT_ID,
+microservices-middleware/server/config/environment.js:85:hardcoded environment variable:	    clientSecret: process.env.TLLMS_CLIENT_SECRET
+microservices-middleware/server/config/environment.js:88:hardcoded environment variable:	    baseUrl: process.env.BYJUS_MATH_BATCH_URL,
+microservices-middleware/server/config/environment.js:89:hardcoded environment variable:	    urlKey: process.env.BYJUS_MATH_BATCH_KEY
+microservices-middleware/server/config/environment.js:92:hardcoded environment variable:	    url: process.env.POSTAL_CODE_URL
+microservices-middleware/server/config/environment.js:94:hardcoded environment variable:	  isCourseMappingQueryRequired: process.env.IS_COURSE_MAPPING_QUERY_REQUIRED,
+microservices-middleware/server/config/environment.js:95:hardcoded number:	  d4: {
+microservices-middleware/server/config/environment.js:96:hardcoded number:	    isAvailable: process.env.IS_D4_ENABLED,
+microservices-middleware/server/config/environment.js:97:hardcoded environment variable:	    serviceBaseUrl: process.env.IDENTITY_SERVICE_BASE__URL,
+microservices-middleware/server/config/environment.js:98:hardcoded environment variable:	    identityClientId: process.env.IDENTITY_CLIENT_ID,
+microservices-middleware/server/config/environment.js:99:hardcoded environment variable:	    identityClientSecret: process.env.IDENTITY_CLIENT_SECRET
+microservices-middleware/server/config/environment.js:102:hardcoded environment variable:	    consumerUrl: process.env.CONSUMER_URL,
+microservices-middleware/server/config/environment.js:103:hardcoded environment variable:	    encryptionKey: process.env.OTP_ENCR_KEY,
+microservices-middleware/server/config/environment.js:104:hardcoded environment variable:	    quotationConsumerUrl: process.env.QUOTATION_CONSUMER_URL,
+microservices-middleware/server/config/environment.js:105:hardcoded environment variable:	    quotationbetaConsumerUrl: process.env.QUOTATION_BETA_CONSUMER_URL
+microservices-middleware/server/config/environment.js:108:hardcoded string:	    activeProvider: process.env.URL_SHORTENER_ACTIVE_PROVIDER || "firebase",
+microservices-middleware/server/config/environment.js:110:hardcoded environment variable:	      baseShortenUrl: process.env.BITLY_BASE_SHORTEN_URL,
+microservices-middleware/server/config/environment.js:111:hardcoded environment variable:	      accessToken: process.env.BITLY_ACCESS_TOKEN
+microservices-middleware/server/config/environment.js:114:hardcoded string:	      baseShortenUrl: process.env.FIREBASE_BASE_SHORTEN_URL || "https://firebasedynamiclinks.googleapis.com/v1/shortLinks",
+microservices-middleware/server/config/environment.js:115:hardcoded string:	      dynamicLinksDomain: process.env.FIREBASE_DYNAMIC_LINKS_DOMAIN || "https://byjusorders.page.link",
+microservices-middleware/server/config/environment.js:116:hardcoded environment variable:	      accessToken: process.env.FIREBASE_ACCESS_TOKEN
+microservices-middleware/server/config/environment.js:120:hardcoded environment variable:	    isSSREnabled: process.env.IS_SSR_ENABLED,
+microservices-middleware/server/config/environment.js:121:hardcoded environment variable:	    isRepunchEnabled: process.env.IS_REPUNCH_ENABLED,
+microservices-middleware/server/config/environment.js:122:hardcoded environment variable:	    isOneToMega: process.env.IS_ONE_TO_MEGA,
+microservices-middleware/server/config/environment.js:123:hardcoded environment variable:	    isTlpPlusHlpEnabled: process.env.IS_TLP_PLUS_HLP_ENABLED,
+microservices-middleware/server/config/environment.js:124:hardcoded environment variable:	    isTlpToHlpEnabled: process.env.IS_TLP_TO_HLP_ENABLED,
+microservices-middleware/server/config/environment.js:125:hardcoded environment variable:	    showBatchDetails: process.env.SHOW_BATCH_DETAILS,
+microservices-middleware/server/config/environment.js:126:hardcoded environment variable:	    disableLsAuthentication: process.env.DISABLE_LS_AUTHENTICATION,
+microservices-middleware/server/config/environment.js:127:hardcoded environment variable:	    isBooksOptionsEnabled: process.env.IS_BOOKS_OPTION_ENABLED,
+microservices-middleware/server/config/environment.js:128:hardcoded environment variable:	    isBtlpPriceChangeEnabled: process.env.IS_BTLP_PRICE_CHANGE_ENABLED
+microservices-middleware/server/config/environment.js:131:hardcoded environment variable:	    url: process.env.LEADSQUARED_RETRIEVE_URL,
+microservices-middleware/server/config/environment.js:132:hardcoded string:	    "35742": { "accessKey": process.env.LEADSQUARED_RETRIEVE_ACCESSSKEY35742, "secretKey": process.env.LEADSQUARED_RETRIEVE_SECRETKEY35742 },
+microservices-middleware/server/config/environment.js:133:hardcoded string:	    "17139": { "accessKey": process.env.LEADSQUARED_RETRIEVE_ACCESSSKEY17139, "secretKey": process.env.LEADSQUARED_RETRIEVE_SECRETKEY17139 },
+microservices-middleware/server/config/environment.js:134:hardcoded string:	    "7461": { "accessKey": process.env.LEADSQUARED_RETRIEVE_ACCESSSKEY7461, "secretKey": process.env.LEADSQUARED_RETRIEVE_SECRETKEY7461 },
+microservices-middleware/server/config/environment.js:135:hardcoded string:	    "24692": { "accessKey": process.env.LEADSQUARED_RETRIEVE_ACCESSSKEY24692, "secretKey": process.env.LEADSQUARED_RETRIEVE_SECRETKEY24692 },
+microservices-middleware/server/config/environment.js:136:hardcoded string:	    "24693": { "accessKey": process.env.LEADSQUARED_RETRIEVE_ACCESSSKEY24693, "secretKey": process.env.LEADSQUARED_RETRIEVE_SECRETKEY24693 },
+microservices-middleware/server/config/environment.js:137:hardcoded string:	    "46867": { "accessKey": process.env.LEADSQUARED_RETRIEVE_ACCESSSKEY46867, "secretKey": process.env.LEADSQUARED_RETRIEVE_SECRETKEY46867 }
+microservices-middleware/server/config/environment.js:140:hardcoded environment variable:	    url: process.env.LEADSQUARED_CREATE_ACTIVITY_URL,
+microservices-middleware/server/config/environment.js:141:hardcoded environment variable:	    accessKey: process.env.LEADSQUARED_CREATE_ACTIVITY_ACCESS_KEY,
+microservices-middleware/server/config/environment.js:142:hardcoded environment variable:	    secretKey: process.env.LEADSQUARED_CREATE_ACTIVITY_SECRET_KEY,
+microservices-middleware/server/config/environment.js:143:hardcoded environment variable:	    xApiKey: process.env.LEADSQUARED_CREATE_ACTIVITY_X_API_KEY
+microservices-middleware/server/config/environment.js:146:hardcoded environment variable:	    url: process.env.LEADSUARED_UPADATE_EXT_API_URL,
+microservices-middleware/server/config/environment.js:147:hardcoded environment variable:	    xApiKey: process.env.LEADSUARED_UPADATE_EXT_API_KEY,
+microservices-middleware/server/config/environment.js:148:hardcoded environment variable:	    xApiSource: process.env.LEADSUARED_UPADATE_EXT_API_SOURCE
+microservices-middleware/server/config/environment.js:151:hardcoded environment variable:	    baseUrl: process.env.AAKASH_BASE_URL,
+microservices-middleware/server/config/environment.js:152:hardcoded environment variable:	    accessToken: process.env.AAKASH_ACCESS_TOKEN
+microservices-middleware/server/config/environment.js:155:hardcoded environment variable:	    baseUrl: process.env.TPLUS_URL,
+microservices-middleware/server/config/environment.js:158:hardcoded environment variable:	    baseUrl: process.env.SOS_LEADSQUARED_ACTIVITY_BASE_URL,
+microservices-middleware/server/config/environment.js:159:hardcoded environment variable:	    token : process.env.SOS_API_TOKEN,
+microservices-middleware/server/config/environment.js:162:hardcoded environment variable:	    baseUrl: process.env.DSSL_BASE_URL,
+microservices-middleware/server/config/environment.js:163:hardcoded environment variable:	    clientId: process.env.DSSL_CLIENT_ID,
+microservices-middleware/server/config/environment.js:164:hardcoded environment variable:	    clientSecret: process.env.DSSL_CLIENT_SECRET
+microservices-middleware/server/config/environment.js:167:hardcoded environment variable:	    baseUrl: process.env.GOOGLE_BASE_URL
+microservices-middleware/server/config/environment.js:170:hardcoded environment variable:	    baseUrl: process.env.GEO_SERVICE_API_URL,
+microservices-middleware/server/config/environment.js:171:hardcoded environment variable:	    tenantService: process.env.TENANT_SERVICE,
+microservices-middleware/server/config/environment.js:172:hardcoded environment variable:	    tenantServiceToken: process.env.TENANT_SERVICE_TOKEN
+microservices-middleware/server/config/environment.js:175:hardcoded environment variable:	    bhtBaseUrl: process.env.TUTOR_PLUS_BHT_BASEURL, //quotation-beta (cohorts, subjects, languages, etc.)
+microservices-middleware/server/config/environment.js:176:hardcoded environment variable:	    clientId: process.env.TUTOR_PLUS_CLIENT_ID,
+microservices-middleware/server/config/environment.js:177:hardcoded environment variable:	    clientSecret: process.env.TUTOR_PLUS_CLIENT_SECRET,
+microservices-middleware/server/config/environment.js:178:hardcoded environment variable:	    courseClientId: process.env.TUTOR_PLUS_COURSE_CLIENT_ID,
+microservices-middleware/server/config/environment.js:179:hardcoded environment variable:	    courseClientSecret: process.env.TUTOR_PLUS_COURSE_CLIENT_SECRET
+microservices-middleware/server/config/environment.js:182:hardcoded environment variable:	    port: process.env.REDIS_PORT || null,
+microservices-middleware/server/config/environment.js:183:hardcoded environment variable:	    uri: process.env.REDIS_URI || null,
+microservices-middleware/server/config/environment.js:186:hardcoded number:	    maxHits: Number(process.env.RATE_LIMIT_MAX_HITS) || 100, //Max request Hits
+microservices-middleware/server/config/environment.js:187:hardcoded number:	    window: Number(process.env.RATE_LIMIT_WINDOW) || 1, //window time in seconds
+microservices-middleware/server/config/environment.js:188:hardcoded string:	    message: "Too many request from this IP", //message when max hit is reached
+microservices-middleware/server/config/environment.js:189:hardcoded environment variable:	    headerEnabled: process.env.RATE_LIMIT_HEADER || false,
+microservices-middleware/server/config/environment.js:190:hardcoded environment variable:	    ipBasedRateLimiting: process.env.RATE_LIMIT_IP_BASED || true,
+microservices-middleware/server/config/environment.js:191:hardcoded environment variable:	    isBehindAProxy: process.env.BEHIND_PROXY || true
+microservices-middleware/server/config/environment.js:193:hardcoded environment variable:	  isRateLimitEnabled: process.env.RATE_LIMIT_ENABLED || false,
+microservices-middleware/server/config/environment.js:194:hardcoded number:	  ptmsV2: {
+microservices-middleware/server/config/environment.js:195:hardcoded number:	    api: process.env.PTMS_V2_BASE_URL,
+microservices-middleware/server/config/environment.js:196:hardcoded number:	    accessKeyId: process.env.PTMS_V2_ACCESS_KEY_ID,
+microservices-middleware/server/config/environment.js:197:hardcoded number:	    secretAccessKey: process.env.PTMS_V2_SECRET_ACCESS_KEY,
+microservices-middleware/server/config/environment.js:198:hardcoded number:	    webhookApi:process.env.PTMS_V2_WEBHOOK_URL

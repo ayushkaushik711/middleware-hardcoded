@@ -1,0 +1,411 @@
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:17:hardcoded string:	import '../byjusclass/style.scss';
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:28:hardcoded variable:	const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:29:hardcoded string:	    appConfig: get(state, 'auth.details.config'),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:30:hardcoded string:	    authDetails: get(state, 'auth.details'),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:31:hardcoded string:	    identifier: get(state, 'details.identifier'),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:32:hardcoded string:	    tlpOrderData: get(state, 'auth.tlpOrderData'),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:33:hardcoded string:	    productConfig: get(state, 'product.config'),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:34:hardcoded string:	    productDetails: get(state, 'product.details'),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:35:hardcoded string:	    existingProfiles: get(state, 'product.existingProfiles'),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:36:hardcoded string:	    loading: get(state, 'product.loading'),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:37:hardcoded string:	    error: get(state, 'product.error'),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:38:hardcoded string:	    leadDetails: get(state, 'auth.leadDetails', {}),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:39:hardcoded string:	    user: get(state, "auth.details.user", {})
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:42:hardcoded variable:	const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:67:hardcoded array:	            eligibleCustomers: [],
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:72:hardcoded string:	            classType: "neo"
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:77:hardcoded object:	        let { env, productDetails, studentMarksDetails, byjusClassesFormValue, schoolAndProficiencyDetails } = details
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:83:hardcoded string:	            electiveDetails: get(byjusClassesFormValue, "formValue.electivesDetails", null),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:84:hardcoded string:	            doubtClassDetails:get(byjusClassesFormValue, "formValue.selectedDoubtClass", null),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:85:hardcoded string:	            languageOfInstruction: get(byjusClassesFormValue, "formValue.languageOfInstruction", null),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:86:hardcoded string:	            languageOfInstructionId: get(byjusClassesFormValue, "formValue.languageOfInstructionId", null)
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:92:hardcoded object:	        const { leadDetails = {}, authDetails = {}, productConfig, identifier, tlpOrderData = {} } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:93:hardcoded string:	        const  orderPunchingCategory  = get(tlpOrderData,"orderPunchingCategory", "");
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:94:hardcoded array:	        const { Boards = [] } = productConfig || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:95:hardcoded object:	        const { env } = authDetails
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:97:hardcoded object:	        const { formCountArray, classType, productType } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:98:hardcoded array:	        let updatedStudentDetails = [];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:99:hardcoded array:	        let bhlpCourseDetails = [], byjusClassesMentoringDetails = [], schoolAndProficiencyDetails=[];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:101:hardcoded number:	        for (var i = 0; i < formCountArray.length; i++) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:102:hardcoded array:	            const isUpgradeToByjusClasses = get(this.state, `isUpgradeToByjusClasses-${formCountArray[i]}`)
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:104:hardcoded array:	            const form = this.refs[`productDetailsForm-${formCountArray[i]}`];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:105:hardcoded array:	            const byjusClassesMentoringForm = this.refs[`byjusClassesDetailsForm-${formCountArray[i]}`]
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:106:hardcoded array:	            const proficiencyForm = this.refs[`proficiencyForm-${formCountArray[i]}`]
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:107:hardcoded array:	            const schoolForm = this.refs[`schoolForm-${formCountArray[i]}`]
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:108:hardcoded array:	            // const isUpgradeToByjusClasses= this.refs[`isUpgradeToByjusClasses-${formCountArray[i]}`]
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:110:hardcoded object:	            const details = await form.getProductDetails() || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:111:hardcoded string:	            let productDetails = get(details, 'productDetails') || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:112:hardcoded object:	            if (isEmpty(productDetails)) { return };
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:114:hardcoded variable:	            const byjusClassesFormValue = byjusClassesMentoringForm && await byjusClassesMentoringForm.getMentoringValues();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:115:hardcoded variable:	            const studentMarksDetails = proficiencyForm && await proficiencyForm.getStudentAcademicDetails();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:118:hardcoded variable:	            const response = validateByjusClassesMentoringDetails(byjusClassesFormValue, productDetails);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:119:hardcoded string:	            byjusClassesMentoringDetails = get(response, "byjusClassesMentoringDetails", []);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:120:hardcoded string:	            bhlpCourseDetails = get(response, "bhlpCourseDetails", []);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:126:hardcoded object:	                productDetails = this.getUpdatedProductDetails({ env, productDetails, studentMarksDetails, byjusClassesFormValue, schoolAndProficiencyDetails })
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:129:hardcoded number:	            /**If any sibling data is empty , make siblingCount as 0 and student Array empty to collect data first */
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:130:hardcoded array:	            !isEmpty(productDetails) ? updatedStudentDetails.push(productDetails) : (updatedStudentDetails = []);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:133:hardcoded string:	        leadDetails["orderPunchedByRole"] = get(authDetails.user, 'role', "");
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:136:hardcoded variable:	            const payload = {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:138:hardcoded string:	                productCombination: 'aakash_neo_upgrade',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:146:hardcoded string:	            if(orderPunchingCategory === 'aakash_tlp'){
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:147:hardcoded string:	                payload.updatedStudentDetails[0].board = "CBSE";
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:152:hardcoded string:	                url: '/api/aakashNeoUpgrade/product/getUpgradeProduct'
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:158:hardcoded object:	        const { productCombination, identifier, productType, course,tlpOrderData } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:159:hardcoded array:	        let { customerDetails = [] } = tlpOrderData;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:160:hardcoded array:	        let updatedStudentDetails = [];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:161:hardcoded number:	        const { productInfo = [], type, products } = customerDetails[0] || {}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:162:hardcoded number:	        let { initialClass} = productInfo[0];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:163:hardcoded object:	        const { formCountArray } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:164:hardcoded array:	        let data = [];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:165:hardcoded number:	        for (var i = 0; i < formCountArray.length; i++) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:166:hardcoded array:	            data = this.refs[`productDetailsForm-${formCountArray[i]}`];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:168:hardcoded object:	        const details = await data.getProductDetails() || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:169:hardcoded string:	        let productDetails = get(details, 'productDetails');
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:170:hardcoded array:	        let bhlpCourseDetails = [], neoClassesMentoringDetails = [], neoClassesFormValue;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:171:hardcoded string:	        if (["11","12","13","13+"].includes(initialClass)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:172:hardcoded object:	            const { aakashNeoDetailsForm } = this.refs;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:175:hardcoded variable:	            const response = validateAakashNeoMentoringDetails(neoClassesFormValue, productDetails);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:176:hardcoded string:	            neoClassesMentoringDetails = get(response, "neoClassesMentoringDetails", []);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:177:hardcoded string:	            bhlpCourseDetails = get(response, "bhlpCourseDetails", []);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:180:hardcoded variable:	        //const studentMarksDetails = proficiencyForm && await proficiencyForm.getStudentMarks();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:181:hardcoded string:	        if (productDetails && productDetails["tablet"]) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:182:hardcoded string:	            productDetails['tabletId'] = `T-${productDetails["tablet"]}`;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:187:hardcoded string:	                proficiency: "",
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:188:hardcoded string:	                mathPercent: "",
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:189:hardcoded string:	                sciencePercent: "",
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:190:hardcoded string:	                languageOfInstruction: get(neoClassesFormValue, "formValue.languageOfInstruction", null),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:191:hardcoded string:	                languageOfInstructionId: get(neoClassesFormValue, "formValue.languageOfInstructionId", null),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:195:hardcoded array:	             updatedStudentDetails = [];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:200:hardcoded variable:	            const payload = {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:205:hardcoded string:	                productCombination : "aakash_neo_upgrade",
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:212:hardcoded string:	                url: '/api/aakashNeoUpgrade/product/getUpgradeProduct'
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:218:hardcoded object:	        const { authDetails, tlpOrderData, identifier, leadDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:219:hardcoded object:	        const { user, env } = authDetails || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:220:hardcoded string:	        const userPermissions = get(user, 'permissions', []);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:221:hardcoded variable:	        const isPriviledgedUser = userPermissions.includes(leadquaredRelatedPermissions.allownMultipleOrderOnSameProspectId);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:222:hardcoded string:	        leadDetails["loggedInEmailId"] = get(authDetails, 'loggedInEmailId');
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:223:hardcoded string:	        leadDetails["createdByEmailId"] = get(authDetails, "createdByEmailId", "");
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:224:hardcoded string:	        leadDetails["leadCreatedAt"] = get(authDetails, "leadCreatedAt", "");
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:225:hardcoded string:	        leadDetails["createdByRole"] = get(authDetails, "createdByRole", "");
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:226:hardcoded string:	        leadDetails["orderPunchedByRole"] = get(authDetails.user, 'role', "");
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:228:hardcoded string:	        // let salesIdentifier = ""
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:231:hardcoded variable:	        const payload = {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:243:hardcoded string:	                url: '/api/aakashNeoUpgrade/storeProductDetails',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:244:hardcoded string:	                method: 'POST',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:247:hardcoded string:	                const { productDetails, identifier, salesDetails, customerDetails } = get(response, 'data', {});
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:253:hardcoded object:	                this.setState({ error: null });
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:255:hardcoded string:	                this.navigateToScreen('address');
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:257:hardcoded object:	                this.setState({ error });
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:264:hardcoded object:	        const { history } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:265:hardcoded string:	        const url = `/${path}${get(history, 'location.search')}`;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:270:hardcoded object:	        const { fetchComp } = this.refs;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:273:hardcoded object:	            const { status, productDetails } = fetchComp.getProductsAndFinalPrice();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:275:hardcoded string:	                if (status && productDetails && (get(productDetails, 'finalPrice') >= 0)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:279:hardcoded string:	                    this.setState({ error: 'Product Details Missing' });
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:282:hardcoded string:	                const errMsg = get(error, 'message', 'Error') || error;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:283:hardcoded object:	                this.setState({ error: errMsg });
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:289:hardcoded object:	        this.setState({ error });
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:293:hardcoded object:	        const { tlpOrderData } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:294:hardcoded array:	        const { eligibleCustomers = [] } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:295:hardcoded array:	        const { customerDetails = [] } = tlpOrderData;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:296:hardcoded variable:	        const columns = [
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:298:hardcoded string:	                title: 'Student Name',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:299:hardcoded string:	                dataIndex: 'name',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:300:hardcoded string:	                key: 'name',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:304:hardcoded object:	                            style: { background: record.color },
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:306:hardcoded object:	                        children: <div>{text}</div>,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:309:hardcoded number:	                width: 100,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:312:hardcoded string:	                title: 'Class Info',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:313:hardcoded string:	                dataIndex: 'classInfo',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:314:hardcoded string:	                key: 'classInfo',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:315:hardcoded number:	                width: 100,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:319:hardcoded object:	                            style: { background: record.color },
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:321:hardcoded object:	                        children: <div>{text}</div>,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:326:hardcoded string:	                title: 'Validity',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:327:hardcoded string:	                dataIndex: 'validity',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:328:hardcoded string:	                key: 'validity',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:329:hardcoded number:	                width: 100,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:334:hardcoded object:	                            style: { background: record.color },
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:336:hardcoded object:	                        children: <div>{text}</div>,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:341:hardcoded array:	        let data = [];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:342:hardcoded number:	        for (var i = 0; i < customerDetails.length; i++) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:343:hardcoded string:	            const { studentName = "", productInfo = [] } = customerDetails[i] || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:344:hardcoded string:	            const { board = "", initialClass = "", finalClass = "", validity = "" } = productInfo[0] || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:345:hardcoded variable:	            const isEligible = eligibleCustomers.filter(ele => ele.studentName == studentName);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:346:hardcoded string:	            const color = (isEmpty(isEligible)) ? '' : '#D6FCF8'
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:347:hardcoded variable:	            const detail = {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:348:hardcoded number:	                key: i + 1,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:350:hardcoded object:	                classInfo: `${board}: ${initialClass}-${finalClass}`,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:358:hardcoded object:	            <Table pagination={false} columns={columns} dataSource={data} bordered={true}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:367:hardcoded variable:	        const currDate = new Date();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:368:hardcoded variable:	        const currYear = currDate.getFullYear();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:369:hardcoded variable:	        const currMonth = currDate.getMonth()
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:371:hardcoded number:	            if (currMonth > 1) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:372:hardcoded number:	                if ([12,13].includes(initialClass)) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:375:hardcoded number:	                initialClass = ((initialClass < finalClass)) ? (initialClass + 1) : initialClass;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:381:hardcoded number:	            initialClass = (currMonth > 1 && initialClass < finalClass) ? initialClass + 1 : initialClass;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:390:hardcoded array:	                [`${formNumber}`]: [`${ele.target.value}`]
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:397:hardcoded array:	            [`isUpgradeToByjusClasses-${formNumber}`]: value,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:398:hardcoded array:	            [`initialClass-${formNumber}`]: initialClass,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:399:hardcoded string:	            [`state-${formNumber}`]: productInfo["state"],
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:400:hardcoded string:	            [`board-${formNumber}`]: productInfo["board"],
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:401:hardcoded array:	            [`subCourse-${formNumber}`]: studentSubcourse,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:402:hardcoded string:	            classType: ["9","10"].includes(initialClass) ? "neo" : "oneToMega" 
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:411:hardcoded string:	        if (initialClass == "13+" || initialClass == "13") {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:412:hardcoded string:	            return [{ label: "12th Pass", value: "13+" }]
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:415:hardcoded object:	            label: `${initialClass}`,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:416:hardcoded object:	            value: `${initialClass}`
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:421:hardcoded string:	        const productLearningType = "byjus_classes"
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:422:hardcoded string:	        const isByjusClassForm = ["byjus_classes"].includes(productLearningType);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:424:hardcoded variable:	        let isByjusClassesApplicable = false;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:426:hardcoded object:	        const { formCountArray } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:429:hardcoded variable:	        const currentForm = formCountArray.find(formCount => formCount === formNo);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:430:hardcoded array:	        this.setState({ [`isByjusClasses-${currentForm}`]: false })
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:431:hardcoded array:	        const initialClass = this.state[`initialClass-${currentForm}`];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:433:hardcoded array:	        isByjusClassesApplicable = byjusClassesMap[selectedInitialClass] || false;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:438:hardcoded array:	                [`isByjusClasses-${currentForm}`]: (isByjusClassesApplicable) ? true : false
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:444:hardcoded object:	        const { selectedProfile = {} } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:445:hardcoded array:	        let { existingProfiles = [] } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:446:hardcoded string:	        existingProfiles = existingProfiles.filter(ele => ele.value != 'newProfile');
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:447:hardcoded number:	        for (var i = 0; i < existingProfiles.length; i++) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:448:hardcoded string:	            if (Object.values(selectedProfile).flat().includes(existingProfiles[i].value) && existingProfiles[i].value !== "newProfile") {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:449:hardcoded array:	                existingProfiles[i].disabled = true;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:451:hardcoded array:	            else { existingProfiles[i].disabled = false; }
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:457:hardcoded variable:	        let finalClassValues = initialClassValues.filter(ele => {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:458:hardcoded string:	            if (ele.value !== "11") return parseInt(ele.value) >= selectedInitialClass
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:460:hardcoded string:	        finalClassValues = finalClassValues.filter(ele => ![12, '12'].includes(ele.value))
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:461:hardcoded number:	        finalClassValues = finalClassValues.splice(0, 3);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:466:hardcoded object:	        const { authDetails, tlpOrderData } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:467:hardcoded array:	        const { customerDetails = [] } = tlpOrderData;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:468:hardcoded object:	        const { env, user } = authDetails;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:469:hardcoded string:	        const { role = "" } = user;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:471:hardcoded string:	        const type = get(customerDetails[0], 'type')
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:472:hardcoded object:	        const { selectedInitialClass, selectedFinalClass, currentInitialClass, initialValidity } = subscriptionOptions
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:473:hardcoded string:	        let selectedFinalClassList = [selectedInitialClass, null, '', undefined]
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:476:hardcoded variable:	        const currDate = new Date();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:477:hardcoded variable:	        const currYear = currDate.getFullYear();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:478:hardcoded variable:	        const currMonth = currDate.getMonth();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:479:hardcoded number:	        const currentAcademicYear = currMonth < 5 ? currYear : currYear + 1
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:481:hardcoded string:	        const isSubscriptionEligible = ["development", "local"].includes(env) && ["single", "combo"].includes(type.toLowerCase()) && ["student_success_specialist", "senior_student_success_specialist"].includes(role) && currentAcademicYear == initialValidity && selectedFinalClassList.includes(selectedFinalClass) && selectedInitialClass == currentInitialClass
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:486:hardcoded object:	        const { validity, selectedInitialClass, selectedFinalClass, currentInitialClass, initialValidity } = validityDetails
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:487:hardcoded object:	        const { env } = this.props.authDetails;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:488:hardcoded variable:	        let currentMonth = (new Date()).getMonth();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:490:hardcoded string:	        const isDevEnv = ['development', 'local'].includes(env)
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:491:hardcoded object:	        const subscriptionOptions = { selectedInitialClass, selectedFinalClass, currentInitialClass, initialValidity }
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:493:hardcoded string:	        //validity = (currentMonth >= 4) ? validity.filter(ele => ele.value != 'x') : validity
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:494:hardcoded variable:	        let formattedValidity = validity && validity.map((entry) => {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:495:hardcoded object:	            let { label, value } = entry;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:496:hardcoded variable:	            let currentYear = getCurrentAcademicYear();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:497:hardcoded variable:	            let updatedYear = currentYear;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:498:hardcoded string:	            label = label.includes('x') ? eval(label.replace('x', updatedYear)) : label;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:499:hardcoded string:	            value = value.includes('x') ? eval(value.replace('x', updatedYear)) : value;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:507:hardcoded variable:	        const isSubscriptionEligible = this.getSubscriptionEligibility(subscriptionOptions)
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:509:hardcoded string:	            formattedValidity.push({ label: "Monthly Subscription", value: 'subscription' })
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:512:hardcoded string:	        formattedValidity = formattedValidity.filter(validity => validity.value !== "TRIAL_PACK");
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:513:hardcoded number:	        return formattedValidity.slice(0, 2);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:517:hardcoded number:	        for (let i = 0; i < products.length; i++) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:518:hardcoded string:	            const sku = get(products[i], "sku", "")
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:519:hardcoded string:	            const skuSplit = sku.split("/")
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:520:hardcoded number:	            if (skuSplit.length > 1) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:521:hardcoded string:	                const subCourse = skuSplit[1].split(" ")[0]
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:522:hardcoded string:	                if (subCourse) return subCourse == "JEE+NEET" ? "JEE/NEET" : subCourse
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:528:hardcoded array:	        let options = [];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:533:hardcoded number:	        initialClass = Number(initialClass) > 3 ? Number(initialClass) : 4;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:534:hardcoded number:	        while (parseInt(initialClass) <= parseInt(finalClass) && initialClass != 13) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:536:hardcoded number:	                label: parseInt(initialClass, 10),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:542:hardcoded string:	        options = options.filter(ele => ![11, '11'].includes(ele.value) && parseInt(ele.value) >= selectedInitialClass)
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:543:hardcoded string:	        if (finalClass == "13+" || finalClass == "13") {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:544:hardcoded string:	            options.push({ label: "12th Pass", value: "13+" })
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:551:hardcoded array:	        const { tlpOrderData, existingProfiles = [], productConfig = {}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:553:hardcoded object:	        const { env } = authDetails;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:554:hardcoded array:	        let { customerDetails = [] } = tlpOrderData;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:555:hardcoded object:	        const { classType, productCombination } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:556:hardcoded array:	        customerDetails = isArray(customerDetails) ? customerDetails : [customerDetails];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:557:hardcoded variable:	        const customerDetail = customerDetails.filter(ele => ele.studentId === studentId);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:558:hardcoded number:	        const { productInfo = [], type, products } = customerDetail[0] || {}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:559:hardcoded number:	        let { initialClass, finalClass, board, validity, subCourse, state } = productInfo[0];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:560:hardcoded variable:	        const initialValidity = validity;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:561:hardcoded variable:	        const studentSubcourse = subCourse ? subCourse : this.getSubCourse(products)
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:563:hardcoded number:	        //let maxFinalClassValue = (Number(finalClass) <= ((initialClass) + 2)) ? Number(finalClass) : ((initialClass) + 2);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:566:hardcoded object:	        const isUpgradeRequired = get(this.state, `isUpgradeToByjusClasses-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:567:hardcoded object:	        const selectedInitialClass = get(this.state, `initialClass-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:568:hardcoded object:	        const selectedFinalClass = get(this.state, `finalClass-${formNumber}`);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:569:hardcoded variable:	        const initialClassValues = this.getInitialGrade(initialClass, finalClass,initialValidity)
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:570:hardcoded string:	        const currentInitialClass = initialClassValues.length ? get(initialClassValues[0], 'value') : ''
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:571:hardcoded array:	        const { Products = [], Boards = [] } = productConfig || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:573:hardcoded object:	        const productConfiguration = find(Products, { formattedName: type }) || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:574:hardcoded array:	        const validityOptions = productConfiguration.validity || [];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:576:hardcoded object:	        const selectedBoardConfig = find(Boards, { formattedName: board }) || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:577:hardcoded variable:	        const byjusClassesMap = getByjusClassesMap(selectedBoardConfig.classes);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:579:hardcoded object:	        const validityDetails = { validity: validityOptions, selectedInitialClass, selectedFinalClass, currentInitialClass, initialValidity }
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:581:hardcoded variable:	        const fields = [{
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:582:hardcoded string:	            type: 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:584:hardcoded string:	            name: 'studentName'
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:586:hardcoded string:	            type: 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:588:hardcoded string:	            name: 'board'
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:591:hardcoded string:	            type: 'hidden',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:593:hardcoded string:	            name: 'state'
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:596:hardcoded string:	            type: 'checkbox',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:597:hardcoded string:	            name: 'isUpgradeToByjusClasses',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:598:hardcoded number:	            onChange: (...params) => this.onCheckboxChange(...params, formNumber, productInfo[0], initialClass, studentSubcourse),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:599:hardcoded string:	            checkBoxLabel: 'Do you want to upgrade?'
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:601:hardcoded string:	            type: (!isUpgradeRequired) ? 'hidden' : 'select',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:603:hardcoded string:	            name: 'initialClass',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:604:hardcoded string:	            label: 'Select Initial Grade',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:609:hardcoded string:	            type: (!isUpgradeRequired) ? 'hidden' : 'select',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:610:hardcoded string:	            name: 'finalClass',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:611:hardcoded string:	            label: "Select Final Grade",
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:618:hardcoded string:	            type:  !['11','12','13+'].includes(selectedFinalClass) ? 'hidden' : 'text',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:619:hardcoded string:	            name: 'subCourse',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:620:hardcoded string:	            label: 'Select Subject',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:624:hardcoded string:	            type: (!isUpgradeRequired) ? 'hidden' : 'select',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:626:hardcoded string:	            name: 'validity',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:627:hardcoded string:	            label: 'Select Initial Validity',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:631:hardcoded string:	            message: "Please Select Initial Validity"
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:633:hardcoded string:	            type: ((existingProfiles.length > 0 && isUpgradeRequired) ? 'radio' : 'hidden'),
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:635:hardcoded string:	            name: 'userProfile',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:636:hardcoded string:	            label: 'Choose Profile Type',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:638:hardcoded string:	            message: "Please Choose Profile Type",
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:639:hardcoded number:	            required: (existingProfiles.length > 0 && isUpgradeRequired) ? true : false,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:641:hardcoded string:	                display: 'block',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:642:hardcoded string:	                height: '30px',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:643:hardcoded string:	                lineHeight: '30px',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:652:hardcoded array:	        const productDetailsForm = this.refs[`productDetailsForm-${formNumber}`];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:653:hardcoded array:	        const schoolForm = this.refs[`schoolForm-${formNumber}`]
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:655:hardcoded variable:	        const detailsForm = productDetailsForm && productDetailsForm.getProductForm();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:658:hardcoded string:	        if (name == "initialClass") {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:660:hardcoded string:	                finalClass: "", validity: "",
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:661:hardcoded string:	                mathPercent: "", sciencePercent: "", languageOfInstruction: ""
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:665:hardcoded string:	        if (name == "finalClass") {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:666:hardcoded string:	            detailsForm && detailsForm.setFieldsValue({ validity: "" });
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:670:hardcoded array:	            [`${name}-${formNumber}`]: value,
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:678:hardcoded string:	        //this.setState({ classType: value ? "neo" : "oneToMega" });
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:680:hardcoded object:	        const { formCountArray } = this.state
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:682:hardcoded array:	            this.setState({ [`isByjusClasses-${formNo}`]: false })
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:683:hardcoded array:	            const productDetailsForm = this.refs[`productDetailsForm-${formNo}`];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:684:hardcoded variable:	            const detailsForm = productDetailsForm && productDetailsForm.getProductForm();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:687:hardcoded string:	                productLearningType: "", initialClass: "", finalClass: "",
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:688:hardcoded string:	                byjusClassFinalGrade: "", validity: "", tlpFinalGrade: "", courseType: "", tablet: "",
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:689:hardcoded string:	                mathPercent: "", sciencePercent: "", languageOfInstruction: "", flowOfTopic: value ? "default" : ""
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:696:hardcoded object:	        const { eligibleCustomers } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:697:hardcoded array:	        const studentName = eligibleCustomers[index].studentName;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:698:hardcoded array:	        const studentId = eligibleCustomers[index].studentId;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:699:hardcoded variable:	        const fields = this.getFormFields(formNumber, formSerialNum, studentName, studentId, index);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:700:hardcoded array:	        let { existingProfiles = [] } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:701:hardcoded string:	        const currentProfile = get(existingProfiles.find(({ label }) => label.indexOf(studentName) >= 0), 'value');
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:705:hardcoded object:	                    heading={`Student #${studentName}`}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:706:hardcoded string:	                    initialValues={{ userProfile: currentProfile, flowOfTopic: "default" }}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:707:hardcoded object:	                    fields={fields}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:708:hardcoded object:	                    ref={`productDetailsForm-${formNumber}`}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:709:hardcoded object:	                    key={studentName}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:716:hardcoded array:	        const { existingProfiles = [] } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:717:hardcoded object:	        const { eligibleCustomers, formCountArray } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:719:hardcoded object:	        const selectedProfile = {};
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:720:hardcoded number:	        for (var i = 0; i < formCountArray.length; i++) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:721:hardcoded array:	            const studentName = eligibleCustomers[i].studentName;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:722:hardcoded string:	            const currentProfile = get(existingProfiles.find(({ label }) => label.indexOf(studentName) >= 0), 'value');
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:723:hardcoded array:	            selectedProfile[formCountArray[i]] = currentProfile;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:724:hardcoded object:	            this.setState({ selectedProfile });
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:729:hardcoded object:	        const {isDevEnv} = window;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:732:hardcoded object:	            this.setState({ eligibleForNewLoan: true })
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:734:hardcoded object:	            const { tlpOrderData = {}, identifier } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:735:hardcoded array:	            const { paymentDetails = [] } = tlpOrderData;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:736:hardcoded string:	            const emiPayment = paymentDetails.find(payment => payment.type === "EMI");
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:738:hardcoded string:	            if (!isEmpty(emiPayment) && !["payu", "razorpay", "shopse"].includes(get(emiPayment, "paymentType", "").toLowerCase())) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:741:hardcoded string:	                const referenceId = get(emiPayment, "referenceId", "");
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:742:hardcoded string:	                const method = get(emiPayment, "paymentType", "");
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:743:hardcoded string:	                const amount = get(emiPayment, "amount", "");
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:747:hardcoded string:	                    url: '/api/byjusclassupgrade/checkIsEmiAllowedOrNot',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:748:hardcoded string:	                    method: 'POST',
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:749:hardcoded object:	                    body: { referenceId, method, amount, identifier }
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:752:hardcoded object:	                    const { data = {} } = response;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:753:hardcoded string:	                    this.setState({ eligibleForNewLoan: get(data, "eligibleForNewLoan", false) })
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:755:hardcoded object:	                    this.setState({ error });
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:764:hardcoded array:	        let formCountArray = [];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:765:hardcoded object:	        const { tlpOrderData, authDetails } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:766:hardcoded array:	        let { customerDetails = [] } = tlpOrderData;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:767:hardcoded array:	        customerDetails = isArray(customerDetails) ? customerDetails : [customerDetails];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:768:hardcoded array:	        let { existingProfiles = [] } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:769:hardcoded variable:	        const eligibleCustomers = customerDetails.filter(ele => {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:770:hardcoded array:	            const { productInfo = [] } = ele;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:771:hardcoded number:	            const { initialClass, finalClass, validity } = productInfo[0];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:772:hardcoded variable:	            const currentInitialClass = this.getInitialClassValue(initialClass, finalClass, validity);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:775:hardcoded string:	        const { type = "", products } = eligibleCustomers[0] || {};
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:777:hardcoded object:	        const selectedProfile = {};
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:778:hardcoded variable:	        let currentTime = (new Date()).getTime();
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:779:hardcoded number:	        for (var i = 0; i < eligibleCustomers.length; i++) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:782:hardcoded string:	            const currentProfile = get(existingProfiles.find(({ label }) => label.indexOf(eligibleCustomers[i].studentName) >= 0), 'value');
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:785:hardcoded object:	        this.setState({ eligibleCustomers, formCountArray, selectedProfile, productType: type });
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:786:hardcoded object:	        const { env } = authDetails || {}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:788:hardcoded string:	        this.setState({ classType: "neo" })
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:792:hardcoded object:	        const { classType } = this.state
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:793:hardcoded string:	        if (classType != "neo") {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:794:hardcoded array:	            return this.state[`isByjusClasses-${formNo}`] && this.state[`isUpgradeToByjusClasses-${formNo}`] && this.state[`initialClass-${formNo}`] && this.state[`validity-${formNo}`]
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:795:hardcoded array:	        } else if (this.state[`isUpgradeToByjusClasses-${formNo}`]) {
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:796:hardcoded variable:	            const isEligible = getBatchesEligibility(this.state, formNo)
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:802:hardcoded object:	        const { changeNextBtnMode, authDetails, user,tlpOrderData } = this.props; //To render some specific component after the main product details form
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:803:hardcoded string:	        let { customerDetails = [],orderPunchingCategory = "" } = tlpOrderData;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:804:hardcoded array:	        customerDetails = isArray(customerDetails) ? customerDetails : [customerDetails];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:805:hardcoded number:	        const { productInfo = [], type, products } = customerDetails[0] || {}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:806:hardcoded number:	        let {validity,subCourse} = productInfo[0];
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:807:hardcoded object:	        const { error, productType, formCountArray, classType } = this.state;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:808:hardcoded variable:	        const isPrivilegedUser = checkIsPrivilegedUser(user)
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:809:hardcoded object:	        const { env } = authDetails || {}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:810:hardcoded number:	        const selectedInitialClass = get(this.state, `initialClass-${formCountArray[0]}`);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:811:hardcoded number:	        const selectedFinalClass = get(this.state, `finalClass-${formCountArray[0]}`);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:812:hardcoded string:	        const proficiency = get(this.state, `proficiency-${formCountArray[0]}`,"");
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:813:hardcoded string:	        const trackId = get(this.state, `trackId-${formCountArray[0]}`,"");
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:814:hardcoded string:	        const isK12Grade = ["11","12","13","13+"].includes(selectedInitialClass);
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:817:hardcoded string:	                <div className="card m-2">
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:818:hardcoded string:	                    <div style={{ paddingBottom: '12px' }}>
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:819:hardcoded object:	                        <ErrorWrapper error={error} />
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:821:hardcoded string:	                        <Row style={{ overflow: 'auto', height: '160px', padding: '1%' }}>  {this.showOrderDetails()} </Row>
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:823:hardcoded string:	                            const isProficiencyAndFot = isProficiencyAndFotAvailable({ state: this.state, props: this.props, formNumber: formNo, type: "tlpToByjusClassUpgrade" });
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:824:hardcoded variable:	                            const isBatchesEligible = this.checkBatchesEligibility(formNo, env)
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:825:hardcoded string:	                            const { productType="combo", productConfig, changeNextBtnMode, identifier } = this.props;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:826:hardcoded array:	                            const validity = this.state[`validity-${formNo}`]
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:827:hardcoded number:	                            const formSerialNum = index + 1;
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:829:hardcoded object:	                                <Fragment key={index}>
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:830:hardcoded object:	                                    {this.buildSiblingProductForm(formSerialNum, formNo, index)}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:831:hardcoded number:	                                    { validity && !isK12Grade &&
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:833:hardcoded object:	                                            ref={`schoolForm-${formNo}`}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:834:hardcoded string:	                                            board={ orderPunchingCategory === "aakash_tlp" ? "CBSE" : this.state[`board-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:835:hardcoded array:	                                            grade={this.state[`initialClass-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:836:hardcoded array:	                                            premiumId={this.state[`premiumId-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:837:hardcoded array:	                                            state={this.state[`state-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:838:hardcoded object:	                                            formNumber={formNo}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:839:hardcoded object:	                                            handleSiblingChanges={this.handleChanges}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:840:hardcoded object:	                                            handleClassBlurEvent={this.handleClassBlurEvent}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:841:hardcoded object:	                                            props={this.props}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:846:hardcoded number:	                                    {!isK12Grade && trackId && proficiency &&<ByjusMentoringClasses
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:847:hardcoded object:	                                        ref={`byjusClassesDetailsForm-${formNo}`}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:848:hardcoded array:	                                        initialClass={this.state[`initialClass-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:849:hardcoded string:	                                        board={ orderPunchingCategory === "aakash_tlp" ? "CBSE" : this.state[`board-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:850:hardcoded array:	                                        state={this.state[`state-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:851:hardcoded object:	                                        productType={productType}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:852:hardcoded array:	                                        validity={this.state[`validity-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:853:hardcoded array:	                                        subCourse={this.state[`subCourse-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:854:hardcoded string:	                                        productCombination="byjus_classes_upgrade"
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:855:hardcoded array:	                                        proficiency={this.state[`proficiency-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:856:hardcoded array:	                                        trackId={this.state[`trackId-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:857:hardcoded string:	                                        classType="neo"
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:860:hardcoded object:	                                    {/* Batch Details */}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:861:hardcoded number:	                                    {isK12Grade && validity  && <AakashNeoBatches
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:862:hardcoded string:	                                    ref="aakashNeoDetailsForm"
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:863:hardcoded object:	                                    identifier={identifier}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:864:hardcoded array:	                                    initialClass={this.state[`initialClass-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:865:hardcoded array:	                                    finalClass={this.state[`finalClass-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:866:hardcoded object:	                                    productType={productType}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:867:hardcoded array:	                                    validity={this.state[`validity-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:868:hardcoded array:	                                    subCourse={this.state[`subCourse-${formNo}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:869:hardcoded string:	                                    productCombination="byjus_aakash_neo"
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:870:hardcoded string:	                                    classType="neo"
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:871:hardcoded string:	                                    courseType="regular"
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:878:hardcoded string:	                           ref='fetchComp'
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:879:hardcoded object:	                           onClickFetchPrices={this.onClickFetchPrices}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:880:hardcoded number:	                           getProductDetails={ isK12Grade ? this.getProductDetailsNeo : this.getProductDetails }
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:881:hardcoded object:	                           changeNextBtnMode={changeNextBtnMode}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:882:hardcoded object:	                           setError={this.setError}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:883:hardcoded object:	                           eligibleForNewLoan={this.state.eligibleForNewLoan}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:884:hardcoded number:	                           validity={this.state[`validity-${formCountArray[0]}`]}
+microservices-middleware/client/src/modules/ordertype/upgrade/aakashneo/AakashNeoUpgradeProductPage.js:896:hardcoded object:	export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(AakashNeoUpgrade);

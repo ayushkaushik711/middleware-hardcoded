@@ -1,0 +1,2 @@
+microservices-middleware/client/src/modules/studentprofile/utils/studentProfileConstant.js:1:hardcoded variable:	const studentProfileConstants = {
+microservices-middleware/client/src/modules/studentprofile/utils/studentProfileConstant.js:2:hardcoded number:	    TOTAL_USER_COUNT: 3

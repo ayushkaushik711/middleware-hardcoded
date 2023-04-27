@@ -1,0 +1,54 @@
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:5:hardcoded variable:	const createActivityOnLS = async (details) => {
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:6:hardcoded object:	    const { paymentDetails, resp } = details;
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:8:hardcoded object:	    const uri = `${config.leadsquaredCreateActivity.url}?accessKey=${config.leadsquaredCreateActivity.accessKey}&secretKey=${config.leadsquaredCreateActivity.secretKey}`;
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:9:hardcoded variable:	    const leadFieldBody = {
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:10:hardcoded string:	        "RelatedProspectId": paymentDetails.prospectId,
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:11:hardcoded string:	        "ActivityEvent": 362,
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:12:hardcoded string:	        "ActivityNote": ""
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:15:hardcoded string:	        "SchemaName": "mx_Custom_1",
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:16:hardcoded string:	        "Value": resp.referenceId
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:18:hardcoded string:	        "SchemaName": "mx_Custom_2",
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:19:hardcoded string:	        "Value": resp.paymentLink
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:21:hardcoded string:	        "SchemaName": "mx_Custom_3",
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:22:hardcoded string:	        "Value": paymentDetails.amount
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:24:hardcoded string:	        "SchemaName": "mx_Custom_4",
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:25:hardcoded string:	        "Value": paymentDetails.userEmail
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:27:hardcoded number:	    await leadsquaredRecursivePost(uri, leadFieldBody, 0);
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:30:hardcoded variable:	const leadsquaredRecursivePost = async (uri, body, count) => {
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:32:hardcoded number:	        count = 0;
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:34:hardcoded number:	    if (count > 10) {
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:35:hardcoded string:	        throw new Error("Too many recursive POST calls");
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:37:hardcoded variable:	    const reqOptions = {
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:39:hardcoded string:	        method: 'POST',
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:42:hardcoded string:	            'x-api-key': config.leadsquaredCreateActivity.xApiKey
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:49:hardcoded variable:	        const response = await request(reqOptions);
+microservices-middleware/server/src/lsmanagement/lsActivityHelper.js:53:hardcoded string:	        throw new Error("Leadsquared POST Request: ", err.body);
+microservices-middleware/server/src/lsmanagement/lsRoutes.js:3:hardcoded object:	const router = Router({ mergeParams: true })
+microservices-middleware/server/src/lsmanagement/lsRoutes.js:6:hardcoded string:	    const baseRoute = '/ls';
+microservices-middleware/server/src/lsmanagement/lsRoutes.js:7:hardcoded object:	    router.route(`${baseRoute}/createPaymentActivityOnLS`)
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:5:hardcoded variable:	const createPaymentActivityOnLS = async (req, res) => {
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:6:hardcoded object:	    const { accountNumber, prospectId, provider, userEmail, amount, referenceId, customerName } = req.body;
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:8:hardcoded object:	    const uri = `${config.leadsquaredCreateActivityExtAPI.url}?account=${accountNumber}&leadId=${prospectId}`
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:9:hardcoded variable:	    const leadFieldBody = {
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:10:hardcoded string:	        "RelatedProspectId": prospectId,
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:11:hardcoded string:	        "ActivityEvent": 1119,
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:12:hardcoded string:	        "ActivityNote": "Down Payment Collected"
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:15:hardcoded string:	        "SchemaName": "mx_Custom_1",
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:16:hardcoded string:	        "Value": referenceId
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:18:hardcoded string:	        "SchemaName": "mx_Custom_2",
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:19:hardcoded string:	        "Value": provider
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:21:hardcoded string:	        "SchemaName": "mx_Custom_3",
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:22:hardcoded string:	        "Value": amount
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:24:hardcoded string:	        "SchemaName": "mx_Custom_4",
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:25:hardcoded string:	        "Value": new Date().toISOString(). replace(/T/, ' ').replace(/\..+/, '')
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:27:hardcoded string:	        "SchemaName": "mx_Custom_5",
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:28:hardcoded string:	        "Value": customerName 
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:33:hardcoded variable:	const callLSCreateActivityAPI = async (uri, body, res) => {
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:34:hardcoded variable:	    const reqOptions = {
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:36:hardcoded string:	        method: 'POST',
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:38:hardcoded string:	        credentials: 'include',
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:41:hardcoded string:	            "Content-Type": "application/json",
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:42:hardcoded string:	            "x-api-key":  config.leadsquaredCreateActivityExtAPI.xApiKey,
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:43:hardcoded string:	            "x-api-source":  config.leadsquaredCreateActivityExtAPI.xApiSource
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:50:hardcoded variable:	        const response = await request(reqOptions);
+microservices-middleware/server/src/lsmanagement/lsActivityController.js:52:hardcoded number:	        return res.status(200).json(response.body)

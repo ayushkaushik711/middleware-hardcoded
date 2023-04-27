@@ -1,0 +1,141 @@
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:19:hardcoded string:	} from "./Styles";
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:22:hardcoded string:	import profile from "@byjus-orders/nicons/assets/byjus kart/neo-kart-illustrations/profile.svg";
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:23:hardcoded string:	import profileBackground from "@byjus-orders/nicons/assets/byjus kart/neo-kart-illustrations/profile-background.svg";
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:25:hardcoded variable:	const StudentCard = (props) => {
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:26:hardcoded variable:	    const programForm = useRef();
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:27:hardcoded string:	    const [category, setCategory] = useState(["k10", "competetive"]);
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:28:hardcoded array:	    const [loading, setLoading] = useState(false);
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:29:hardcoded array:	    const [error, setError] = useState();
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:30:hardcoded array:	    const [draftOrderStudent, setDraftOrderStudent] = useRecoilState(
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:33:hardcoded array:	    const [formValues, setFormValues] = useState({
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:34:hardcoded string:	        category: "",
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:39:hardcoded string:	        draftOrderId = "",
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:40:hardcoded string:	        leadId = "",
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:41:hardcoded string:	        billingCustomerId = "",
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:44:hardcoded string:	    const { studentId = "", spId = "" } = student;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:46:hardcoded string:	        get(student, "studentName") ||
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:47:hardcoded string:	        get(student, "student.fullName", "");
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:48:hardcoded number:	    const PRE_PRODUCT_SELECTION = [...STAGE[1], ...STAGE[2]];
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:51:hardcoded string:	        {label: "K12", value: "k12"},
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:52:hardcoded string:	        {label: "Competetive", value: "competetive"}
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:54:hardcoded array:	    }, [])
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:56:hardcoded variable:	    const onClickProceed = () => {
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:57:hardcoded string:	        const categoryValue = get(formValues, "category.0.value", "");
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:65:hardcoded variable:	        const url = `/kart-beta/product`;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:69:hardcoded string:	                search: get(history, "location.search"),
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:80:hardcoded variable:	    const handleChanges = (value, name, options) => {
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:82:hardcoded variable:	            const record = options.filter((option) => option.value === value)
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:83:hardcoded array:	            setFormValues(prevState => ({ ...prevState, [name]: record }))
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:87:hardcoded variable:	    const salesFormDetails = () => {
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:88:hardcoded variable:	        const initialValues = formValues;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:89:hardcoded variable:	        const programFields = [
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:91:hardcoded string:	                type: "select",
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:92:hardcoded string:	                name: "category",
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:93:hardcoded string:	                label: "Select Category",
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:95:hardcoded string:	                onChange: (e)=>{handleChanges(e, "category", category)},
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:97:hardcoded string:	                message: "Please select category",
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:101:hardcoded variable:	        const formItemLayout = {
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:103:hardcoded number:	                xs: { span: 8 },
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:104:hardcoded number:	                sm: { span: 8 },
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:107:hardcoded number:	                xs: { span: 16 },
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:108:hardcoded number:	                sm: { span: 16 },
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:112:hardcoded string:	            <div  style={{paddingInline: "5rem"}}>
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:114:hardcoded object:	                ref={programForm}
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:115:hardcoded object:	                fields={programFields}
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:116:hardcoded object:	                initialValues={initialValues}
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:117:hardcoded number:	                cols={1}
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:123:hardcoded variable:	    const getStudentDetails = () => (
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:124:hardcoded string:	        <Container fluid="md" style={{ height: "10%", marginBottom: "1rem" }}>
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:125:hardcoded string:	            <Row className="justify-content-md-center">
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:126:hardcoded string:	                <Col md="auto">
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:127:hardcoded string:	                    <h5 style={{ color: "#000000" }}>Student Id :</h5>
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:129:hardcoded string:	                <Col md="auto">
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:130:hardcoded number:	                    <h3>{studentId}</h3>
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:136:hardcoded string:	                        className="justify-content-md-center"
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:137:hardcoded string:	                        style={{ alignItems: "flex-end" }}
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:139:hardcoded string:	                        <Col md="auto">
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:140:hardcoded string:	                            <h5 style={{ color: "#000000" }}>Sales Program:</h5>
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:142:hardcoded string:	                        <Col md="auto">
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:143:hardcoded number:	                            <h5>
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:144:hardcoded number:	                            </h5>
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:148:hardcoded string:	                        className="justify-content-md-center"
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:149:hardcoded string:	                        style={{ alignItems: "flex-end" }}
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:151:hardcoded string:	                        <Col md="auto">
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:152:hardcoded string:	                            <h4 style={{ color: "#a0a0a0" }}>Status:</h4>
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:154:hardcoded string:	                        <Col md="auto">
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:155:hardcoded string:	                            <h5>{startCase("Product Saved")}</h5>
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:163:hardcoded variable:	    const getProceedButton = () => {
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:165:hardcoded string:	            return "Proceed";
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:167:hardcoded string:	            return "Edit";
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:174:hardcoded string:	                <CloseButton>{"X"}</CloseButton>
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:175:hardcoded object:	                <IconBackground src={profileBackground} />
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:176:hardcoded object:	                <StudentImage src={profile} />
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:179:hardcoded string:	                        startCase(get(student, "student.fullName", ""))}
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:182:hardcoded object:	                {getStudentDetails()}
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:187:hardcoded string:	                        color="success"
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:188:hardcoded object:	                        onClick={onClickProceed}
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:190:hardcoded string:	                            background: "linear-gradient(90deg, rgba(100, 70, 205, 0.9) 0%, rgba(153, 69, 226, 0.9) 100%)",
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:191:hardcoded string:	                            borderRadius: "24.5px",
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:192:hardcoded string:	                            width: "150px",
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:193:hardcoded string:	                            height: "40px"
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:196:hardcoded object:	                        {getProceedButton()}
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/index.js:200:hardcoded object:	            {spId && <ProductSummary productDetails={student}></ProductSummary>}
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:1:hardcoded string:	import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:3:hardcoded variable:	export const StudentCardContainer = styled.div`
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:4:hardcoded number:	    line-height: 1.15;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:5:hardcoded number:	    font-size: 16px;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:6:hardcoded number:	    color: #404040;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:8:hardcoded number:	    min-width: 410px;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:11:hardcoded number:	    border-radius: 1rem;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:12:hardcoded number:	    box-shadow: 0px 1rem 1.5rem rgba(0, 0, 0, 0.5);
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:13:hardcoded number:	    margin-top: 2rem;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:14:hardcoded number:	    margin-bottom: 2rem;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:15:hardcoded number:	    max-height: 350px;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:21:hardcoded variable:	export const StudentMenu = styled.div`
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:22:hardcoded number:	    line-height: 1.15;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:23:hardcoded number:	    font-size: 16px;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:24:hardcoded number:	    color: #404040;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:26:hardcoded number:	    width: 100%;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:32:hardcoded number:	    margin-top: 5rem;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:35:hardcoded variable:	export const StudentTitle = styled.div`
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:36:hardcoded number:	    line-height: 1.15;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:38:hardcoded number:	    color: #404040;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:39:hardcoded number:	    font-size: 1rem;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:41:hardcoded number:	    padding: 0 2rem 1.2rem;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:44:hardcoded number:	export const StudentName = styled.h3`
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:45:hardcoded number:	    line-height: 1.15;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:46:hardcoded number:	    color: #404040;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:49:hardcoded number:	    padding: 0 2rem 0.5rem;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:50:hardcoded number:	    margin-top: 2rem;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:53:hardcoded variable:	export const StudentDetails = styled.div`
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:54:hardcoded number:	    color: #404040;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:58:hardcoded number:	    order: 99;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:60:hardcoded variable:	export const StudentCardFooter = styled.div`
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:61:hardcoded number:	    line-height: 1.15;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:62:hardcoded number:	    font-size: 16px;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:63:hardcoded number:	    color: #404040;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:66:hardcoded number:	    padding: 0 2rem 2.5rem;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:67:hardcoded number:	    order: 100;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:71:hardcoded number:	    margin-top: 1rem;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:74:hardcoded variable:	export const StudentImage = styled.img`
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:76:hardcoded number:	    top: 1rem;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:77:hardcoded number:	    width: 20%;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:78:hardcoded number:	    height: 20%;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:82:hardcoded variable:	export const CardBackground = styled.img`
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:84:hardcoded number:	    width: 100%;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:85:hardcoded number:	    border-radius: 2rem;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:88:hardcoded variable:	export const IconBackground = styled.img`
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:90:hardcoded number:	    top: 1rem;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:91:hardcoded number:	    width: 20%;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:92:hardcoded number:	    height: 20%;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:95:hardcoded variable:	export const Close = styled.div`
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:96:hardcoded number:	    width: 80%;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:97:hardcoded number:	    padding: 15px 15px 15px 15px;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:98:hardcoded number:	    margin: 20px 20px 20px 20px;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:99:hardcoded number:	    background: #a4d3ee;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:101:hardcoded number:	    box-shadow: 5px 5px 2px #888888;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:104:hardcoded variable:	export const CloseButton = styled.button`
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:108:hardcoded number:	    top: -8px;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:109:hardcoded number:	    right: -4px;
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:112:hardcoded variable:	export const CustomContainer = styled.div`
+microservices-middleware/client/src/modules/kartbeta/student/StudentCard/Styles.js:116:hardcoded number:	    margin-left: 2rem;

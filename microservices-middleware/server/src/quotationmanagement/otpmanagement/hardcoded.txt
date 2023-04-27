@@ -1,0 +1,177 @@
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:14:hardcoded string:	const { Quotation } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:15:hardcoded string:	const { StudentOrderBatchCentreDetail } = require('@byjus-orders/nexemplum/stms')
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:16:hardcoded string:	const { Quotation: QuotationBeta, Customer, Lead, QuotationStudentMapping, StmsStudent } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:21:hardcoded variable:	const logger = bunyan.createLogger({
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:22:hardcoded string:	    name: 'OTP controller',
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:23:hardcoded environment variable:	    env: process.env.NODE_ENV,
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:29:hardcoded variable:	const isValidOtp = (otp, otpDetails) => {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:30:hardcoded variable:	    const result = {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:32:hardcoded string:	        errorMessage: ""
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:34:hardcoded string:	    if (typeof (otp) !== "string" || typeof (otpDetails) !== "object") {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:41:hardcoded string:	                    result.errorMessage = "OTP is expired. Please generate a new one."
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:45:hardcoded string:	                result.errorMessage = "Invalid OTP"
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:52:hardcoded variable:	const sendOtp = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:53:hardcoded string:	    logger.info({ method: 'sendOtp' });
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:54:hardcoded object:	    const { quotationId, channelType } = req.body;
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:55:hardcoded string:	    const { email } = get(req, 'user', {});
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:58:hardcoded string:	        throw new BadRequestError("Missing Parameters");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:61:hardcoded object:	        const quotation = await Quotation.findOne({ quotationId })
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:63:hardcoded string:	        const { status = "" } = quotation;
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:64:hardcoded string:	        if (["approved"].includes(status)) {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:65:hardcoded number:	            return res.status(500).json({ status });
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:68:hardcoded string:	            // const userPermissions = get(req, "user.permissions", []);
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:69:hardcoded variable:	            const otpDetails = await sendOtpHelper(quotation, channelType);
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:70:hardcoded object:	            const { isNewOtpDetails, otp, message, createdAt } = otpDetails
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:71:hardcoded string:	            logger.info({ method: 'sendOtp' });
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:76:hardcoded string:	                logger.info({ method: 'sendOtp', isNewOtpDetails });
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:79:hardcoded object:	                await Quotation.updateOne({ quotationId }, {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:80:hardcoded string:	                    "$set": {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:82:hardcoded string:	                        status: "quotation_drafted",
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:83:hardcoded string:	                        ["actionDetails.quotationDraftedAt"]: new Date(),
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:84:hardcoded string:	                        ["actionDetails.quotationDraftedBy"]: email
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:88:hardcoded string:	            return res.json("OTP send successfully");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:91:hardcoded string:	        logger.error({ method: 'sendOtp', error }, 'Error occured');
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:92:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:96:hardcoded number:	const sendOtpV2 = async (req, res) => {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:97:hardcoded string:	    logger.info({ method: 'sendOtp' });
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:98:hardcoded string:	    const { quotationId, channelType='sms', authDetails, spName } = req.body;
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:99:hardcoded string:	    const { email } = get(req, 'user', {});
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:101:hardcoded string:	        throw new BadRequestError("Missing Parameters");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:103:hardcoded object:	    const {isAutoApproveEnabled = false} = authDetails || {};
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:104:hardcoded variable:	    let autoApproved = SALES_PROGRAMS.BHT.includes(spName) && isAutoApproveEnabled
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:108:hardcoded object:	                otpDetails: {},
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:109:hardcoded string:	                status: "approved",
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:114:hardcoded object:	                where: { quotationId }, 
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:117:hardcoded string:	        logger.info({ method: 'sendOtpV2', msg: `OTP not required as auto approve is enabled qtn - ${quotationId}` })
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:118:hardcoded string:	        return res.status(200).json("OTP not required as auto approve is enabled");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:121:hardcoded variable:	        const quotation = await QuotationBeta.findOne({ 
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:126:hardcoded string:	                { model: QuotationStudentMapping, as: "students", include: [{ model: StmsStudent, as: "studentDetails" }] },
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:129:hardcoded string:	                    as: "customerDetails"
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:133:hardcoded string:	                    as: "leadDetails"
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:138:hardcoded variable:	        const batchCentreDetails = await StudentOrderBatchCentreDetail.find({
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:140:hardcoded string:	            studentId: get(quotation, "students.studentId")
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:141:hardcoded number:	        }).lean().limit(1);
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:142:hardcoded string:	        quotation.batchCentreDetails=get(batchCentreDetails,'0');
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:143:hardcoded variable:	        const studentDetails = await QuotationStudentMapping.findAll({
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:146:hardcoded string:	                status: "active"
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:149:hardcoded number:	            limit: 5
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:151:hardcoded number:	        let finalPrice = 0;
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:153:hardcoded string:	            finalPrice += get(item,"finalPrice", 0);
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:156:hardcoded string:	        const { status = "" } = quotation;
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:157:hardcoded string:	        if (["approved"].includes(status)) {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:158:hardcoded number:	            return res.status(500).json({ status });
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:161:hardcoded number:	            const otpDetails = await sendOtpV2Helper(quotation, channelType, spName);
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:162:hardcoded object:	            const { isNewOtpDetails, otp, message, createdAt } = otpDetails || {}
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:163:hardcoded string:	            logger.info({ method: 'sendOtp' });
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:166:hardcoded string:	                logger.info({ method: 'sendOtp', isNewOtpDetails });
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:172:hardcoded string:	                        status: "otp_verification_pending",
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:177:hardcoded object:	                        where: { quotationId }, 
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:181:hardcoded string:	            return res.json("OTP send successfully");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:184:hardcoded string:	        logger.error({ method: 'sendOtp', error }, 'Error occured');
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:185:hardcoded string:	        return res.status(500).json({ message: error.message || "Something went wrong. Please try again later" });
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:189:hardcoded variable:	const sendOtpHelper = async (quotation, channelType) => {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:190:hardcoded string:	    let smsContent = '';
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:191:hardcoded object:	    const { customerDetails = {} } = quotation;
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:192:hardcoded array:	    let sendTo = []
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:194:hardcoded object:	    let scnContactDetails = {}
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:196:hardcoded string:	        let mobile = get(customerDetails, "primaryMobileNo", "");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:197:hardcoded string:	        mobile = mobile.split(",")[0];
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:198:hardcoded string:	        mobile = mobile.split("-");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:199:hardcoded number:	        mobile = mobile.length > 1 ? mobile[1] : mobile[0];
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:201:hardcoded string:	            "contactNo": `+91-${mobile}`,
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:202:hardcoded string:	            "source": "scn"
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:210:hardcoded object:	    const { otpDetails = {} } = quotation;
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:211:hardcoded string:	    const existingOtp = get(otpDetails, "otp", "");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:212:hardcoded string:	    const message = get(otpDetails, "message", "");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:214:hardcoded variable:	    let otp = randomString.generate({
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:215:hardcoded number:	        length: 4,
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:216:hardcoded string:	        charset: 'numeric'
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:232:hardcoded variable:	        // const finalOrder = await createFinalOrderService(_id, userPermissions);
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:237:hardcoded array:	    const smsConfigs = [];
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:238:hardcoded variable:	    let isNewOtpDetails = true;
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:241:hardcoded string:	        const { contactNo: contact, source = "" } = detail;
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:242:hardcoded string:	        if (channelType.toLowerCase() === "sms") {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:243:hardcoded variable:	            const smsConfig = {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:244:hardcoded string:	                channel_type: 'sms',
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:246:hardcoded string:	                message: smsContent || "",
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:247:hardcoded string:	                provider: 'gupsup',
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:248:hardcoded string:	                category: "otp",
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:252:hardcoded string:	        } else if (channelType.toLowerCase() === "voice") {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:254:hardcoded string:	            const oldOtpDetails = get(quotation, "otpDetails");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:255:hardcoded string:	            if (!get(oldOtpDetails, "otp")) {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:256:hardcoded string:	                throw new Error("No previously generated OTP found for voice call. Please generate a new one.")
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:258:hardcoded string:	                const result = isValidOtp(get(oldOtpDetails, "otp"), oldOtpDetails);
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:264:hardcoded string:	                        channel_type: 'voice',
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:266:hardcoded string:	                        otp: get(oldOtpDetails, "otp"),
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:267:hardcoded string:	                        type: 'confirm-order',
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:268:hardcoded string:	                        provider: 'plivo'
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:275:hardcoded variable:	    const smsResults = await Promise.map(
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:281:hardcoded string:	                logger.error({ method: "sendOtpHelper" }, error, smsConfig, "Unable to send OTP");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:287:hardcoded string:	    if (smsConfigs.length !== 0 && !smsResults.find(sms => sms && (["Successfully send", "SMS send successful.", "Voice Call successful."].includes(sms.message)))) {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:288:hardcoded string:	        throw new Error("Unable to send OTP");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:299:hardcoded number:	const sendOtpV2Helper = async (quotation, channelType, spName) => {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:300:hardcoded string:	    let smsContent = '';
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:301:hardcoded array:	    let sendTo = []
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:303:hardcoded object:	    let scnContactDetails = {}
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:305:hardcoded string:	        let mobile = get(quotation, "customerDetails.phone", "");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:306:hardcoded string:	        mobile = mobile.split(",")[0];
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:307:hardcoded string:	        mobile = mobile.split("-");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:308:hardcoded number:	        mobile = mobile.length > 1 ? mobile[1] : mobile[0];
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:310:hardcoded string:	            "contactNo": `+91-${mobile}`,
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:311:hardcoded string:	            "source": "scn"
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:319:hardcoded object:	    const { otpDetails = {} } = quotation;
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:320:hardcoded string:	    const existingOtp = get(otpDetails, "otp", "");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:321:hardcoded string:	    const message = get(otpDetails, "message", "");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:323:hardcoded variable:	    let otp = randomString.generate({
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:324:hardcoded number:	        length: 4,
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:325:hardcoded string:	        charset: 'numeric'
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:341:hardcoded variable:	        // const finalOrder = await createFinalOrderService(_id, userPermissions);
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:346:hardcoded array:	    const smsConfigs = [];
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:347:hardcoded variable:	    let isNewOtpDetails = true;
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:350:hardcoded string:	        const { contactNo: contact, source = "" } = detail;
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:351:hardcoded string:	        if (channelType.toLowerCase() === "sms") {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:352:hardcoded variable:	            const smsConfig = {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:353:hardcoded string:	                channel_type: 'sms',
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:355:hardcoded string:	                message: smsContent || "",
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:356:hardcoded string:	                provider: 'gupsup',
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:357:hardcoded string:	                category: "otp",
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:358:hardcoded string:	                templateId: spName === "byjus_home_tuition" ? otpConfigs?.otp?.bhtQuotationTemplateId : otpConfigs?.otp?.btcQuotationTemplateId,
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:362:hardcoded string:	        } else if (channelType.toLowerCase() === "voice") {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:364:hardcoded string:	            const oldOtpDetails = get(quotation, "otpDetails");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:365:hardcoded string:	            if (!get(oldOtpDetails, "otp")) {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:366:hardcoded string:	                throw new Error("No previously generated OTP found for voice call. Please generate a new one.")
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:368:hardcoded string:	                const result = isValidOtp(get(oldOtpDetails, "otp"), oldOtpDetails);
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:374:hardcoded string:	                        channel_type: 'voice',
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:376:hardcoded string:	                        otp: get(oldOtpDetails, "otp"),
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:377:hardcoded string:	                        type: 'confirm-order',
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:378:hardcoded string:	                        provider: 'plivo'
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:384:hardcoded variable:	    const smsResults = await Promise.map(
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:390:hardcoded string:	                logger.error({ method: "sendOtpHelper" }, error, smsConfig, "Unable to send OTP");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:393:hardcoded string:	                    message: "Successfully send"
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:398:hardcoded string:	    if (smsConfigs.length !== 0 && !smsResults.find(sms => sms && (["Successfully send", "SMS send successful.", "Voice Call successful."].includes(sms.message)))) {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:399:hardcoded string:	        throw new Error("Unable to send OTP");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:410:hardcoded variable:	const getSalesContact = async (email) => {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:411:hardcoded string:	    const salesDoc = await Employee.findOne({ email }).select("contact contactDetails").lean();
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:412:hardcoded string:	    const contacts = get(salesDoc, "contact", []);
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:416:hardcoded variable:	const sharePriceDetailToSalesPerson = async (details) => {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:418:hardcoded object:	    const { salesEmail, customerDetails, productDetails, maxPrice , minPrice, netPrice, aakashPriceBreakup } = details
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:420:hardcoded object:	    let smsContent = await getAakashPricingSmsTemplate({salesEmail, customerDetails, productDetails, maxPrice , minPrice, netPrice, aakashPriceBreakup});
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:421:hardcoded variable:	    const salesPersonContact = await getSalesContact(salesEmail)
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:423:hardcoded array:	    const smsConfigs = [];
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:425:hardcoded string:	        contact = contact.includes("+91") ? contact.split("-")[1] : contact,
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:426:hardcoded number:	        contact =  `+91-${contact}`
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:427:hardcoded variable:	        const smsConfig = {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:428:hardcoded string:	            channel_type: 'sms',
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:430:hardcoded string:	            message: smsContent || "",
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:431:hardcoded string:	            provider: 'gupsup',
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:432:hardcoded string:	            category: 'transactional',
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:444:hardcoded string:	                logger.error({ method: "sharePriceDetailToSalesPerson" }, error, smsConfig, "Unable to send pricing details");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:452:hardcoded string:	    // if (smsConfigs.length !== 0 && !smsResults.find(sms => sms && (sms.message === 'SMS send successful.' || sms.message === 'Voice Call successful.'))) {
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:453:hardcoded string:	    //     throw new Error("Unable to send pricing details");
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:459:hardcoded number:	    sendOtpV2,
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpController.js:461:hardcoded number:	    sendOtpV2Helper,
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpRoutes.js:4:hardcoded object:	const router = Router({ mergeParams: true });
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpRoutes.js:7:hardcoded string:	    const baseRoute = '/quotation'; 
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpRoutes.js:9:hardcoded object:	    router.route(`${baseRoute}/sendOtp`)
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpRoutes.js:15:hardcoded number:	    router.route(`${baseRoute}/sendOtpV2`)
+microservices-middleware/server/src/quotationmanagement/otpmanagement/otpRoutes.js:18:hardcoded number:	            controller.sendOtpV2

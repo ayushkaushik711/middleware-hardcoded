@@ -1,0 +1,36 @@
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:1:hardcoded string:	import styled from "@emotion/styled";
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:4:hardcoded variable:	export const NavbarContainer = styled.div`
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:5:hardcoded number:	    height: 70px;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:6:hardcoded number:	    width: 100%;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:8:hardcoded number:	    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 16%);
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:9:hardcoded number:	    padding: 1rem;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:10:hardcoded number:	    background: linear-gradient(90deg, #5E44CA 0.57%, #A543E6 100%);
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:15:hardcoded variable:	export const Navbar = styled.div`
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:19:hardcoded variable:	export const AgentLabel = styled.span`
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:20:hardcoded number:	    background: linear-gradient(90deg, #5D44CA 6.1%, #A544E6 100%);
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:25:hardcoded number:	    font-size: 16px;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:26:hardcoded number:	    line-height: 21px;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:29:hardcoded variable:	export const DraftOrderLabel = styled.label`
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:30:hardcoded number:	    margin: 27px;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:31:hardcoded number:	    padding-top: 0.1px;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:32:hardcoded number:	    line-height: 20px;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:33:hardcoded number:	    font-size: 18px;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:36:hardcoded number:	    background-color: #813588;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:37:hardcoded number:	    border-color: #813588;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:38:hardcoded number:	    padding: 4px;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:41:hardcoded variable:	export const UserIcon = styled.i`
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:44:hardcoded variable:	export const SalesAgentBadge = styled(Badge)`
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:46:hardcoded number:	    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:47:hardcoded number:	    border-radius: 22px;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:51:hardcoded number:	    width: 10%;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:54:hardcoded variable:	export const DraftOrderCardHeader = styled.div`
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:60:hardcoded variable:	export const BadgeContainer = styled.div``;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:62:hardcoded variable:	export const DraftOrderContainer = styled.div``;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:64:hardcoded variable:	export const QANav = styled(Nav)`
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:67:hardcoded number:	    margin: 1rem;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:69:hardcoded variable:	export const QANavItem = styled(NavItem)`
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:71:hardcoded number:	    padding: 0px 10px;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:72:hardcoded string:	    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:74:hardcoded number:	    font-size: 20px;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:75:hardcoded number:	    font-weight: 800;
+microservices-middleware/client/src/modules/kartbeta/components/DraftOrderNavbar/Styles.js:76:hardcoded number:	    line-height: 20px;

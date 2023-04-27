@@ -1,0 +1,172 @@
+microservices-middleware/server/src/addressmanagement/addressConfig.js:1:hardcoded variable:	const stateArray = [
+microservices-middleware/server/src/addressmanagement/addressConfig.js:2:hardcoded string:	  { "label": "Andaman and Nicobar Islands", "value": "Andaman and Nicobar Islands" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:3:hardcoded string:	  { "label": "Andhra Pradesh", "value": "Andhra Pradesh" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:4:hardcoded string:	  { "label": "Arunachal Pradesh", "value": "Arunachal Pradesh" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:5:hardcoded string:	  { "label": "Assam", "value": "Assam" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:6:hardcoded string:	  { "label": "Bihar", "value": "Bihar" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:7:hardcoded string:	  { "label": "Chandigarh", "value": "Chandigarh" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:8:hardcoded string:	  { "label": "Chhattisgarh", "value": "Chhattisgarh" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:9:hardcoded string:	  { "label": "Dadra and Nagar Haveli", "value": "Dadra and Nagar Haveli" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:10:hardcoded string:	  { "label": "Daman and Diu", "value": "Daman and Diu" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:11:hardcoded string:	  { "label": "Delhi", "value": "Delhi (DL)" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:12:hardcoded string:	  { "label": "Goa", "value": "Goa" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:13:hardcoded string:	  { "label": "Gujarat", "value": "Gujarat" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:14:hardcoded string:	  { "label": "Haryana", "value": "Haryana" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:15:hardcoded string:	  { "label": "Himachal Pradesh", "value": "Himachal Pradesh" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:16:hardcoded string:	  { "label": "Jammu and Kashmir", "value": "Jammu and Kashmir" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:17:hardcoded string:	  { "label": "Jharkhand", "value": "Jharkhand" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:18:hardcoded string:	  { "label": "Karnataka", "value": "Karnataka (KA)" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:19:hardcoded string:	  { "label": "Kerala", "value": "Kerala (KL)" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:20:hardcoded string:	  { "label": "Lakshadweep", "value": "Lakshadweep" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:21:hardcoded string:	  { "label": "Madhya Pradesh", "value": "Madhya Pradesh" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:22:hardcoded string:	  { "label": "Maharashtra", "value": "Maharashtra (MH)" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:23:hardcoded string:	  { "label": "Manipur", "value": "Manipur" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:24:hardcoded string:	  { "label": "Meghalaya", "value": "Meghalaya" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:25:hardcoded string:	  { "label": "Mizoram", "value": "Mizoram" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:26:hardcoded string:	  { "label": "Nagaland", "value": "Nagaland" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:27:hardcoded string:	  { "label": "Odisha", "value": "Odisha" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:28:hardcoded string:	  { "label": "Puducherry", "value": "Puducherry" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:29:hardcoded string:	  { "label": "Punjab", "value": "Punjab" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:30:hardcoded string:	  { "label": "Rajasthan", "value": "Rajasthan" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:31:hardcoded string:	  { "label": "Sikkim", "value": "Sikkim" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:32:hardcoded string:	  { "label": "Tamil Nadu", "value": "Tamil Nadu (TN)" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:33:hardcoded string:	  { "label": "Telangana", "value": "Telangana (TS)" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:34:hardcoded string:	  { "label": "Tripura", "value": "Tripura" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:35:hardcoded string:	  { "label": "Uttar Pradesh", "value": "Uttar Pradesh (UP)" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:36:hardcoded string:	  { "label": "Uttarakhand", "value": "Uttarakhand" },
+microservices-middleware/server/src/addressmanagement/addressConfig.js:37:hardcoded string:	  { "label": "West Bengal", "value": "West Bengal (WB)" }
+microservices-middleware/server/src/addressmanagement/addressConfig.js:40:hardcoded variable:	const stateList = stateArray;
+microservices-middleware/server/src/addressmanagement/addressController.js:2:hardcoded string:	const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/addressmanagement/addressController.js:3:hardcoded string:	const { sequelize } = require("@byjus-orders/npgexemplum")
+microservices-middleware/server/src/addressmanagement/addressController.js:17:hardcoded variable:	const saveAddressDetails = async (req, res) => {
+microservices-middleware/server/src/addressmanagement/addressController.js:18:hardcoded string:	    const { email } = get(req, 'user', {});
+microservices-middleware/server/src/addressmanagement/addressController.js:19:hardcoded array:	    const { identifier, addressDetails, attachments = [], isAddressModified } = req.body;
+microservices-middleware/server/src/addressmanagement/addressController.js:21:hardcoded string:	    if (!identifier || !addressDetails) throw new BadRequestError('Parameters Missing');
+microservices-middleware/server/src/addressmanagement/addressController.js:24:hardcoded object:	        let { country, state, city, zipcode } = addressDetails
+microservices-middleware/server/src/addressmanagement/addressController.js:25:hardcoded string:	        if (country == "India") {
+microservices-middleware/server/src/addressmanagement/addressController.js:26:hardcoded variable:	            let stateExist = state && stateList.find(ele => ele.value.includes(state));
+microservices-middleware/server/src/addressmanagement/addressController.js:29:hardcoded number:	                    if (isNaN(zipcode) || size(zipcode.toString()) != 6) { throw new Error(`Please add a 6 digit valid zipcode`) }
+microservices-middleware/server/src/addressmanagement/addressController.js:43:hardcoded variable:	        const currentOrder = await checkIfDraftOrderExists(identifier);
+microservices-middleware/server/src/addressmanagement/addressController.js:46:hardcoded string:	            const orderPunchingType = get(currentOrder, 'orderPunchingType');
+microservices-middleware/server/src/addressmanagement/addressController.js:47:hardcoded string:	            const isOmsOrder = get(currentOrder, 'isOmsOrder', false);
+microservices-middleware/server/src/addressmanagement/addressController.js:49:hardcoded string:	            const customerDetails = get(currentOrder, 'customerDetails');
+microservices-middleware/server/src/addressmanagement/addressController.js:50:hardcoded string:	            const customerId = get(customerDetails, 'customerId');
+microservices-middleware/server/src/addressmanagement/addressController.js:51:hardcoded string:	            const parentName = get(customerDetails, "parentName", "")
+microservices-middleware/server/src/addressmanagement/addressController.js:61:hardcoded variable:	            const forAddressIdObj = {
+microservices-middleware/server/src/addressmanagement/addressController.js:67:hardcoded object:	            const addressIds = await getAddressId(forAddressIdObj) || {};
+microservices-middleware/server/src/addressmanagement/addressController.js:68:hardcoded variable:	            const updateAddressDetailsObj = {
+microservices-middleware/server/src/addressmanagement/addressController.js:78:hardcoded object:	            return res.json({ addressDetails, attachments, orderPunchingType });
+microservices-middleware/server/src/addressmanagement/addressController.js:85:hardcoded variable:	const getOHContactDetails = async (contactId) => {
+microservices-middleware/server/src/addressmanagement/addressController.js:87:hardcoded variable:	    const payload = {
+microservices-middleware/server/src/addressmanagement/addressController.js:88:hardcoded string:	        "method": "contact_view",
+microservices-middleware/server/src/addressmanagement/addressController.js:89:hardcoded string:	        "tokenId": get(config, 'orderhive.token'),
+microservices-middleware/server/src/addressmanagement/addressController.js:90:hardcoded string:	        "tenantId": get(config, 'orderhive.tenantId'),
+microservices-middleware/server/src/addressmanagement/addressController.js:91:hardcoded string:	        "contactId": contactId
+microservices-middleware/server/src/addressmanagement/addressController.js:94:hardcoded variable:	    const apiResponse = await callOrderhiveApi(payload);
+microservices-middleware/server/src/addressmanagement/addressController.js:95:hardcoded object:	    const { status, contact } = apiResponse;
+microservices-middleware/server/src/addressmanagement/addressController.js:101:hardcoded object:	        return {};
+microservices-middleware/server/src/addressmanagement/addressController.js:105:hardcoded variable:	const getEditAddressPayload = (ohContactDetails, salesDetails, customerDetails, addressDetails) => {
+microservices-middleware/server/src/addressmanagement/addressController.js:107:hardcoded string:	    let zipcode = get(addressDetails, 'zipcode', '').length ? get(addressDetails, 'zipcode', '') : '000000'
+microservices-middleware/server/src/addressmanagement/addressController.js:108:hardcoded variable:	    const payload = {
+microservices-middleware/server/src/addressmanagement/addressController.js:109:hardcoded string:	        "method": "edit_customer",
+microservices-middleware/server/src/addressmanagement/addressController.js:110:hardcoded string:	        "tokenId": get(config, 'orderhive.token'),
+microservices-middleware/server/src/addressmanagement/addressController.js:111:hardcoded string:	        "tenantId": get(config, 'orderhive.tenantId'),
+microservices-middleware/server/src/addressmanagement/addressController.js:112:hardcoded string:	        "name": get(customerDetails, 'parentName') || get(customerDetails, 'studentName'),
+microservices-middleware/server/src/addressmanagement/addressController.js:113:hardcoded string:	        "email": get(ohContactDetails, 'email') || get(customerDetails, 'email'),
+microservices-middleware/server/src/addressmanagement/addressController.js:114:hardcoded string:	        "contactId": get(customerDetails, 'contactId'),
+microservices-middleware/server/src/addressmanagement/addressController.js:115:hardcoded string:	        "contact": get(customerDetails, 'parentMobileNo'),
+microservices-middleware/server/src/addressmanagement/addressController.js:116:hardcoded string:	        "student_contact_no": get(customerDetails, 'studentMobileNo'),
+microservices-middleware/server/src/addressmanagement/addressController.js:117:hardcoded string:	        "parent_name": get(customerDetails, 'parentName'),
+microservices-middleware/server/src/addressmanagement/addressController.js:118:hardcoded string:	        "sales_person_id": get(salesDetails, 'directSalesById'),
+microservices-middleware/server/src/addressmanagement/addressController.js:119:hardcoded string:	        "addresses": [{
+microservices-middleware/server/src/addressmanagement/addressController.js:120:hardcoded string:	            "address": get(addressDetails, 'address'),
+microservices-middleware/server/src/addressmanagement/addressController.js:121:hardcoded string:	            "city": get(addressDetails, 'city'),
+microservices-middleware/server/src/addressmanagement/addressController.js:122:hardcoded string:	            "zipcode": zipcode,
+microservices-middleware/server/src/addressmanagement/addressController.js:123:hardcoded string:	            "state": get(addressDetails, 'state'),
+microservices-middleware/server/src/addressmanagement/addressController.js:124:hardcoded string:	            "country": get(addressDetails, 'country')
+microservices-middleware/server/src/addressmanagement/addressController.js:131:hardcoded variable:	const updateAddressDetails = async (props) => {
+microservices-middleware/server/src/addressmanagement/addressController.js:132:hardcoded object:	    const { identifier, addressDetails, attachments, email, isOmsOrder, addressIds } = props;
+microservices-middleware/server/src/addressmanagement/addressController.js:133:hardcoded object:	    const addressSchema = { ...addressDetails };
+microservices-middleware/server/src/addressmanagement/addressController.js:136:hardcoded string:	    let address = get(addressSchema, 'address');
+microservices-middleware/server/src/addressmanagement/addressController.js:137:hardcoded string:	    const { country = "" } = addressSchema || {};
+microservices-middleware/server/src/addressmanagement/addressController.js:138:hardcoded string:	    address = address.split(',').filter(st => st.trim()).join('\n');
+microservices-middleware/server/src/addressmanagement/addressController.js:139:hardcoded string:	    addressSchema["address"] = address;
+microservices-middleware/server/src/addressmanagement/addressController.js:140:hardcoded object:	    const draftOrderDetails= await DraftOrder.find({ _id: identifier });
+microservices-middleware/server/src/addressmanagement/addressController.js:141:hardcoded string:	    const productType=get(draftOrderDetails[0], "productDetails.productType", " ")
+microservices-middleware/server/src/addressmanagement/addressController.js:144:hardcoded object:	        await DraftOrder.findOneAndUpdate({ _id: identifier }, {
+microservices-middleware/server/src/addressmanagement/addressController.js:147:hardcoded string:	                    billing: { ...addressSchema, addressId:  get(addressIds, "billingAddressId", "")  },
+microservices-middleware/server/src/addressmanagement/addressController.js:148:hardcoded string:	                    shipping: { ...addressSchema, addressId:  get(addressIds, "shippingAddressId", "") }
+microservices-middleware/server/src/addressmanagement/addressController.js:151:hardcoded string:	                status: "address_saved",
+microservices-middleware/server/src/addressmanagement/addressController.js:152:hardcoded array:	                [`actionDetails.addressSavedAt`]: new Date(),
+microservices-middleware/server/src/addressmanagement/addressController.js:153:hardcoded array:	                [`actionDetails.addressSavedBy`]: email,
+microservices-middleware/server/src/addressmanagement/addressController.js:154:hardcoded string:	                isOmsOrder:( productType==="crpCompetitive") ? isOmsOrder : (country ? (country === "India") : isOmsOrder) /**Move international orders to OH */
+microservices-middleware/server/src/addressmanagement/addressController.js:165:hardcoded variable:	const getPincodeInfo = async (req, res) => {
+microservices-middleware/server/src/addressmanagement/addressController.js:166:hardcoded string:	    logger.info({ method: "getPincodeInfo" }, req.body)
+microservices-middleware/server/src/addressmanagement/addressController.js:167:hardcoded object:	    const { pincode } = req.body;
+microservices-middleware/server/src/addressmanagement/addressController.js:169:hardcoded string:	    if (!pincode) throw new BadRequestError('Pincode is missing');
+microservices-middleware/server/src/addressmanagement/addressController.js:173:hardcoded string:	        let city = "", state = "", country = "", response, localOffices = [];
+microservices-middleware/server/src/addressmanagement/addressController.js:174:hardcoded number:	        // TODO: should be removed after June 2022 as new API is getting inplace
+microservices-middleware/server/src/addressmanagement/addressController.js:177:hardcoded string:	            if (response && response.Status.toLowerCase() === 'success' && response.PostOffice) {
+microservices-middleware/server/src/addressmanagement/addressController.js:178:hardcoded number:	                const postOffice = response.PostOffice[0];
+microservices-middleware/server/src/addressmanagement/addressController.js:181:hardcoded string:	                if (state == 'Chattisgarh' || state == 'Chhatissgarh' || state == 'Chhattisgarh')
+microservices-middleware/server/src/addressmanagement/addressController.js:182:hardcoded string:	                    state = 'Chhattisgarh';
+microservices-middleware/server/src/addressmanagement/addressController.js:183:hardcoded string:	                else if (state == 'Puducherry' || state == 'Pondicherry')
+microservices-middleware/server/src/addressmanagement/addressController.js:184:hardcoded string:	                    state = 'Puducherry';
+microservices-middleware/server/src/addressmanagement/addressController.js:192:hardcoded string:	            if (response && response.status.toLowerCase() === 'success' && response.postOffice) {
+microservices-middleware/server/src/addressmanagement/addressController.js:193:hardcoded array:	                const cities = [];
+microservices-middleware/server/src/addressmanagement/addressController.js:194:hardcoded array:	                const states = [];
+microservices-middleware/server/src/addressmanagement/addressController.js:195:hardcoded number:	                country = response.postOffice[0].country;
+microservices-middleware/server/src/addressmanagement/addressController.js:197:hardcoded number:	                    if (cities.indexOf(pincodeDetails.district) == -1) cities.push(pincodeDetails.district);
+microservices-middleware/server/src/addressmanagement/addressController.js:198:hardcoded number:	                    if (states.indexOf(pincodeDetails.state) == -1) states.push(pincodeDetails.state);
+microservices-middleware/server/src/addressmanagement/addressController.js:201:hardcoded number:	                if (cities.length > 1) {
+microservices-middleware/server/src/addressmanagement/addressController.js:204:hardcoded number:	                    city = cities[0];
+microservices-middleware/server/src/addressmanagement/addressController.js:206:hardcoded number:	                state = states[0];
+microservices-middleware/server/src/addressmanagement/addressController.js:210:hardcoded object:	        return res.json({ city, state, localOffices, country });
+microservices-middleware/server/src/addressmanagement/addressController.js:212:hardcoded string:	        const noPinCodeFind = JSON.parse(error?.message?.split("- ")[error?.message?.split("- ").length - 1])
+microservices-middleware/server/src/addressmanagement/addressController.js:215:hardcoded array:	                localOffices: [],
+microservices-middleware/server/src/addressmanagement/addressController.js:216:hardcoded string:	                city: '',
+microservices-middleware/server/src/addressmanagement/addressController.js:217:hardcoded string:	                state: ''
+microservices-middleware/server/src/addressmanagement/addressController.js:224:hardcoded variable:	const getContactSavedAddress = async (req, res) => {
+microservices-middleware/server/src/addressmanagement/addressController.js:225:hardcoded object:	    const { identifier } = req.body;
+microservices-middleware/server/src/addressmanagement/addressController.js:227:hardcoded variable:	    const currentOrder = await checkIfDraftOrderExists(identifier);
+microservices-middleware/server/src/addressmanagement/addressController.js:230:hardcoded object:	        const { customerDetails = {} } = currentOrder;
+microservices-middleware/server/src/addressmanagement/addressController.js:231:hardcoded object:	        const { parentMobileNo } = customerDetails;
+microservices-middleware/server/src/addressmanagement/addressController.js:232:hardcoded string:	        const contactDetails = await callNucleusApi(`contactmanagement/contact/getDetails`, 'POST', { phone: parentMobileNo }, true);
+microservices-middleware/server/src/addressmanagement/addressController.js:233:hardcoded array:	        const { billingAddress = [] } = contactDetails;
+microservices-middleware/server/src/addressmanagement/addressController.js:235:hardcoded array:	        res.json(billingAddress || []);
+microservices-middleware/server/src/addressmanagement/addressController.js:239:hardcoded variable:	const updateAddressInContact = async (customerDetails, addressDetails) => {
+microservices-middleware/server/src/addressmanagement/addressController.js:240:hardcoded object:	    const { parentMobileNo } = customerDetails;
+microservices-middleware/server/src/addressmanagement/addressController.js:242:hardcoded string:	    const contactDetails = await callNucleusApi(`contactmanagement/contact/addAddress/${parentMobileNo}`, 'POST', { address: addressDetails }, true);
+microservices-middleware/server/src/addressmanagement/addressController.js:244:hardcoded object:	    console.log(`Address saved successfully for ${parentMobileNo}`);
+microservices-middleware/server/src/addressmanagement/addressController.js:247:hardcoded variable:	const stateListPromise = (country) => {
+microservices-middleware/server/src/addressmanagement/addressController.js:248:hardcoded object:	    console.log(`Fetching state list for ${country}`);
+microservices-middleware/server/src/addressmanagement/addressController.js:249:hardcoded string:	    const query = `SELECT st.state_name as label, st.state_name as value FROM pincode.states st JOIN pincode.countries ct on st.country_id = ct.country_id WHERE ct.country_name LIKE '${country}' ORDER BY st.state_name`
+microservices-middleware/server/src/addressmanagement/addressController.js:252:hardcoded object:	        sequelize.query(query, { type: sequelize.QueryTypes.SELECT })
+microservices-middleware/server/src/addressmanagement/addressController.js:262:hardcoded variable:	const getStateList = async (req, res) => {
+microservices-middleware/server/src/addressmanagement/addressController.js:263:hardcoded string:	    const { country = "" } = req.query;
+microservices-middleware/server/src/addressmanagement/addressController.js:264:hardcoded variable:	    const stateList = await stateListPromise(country);
+microservices-middleware/server/src/addressmanagement/addressController.js:268:hardcoded variable:	const districtListPromise = async (state) => {
+microservices-middleware/server/src/addressmanagement/addressController.js:269:hardcoded object:	    console.log(`Fetching district list for ${state}`);
+microservices-middleware/server/src/addressmanagement/addressController.js:270:hardcoded string:	    const query = `SELECT d.district_name as label, d.district_name as value FROM pincode.districts d JOIN pincode.states st on d.state_id = st.state_id WHERE st.state_name LIKE '${state}' ORDER BY d.district_name`
+microservices-middleware/server/src/addressmanagement/addressController.js:272:hardcoded object:	        sequelize.query(query, { type: sequelize.QueryTypes.SELECT })
+microservices-middleware/server/src/addressmanagement/addressController.js:282:hardcoded variable:	const getDistrictList = async (req, res) => {
+microservices-middleware/server/src/addressmanagement/addressController.js:283:hardcoded string:	    const { state = "" } = req.query;
+microservices-middleware/server/src/addressmanagement/addressController.js:284:hardcoded variable:	    const districtList = await districtListPromise(state);
+microservices-middleware/server/src/addressmanagement/addressController.js:288:hardcoded variable:	const pincodePromise = async (state, district) => {
+microservices-middleware/server/src/addressmanagement/addressController.js:289:hardcoded object:	    console.log(`Fetching pincode for ${district}, ${state}`);
+microservices-middleware/server/src/addressmanagement/addressController.js:290:hardcoded string:	    const query = `SELECT DISTINCT pc.pin_code as pincode FROM pincode.pincodes pc JOIN pincode.districts d on pc.district_id = d.district_id JOIN pincode.states st on d.state_id = st.state_id WHERE st.state_name LIKE '${state}' AND d.district_name LIKE '${district}' ORDER BY pc.pin_code LIMIT 1`;
+microservices-middleware/server/src/addressmanagement/addressController.js:292:hardcoded object:	        sequelize.query(query, { type: sequelize.QueryTypes.SELECT })
+microservices-middleware/server/src/addressmanagement/addressController.js:294:hardcoded number:	                resolve(result.length > 0 ? result[0] : {});
+microservices-middleware/server/src/addressmanagement/addressController.js:301:hardcoded variable:	const getPincode = async (req, res) => {
+microservices-middleware/server/src/addressmanagement/addressController.js:302:hardcoded string:	    const { state = "", district = "" } = req.query;
+microservices-middleware/server/src/addressmanagement/addressController.js:303:hardcoded array:	    const localOffices = []
+microservices-middleware/server/src/addressmanagement/addressController.js:304:hardcoded string:	    const { pincode = "" } = await pincodePromise(state, district);
+microservices-middleware/server/src/addressmanagement/addressController.js:305:hardcoded variable:	    const response = await callDevPostalCodeApi(pincode);
+microservices-middleware/server/src/addressmanagement/addressController.js:306:hardcoded string:	    if (response && response.status.toLowerCase() === 'success' && response.postOffice) {
+microservices-middleware/server/src/addressmanagement/addressRoutes.js:5:hardcoded object:	  const router = Router({ mergeParams: true });
+microservices-middleware/server/src/addressmanagement/addressRoutes.js:7:hardcoded string:	  router.route('/address/saveAddressDetails')
+microservices-middleware/server/src/addressmanagement/addressRoutes.js:13:hardcoded string:	  router.route('/address/getContactSavedAddress')
+microservices-middleware/server/src/addressmanagement/addressRoutes.js:19:hardcoded string:	  router.route('/address/getPincodeInfo')
+microservices-middleware/server/src/addressmanagement/addressRoutes.js:25:hardcoded string:	  router.route('/address/getStateList')
+microservices-middleware/server/src/addressmanagement/addressRoutes.js:31:hardcoded string:	  router.route('/address/getDistrictList')
+microservices-middleware/server/src/addressmanagement/addressRoutes.js:37:hardcoded string:	  router.route('/address/getPincode')

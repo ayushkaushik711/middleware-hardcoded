@@ -1,0 +1,197 @@
+microservices-middleware/server/src/authmanagement/authController.js:11:hardcoded string:	const { DraftOrder, OrderhiveSalesperson: OrderHiveSalesPerson, LeadoOrder: Order, Quotation, OrderPunchingConfig } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/authmanagement/authController.js:12:hardcoded string:	const { PaymentAggregator } = require('@byjus-orders/nexemplum/pms');
+microservices-middleware/server/src/authmanagement/authController.js:13:hardcoded string:	const { LoanAggregator, Cibil } = require('@byjus-orders/nexemplum/lms');
+microservices-middleware/server/src/authmanagement/authController.js:14:hardcoded string:	const { Subscription, CashReceiptTransaction } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/authmanagement/authController.js:29:hardcoded variable:	const authenticateLeadsquaredUser = async (req, res) => {
+microservices-middleware/server/src/authmanagement/authController.js:30:hardcoded string:	    //logger.info({ method: 'authenticateLeadsquaredUser', msg: "Authenticating Leadsquared User", body: req.body });
+microservices-middleware/server/src/authmanagement/authController.js:31:hardcoded object:	    const lsDetails = { ...req.body };
+microservices-middleware/server/src/authmanagement/authController.js:33:hardcoded string:	        salesforceAccountId = "", UserEmailId = "", enablePgQuery = "no" } = lsDetails;
+microservices-middleware/server/src/authmanagement/authController.js:34:hardcoded string:	    let accountType = "";
+microservices-middleware/server/src/authmanagement/authController.js:35:hardcoded string:	    let leadCreatedByEmailId = "";
+microservices-middleware/server/src/authmanagement/authController.js:36:hardcoded array:	    let aakashCrpLoanProviders = [];
+microservices-middleware/server/src/authmanagement/authController.js:38:hardcoded string:	    if (!prospectId) throw new Error('Prospect Id is empty');
+microservices-middleware/server/src/authmanagement/authController.js:39:hardcoded string:	    if (!accountNumber) throw new Error('Account Number is empty');
+microservices-middleware/server/src/authmanagement/authController.js:40:hardcoded string:	    if (!userEmail) throw new Error('User Email is empty');
+microservices-middleware/server/src/authmanagement/authController.js:43:hardcoded string:	    global["isPgQuery"] = (enablePgQuery === "yes") ? true : false;
+microservices-middleware/server/src/authmanagement/authController.js:47:hardcoded string:	        lsDetails["source"] = "salesforce";
+microservices-middleware/server/src/authmanagement/authController.js:48:hardcoded string:	        lsDetails["salesforceAccountId"] = salesforceAccountId;
+microservices-middleware/server/src/authmanagement/authController.js:49:hardcoded string:	        lsDetails["jwtSecretKey"] = authConfig.jwtAuthTokenKey;
+microservices-middleware/server/src/authmanagement/authController.js:51:hardcoded string:	        accountType = "salesforce"
+microservices-middleware/server/src/authmanagement/authController.js:53:hardcoded variable:	        const lsAccountDetails = authConfig.getLSAccountDetails(accountNumber);
+microservices-middleware/server/src/authmanagement/authController.js:54:hardcoded object:	        if (!lsAccountDetails) throw new Error(`LS - ${accountNumber} details is not configured.
+microservices-middleware/server/src/authmanagement/authController.js:57:hardcoded object:	        const { authenticationBaseUrl } = lsAccountDetails;
+microservices-middleware/server/src/authmanagement/authController.js:58:hardcoded string:	        lsDetails["lsBaseUrl"] = authenticationBaseUrl;
+microservices-middleware/server/src/authmanagement/authController.js:59:hardcoded string:	        lsDetails["jwtSecretKey"] = authConfig.jwtAuthTokenKey;
+microservices-middleware/server/src/authmanagement/authController.js:60:hardcoded string:	        lsDetails["source"] = "leadsquared";
+microservices-middleware/server/src/authmanagement/authController.js:61:hardcoded string:	        accountType = get(lsAccountDetails, "accountType", "")
+microservices-middleware/server/src/authmanagement/authController.js:65:hardcoded variable:	        const authenticationDetails = await authenticateUserUsingEmailId(lsDetails);
+microservices-middleware/server/src/authmanagement/authController.js:66:hardcoded variable:	        // const authenticationDetails = await leadsquaredUtil.authenticateLeadsquaredUser(lsDetails);
+microservices-middleware/server/src/authmanagement/authController.js:67:hardcoded object:	        const { isAuthenticated, loggedInEmailId } = authenticationDetails || {};
+microservices-middleware/server/src/authmanagement/authController.js:68:hardcoded variable:	        const env = process.env.NODE_ENV;
+microservices-middleware/server/src/authmanagement/authController.js:71:hardcoded number:	            return res.status(500).json({
+microservices-middleware/server/src/authmanagement/authController.js:74:hardcoded string:	                message: 'Error in Authenticating leadsquared user'
+microservices-middleware/server/src/authmanagement/authController.js:77:hardcoded string:	        const leadPhoneNo = get(lsDetails, "studentMobile", "").split("-")[get(lsDetails, "studentMobile", "").split("-").length - 1];
+microservices-middleware/server/src/authmanagement/authController.js:78:hardcoded string:	        const leadSource = get(lsDetails, "LeadSource", "").toLowerCase().trim().replace(/\s+/g, '');
+microservices-middleware/server/src/authmanagement/authController.js:79:hardcoded variable:	        const loggedInEmployee = await fetchEmployeeDetails(loggedInEmailId);
+microservices-middleware/server/src/authmanagement/authController.js:80:hardcoded object:	        const { leadLoans, leadPayments, leadSubPayments, leadPdcs, groupPdcs } = await fetchPaymentsAndLoans(prospectId, leadPhoneNo);
+microservices-middleware/server/src/authmanagement/authController.js:82:hardcoded variable:	        const userPermissions = getConsolidatedPermissions(loggedInEmployee);
+microservices-middleware/server/src/authmanagement/authController.js:83:hardcoded variable:	        const omsConfig = await checkIfOmsLiveForCampaign();
+microservices-middleware/server/src/authmanagement/authController.js:84:hardcoded string:	        // const isOutboundOrderPunchingRestricted = leadSource === "outboundphonecall" ? await checkIsOutboundOrderPunchingRestricted(loggedInEmployee) : false;
+microservices-middleware/server/src/authmanagement/authController.js:86:hardcoded string:	        let quotationStatus = userPermissions.includes(leadquaredRelatedPermissions.allownMultipleOrderOnSameProspectId) ? ["address_saved", "approved", "quotation_drafted","approval_pending"] : "approved";
+microservices-middleware/server/src/authmanagement/authController.js:87:hardcoded string:	        let quotation = await Quotation.find({ "leadDetails.prospectId": prospectId, status: quotationStatus }, { otpDetails: 0 }).lean();
+microservices-middleware/server/src/authmanagement/authController.js:89:hardcoded string:	        let { department, email = "", reportingTo = {} } = loggedInEmployee;
+microservices-middleware/server/src/authmanagement/authController.js:91:hardcoded object:	        let featureEnableList = {};
+microservices-middleware/server/src/authmanagement/authController.js:92:hardcoded variable:	        const featuresList = await fetchFeatures();
+microservices-middleware/server/src/authmanagement/authController.js:94:hardcoded array:	        const eligibleAuditKeyUsers = await getEligibleAuditKeyUsers() || [];
+microservices-middleware/server/src/authmanagement/authController.js:96:hardcoded variable:	        const isMobileLoanInitiationApplicable = true;
+microservices-middleware/server/src/authmanagement/authController.js:101:hardcoded number:	        department = isArray(department) ? department[0] : department;
+microservices-middleware/server/src/authmanagement/authController.js:102:hardcoded string:	        department = department && ![null, undefined, "undefined", "null"].includes(department) ? department : "";
+microservices-middleware/server/src/authmanagement/authController.js:104:hardcoded string:	        let isOutboundOrderPunchingRestricted = leadSource === "outboundphonecall" && !["supply_chain", "user_experience"].includes(department.toLowerCase()); // uex department
+microservices-middleware/server/src/authmanagement/authController.js:107:hardcoded string:	        loggedInEmployee["permissions"] = userPermissions;
+microservices-middleware/server/src/authmanagement/authController.js:109:hardcoded string:	        authenticationDetails["user"] = loggedInEmployee;
+microservices-middleware/server/src/authmanagement/authController.js:110:hardcoded string:	        authenticationDetails["accountType"] = accountType;
+microservices-middleware/server/src/authmanagement/authController.js:111:hardcoded string:	        authenticationDetails["omsConfig"] = omsConfig;
+microservices-middleware/server/src/authmanagement/authController.js:112:hardcoded string:	        authenticationDetails["isOutboundOrderPunchingRestricted"] = isOutboundOrderPunchingRestricted;
+microservices-middleware/server/src/authmanagement/authController.js:114:hardcoded variable:	        const isPriviledgedUser = userPermissions.includes(leadquaredRelatedPermissions.allownMultipleOrderOnSameProspectId);
+microservices-middleware/server/src/authmanagement/authController.js:116:hardcoded string:	        const draftOrder = await DraftOrder.findOne({ 'leadDetails.prospectId': prospectId }, { otpDetails: 0 }).sort({ createdAt: -1 }).limit(1);
+microservices-middleware/server/src/authmanagement/authController.js:117:hardcoded object:	        let { status: draftOrderStatus, childStatus, orderType } = draftOrder || {};
+microservices-middleware/server/src/authmanagement/authController.js:118:hardcoded string:	        childStatus = (orderType === "SPLIT") ? childStatus : null;
+microservices-middleware/server/src/authmanagement/authController.js:121:hardcoded variable:	            const lsDetails = await getLeadDetails(createdById, accountNumber);
+microservices-middleware/server/src/authmanagement/authController.js:122:hardcoded object:	            const { isLeadCreatedByAdmin, message, leadCreatedAt, createdByRole } = lsDetails;
+microservices-middleware/server/src/authmanagement/authController.js:123:hardcoded string:	            leadCreatedByEmailId = get(lsDetails, "leadCreatedByEmailId", "");
+microservices-middleware/server/src/authmanagement/authController.js:124:hardcoded string:	            authenticationDetails["createdByEmailId"] = leadCreatedByEmailId;
+microservices-middleware/server/src/authmanagement/authController.js:125:hardcoded string:	            authenticationDetails["isLeadCreatedByAdmin"] = isLeadCreatedByAdmin;
+microservices-middleware/server/src/authmanagement/authController.js:126:hardcoded string:	            authenticationDetails["leadCreatedAt"] = leadCreatedAt
+microservices-middleware/server/src/authmanagement/authController.js:127:hardcoded string:	            authenticationDetails["createdByRole"] = createdByRole
+microservices-middleware/server/src/authmanagement/authController.js:130:hardcoded variable:	        const isWhiteListedLead = fetchWhiteListedLeadOrderPunchingEligibility(loggedInEmployee, leadSource, leadCreatedByEmailId);
+microservices-middleware/server/src/authmanagement/authController.js:131:hardcoded object:	        const { isOrderPunchingAllowed = false, isOrderPunchingAllowedInCompanyAccount = false } = isWhiteListedLead;
+microservices-middleware/server/src/authmanagement/authController.js:133:hardcoded string:	        authenticationDetails["isOutboundOrderPunchingRestricted"] = !isOrderPunchingAllowed;
+microservices-middleware/server/src/authmanagement/authController.js:134:hardcoded string:	        authenticationDetails["isOrderPunchingAllowedInCompanyAccount"] = isOrderPunchingAllowedInCompanyAccount;
+microservices-middleware/server/src/authmanagement/authController.js:135:hardcoded string:	        authenticationDetails["isKartPaymentAllowed"] = true;
+microservices-middleware/server/src/authmanagement/authController.js:138:hardcoded string:	            authenticationDetails['leadId'] = await createLeadInSystem(prospectId, userEmail, { ...lsDetails, empId: get(authenticationDetails, "user.id", "") });
+microservices-middleware/server/src/authmanagement/authController.js:142:hardcoded string:	            ["details_saved", "repunch_saved", "address_saved", "product_saved", "payment_saved", "otp_saved"].indexOf(draftOrderStatus) >= 0) {
+microservices-middleware/server/src/authmanagement/authController.js:143:hardcoded variable:	            const orders = await checkIfOrderExistsForUpgrade(lsDetails)
+microservices-middleware/server/src/authmanagement/authController.js:145:hardcoded string:	            quotation = await Quotation.find({ "leadDetails.prospectId": prospectId, status: "order_processing" }, { otpDetails: 0 }).lean();
+microservices-middleware/server/src/authmanagement/authController.js:156:hardcoded string:	                leadSubPayments: ["development", "local"].includes(env) ? leadSubPayments : [],
+microservices-middleware/server/src/authmanagement/authController.js:159:hardcoded string:	                createdByEmailId: get(draftOrder, "leadDetails.createdByEmailId", ""),
+microservices-middleware/server/src/authmanagement/authController.js:162:hardcoded environment variable:	                    featureKey: process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/src/authmanagement/authController.js:163:hardcoded string:	                    featureCheck: get(config, 'featureCheck'),
+microservices-middleware/server/src/authmanagement/authController.js:171:hardcoded string:	        if (draftOrder && (["soft_approved", "order_processing", "errored", "approval_pending"].includes(draftOrderStatus) ||
+microservices-middleware/server/src/authmanagement/authController.js:172:hardcoded string:	            (["order_created"].includes(draftOrderStatus) && childStatus && ["soft_approved", "order_processing", "errored", "approval_pending"].includes(childStatus)))) {
+microservices-middleware/server/src/authmanagement/authController.js:183:hardcoded string:	                leadSubPayments: ["development", "local"].includes(env) ? leadSubPayments : [],
+microservices-middleware/server/src/authmanagement/authController.js:186:hardcoded string:	                createdByEmailId: get(draftOrder, "leadDetails.createdByEmailId", ""),
+microservices-middleware/server/src/authmanagement/authController.js:189:hardcoded environment variable:	                    featureKey: process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/src/authmanagement/authController.js:190:hardcoded string:	                    featureCheck: get(config, 'featureCheck'),
+microservices-middleware/server/src/authmanagement/authController.js:199:hardcoded variable:	            const objParams = {
+microservices-middleware/server/src/authmanagement/authController.js:203:hardcoded string:	                studentMobile: lsDetails["studentMobile"],
+microservices-middleware/server/src/authmanagement/authController.js:220:hardcoded string:	        logger.info({ method: 'authenticateLeadsquaredUser', msg: "Authenticating leadsquared user", error });
+microservices-middleware/server/src/authmanagement/authController.js:221:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/authmanagement/authController.js:224:hardcoded string:	            message: get(error, 'message') || error || 'Error in Authenticating leadsquared user'
+microservices-middleware/server/src/authmanagement/authController.js:230:hardcoded number:	 *Check against leadsquaredProspectId or leadDetails.7461.leadsquaredProspectId key since for retention team to punch an upgrade order the leads are created in 7461 account
+microservices-middleware/server/src/authmanagement/authController.js:232:hardcoded variable:	const validateProspectId = async (objParams) => {
+microservices-middleware/server/src/authmanagement/authController.js:233:hardcoded object:	    const { res, prospectId, authenticationDetails, studentMobile, leadPayments, leadLoans, leadSubPayments, quotation, aakashCrpLoanProviders, isMobileLoanInitiationApplicable, featureEnableList, eligibleAuditKeyUsers, accountNumber ,leadPdcs ,groupPdcs,productDetails} = objParams;
+microservices-middleware/server/src/authmanagement/authController.js:235:hardcoded string:	    logger.info({ method: "validateProspectId", prospectId });
+microservices-middleware/server/src/authmanagement/authController.js:237:hardcoded object:	    let orders = await checkIfOrderExistsForUpgrade({ prospectId, studentMobile });
+microservices-middleware/server/src/authmanagement/authController.js:240:hardcoded string:	        const orderId=order["orderId"];
+microservices-middleware/server/src/authmanagement/authController.js:241:hardcoded string:	        const draftOrderId="DO-"+orderId.split("-")[1];
+microservices-middleware/server/src/authmanagement/authController.js:242:hardcoded string:	        const draftOrder=await DraftOrder.findOne({"draftOrderId":draftOrderId}).lean();
+microservices-middleware/server/src/authmanagement/authController.js:246:hardcoded object:	        const {addressDetails={},productDetails}=draftOrder;
+microservices-middleware/server/src/authmanagement/authController.js:247:hardcoded string:	        const {orderPunchingType="",orderPunchingCategory=""}=order;
+microservices-middleware/server/src/authmanagement/authController.js:248:hardcoded object:	        const {products,finalPrice,maxPrice,minPrice,productType}=productDetails;
+microservices-middleware/server/src/authmanagement/authController.js:249:hardcoded string:	        let subject="",category="",language="",validity="";
+microservices-middleware/server/src/authmanagement/authController.js:250:hardcoded string:	        if(orderPunchingType==="bep" && orderPunchingCategory.toLowerCase().includes("gate"))
+microservices-middleware/server/src/authmanagement/authController.js:252:hardcoded number:	            for(let i=0;i<products.length;i++)
+microservices-middleware/server/src/authmanagement/authController.js:254:hardcoded string:	                subject= (subject=== "") ? products[i].subject : subject;
+microservices-middleware/server/src/authmanagement/authController.js:255:hardcoded string:	                category= (category=== "") ? products[i].category : category;
+microservices-middleware/server/src/authmanagement/authController.js:256:hardcoded string:	                language= (language=== "") ? products[i].language :language;
+microservices-middleware/server/src/authmanagement/authController.js:257:hardcoded array:	                validity= validity < products[i].validity ? products[i].validity : validity;
+microservices-middleware/server/src/authmanagement/authController.js:263:hardcoded object:	        return {...order,productDetails:{subject,category,language,validity,productType,finalPrice,maxPrice,minPrice},addressDetails};
+microservices-middleware/server/src/authmanagement/authController.js:266:hardcoded number:	    if (orders.length >= 1) {
+microservices-middleware/server/src/authmanagement/authController.js:267:hardcoded string:	        const user = get(authenticationDetails, "user", "");
+microservices-middleware/server/src/authmanagement/authController.js:269:hardcoded object:	        const newOrderPunchingAllowed = await checkNewOrderPunchingEligibilityOnSameLead({ prospectId, studentMobile, user, accountNumber });
+microservices-middleware/server/src/authmanagement/authController.js:270:hardcoded variable:	        const orderType = await getOrderPunchingType(orders);
+microservices-middleware/server/src/authmanagement/authController.js:281:hardcoded array:	            leadSubPayments: isDevEnv ? leadSubPayments : [],
+microservices-middleware/server/src/authmanagement/authController.js:283:hardcoded environment variable:	            env: process.env.NODE_ENV,
+microservices-middleware/server/src/authmanagement/authController.js:285:hardcoded environment variable:	                featureKey: process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/src/authmanagement/authController.js:286:hardcoded string:	                featureCheck: get(config, 'featureCheck'),
+microservices-middleware/server/src/authmanagement/authController.js:296:hardcoded number:	        for (let i = 0; i < leadPayments.length; i++) {
+microservices-middleware/server/src/authmanagement/authController.js:297:hardcoded string:	            if (leadPayments && leadPayments[i].paymentPartner === 'cashfree') {
+microservices-middleware/server/src/authmanagement/authController.js:298:hardcoded string:	                leadPayments[i].paymentPartner = "Bank Transfer(Online Banking)"
+microservices-middleware/server/src/authmanagement/authController.js:300:hardcoded string:	            if (leadPayments && leadPayments[i].paymentPartner === 'bank_transfer') {
+microservices-middleware/server/src/authmanagement/authController.js:301:hardcoded string:	                leadPayments[i].paymentPartner = "Bank Transfer(Cash/Cheque)"
+microservices-middleware/server/src/authmanagement/authController.js:315:hardcoded array:	            leadSubPayments: isDevEnv ? leadSubPayments : [],
+microservices-middleware/server/src/authmanagement/authController.js:317:hardcoded environment variable:	            env: process.env.NODE_ENV,
+microservices-middleware/server/src/authmanagement/authController.js:319:hardcoded environment variable:	                featureKey: process.env.NUCLEUS_API_TOKEN,
+microservices-middleware/server/src/authmanagement/authController.js:320:hardcoded string:	                featureCheck: get(config, 'featureCheck'),
+microservices-middleware/server/src/authmanagement/authController.js:329:hardcoded variable:	const getLeadDetails = async (createdById, accountNumber) => {
+microservices-middleware/server/src/authmanagement/authController.js:331:hardcoded variable:	        const leadCreatedBy = await leadsquaredUtil.getLeadCreatedByEmailId(createdById, accountNumber)
+microservices-middleware/server/src/authmanagement/authController.js:332:hardcoded variable:	        let result = {
+microservices-middleware/server/src/authmanagement/authController.js:334:hardcoded string:	            message: "This Lead was created by System/Admin",
+microservices-middleware/server/src/authmanagement/authController.js:335:hardcoded string:	            leadCreatedByEmailId: "",
+microservices-middleware/server/src/authmanagement/authController.js:336:hardcoded string:	            leadCreatedAt: "",
+microservices-middleware/server/src/authmanagement/authController.js:337:hardcoded string:	            createdByRole: ""
+microservices-middleware/server/src/authmanagement/authController.js:340:hardcoded string:	            result["leadCreatedByEmailId"] = leadCreatedBy.emailId;
+microservices-middleware/server/src/authmanagement/authController.js:341:hardcoded string:	            result["leadCreatedAt"] = leadCreatedBy.leadCreatedAt;
+microservices-middleware/server/src/authmanagement/authController.js:342:hardcoded string:	            result["createdByRole"] = leadCreatedBy.createdByRole;
+microservices-middleware/server/src/authmanagement/authController.js:343:hardcoded variable:	            let isLeadCreatedByAdmin = authConfig.adminLeadAccounts.includes(leadCreatedBy.emailId);
+microservices-middleware/server/src/authmanagement/authController.js:345:hardcoded string:	                result["isLeadCreatedByAdmin"] = false;
+microservices-middleware/server/src/authmanagement/authController.js:346:hardcoded string:	                result["message"] = "This is not createdBy admin. Order not accounted for evaluation"
+microservices-middleware/server/src/authmanagement/authController.js:355:hardcoded variable:	const authenticateUser = async (req, res, next) => {
+microservices-middleware/server/src/authmanagement/authController.js:356:hardcoded string:	    const userAuthToken = get(req, 'headers.authtoken');
+microservices-middleware/server/src/authmanagement/authController.js:358:hardcoded string:	    if (!userAuthToken) { throw new ForbiddenError("Auth Token is missing") }
+microservices-middleware/server/src/authmanagement/authController.js:361:hardcoded variable:	        const decodedToken = jwt.decode(userAuthToken, authConfig.jwtAuthTokenKey);
+microservices-middleware/server/src/authmanagement/authController.js:362:hardcoded object:	        const { leadsquaredUserId, accountNumber, enablePgQuery } = decodedToken || {};
+microservices-middleware/server/src/authmanagement/authController.js:364:hardcoded object:	        const authorizedUser = await AuthenticationDetail.findOne({ leadsquaredUserId, accountNumber });
+microservices-middleware/server/src/authmanagement/authController.js:367:hardcoded string:	        global["isPgQuery"] = ['yes'].includes(enablePgQuery);
+microservices-middleware/server/src/authmanagement/authController.js:369:hardcoded string:	        if (!authorizedUser) { throw new ForbiddenError("Session Expired. Please refresh the page.") }
+microservices-middleware/server/src/authmanagement/authController.js:371:hardcoded object:	        const { loginValidity: storedLoginValidity, emailId } = authorizedUser;
+microservices-middleware/server/src/authmanagement/authController.js:372:hardcoded number:	        const currentTime = new Date() / 1000;
+microservices-middleware/server/src/authmanagement/authController.js:374:hardcoded string:	        if (currentTime > storedLoginValidity) { throw new ForbiddenError("Session Expired. Please refresh the page.") }
+microservices-middleware/server/src/authmanagement/authController.js:376:hardcoded variable:	        const user = await fetchEmployeeDetails(emailId);
+microservices-middleware/server/src/authmanagement/authController.js:377:hardcoded variable:	        const userPermissions = getConsolidatedPermissions(user);
+microservices-middleware/server/src/authmanagement/authController.js:379:hardcoded string:	        const updatedLoginValidity = Math.floor(moment().add(30, 'minutes') / 1000);
+microservices-middleware/server/src/authmanagement/authController.js:386:hardcoded string:	        user["permissions"] = userPermissions;
+microservices-middleware/server/src/authmanagement/authController.js:391:hardcoded string:	        console.log('authenticate error', err);
+microservices-middleware/server/src/authmanagement/authController.js:392:hardcoded string:	        //logger.error({ method: "authenticateUser", message: `Session Expired. ${err}` });
+microservices-middleware/server/src/authmanagement/authController.js:393:hardcoded string:	        if (err.message === "Token expired")
+microservices-middleware/server/src/authmanagement/authController.js:394:hardcoded string:	            throw new ForbiddenError("Session Expired. Please refresh the page.");
+microservices-middleware/server/src/authmanagement/authController.js:401:hardcoded variable:	const fetchEmployeeDetails = async (emailId) => {
+microservices-middleware/server/src/authmanagement/authController.js:402:hardcoded object:	    const uri = `usermanagement/employee/getByEmail/${emailId}`;
+microservices-middleware/server/src/authmanagement/authController.js:405:hardcoded string:	        const user = await callNucleusApi(uri, "get", {}, true);
+microservices-middleware/server/src/authmanagement/authController.js:406:hardcoded object:	        if (!user) throw new NotFoundError(`Employee-${emailId} not found.
+microservices-middleware/server/src/authmanagement/authController.js:413:hardcoded object:	        ERROR :  ${error}`);
+microservices-middleware/server/src/authmanagement/authController.js:417:hardcoded variable:	const getConsolidatedPermissions = (user) => {
+microservices-middleware/server/src/authmanagement/authController.js:418:hardcoded variable:	    const allPermissionArray = user && user.permissions;
+microservices-middleware/server/src/authmanagement/authController.js:420:hardcoded variable:	    let formattedPermissionArray = flattenDeep(allPermissionArray);
+microservices-middleware/server/src/authmanagement/authController.js:429:hardcoded variable:	const checkIfOmsLiveForCampaign = async () => {
+microservices-middleware/server/src/authmanagement/authController.js:430:hardcoded string:	    const omsConfig = await ByjusConfig.findOne({ "formattedAppName": "OMS", "formattedModuleName": "ORDER_MANAGEMENT_SYSTEM" });
+microservices-middleware/server/src/authmanagement/authController.js:431:hardcoded array:	    const { configs = [] } = omsConfig || {};
+microservices-middleware/server/src/authmanagement/authController.js:436:hardcoded variable:	const authenticateDebugApis = async (req, res, next) => {
+microservices-middleware/server/src/authmanagement/authController.js:438:hardcoded string:	        var debugToken = req.get('debug-token');
+microservices-middleware/server/src/authmanagement/authController.js:442:hardcoded string:	        throw new ForbiddenError("UnAuthorised");
+microservices-middleware/server/src/authmanagement/authController.js:448:hardcoded variable:	const fetchPaymentsAndLoans = async (prospectId, leadPhoneNo) => {
+microservices-middleware/server/src/authmanagement/authController.js:449:hardcoded string:	    let leadPayments = await PaymentAggregator.find({ leadPhoneNo, mode: { "$nin": ["post_dated_cheque"] } }).lean();
+microservices-middleware/server/src/authmanagement/authController.js:450:hardcoded string:	    let leadLoans = true ? await LoanAggregator.find({ kartLeadId: prospectId, status: { "$nin": ["soft_deleted"] } }).lean() 
+microservices-middleware/server/src/authmanagement/authController.js:451:hardcoded string:	        : (await callLmsLoanDetails({key: "loanaggregatorLead", value: prospectId}))
+microservices-middleware/server/src/authmanagement/authController.js:452:hardcoded string:	            ?.filter(loan => !["soft_deleted"].includes(loan?.status)) || [];
+microservices-middleware/server/src/authmanagement/authController.js:453:hardcoded array:	    let leadSubPayments = isDevEnv ? await Subscription.findAll({ where: { kartLeadId: prospectId }, raw: true }) : [];
+microservices-middleware/server/src/authmanagement/authController.js:454:hardcoded string:	    let leadEmiCardPayments = leadPayments?.filter(ele =>ele?.mode === "bajaj_emi" || ele?.paymentPartner === "shopse").map(ele => ele?.paymentPartner === "payu" ? {...ele, paymentPartner: "BAJAJ_VIA_PAYU"} : ele) || [];
+microservices-middleware/server/src/authmanagement/authController.js:455:hardcoded object:	    const emiCardPayment = (await callLmsToGetLoanDetails({kartLeadId : prospectId, kartLeadPhoneNo: leadPhoneNo})) || null;
+microservices-middleware/server/src/authmanagement/authController.js:456:hardcoded string:	    leadLoans = [emiCardPayment,...leadEmiCardPayments, ...leadLoans].filter(ele => ele && ele?.status !== "failure");
+microservices-middleware/server/src/authmanagement/authController.js:457:hardcoded string:	    leadPayments = leadPayments.filter(ele =>ele.mode !== "bajaj_emi" && ele.paymentPartner !== "shopse");
+microservices-middleware/server/src/authmanagement/authController.js:459:hardcoded variable:	    let scrPayments = await CashReceiptTransaction.findAll({
+microservices-middleware/server/src/authmanagement/authController.js:466:hardcoded variable:	        const paymentPartnerMap = {
+microservices-middleware/server/src/authmanagement/authController.js:467:hardcoded string:	            "pdc_ccr": "PDC_CCR",
+microservices-middleware/server/src/authmanagement/authController.js:468:hardcoded string:	            "icr": "icr"
+microservices-middleware/server/src/authmanagement/authController.js:470:hardcoded string:	        payment["paymentPartner"] = paymentPartnerMap[payment?.type] || "SCR";
+microservices-middleware/server/src/authmanagement/authController.js:471:hardcoded string:	        payment['_id'] = nanoid(32);
+microservices-middleware/server/src/authmanagement/authController.js:474:hardcoded array:	    leadPayments = [...leadPayments, ...scrPayments]
+microservices-middleware/server/src/authmanagement/authController.js:476:hardcoded number:	    const pdcData = await fetchPdcPaymentsV2({ leadPhoneNo }) 
+microservices-middleware/server/src/authmanagement/authController.js:479:hardcoded string:	        leadLoans = true ? await Cibil.find({ kartLeadId: prospectId, status: { "$nin": ["soft_deleted"] } }).lean() :
+microservices-middleware/server/src/authmanagement/authController.js:480:hardcoded string:	             (await callLmsLoanDetails({key: "cibiltransactionsLead", value: prospectId}))
+microservices-middleware/server/src/authmanagement/authController.js:481:hardcoded string:	                ?.filter(loan => !["soft_deleted"].includes(loan?.status)) || [];
+microservices-middleware/server/src/authmanagement/authController.js:484:hardcoded variable:	    const segregatedPayment = getFilteredPayments(leadPayments, leadLoans);
+microservices-middleware/server/src/authmanagement/authController.js:485:hardcoded string:	    leadPayments = get(segregatedPayment, "leadNonEmiPayments", []);
+microservices-middleware/server/src/authmanagement/authController.js:486:hardcoded string:	    leadLoans = get(segregatedPayment, "leadLoans", []);
+microservices-middleware/server/src/authmanagement/authController.js:487:hardcoded string:	    let leadPdcs = get(pdcData,"data.listPayments",[])
+microservices-middleware/server/src/authmanagement/authController.js:488:hardcoded object:	    let groupPdcs = await fetchGroupPdcs({ leadPhoneNo }) 

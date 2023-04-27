@@ -1,0 +1,45 @@
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:3:hardcoded variable:	const getBtcVoucherDiscountedPrice = (details) => {
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:4:hardcoded object:	    let { productDetails, voucherDetails, tabletTotalPrice } = details;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:5:hardcoded string:	    let { maxPrice, voucherEnabledSkuArray, remainingSiblingPriceToAdd = 0, productType = 'sibling' } = productDetails;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:6:hardcoded string:	    let { discountedValue, productType: type, discountType, voucherCode, orderAmount = '' } = voucherDetails || {};
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:7:hardcoded number:	    let discountedPrice = 0;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:12:hardcoded string:	    if (discountType == 'percent' && type === 'bast') {
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:13:hardcoded object:	        discountedPrice = getBtcBastDiscountedPrice({ discountedValue, ...voucherEnabledSkuArray })
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:18:hardcoded string:	    else if (discountType == 'percent' && ['schoolrank', 'dssl_btc'].includes(type)) {
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:19:hardcoded object:	        discountedPrice = getBtcSchoolRankPrice({ ...voucherEnabledSkuArray, discountedValue, type })
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:24:hardcoded string:	    else if (discountType == 'percent' && type !== 'intermiles') {
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:26:hardcoded string:	        const val = discountedValue.slice(-1) == '%' ? discountedValue.slice(0, -1) : discountedValue
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:29:hardcoded object:	        maxPrice = getSiblingMaxPrice({ productType, voucherEnabledSkuArray, maxPrice, tabletTotalPrice })
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:30:hardcoded number:	        discountedPrice = (Number(val) == 100) ? 1 : Number(maxPrice) * (100 - Number(val)) / 100;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:35:hardcoded string:	    else if (discountType == 'absolute') {
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:42:hardcoded object:	            maxPrice = getSiblingMaxPrice({ productType, voucherEnabledSkuArray, maxPrice, tabletTotalPrice })
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:51:hardcoded variable:	const getBtcBastDiscountedPrice = (details) => {
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:52:hardcoded array:	    const { discountedValue, blcSkuArray = [], tlpSkuArray = [], btcRegistrationSku = [] } = details;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:54:hardcoded number:	    let tutionDiscountedPrice = 0, nonDiscountableBastPrice = 0, blcSkuPricesToAdd = 0;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:55:hardcoded number:	    let totalBtcTuitionSkuPrice = blcSkuArray.reduce((acc, sku) => { return acc + sku.price }, 0);
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:56:hardcoded number:	    let totalTlpSkuPrice = tlpSkuArray.reduce((acc, sku) => { return acc + sku.price }, 0);
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:58:hardcoded number:	    // BAST discount is applicable for initial 2 year's btc tuition skus only
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:59:hardcoded number:	    const isBastApplicableYears = blcSkuArray.length <= 2 ? true : false;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:62:hardcoded number:	        //calculating discountablePrice only for 2 years.
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:63:hardcoded number:	        const discountablePrice = blcSkuArray.reduce((acc, sku, idx) => { return idx < 2 ? acc = + acc + sku.price : acc }, 0);
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:67:hardcoded string:	    const val = discountedValue.slice(-1) == '%' ? discountedValue.slice(0, -1) : discountedValue
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:68:hardcoded number:	    const discountedPrice = (Number(val) == 100) ? 1 : Number(totalBtcTuitionSkuPrice) * (100 - Number(val)) / 100;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:70:hardcoded number:	    //adding back rest sku prices whose validity > 2 years of initial validity
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:74:hardcoded number:	    nonDiscountableBastPrice = totalTlpSkuPrice + btcRegistrationSku[0].price;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:79:hardcoded variable:	const getBtcSchoolRankPrice = (details) => {
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:80:hardcoded array:	    const { discountedValue, blcSkuArray = [], tlpSkuArray = [], btcRegistrationSku = [] } = details;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:81:hardcoded number:	    const totalBlcSkuPrice = blcSkuArray.reduce((acc, ele) => { return acc + ele.price }, 0);
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:82:hardcoded number:	    const totalTlpSkuPrice = tlpSkuArray.reduce((acc, ele) => { return acc + ele.price }, 0);
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:84:hardcoded number:	    let schoolRankDiscountedPrice = 0;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:85:hardcoded number:	    const remainingSkuPriceToAdd = totalTlpSkuPrice + btcRegistrationSku[0].price;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:88:hardcoded variable:	    const discountablePrice = totalBlcSkuPrice
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:89:hardcoded string:	    const val = discountedValue.slice(-1) == '%' ? discountedValue.slice(0, -1) : discountedValue
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:90:hardcoded number:	    const discountedPrice = (Number(val) == 100) ? 1 : Number(discountablePrice) * (100 - Number(val)) / 100;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:98:hardcoded variable:	const getSiblingMaxPrice = (details) => {
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:99:hardcoded object:	    let { productType, voucherEnabledSkuArray, maxPrice, tabletTotalPrice } = details;
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:100:hardcoded string:	    if (productType === "sibling") {
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:101:hardcoded object:	        const skus = { ...voucherEnabledSkuArray }
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:102:hardcoded variable:	        const skuArray = Object.keys(skus).reduce(function (discountedValue, key) {
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:103:hardcoded array:	            return discountedValue.concat(skus[key]);
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:104:hardcoded array:	        }, []);
+microservices-middleware/server/src/quotationbeta/product/category/btc/utils/helper.js:105:hardcoded object:	        maxPrice = getTotalSiblingSkuPrice({ skuArray });

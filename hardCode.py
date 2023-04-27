@@ -41,16 +41,26 @@ def findPatternsInRegex(inputFile, outputFile):
         lines = f_in.readlines()
         for i, line in enumerate(lines):
             for pattern, description in regexes.items():
-                match = re.search(pattern, line)
-                if match:
+                match2 = re.search(importRequireStatement, line)
+                if match2:
+                    continue
+                match = re.search(pattern, line)                
+                if match :
                     line_number = i+1
-                    if description == "hardcoded string" :
-                        match2 = re.search(importRequireStatement, line)
-                        if(match2):
-                            continue
-                    output_str = f"{inputFile}:{line_number}:{description}:{line}"
+                    output_str = f"{inputFile}:{line_number}:{description}:\t{line}"
                     f_out.write(output_str)
                     break
+
+
+def delete_empty_hardcoded_files(root_dir):
+    for dirpath, dirnames, filenames in os.walk(root_dir):
+        for filename in filenames:
+            file_path = os.path.join(dirpath, filename)
+            if filename == "hardcoded.txt":                
+                if os.path.getsize(file_path) == 0:
+                    os.remove(file_path)
+                    print(f"Deleted empty file: {file_path}")
+
 
 
 def searchFiles(inputFiles, outputFiles):
@@ -63,7 +73,7 @@ def searchFiles(inputFiles, outputFiles):
             inputFilePath=os.path.join(inputFiles, fileName) # inputFilePath
             outputFilePath=os.path.join(outputFiles,fileName) # outputFilePath
 
-            newFile = 'duplicate.txt'
+            newFile = 'hardcoded.txt'
             newFilePath = os.path.join(outputFiles,newFile)
             if os.path.isdir(inputFilePath):
                 if not os.path.exists(outputFilePath):
@@ -80,3 +90,4 @@ inputFile = 'microservices-middleware/'
 # inputFile = "planner"
 outputFile = 'duplicates/'
 searchFiles(inputFile,outputFile)
+delete_empty_hardcoded_files(outputFile)

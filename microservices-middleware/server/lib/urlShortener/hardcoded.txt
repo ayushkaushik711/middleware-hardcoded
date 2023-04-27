@@ -1,0 +1,21 @@
+microservices-middleware/server/lib/urlShortener/urlShortenerFactory.js:5:hardcoded variable:	const getUrlShortener = () => {
+microservices-middleware/server/lib/urlShortener/urlShortenerFactory.js:6:hardcoded string:	    let { activeProvider = "" } = config.urlShortener || {};
+microservices-middleware/server/lib/urlShortener/urlShortenerFactory.js:9:hardcoded string:	    if (activeProvider === "bitly") {
+microservices-middleware/server/lib/urlShortener/urlShortenerFactory.js:11:hardcoded string:	    } else if (activeProvider === "firebase") {
+microservices-middleware/server/lib/urlShortener/urlShortenerFactory.js:14:hardcoded string:	        throw new Error("Unknown URL shortener provider");
+microservices-middleware/server/lib/urlShortener/bitly.js:4:hardcoded variable:	const shortenUrl = async (lognUrl) => {
+microservices-middleware/server/lib/urlShortener/bitly.js:5:hardcoded object:	    const { baseShortenUrl, accessToken } = config.urlShortener.bitly || {};
+microservices-middleware/server/lib/urlShortener/bitly.js:6:hardcoded variable:	    const options = {
+microservices-middleware/server/lib/urlShortener/bitly.js:7:hardcoded object:	        url: `${baseShortenUrl}?access_token=${accessToken}&longUrl=${lognUrl}`,
+microservices-middleware/server/lib/urlShortener/bitly.js:8:hardcoded string:	        method: 'GET',
+microservices-middleware/server/lib/urlShortener/bitly.js:11:hardcoded object:	    const response = await request(options) || {};
+microservices-middleware/server/lib/urlShortener/bitly.js:12:hardcoded object:	    const { data = {} } = response;
+microservices-middleware/server/lib/urlShortener/firebase.js:4:hardcoded variable:	const shortenUrl = async (lognUrl) => {
+microservices-middleware/server/lib/urlShortener/firebase.js:5:hardcoded object:	    const { baseShortenUrl, dynamicLinksDomain, accessToken } = config.urlShortener.firebase || {};
+microservices-middleware/server/lib/urlShortener/firebase.js:6:hardcoded variable:	    const options = {
+microservices-middleware/server/lib/urlShortener/firebase.js:7:hardcoded object:	        url: `${baseShortenUrl}?key=${accessToken}`,
+microservices-middleware/server/lib/urlShortener/firebase.js:8:hardcoded string:	        method: 'POST',
+microservices-middleware/server/lib/urlShortener/firebase.js:11:hardcoded string:	            "Content-Type": "application/json"
+microservices-middleware/server/lib/urlShortener/firebase.js:14:hardcoded object:	            longDynamicLink: `${dynamicLinksDomain}?link=${lognUrl}`,
+microservices-middleware/server/lib/urlShortener/firebase.js:16:hardcoded string:	                option: "UNGUESSABLE"
+microservices-middleware/server/lib/urlShortener/firebase.js:20:hardcoded object:	    const respose = await request(options) || {};

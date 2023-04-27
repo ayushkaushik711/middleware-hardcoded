@@ -1,0 +1,129 @@
+microservices-middleware/server/src/leadmanagement/leadRoutes.js:3:hardcoded object:	const router = Router({ mergeParams: true });
+microservices-middleware/server/src/leadmanagement/leadRoutes.js:6:hardcoded string:	    const baseRoute = '/leadActivity';
+microservices-middleware/server/src/leadmanagement/leadRoutes.js:9:hardcoded object:	    router.route(`${baseRoute}/getActivitiesOfLeadDetails`)
+microservices-middleware/server/src/leadmanagement/leadHelper.js:2:hardcoded string:	const { LeadOperation, Lead, Booking } = require('@byjus-orders/npgexemplum');
+microservices-middleware/server/src/leadmanagement/leadHelper.js:4:hardcoded string:	const { createLead } = require('@byjus-orders/nfoundation/achieve/lead/leadHelper');
+microservices-middleware/server/src/leadmanagement/leadHelper.js:7:hardcoded variable:	const getLeadId = async (prospectId) => {
+microservices-middleware/server/src/leadmanagement/leadHelper.js:9:hardcoded variable:	        const booking = await Booking.findOne({
+microservices-middleware/server/src/leadmanagement/leadHelper.js:13:hardcoded string:	            attributes: ['lead_phone_number'],
+microservices-middleware/server/src/leadmanagement/leadHelper.js:16:hardcoded string:	        const leadPhoneNumber = get(booking, 'lead_phone_number', '') || '';
+microservices-middleware/server/src/leadmanagement/leadHelper.js:17:hardcoded string:	        const splitNumber = leadPhoneNumber.split('-');
+microservices-middleware/server/src/leadmanagement/leadHelper.js:18:hardcoded string:	        const leadMobile = get(splitNumber, '1', '');
+microservices-middleware/server/src/leadmanagement/leadHelper.js:20:hardcoded string:	            logger.info('No booking found for prospectId: ', prospectId);
+microservices-middleware/server/src/leadmanagement/leadHelper.js:22:hardcoded variable:	        const lead = await Lead.findOne({
+microservices-middleware/server/src/leadmanagement/leadHelper.js:26:hardcoded string:	            attributes: ['id'],
+microservices-middleware/server/src/leadmanagement/leadHelper.js:29:hardcoded string:	        const leadId = get(lead, 'id', '');
+microservices-middleware/server/src/leadmanagement/leadHelper.js:31:hardcoded variable:	            const lead = await Lead.findOne({
+microservices-middleware/server/src/leadmanagement/leadHelper.js:35:hardcoded string:	                attributes: ['id'],
+microservices-middleware/server/src/leadmanagement/leadHelper.js:38:hardcoded string:	            const leadId = get(lead, 'id', '');
+microservices-middleware/server/src/leadmanagement/leadHelper.js:44:hardcoded string:	        return '';
+microservices-middleware/server/src/leadmanagement/leadHelper.js:48:hardcoded variable:	const canUpdateLeadOperation = async (prospectId, referenceId, status, accountNumber, userEmail) => {
+microservices-middleware/server/src/leadmanagement/leadHelper.js:49:hardcoded variable:	    const leadId = await getLeadId(prospectId);
+microservices-middleware/server/src/leadmanagement/leadHelper.js:51:hardcoded variable:	        const leadOperation = await LeadOperation.findOne({
+microservices-middleware/server/src/leadmanagement/leadHelper.js:56:hardcoded string:	            attributes: ['status'],
+microservices-middleware/server/src/leadmanagement/leadHelper.js:66:hardcoded variable:	const updateLeadOperation = async (prospectId, referenceId, status, accountNumber, userEmail) => {
+microservices-middleware/server/src/leadmanagement/leadHelper.js:67:hardcoded variable:	    const leadId = await getLeadId(prospectId);
+microservices-middleware/server/src/leadmanagement/leadHelper.js:69:hardcoded variable:	        const leadOperation = await LeadOperation.create({
+microservices-middleware/server/src/leadmanagement/leadHelper.js:72:hardcoded string:	            operation: status === 'success' ? 'payment_success' : 'payment_initiated',
+microservices-middleware/server/src/leadmanagement/leadHelper.js:81:hardcoded variable:	const createLeadInSystem = async (prospectId, userEmail, lsDetails) => {
+microservices-middleware/server/src/leadmanagement/leadHelper.js:82:hardcoded string:	    const studentEmail = get(lsDetails, 'studentEmail', '') || '';
+microservices-middleware/server/src/leadmanagement/leadHelper.js:83:hardcoded string:	    const studentMobile = get(lsDetails, 'studentMobile', '') || '';
+microservices-middleware/server/src/leadmanagement/leadHelper.js:84:hardcoded string:	    const splittedMobile = studentMobile.split('-');
+microservices-middleware/server/src/leadmanagement/leadHelper.js:85:hardcoded number:	    const leadMobile = splittedMobile[1] ? splittedMobile[1] : splittedMobile[0];
+microservices-middleware/server/src/leadmanagement/leadHelper.js:86:hardcoded string:	    const accountNumber = get(lsDetails, 'accountNumber', '');
+microservices-middleware/server/src/leadmanagement/leadHelper.js:88:hardcoded object:	    if (isEmpty(studentEmail.trim())) { return; }
+microservices-middleware/server/src/leadmanagement/leadHelper.js:90:hardcoded variable:	        const lead = await Lead.findOne({
+microservices-middleware/server/src/leadmanagement/leadHelper.js:92:hardcoded array:	                [Op.and]: [
+microservices-middleware/server/src/leadmanagement/leadHelper.js:93:hardcoded object:	                    { prospectId: prospectId },
+microservices-middleware/server/src/leadmanagement/leadHelper.js:94:hardcoded object:	                    { leadAccountId: accountNumber },
+microservices-middleware/server/src/leadmanagement/leadHelper.js:95:hardcoded object:	                    { phone: leadMobile }
+microservices-middleware/server/src/leadmanagement/leadHelper.js:98:hardcoded string:	            attributes: ['id'],
+microservices-middleware/server/src/leadmanagement/leadHelper.js:101:hardcoded string:	        let leadId = get(lead, 'id', '');
+microservices-middleware/server/src/leadmanagement/leadHelper.js:103:hardcoded string:	            leadId = await createLead(prospectId, 'order_initiated', userEmail, 'order_initiated', lsDetails);
+microservices-middleware/server/src/leadmanagement/leadHelper.js:112:hardcoded object:	const validateActivities = async ( { prospectActivities } ) => {
+microservices-middleware/server/src/leadmanagement/leadHelper.js:113:hardcoded variable:	    let permit = false;
+microservices-middleware/server/src/leadmanagement/leadHelper.js:115:hardcoded number:	        if ( activity.EventCode == 1400 ) {
+microservices-middleware/server/src/leadmanagement/leadHelper.js:116:hardcoded variable:	            const createdOn = new Date(activity.ActivityFields.CreatedOn);
+microservices-middleware/server/src/leadmanagement/leadHelper.js:117:hardcoded variable:	            const today = new Date();
+microservices-middleware/server/src/leadmanagement/leadHelper.js:118:hardcoded number:	            const duration = 21;
+microservices-middleware/server/src/leadmanagement/leadHelper.js:119:hardcoded number:	            const durationInMs = duration * 24 * 60 * 60 * 1000;
+microservices-middleware/server/src/leadmanagement/leadConstant.js:1:hardcoded number:	const STAGING_LS_ACCOUNT  = 52269;
+microservices-middleware/server/src/leadmanagement/leadConstant.js:3:hardcoded string:	const PAYMENT_INITIATION_STATUS = ["link_generated", "initiated"];
+microservices-middleware/server/src/leadmanagement/leadConstant.js:4:hardcoded string:	const PAYMENT_SUCCESS_STATUS = ["success", "reconciled"];
+microservices-middleware/server/src/leadmanagement/leadConstant.js:6:hardcoded variable:	const leadPaymentActivityMap = {
+microservices-middleware/server/src/leadmanagement/leadConstant.js:7:hardcoded string:	    "46867" : {
+microservices-middleware/server/src/leadmanagement/leadConstant.js:8:hardcoded string:	        "initiated": 1152,
+microservices-middleware/server/src/leadmanagement/leadConstant.js:9:hardcoded string:	        "success": 1153
+microservices-middleware/server/src/leadmanagement/leadConstant.js:11:hardcoded string:	    "24692" : {
+microservices-middleware/server/src/leadmanagement/leadConstant.js:12:hardcoded string:	        "initiated": 1180,
+microservices-middleware/server/src/leadmanagement/leadConstant.js:13:hardcoded string:	        "success": 1181
+microservices-middleware/server/src/leadmanagement/leadConstant.js:15:hardcoded string:	    "24693" : {
+microservices-middleware/server/src/leadmanagement/leadConstant.js:16:hardcoded string:	        "initiated": 413,
+microservices-middleware/server/src/leadmanagement/leadConstant.js:17:hardcoded string:	        "success": 414
+microservices-middleware/server/src/leadmanagement/leadConstant.js:19:hardcoded string:	    "50476" : {
+microservices-middleware/server/src/leadmanagement/leadConstant.js:20:hardcoded string:	        "initiated": 1079,
+microservices-middleware/server/src/leadmanagement/leadConstant.js:21:hardcoded string:	        "success": 1080
+microservices-middleware/server/src/leadmanagement/leadConstant.js:23:hardcoded string:	    "17139" : {
+microservices-middleware/server/src/leadmanagement/leadConstant.js:24:hardcoded string:	        "initiated": 492,
+microservices-middleware/server/src/leadmanagement/leadConstant.js:25:hardcoded string:	        "success": 493
+microservices-middleware/server/src/leadmanagement/leadConstant.js:27:hardcoded string:	    "52269" : {
+microservices-middleware/server/src/leadmanagement/leadConstant.js:28:hardcoded string:	        "initiated": 1180,
+microservices-middleware/server/src/leadmanagement/leadConstant.js:29:hardcoded string:	        "success": 1181
+microservices-middleware/server/src/leadmanagement/leadConstant.js:33:hardcoded string:	const LEAD_ACCOUNTS = [ '46867', '24692', '24693', '50476', '17139', '52269'];
+microservices-middleware/server/src/leadmanagement/leadController.js:9:hardcoded string:	const { getActivitiesOfLead } = require( '../../utility/apis/sosApiUtility' );
+microservices-middleware/server/src/leadmanagement/leadController.js:12:hardcoded variable:	const updatePaymentActivity = async (req, res) => {
+microservices-middleware/server/src/leadmanagement/leadController.js:13:hardcoded string:	    const { prospectId = "", accountNumber, amount = 0, userEmail = "" } = req.body;
+microservices-middleware/server/src/leadmanagement/leadController.js:14:hardcoded variable:	    const payment = {
+microservices-middleware/server/src/leadmanagement/leadController.js:15:hardcoded string:	        provider: get(req.body, 'provider', ''),
+microservices-middleware/server/src/leadmanagement/leadController.js:16:hardcoded string:	        status: get(req.body, 'status', ''),
+microservices-middleware/server/src/leadmanagement/leadController.js:17:hardcoded string:	        referenceId: get(req.body, 'referenceId', '')
+microservices-middleware/server/src/leadmanagement/leadController.js:21:hardcoded string:	        res.status(200).send({ message: 'Success' });
+microservices-middleware/server/src/leadmanagement/leadController.js:24:hardcoded string:	        res.status(500).send({ message: 'Error' });
+microservices-middleware/server/src/leadmanagement/leadController.js:28:hardcoded variable:	const updateMultipleLeadActivity = async (leadPayments, prospectId, userEmail, accountNumber) => {
+microservices-middleware/server/src/leadmanagement/leadController.js:30:hardcoded string:	        const { paymentPartner = '', status = '', amount = 0, referenceId = '', } = payment;
+microservices-middleware/server/src/leadmanagement/leadController.js:31:hardcoded variable:	        const paymentObject = {
+microservices-middleware/server/src/leadmanagement/leadController.js:40:hardcoded variable:	const updateLeadActivity = async (payment, prospectId, accountNumber, userEmail, amount) => {
+microservices-middleware/server/src/leadmanagement/leadController.js:42:hardcoded string:	        let { referenceId = "", provider = "", status = "" } = payment;
+microservices-middleware/server/src/leadmanagement/leadController.js:44:hardcoded string:	        status = PAYMENT_INITIATION_STATUS.includes(status) ? 'initiated' : status;
+microservices-middleware/server/src/leadmanagement/leadController.js:45:hardcoded string:	        const isDev = ['local', 'development'].includes(process.env.NODE_ENV);
+microservices-middleware/server/src/leadmanagement/leadController.js:49:hardcoded variable:	        const canUpdate = await canUpdateLeadOperation(prospectId, referenceId, status, accountNumber, userEmail);
+microservices-middleware/server/src/leadmanagement/leadController.js:50:hardcoded array:	        if (canUpdate && [...PAYMENT_INITIATION_STATUS, ...PAYMENT_SUCCESS_STATUS].includes(status) && LEAD_ACCOUNTS.includes(String(accountNumber))) {
+microservices-middleware/server/src/leadmanagement/leadController.js:51:hardcoded object:	            let uri = `${config.leadsquaredCreateActivityExtAPI.url}?account=${accountNumber}&leadId=${prospectId}`
+microservices-middleware/server/src/leadmanagement/leadController.js:52:hardcoded variable:	            const leadFieldBody = {
+microservices-middleware/server/src/leadmanagement/leadController.js:53:hardcoded string:	                "RelatedProspectId": prospectId,
+microservices-middleware/server/src/leadmanagement/leadController.js:54:hardcoded string:	                "ActivityEvent": leadPaymentActivityMap[accountNumber][status],
+microservices-middleware/server/src/leadmanagement/leadController.js:55:hardcoded string:	                "ActivityNote": ['initiated', 'link generated'].includes(status) ? 'Payment Initiated' : 'Payment Successfully collected',
+microservices-middleware/server/src/leadmanagement/leadController.js:56:hardcoded string:	                "Fields": createLeadFields(userEmail, referenceId, provider, status, amount)
+microservices-middleware/server/src/leadmanagement/leadController.js:59:hardcoded variable:	            const res = await callCreateActivityAPI(uri, leadFieldBody);
+microservices-middleware/server/src/leadmanagement/leadController.js:71:hardcoded variable:	const createLeadFields = (userEmail, referenceId, provider, status, amount) => {
+microservices-middleware/server/src/leadmanagement/leadController.js:72:hardcoded variable:	    const fields = [
+microservices-middleware/server/src/leadmanagement/leadController.js:74:hardcoded string:	            "SchemaName": "mx_Custom_1",
+microservices-middleware/server/src/leadmanagement/leadController.js:75:hardcoded string:	            "Value": userEmail
+microservices-middleware/server/src/leadmanagement/leadController.js:78:hardcoded string:	            "SchemaName": "mx_Custom_2",
+microservices-middleware/server/src/leadmanagement/leadController.js:79:hardcoded string:	            "Value": referenceId
+microservices-middleware/server/src/leadmanagement/leadController.js:82:hardcoded string:	            "SchemaName": "mx_Custom_3",
+microservices-middleware/server/src/leadmanagement/leadController.js:83:hardcoded string:	            "Value": provider
+microservices-middleware/server/src/leadmanagement/leadController.js:86:hardcoded string:	            "SchemaName": "mx_Custom_4",
+microservices-middleware/server/src/leadmanagement/leadController.js:87:hardcoded string:	            "Value": ['initiated', 'link generated'].includes(status) ? 'Initiated' : provider == 'bank_transfer' ? 'Reconciled' : 'Success'
+microservices-middleware/server/src/leadmanagement/leadController.js:90:hardcoded string:	            "SchemaName": "mx_Custom_5",
+microservices-middleware/server/src/leadmanagement/leadController.js:91:hardcoded string:	            "Value": moment.utc().format("YYYY-MM-DD HH:mm:ss")
+microservices-middleware/server/src/leadmanagement/leadController.js:94:hardcoded string:	            "SchemaName": "mx_Custom_6",
+microservices-middleware/server/src/leadmanagement/leadController.js:95:hardcoded string:	            "Value": amount
+microservices-middleware/server/src/leadmanagement/leadController.js:101:hardcoded variable:	const callCreateActivityAPI = async (uri, body) => {
+microservices-middleware/server/src/leadmanagement/leadController.js:102:hardcoded variable:	    const reqOptions = {
+microservices-middleware/server/src/leadmanagement/leadController.js:104:hardcoded string:	        method: 'POST',
+microservices-middleware/server/src/leadmanagement/leadController.js:106:hardcoded string:	        credentials: 'include',
+microservices-middleware/server/src/leadmanagement/leadController.js:109:hardcoded string:	            "Content-Type": "application/json",
+microservices-middleware/server/src/leadmanagement/leadController.js:110:hardcoded string:	            "x-api-key": config.leadsquaredCreateActivityExtAPI.xApiKey,
+microservices-middleware/server/src/leadmanagement/leadController.js:111:hardcoded string:	            "x-api-source": config.leadsquaredCreateActivityExtAPI.xApiSource
+microservices-middleware/server/src/leadmanagement/leadController.js:118:hardcoded variable:	        const response = await request(reqOptions);
+microservices-middleware/server/src/leadmanagement/leadController.js:127:hardcoded variable:	const getActivitiesOfLeadDetails = async ( req, res ) => {
+microservices-middleware/server/src/leadmanagement/leadController.js:129:hardcoded object:	        const { urlSegment, payload } = req.body;
+microservices-middleware/server/src/leadmanagement/leadController.js:130:hardcoded variable:	        const response = await getActivitiesOfLead( urlSegment, payload );
+microservices-middleware/server/src/leadmanagement/leadController.js:131:hardcoded variable:	        let permit = false;
+microservices-middleware/server/src/leadmanagement/leadController.js:133:hardcoded variable:	            const prospectActivities = response.data.ProspectActivities;
+microservices-middleware/server/src/leadmanagement/leadController.js:134:hardcoded object:	            permit = await validateActivities( { prospectActivities } )   
+microservices-middleware/server/src/leadmanagement/leadController.js:137:hardcoded string:	            throw new Error('Activities Not Found')
+microservices-middleware/server/src/leadmanagement/leadController.js:139:hardcoded number:	        return res.status( 200 ).json( {
+microservices-middleware/server/src/leadmanagement/leadController.js:144:hardcoded number:	        return res.status(500).json({
+microservices-middleware/server/src/leadmanagement/leadController.js:146:hardcoded string:	            message: get(error, 'message') || error || 'Error in Getting Permissions For BDM'

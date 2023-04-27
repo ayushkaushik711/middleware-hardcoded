@@ -1,7 +1,0 @@
-microservices-middleware/client/src/config/index.js:1:hardcoded object:const { merge } = require('lodash');
-microservices-middleware/client/src/config/index.js:3:hardcoded file path:module.exports = merge(require('./environment'));
-microservices-middleware/client/src/config/environment.js:1:hardcoded file path:require('dotenv').config();
-microservices-middleware/client/src/config/environment.js:3:hardcoded variable:const config = {
-microservices-middleware/client/src/config/environment.js:4:hardcoded number:  ptmsV2: {
-microservices-middleware/client/src/config/environment.js:5:hardcoded number:    accessKeyId: process.env.REACT_APP_PTMS_V2_ACCESS_KEY_ID,
-microservices-middleware/client/src/config/environment.js:6:hardcoded number:    secretAccessKey: process.env.REACT_APP_PTMS_V2_SECRET_ACCESS_KEY

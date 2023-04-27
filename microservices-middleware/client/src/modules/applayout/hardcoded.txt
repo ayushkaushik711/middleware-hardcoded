@@ -1,0 +1,154 @@
+microservices-middleware/client/src/modules/applayout/AppLayout.js:15:hardcoded string:	import './style.scss';
+microservices-middleware/client/src/modules/applayout/AppLayout.js:17:hardcoded object:	const { Header, Footer, Content } = Layout;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:18:hardcoded object:	const { Step } = Steps;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:20:hardcoded variable:	const mapStateToProps = state => ({
+microservices-middleware/client/src/modules/applayout/AppLayout.js:21:hardcoded string:	    user: get(state, 'auth.details.user'),
+microservices-middleware/client/src/modules/applayout/AppLayout.js:22:hardcoded string:	    authDetails: get(state, 'auth.details', {}),
+microservices-middleware/client/src/modules/applayout/AppLayout.js:23:hardcoded string:	    orderPunchingType: get(state, 'auth.orderPunchingType'),
+microservices-middleware/client/src/modules/applayout/AppLayout.js:24:hardcoded string:	    draftOrderSource: get(state, 'auth.draftOrderSource'),
+microservices-middleware/client/src/modules/applayout/AppLayout.js:25:hardcoded string:	    leadDetails: get(state, 'auth.leadDetails', {}),
+microservices-middleware/client/src/modules/applayout/AppLayout.js:26:hardcoded string:	    badgeName: get(state, "auth.rcnConfig.badgeDetails.name", ""),
+microservices-middleware/client/src/modules/applayout/AppLayout.js:27:hardcoded string:	    rprExcludedAccounts: get(state, "auth.rprDetailsData.rprExcludedAccounts", []),
+microservices-middleware/client/src/modules/applayout/AppLayout.js:28:hardcoded string:	    rprId: get(state, "auth.rprDetailsData.rprDetails", []).find(rpr => ["initiated", "soft_approved", "hard_approved"].includes(rpr?.status))?.rprId,
+microservices-middleware/client/src/modules/applayout/AppLayout.js:29:hardcoded string:	    excludedEmails: get(state, "auth.rprDetailsData.excludedEmails", []),
+microservices-middleware/client/src/modules/applayout/AppLayout.js:30:hardcoded string:	    enabledReportingTo: get(state, "auth.rprDetailsData.enabledReportingTo", []),
+microservices-middleware/client/src/modules/applayout/AppLayout.js:33:hardcoded variable:	const mapDispatchToProps = dispatch => ({
+microservices-middleware/client/src/modules/applayout/AppLayout.js:47:hardcoded string:	            case 'sales':
+microservices-middleware/client/src/modules/applayout/AppLayout.js:49:hardcoded string:	                    sales: "process",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:50:hardcoded string:	                    address: "wait",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:51:hardcoded string:	                    product: "wait",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:52:hardcoded string:	                    payment: "wait",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:53:hardcoded string:	                    otp: "wait"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:55:hardcoded string:	            case 'repunch':
+microservices-middleware/client/src/modules/applayout/AppLayout.js:57:hardcoded string:	                    sales: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:58:hardcoded string:	                    repunch: "process",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:59:hardcoded string:	                    address: "wait",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:60:hardcoded string:	                    product: "wait",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:61:hardcoded string:	                    payment: "wait",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:62:hardcoded string:	                    otp: "wait"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:64:hardcoded string:	            case 'product':
+microservices-middleware/client/src/modules/applayout/AppLayout.js:66:hardcoded string:	                    sales: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:67:hardcoded string:	                    product: "process",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:68:hardcoded string:	                    address: "wait",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:69:hardcoded string:	                    payment: "wait",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:70:hardcoded string:	                    otp: "wait"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:72:hardcoded string:	            case 'address':
+microservices-middleware/client/src/modules/applayout/AppLayout.js:74:hardcoded string:	                    sales: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:75:hardcoded string:	                    product: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:76:hardcoded string:	                    address: "process",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:77:hardcoded string:	                    payment: "wait",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:78:hardcoded string:	                    otp: "wait"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:80:hardcoded string:	            case 'payment':
+microservices-middleware/client/src/modules/applayout/AppLayout.js:82:hardcoded string:	                    sales: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:83:hardcoded string:	                    product: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:84:hardcoded string:	                    address: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:85:hardcoded string:	                    payment: "process",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:86:hardcoded string:	                    otp: "wait"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:88:hardcoded string:	            case 'otp':
+microservices-middleware/client/src/modules/applayout/AppLayout.js:90:hardcoded string:	                    sales: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:91:hardcoded string:	                    address: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:92:hardcoded string:	                    product: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:93:hardcoded string:	                    payment: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:94:hardcoded string:	                    order_platform_decision: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:95:hardcoded string:	                    otp: "process"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:97:hardcoded string:	            case 'order_platform_decision':
+microservices-middleware/client/src/modules/applayout/AppLayout.js:99:hardcoded string:	                    sales: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:100:hardcoded string:	                    address: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:101:hardcoded string:	                    product: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:102:hardcoded string:	                    payment: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:103:hardcoded string:	                    order_platform_decision: "process"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:105:hardcoded string:	            case 'done':
+microservices-middleware/client/src/modules/applayout/AppLayout.js:107:hardcoded string:	                    sales: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:108:hardcoded string:	                    address: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:109:hardcoded string:	                    product: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:110:hardcoded string:	                    payment: "finish",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:111:hardcoded string:	                    otp: "finish"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:114:hardcoded object:	                return {};
+microservices-middleware/client/src/modules/applayout/AppLayout.js:119:hardcoded string:	        //return status === "process" ? "loading" : null;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:124:hardcoded variable:	        let prevBtn = false;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:125:hardcoded variable:	        let nextBtn = false;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:127:hardcoded string:	        if (step === "sales") {
+microservices-middleware/client/src/modules/applayout/AppLayout.js:130:hardcoded string:	        else if (step === "repunch") {
+microservices-middleware/client/src/modules/applayout/AppLayout.js:134:hardcoded string:	        else if (step === "address") {
+microservices-middleware/client/src/modules/applayout/AppLayout.js:138:hardcoded string:	        else if (step === "product") {
+microservices-middleware/client/src/modules/applayout/AppLayout.js:142:hardcoded string:	        else if (step === "payment") {
+microservices-middleware/client/src/modules/applayout/AppLayout.js:146:hardcoded string:	        else if (step === "otp") {
+microservices-middleware/client/src/modules/applayout/AppLayout.js:150:hardcoded object:	        this.setState({ prevBtn, nextBtn });
+microservices-middleware/client/src/modules/applayout/AppLayout.js:154:hardcoded object:	        const { user = {}, step, authDetails, orderPunchingType, leadDetails, otpPageNeeded, draftOrderSource } = this.props;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:155:hardcoded string:	        const { accountNumber = "" } = leadDetails
+microservices-middleware/client/src/modules/applayout/AppLayout.js:156:hardcoded object:	        const { env } = authDetails;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:157:hardcoded string:	        const userPermissions = get(user, 'permissions', []);
+microservices-middleware/client/src/modules/applayout/AppLayout.js:159:hardcoded string:	        const isDevEnv = ["development", "local"].includes(env);
+microservices-middleware/client/src/modules/applayout/AppLayout.js:160:hardcoded number:	        const ignoreOtpPage = userPermissions.indexOf(orderPermissions.ignoreOtpCheck) >= 0;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:161:hardcoded string:	        const featureConfig = get(authDetails, 'config.featureCheck', {});
+microservices-middleware/client/src/modules/applayout/AppLayout.js:162:hardcoded object:	        const { isSSREnabled } = featureConfig;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:163:hardcoded object:	        const stepStatusMap = this.getStepStatusMap(step) || {};
+microservices-middleware/client/src/modules/applayout/AppLayout.js:166:hardcoded string:	            <Steps style={{ margin: '1%', paddingRight: '2%' }} size="small">
+microservices-middleware/client/src/modules/applayout/AppLayout.js:168:hardcoded string:	                    status={stepStatusMap["sales"]}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:169:hardcoded string:	                    title="Details"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:170:hardcoded string:	                    icon={<Icon type={this.getProcessingIcon(stepStatusMap["sales"]) || "user"} />}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:172:hardcoded string:	                {orderPunchingType === "REPUNCH_ORDER_TYPE" && <Step
+microservices-middleware/client/src/modules/applayout/AppLayout.js:173:hardcoded string:	                    status={stepStatusMap["repunch"]}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:174:hardcoded string:	                    title="Repunch"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:175:hardcoded string:	                    icon={<Icon type={this.getProcessingIcon(stepStatusMap["sales"]) || "user"} />}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:178:hardcoded string:	                    status={stepStatusMap["product"]}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:179:hardcoded string:	                    title="Product"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:180:hardcoded string:	                    icon={<Icon type={this.getProcessingIcon(stepStatusMap["product"]) || "shopping"} />}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:183:hardcoded string:	                    status={stepStatusMap["address"]}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:184:hardcoded string:	                    title="Address"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:185:hardcoded string:	                    icon={<Icon type={this.getProcessingIcon(stepStatusMap["address"]) || "solution"} />}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:188:hardcoded string:	                    status={stepStatusMap["payment"]}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:189:hardcoded string:	                    title="Payment"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:190:hardcoded string:	                    icon={<Icon type={this.getProcessingIcon(stepStatusMap["payment"]) || "wallet"} />}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:192:hardcoded string:	                {((ignoreOtpPage) && !['quotation_to_draftorder_converter'].includes(draftOrderSource)) &&
+microservices-middleware/client/src/modules/applayout/AppLayout.js:194:hardcoded string:	                        status={stepStatusMap["order_platform_decision"]}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:195:hardcoded string:	                        title={"Decide Order Platform"}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:196:hardcoded string:	                        icon={<Icon type={this.getProcessingIcon(stepStatusMap["otp"]) || "message"} />}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:199:hardcoded string:	                {(!ignoreOtpPage || otpPageNeeded) && ![24694].includes(parseInt(accountNumber)) && orderPunchingType != "AAKASH_CRP_ORDER" &&
+microservices-middleware/client/src/modules/applayout/AppLayout.js:200:hardcoded string:	                    !['quotation_to_draftorder_converter'].includes(draftOrderSource) &&
+microservices-middleware/client/src/modules/applayout/AppLayout.js:202:hardcoded string:	                        status={stepStatusMap["otp"]}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:203:hardcoded string:	                        title={"Customer Verification"}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:204:hardcoded string:	                        icon={<Icon type={this.getProcessingIcon(stepStatusMap["otp"]) || "message"} />}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:208:hardcoded string:	                    status={stepStatusMap["done"]}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:209:hardcoded string:	                    title="Done"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:210:hardcoded string:	                    icon={<Icon type={this.getProcessingIcon(stepStatusMap["done"]) || "check"} />}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:217:hardcoded object:	        const { step, prevBtnDisable = false, nextBtnDisable = false, loading, error } = this.props;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:220:hardcoded object:	            this.setState({ step, prevBtnDisable, nextBtnDisable });
+microservices-middleware/client/src/modules/applayout/AppLayout.js:240:hardcoded object:	        const { step, prevBtnDisable = false, nextBtnDisable = false } = this.props;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:242:hardcoded object:	        this.setState({ step, prevBtnDisable, nextBtnDisable });
+microservices-middleware/client/src/modules/applayout/AppLayout.js:247:hardcoded object:	        const { prevBtn, nextBtn, prevBtnDisable, nextBtnDisable, loading, error } = this.state;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:250:hardcoded string:	            prevBtnText = "Prev", nextBtnText = "Next",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:251:hardcoded array:	            loadMessage, errorMessage, authDetails, orderPunchingType, badgeName, leadDetails, rprExcludedAccounts, rprId, excludedEmails = [], enabledReportingTo = [], user = {} } = this.props;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:252:hardcoded variable:	        const msg = {
+microservices-middleware/client/src/modules/applayout/AppLayout.js:253:hardcoded string:	            TRIAL_PACK_TO_BYJUS_CLASSES: "This is a Trial Pack Upgrade Flow",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:254:hardcoded string:	            TLP_TO_HLP_ORDER: "This is a Byjus Upgrade Flow",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:255:hardcoded string:	            REPUNCH_ORDER_TYPE: "This is a Repunch Order Flow",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:256:hardcoded string:	            RENEWAL_ORDER: "This is a Renewal Order Flow",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:257:hardcoded string:	            RENEWAL: "This is a Renewal Flow", 
+microservices-middleware/client/src/modules/applayout/AppLayout.js:258:hardcoded string:	            TLP_TO_BYJUS_MATH_ORDER: "This is Byjus Math Upgrade Flow",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:259:hardcoded string:	            AAKASH_NEO_UPGRADE: "This is Aakash Neo Upgrade Flow",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:260:hardcoded string:	            AAKASH_CRP_HYBRID_UPGRADE: "This is Aakash CRP Hybrid Upgrade Flow",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:261:hardcoded string:	            AAKASH_NEO_ME_UPGRADE: "This is Aakash NEO ME Upgrade Flow",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:262:hardcoded string:	            AAKASH_TEST_SERIES_UPGRADE: "This is Aakash Test Series Upgrade Flow",
+microservices-middleware/client/src/modules/applayout/AppLayout.js:263:hardcoded string:	            AAKASH_NEO_LIVE_CLASSES_UPGRADE: "This is Aakash NEO live Classes Upgrade Flow"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:265:hardcoded string:	        const {reportingTo = {}, email = ""} = user;
+microservices-middleware/client/src/modules/applayout/AppLayout.js:266:hardcoded array:	        const reportingToList = [email, ...flattenDeep(Object.values(reportingTo)).reduce((acc, person) => [...acc, person?.userEmail], [])];
+microservices-middleware/client/src/modules/applayout/AppLayout.js:267:hardcoded variable:	        const isRprAllowed = enabledReportingTo.reduce((acc, curr) => acc ? acc : reportingToList.includes(curr) , false) ? false : !isEmpty(enabledReportingTo);
+microservices-middleware/client/src/modules/applayout/AppLayout.js:270:hardcoded object:	            <LoadingWrapper loading={loading} message={loadMessage}>
+microservices-middleware/client/src/modules/applayout/AppLayout.js:272:hardcoded string:	                    <Header style={{ height: 'auto', background: '#fff', margin: '3%' }}>
+microservices-middleware/client/src/modules/applayout/AppLayout.js:273:hardcoded object:	                        {badgeName && showRcnBadgeImage(badgeName)}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:274:hardcoded string:	                        {(rprExcludedAccounts.includes(leadDetails?.accountNumber) || excludedEmails.includes(leadDetails?.userEmail) || isRprAllowed)  ? null : <h5 className='text-center text-red'>Refund Policy Receipt <strong>{rprId}</strong> is successfully uploaded. Please contact the concerned PIC to get the same approved so that order punching can be enabled in the next steps.</h5>}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:275:hardcoded object:	                        {this.buildSteps()}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:279:hardcoded string:	                            <p style={{ color: "Red", textAlign: "center" }}><strong>{msg[orderPunchingType]}</strong></p>
+microservices-middleware/client/src/modules/applayout/AppLayout.js:282:hardcoded object:	                        {error && <ErrorWrapper error={error} message={errorMessage} />}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:283:hardcoded object:	                        {children}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:287:hardcoded object:	                            onClick={() => { onClickPrevBtn && onClickPrevBtn() }}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:288:hardcoded object:	                            disabled={prevBtnDisable}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:289:hardcoded string:	                            className="prev-btn"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:290:hardcoded string:	                            color="info">{prevBtnText}</Button>
+microservices-middleware/client/src/modules/applayout/AppLayout.js:293:hardcoded object:	                            onClick={() => { onClickNextBtn && onClickNextBtn() }}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:294:hardcoded object:	                            disabled={nextBtnDisable}
+microservices-middleware/client/src/modules/applayout/AppLayout.js:295:hardcoded string:	                            className="next-btn"
+microservices-middleware/client/src/modules/applayout/AppLayout.js:296:hardcoded string:	                            color="info">{nextBtnText}</Button>
+microservices-middleware/client/src/modules/applayout/AppLayout.js:298:hardcoded string:	                        <div style={{ padding: "20px" }}></div>
+microservices-middleware/client/src/modules/applayout/AppLayout.js:306:hardcoded object:	export default connect(mapStateToProps, mapDispatchToProps, null, { forwardRef: true })(AppLayout);

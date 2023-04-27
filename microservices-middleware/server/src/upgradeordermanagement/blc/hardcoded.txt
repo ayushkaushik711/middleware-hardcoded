@@ -1,0 +1,162 @@
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:4:hardcoded string:	const { DraftOrder } = require('@byjus-orders/nexemplum/oms');
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:5:hardcoded string:	const { SalesSkuMaster } = require('@byjus-orders/npgexemplum')
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:22:hardcoded variable:	const getPostgresCourseSKU = async (details) => {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:23:hardcoded string:	    const { type, grade, board, validity, tablet, subType = '' } = details
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:25:hardcoded variable:	    let query = {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:26:hardcoded string:	        status: "active",
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:28:hardcoded string:	        brand: productConstant.D4_SKU_ID.includes(tablet) && type === "btlp" ? "D4" : null,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:29:hardcoded object:	        grade: `${grade}`,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:30:hardcoded number:	        board: [4, 5].includes(grade) ? null : board,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:31:hardcoded object:	        validity: `${validity}`
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:40:hardcoded variable:	    const product = await SalesSkuMaster.findOne({
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:48:hardcoded string:	            itemType: 'course'
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:52:hardcoded object:	        const errorMsg = getErrorMsg({ grade, board, validity, type });
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:57:hardcoded variable:	const getTabletSku = async (details) => {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:58:hardcoded object:	    let { tabletId, studentId, uniqueTabletId } = details
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:59:hardcoded number:	    let price = 0
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:65:hardcoded array:	                [Op.or]: [
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:66:hardcoded object:	                    { skuId: `${tabletId}` },
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:67:hardcoded object:	                    { ohProductId: `${tabletId}` }
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:69:hardcoded string:	                status: "active"
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:85:hardcoded string:	            itemType: 'tablet',
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:90:hardcoded object:	        throw new NotFoundError(`Tablet with SKU Id:${tabletId} is not found`);
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:94:hardcoded variable:	const getErrorMsg = function (queryDetails) {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:95:hardcoded object:	    const { grade, board, validity, type } = queryDetails || {};
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:98:hardcoded string:	    ${grade ? `Grade: ${grade}` : ''}
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:99:hardcoded string:	    ${board ? `Board: ${board}` : ''}
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:100:hardcoded string:	    ${type ? `Type: ${type}` : ''}
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:101:hardcoded string:	    ${validity ? `Validity: ${validity}` : ''}
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:105:hardcoded object:	const attachBlcCenterAndBatchDetails = (productDetails = {}) => {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:106:hardcoded array:	    const { students = [] } = productDetails;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:108:hardcoded variable:	    const formattedStudentDetails = students.map((student, index) => {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:110:hardcoded object:	        const { state, stateName, city, cityName, centre, centreName, requestedBatchId, batchType, courseAliasId, cohortId, pincode } = student
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:112:hardcoded variable:	        let centreDetails = {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:113:hardcoded string:	            "stateId": state,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:114:hardcoded string:	            "state": stateName,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:115:hardcoded string:	            "cityId": city,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:116:hardcoded string:	            "city": cityName,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:117:hardcoded string:	            "centreId": centre,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:118:hardcoded string:	            "centre": centreName,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:119:hardcoded string:	            "requestedBatchId": requestedBatchId,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:120:hardcoded string:	            "requestId": null,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:121:hardcoded string:	            "batchType": batchType,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:122:hardcoded string:	            "courseAliasId": courseAliasId,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:123:hardcoded string:	            "cohortId": cohortId,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:124:hardcoded string:	            "pincode": pincode
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:127:hardcoded string:	        student["centreDetails"] = centreDetails;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:136:hardcoded variable:	const getBlcProductAndPrice = async (details) => {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:138:hardcoded number:	    let skuPrice = 0;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:139:hardcoded array:	    let skuArray = [];
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:140:hardcoded object:	    let { initialClass, finalClass, board, validity, city, stateBoard, productSelectionType, student } = details
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:144:hardcoded variable:	    let grade = initialClass;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:145:hardcoded string:	    const type = (productSelectionType == 'byjus_tlp' || !productSelectionType) ? "tlp_blc_upgrade" : "bocp_blc_upgrade"
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:149:hardcoded number:	            let coursePrice = 0
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:153:hardcoded string:	                board: board === "STATE" ? getBoardForState(stateBoard) : board,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:156:hardcoded object:	            let updatedPrice = await getUpdatedBlcPrice({ grade, initialClass, finalClass, student, courseSku });
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:159:hardcoded string:	            courseSku["price"] = coursePrice;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:160:hardcoded string:	            courseSku["combinationType"] = type;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:161:hardcoded string:	            courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:164:hardcoded number:	            grade += 1;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:177:hardcoded variable:	const getTlpProductAndPrice = async (details) => {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:179:hardcoded number:	    let skuPrice = 0;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:180:hardcoded array:	    let skuArray = [];
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:181:hardcoded object:	    let { initialClass, finalClass, board, validity, city, stateBoard, productSelectionType, student } = details
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:185:hardcoded variable:	    let grade = initialClass;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:186:hardcoded string:	    const type = 'btlp';
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:190:hardcoded number:	            let coursePrice = 0
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:194:hardcoded string:	                board: board === "STATE" ? getBoardForState(stateBoard) : board,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:197:hardcoded object:	            let updatedPrice = await getUpdatedBlcPrice({ grade, initialClass, finalClass, student, courseSku });
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:200:hardcoded string:	            courseSku["price"] = coursePrice;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:201:hardcoded string:	            courseSku["combinationType"] = type;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:202:hardcoded string:	            courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:205:hardcoded number:	            grade += 1;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:218:hardcoded variable:	const getByjusClassProductAndPrice = async (details) => {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:220:hardcoded number:	    let skuPrice = 0;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:221:hardcoded array:	    let skuArray = [];
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:222:hardcoded object:	    let { initialClass, finalClass, board, validity, city, stateBoard, productSelectionType, student } = details
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:226:hardcoded variable:	    let grade = initialClass;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:227:hardcoded string:	    const type = 'byjus_classes_upgrade';
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:231:hardcoded number:	            let coursePrice = 0
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:234:hardcoded string:	                subType: 'live',
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:236:hardcoded string:	                board: board === "STATE" ? getBoardForState(stateBoard) : board,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:239:hardcoded object:	            let updatedPrice = await getUpdatedBlcPrice({ grade, initialClass, finalClass, student, courseSku });
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:242:hardcoded string:	            courseSku["price"] = coursePrice;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:243:hardcoded string:	            courseSku["combinationType"] = type;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:244:hardcoded string:	            courseSku["itemId"] = getSkuItemId(courseSku);
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:247:hardcoded number:	            grade += 1;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:260:hardcoded variable:	const getUpgradeProduct = async (req, res) => {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:261:hardcoded string:	    logger.info({ method: 'getUpgradeProduct' }, { message: "Fetching BLC Upgrade Product" });
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:264:hardcoded number:	    let skuPrice = 0;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:265:hardcoded array:	    let products = [], voucherEnabledSkuArray = [];
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:266:hardcoded array:	    let updatedProducts = []
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:267:hardcoded number:	    let updatedPrice = 0
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:268:hardcoded string:	    let pricingSchemeId = ''
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:270:hardcoded string:	    let { identifier, paymentType = "EMI", student, productCombination, productSelectionType, isBlcMarkUpAndDownApplicable = false } = req.body;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:275:hardcoded number:	        student = isArray(student) ? student[0] : student
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:276:hardcoded string:	        let { initialClass, finalClass, board, stateBoard = "", validity, city, tablet = null } = student;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:278:hardcoded object:	        let { blcCoursePrice, blcSkuArray } = await getBlcProductAndPrice({ initialClass, finalClass, board, validity, city, stateBoard, productSelectionType, student })
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:279:hardcoded number:	        const { tlpCoursePrice = 0, tlpSkuArray = [] } = await getTlpProductAndPrice({ initialClass, finalClass, board, validity, city, stateBoard, productSelectionType, student })
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:280:hardcoded string:	        const { byjusClassCoursePrice = 0, byjusClassSkuArray = [] } = ['byjus_classes', 'byjus_classes_upgrade'].includes(productSelectionType) ? await getByjusClassProductAndPrice({ initialClass, finalClass, board, validity, city, stateBoard, productSelectionType, student }) : {}
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:287:hardcoded object:	        tabletSku = tablet ? await getTabletSku({ tabletId: tablet }) : null;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:288:hardcoded array:	        tabletSku = isArray(tabletSku) ? tabletSku : [tabletSku];
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:291:hardcoded number:	        let tabletPrice = 0;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:294:hardcoded number:	                const { price = 0, quantity = 1 } = sku;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:300:hardcoded array:	        products.push(blcSkuArray, tlpSkuArray, byjusClassSkuArray, tabletSku, [btcRegistrationSku]);
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:301:hardcoded variable:	        const formattedProducts = flattenDeep(products).filter(prdct => prdct);
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:303:hardcoded object:	        const result = await getPricingEngineUpdatedPrices({ formattedProducts, student, isUpgrade: true, isBlcMarkUpAndDownApplicable, paymentType })
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:307:hardcoded string:	        //const { updatedProducts = [], updatedPrice = 0, pricingSchemeId = '' } = await getPricingEngineUpdatedPrices({formattedProducts, student })
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:309:hardcoded number:	        let maxPrice = Math.floor(updatedPrice / 1000) * 1000;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:312:hardcoded number:	        maxPrice = await getMinOrderThres({ maxPrice, tabletSku, isDevEnv, productSelectionType, noOfYears: finalClass ? parseInt(finalClass) - parseInt(initialClass) : 0 })
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:314:hardcoded variable:	        const applicableAmount = parseInt(maxPrice) - parseInt(tabletPrice)
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:317:hardcoded number:	        minPrice = (Math.floor(minPrice / 1000)) * 1000
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:320:hardcoded array:	        voucherEnabledSkuArray = getVoucherEnabledSkuArray({ blcSkuArray, tlpSkuArray: [], btcRegistrationSku: [btcRegistrationSku] });
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:322:hardcoded object:	        const skuProductDetails = { initialClass, tabletSku, maxPrice, minPrice, productCombination, voucherEnabledSkuArray }
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:323:hardcoded object:	        const discountDetails = await getDiscountDetails({ identifier, productDetails: skuProductDetails });
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:324:hardcoded string:	        const { discountedPrice, voucher = "", minimumPrice, areBonusPointsUsed = false, bonusPointsDiscount = 0 } = discountDetails;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:327:hardcoded string:	        student["formValues"] = { ...student };
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:328:hardcoded string:	        student["items"] = updatedProducts;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:332:hardcoded string:	            productCombination: "byjus_learning_centre_upgrade",
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:337:hardcoded array:	            students: [student],
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:340:hardcoded number:	                count: 0,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:341:hardcoded array:	                items: []
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:343:hardcoded array:	            mentoringDetails: [],
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:345:hardcoded array:	            bhlpCourseDetails: [],
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:354:hardcoded variable:	const storeProductDetails = async (req, res) => {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:355:hardcoded string:	    let { identifier, productDetails, productCombination = "", studentDetails, tlpOrderData } = req.body;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:356:hardcoded string:	    let opunt = req.body.orderPunchingType || "";
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:357:hardcoded string:	    const { email } = get(req, 'user', {});
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:358:hardcoded string:	    logger.info({ method: 'storeProductDetails', msg: `Storing Product Details for _id:${identifier}` });
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:362:hardcoded string:	            throw new BadRequestError(`Parameters - ${identifier ? '' : 'identifier'} ${productDetails ? '' : 'productDetails'} Missing`);
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:363:hardcoded variable:	        const draftOrder = await checkIfDraftOrderExists(identifier);
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:366:hardcoded object:	            const { isOmsOrder, customerDetails } = draftOrder;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:367:hardcoded object:	            const { productType, isGstIn, student = {}, productSelectionType } = productDetails;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:368:hardcoded string:	            const { validity = "" } = student;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:369:hardcoded variable:	            const isOmsEligibleOrder = await checkIsOmsOrder(productType, isOmsOrder, validity);
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:370:hardcoded object:	            const { redeemedCashback, unutilizedCashbacks, amountToCustomer, amountToSalesPerson } = await manageCashbacks(draftOrder, productDetails);
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:371:hardcoded object:	            let { orgFormattedName, orderPunchingType } = draftOrder
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:386:hardcoded string:	            if (get(config, 'isStudentProfileAvailable') === "true" && productDetails.students && productDetails.students.length) {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:391:hardcoded array:	            const { formattedProducts = [], formattedStudents = [] } = await attachSiblingDetails(productDetails, productType, draftOrder, studentDetails);
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:392:hardcoded string:	            productDetails["students"] = formattedStudents;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:393:hardcoded string:	            productDetails["products"] = formattedProducts;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:398:hardcoded array:	            const { formattedStudentDetails = [] } = await attachBlcCenterAndBatchDetails(productDetails);
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:399:hardcoded string:	            productDetails["students"] = formattedStudentDetails;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:400:hardcoded string:	            productDetails.students[0].productSelectionType = 'byjus_learning_centre'
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:401:hardcoded number:	            const academicDetails = getNeoClassAcademicDetails(productDetails.students[0])
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:402:hardcoded string:	            productDetails.students[0]["academicDetails"] = academicDetails;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:406:hardcoded variable:	            const updateObj = {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:410:hardcoded string:	                orderPunchingType: "UPGRADE",
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:411:hardcoded string:	                finalPrice: get(productDetails, 'finalPrice', 0),
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:412:hardcoded string:	                status: "product_saved",
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:413:hardcoded array:	                [`actionDetails.productSavedAt`]: new Date(),
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:414:hardcoded array:	                [`actionDetails.productSavedBy`]: email,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:416:hardcoded string:	                "customerDetails.gstDetails.isGstIn": isGstIn,
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:417:hardcoded string:	                orderPunchingCategory: "blc",
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:419:hardcoded string:	                    oldCourse: productSelectionType == 'byjus_tlp' ? 'tlp' : 'byjus_classes',
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:420:hardcoded string:	                    newCourse: "blc",
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:421:hardcoded string:	                    baseOrderId: get(tlpOrderData, 'orderId')
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:423:hardcoded string:	                upgradedOrders: [get(draftOrder, 'draftOrderId')]
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:426:hardcoded variable:	            const transactionId = await reserveBonusPoints(draftOrder);
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:427:hardcoded string:	            if (transactionId !== "") {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:428:hardcoded string:	                updateObj["bonusPointsDetails.transactionId"] = transactionId;
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:431:hardcoded string:	            await DraftOrder.findOneAndUpdate({ '_id': identifier }, {
+microservices-middleware/server/src/upgradeordermanagement/blc/blcUpgradeProductController.js:435:hardcoded object:	            return res.json({ productDetails, cashbackDetails: { redeemedCashback, unutilizedCashbacks } });
